@@ -3,7 +3,6 @@ package com.pyongjjeom.test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-
 public class JDBCTest {
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -16,7 +15,9 @@ public class JDBCTest {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(url, userName, password);
 			System.out.println("Database connection established");
+
 			
+			System.out.println();
 		} catch (Exception e) {
 			System.err.println("Cannot connect to database server");
 			System.err.println(e.getMessage());
