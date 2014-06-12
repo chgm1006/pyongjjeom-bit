@@ -15,8 +15,8 @@ public class JDBCTest {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(url, userName, password);
 			System.out.println("Database connection established");
-
-			
+      
+			// test 입니다
 			System.out.println();
 		} catch (Exception e) {
 			System.err.println("Cannot connect to database server");
