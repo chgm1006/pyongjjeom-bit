@@ -16,7 +16,7 @@ public class JDBCTest {
 			conn = DriverManager.getConnection(url, userName, password);
 			System.out.println("Database connection established");
       
-			
+			System.out.println();
 		} catch (Exception e) {
 			System.err.println("Cannot connect to database server");
 			System.err.println(e.getMessage());
