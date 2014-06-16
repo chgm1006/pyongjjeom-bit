@@ -15,6 +15,12 @@
 				<td>제목</td>
 				<td>${movie.title}</td>
 			</tr>
+			<tr>
+				<td>표지 이미지</td>
+				<td><img alt="표지이미지" src="${movie.thumbnail}"></td>
+			</tr>
+
+
 		</table>
 		<br>
 	</c:forEach>
