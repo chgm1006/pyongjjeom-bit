@@ -1,6 +1,20 @@
 package com.pyongjjeom.common;
 
+/**
+ * <pre>
+ * 간략 : 
+ * 상세 : 
+ * com.pyongjjeom.common
+ *   |_ NaverBook.java
+ * </pre>
+ * 
+ * @author : Administrator
+ * @version : 1.0
+ */
 public class NaverBook {
+	/**
+	 * 
+	 */
 	private String title = ""; // 검색 제목
 	private String link = ""; // 검색 link
 	private String image = ""; // 썸네일 이미지
@@ -12,18 +26,53 @@ public class NaverBook {
 	private String isbn = ""; // ISBN
 	private String description = ""; // 내용
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 :
+	 * </PRE>
+	 * 
+	 * @return title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 :
+	 * </PRE>
+	 * 
+	 * @param title
+	 *          test
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 :
+	 * </PRE>
+	 * 
+	 * @return link
+	 */
 	public String getLink() {
 		return link;
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 :
+	 * </PRE>
+	 * 
+	 * 
+	 * @param link
+	 *          test
+	 */
 	public void setLink(String link) {
 		this.link = link;
 	}
