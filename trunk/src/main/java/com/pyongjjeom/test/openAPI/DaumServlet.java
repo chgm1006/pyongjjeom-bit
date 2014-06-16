@@ -39,7 +39,7 @@ public class DaumServlet extends HttpServlet {
 					+ URLEncoder.encode(searchQuery, "UTF-8")
 					+ "&apikey=0daf987df65056e8b60c4302124e1e6708d36ebb";
 			resultList = daumParse.bookParse(uri);
-			resultPage = "resultDaumBook.do";
+			resultPage = "resultDaumBook.jsp";
 			System.out.println(resultList.toString());
 			break;
 		case 1:
@@ -49,7 +49,7 @@ public class DaumServlet extends HttpServlet {
 			System.out.println(uri);
 			resultList = daumParse.movieParse(uri);
 			System.out.println(resultList.toString());
-			resultPage = "resultDaumMovie.do";
+			resultPage = "resultDaumMovie.jsp";
 			break;
 		default:
 			break;
