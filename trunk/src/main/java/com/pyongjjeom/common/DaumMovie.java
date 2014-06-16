@@ -4,7 +4,7 @@ public class DaumMovie {
 	private String thumbnail = ""; // 썸네일
 	private String title = ""; // 영화명
 	private String eng_title = ""; // 영화 영문명
-	private String org_title = ""; // 원제 영화명
+	private String ogr_title = ""; // 원제 영화명
 	private String kword = ""; // 영화명 키워드
 	private String year = ""; // 제작년도
 	private String trailer = ""; // 예고편
@@ -69,12 +69,12 @@ public class DaumMovie {
 		this.eng_title = eng_title;
 	}
 
-	public String getOrg_title() {
-		return org_title;
+	public String getOgr_title() {
+		return ogr_title;
 	}
 
-	public void setOrg_title(String org_title) {
-		this.org_title = org_title;
+	public void setOgr_title(String org_title) {
+		this.ogr_title = org_title;
 	}
 
 	public String getKword() {
