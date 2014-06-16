@@ -54,11 +54,6 @@ public class AladinParsing extends ContentsParsing {
 		}
 	}
 
-	/*
-	 * public List<String> getTitleList() { return titleList; }
-	 * 
-	 * public List<Double> getGradeList() { return gradeList; }
-	 */
 
 	public static void main(String[] args) {
 		AladinParsing parsing = new AladinParsing();
