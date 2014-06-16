@@ -19,7 +19,7 @@ public class KyoboParsing extends ContentsParsing {
 							"http://www.kyobobook.co.kr/bestseller/bestSellerKyoboKorList.laf?mallGb=KOR&linkClass=&range=1&kind=0")
 					.get();
 			title = doc.select("strong a[href]");
-			grade = doc.select("img[alt*=����]");
+			grade = doc.select("img[alt*=만점]");
 			this.addTitle();
 			this.addGrade();
 		} catch (IOException e) {
