@@ -22,7 +22,7 @@ public class TestServiceImpl implements TestService {
 	 public void gradeUpdate(List<ContentsValue> values) {
 	 ContentsValue contentsValue = values.get(0);
 	 System.out.println(contentsValue.toString());
-	 testDao.gradeUpdate();
+	 testDao.gradeUpdate(contentsValue);
 	
 	 }
 }// end EmpServiceImpl

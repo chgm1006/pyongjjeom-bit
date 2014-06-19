@@ -1,11 +1,9 @@
 package com.pyongjjeom.test.dao;
 
-
+import com.pyongjjeom.test.parsing.contents.ContentsValue;
 
 
 public interface TestDao {
-	Integer getAllEmpCount();
 
-//	void gradeTest(ContentsValue value);
-	void gradeUpdate();
+	void gradeUpdate(ContentsValue contentsValue);
 }
