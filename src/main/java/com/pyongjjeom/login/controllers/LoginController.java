@@ -6,7 +6,6 @@ package com.pyongjjeom.login.controllers;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +34,8 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+
+	private Member mem;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {

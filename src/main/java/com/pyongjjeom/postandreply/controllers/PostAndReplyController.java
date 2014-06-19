@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.friends.service.FriendsService;
+import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
+import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
 /**
@@ -41,6 +45,11 @@ public class PostAndReplyController {
 
 	@Autowired
 	private FriendsService friendsService;
+
+	private Post post;
+	private Reply reply;
+	private Member mem;
+	private Content content;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getPost(String memCD, String conCD) {

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.service.NoticeService;
+import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
 /**
@@ -33,6 +35,9 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+
+	private Notice notice;
+	private Member mem;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getAllNotices() {

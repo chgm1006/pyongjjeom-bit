@@ -4,8 +4,6 @@
 
 package com.pyongjjeom.friends.controllers;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.friends.service.FriendsService;
+import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
 /**
@@ -36,6 +35,9 @@ public class FriendsController {
 
 	@Autowired
 	private UserService userService;
+
+	private Friends frn;
+	private Member mem;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getFriendList(String memCD) {
