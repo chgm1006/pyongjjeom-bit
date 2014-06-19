@@ -11,7 +11,7 @@ public class JDBCTest {
 			String userName = "rootdev";
 			String password = "1234";
 
-			String url = "jdbc:mysql://192.168.0.131:3306/forcebewithyou";
+			String url = "jdbc:mysql://192.168.0.44:3306/forcebewithyou";
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(url, userName, password);
 			System.out.println("Database connection established");
