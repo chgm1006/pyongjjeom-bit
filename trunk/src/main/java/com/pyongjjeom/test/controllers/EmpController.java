@@ -16,7 +16,7 @@ import com.pyongjjeom.test.service.EmpService;
 public class EmpController {
 	@Autowired
 	private EmpService empService;
-
+	
 	private static final Logger logger = LoggerFactory
 			.getLogger(EmpController.class);
 
