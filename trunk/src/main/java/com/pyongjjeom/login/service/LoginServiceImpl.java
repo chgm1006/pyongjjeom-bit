@@ -5,7 +5,10 @@
 package com.pyongjjeom.login.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.login.dao.LoginMapper;
 import com.pyongjjeom.user.dto.Member;
 
 /**
@@ -18,9 +21,13 @@ import com.pyongjjeom.user.dto.Member;
  * @version :
  * @author : Forrest
  */
+@Service("loginService")
 public class LoginServiceImpl implements LoginService {
 
 	private Logger log = Logger.getLogger(this.getClass());
+
+	@Autowired
+	private LoginMapper loginMapper;
 
 	/**
 	 * <pre>

@@ -7,7 +7,10 @@ package com.pyongjjeom.myroom.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.myroom.dao.MyRoomMapper;
 import com.pyongjjeom.postandreply.dto.Post;
 
 /**
@@ -20,9 +23,13 @@ import com.pyongjjeom.postandreply.dto.Post;
  * @version :
  * @author : Forrest
  */
+@Service("myRoomService")
 public class MyRoomServiceImpl implements MyRoomService {
 
 	private Logger log = Logger.getLogger(this.getClass());
+
+	@Autowired
+	private MyRoomMapper myRoomMapper;
 
 	/**
 	 * <pre>

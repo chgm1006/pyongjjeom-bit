@@ -7,7 +7,10 @@ package com.pyongjjeom.contents.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.contents.dao.ContentsMapper;
 import com.pyongjjeom.contents.dto.Content;
 
 /**
@@ -19,9 +22,14 @@ import com.pyongjjeom.contents.dto.Content;
  * @version : 
  * @author : Forrest
  */
+@Service("contentService")
 public class ContentServiceImpl implements ContentService {
 
 	private Logger log = Logger.getLogger(this.getClass());
+	
+	@Autowired
+	private ContentsMapper contentsMapper;
+	
 
 	/**
 	 * <pre>

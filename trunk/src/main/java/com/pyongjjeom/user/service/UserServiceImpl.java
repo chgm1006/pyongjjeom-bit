@@ -2,31 +2,29 @@
  * 
  */
 
-package com.pyongjjeom.notice.service;
-
-import java.util.List;
+package com.pyongjjeom.user.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.pyongjjeom.notice.dao.NoticeMapper;
-import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.user.dao.UserMapper;
+import com.pyongjjeom.user.dto.Member;
 
 /**
  * <pre>
- * com.pyongjjeom.notice.service 
- *    |_ NoticeServiceImpl.java
+ * com.pyongjjeom.user.service 
+ *    |_ UserServiceImpl.java
  * 
  * </pre>
  * 
  * @version :
  * @author : Forrest
  */
-@Service("noticeService")
-public class NoticeServiceImpl implements NoticeService {
+@Service("userService")
+public class UserServiceImpl implements UserService {
 
 	private Logger log = Logger.getLogger(this.getClass());
-	private NoticeMapper noticeMapper;
+	private UserMapper userMapper;
 
 	/**
 	 * <pre>
@@ -34,21 +32,21 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
-	 * @Method Name : getAllNotices
-	 * @date : 2014. 6. 18.
+	 * @Method Name : getMemberInfo
+	 * @date : 2014. 6. 19.
 	 * @author : Forrest
 	 * @history :
 	 *          ------------------------------------------------------------------
 	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
-	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          --------------------------------------- 2014. 6. 19. Forrest 최초 작성
 	 *          ------------------------------------------------------------------
 	 *          -----
 	 * 
-	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNotices()
+	 * @see com.pyongjjeom.user.service.UserService#getMemberInfo()
 	 * @return
 	 */
 	@Override
-	public List<Notice> getAllNotices() {
+	public Member getMemberInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -59,22 +57,21 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
-	 * @Method Name : getNotice
-	 * @date : 2014. 6. 18.
+	 * @Method Name : checkMemberID
+	 * @date : 2014. 6. 19.
 	 * @author : Forrest
 	 * @history :
 	 *          ------------------------------------------------------------------
 	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
-	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          --------------------------------------- 2014. 6. 19. Forrest 최초 작성
 	 *          ------------------------------------------------------------------
 	 *          -----
 	 * 
-	 * @see com.pyongjjeom.notice.service.NoticeService#getNotice(java.lang.String)
-	 * @param notCD
+	 * @see com.pyongjjeom.user.service.UserService#checkMemberID()
 	 * @return
 	 */
 	@Override
-	public Notice getNotice(String notCD) {
+	public Member checkMemberID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -85,22 +82,21 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
-	 * @Method Name : updateNotice
-	 * @date : 2014. 6. 18.
+	 * @Method Name : updateMemberInfo
+	 * @date : 2014. 6. 19.
 	 * @author : Forrest
 	 * @history :
 	 *          ------------------------------------------------------------------
 	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
-	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          --------------------------------------- 2014. 6. 19. Forrest 최초 작성
 	 *          ------------------------------------------------------------------
 	 *          -----
 	 * 
-	 * @see com.pyongjjeom.notice.service.NoticeService#updateNotice(java.lang.String)
-	 * @param notCD
+	 * @see com.pyongjjeom.user.service.UserService#updateMemberInfo()
 	 * @return
 	 */
 	@Override
-	public int updateNotice(String notCD) {
+	public int updateMemberInfo() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -111,22 +107,21 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
-	 * @Method Name : deleteNotice
-	 * @date : 2014. 6. 18.
+	 * @Method Name : deleteMember
+	 * @date : 2014. 6. 19.
 	 * @author : Forrest
 	 * @history :
 	 *          ------------------------------------------------------------------
 	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
-	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          --------------------------------------- 2014. 6. 19. Forrest 최초 작성
 	 *          ------------------------------------------------------------------
 	 *          -----
 	 * 
-	 * @see com.pyongjjeom.notice.service.NoticeService#deleteNotice(java.lang.String)
-	 * @param notCD
+	 * @see com.pyongjjeom.user.service.UserService#deleteMember()
 	 * @return
 	 */
 	@Override
-	public int deleteNotice(String notCD) {
+	public int deleteMember() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
