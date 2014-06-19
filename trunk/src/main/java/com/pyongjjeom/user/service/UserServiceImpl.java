@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
+import com.pyongjjeom.user.service.UserService;
 
 /**
  * <pre>
