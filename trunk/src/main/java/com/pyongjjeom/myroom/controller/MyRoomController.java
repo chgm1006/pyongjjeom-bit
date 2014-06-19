@@ -4,16 +4,17 @@
 
 package com.pyongjjeom.myroom.controller;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.myroom.service.MyRoomService;
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.postandreply.dto.Reply;
+import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
 /**
@@ -36,6 +37,11 @@ public class MyRoomController {
 
 	@Autowired
 	private MyRoomService myroomService;
+
+	private Friends frn;
+	private Member mem;
+	private Post post;
+	private Reply reply;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getMyPost(String memCD) {

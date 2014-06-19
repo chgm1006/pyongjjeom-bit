@@ -4,8 +4,6 @@
 
 package com.pyongjjeom.user.service;
 
-import org.apache.log4j.Logger;
-
 import com.pyongjjeom.user.dto.Member;
 
 /**
