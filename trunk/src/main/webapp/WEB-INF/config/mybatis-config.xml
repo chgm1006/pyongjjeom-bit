@@ -13,6 +13,7 @@
 	<mappers>
 		<mapper resource="com/pyongjjeom/test/dao/DeptMapper.xml" />
 		<mapper resource="com/pyongjjeom/test/dao/EmpMapper.xml" />
+		<mapper resource="com/pyongjjeom/test/dao/TestMapper.xml" />
 
 	</mappers>
 </configuration>
