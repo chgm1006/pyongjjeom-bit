@@ -3,9 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.test.dao.TestDao">
-
-	<update id="gradeUpdate" >
-		update contents_movie set cgvmg ='1' where title ='엣지 오브 투모로우'
-	</update>
-
+    
+    
+   <insert id="gradeUpdate"  parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+     	insert into test_movie
+		(concd,cgvmg,title)
+		values
+		('2','8.89','테스트')
+   </insert> 
+	<!-- <update id="gradeUpdate"  parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_movie set cgvmg =#{grade} where title ='엣지 오브 투모로우'
+	</update> -->
 </mapper>
