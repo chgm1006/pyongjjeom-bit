@@ -7,7 +7,10 @@ package com.pyongjjeom.friends.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.friends.dao.FriendsMapper;
 import com.pyongjjeom.friends.dto.Friends;
 
 /**
@@ -19,10 +22,13 @@ import com.pyongjjeom.friends.dto.Friends;
  * @version : 
  * @author : Forrest
  */
+@Service("friendsSerivce")
 public class FriendsServiceImpl implements FriendsService {
 
 	private Logger log = Logger.getLogger(this.getClass());
 
+	@Autowired
+	private FriendsMapper friendsMapper;
 	/**
 	 * <pre>
 	 * 1. 개요 : 

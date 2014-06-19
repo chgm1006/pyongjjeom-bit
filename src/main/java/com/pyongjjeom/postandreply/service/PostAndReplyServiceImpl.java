@@ -7,7 +7,9 @@ package com.pyongjjeom.postandreply.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.user.dto.Member;
 
@@ -21,12 +23,12 @@ import com.pyongjjeom.user.dto.Member;
  * @version :
  * @author : Forrest
  */
+@Service("postAndReplyService")
 public class PostAndReplyServiceImpl implements PostAndReplyService {
 
 	private Logger log = Logger.getLogger(this.getClass());
 
-	private PostAndReplyService par;
-	private Member member = new Member();
+	private PostAndReplyMapper parMapper;
 
 	/**
 	 * <pre>
