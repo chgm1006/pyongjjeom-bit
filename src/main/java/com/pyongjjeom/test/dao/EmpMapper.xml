@@ -16,8 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="getAllEmpCount" resultType="int">
-		select count(*) from emp
+		select cgvmg from test_movie
 	</select>
+
+<!-- 	<update id="getAllEmpCount">
+		update test_movie set cgvmg = '15' where title ='엣지 오브 투모로우'
+	</update> -->
+
 	<select id="selectEmp" parameterType="int" resultType="Emp">
 		select empno,
 		ename, job, mgr, hiredate,
