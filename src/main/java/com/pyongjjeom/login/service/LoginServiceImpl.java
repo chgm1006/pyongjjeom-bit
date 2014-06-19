@@ -1,0 +1,77 @@
+/**
+ * 
+ */
+
+package com.pyongjjeom.login.service;
+
+import org.apache.log4j.Logger;
+
+import com.pyongjjeom.user.dto.Member;
+
+/**
+ * <pre>
+ * com.pyongjjeom.login.service 
+ *    |_ LoginServiceImpl.java
+ * 
+ * </pre>
+ * 
+ * @version :
+ * @author : Forrest
+ */
+public class LoginServiceImpl implements LoginService {
+
+	private Logger log = Logger.getLogger(this.getClass());
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : checkMemberLogin
+	 * @date : 2014. 6. 18.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @see com.pyongjjeom.login.service.LoginService#checkMemberLogin(java.lang.String)
+	 * @param email
+	 * @return
+	 */
+	@Override
+	public int checkMemberLogin(String email) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : createMember
+	 * @date : 2014. 6. 18.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @see com.pyongjjeom.login.service.LoginService#createMember(com.pyongjjeom.user.dto.Member)
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public int createMember(Member user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
