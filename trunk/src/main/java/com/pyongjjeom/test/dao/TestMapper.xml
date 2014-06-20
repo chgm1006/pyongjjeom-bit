@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      	insert into test_movie
 		(concd,cgvmg,title)
 		values
-		('2','8.89','테스트')
+		(2,8.89,'테스트')
    </insert> 
 	<!-- <update id="gradeUpdate"  parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
 		update test_movie set cgvmg =#{grade} where title ='엣지 오브 투모로우'
