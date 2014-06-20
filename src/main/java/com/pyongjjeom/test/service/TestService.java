@@ -9,6 +9,15 @@ public interface TestService {
 
 	void gradeUpdate(List<ContentsValue> cgvValues,List<ContentsValue> lotteValues,List<ContentsValue> megaBoxValues);
 
-	void titleInsert(List<ContentsValue> cgvValues);
+	void titleInsert(List<ContentsValue> Values);
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @param naverValues 
+	 */
+	void gradeUpdate(List<ContentsValue> naverValues);
 
 }

@@ -9,9 +9,9 @@ import org.jsoup.nodes.Element;
 import com.pyongjjeom.test.parsing.contents.ContentsParsing;
 
 
-public class NaverParsing extends ContentsParsing {
+public class NaverBookParsing extends ContentsParsing {
 
-	public NaverParsing() {
+	public NaverBookParsing() {
 
 		try {
 			doc = Jsoup.connect("http://book.naver.com/bestsell/bestseller_list.nhn?cp=kyobo").get();
@@ -42,7 +42,7 @@ public class NaverParsing extends ContentsParsing {
 	}
 
 	public static void main(String[] args) {
-		NaverParsing parsing = new NaverParsing();
+		NaverBookParsing parsing = new NaverBookParsing();
 		System.out.println(parsing.getTitleList().size() + "/"
 				+ parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());

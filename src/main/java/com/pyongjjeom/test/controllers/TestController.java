@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.common.DaumBook;
 import com.pyongjjeom.common.DaumMovie;
+import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.test.openAPI.DaumParse;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
 import com.pyongjjeom.test.parsing.movie.CgvParsing;
 import com.pyongjjeom.test.parsing.movie.LotteParsing;
 import com.pyongjjeom.test.parsing.movie.MegaBoxParsing;
+import com.pyongjjeom.test.parsing.movie.NaverMovieParsing;
 import com.pyongjjeom.test.service.TestService;
 
 @Controller
@@ -36,23 +38,39 @@ public class TestController {
 	public String getEmpCount(Model model, HttpServletRequest request) {
 		logger.info("EmpController getEmpCount");
 
+		NaverMovieParsing naverParsing = new NaverMovieParsing();
 		CgvParsing cgvParsing = new CgvParsing();
 		LotteParsing lotteParsing = new LotteParsing();
 		MegaBoxParsing megaBoxParsing = new MegaBoxParsing();
 
+		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
+		
+		DBCode dbCode= new DBCode();
+	
+		
+		for(int i=0; i<75; i++)
+		{
+			naverValues.add(new ContentsValue(naverParsing.getTitleList().get(i),
+					naverParsing.getGradeList().get(i),dbCode.getContentCD("m")));
+		}
+		
 		List<ContentsValue> cgvValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> lotteValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> megaBoxValues = new ArrayList<ContentsValue>();
 
-		for (int i = 0; i < 20; i++) {
-			cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
-					cgvParsing.getGradeList().get(i)));
-			lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
-					lotteParsing.getGradeList().get(i)));
-			megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
-					megaBoxParsing.getGradeList().get(i)));
+
+		
+	for (int i = 0; i < 32; i++) {
+		cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
+				cgvParsing.getGradeList().get(i),"test"));
+		lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
+				lotteParsing.getGradeList().get(i),"test"));
+		megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
+				megaBoxParsing.getGradeList().get(i),"test"));
 		}
-		testService.titleInsert(cgvValues);
+	
+		testService.titleInsert(naverValues);
+		testService.gradeUpdate(naverValues);
 		testService.gradeUpdate(cgvValues, lotteValues, megaBoxValues);
 
 		return "emp/count";

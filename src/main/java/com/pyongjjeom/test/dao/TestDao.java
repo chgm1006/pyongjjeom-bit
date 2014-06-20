@@ -9,5 +9,6 @@ public interface TestDao {
 	void lotteGradeUpdate(ContentsValue contentsValue);
 	void megaBoxGradeUpdate(ContentsValue contentsValue);
 	void titleInsert(ContentsValue value);
+	void naverGradeUpdate(ContentsValue value);
 
 }
