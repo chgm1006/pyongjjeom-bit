@@ -2,15 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
-http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
 	<context:property-placeholder location="/WEB-INF/properties/jdbc_dev.properties" />
+	<util:properties id="key" location="classpath:API_KEY.properties" />
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
@@ -28,6 +30,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- enable component scanning(beware that this does not enable mapper scanning!) -->
 	<context:component-scan base-package="com.pyongjjeom.test.service" />
 	<context:component-scan base-package="com.pyongjjeom.test.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.test.dao" />
+	<!-- <context:component-scan base-package="com.pyongjjeom.test.scheduling" /> -->
 	<!-- <context:component-scan base-package="com.pyongjjeom.test" /> -->
 
 	<!-- enable autowire -->
@@ -58,4 +62,35 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
+	<!-- 쿼츠 테스트 - 대상이 되는 클래스 -->
+	<bean id="cronQ1" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.pyongjjeom.test.scheduling.QuartzTest1" />
+	</bean>
+
+
+	<!-- 쿼츠 테스트 - Cron 시간 설정 -->
+	<bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="cronQ1" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+
+	<!-- 쿼츠 테스트 - Cron 실행 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger1" />
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+				<prop key="org.quartz.threadPool.threadCount">3</prop>
+				<prop key="org.quartz.threadPool.threadPriority">4</prop>
+				<prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop>
+				<prop key="org.quartz.jobStore.misfireThreshold">60000</prop>
+			</props>
+		</property>
+	</bean>
+
 </beans>

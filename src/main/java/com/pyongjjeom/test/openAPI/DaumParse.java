@@ -16,7 +16,6 @@ import org.xml.sax.SAXException;
 import com.pyongjjeom.common.DaumBook;
 import com.pyongjjeom.common.DaumMovie;
 
-
 public class DaumParse {
 
 	public static String getBookContent(Element element, String tagName) {
@@ -73,8 +72,7 @@ public class DaumParse {
 				contents.setSale_price(getBookContent(element, "sale_price"));
 				contents.setStatus_des(getBookContent(element, "status_des"));
 				contents.setBarcode(getBookContent(element, "barcode"));
-				contents.setEbook_barcode(getBookContent(element,
-						"ebook_barcode"));
+				contents.setEbook_barcode(getBookContent(element, "ebook_barcode"));
 				resultList.add(contents);
 
 			}
@@ -127,10 +125,8 @@ public class DaumParse {
 				contents.setPhoto4(getMovieContent(element, "photo4"));
 				contents.setPhoto5(getMovieContent(element, "photo5"));
 				contents.setGrades(getMovieContent(element, "grades"));
-				contents.setWrite_grades(getMovieContent(element,
-						"write_grades"));
-				contents.setExpect_grades(getMovieContent(element,
-						"expect_grades"));
+				contents.setWrite_grades(getMovieContent(element, "write_grades"));
+				contents.setExpect_grades(getMovieContent(element, "expect_grades"));
 				contents.setGrade1(getMovieContent(element, "grade1"));
 				contents.setGrade2(getMovieContent(element, "grade2"));
 				contents.setGrade3(getMovieContent(element, "grade3"));

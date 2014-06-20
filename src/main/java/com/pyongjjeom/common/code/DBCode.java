@@ -4,9 +4,7 @@
 
 package com.pyongjjeom.common.code;
 
-import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -23,8 +21,6 @@ import org.apache.log4j.Logger;
  * @author : Forrest
  */
 public class DBCode {
-
-	private Logger log = Logger.getLogger(this.getClass());
 
 	private long date = System.currentTimeMillis();
 
@@ -66,7 +62,7 @@ public class DBCode {
 		}
 		String cntFormat = String.format("%03d", cnt);
 		String conStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(conStr);
+		// System.out.println(conStr);
 		return conStr;
 	}
 
@@ -100,7 +96,7 @@ public class DBCode {
 		}
 		String cntFormat = String.format("%05d", cnt);
 		String replyStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(replyStr);
+		// System.out.println(replyStr);
 		return replyStr;
 	}
 
@@ -133,7 +129,7 @@ public class DBCode {
 		}
 		String cntFormat = String.format("%03d", cnt);
 		String noticeStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(noticeStr);
+		 System.out.println(noticeStr);
 		return noticeStr;
 	}
 
@@ -171,7 +167,7 @@ public class DBCode {
 		}
 		String cntFormat = String.format("%05d", cnt);
 		String postStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(postStr);
+		// System.out.println(postStr);
 		return postStr;
 	}
 
@@ -207,7 +203,7 @@ public class DBCode {
 		}
 		String cntFormat = String.format("%05d", cnt);
 		String memStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(memStr);
+		// System.out.println(memStr);
 		return memStr;
 	}
 
@@ -239,7 +235,7 @@ public class DBCode {
 		for (int i = 0; i < length; i++) {
 			buffer.append(chars[random.nextInt(chars.length)]);
 		}
-		System.out.println(buffer);
+		// System.out.println(buffer);
 		return buffer.toString();
 	}
 
@@ -260,32 +256,42 @@ public class DBCode {
 	 *          -----
 	 * 
 	 * @param cd
-	 *          "PIMG"는 포스트이미지, "CIMG"는 컨텐트 이미지.
+	 *          "MIMG"는 영화 이미지, "BIMG"는 도서 이미지, "CIMG"는 공연 이미지, "UIMG"는 유저 프로파일
+	 *          이미지, "NIMG"는 공지사항 이미지, "PIMG"는 포스트이미지
 	 * @return 이미지 코드를 반환.
 	 */
 	public String getIMGCD(String cd) {
 		int cnt = 0;
-		if (cd.toUpperCase().equals("PIMG")) {
-			cnt = StaticField.PIMG_CNT++;
+		if (cd.toUpperCase().equals("MIMG")) {
+			cnt = StaticField.MIMG_CNT++;
+		} else if (cd.toUpperCase().equals("BIMG")) {
+			cnt = StaticField.BIMG_CNT++;
 		} else if (cd.toUpperCase().equals("CIMG")) {
 			cnt = StaticField.CIMG_CNT++;
+		} else if (cd.toUpperCase().equals("UIMG")) {
+			cnt = StaticField.UIMG_CNT++;
+		} else if (cd.toUpperCase().equals("PIMG")) {
+			cnt = StaticField.PIMG_CNT++;
+		} else if (cd.toUpperCase().equals("NIMG")) {
+			cnt = StaticField.NIMG_CNT++;
 		} else {
 			System.err.println("등록되지 않은 코드입니다.");
 			return null;
 		}
 		String cntFormat = String.format("%05d", cnt);
 		String imgStr = cd.toUpperCase() + nowDate + cntFormat;
-		System.out.println(imgStr);
+		// System.out.println(imgStr);
 		return imgStr;
 	}
 
 	public static void main(String[] args) {
 		DBCode dc = new DBCode();
-		dc.getIMGCD("pimg");
-		dc.getIMGCD("pImg");
-		dc.getIMGCD("Pimg");
-		dc.getIMGCD("Cimg");
-		dc.getIMGCD("cimg");
-		dc.getIMGCD("cimg");
+		dc.getNoticeCD("no");
+		dc.getNoticeCD("sm");
+		dc.getNoticeCD("ev");
+		dc.getNoticeCD("");
+		dc.getNoticeCD("");
+		dc.getNoticeCD("");
+
 	}
 }
