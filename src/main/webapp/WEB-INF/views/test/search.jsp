@@ -1,30 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 <!-- <b>Naver</b>
 	<form action="naver.do" method="get" id="frmLogin" name="frmLogin">
 		<select  name="category">
-			<option value="0">Ã¥
-			<option value="1">¿µÈ­
+			<option value="0">ì±…
+			<option value="1">ì˜í™”
 		</select> <input type="text" id="Search" name="Search"
-			placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä" tabindex="1" autofocus="autofocus"> <input
-			type="submit" value="°Ë»ö">
+			placeholder="ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”" tabindex="1" autofocus="autofocus"> <input
+			type="submit" value="ê²€ìƒ‰">
 	</form>
  -->
 <b>Daum</b>
 	<form action="daum.do" method="get" id="frmLogin" name="frmLogin">
 		<select  name="category">
-			<option value="0">Ã¥
-			<option value="1">¿µÈ­
+			<option value="0">ì±…
+			<option value="1">ì˜í™”
 		</select> <input type="text" id="Search" name="Search"
-			placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä" tabindex="1" autofocus="autofocus"> <input
-			type="submit" value="°Ë»ö">
+			placeholder="ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”" tabindex="1" autofocus="autofocus"> <input
+			type="submit" value="ê²€ìƒ‰">
 	</form>
 
 </body>
