@@ -27,9 +27,9 @@ public class DaumServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		int category = Integer.parseInt(request.getParameter("category"));
 		String searchQuery = (String) request.getParameter("Search").trim();
+		System.out.println(searchQuery);
 		DaumParse daumParse = new DaumParse();
 
 		switch (category) {
@@ -38,6 +38,7 @@ public class DaumServlet extends HttpServlet {
 			uri = "http://apis.daum.net/search/book?q="
 					+ URLEncoder.encode(searchQuery, "UTF-8") + "&apikey=" + bookApiKey;
 			resultList = daumParse.bookParse(uri);
+			System.out.println(uri);
 			resultPage = "resultDaumBook.jsp";
 			break;
 		case 1:
