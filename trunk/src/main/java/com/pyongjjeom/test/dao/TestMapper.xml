@@ -6,9 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="titleInsert" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
-		INSERT INTO test_movie (title) SELECT #{title} FROM DUAL
+		INSERT INTO test_movie (concd,title) SELECT #{concd},#{title} FROM DUAL
        WHERE NOT EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
 	</insert>
+	
+		<update id="naverGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_movie set navermg
+		=#{grade} where title =#{title}
+	</update>
+	
 	<update id="cgvGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
 		update test_movie set cgvmg
 		=#{grade} where title =#{title}

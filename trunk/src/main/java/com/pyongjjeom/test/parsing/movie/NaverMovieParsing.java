@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import com.pyongjjeom.test.parsing.book.AladinParsing;
 import com.pyongjjeom.test.parsing.contents.ContentsParsing;
 
 public class NaverMovieParsing extends ContentsParsing {
@@ -18,11 +17,9 @@ public class NaverMovieParsing extends ContentsParsing {
 					.connect(
 							"http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve")
 					.get();
-			System.out.println(doc);
-			
-			grade = doc.select("div:has(a[href^=) span[class=num]");
-			title = doc.select("p[class=tit]");
-			
+			grade = doc.select("span[class=num]");
+			title = doc.select("dt[class=tit");
+
 			this.addTitle();
 			this.addGrade();
 		} catch (IOException e) {
@@ -38,9 +35,13 @@ public class NaverMovieParsing extends ContentsParsing {
 	}
 
 	private void addGrade() {
+		int i = 0;
 		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
-			gradeList.add(Double.parseDouble(gra.text().substring(0, 3)));
+			if (i % 2 == 0) {
+				gradeList.add(Double.parseDouble(gra.text()));	
+			}
+			i++;
 		}
 	}
 

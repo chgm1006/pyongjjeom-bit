@@ -35,12 +35,12 @@ public class MovieTest {
 //					lotteParsing.getGradeList().get(i));
 //			megaBoxValue[i] = new ContentsValue(megaBoxParsing.getTitleList().get(i),
 //					megaBoxParsing.getGradeList().get(i));
-			cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
-					cgvParsing.getGradeList().get(i)));
-			lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
-					lotteParsing.getGradeList().get(i)));
-			megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
-					megaBoxParsing.getGradeList().get(i)));
+//			cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
+//					cgvParsing.getGradeList().get(i)));
+//			lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
+//					lotteParsing.getGradeList().get(i)));
+//			megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
+//					megaBoxParsing.getGradeList().get(i)));
 			// System.out.printf("%02d", i + 1);
 			// System.out.println("  CGV : " + cgvValue[i].toString() + " // 롯데시네마 : "
 			// + lotteValue[i].toString() + " // 메가박스 : "
