@@ -18,7 +18,7 @@
 	</form>
  -->
 <b>Daum</b>
-	<form action="daum.do" method="get" id="frmLogin" name="frmLogin">
+	<form action="views/search" method="get" id="frmLogin" name="frmLogin">
 		<select  name="category">
 			<option value="0">책
 			<option value="1">영화
