@@ -44,31 +44,27 @@ public class TestController {
 		MegaBoxParsing megaBoxParsing = new MegaBoxParsing();
 
 		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
-		
-		DBCode dbCode= new DBCode();
-	
-		
-		for(int i=0; i<75; i++)
-		{
+
+		DBCode dbCode = new DBCode();
+
+		for (int i = 0; i < 75; i++) {
 			naverValues.add(new ContentsValue(naverParsing.getTitleList().get(i),
-					naverParsing.getGradeList().get(i),dbCode.getContentCD("m")));
+					naverParsing.getGradeList().get(i), dbCode.getContentCD("m")));
 		}
-		
+
 		List<ContentsValue> cgvValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> lotteValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> megaBoxValues = new ArrayList<ContentsValue>();
 
-
-		
-	for (int i = 0; i < 32; i++) {
-		cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
-				cgvParsing.getGradeList().get(i),"test"));
-		lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
-				lotteParsing.getGradeList().get(i),"test"));
-		megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
-				megaBoxParsing.getGradeList().get(i),"test"));
+		for (int i = 0; i < 32; i++) {
+			cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
+					cgvParsing.getGradeList().get(i), "test"));
+			lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
+					lotteParsing.getGradeList().get(i), "test"));
+			megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
+					megaBoxParsing.getGradeList().get(i), "test"));
 		}
-	
+
 		testService.titleInsert(naverValues);
 		testService.gradeUpdate(naverValues);
 		testService.gradeUpdate(cgvValues, lotteValues, megaBoxValues);
