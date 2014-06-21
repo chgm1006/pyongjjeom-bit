@@ -6,8 +6,6 @@ package com.pyongjjeom.notice.dao;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.pyongjjeom.notice.dto.Notice;
 
 /**

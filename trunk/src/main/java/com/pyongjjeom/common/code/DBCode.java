@@ -7,8 +7,6 @@ package com.pyongjjeom.common.code;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
-
 /**
  * <pre>
  * com.pyongjjeom.common 

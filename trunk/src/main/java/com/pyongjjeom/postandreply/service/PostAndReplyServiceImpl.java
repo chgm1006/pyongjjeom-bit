@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Post;
-import com.pyongjjeom.user.dto.Member;
 
 /**
  * <pre>
