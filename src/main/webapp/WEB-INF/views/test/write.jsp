@@ -43,7 +43,7 @@
 
 
 <body>
-	<form name=writeform method=POST action="view/write.do">
+	<form name=writeform method=POST action="views/write.do">
 		<table>
 
 			<tr>
