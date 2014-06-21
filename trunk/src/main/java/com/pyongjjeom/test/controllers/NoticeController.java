@@ -39,10 +39,10 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
-//	private static final Logger logger = (Logger) LoggerFactory
-//			.getLogger(NoticeController.class);
+	// private static final Logger logger = (Logger) LoggerFactory
+	// .getLogger(NoticeController.class);
 
-	@RequestMapping(value = "view/write.do", method = RequestMethod.POST)
+	@RequestMapping(value = "write.do", method = RequestMethod.POST)
 	public String insertData(@Valid com.pyongjjeom.test.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
@@ -50,5 +50,21 @@ public class NoticeController {
 		noticeService.insertData(notice);
 
 		return "write";
+	}
+
+	@RequestMapping(value = "list.do")
+	public String listDo(@Valid com.pyongjjeom.test.dto.Notice notice,
+			Model model, HttpServletRequest request) {
+
+		System.out.println("왓수?");
+		return "test/list";
+	}
+
+	@RequestMapping(value = "write.jsp")
+	public String writeDo(@Valid com.pyongjjeom.test.dto.Notice notice,
+			Model model, HttpServletRequest request) {
+
+		System.out.println("왓수?22222");
+		return "test/write";
 	}
 }
