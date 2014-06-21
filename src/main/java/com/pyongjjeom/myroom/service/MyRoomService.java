@@ -6,8 +6,6 @@ package com.pyongjjeom.myroom.service;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.pyongjjeom.postandreply.dto.Post;
 
 /**

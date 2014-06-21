@@ -6,8 +6,6 @@ package com.pyongjjeom.friends.service;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.pyongjjeom.friends.dto.Friends;
 
 /**
