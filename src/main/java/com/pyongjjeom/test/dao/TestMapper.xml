@@ -5,12 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pyongjjeom.test.dao.TestDao">
 
 
-	<insert id="titleInsert" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+	<insert id="movieTitleInsert" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
 		INSERT INTO test_movie (concd,title) SELECT #{concd},#{title} FROM DUAL
        WHERE NOT EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
 	</insert>
 	
-		<update id="naverGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		<update id="naverMovieGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
 		update test_movie set navermg
 		=#{grade} where title =#{title}
 	</update>
@@ -34,4 +34,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update test_movie set
 		daummg =#{grade} where title =#{title}
 	</update>
+	
+		
+		
+		
+		
+		
+		
+		<insert id="bookTitleInsert" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		INSERT INTO test_book (concd,title) SELECT #{concd},#{title} FROM DUAL
+       WHERE NOT EXISTS( SELECT 1 FROM test_book WHERE title=#{title})
+	</insert>
+	
+		<update id="yes24GradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_book set yesbg
+		=#{grade} where title =#{title}
+	</update>
+	
+	<update id="aladinGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_book set aladinbg
+		=#{grade} where title =#{title}
+	</update>
+
+	<update id="kyoboGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_book set
+		kyobobg =#{grade} where title =#{title}
+	</update>
+
+	<update id="naverBookGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_book set
+		naverbg =#{grade} where title =#{title}
+	</update>
+	
+		<update id="bandinlunisGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_book set
+		bandibg =#{grade} where title =#{title}
+	</update>
+		
+		
+		
 </mapper>
