@@ -10,8 +10,8 @@
 	<h1>Spring 3, MVC Examples</h1>
 	<ul>
 		<li><a href="search.jsp">다음 검색</a></li>
-		<li><a href="views/test">TEST</a></li>
 		<li><a href="views/list.do">공지사항</a></li>
+		<li><a href="views/FBTest.force">FaceBook Test</a></li>
 
 	</ul>
 </body>
