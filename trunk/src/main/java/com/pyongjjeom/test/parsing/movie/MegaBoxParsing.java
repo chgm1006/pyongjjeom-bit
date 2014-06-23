@@ -1,8 +1,6 @@
 package com.pyongjjeom.test.parsing.movie;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
@@ -12,11 +10,13 @@ public class MegaBoxParsing extends ContentsParsing {
 
 	public MegaBoxParsing() {
 
+		parsing("http://www.megabox.co.kr/Movie/moviePlayList.aspx?statuscode=50&ordtype=4");
+
+	}
+
+	public void parsing(String url) {
 		try {
-			doc = Jsoup
-					.connect(
-							"http://www.megabox.co.kr/Movie/moviePlayList.aspx?statuscode=50&ordtype=4")
-					.get();
+			doc = Jsoup.connect(url).get();
 			title = doc.select("h3");
 			grade = doc.select("li strong");
 			this.addTitle();
@@ -28,7 +28,6 @@ public class MegaBoxParsing extends ContentsParsing {
 	}
 
 	private void addTitle() {
-		titleList = new ArrayList<>();
 		for (Element tit : title) {
 			titleList.add(tit.text());
 		}
@@ -36,7 +35,6 @@ public class MegaBoxParsing extends ContentsParsing {
 
 	private void addGrade() {
 		int i = 0;
-		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
 			i++;
 			if (i % 2 == 0)

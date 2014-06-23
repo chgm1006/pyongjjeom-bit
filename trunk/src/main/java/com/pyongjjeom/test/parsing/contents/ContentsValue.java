@@ -27,6 +27,7 @@ public class ContentsValue {
 	public ContentsValue(String title, Double grade) {
 		this.title = title;
 		this.grade = grade;
+		this.concd= " ";
 	}
 
 	public String getTitle() {
@@ -47,7 +48,7 @@ public class ContentsValue {
 
 	@Override
 	public String toString() {
-		return title + "_" + grade + "_" + concd;
+		return title + "_" + grade;
 	}
 
 }

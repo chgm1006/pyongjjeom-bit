@@ -25,29 +25,29 @@ public class BookTest {
 		ContentsValue[] kyoboValue = new ContentsValue[TOTALNUMBER];
 		ContentsValue[] naverValue = new ContentsValue[TOTALNUMBER];
 
-		// for (int i = 0; i < TOTALNUMBER; i++) {
-		// yes24Value[i] = new ContentsValue(yes24Parsing.getTitleList()
-		// .get(i), yes24Parsing.getGradeList().get(i));
-		//
-		// aladinValue[i] = new ContentsValue(aladinParsing.getTitleList()
-		// .get(i), aladinParsing.getGradeList().get(i));
-		//
-		// bandiValue[i] = new ContentsValue(bandinlunisParsing.getTitleList()
-		// .get(i), bandinlunisParsing.getGradeList().get(i));
-		//
-		// kyoboValue[i] = new ContentsValue(kyoboParsing.getTitleList()
-		// .get(i), kyoboParsing.getGradeList().get(i));
-		//
-		// naverValue[i] = new ContentsValue(naverParsing.getTitleList()
-		// .get(i), naverParsing.getGradeList().get(i));
-		//
-		// System.out.printf("%02d", i + 1);
-		// System.out.println("  Yes24 : " + yes24Value[i].toString()
-		// + "  Aladin : " + aladinValue[i].toString() + "  Bandi : "
-		// + bandiValue[i].toString() + "  Kyobo : "
-		// + kyoboValue[i].toString()+ "  Naver : "
-		// + naverValue[i].toString());
+		 for (int i = 0; i < TOTALNUMBER; i++) {
+		 yes24Value[i] = new ContentsValue(yes24Parsing.getTitleList()
+		 .get(i), yes24Parsing.getGradeList().get(i));
+	 
+		 aladinValue[i] = new ContentsValue(aladinParsing.getTitleList()
+		 .get(i), aladinParsing.getGradeList().get(i));
+	 
+		 bandiValue[i] = new ContentsValue(bandinlunisParsing.getTitleList()
+		 .get(i), bandinlunisParsing.getGradeList().get(i));
+	 
+		 kyoboValue[i] = new ContentsValue(kyoboParsing.getTitleList()
+		 .get(i), kyoboParsing.getGradeList().get(i));
+	 
+		 naverValue[i] = new ContentsValue(naverParsing.getTitleList()
+		 .get(i), naverParsing.getGradeList().get(i));
+	 
+		 System.out.printf("%02d", i + 1);
+		 System.out.println("  Yes24 : " + yes24Value[i].toString()
+		 + "  Aladin : " + aladinValue[i].toString() + "  Bandi : "
+		 + bandiValue[i].toString() + "  Kyobo : "
+		 + kyoboValue[i].toString()+ "  Naver : "
+		 + naverValue[i].toString());
 
-		// }
+		 }
 	}
 }

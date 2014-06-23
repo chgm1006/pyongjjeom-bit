@@ -1,8 +1,6 @@
 package com.pyongjjeom.test.parsing.movie;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
@@ -12,11 +10,14 @@ public class NaverMovieParsing extends ContentsParsing {
 
 	public NaverMovieParsing() {
 
+		parsing("http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve");
+
+	}
+
+	public void parsing(String url) {
+
 		try {
-			doc = Jsoup
-					.connect(
-							"http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve")
-					.get();
+			doc = Jsoup.connect(url).get();
 			grade = doc.select("span[class=num]");
 			title = doc.select("dt[class=tit");
 
@@ -28,7 +29,6 @@ public class NaverMovieParsing extends ContentsParsing {
 	}
 
 	private void addTitle() {
-		titleList = new ArrayList<>();
 		for (Element tit : title) {
 			titleList.add(tit.text());
 		}
@@ -36,7 +36,6 @@ public class NaverMovieParsing extends ContentsParsing {
 
 	private void addGrade() {
 		int i = 0;
-		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
 			if (i % 2 == 0) {
 				gradeList.add(Double.parseDouble(gra.text()));
