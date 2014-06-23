@@ -21,6 +21,7 @@ import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.test.openAPI.DaumParse;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
 import com.pyongjjeom.test.parsing.movie.CgvParsing;
+import com.pyongjjeom.test.parsing.movie.DaumMovieParsing;
 import com.pyongjjeom.test.parsing.movie.LotteParsing;
 import com.pyongjjeom.test.parsing.movie.MegaBoxParsing;
 import com.pyongjjeom.test.parsing.movie.NaverMovieParsing;
@@ -34,46 +35,96 @@ public class TestController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(TestController.class);
 
-	@RequestMapping(value = "test", method = RequestMethod.GET)
-	public String getEmpCount(Model model, HttpServletRequest request) {
-		logger.info("EmpController getEmpCount");
+	@RequestMapping(value = "DBTest.do", method = RequestMethod.GET)
+	public String updateMovieGrade(Model model, HttpServletRequest request) {
+		naverUpdate();
+		daumUpdate();
+		cgvUpdate();
+		lotteUpdate();
+		megaBoxUpdate();
+		return "test/test";
+	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 네이버 평점 수집 후 DB 업데이트
+	 * 상세 : 평점 수집과 제목 추가를 동시에 진행
+	 * </PRE>
+	 */
+	private void naverUpdate() {
 		NaverMovieParsing naverParsing = new NaverMovieParsing();
-		CgvParsing cgvParsing = new CgvParsing();
-		LotteParsing lotteParsing = new LotteParsing();
-		MegaBoxParsing megaBoxParsing = new MegaBoxParsing();
-
 		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
-		
-		DBCode dbCode= new DBCode();
-	
-		
-		for(int i=0; i<75; i++)
-		{
+
+		DBCode dbCode = new DBCode();
+		for (int i = 0; i < naverParsing.getGradeList().size(); i++) {
 			naverValues.add(new ContentsValue(naverParsing.getTitleList().get(i),
-					naverParsing.getGradeList().get(i),dbCode.getContentCD("m")));
+					naverParsing.getGradeList().get(i), dbCode.getContentCD("m")));
 		}
-		
-		List<ContentsValue> cgvValues = new ArrayList<ContentsValue>();
-		List<ContentsValue> lotteValues = new ArrayList<ContentsValue>();
-		List<ContentsValue> megaBoxValues = new ArrayList<ContentsValue>();
-
-
-		
-	for (int i = 0; i < 32; i++) {
-		cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
-				cgvParsing.getGradeList().get(i),"test"));
-		lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
-				lotteParsing.getGradeList().get(i),"test"));
-		megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
-				megaBoxParsing.getGradeList().get(i),"test"));
-		}
-	
 		testService.titleInsert(naverValues);
-		testService.gradeUpdate(naverValues);
-		testService.gradeUpdate(cgvValues, lotteValues, megaBoxValues);
+		testService.gradeUpdate(naverValues, "n");
+	}
 
-		return "emp/count";
+	/**
+	 * <PRE>
+	 * 간략 : megabox 평점을 수집후 DB에 업데이트 
+	 * 상세 :
+	 * </PRE>
+	 */
+	private void megaBoxUpdate() {
+		MegaBoxParsing megaBoxParsing = new MegaBoxParsing();
+		List<ContentsValue> megaBoxValues = new ArrayList<ContentsValue>();
+		for (int i = 0; i < megaBoxParsing.getGradeList().size(); i++) {
+			megaBoxValues.add(new ContentsValue(megaBoxParsing.getTitleList().get(i),
+					megaBoxParsing.getGradeList().get(i), "test"));
+		}
+		testService.gradeUpdate(megaBoxValues, "m");
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 롯데 평점을 수집후 DB에 업데이트
+	 * 상세 :
+	 * </PRE>
+	 */
+	private void lotteUpdate() {
+		LotteParsing lotteParsing = new LotteParsing();
+		List<ContentsValue> lotteValues = new ArrayList<ContentsValue>();
+		for (int i = 0; i < lotteParsing.getGradeList().size(); i++) {
+			lotteValues.add(new ContentsValue(lotteParsing.getTitleList().get(i),
+					lotteParsing.getGradeList().get(i), "test"));
+		}
+		testService.gradeUpdate(lotteValues, "l");
+
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : CGV 평점 수집 후 DB 업데이트
+	 * </PRE>
+	 */
+	private void cgvUpdate() {
+		CgvParsing cgvParsing = new CgvParsing();
+		List<ContentsValue> cgvValues = new ArrayList<ContentsValue>();
+		for (int i = 0; i < cgvParsing.getGradeList().size(); i++) {
+			cgvValues.add(new ContentsValue(cgvParsing.getTitleList().get(i),
+					cgvParsing.getGradeList().get(i), "test"));
+		}
+		testService.gradeUpdate(cgvValues, "c");
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 다음 평점 수집 후 DB 업데이트
+	 * </PRE>
+	 */
+	private void daumUpdate() {
+		DaumMovieParsing daumParsing = new DaumMovieParsing();
+		List<ContentsValue> daumValues = new ArrayList<ContentsValue>();
+		for (int i = 0; i < daumParsing.getGradeList().size(); i++) {
+			daumValues.add(new ContentsValue(daumParsing.getTitleList().get(i),
+					daumParsing.getGradeList().get(i), "test"));
+		}
+		testService.gradeUpdate(daumValues, "d");
 	}
 
 	@RequestMapping(value = "search", method = RequestMethod.GET)
