@@ -22,8 +22,18 @@ public class ContentsValue {
 
 	public ContentsValue() {
 
+
 	}
 
+	public ContentsValue(String title, Double grade) {
+		this.title = title;
+		this.grade = grade;
+	}
+
+
+	}
+
+>>>>>>> .r71
 	public String getTitle() {
 		return title;
 	}
