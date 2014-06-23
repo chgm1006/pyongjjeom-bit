@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.forrest.mybatis.dao.DeptMapper">
+<mapper namespace="com.pyongjjeom.notice.dao.NoticeMapper">
 
 	<select id="getAllNotices" parameterMap="userMap" resultType="Notice">
 
