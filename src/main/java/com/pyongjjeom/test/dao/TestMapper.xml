@@ -29,4 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update test_movie set
 		megaBoxmg =#{grade} where title =#{title}
 	</update>
+	
+		<update id="daumGradeUpdate" parameterType="com.pyongjjeom.test.parsing.contents.ContentsValue">
+		update test_movie set
+		daummg =#{grade} where title =#{title}
+	</update>
 </mapper>
