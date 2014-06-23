@@ -1,8 +1,6 @@
 package com.pyongjjeom.test.parsing.movie;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
@@ -12,11 +10,14 @@ public class LotteParsing extends ContentsParsing {
 
 	public LotteParsing() {
 
+		parsing("http://www.lottecinema.co.kr/LHS/LHFS/Contents/MovieInfo/NowMovieShortComment.aspx");
+
+	}
+
+	public void parsing(String url) {
+
 		try {
-			doc = Jsoup
-					.connect(
-							"http://www.lottecinema.co.kr/LHS/LHFS/Contents/MovieInfo/NowMovieShortComment.aspx")
-					.get();
+			doc = Jsoup.connect(url).get();
 			title = doc.select("strong");
 			grade = doc.select("strong");
 			this.addTitle();
@@ -28,7 +29,6 @@ public class LotteParsing extends ContentsParsing {
 
 	private void addTitle() {
 		int i = 0;
-		titleList = new ArrayList<>();
 		for (Element tit : title) {
 			i++;
 			if (i % 2 == 0)
@@ -38,7 +38,6 @@ public class LotteParsing extends ContentsParsing {
 
 	private void addGrade() {
 		int i = 0;
-		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
 			i++;
 			if (i % 2 == 1 && i != 1)

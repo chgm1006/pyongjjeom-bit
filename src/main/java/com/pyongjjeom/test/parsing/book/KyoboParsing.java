@@ -1,23 +1,20 @@
 package com.pyongjjeom.test.parsing.book;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-
 import com.pyongjjeom.test.parsing.contents.ContentsParsing;
-
 
 public class KyoboParsing extends ContentsParsing {
 
 	public KyoboParsing() {
 
+		parsing("http://www.kyobobook.co.kr/bestseller/bestSellerKyoboKorList.laf?mallGb=KOR&perPage=100");
+	}
+
+	public void parsing(String url) {
 		try {
-			doc = Jsoup
-					.connect(
-							"http://www.kyobobook.co.kr/bestseller/bestSellerKyoboKorList.laf?mallGb=KOR&linkClass=&range=1&kind=0")
-					.get();
+			doc = Jsoup.connect(url).get();
 			title = doc.select("strong a[href]");
 			grade = doc.select("img[alt*=만점]");
 			this.addTitle();
@@ -28,17 +25,17 @@ public class KyoboParsing extends ContentsParsing {
 	}
 
 	private void addTitle() {
-		titleList = new ArrayList<>();
 		for (Element tit : title) {
-			titleList.add(tit.text());
+			if (tit.text().indexOf("(") > 0) {
+				titleList.add(tit.text().substring(0, tit.text().indexOf("(")));
+			} else
+				titleList.add(tit.text());
 		}
 	}
 
 	private void addGrade() {
-		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
-			gradeList
-					.add(Double.parseDouble(gra.attr("alt").substring(7, 8)) * 2);
+			gradeList.add(Double.parseDouble(gra.attr("alt").substring(7, 8)) * 2);
 		}
 	}
 
@@ -49,4 +46,5 @@ public class KyoboParsing extends ContentsParsing {
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 	}
+
 }
