@@ -9,9 +9,13 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 
+	<typeAliases>
+	    <typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member"/>
+	</typeAliases>
 	<!-- SQL Mapper는 여기에 추가 -->
 	<mappers>
 		<mapper resource="com/pyongjjeom/test/dao/TestMapper.xml" />
 		<mapper resource="com/pyongjjeom/test/dao/NoticeMapper.xml" />
+		<mapper resource="com/pyongjjeom/login/dao/LoginMapper.xml" />
 	</mappers>
 </configuration>

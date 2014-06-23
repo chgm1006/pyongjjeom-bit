@@ -31,16 +31,17 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- enable component scanning(beware that this does not enable mapper scanning!) -->
 	<context:component-scan base-package="com.pyongjjeom.test.service" />
 	<context:component-scan base-package="com.pyongjjeom.test.controllers" />
-	<context:component-scan base-package="com.pyongjjeom.test.dao" />
-	<!-- <context:component-scan base-package="com.pyongjjeom.test.scheduling" /> -->
-	<!-- <context:component-scan base-package="com.pyongjjeom.test" /> -->
+	<context:component-scan base-package="com.pyongjjeom.login.service" />
+	<context:component-scan base-package="com.pyongjjeom.login.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.user.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.user.service" />
 
 	<!-- enable autowire -->
 	<context:annotation-config />
 
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.pyongjjeom.test.dao" />
+		<property name="basePackage" value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao" />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
