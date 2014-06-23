@@ -9,7 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="movie" items="${resultList }" varStatus="status">
+	<div onclick="document.location='test.do?value=${movie}' ">
+		<c:forEach var="movie" items="${resultList }" varStatus="status">
+제목 : ${movie.title } <br>
+포스터 : <img alt="표지이미지" src="${movie.thumbnail}">
+			<%-- 	<c:forEach var="movie" items="${resultList }" varStatus="status">
 		<table border="0">
 			<tr>
 				<td>제목</td>
@@ -22,8 +26,10 @@
 
 
 		</table>
-		<br>
-	</c:forEach>
+ --%>
+		</c:forEach>
+	</div>
+	<br>
 
 </body>
 </html>
