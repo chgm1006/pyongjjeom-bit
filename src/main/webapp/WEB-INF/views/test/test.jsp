@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>고객의 수</title>
+<title>DB 결과 page</title>
 </head>
 <body>
 	DB 입력 완료
