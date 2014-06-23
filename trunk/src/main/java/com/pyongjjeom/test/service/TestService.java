@@ -11,6 +11,8 @@ public interface TestService {
 
 	void titleInsert(List<ContentsValue> Values);
 
+
+	void gradeUpdate(List<ContentsValue> Values);
 	/**
 	 * <PRE>
 	 * 간략 : 
@@ -20,5 +22,6 @@ public interface TestService {
 	 * @param naverValues
 	 */
 	void gradeUpdate(List<ContentsValue> naverValues);
+
 
 }
