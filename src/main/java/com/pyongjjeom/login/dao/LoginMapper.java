@@ -4,6 +4,8 @@
 
 package com.pyongjjeom.login.dao;
 
+import java.util.Map;
+
 import com.pyongjjeom.user.dto.Member;
 
 /**
@@ -18,7 +20,7 @@ import com.pyongjjeom.user.dto.Member;
  */
 public interface LoginMapper {
 
-	public int checkMemberLogin(String email);
+	public int checkMemberLogin(Map<String, String> loginMap);
 
 	public int createMember(Member user);
 }
