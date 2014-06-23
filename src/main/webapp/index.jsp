@@ -14,6 +14,7 @@
 		<li><a href="views/MovieDBTest.do">영화 평점 DB Test</a></li>
 		<li><a href="views/BookDBTest.do">책 평점 DB Test</a></li>
 		<li><a href="views/FBTest.force">FaceBook Test</a></li>
+		<li><a href="views/registerMember.force">회원가입</a></li>
 
 	</ul>
 </body>
