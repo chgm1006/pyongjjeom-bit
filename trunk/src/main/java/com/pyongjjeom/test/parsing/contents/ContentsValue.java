@@ -9,17 +9,20 @@ public class ContentsValue {
 	public String getConcd() {
 		return concd;
 	}
+
 	public void setConcd(String concd) {
 		this.concd = concd;
 	}
-	public ContentsValue(String title, Double grade,String concd) {
-		this.title = title;
-		this.grade=grade;
-		this.concd=concd;
-	}
-public ContentsValue() {
 
-}
+	public ContentsValue(String title, Double grade, String concd) {
+		this.title = title;
+		this.grade = grade;
+		this.concd = concd;
+	}
+
+	public ContentsValue() {
+
+	}
 
 	public String getTitle() {
 		return title;
@@ -39,8 +42,7 @@ public ContentsValue() {
 
 	@Override
 	public String toString() {
-		return  title + "_" + grade+"_"+concd;
+		return title + "_" + grade + "_" + concd;
 	}
-	
 
 }

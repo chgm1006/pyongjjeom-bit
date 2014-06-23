@@ -5,7 +5,6 @@ import java.util.List;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-
 public class ContentsParsing {
 
 	protected Elements grade;

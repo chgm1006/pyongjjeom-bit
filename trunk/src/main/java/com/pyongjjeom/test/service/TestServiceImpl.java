@@ -13,13 +13,11 @@ public class TestServiceImpl implements TestService {
 	@Autowired
 	private TestDao testDao;
 
-
 	@Override
 	public void gradeUpdate(List<ContentsValue> cgvValues,
 			List<ContentsValue> lotteValues, List<ContentsValue> megaBoxValues) {
 
-		for(int i=0 ; i<32; i++)
-		{
+		for (int i = 0; i < 32; i++) {
 			testDao.cgvGradeUpdate(cgvValues.get(i));
 			testDao.lotteGradeUpdate(lotteValues.get(i));
 			testDao.megaBoxGradeUpdate(megaBoxValues.get(i));
@@ -29,14 +27,13 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	public void titleInsert(List<ContentsValue> Values) {
-		for(ContentsValue value:Values)
-		testDao.titleInsert(value);
+		for (ContentsValue value : Values)
+			testDao.titleInsert(value);
 	}
 
 	@Override
 	public void gradeUpdate(List<ContentsValue> naverValues) {
-		for(ContentsValue value:naverValues)
-		{
+		for (ContentsValue value : naverValues) {
 			testDao.naverGradeUpdate(value);
 		}
 	}

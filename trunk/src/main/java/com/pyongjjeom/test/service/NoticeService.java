@@ -19,20 +19,12 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.test.service; 
+package com.pyongjjeom.test.service;
 
 import com.pyongjjeom.test.dto.Notice;
 
-
-
-
-
-
 public interface NoticeService {
-	
+
 	void insertData(Notice notice);
-
-
-	
 
 }
