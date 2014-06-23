@@ -22,7 +22,6 @@ public class ContentsValue {
 
 	public ContentsValue() {
 
-
 	}
 
 	public ContentsValue(String title, Double grade) {
@@ -30,10 +29,6 @@ public class ContentsValue {
 		this.grade = grade;
 	}
 
-
-	}
-
->>>>>>> .r71
 	public String getTitle() {
 		return title;
 	}
