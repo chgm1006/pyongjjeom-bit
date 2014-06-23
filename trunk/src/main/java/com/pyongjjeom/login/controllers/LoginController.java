@@ -42,8 +42,8 @@ public class LoginController {
 		return null;
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
 	public String createMember(Member user) {
-		return null;
+		return "login/registerMember";
 	}
 }

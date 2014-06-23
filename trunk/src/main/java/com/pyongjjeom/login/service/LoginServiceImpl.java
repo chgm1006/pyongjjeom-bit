@@ -4,6 +4,9 @@
 
 package com.pyongjjeom.login.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +55,10 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public int checkMemberLogin(String email) {
 		// TODO Auto-generated method stub
-		return 0;
+		Map<String, String> loginMap = new HashMap<String, String>();
+		loginMap.put("email", email);
+		System.out.println((String)loginMap.get("email"));
+		return loginMapper.checkMemberLogin(loginMap);
 	}
 
 	/**
@@ -78,7 +84,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public int createMember(Member user) {
 		// TODO Auto-generated method stub
-		return 0;
+		return loginMapper.createMember(user);
 	}
 
 }
