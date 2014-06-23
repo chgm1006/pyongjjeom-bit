@@ -25,7 +25,7 @@ public class LotteParsing extends ContentsParsing {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void addTitle() {
 		int i = 0;
 		titleList = new ArrayList<>();
@@ -35,6 +35,7 @@ public class LotteParsing extends ContentsParsing {
 				titleList.add(tit.text());
 		}
 	}
+
 	private void addGrade() {
 		int i = 0;
 		gradeList = new ArrayList<>();

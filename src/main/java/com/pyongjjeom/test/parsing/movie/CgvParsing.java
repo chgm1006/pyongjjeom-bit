@@ -8,15 +8,13 @@ import org.jsoup.nodes.Element;
 
 import com.pyongjjeom.test.parsing.contents.ContentsParsing;
 
-
 public class CgvParsing extends ContentsParsing {
-
 
 	public CgvParsing() {
 
 		try {
-			doc = Jsoup.connect(
-					"http://www.cgv.co.kr/movie/running/Default.aspx").get();
+			doc = Jsoup.connect("http://www.cgv.co.kr/movie/running/Default.aspx")
+					.get();
 			grade = doc.select("div[class$=stargrade]");
 			title = doc.select("p[class=tit]");
 			this.addTitle();
@@ -26,8 +24,6 @@ public class CgvParsing extends ContentsParsing {
 		}
 	}
 
-
-	
 	private void addTitle() {
 		titleList = new ArrayList<>();
 		for (Element tit : title) {
@@ -41,6 +37,5 @@ public class CgvParsing extends ContentsParsing {
 			gradeList.add(Double.parseDouble(gra.text().substring(0, 3)));
 		}
 	}
-
 
 }

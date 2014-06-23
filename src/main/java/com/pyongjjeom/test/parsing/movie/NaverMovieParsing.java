@@ -39,7 +39,7 @@ public class NaverMovieParsing extends ContentsParsing {
 		gradeList = new ArrayList<>();
 		for (Element gra : grade) {
 			if (i % 2 == 0) {
-				gradeList.add(Double.parseDouble(gra.text()));	
+				gradeList.add(Double.parseDouble(gra.text()));
 			}
 			i++;
 		}
