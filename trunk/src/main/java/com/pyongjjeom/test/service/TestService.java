@@ -21,7 +21,6 @@ public interface TestService {
 	 * 
 	 * @param naverValues
 	 */
-	void gradeUpdate(List<ContentsValue> naverValues);
 
 
 }
