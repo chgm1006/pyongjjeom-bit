@@ -21,7 +21,10 @@
  */
 package com.pyongjjeom.notice.controllers; 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +35,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
+
+
+
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.service.NoticeService;
+import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
 
 
@@ -48,8 +55,14 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,Model model, HttpServletRequest request) {
 
 		System.out.println("왓수?");
+		List<Notice> list= noticeService.applyData();
+		model.addAttribute("add", list);
+		
+
 		return "test/list";
 	}
+	
+	
 
 	
 
@@ -63,7 +76,6 @@ public class NoticeController {
 		return "test/write";
 	}
 	
-
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice,Model model, HttpServletRequest request) {
 
@@ -73,5 +85,6 @@ public class NoticeController {
 		return "test/write_ok";
 	}
 
+	
 
 }
