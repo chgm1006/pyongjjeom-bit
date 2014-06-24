@@ -17,9 +17,9 @@ import com.pyongjjeom.user.dto.Member;
  * @author : Forrest
  */
 public interface UserService {
-	public Member getMemberInfo();
+	public Member getMemberInfo(String memCd);
 
-	public Member checkMemberID();
+	public Member checkMemberID(String memCd);
 
 	public int updateMemberInfo();
 
