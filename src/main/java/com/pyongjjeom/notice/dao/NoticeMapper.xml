@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pyongjjeom.notice.dao.NoticeMapper">
 
 	<insert id="insertData" parameterType="Notice">
-		insert into notice
+		insert into test_notice
 		(title,
 		person, password, issue)
 		values
