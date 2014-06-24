@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,6 +36,34 @@
 			<td colspan="6" width="752"></td>
 		</tr>
 	</table>
+	
+	<c:forEach var="notice" items="${add}" >
+<table border="0">
+			<tr>
+				<td>제목</td>
+				<td>${notice.title}</td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td>${notice.person}</td>
+			</tr>
+				<tr>
+				<td>비밀번호</td>
+				<td>${notice.password}</td>
+			</tr>
+
+			<tr>
+				<td>설명</td>
+				<td>${notice.issue }</td>
+			</tr>
+
+		</table>
+		<br>
+	</c:forEach>
+	
+	
+	
+	
 	
 	
 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
