@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
 						placeholder="enter your email..."> <label for="password">Password</label>
 					<input type="password" id="password" name="password"
 						placeholder="choose a password...">
-					<button type="submit">REGISTER</button>
+					<button type="submit">가입하기</button>
 				</form>
 			</div>
 		</div>
