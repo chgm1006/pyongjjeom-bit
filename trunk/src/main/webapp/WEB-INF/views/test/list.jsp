@@ -13,7 +13,7 @@
 
 
 
-	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<table width="100%" cellpadding="0" cellspacing="0" border="1">
 		<tr height="5">
 			<td width="5"></td>
 		</tr>
@@ -36,9 +36,10 @@
 			<td colspan="6" width="752"></td>
 		</tr>
 	</table>
-	<table border="0">
+	<table border="1">
 		<c:forEach var="notice" items="${add}" varStatus="cnt">
 			<tr>
+			<td></td>
 				<td width="5">${cnt.count }</td>
 				<td width="379">${notice.title}</td>
 				<td width="73">${notice.person}</td>
