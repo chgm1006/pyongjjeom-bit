@@ -48,8 +48,8 @@ public class MailController {
 		return "login/emailAuth";
 	}
 
-	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
-	public String emailAuth(Member user, HttpServletRequest request) {
+	@RequestMapping(value = "emailAuth_sendCD.force", method = RequestMethod.POST)
+	public String checkEmailAuth(Member user, HttpServletRequest request) {
 		String toUser = (String) request.getParameter("email");
 		if (toUser == null) {
 			return "login/emailAuth";
