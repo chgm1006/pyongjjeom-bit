@@ -34,13 +34,11 @@
 	jQuery(document)
 			.ready(
 					function() {
-
 						/*
 						 * Tooltips
 						 */
 						$('.links a.home').tooltip();
 						$('.links a.blog').tooltip();
-
 						/*
 						 * Form validation
 						 */
@@ -70,13 +68,13 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="emailAuth_check.force" method="post">
+				<form action="emailAuth_check.force" method="get">
 					<h2>
-						<span class="red"><strong>이메일 인증</strong></span>
+						<span class="red"><strong>인증번호 입력</strong></span>
 					</h2>
-					<label for="email">Email</label> <input type="text" id="email"
-						name="email" placeholder="이메일을 입력하세요...">
-					<button type="submit">인증메일발송</button>
+					<label for="emailAuthCD">인증번호</label> <input type="text" id="emailAuthCD" name="emailAuthCD"
+						placeholder="인증번호를 입력하세요....">
+					<button type="submit">인증번호확인</button>
 				</form>
 			</div>
 		</div>
