@@ -3,19 +3,19 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.user.dao.userMapper">
 
-	<select id="getMemberInfo" parameterMap="userMap" resultType="User">
+	<select id="getMemberInfo" parameterType="String" resultType="Member">
 
 	</select>
 
-	<select id="checkMemberID" parameterMap="userMap" resultType="User">
+	<select id="checkMemberID" parameterType="String" resultType="Member">
 
 	</select>
 
-	<update id="updateMemberInfo" parameterMap="userMap">
+	<update id="updateMemberInfo" parameterType="Member">
 
 	</update>
 
-	<update id="deleteMember" parameterType="memCD">
+	<update id="deleteMember" parameterType="string">
 
 	</update>
 
