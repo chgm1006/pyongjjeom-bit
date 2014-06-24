@@ -1,38 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>°Ô½ÃÆÇ</title>
+<title>ê²Œì‹œíŒ</title>
 </head>
 
 <script language="javascript">
-	// ÀÚ¹Ù ½ºÅ©¸³Æ® ½ÃÀÛ
+	// ìë°” ìŠ¤í¬ë¦½íŠ¸ ì‹œì‘
 
 	function writeCheck() {
 		var form = document.writeform;
 
 		if (!form.title.value) {
-			alert("Á¦¸ñÀ» Àû¾îÁÖ¼¼¿ä");
+			alert("ì œëª©ì„ ì ì–´ì£¼ì„¸ìš”");
 			form.title.focus();
 			return;
 		}
 
-		if (!form.person.value) // form ¿¡ ÀÖ´Â name °ªÀÌ ¾øÀ» ¶§
+		if (!form.person.value) // form ì— ìˆëŠ” name ê°’ì´ ì—†ì„ ë•Œ
 		{
-			alert("ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä"); // °æ°íÃ¢ ¶ç¿ò
-			form.person.focus(); // form ¿¡ ÀÖ´Â name À§Ä¡·Î ÀÌµ¿
+			alert("ì´ë¦„ì„ ì ì–´ì£¼ì„¸ìš”"); // ê²½ê³ ì°½ ë„ì›€
+			form.person.focus(); // form ì— ìˆëŠ” name ìœ„ì¹˜ë¡œ ì´ë™
 			return;
 		}
 
 		if (!form.password.value) {
-			alert("ºñ¹Ğ¹øÈ£¸¦ Àû¾îÁÖ¼¼¿ä");
+			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì ì–´ì£¼ì„¸ìš”");
 			form.password.focus();
 			return;
 		}
 
 		if (!form.issue.value) {
-			alert("³»¿ëÀ» Àû¾îÁÖ¼¼¿ä");
+			alert("ë‚´ìš©ì„ ì ì–´ì£¼ì„¸ìš”");
 			form.issue.focus();
 			return;
 		}
@@ -52,14 +52,14 @@
 						<tr
 							style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
 							<td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
-							<td>±Û¾²±â</td>
+							<td>ê¸€ì“°ê¸°</td>
 							<td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
 						</tr>
 					</table>
 					<table>
 						<tr>
 							<td>&nbsp;</td>
-							<td align="center">Á¦¸ñ</td>
+							<td align="center">ì œëª©</td>
 							<td><input name="title" size="50" maxlength="100"></td>
 							<td>&nbsp;</td>
 						</tr>
@@ -68,7 +68,7 @@
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td align="center">ÀÌ¸§</td>
+							<td align="center">ì´ë¦„</td>
 							<td><input name="person" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
@@ -77,7 +77,7 @@
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td align="center">ºñ¹Ğ¹øÈ£</td>
+							<td align="center">ë¹„ë°€ë²ˆí˜¸</td>
 							<td><input name="password" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
@@ -86,7 +86,7 @@
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td align="center">³»¿ë</td>
+							<td align="center">ë‚´ìš©</td>
 							<td><textarea name="issue" cols="50" rows="13"></textarea></td>
 							<td>&nbsp;</td>
 						</tr>
@@ -99,9 +99,9 @@
 						<tr align="center">
 							<td>&nbsp;</td>
 
-							<td colspan="2"><input type=button value="µî·Ï"
+							<td colspan="2"><input type=button value="ë“±ë¡"
 								OnClick="javascript:writeCheck();"> <input type=button
-								value="Ãë¼Ò" OnClick="javascript:history.back(-1)">
+								value="ì·¨ì†Œ" OnClick="javascript:history.back(-1)">
 							<td>&nbsp;</td>
 						</tr>
 					</table>
