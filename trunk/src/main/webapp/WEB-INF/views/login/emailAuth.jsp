@@ -70,13 +70,13 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="" method="get">
+				<form action="emailAuth_check.force" method="post">
 					<h2>
 						<span class="red"><strong>이메일 인증</strong></span>
 					</h2>
 					<label for="email">Email</label> <input type="text" id="email"
 						name="email" placeholder="이메일을 입력하세요...">
-					<button type="submit">REGISTER</button>
+					<button type="submit">인증메일발송</button>
 				</form>
 			</div>
 		</div>
