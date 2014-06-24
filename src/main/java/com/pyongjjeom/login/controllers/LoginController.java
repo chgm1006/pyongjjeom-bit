@@ -46,4 +46,5 @@ public class LoginController {
 	public String createMember(Member user) {
 		return "login/registerMember";
 	}
+
 }
