@@ -11,11 +11,13 @@
 
 	<typeAliases>
 	    <typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member"/>
+	    <typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice"/>
 	</typeAliases>
 	<!-- SQL Mapper는 여기에 추가 -->
 	<mappers>
 		<mapper resource="com/pyongjjeom/test/dao/TestMapper.xml" />
-		<mapper resource="com/pyongjjeom/test/dao/NoticeMapper.xml" />
+		<mapper resource="com/pyongjjeom/notice/dao/NoticeMapper.xml" />
 		<mapper resource="com/pyongjjeom/login/dao/LoginMapper.xml" />
+		<mapper resource="com/pyongjjeom/user/dao/UserMapper.xml" />
 	</mappers>
 </configuration>
