@@ -54,10 +54,9 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int checkMemberLogin(String email) {
-		// TODO Auto-generated method stub
 		Map<String, String> loginMap = new HashMap<String, String>();
 		loginMap.put("email", email);
-		System.out.println((String)loginMap.get("email"));
+		System.out.println((String) loginMap.get("email"));
 		return loginMapper.checkMemberLogin(loginMap);
 	}
 
@@ -83,8 +82,62 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int createMember(Member user) {
-		// TODO Auto-generated method stub
 		return loginMapper.createMember(user);
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : getMemCD
+	 * @date : 2014. 6. 24.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 6. 24. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @see com.pyongjjeom.login.service.LoginService#getMemCD(java.lang.String)
+	 * @param email
+	 * @return
+	 */
+	@Override
+	public String getMemCD(String email) {
+		return loginMapper.getMemCD(email);
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : updateEmailAuthCD
+	 * @date : 2014. 6. 24.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 6. 24. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @see com.pyongjjeom.login.service.LoginService#updateEmailAuthCD(java.lang.String)
+	 * @param authCD
+	 * @return
+	 */
+	@Override
+	public int updateEmailAuthCD(Member member) {
+		return loginMapper.updateEmailAuthCD(member);
+	}
+
+	@Override
+	public String getEmailAuthCD(String email) {
+		return loginMapper.getEmailAuthCD(email);
 	}
 
 }
