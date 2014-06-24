@@ -74,4 +74,11 @@ public class NaverMovie {
 		this.userRating = userRating;
 	}
 
+	@Override
+	public String toString() {
+		return "NaverMovie [title=" + title + ", link=" + link + ", image=" + image
+				+ ", subtitle=" + subtitle + ", pubDate=" + pubDate + ", director="
+				+ director + ", actor=" + actor + ", userRating=" + userRating + "]";
+	}
+
 }

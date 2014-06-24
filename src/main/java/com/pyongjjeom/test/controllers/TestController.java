@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.common.DaumBook;
 import com.pyongjjeom.common.DaumMovie;
+import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.test.openAPI.DaumParse;
+import com.pyongjjeom.test.openAPI.NaverParse;
 import com.pyongjjeom.test.parsing.book.AladinParsing;
 import com.pyongjjeom.test.parsing.book.BandinlunisParsing;
 import com.pyongjjeom.test.parsing.book.KyoboParsing;
@@ -159,6 +161,45 @@ public class TestController {
 
 		return resultPage;
 	}
+	@RequestMapping(value = "search2", method = RequestMethod.GET)
+	public String naverSearch(Model model, HttpServletRequest request)
+			throws UnsupportedEncodingException {
+
+		List<?> resultList = null;
+		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
+		String uri;
+		String resultPage = null;
+
+		int category = Integer.parseInt(request.getParameter("category"));
+		String searchQuery = (String) request.getParameter("Search").trim();
+		System.out.println(searchQuery);
+NaverParse naverParse = new NaverParse();
+		switch (category) {
+//		case 0:
+//			resultList = new ArrayList<DaumBook>();
+//			uri = "http://apis.daum.net/search/book?q="
+//					+ URLEncoder.encode(searchQuery, "UTF-8") + "&apikey=" + bookApiKey;
+//			resultList = naverParse.testookParse(uri);
+//			System.out.println(uri);
+//			resultPage = "test/resultDaumBook";
+//			break;
+		case 1:
+			resultList = new ArrayList<NaverMovie>();
+			uri =  "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
+					+ "&query=" + URLEncoder.encode(searchQuery, "UTF-8")
+					+ "&display=100";
+			System.out.println(uri);
+			resultList = naverParse.parse(uri);
+			resultPage = "test/resultNaverMovie";
+			break;
+		default:
+			break;
+		}
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("resultList", resultList);
+
+		return resultPage;
+	}
 
 	@RequestMapping(value = "test.do", method = RequestMethod.GET)
 	public String test(Model model, HttpServletRequest request) {
@@ -179,5 +220,35 @@ public class TestController {
 			request.setAttribute("avg", avg);
 		}
 		return "test/movieContext";
+	}
+	
+	@RequestMapping(value = "test2.do", method = RequestMethod.GET)
+	public String test2(Model model, HttpServletRequest request) {
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		HttpSession httpSession = request.getSession();
+		List<NaverMovie> list = (List<NaverMovie>) httpSession
+				.getAttribute("resultList");
+		NaverMovie movie = list.get(num);
+		httpSession.setAttribute("movie", movie);
+
+/*		MovieGrades grades = testService.movieGradeSelect(movie.getTitle());
+		request.setAttribute("grades", grades);
+		if (grades != null) {
+			double avg = (grades.getCgvMg() + grades.getDaumMg()
+					+ grades.getLotteMg() + grades.getMegaBoxMg() + grades.getNaverMg()) / 5;
+
+			request.setAttribute("avg", avg);
+		}
+*/		return "test/postingTest";
+	}
+	
+	@RequestMapping(value = "postingWrite.do", method = RequestMethod.POST)
+	public String test3(Model model, HttpServletRequest request) {
+
+		String str =request.getParameter("postContext");
+		// DB에 추가 해야함 _
+		request.setAttribute("posting", str);
+		return "test/postingTest2";
 	}
 }
