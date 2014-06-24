@@ -7,12 +7,14 @@
 <title>영화 상세 page</title>
 </head>
 <body>
-	선택한 영화는 : ${movie.title}  네이버: ${grades.naverMg} / 다음: ${grades.daumMg} / CGV : ${grades.cgvMg}/ LOTTE : ${grades.lotteMg} / MEGABOX : ${grades.megaBoxMg} / 평균 :${avg }<br>
+	영화 제목 : ${movie.title}
+ <br> 
+[네이버: ${grades.naverMg}] / [다음: ${grades.daumMg}] / [CGV : ${grades.cgvMg}]/ [LOTTE : ${grades.lotteMg}] / [MEGABOX : ${grades.megaBoxMg}] / [평균 :${avg}]<br>
+ <br>
  줄거리 : ${movie.story }<br>
  예고편 : ${movie.trailer }<br>
  감독 : ${movie.director }<br>
  배우 : ${movie.actor }<br>
-  : ${movie.more_actor }<br>
  국가 : ${movie.nation}<br>
  장르 : ${movie.genre}<br>
  개봉일 : ${movie.open_info}<br>
