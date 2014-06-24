@@ -7,11 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertData" parameterType="Notice">
 		insert into test_notice
 		(title,
-		person, password, issue)
+		person, password, issue,regidate,updatedate)
 		values
 		(#{title},
 		#{person},
-		#{password},#{issue})
+		#{password},#{issue},sysdate},
+		updatedate=${updatedate.jdbcType=DATE})
 	</insert>
 
 	<select id="applyData" resultType="Notice">

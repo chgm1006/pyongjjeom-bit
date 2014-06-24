@@ -27,8 +27,8 @@ public class Notice {
 	private String person = "";
   private String password= "";
 	private String issue = "";
-	
-	
+	private Date regidate ;
+	private Date updatedate;
 	public String getTitle() {
 		return title;
 	}
@@ -53,6 +53,17 @@ public class Notice {
 	public void setIssue(String issue) {
 		this.issue = issue;
 	}
-
-
+	public Date getRegidate() {
+		return regidate;
+	}
+	public void setRegidate(Date regidate) {
+		this.regidate = regidate;
+	}
+	public Date getUpdatedate() {
+		return updatedate;
+	}
+	public void setUpdatedate(Date updatedate) {
+		this.updatedate = updatedate;
+	}
+	
 }
