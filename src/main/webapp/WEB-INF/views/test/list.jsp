@@ -36,36 +36,25 @@
 			<td colspan="6" width="752"></td>
 		</tr>
 	</table>
-	
-	<c:forEach var="notice" items="${add}" >
-<table border="0">
+	<table border="0">
+		<c:forEach var="notice" items="${add}" varStatus="cnt">
 			<tr>
-				<td>제목</td>
-				<td>${notice.title}</td>
+				<td width="5">${cnt.count }</td>
+				<td width="379">${notice.title}</td>
+				<td width="73">${notice.person}</td>
+				<td width="164">${notice.issue}</td>
+				<td width="58">${notice.regidate}</td>
+				<td width="58">${notice.updatedate}</td>
 			</tr>
-			<tr>
-				<td>작성자</td>
-				<td>${notice.person}</td>
-			</tr>
-				<tr>
-				<td>비밀번호</td>
-				<td>${notice.password}</td>
-			</tr>
+			<br>
+		</c:forEach>
+	</table>
 
-			<tr>
-				<td>설명</td>
-				<td>${notice.issue }</td>
-			</tr>
 
-		</table>
-		<br>
-	</c:forEach>
-	
-	
-	
-	
-	
-	
+
+
+
+
 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td colspan="4" height="5"></td>
