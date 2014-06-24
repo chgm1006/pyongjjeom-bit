@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{title},
 		#{person},
-		#{password},#{issue},sysdate_),
-		updatedate=${updatedate.jdbcType=DATE})
+		#{password},#{issue},now(),
+		now())
 	</insert>
 
 	<select id="applyData" resultType="Notice">
