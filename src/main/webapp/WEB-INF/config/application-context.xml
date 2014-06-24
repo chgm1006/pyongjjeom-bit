@@ -11,14 +11,28 @@ http://www.springframework.org/schema/jdbc http://www.springframework.org/schema
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-	<context:property-placeholder location="/WEB-INF/properties/jdbc_dev.properties" />
-	<util:properties id="key" location="classpath:API_KEY.properties" />
+	<context:property-placeholder order="1"
+		location="/WEB-INF/properties/*.properties" />
+<!-- 	<context:property-placeholder order="2" ignore-unresolvable="false"		location="/WEB-INF/properties/properties/mail.properties" /> -->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.host}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+		<property name="port" value="${mail.port}" />
+		<property name="JavaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+				<prop key="hostname">${mail.host}</prop>
+			</props>
+		</property>
 	</bean>
 
 	<bean id="viewRelolver"
@@ -43,7 +57,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao" />
+		<property name="basePackage"
+			value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao" />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
