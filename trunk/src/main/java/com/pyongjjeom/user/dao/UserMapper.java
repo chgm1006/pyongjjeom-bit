@@ -4,6 +4,8 @@
 
 package com.pyongjjeom.user.dao; 
 
+import com.pyongjjeom.user.dto.Member;
+
 
 /**
  * <pre>
@@ -25,5 +27,7 @@ package com.pyongjjeom.user.dao;
  * @author : Forrest
  */
 public interface UserMapper {
-
+	public Member getMemberInfo(String memCd);
+	
+	public Member checkMemberID(String memCd);
 }
