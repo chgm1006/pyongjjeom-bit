@@ -101,7 +101,7 @@ public class TestController {
 			}
 			testService.movieTitleInsert(Values);
 		}
-		if (str.equals("y") || str.equals("k")) {
+		if (str.equals("y")) {
 			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
