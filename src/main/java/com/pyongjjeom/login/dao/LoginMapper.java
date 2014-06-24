@@ -23,4 +23,10 @@ public interface LoginMapper {
 	public int checkMemberLogin(Map<String, String> loginMap);
 
 	public int createMember(Member user);
+
+	public String getMemCD(String email);
+
+	public int updateEmailAuthCD(Member member);
+
+	public String getEmailAuthCD(String email);
 }
