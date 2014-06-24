@@ -7,11 +7,12 @@
 		<setting name="useGeneratedKeys" value="false" />
 		<setting name="defaultExecutorType" value="SIMPLE" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="logImpl" value="LOG4J" />
 	</settings>
 
 	<typeAliases>
-	    <typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member"/>
-	    <typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice"/>
+		<typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member" />
+		<typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice" />
 	</typeAliases>
 	<!-- SQL Mapper는 여기에 추가 -->
 	<mappers>
