@@ -71,7 +71,7 @@ public class NoticeController {
 
 
 		System.out.println("왓수?");
-		noticeService.insertData(notice);
+		//noticeService.insertData(notice);
 
 		return "test/write";
 	}
