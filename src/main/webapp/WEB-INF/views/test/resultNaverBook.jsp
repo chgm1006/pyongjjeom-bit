@@ -21,13 +21,19 @@
 </head>
 <body>
 
-	<c:forEach var="movie" items="${resultList }" varStatus="status">
-		<div id="main" onclick="document.location='test2.do?num=${status.index}' ">
+	<c:forEach var="book" items="${resultList }" varStatus="status">
+		<div id="main" onclick="document.location='test3.do?num=${status.index}' ">
 
-			영화 제목 : ${movie.title}<br> 부제 : ${movie.subtitle}<br><a
-				href="${movie.link }"> <img src="${movie.image}"></a><br> 감독 :
-			${movie.director }<br> 배우 : ${movie.actor }<br> 개봉일
-			:${movie.pubDate}<br> 평점 :${movie.userRating}<br>
+		책 제목 : ${book.title}<br>
+		<a href="${book.link }"> <img src="${book.image}"></a><br> 
+		 저자 :${book.author }<br>
+		 정가 : ${book.price }<br> 
+		할인 가격 :${book.discount}<br>
+	출판사 :${book.publisher}<br>
+	 	 출간일 :${book.pubdate}<br>
+	 	 ISBN :${book.isbn}<br>
+	 	 내용 :${book.description}<br>
+			
 		</div>
 		<br>
 	</c:forEach>
