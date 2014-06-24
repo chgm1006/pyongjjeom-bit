@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.test.dao.TestDao;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
+import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
 @Service("TestService")
 public class TestServiceImpl implements TestService {
@@ -24,7 +25,7 @@ public class TestServiceImpl implements TestService {
 		for (ContentsValue value : values) {
 			switch (str) {
 			case "n":
-				testDao.naverBookGradeUpdate(value);
+				testDao.naverMovieGradeUpdate(value);
 				break;
 			case "d":
 				testDao.daumGradeUpdate(value);
@@ -65,4 +66,9 @@ public class TestServiceImpl implements TestService {
 		for (ContentsValue value : values)
 			testDao.bookTitleInsert(value);
 	}
-}// end EmpServiceImpl
+
+	@Override
+	public MovieGrades movieGradeSelect(String title) {
+		return testDao.movieGradeSelect(title);
+	}
+}
