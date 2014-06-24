@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.common.DaumBook;
 import com.pyongjjeom.common.DaumMovie;
+import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.test.openAPI.DaumParse;
@@ -175,21 +176,23 @@ public class TestController {
 		System.out.println(searchQuery);
 NaverParse naverParse = new NaverParse();
 		switch (category) {
-//		case 0:
-//			resultList = new ArrayList<DaumBook>();
-//			uri = "http://apis.daum.net/search/book?q="
-//					+ URLEncoder.encode(searchQuery, "UTF-8") + "&apikey=" + bookApiKey;
-//			resultList = naverParse.testookParse(uri);
-//			System.out.println(uri);
-//			resultPage = "test/resultDaumBook";
-//			break;
+		case 0:
+			resultList = new ArrayList<NaverBook>();
+			
+					uri =  "http://openapi.naver.com/search?key=" + apiKey + "&target=book"
+							+ "&query=" + URLEncoder.encode(searchQuery, "UTF-8")
+							+ "&display=100";
+			resultList = naverParse.bookParse(uri);
+			System.out.println(uri);
+			resultPage = "test/resultNaverBook";
+			break;
 		case 1:
 			resultList = new ArrayList<NaverMovie>();
 			uri =  "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
 					+ "&query=" + URLEncoder.encode(searchQuery, "UTF-8")
 					+ "&display=100";
 			System.out.println(uri);
-			resultList = naverParse.parse(uri);
+			resultList = naverParse.movieParse(uri);
 			resultPage = "test/resultNaverMovie";
 			break;
 		default:
@@ -232,16 +235,22 @@ NaverParse naverParse = new NaverParse();
 		NaverMovie movie = list.get(num);
 		httpSession.setAttribute("movie", movie);
 
-/*		MovieGrades grades = testService.movieGradeSelect(movie.getTitle());
-		request.setAttribute("grades", grades);
-		if (grades != null) {
-			double avg = (grades.getCgvMg() + grades.getDaumMg()
-					+ grades.getLotteMg() + grades.getMegaBoxMg() + grades.getNaverMg()) / 5;
-
-			request.setAttribute("avg", avg);
-		}
-*/		return "test/postingTest";
+	return "test/postingTest";
 	}
+	
+	@RequestMapping(value = "test3.do", method = RequestMethod.GET)
+	public String test22(Model model, HttpServletRequest request) {
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		HttpSession httpSession = request.getSession();
+		List<NaverBook> list = (List<NaverBook>) httpSession
+				.getAttribute("resultList");
+		NaverBook book = list.get(num);
+		httpSession.setAttribute("book", book);
+
+	return "test/bookPostingTest";
+	}
+	
 	
 	@RequestMapping(value = "postingWrite.do", method = RequestMethod.POST)
 	public String test3(Model model, HttpServletRequest request) {
@@ -250,5 +259,14 @@ NaverParse naverParse = new NaverParse();
 		// DB에 추가 해야함 _
 		request.setAttribute("posting", str);
 		return "test/postingTest2";
+	}
+	
+	@RequestMapping(value = "postingWrite2.do", method = RequestMethod.POST)
+	public String test33(Model model, HttpServletRequest request) {
+
+		String str =request.getParameter("postContext");
+		// DB에 추가 해야함 _
+		request.setAttribute("posting", str);
+		return "test/bookPostingTest2";
 	}
 }
