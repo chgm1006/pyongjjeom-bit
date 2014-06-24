@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public Member getMemberInfo() {
+	public Member getMemberInfo(String memCd) {
 		// TODO Auto-generated method stub
-		return null;
+		return userMapper.getMemberInfo(memCd);
 	}
 
 	/**
@@ -72,9 +72,9 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public Member checkMemberID() {
+	public Member checkMemberID(String memCd) {
 		// TODO Auto-generated method stub
-		return null;
+		return userMapper.checkMemberID(memCd);
 	}
 
 	/**
