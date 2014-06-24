@@ -16,7 +16,7 @@
 		<li><a href="views/BookDBTest.do">책 평점 DB_INSERT/UPDATE</a></li>
 		<li><a href="views/FBTest.force">FaceBook Test</a></li>
 		<li><a href="views/registerMember.force">회원가입</a></li>
-
+<li><a href="views/emailAuth.force">인증코드 메일보내기</a></li>
 	</ul>
 </body>
 </html>
