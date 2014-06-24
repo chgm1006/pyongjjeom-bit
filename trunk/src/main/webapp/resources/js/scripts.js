@@ -29,7 +29,7 @@ jQuery(document)
 											$(this)
 													.find("label[for='firstname']")
 													.append(
-															"<span style='display:none' class='red'> - Please enter your first name.</span>");
+															"<span style='display:none' class='red'> - 이름을 입력하세요.</span>");
 											$(this).find("label[for='firstname'] span").fadeIn(
 													'medium');
 											return false;
@@ -38,7 +38,7 @@ jQuery(document)
 											$(this)
 													.find("label[for='lastname']")
 													.append(
-															"<span style='display:none' class='red'> - Please enter your last name.</span>");
+															"<span style='display:none' class='red'> - 성을 입력하세요.</span>");
 											$(this).find("label[for='lastname'] span").fadeIn(
 													'medium');
 											return false;
@@ -47,7 +47,7 @@ jQuery(document)
 											$(this)
 													.find("label[for='username']")
 													.append(
-															"<span style='display:none' class='red'> - Please enter a valid username.</span>");
+															"<span style='display:none' class='red'> - 닉네임을 입력하세요.</span>");
 											$(this).find("label[for='username'] span").fadeIn(
 													'medium');
 											return false;
@@ -56,7 +56,7 @@ jQuery(document)
 											$(this)
 													.find("label[for='email']")
 													.append(
-															"<span style='display:none' class='red'> - Please enter a valid email.</span>");
+															"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
 											$(this).find("label[for='email'] span").fadeIn('medium');
 											return false;
 										}
@@ -64,7 +64,7 @@ jQuery(document)
 											$(this)
 													.find("label[for='password']")
 													.append(
-															"<span style='display:none' class='red'> - Please enter a valid password.</span>");
+															"<span style='display:none' class='red'> - 비밀번호를 입력하세요.</span>");
 											$(this).find("label[for='password'] span").fadeIn(
 													'medium');
 											return false;
