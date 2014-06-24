@@ -35,6 +35,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		daummg =#{grade} where title =#{title}
 	</update>
 	
+		<select id="movieGradeSelect"  parameterType="String"  resultType="com.pyongjjeom.test.parsing.contents.MovieGrades">
+		  
+		    select * from test_movie where title = #{title}
+		    
+		</select>
 		
 		
 		

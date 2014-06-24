@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ import com.pyongjjeom.test.parsing.book.NaverBookParsing;
 import com.pyongjjeom.test.parsing.book.Yes24Parsing;
 import com.pyongjjeom.test.parsing.contents.ContentsParsing;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
+import com.pyongjjeom.test.parsing.contents.MovieGrades;
 import com.pyongjjeom.test.parsing.movie.CgvParsing;
 import com.pyongjjeom.test.parsing.movie.DaumMovieParsing;
 import com.pyongjjeom.test.parsing.movie.LotteParsing;
@@ -49,7 +51,7 @@ public class TestController {
 		LotteParsing lotteParsing = new LotteParsing();
 		CgvParsing cgvParsing = new CgvParsing();
 		DaumMovieParsing daumParsing = new DaumMovieParsing();
-		
+
 		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> megaBoxValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> lotteValues = new ArrayList<ContentsValue>();
@@ -64,7 +66,7 @@ public class TestController {
 
 		return "test/test";
 	}
-	
+
 	@RequestMapping(value = "BookDBTest.do", method = RequestMethod.GET)
 	public String updateBookGrade(Model model, HttpServletRequest request) {
 
@@ -73,13 +75,12 @@ public class TestController {
 		BandinlunisParsing bandinlunisParsing = new BandinlunisParsing();
 		KyoboParsing kyoboParsing = new KyoboParsing();
 		NaverBookParsing naverParsing = new NaverBookParsing();
-		
+
 		List<ContentsValue> yes24Values = new ArrayList<ContentsValue>();
 		List<ContentsValue> aladinValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> bandinlunisValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> kyoboValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
-		
 
 		updateGrade(yes24Parsing, yes24Values, "y");
 		updateGrade(kyoboParsing, kyoboValues, "k");
@@ -90,8 +91,6 @@ public class TestController {
 		return "test/test";
 	}
 
-	
-	
 	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> Values,
 			String str) {
 		if (str.equals("n")) {
@@ -101,24 +100,21 @@ public class TestController {
 						.getGradeList().get(i), dbCode.getContentCD("m")));
 			}
 			testService.movieTitleInsert(Values);
-		} 
-		if (str.equals("y")||str.equals("k")) {
+		}
+		if (str.equals("y") || str.equals("k")) {
 			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
 						.getGradeList().get(i), dbCode.getContentCD("b")));
 			}
 			testService.bookTitleInsert(Values);
-		} 
-		else
+		} else
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
 						.getGradeList().get(i)));
 			}
 		testService.gradeUpdate(Values, str);
 	}
-
-
 
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public String getSearch(Model model, HttpServletRequest request)
@@ -157,15 +153,31 @@ public class TestController {
 			break;
 		}
 
-		request.setAttribute("resultList", resultList);
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("resultList", resultList);
+		// request.setAttribute("resultList", resultList);
 
 		return resultPage;
 	}
-	
+
 	@RequestMapping(value = "test.do", method = RequestMethod.GET)
 	public String test(Model model, HttpServletRequest request) {
 
-		System.out.println(request.getParameter("value"));
-		return "test/test";
+		int num = Integer.parseInt(request.getParameter("num"));
+		HttpSession httpSession = request.getSession();
+		List<DaumMovie> list = (List<DaumMovie>) httpSession
+				.getAttribute("resultList");
+		DaumMovie movie = list.get(num);
+		MovieGrades grades = testService.movieGradeSelect(movie.getTitle());
+
+		request.setAttribute("movie", movie);
+		request.setAttribute("grades", grades);
+		if (grades != null) {
+			double avg = (grades.getCgvMg() + grades.getDaumMg()
+					+ grades.getLotteMg() + grades.getMegaBoxMg() + grades.getNaverMg()) / 5;
+
+			request.setAttribute("avg", avg);
+		}
+		return "test/movieContext";
 	}
 }
