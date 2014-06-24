@@ -35,13 +35,15 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<context:component-scan base-package="com.pyongjjeom.login.controllers" />
 	<context:component-scan base-package="com.pyongjjeom.user.controllers" />
 	<context:component-scan base-package="com.pyongjjeom.user.service" />
+	<context:component-scan base-package="com.pyongjjeom.notice.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.notice.service" />
 
 	<!-- enable autowire -->
 	<context:annotation-config />
 
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao" />
+		<property name="basePackage" value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao" />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
