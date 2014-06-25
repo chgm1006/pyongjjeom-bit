@@ -1,4 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -31,9 +32,27 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-<script type="text/javascript">
-	
-</script>
+<script type="text/javascript"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+<style>
+.ui-datepicker {
+	font-size: 12px;
+}
+
+.ui-datepicker select.ui-datepicker-month {
+	width: 40%;
+	font-size: 11px;
+}
+
+.ui-datepicker select.ui-datepicker-year {
+	width: 50%;
+	font-size: 11px;
+}
+</style>
 </head>
 
 <body>
@@ -45,22 +64,20 @@
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
-					<label for="firstname">First Name</label> <input type="text" id="firstname"
-						name="firstname" placeholder="enter your first name..."> <label
-						for="lastname">Last Name</label> <input type="text" id="lastname"
-						name="lastname" placeholder="enter your first name..."> <label
-						for="username">Username</label> <input type="text" id="username"
-						name="username" placeholder="choose a username..."> <label
-						for="email">Email</label> <input type="text" id="email" name="email"
-						placeholder="enter your email..."> <label for="password">Password</label>
-					<input type="password" id="password" name="password"
-						placeholder="choose a password...">
+					<label for="email">Email</label> <input type="text" id="email" name="email"
+						placeholder="enter your email..."> <label for="name">Name</label>
+					<input type="text" id="name" name="name" placeholder="enter your name...">
+					<label for="birth">Birth</label> <input type="text" id="birth" name="birth"
+						placeholder="choose a birth..."> <label for="password">Password</label>
+					<input type="text" id="password" name="password"
+						placeholder="enter your password..."> <label for="password_check">Password
+						Check</label> <input type="text" id="password_check" name="password_check"
+						placeholder="enter your passwordcheck...">
 					<button type="submit">가입하기</button>
 				</form>
 			</div>
 		</div>
 	</div>
-
 </body>
 
 
