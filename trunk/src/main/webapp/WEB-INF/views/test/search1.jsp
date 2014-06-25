@@ -13,7 +13,7 @@
 			<option value="1">영화
 		</select> 
 		<input type="text" id="Search" name="Search">
-		<input type="hidden"  name="stat" value="posting">
+		<input type="hidden"  name="stat" value="search">
 				<input type="submit" value="검색">
 	
 			</form>
