@@ -46,7 +46,7 @@
 			<dl>
 			<c:forEach var="notice" items="${add}" varStatus="cnt">
 				<dt class="listHead">
-					<h3>${notice.title}</</h3>
+					<h3>${notice.title}</h3>
 					<h4>${notice.regidate}</h4>
 				</dt>
 				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#">글수정</a>
