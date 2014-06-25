@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -28,38 +27,14 @@
         <![endif]-->
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript">
-	jQuery(document)
-			.ready(
-					function() {
-						/*
-						 * Tooltips
-						 */
-						$('.links a.home').tooltip();
-						$('.links a.blog').tooltip();
-						/*
-						 * Form validation
-						 */
-						$('.register form')
-								.submit(
-										function() {
-											$(this).find("label[for='email']").html('Email');
-											// //
-											var email = $(this).find('input#email').val();
-											if (email == '') {
-												$(this)
-														.find("label[for='email']")
-														.append(
-																"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
-												$(this).find("label[for='email'] span")
-														.fadeIn('medium');
-												return false;
-											}
-										});
-
-					});
+	jQuery(document).ready(function() {
+		$('.register form').submit(function() {
+			
+		});
+	});
 </script>
 </head>
 
@@ -68,13 +43,16 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="emailAuth_check.force" method="get">
+				<form action="emailAuth_check.force" method="post">
 					<h2>
 						<span class="red"><strong>인증번호 입력</strong></span>
 					</h2>
-					<label for="emailAuthCD">인증번호</label> <input type="text" id="emailAuthCD" name="emailAuthCD"
-						placeholder="인증번호를 입력하세요....">
+					<label for="emailAuthCD">인증번호 &nbsp; &nbsp; <span class="red">${errorMSG }</span></label>
+					<input type="text" id="emailAuthCD" name="emailAuthCD"
+						placeholder="인증번호를 입력하세요...."><br>
+
 					<button type="submit">인증번호확인</button>
+					<input type="hidden" id="email" name="email" value="${member.email }">
 				</form>
 			</div>
 		</div>
