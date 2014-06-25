@@ -15,9 +15,9 @@ public class NaverMovieParsing extends ContentsParsing {
 	}
 
 	public void parsing(String url) {
-
 		try {
 			doc = Jsoup.connect(url).get();
+
 			grade = doc.select("span[class=num]");
 			title = doc.select("dt[class=tit");
 
