@@ -22,7 +22,7 @@ public class DBCode {
 
 	private long date = System.currentTimeMillis();
 
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmm");
 	private String nowDate = dateFormat.format(date);
 
 	/**
@@ -290,6 +290,7 @@ public class DBCode {
 		dc.getNoticeCD("");
 		dc.getNoticeCD("");
 		dc.getNoticeCD("");
+		
 
 	}
 }
