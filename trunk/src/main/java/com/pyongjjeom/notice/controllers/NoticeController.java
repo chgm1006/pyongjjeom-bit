@@ -70,7 +70,8 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		notice.setNotCD(dc.getNoticeCD("no"));
+		String notCD = dc.getNoticeCD("no");
+		notice.setNotCD(notCD);
 		
 		System.out.println("왓수?");
 		noticeService.insertData(notice);
