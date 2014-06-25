@@ -34,13 +34,6 @@
 	jQuery(document)
 			.ready(
 					function() {
-
-						/*
-						 * Tooltips
-						 */
-						$('.links a.home').tooltip();
-						$('.links a.blog').tooltip();
-
 						/*
 						 * Form validation
 						 */
@@ -48,16 +41,33 @@
 								.submit(
 										function() {
 											$(this).find("label[for='email']").html('Email');
-											// //
 											var email = $(this).find('input#email').val();
 											if (email == '') {
-												$(this).find("label[for='email']").append("<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
+												$(this)
+														.find("label[for='email']")
+														.append(
+																"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
 												$(this).find("label[for='email'] span")
 														.fadeIn('medium');
+												$("#email").focus();
+												return false;
+											}
+											if (!checkEmail(email)) {
+												$(this)
+														.find("label[for='email']")
+														.append(
+																"<span style='display:none' class='red'> - 이메일 형식에 맞지 않습니다.</span>");
+												$(this).find("label[for='email'] span")
+														.fadeIn('medium');
+												
+												$("#email").val("").focus();
 												return false;
 											}
 										});
 
+						function checkEmail(emailStr) {
+							return emailStr.match(/\w+[/\w.]*@[/\w.]+\.\w+/);
+						}
 					});
 </script>
 </head>
@@ -71,8 +81,8 @@
 					<h2>
 						<span class="red"><strong>이메일 인증</strong></span>
 					</h2>
-					<label for="email">Email</label> <input type="text" id="email"
-						name="email" placeholder="이메일을 입력하세요...">
+					<label for="email">Email</label> <input type="text" id="email" name="email"
+						placeholder="이메일을 입력하세요...">
 					<button type="submit">인증메일발송</button>
 				</form>
 			</div>

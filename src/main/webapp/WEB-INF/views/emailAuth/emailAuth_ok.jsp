@@ -30,11 +30,6 @@
 <!-- Javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		$("button").cli
-	});
-</script>
 </head>
 
 <body>
@@ -42,11 +37,11 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="/index.jsp" method="get">
+				<form action="${pageContext.request.contextPath}/index.jsp" method="get">
 					<h3>
 						<span class="red"><strong>인증이 완료되었습니다</strong></span>
 					</h3>
-					<button type="button" id="btn">로그인</button>
+					<button type="submit" id="btn">로그인</button>
 				</form>
 			</div>
 		</div>
