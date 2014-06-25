@@ -65,7 +65,7 @@
 			<td width="70"></td>
 				<td width="373">${cnt.count }</td>
 				<td width="379">${notice.title}</td>
-				<td width="173">${notice.person}</td>
+				<td width="173">${notice.writer}</td>
 				<%-- <td width="164">${notice.issue}</td> --%>
 				<td width="158">${notice.regidate}</td>
 				<td width="158">${notice.updatedate}</td>
