@@ -35,6 +35,6 @@ public interface NoticeService {
 	
 	List <Notice> applyData();
 	
-	void deleteData(Notice notice);
+	void deleteData(String notCD);
 
 }

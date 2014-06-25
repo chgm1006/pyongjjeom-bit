@@ -77,8 +77,12 @@ public class NoticeServiceImpl implements NoticeService {
 	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
 	 */
 	@Override
-	public void deleteData(Notice notice) {
+	public void deleteData(String notCD) {
 		// TODO Auto-generated method stub
+		
+		noticeMapper.deleteData(notCD);
+		
+		
 		
 	}
 

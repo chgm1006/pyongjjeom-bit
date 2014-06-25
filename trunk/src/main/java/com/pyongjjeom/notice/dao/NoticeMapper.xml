@@ -20,16 +20,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
-	<select id="getCode" resultType="Notice">
+	<select id="getCode" resultType="com.pyongjjeom.notice.dto.NoticeCode">
 		select code,codenm from common_cd
 		where codegrp = 'notice'
 		order by code;
 	</select>
 	
 	
-	<delete id="deleteData" parameterType="notice">
-		delete from notice;
-	</delete>
+<!-- 	<update id="deleteData" parameterType="String">
+		update  notice
+		set deleteyn = 'N'
+		where deleteyn = '';
+	</update> -->
 
 
 
