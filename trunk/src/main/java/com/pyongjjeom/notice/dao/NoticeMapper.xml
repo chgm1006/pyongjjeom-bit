@@ -13,11 +13,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{person},
 		#{password},#{issue},now(),
 		now())
+		
+	
 	</insert>
 
 	<select id="applyData" resultType="Notice">
 
 		SELECT * FROM forcebewithyou.test_notice;
+		
 
 	</select>
 
