@@ -51,15 +51,15 @@ public class NoticeController {
 	
 	
 
-	@RequestMapping(value = "list.do")
+	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,Model model, HttpServletRequest request) {
 
 		System.out.println("왓수?");
 		List<Notice> list= noticeService.applyData();
 		model.addAttribute("add", list);
 		
-
-		return "test/list";
+		System.out.println("왓수?22222222222222222");
+		return "board/boardList";
 	}
 	
 	
