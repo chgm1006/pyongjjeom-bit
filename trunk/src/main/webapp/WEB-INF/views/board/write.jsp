@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,29 +83,33 @@
 							<td><input name="notPasswd" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
-						<tr>
-							
-<tr>
+						
+						
+						<form:select path="code" items="${code}" itemValue="code" 						
+						itemLabel="codenm" />
+						
+					
+					
+		
+		
+		
+		
+						<%-- <tr>
 					<td width="96">공지사항코드</td>
-					<td width="172"><select path="code">
+					<td width="172">
+					
+					<form:select path="code">
 							<c:forEach var="codenm" items="${code}">
 								<option value="${codenm.NO}">공지사항</option>
 								<option value="${codenm.SM}">시스템점검</option>
 								<option value="${codenm.EV}">이벤트</option>
 					</c:forEach>
-						</select></td>
+						</form:select></td>
 				<tr height="20">
 					<td width="96"></td>
 					<td width="172"></td>
-				</tr>
-
-
-
-
-
-
-
-
+				</tr> --%>
+				
 						<tr height="1" bgcolor="#dddddd">
 							<td colspan="4"></td>
 						</tr>
