@@ -19,6 +19,7 @@
 		<li><a href="views/registerMember.force">회원가입</a></li>
 		<li><a href="views/emailAuth.force">인증코드 메일보내기</a></li>
 		<li><a href="login.jsp">로그인</a></li>
+
 	</ul>
 </body>
 </html>
