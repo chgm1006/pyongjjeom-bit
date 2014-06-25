@@ -90,5 +90,12 @@ public class Notice {
 	private String deleteYN = "";
 	private Date regidate;
 	private Date updatedate;
+	@Override
+	public String toString() {
+		return "Notice [notCD=" + notCD + ", writer=" + writer + ", title=" + title
+				+ ", issue=" + issue + ", category=" + category + ", permit=" + permit
+				+ ", notPasswd=" + notPasswd + ", deleteYN=" + deleteYN + ", regidate="
+				+ regidate + ", updatedate=" + updatedate + "]";
+	}
 
 }

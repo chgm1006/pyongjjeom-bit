@@ -33,6 +33,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mysql.fabric.Response;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -78,10 +79,15 @@ public class NoticeController {
 		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
 		notice.setNotcd(notCD);
 		
+		System.out.println(request.getParameter("code"));
+		
+		notice.setCategory(request.getParameter("code"));
+	
 
 
 		System.out.println("왓수?");
 		noticeService.insertData(notice);
+		System.out.println(notice.toString());
 
 		return "board/write_ok";
 	}
