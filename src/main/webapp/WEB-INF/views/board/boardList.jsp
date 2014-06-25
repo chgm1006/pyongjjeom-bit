@@ -52,6 +52,8 @@
 				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#">글수정</a><br>
 				<a class="mainBoard" href="#" OnClick="window.location='delete.do'">삭제</a></dd>
 			</c:forEach>
+	
+			
 			</dl>
 		</div>
 		<a href="#" class="listMore">지난 공지사항 더보기</a>
