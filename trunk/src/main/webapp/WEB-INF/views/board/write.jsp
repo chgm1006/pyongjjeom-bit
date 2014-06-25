@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,16 +19,16 @@
 			return;
 		}
 
-		if (!form.person.value) // form 에 있는 name 값이 없을 때
+		if (!form.writer.value) // form 에 있는 name 값이 없을 때
 		{
 			alert("이름을 적어주세요"); // 경고창 띄움
-			form.person.focus(); // form 에 있는 name 위치로 이동
+			form.writer.focus(); // form 에 있는 name 위치로 이동
 			return;
 		}
 
-		if (!form.password.value) {
+		if (!form.notPasswd.value) {
 			alert("비밀번호를 적어주세요");
-			form.password.focus();
+			form.notPasswd.focus();
 			return;
 		}
 
@@ -69,7 +70,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">이름</td>
-							<td><input name="person" size="50" maxlength="50"></td>
+							<td><input name="writer" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">
@@ -78,9 +79,32 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">비밀번호</td>
-							<td><input name="password" size="50" maxlength="50"></td>
+							<td><input name="notPasswd" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
+						<tr>
+							
+<tr>
+					<td width="96">공지사항코드</td>
+					<td width="172"><select path="code">
+							<c:forEach var="codenm" items="${code}">
+								<option value="${codenm.NO}">공지사항</option>
+								<option value="${codenm.SM}">시스템점검</option>
+								<option value="${codenm.EV}">이벤트</option>
+					</c:forEach>
+						</select></td>
+				<tr height="20">
+					<td width="96"></td>
+					<td width="172"></td>
+				</tr>
+
+
+
+
+
+
+
+
 						<tr height="1" bgcolor="#dddddd">
 							<td colspan="4"></td>
 						</tr>
