@@ -32,4 +32,6 @@ public interface NoticeMapper {
 	
 	List <Notice> applyData();
 	
+	void deleteData(Notice notice);
+	
 }
