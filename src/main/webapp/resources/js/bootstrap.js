@@ -122,9 +122,31 @@
 
 			
 
+												
+
+			
+
 						
 
 			
+
+									
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+						
 
 			
 
@@ -169,6 +191,22 @@
 
 			if (!this.isShown || e.isDefaultPrevented())
 				return
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+												
 
 			
 
@@ -403,6 +441,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			$parent = getParent($this)
 
 			isActive = $parent.hasClass('open')
@@ -424,6 +478,22 @@
 
 			if (!/(38|40|27)/.test(e.keyCode))
 				return
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+												
 
 			
 
@@ -461,6 +531,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			$parent = getParent($this)
 
 			isActive = $parent.hasClass('open')
@@ -472,6 +558,22 @@
 
 			if (!$items.length)
 				return
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+												
 
 			
 
@@ -783,6 +885,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			previous = $ul.find('.active:last a')[0]
 
 			e = $.Event('show', {
@@ -793,6 +911,22 @@
 
 			if (e.isDefaultPrevented())
 				return
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+												
 
 			
 
@@ -1389,6 +1523,22 @@
 
 		
 
+								
+
+		
+
+				
+
+		
+
+						
+
+		
+
+				
+
+		
+
 		var scrollHeight = $(document).height(), scrollTop = this.$window
 				.scrollTop(), position = this.$element.offset(), offset = this.options.offset, offsetBottom = offset.bottom, offsetTop = offset.top, reset = 'affix affix-top affix-bottom', affix
 
@@ -1407,6 +1557,22 @@
 
 		if (this.affixed === affix)
 			return
+
+		
+
+				
+
+		
+
+						
+
+		
+
+				
+
+		
+
+								
 
 		
 
@@ -1531,6 +1697,22 @@
 
 		if (e.isDefaultPrevented())
 			return
+
+		
+
+				
+
+		
+
+						
+
+		
+
+				
+
+		
+
+								
 
 		
 
@@ -1764,6 +1946,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			dimension = this.dimension()
 			scroll = $.camelCase([ 'scroll', dimension ].join('-'))
 			actives = this.$parent && this.$parent.find('> .accordion-group > .in')
@@ -1772,6 +1970,14 @@
 				hasData = actives.data('collapse')
 				if (hasData && hasData.transitioning)
 					return
+
+				
+
+								
+
+				
+
+												
 
 				
 
@@ -1794,6 +2000,14 @@
 			var dimension
 			if (this.transitioning)
 				return
+
+			
+
+						
+
+			
+
+									
 
 			
 
@@ -1831,6 +2045,22 @@
 
 			if (startEvent.isDefaultPrevented())
 				return
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
+												
 
 			
 
@@ -1983,6 +2213,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			if (this.sliding) {
 				return this.$element.one('slid', function() {
 					that.to(pos)
@@ -2020,6 +2266,14 @@
 
 			
 
+									
+
+			
+
+						
+
+			
+
 			return this.slide('next')
 		}
 
@@ -2027,6 +2281,14 @@
 		prev : function() {
 			if (this.sliding)
 				return
+
+			
+
+						
+
+			
+
+									
 
 			
 
@@ -2070,10 +2332,34 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			if ($.support.transition && this.$element.hasClass('slide')) {
 				this.$element.trigger(e)
 				if (e.isDefaultPrevented())
 					return
+
+				
+
+								
+
+				
+
+												
 
 				
 
@@ -2097,6 +2383,14 @@
 				this.$element.trigger(e)
 				if (e.isDefaultPrevented())
 					return
+
+				
+
+								
+
+				
+
+												
 
 				
 
@@ -2397,6 +2691,22 @@
 
 			
 
+												
+
+			
+
+						
+
+			
+
+									
+
+			
+
+						
+
+			
+
 			switch (e.keyCode) {
 			case 9: // tab
 			case 13: // enter
@@ -2436,6 +2746,14 @@
 
 			
 
+									
+
+			
+
+						
+
+			
+
 			this.move(e)
 		}
 
@@ -2460,12 +2778,28 @@
 
 				
 
+												
+
+				
+
+								
+
+				
+
 				this.select()
 				break
 
 			case 27: // escape
 				if (!this.shown)
 					return
+
+				
+
+								
+
+				
+
+												
 
 				
 
@@ -2553,6 +2887,14 @@
 				var $this = $(this)
 				if ($this.data('typeahead'))
 					return
+
+				
+
+								
+
+				
+
+												
 
 				
 
