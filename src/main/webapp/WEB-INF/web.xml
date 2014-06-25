@@ -64,5 +64,12 @@
 		<url-pattern>/search2.jsp</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+	    <servlet-name>/login.jsp</servlet-name>
+	    <jsp-file>/WEB-INF/views/login/login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>/login.jsp</servlet-name>
+	    <url-pattern>/login.jsp</url-pattern>	    
+	</servlet-mapping>
 </web-app>
