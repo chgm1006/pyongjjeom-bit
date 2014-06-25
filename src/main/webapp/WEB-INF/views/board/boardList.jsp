@@ -49,7 +49,8 @@
 					<h3>${notice.title}</</h3>
 					<h4>${notice.regidate}</h4>
 				</dt>
-				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#">글수정</a><br><a class="mainBoard" href="#">삭제</a></dd>
+				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#">글수정</a><br>
+				<a class="mainBoard" href="#" OnClick="window.location='delete.do'">삭제</a></dd>
 			</c:forEach>
 			</dl>
 		</div>
