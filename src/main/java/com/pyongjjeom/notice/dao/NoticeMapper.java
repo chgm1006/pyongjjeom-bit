@@ -24,11 +24,14 @@ package com.pyongjjeom.notice.dao;
 import java.util.List;
 
 import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.notice.dto.NoticeCode;
 
 
 public interface NoticeMapper {
 	
 	void insertData(Notice notice);
+	
+	List <NoticeCode> getCode();
 	
 	List <Notice> applyData();
 	

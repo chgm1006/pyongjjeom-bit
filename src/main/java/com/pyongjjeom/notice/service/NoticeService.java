@@ -24,11 +24,14 @@ package com.pyongjjeom.notice.service;
 import java.util.List;
 
 import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.notice.dto.NoticeCode;
 
 public interface NoticeService {
 
 
 	void insertData(Notice notice);
+	
+	List <NoticeCode> getCode();
 	
 	List <Notice> applyData();
 	

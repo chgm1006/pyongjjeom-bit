@@ -43,7 +43,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
-	private DBCode dc = new DBCode();
+	private DBCode dc = new DBCode();                //DBCode 정의
 
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
@@ -63,6 +63,8 @@ public class NoticeController {
 
 		System.out.println("왓수?");
 		// noticeService.insertData(notice);
+		
+		model.addAttribute("code", noticeService.getCode());
 
 		return "board/write";
 	}
@@ -70,9 +72,12 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		String notCD = dc.getNoticeCD("no");
-		notice.setNotCD(notCD);
 		
+		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
+		notice.setNotcd(notCD);
+		
+
+
 		System.out.println("왓수?");
 		noticeService.insertData(notice);
 

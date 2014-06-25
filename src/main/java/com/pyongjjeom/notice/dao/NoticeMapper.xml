@@ -5,27 +5,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pyongjjeom.notice.dao.NoticeMapper">
 
 	<insert id="insertData" parameterType="Notice">
-		insert into test_notice
-		(title,
-		person, password, issue,regidate,updatedate)
+		insert into notice
+		(notCD,writer,title,issue,notPasswd,category,permit,deleteyn,regidate,updatedate)
 		values
-		(#{title},
-		#{person},
-		#{password},#{issue},now(),
-		now())
+		(#{notCD},#{writer},#{title},#{issue},#{notPasswd},#{category},'ADMIN','N',now(),now());
 		
 	
 	</insert>
 
 	<select id="applyData" resultType="Notice">
 
-		SELECT * FROM forcebewithyou.test_notice;
+		select * from notice where ifnull(deleteyn,'N')='N';
 		
-
+		
 	</select>
 	
+	<select id="getCode" resultType="Notice">
+		select code,codenm from common_cd
+		where codegrp = 'notice'
+		order by code;
+	</select>
+	
+	
 	<delete id="deleteData" parameterType="notice">
-		delete from test_notice where title = $delete_uno;
+		delete from notice;
 	</delete>
 
 

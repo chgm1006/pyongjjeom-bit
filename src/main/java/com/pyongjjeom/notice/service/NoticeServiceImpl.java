@@ -30,8 +30,10 @@ import org.springframework.stereotype.Service;
 
 
 
+
 import com.pyongjjeom.notice.dao.NoticeMapper;
 import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.notice.dto.NoticeCode;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -78,6 +80,21 @@ public class NoticeServiceImpl implements NoticeService {
 	public void deleteData(Notice notice) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getCode()
+	 */
+	@Override
+	public List<NoticeCode> getCode() {
+		// TODO Auto-generated method stub
+		List<NoticeCode> code = noticeMapper.getCode();
+		
+		return code;
 	}
 
 	/**
