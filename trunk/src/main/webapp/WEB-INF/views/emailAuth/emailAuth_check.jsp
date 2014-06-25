@@ -32,8 +32,33 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		$('.register form').submit(function() {
+			$(this).find("label[for='emailAuthCD']").html('인증번호');
+			var emailAuthCD = $(this).find('input#emailAuthCD').val();
+			if (emailAuthCD == '') {
+				$(this)
+						.find("label[for='emailAuthCD']")
+						.append(
+								"<span style='display:none' class='red'> - 인증번호를 입력하세요</span>");
+				$(this).find("label[for='emailAuthCD'] span")
+						.fadeIn('medium');
+				$("#emailAuthCD").focus();
+				return false;
+			}
+			if (!checkAuthCD(emailAuthCD)) {
+				$(this)
+						.find("label[for='emailAuthCD']")
+						.append(
+								"<span style='display:none' class='red'> - 인증번호를 확인하세요</span>");
+				$(this).find("label[for='emailAuthCD'] span")
+						.fadeIn('medium');
+				$("#emailAuthCD").val("").focus();
+				return false;
+			}
 			
 		});
+		function checkAuthCD(emailStr) {
+			return emailStr.match(/[0-9 -()+]+$/);
+		}
 	});
 </script>
 </head>
@@ -47,7 +72,7 @@
 					<h2>
 						<span class="red"><strong>인증번호 입력</strong></span>
 					</h2>
-					<label for="emailAuthCD">인증번호 &nbsp; &nbsp; <span class="red">${errorMSG }</span></label>
+					<label for="emailAuthCD">인증번호 &nbsp; &nbsp; <span class="red"></span></label>
 					<input type="text" id="emailAuthCD" name="emailAuthCD"
 						placeholder="인증번호를 입력하세요...."><br>
 
