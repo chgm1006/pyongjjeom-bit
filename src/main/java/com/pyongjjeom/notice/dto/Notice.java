@@ -4,8 +4,6 @@
 
 package com.pyongjjeom.notice.dto;
 
-import java.util.Date;
-
 import org.apache.log4j.Logger;
 
 /**
@@ -20,12 +18,32 @@ import org.apache.log4j.Logger;
  */
 public class Notice {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
+	private String notCD = "";
+	private String writer = "";
 	private String title = "";
-	private String person = "";
-	private String password = "";
 	private String issue = "";
+	private String category = "";
+	private String permit = "";
+	private String notPasswd = "";
+	private String deleteYN = "";
+	private String regidate;
+	private String updatedate;
+
+	public String getNotCD() {
+		return notCD;
+	}
+
+	public void setNotCD(String notCD) {
+		this.notCD = notCD;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
 	public String getTitle() {
 		return title;
@@ -35,28 +53,44 @@ public class Notice {
 		this.title = title;
 	}
 
-	public String getPerson() {
-		return person;
-	}
-
-	public void setPerson(String person) {
-		this.person = person;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getIssue() {
 		return issue;
 	}
 
 	public void setIssue(String issue) {
 		this.issue = issue;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getPermit() {
+		return permit;
+	}
+
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+
+	public String getNotPasswd() {
+		return notPasswd;
+	}
+
+	public void setNotPasswd(String notPasswd) {
+		this.notPasswd = notPasswd;
+	}
+
+	public String getDeleteYN() {
+		return deleteYN;
+	}
+
+	public void setDeleteYN(String deleteYN) {
+		this.deleteYN = deleteYN;
 	}
 
 	public String getRegidate() {
@@ -74,8 +108,5 @@ public class Notice {
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
-
-	private String regidate;
-	private String updatedate;
 
 }
