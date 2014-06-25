@@ -30,7 +30,7 @@ a:hover {
 .header {
 	margin: 0 auto;
 	padding-bottom: 5px;
-	background: #f8f8f8 url(../img/pattern.jpg) left top repeat;
+	background: #f8f8f8 url(../images/pattern.jpg) left top repeat;
 	border-top: 3px solid #eb4141;
 	-moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .3);
 	-webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .3);
@@ -60,11 +60,11 @@ a:hover {
 }
 
 .links a.home {
-	background: url(../img/home.png) center center no-repeat;
+	background: url(../images/home.png) center center no-repeat;
 }
 
 .links a.blog {
-	background: url(../img/blog.png) center center no-repeat;
+	background: url(../images/blog.png) center center no-repeat;
 	margin-right: 50px;
 }
 
@@ -84,7 +84,7 @@ a:hover {
 /* ----- Registration Form ----- */
 .register form {
 	padding: 20px 50px 40px 50px;
-	background: #f8f8f8 url(../img/pattern.jpg) left top repeat;
+	background: #f8f8f8 url(../images/pattern.jpg) left top repeat;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
@@ -97,7 +97,7 @@ a:hover {
 .register form h2 {
 	margin-bottom: 25px;
 	padding-bottom: 15px;
-	background: url(../img/pencil.png) 70px 6px no-repeat;
+	background: url(../images/pencil.png) 70px 6px no-repeat;
 	border-bottom: 2px dotted #bbb;
 	font-size: 30px;
 	font-weight: 400;
@@ -192,7 +192,7 @@ a:hover {
 /* ----- Media queries ----- */
 @media ( max-width : 1200px) {
 	.register form h2 {
-		background: url(../img/pencil.png) 20px 6px no-repeat;
+		background: url(../images/pencil.png) 20px 6px no-repeat;
 	}
 }
 
