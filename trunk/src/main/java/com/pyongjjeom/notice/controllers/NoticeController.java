@@ -19,7 +19,7 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.notice.controllers;
+package com.pyongjjeom.notice.controllers; 
 
 import java.util.List;
 
@@ -33,45 +33,67 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+
+
+
+
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.service.NoticeService;
 import com.pyongjjeom.test.parsing.contents.MovieGrades;
+
+
 
 @Controller
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
+	
+	
 
 	@RequestMapping(value = "boardList.do")
-	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
-			Model model, HttpServletRequest request) {
+	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,Model model, HttpServletRequest request) {
 
 		System.out.println("왓수?");
-		List<Notice> list = noticeService.applyData();
+		List<Notice> list= noticeService.applyData();
 		model.addAttribute("add", list);
-
+		
 		System.out.println("왓수?22222222222222222");
 		return "board/boardList";
 	}
+	
+	
+
+	
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
-	public String insertData(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String insertData(@Valid Notice notice, Model model, HttpServletRequest request) {
+
 
 		System.out.println("왓수?");
-		// noticeService.insertData(notice);
+		//noticeService.insertData(notice);
 
-		return "test/write";
+		return "board/write";
 	}
-
+	
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
-	public String writeOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String writeOKDo(@Valid Notice notice,Model model, HttpServletRequest request) {
 
 		System.out.println("왓수?");
 		noticeService.insertData(notice);
 
-		return "test/write_ok";
+		return "board/write_ok";
 	}
+	
+	
+	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
+	public String deleteOKDo(@Valid Notice notice,Model model, HttpServletRequest request) {
+
+		System.out.println("왓수?");
+		noticeService.deleteData(notice);
+
+		return "board/delete_ok";
+	}
+	
 
 }
