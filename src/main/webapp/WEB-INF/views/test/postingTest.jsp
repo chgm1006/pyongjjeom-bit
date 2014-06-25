@@ -24,7 +24,6 @@
 		배우 : ${movie.actor }<br> 
 		개봉일	:${movie.pubDate}<br>
 	 평점 :${movie.userRating}<br>
-   
    </div>
  	<div>
 		<table border="0" width="90%"  align="center">
