@@ -75,6 +75,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update test_book set
 		bandibg =#{grade} where title =#{title}
 	</update>
+	
+				<select id="bookGradeSelect"  parameterType="String"  resultType="com.pyongjjeom.test.parsing.contents.BookGrades">
+		  
+		    select * from test_book where title = #{title}
+		    
+		</select>
 		
 		
 		

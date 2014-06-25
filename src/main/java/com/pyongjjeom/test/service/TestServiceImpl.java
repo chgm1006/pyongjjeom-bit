@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.test.dao.TestDao;
+import com.pyongjjeom.test.parsing.contents.BookGrades;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
 import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
@@ -70,5 +71,10 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public MovieGrades movieGradeSelect(String title) {
 		return testDao.movieGradeSelect(title);
+	}
+
+	@Override
+	public BookGrades bookGradeSelect(String title) {
+		return testDao.bookGradeSelect(title);
 	}
 }

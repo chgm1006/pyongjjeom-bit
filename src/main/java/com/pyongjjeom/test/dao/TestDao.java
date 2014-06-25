@@ -1,5 +1,6 @@
 package com.pyongjjeom.test.dao;
 
+import com.pyongjjeom.test.parsing.contents.BookGrades;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
 import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
@@ -23,5 +24,6 @@ public interface TestDao {
 	void naverBookGradeUpdate(ContentsValue value);
 	void bandinlunisGradeUpdate(ContentsValue value);
 	MovieGrades movieGradeSelect(String title);
+	BookGrades bookGradeSelect(String title);
 
 }
