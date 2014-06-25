@@ -35,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
 import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
@@ -63,8 +64,9 @@ public class NoticeController {
 
 		System.out.println("왓수?");
 		// noticeService.insertData(notice);
-		
-		model.addAttribute("code", noticeService.getCode());
+		List<NoticeCode> code = noticeService.getCode();
+		System.out.println(code.size());
+		model.addAttribute("code", code);
 
 		return "board/write";
 	}
@@ -89,7 +91,7 @@ public class NoticeController {
 			HttpServletRequest request) {
 
 		System.out.println("왓수?");
-		noticeService.deleteData(notice);
+		noticeService.deleteData(null);
 
 		return "board/delete_ok";
 	}
