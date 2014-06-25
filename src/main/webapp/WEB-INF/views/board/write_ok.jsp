@@ -3,5 +3,5 @@
 
 <script type="text/javascript">
 	self.window.alert("입력한 글을 저장하였습니다.");
-	location.href = "views/boardList.jsp";
+	location.href = "boardList.do";
 </script>
