@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 
 <script type="text/javascript">
-	self.window.alert("ÀÔ·ÂÇÑ ±ÛÀ» ÀúÀåÇÏ¿´½À´Ï´Ù.");
+	self.window.alert("ì…ë ¥í•œ ê¸€ì„ ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
 	location.href = "boardList.do";
 </script>
