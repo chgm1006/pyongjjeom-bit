@@ -67,4 +67,26 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.applyData();
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
+	 */
+	@Override
+	public void deleteData(Notice notice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
+	 */
+
+
 }

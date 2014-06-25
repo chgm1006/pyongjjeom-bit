@@ -31,5 +31,7 @@ public interface NoticeService {
 	void insertData(Notice notice);
 	
 	List <Notice> applyData();
+	
+	void deleteData(Notice notice);
 
 }
