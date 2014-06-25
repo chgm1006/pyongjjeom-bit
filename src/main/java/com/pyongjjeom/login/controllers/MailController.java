@@ -62,7 +62,7 @@ public class MailController {
 		String subject = "<평쩜> 요청하신 인증번호 입니다";
 		String fromUser = "force.pyongjjeom@gmail.com";
 		String authCD = Math.round(Math.random() * 999999) / 1 + "";
-		String text = getEmailText(authCD);
+		String text = getEmailText(authCD, toUser);
 		Member member = new Member();
 
 		member.setEmail(toUser);
@@ -80,17 +80,28 @@ public class MailController {
 		System.out.println("emailCD = " + emailCD);
 
 		request.setAttribute("member", member);
-		// mailService.sendMail(subject, text.toString(), fromUser, toUser);
+		// toUser = "chgm1006@hanmail.net";
+		mailService.sendMail(subject, text.toString(), fromUser, toUser);
 		return "emailAuth/emailAuth_check";
 	}
 
-	protected String getEmailText(String authCD) {
+	protected String getEmailText(String authCD, String email) {
 		StringBuilder text = new StringBuilder();
-		text.append("<h2>이메일 인증 코드입니다</h2><br>");
+		text.append("<h2><b>이메일 인증 코드입니다</b></h2><br>");
 		text.append(authCD);
-		text.append("<br><a href='http://localhost:8080/pyongjjeom/views/emailAuth_check.force'>인증번호 입력</a>");
+		text.append("<br><a href='http://localhost:8080/pyongjjeom/emailAuth_forward.jsp?emailAuthCD="
+				+ authCD + "&email=" + email + "'>인증번호 입력</a>");
 
 		return text.toString();
+	}
+
+	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.GET)
+	public String checkEmailAuthGET(Member user, HttpServletRequest request) {
+		String emailCD = (String) request.getParameter("emailAuthCD");
+		String email = (String) request.getParameter("email");
+		System.out.println("emailCD111 = " + emailCD);
+		System.out.println("email111 = " + email);
+		return "emailAuth/emailAuth_check";
 	}
 
 	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
@@ -98,33 +109,19 @@ public class MailController {
 		String emailCD = (String) request.getParameter("emailAuthCD");
 		String email = (String) request.getParameter("email");
 
-		System.out.println("emailCD = " + emailCD);
-		System.out.println("email = " + email);
+		System.out.println("emailCD222 = " + emailCD);
+		System.out.println("email222 = " + email);
 
-		String erroMSG = checkEmailCD(emailCD);
-		if (!(erroMSG.equals(""))) {
-			request.setAttribute("errorMSG", erroMSG);
-			return "emailAuth/emailAuth_check";
-		}
-		
 		String userAuthCD = loginService.getEmailAuthCD(email);
-		System.out.println("userAuthCD = " + userAuthCD);
-		
-		if(emailCD.equals(userAuthCD)){
+		System.out.println("userAuthCD222 = " + userAuthCD);
+
+		if (emailCD.equals(userAuthCD)) {
+			System.err.println("emailCD.equals(userAuthCD) = "
+					+ emailCD.equals(userAuthCD));
 			return "emailAuth/emailAuth_ok";
 		}
 
 		return "emailAuth/emailAuth_check";
 	}
 
-	protected String checkEmailCD(String emailCD) {
-		String errorMSG = "";
-		if (emailCD == null || emailCD.equals("")) {
-			errorMSG = "인증번호를 입력하세요";
-		} else if (!CommonLIB.isNumeric(emailCD)) {
-			errorMSG = "인증번호를 확인하세요";
-		}
-
-		return errorMSG;
-	}
 }

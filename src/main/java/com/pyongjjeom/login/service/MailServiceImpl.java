@@ -10,7 +10,6 @@ import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -29,6 +28,8 @@ import com.pyongjjeom.login.dao.LoginMapper;
  */
 @Service("mailService")
 public class MailServiceImpl implements MailService {
+
+	private static final long serialVersionUID = 5034529419941207510L;
 
 	private Logger log = Logger.getLogger(this.getClass());
 	@Autowired
@@ -84,6 +85,7 @@ public class MailServiceImpl implements MailService {
 			messageHelper.setTo(toUser);
 			messageHelper.setFrom(fromUser);
 			messageHelper.setText(text, true);
+
 			mailSender.send(message);
 
 		} catch (MessagingException e) {
