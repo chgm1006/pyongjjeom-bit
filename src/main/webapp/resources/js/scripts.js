@@ -1,10 +1,24 @@
 jQuery(document)
 		.ready(
-				function() {
 
-					/*
-					 * Tooltips
-					 */
+				function() {
+					$("#birth").datepicker(
+							{
+								dateFormat : 'yymmdd',
+								prevText : '이전 달',
+								changeYear : true,
+								changeMonth : true,
+								nextText : '다음달',
+								yearRange : '-100y',
+								monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+										'9월', '10월', '11월', '12월' ],
+								dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+								dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+								showMonthAfterYear : true,
+								showAnim : "slide", //애니메이션을 적용한다.
+								yearSuffix : '년',
+								showAnim : 'slideDown',
+							});
 					$('.links a.home').tooltip();
 					$('.links a.blog').tooltip();
 
@@ -14,44 +28,17 @@ jQuery(document)
 					$('.register form')
 							.submit(
 									function() {
-										$(this).find("label[for='firstname']").html('First Name');
-										$(this).find("label[for='lastname']").html('Last Name');
-										$(this).find("label[for='username']").html('Username');
 										$(this).find("label[for='email']").html('Email');
+										$(this).find("label[for='name']").html('Name');
+										$(this).find("label[for='birth']").html('Birth');
 										$(this).find("label[for='password']").html('Password');
+										$(this).find("label[for='password_check']").html('Password_check');
 										// //
-										var firstname = $(this).find('input#firstname').val();
-										var lastname = $(this).find('input#lastname').val();
-										var username = $(this).find('input#username').val();
 										var email = $(this).find('input#email').val();
+										var name = $(this).find('input#name').val();
+										var birth = $(this).find('input#birth').val();
 										var password = $(this).find('input#password').val();
-										if (firstname == '') {
-											$(this)
-													.find("label[for='firstname']")
-													.append(
-															"<span style='display:none' class='red'> - 이름을 입력하세요.</span>");
-											$(this).find("label[for='firstname'] span").fadeIn(
-													'medium');
-											return false;
-										}
-										if (lastname == '') {
-											$(this)
-													.find("label[for='lastname']")
-													.append(
-															"<span style='display:none' class='red'> - 성을 입력하세요.</span>");
-											$(this).find("label[for='lastname'] span").fadeIn(
-													'medium');
-											return false;
-										}
-										if (username == '') {
-											$(this)
-													.find("label[for='username']")
-													.append(
-															"<span style='display:none' class='red'> - 닉네임을 입력하세요.</span>");
-											$(this).find("label[for='username'] span").fadeIn(
-													'medium');
-											return false;
-										}
+										var password_check = $(this).find('input#password_check').val();
 										if (email == '') {
 											$(this)
 													.find("label[for='email']")
@@ -60,13 +47,37 @@ jQuery(document)
 											$(this).find("label[for='email'] span").fadeIn('medium');
 											return false;
 										}
+										if (name == '') {
+											$(this)
+													.find("label[for='name']")
+													.append(
+															"<span style='display:none' class='red'> - 이름을 입력하세요.</span>");
+											$(this).find("label[for='name'] span").fadeIn('medium');
+											return false;
+										}
+										
+										if (birth == '') {
+											$(this)
+													.find("label[for='birth']")
+													.append(
+															"<span style='display:none' class='red'> - 생일입력.</span>");
+											$(this).find("label[for='birth'] span").fadeIn('medium');
+											return false;
+										}
 										if (password == '') {
 											$(this)
 													.find("label[for='password']")
 													.append(
 															"<span style='display:none' class='red'> - 비밀번호를 입력하세요.</span>");
-											$(this).find("label[for='password'] span").fadeIn(
-													'medium');
+											$(this).find("label[for='password'] span").fadeIn('medium');
+											return false;
+										}
+										if (password_check == '') {
+											$(this)
+													.find("label[for='password_check']")
+													.append(
+															"<span style='display:none' class='red'> - 비밀번호를 입력하세요.</span>");
+											$(this).find("label[for='password_check'] span").fadeIn('medium');
 											return false;
 										}
 									});
