@@ -28,7 +28,7 @@
         <![endif]-->
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript">
 	jQuery(document)
@@ -51,10 +51,7 @@
 											// //
 											var email = $(this).find('input#email').val();
 											if (email == '') {
-												$(this)
-														.find("label[for='email']")
-														.append(
-																"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
+												$(this).find("label[for='email']").append("<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
 												$(this).find("label[for='email'] span")
 														.fadeIn('medium');
 												return false;

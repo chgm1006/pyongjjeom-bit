@@ -28,38 +28,12 @@
         <![endif]-->
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript">
-	jQuery(document)
-			.ready(
-					function() {
-						/*
-						 * Tooltips
-						 */
-						$('.links a.home').tooltip();
-						$('.links a.blog').tooltip();
-						/*
-						 * Form validation
-						 */
-						$('.register form')
-								.submit(
-										function() {
-											$(this).find("label[for='email']").html('Email');
-											// //
-											var email = $(this).find('input#email').val();
-											if (email == '') {
-												$(this)
-														.find("label[for='email']")
-														.append(
-																"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
-												$(this).find("label[for='email'] span")
-														.fadeIn('medium');
-												return false;
-											}
-										});
-
-					});
+	jQuery(document).ready(function() {
+		$("button").cli
+	});
 </script>
 </head>
 
@@ -68,13 +42,11 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="" method="get">
-					<h2>
-						<span class="red"><strong>이메일 인증 완료</strong></span>
-					</h2>
-					<label for="email">인증확인</label> <input type="text" id="email" name="email"
-						placeholder="인증코드를 입력하세요">
-					<button type="submit">REGISTER</button>
+				<form action="/index.jsp" method="get">
+					<h3>
+						<span class="red"><strong>인증이 완료되었습니다</strong></span>
+					</h3>
+					<button type="button" id="btn">로그인</button>
 				</form>
 			</div>
 		</div>
