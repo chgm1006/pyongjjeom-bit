@@ -80,7 +80,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">비밀번호</td>
-							<td><input name="notPasswd" size="50" maxlength="50"></td>
+							<td><input name="notPasswd" size="50" maxlength="50" value="qwer"></td>
 							<td>&nbsp;</td>
 						</tr>
 						
