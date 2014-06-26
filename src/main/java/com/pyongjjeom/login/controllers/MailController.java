@@ -4,23 +4,15 @@
 
 package com.pyongjjeom.login.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.pyongjjeom.common.CommonLIB;
-import com.pyongjjeom.login.dao.LoginMapper;
+import com.pyongjjeom.common.CommonAES;
 import com.pyongjjeom.login.service.LoginService;
 import com.pyongjjeom.login.service.MailService;
 import com.pyongjjeom.user.dto.Member;
@@ -30,6 +22,7 @@ import com.pyongjjeom.user.dto.Member;
  * com.pyongjjeom.login.controllers 
  *    |_ MailController.java
  * 
+ * 인증메일 전송을 위한 클래스.
  * </pre>
  * 
  * @version :
@@ -71,26 +64,23 @@ public class MailController {
 		member.setEmail(toUser);
 
 		int updateCnt = loginService.updateEmailAuthCD(member);
-		String emailCD = loginService.getEmailAuthCD(toUser);
-
-		System.out.println("memCD = " + memCD);
-		System.out.println("authCD = " + authCD);
-		System.out.println("text = " + text.toString());
-		System.out.println("updateCnt = " + updateCnt);
-		System.out.println("emailCD = " + emailCD);
 
 		request.setAttribute("member", member);
-		// toUser = "chgm1006@hanmail.net";
+
 		mailService.sendMail(subject, text.toString(), fromUser, toUser);
 		return "emailAuth/emailAuth_check";
 	}
 
 	protected String getEmailText(String authCD, String email) {
 		StringBuilder text = new StringBuilder();
+		CommonAES aes = new CommonAES();
 		text.append("<h2><b>이메일 인증 코드입니다</b></h2><br>");
 		text.append(authCD);
-		text.append("<br><a href='http://localhost:8080/pyongjjeom/emailAuth_forward.jsp?emailAuthCD="
-				+ authCD + "&email=" + email + "'>인증번호 입력</a>");
+		text.append("<br><a href='http://localhost:8080/pyongjjeom/emailAuth_forward.jsp?rootc="
+				+ aes.getEncryptor(authCD)
+				+ "&rootm="
+				+ aes.getEncryptor(email)
+				+ "'>인증번호 입력</a>");
 
 		return text.toString();
 	}
@@ -102,8 +92,8 @@ public class MailController {
 
 	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
 	public String checkEmailAuth(Member user, HttpServletRequest request) {
-		String emailCD = (String) request.getParameter("emailAuthCD");
-		String email = (String) request.getParameter("email");
+		String emailCD = (String) request.getAttribute("emailAuthCD");
+		String email = (String) request.getAttribute("email");
 
 		String userAuthCD = loginService.getEmailAuthCD(email);
 		String resultPage = "";
