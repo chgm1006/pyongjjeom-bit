@@ -22,7 +22,7 @@ public interface LoginMapper {
 
 	public int checkMemberLogin(Map<String, String> loginMap);
 
-	public int createMember(Member user);
+	public int insertMember(Member user);
 
 	public String getMemCD(String email);
 

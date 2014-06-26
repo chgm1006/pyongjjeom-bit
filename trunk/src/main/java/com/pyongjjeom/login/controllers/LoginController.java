@@ -48,14 +48,22 @@ public class LoginController {
 		loginService.checkMemberLogin(email);
 		return "login/login";
 	}
-
-	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
-	public String createMember(@Valid Member user) {
+	
+	@RequestMapping(value = "register.force", method = RequestMethod.POST)
+	public String inserMember(@Valid Member user){
 		
 		String logCD = dc.getMemberCD("G");
+		System.out.println("dd");
 		user.setMemCD(logCD);
-				
-		loginService.createMember(user);
+		System.out.println(user);
+		loginService.insertMember(user);
+		
+		return "login/registersucess";
+	}
+	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)	
+	public String createMember(@Valid Member user) {
+		
+		
 		return "login/registerMember";
 	}
 
