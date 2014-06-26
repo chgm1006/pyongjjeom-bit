@@ -40,8 +40,15 @@ public class LoginController {
 	
 	private DBCode dc = new DBCode();
 	private Member mem;
-
+	
 	@RequestMapping(value = "login.force", method = RequestMethod.GET)
+	public String login(){
+		
+		return "login/login";
+		
+	}
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {
 		
 			
@@ -61,7 +68,7 @@ public class LoginController {
 		return "login/registersucess";
 	}
 	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)	
-	public String createMember(@Valid Member user) {
+	public String createMember() {
 		
 		
 		return "login/registerMember";
