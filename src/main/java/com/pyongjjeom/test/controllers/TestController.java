@@ -236,10 +236,8 @@ public class TestController {
 		NaverBook book = list.get(num);
 		book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
 		if (book.getTitle().contains("(")) {
-			book.setTitle(book.getTitle().substring(0,
-					book.getTitle().indexOf("(")));
+			book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
 		}
-
 
 		httpSession.setAttribute("book", book);
 
