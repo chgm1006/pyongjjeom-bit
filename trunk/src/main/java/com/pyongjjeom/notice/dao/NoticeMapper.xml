@@ -4,64 +4,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.notice.dao.NoticeMapper">
 
-    
-    
-    
+
+
+
 	<insert id="insertData" parameterType="Notice">
 		insert into notice
 		(notCD,writer,title,issue,notPasswd,category,permit,deleteyn,regidate,updatedate)
 		values
 		(#{notCD},#{writer},#{title},#{issue},#{notPasswd},#{category},'ADMIN','N',now(),now());
-		
-	
+
+
 	</insert>
 
 	<select id="getAllNoticeDatas" resultType="Notice">
 
-		select * from notice where ifnull(deleteyn,'N')='N';
-			
+		select * from notice where
+		ifnull(deleteyn,'N')='N';
+
 	</select>
-	
+
 	<select id="getSystemNoticeDatas" resultType="Notice">
 
-		select * from notice where category = 'SM';
-	
+		select * from notice where
+		category = 'SM';
+
 	</select>
-	
+
 	<select id="getEventNoticeDatas" resultType="Notice">
 
-		select * from notice where category = 'EV';
-	
+		select * from notice where
+		category = 'EV';
+
 	</select>
-	
-	
-	<select id="updateData" parameterType ="String" resultType="Notice">
-	    
-	    select * from notice where notCD= #{notCD};
-	
+
+
+	<select id="updateData" parameterType="String" resultType="Notice">
+
+		select * from
+		notice where notCD= #{notCD};
+
 	</select>
-	
-	
-	
-	<select id="getCode" resultType="com.pyongjjeom.notice.dto.NoticeCode">
+
+
+
+	<select id="getCode" resultType="NoticeCode">
 		select code,codenm from common_cd
-		where codegrp = 'notice'
+		where
+		codegrp = 'notice'
 		order by code;
 	</select>
-	
+
 
 	<update id="deleteData" parameterType="string">
-		update  notice
+		update notice
 		set deleteyn = 'Y'
 		where notCD= #{notCD};
 	</update>
-	
-		<update id="editData" parameterType="Notice">
-		update  notice
+
+	<update id="editData" parameterType="Notice">
+		update notice
 		set writer=#{writer},
 		title=#{title},issue=#{issue},
-		notPasswd=#{notPasswd},category=#{category} where notCD=#{notCD};
-		
+		notPasswd=#{notPasswd},category=#{category}
+		where notCD=#{notCD};
+
 	</update>
 
 
