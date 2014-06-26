@@ -12,19 +12,11 @@
  *                    Kimyt : 2014. 6. 20. :            : 신규 개발.
  */
 
-/*
- * Copyright yysvip.tistory.com.,LTD.
- * All rights reserved.
- * 
- * This software is the confidential and proprietary information
- * of yysvip.tistory.com.,LTD. ("Confidential Information").
- */
 package com.pyongjjeom.notice.controllers;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +25,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mysql.fabric.Response;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
-import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
 @Controller
 public class NoticeController {
