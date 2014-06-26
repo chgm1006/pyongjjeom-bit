@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.login.dao.LoginMapper;
+import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 
 /**
@@ -82,6 +83,7 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int createMember(Member user) {
+		
 		return loginMapper.createMember(user);
 	}
 
