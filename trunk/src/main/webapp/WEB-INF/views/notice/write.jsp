@@ -83,17 +83,23 @@
 							<td><input name="notPasswd" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
-						
-						
-						<form:select path="code" name="code" items="${code}" itemValue="code" 						
-						itemLabel="codenm" />
-						
-					
-					
-		
-		
-		
-		
+
+
+						<tr>
+							<td>&nbsp;</td>
+							<td align="center">카테고리</td>
+							<td>	<form:select path="code" name="code" items="${code}" itemValue="code"
+							itemLabel="codenm" style="width:50; align:center;"/></td>
+						</tr>
+<%-- 
+						<form:select path="code" name="code" items="${code}" itemValue="code"
+							itemLabel="codenm" />
+ --%>
+
+
+
+
+
 						<%-- <tr>
 					<td width="96">공지사항코드</td>
 					<td width="172">
@@ -109,7 +115,7 @@
 					<td width="96"></td>
 					<td width="172"></td>
 				</tr> --%>
-				
+
 						<tr height="1" bgcolor="#dddddd">
 							<td colspan="4"></td>
 						</tr>
