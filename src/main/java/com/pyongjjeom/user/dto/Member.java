@@ -20,6 +20,16 @@ import org.apache.log4j.Logger;
  */
 public class Member {
 
+	@Override
+	public String toString() {
+		return "Member [log=" + log + ", memCD=" + memCD + ", email=" + email
+				+ ", memKind=" + memKind + ", memNm=" + memNm + ", birth=" + birth
+				+ ", passwd=" + passwd + ", emailAuthYn=" + emailAuthYn
+				+ ", emailAuthCD=" + emailAuthCD + ", memValid=" + memValid + ", fbYn="
+				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
+				+ regiDate + ", updateDate=" + updateDate + "]";
+	}
+
 	private Logger log = Logger.getLogger(this.getClass());
 
 	private String memCD = "";
