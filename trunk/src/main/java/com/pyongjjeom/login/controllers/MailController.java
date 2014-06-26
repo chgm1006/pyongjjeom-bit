@@ -92,8 +92,8 @@ public class MailController {
 
 	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
 	public String checkEmailAuth(Member user, HttpServletRequest request) {
-		String emailCD = (String) request.getAttribute("emailAuthCD");
-		String email = (String) request.getAttribute("email");
+		String emailCD = (String) request.getParameter("emailAuthCD");
+		String email = (String) request.getParameter("email");
 
 		String userAuthCD = loginService.getEmailAuthCD(email);
 		String resultPage = "";
