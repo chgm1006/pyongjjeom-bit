@@ -24,10 +24,10 @@
 	<c:forEach var="movie" items="${resultList }" varStatus="status">
 		<div id="main" onclick="document.location='test2.do?num=${status.index}' ">
 
-			영화 제목 : ${movie.title}<br> 부제 : ${movie.subtitle}<br><a
-				href="${movie.link }"> <img src="${movie.image}"></a><br> 감독 :
-			${movie.director }<br> 배우 : ${movie.actor }<br> 개봉일
-			:${movie.pubDate}<br> 평점 :${movie.userRating}<br>
+			영화 제목 : ${movie.title}<br>  <br>부제 : ${movie.subtitle}<br> <br><a
+				href="${movie.link }"> <img src="${movie.image}"></a><br>  <br>감독 :
+			${movie.director }<br>  <br>배우 : ${movie.actor }<br>  <br>개봉일
+			:${movie.pubDate}<br>  <br>평점 :${movie.userRating}<br> <br>
 		</div>
 		<br>
 	</c:forEach>
