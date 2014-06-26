@@ -30,11 +30,15 @@ import com.pyongjjeom.notice.dto.NoticeCode;
 public interface NoticeMapper {
 	
 	void insertData(Notice notice);
-	
+		
 	List <NoticeCode> getCode();
 	
 	List <Notice> applyData();
 	
-	void deleteData(String notice);
+	Notice updateData(String notCD);
+	
+	void deleteData(String notCD);
+	
+	void editData(Notice notice);
 	
 }
