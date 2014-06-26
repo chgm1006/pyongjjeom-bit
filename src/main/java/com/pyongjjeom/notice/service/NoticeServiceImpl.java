@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 
 
 
+
 import com.pyongjjeom.notice.dao.NoticeMapper;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -106,8 +107,38 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 
 	 * 상세 : 
 	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
+	 * @see com.pyongjjeom.notice.service.NoticeService#editData(com.pyongjjeom.notice.dto.Notice)
 	 */
+	@Override
+	public void editData(Notice notice) {
+		// TODO Auto-generated method stub
+		
+		noticeMapper.editData(notice);
+		
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#updateData(java.lang.String)
+	 */
+	@Override
+	public Notice updateData(String notCD) {
+		// TODO Auto-generated method stub
+		return noticeMapper.updateData(notCD);
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getData(com.pyongjjeom.notice.dto.Notice)
+	 */
+
+
 
 
 }
