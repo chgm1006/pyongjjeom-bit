@@ -4,10 +4,7 @@
 
 package com.pyongjjeom.myroom.controllers;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.myroom.service.MyRoomService;
-import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.user.dto.Member;
