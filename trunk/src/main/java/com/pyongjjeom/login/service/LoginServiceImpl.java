@@ -136,6 +136,11 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
+	public int updateEmailAuthCDCheck(Member member) {
+		return loginMapper.updateEmailAuthCDCheck(member);
+	}
+
+	@Override
 	public String getEmailAuthCD(String email) {
 		return loginMapper.getEmailAuthCD(email);
 	}
