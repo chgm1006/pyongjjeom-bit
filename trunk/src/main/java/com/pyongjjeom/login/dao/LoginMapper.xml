@@ -19,17 +19,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<update id="updateEmailAuthCD" parameterType="Member">
 		UPDATE member
 		SET
-		emailauthyn
-		= 'N',
+		emailauthyn = 'N',
 		emailauthcd = '${emailAuthCD}',
+		updatedate = now()
+		WHERE memcd
+		= '${memCD}'
+		AND email = '${email}';
+	</update>
+
+	<update id="updateEmailAuthCDCheck" parameterType="Member">
+		UPDATE member
+		SET
+		emailauthyn = 'Y',
+		emailauthcd = '',
 		updatedate = now()
 		WHERE memcd = '${memCD}'
 		AND email = '${email}';
 	</update>
-	
+
 	<select id="getEmailAuthCD" parameterType="string" resultType="string">
-		SELECT emailauthcd FROM member
-where email = #{email};
+		SELECT
+		emailauthcd FROM member
+		where email = #{email};
 	</select>
 
 </mapper>
