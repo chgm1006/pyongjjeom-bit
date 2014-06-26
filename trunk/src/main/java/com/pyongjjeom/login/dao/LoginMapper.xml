@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</select>
 
 	<insert id="createMember" parameterType="Member">
-
+		insert into member(email, memnm, birth, passwd)
+		values(#{email},#{memnm},#{birth},#{passwd}); 
 	</insert>
 
 	<select id="getMemCD" parameterType="string" resultType="string">
