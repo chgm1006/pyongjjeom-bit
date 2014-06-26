@@ -35,7 +35,7 @@ public interface NoticeService {
 	
 	List <NoticeCode> getCode();
 	
-	List <Notice> applyData();
+	List <Notice> getAllNoticeDatas();
 	
 	void editData(Notice notice);
 	
