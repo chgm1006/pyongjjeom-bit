@@ -62,7 +62,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">제목</td>
-							<td><input name="title" size="50" maxlength="100"></td>
+							<td><input name="title" size="50" maxlength="100" value ></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">
@@ -80,7 +80,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">비밀번호</td>
-							<td><input name="notPasswd" size="50" maxlength="50" value="qwer"></td>
+							<td><input name="notPasswd" size="50" maxlength="50"></td>
 							<td>&nbsp;</td>
 						</tr>
 						
