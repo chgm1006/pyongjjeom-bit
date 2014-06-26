@@ -59,16 +59,16 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="" method="post">
+				<form action="register.force" method="post">
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 					<label for="email">Email</label> <input type="text" id="email" name="email"
 						placeholder="enter your email..."> <label for="name">Name</label>
-					<input type="text" id="name" name="name" placeholder="enter your name...">
+					<input type="text" id="name" name="memNm" placeholder="enter your name...">
 					<label for="birth">Birth</label> <input type="text" id="birth" name="birth"
 						placeholder="choose a birth..."> <label for="password">Password</label>
-					<input type="text" id="password" name="password"
+					<input type="text" id="password" name="passwd"
 						placeholder="enter your password..."> <label for="password_check">Password
 						Check</label> <input type="text" id="password_check" name="password_check"
 						placeholder="enter your passwordcheck...">
