@@ -40,12 +40,14 @@ public class LoginController {
 	@RequestMapping(value = "login.force", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {
 		
+		loginService.checkMemberLogin(email);
 		return "login/login";
 	}
 
 	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
 	public String createMember(Member user) {
 		
+		loginService.createMember(user);
 		return "login/registerMember";
 	}
 
