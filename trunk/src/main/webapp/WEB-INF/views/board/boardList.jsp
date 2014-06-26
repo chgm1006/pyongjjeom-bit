@@ -49,7 +49,7 @@
 					<h3>${notice.title}</h3>
 					<h4>${notice.regidate}</h4>
 				</dt>
-				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#">글수정</a>
+				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#" OnClick="window.location='edit.do'">글수정</a>
 				<a class="mainBoard" href="#" OnClick="window.location='delete.do'">삭제</a></dd>
 			</c:forEach>
 	
