@@ -27,10 +27,10 @@ public class Notice {
 	private String category = "";
 	private String permit = "";
 	private String notPasswd = "";
-	public String getNotcd() {
+	public String getNotCD() {
 		return notCD;
 	}
-	public void setNotcd(String notCD) {
+	public void setNotCD(String notCD) {
 		this.notCD = notCD;
 	}
 	public String getWriter() {
