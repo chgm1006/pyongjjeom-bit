@@ -33,7 +33,7 @@ public interface NoticeMapper {
 		
 	List <NoticeCode> getCode();
 	
-	List <Notice> applyData();
+	List <Notice> getAllNoticeDatas();
 	
 	Notice updateData(String notCD);
 	

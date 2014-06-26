@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 
-	<select id="applyData" resultType="Notice">
+	<select id="getAllNoticeDatas" resultType="Notice">
 
 		select * from notice where ifnull(deleteyn,'N')='N';
 	
