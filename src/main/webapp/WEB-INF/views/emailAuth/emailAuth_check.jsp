@@ -72,7 +72,7 @@
 					<h2>
 						<span class="red"><strong>인증번호 입력</strong></span>
 					</h2>
-					<label for="emailAuthCD">인증번호 &nbsp; &nbsp; <span class="red"></span></label>
+					<label for="emailAuthCD">인증번호 &nbsp; &nbsp; <span class="red">${errorMSG }</span></label>
 					<input type="text" id="emailAuthCD" name="emailAuthCD"
 						placeholder="인증번호를 입력하세요...."><br>
 

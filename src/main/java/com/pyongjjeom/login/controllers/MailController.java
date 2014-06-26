@@ -97,11 +97,7 @@ public class MailController {
 
 	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.GET)
 	public String checkEmailAuthGET(Member user, HttpServletRequest request) {
-		String emailCD = (String) request.getParameter("emailAuthCD");
-		String email = (String) request.getParameter("email");
-		System.out.println("emailCD111 = " + emailCD);
-		System.out.println("email111 = " + email);
-		return "emailAuth/emailAuth_check";
+		return checkEmailAuth(user, request);
 	}
 
 	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
@@ -109,19 +105,20 @@ public class MailController {
 		String emailCD = (String) request.getParameter("emailAuthCD");
 		String email = (String) request.getParameter("email");
 
-		System.out.println("emailCD222 = " + emailCD);
-		System.out.println("email222 = " + email);
-
 		String userAuthCD = loginService.getEmailAuthCD(email);
-		System.out.println("userAuthCD222 = " + userAuthCD);
+		String resultPage = "";
+		user.setEmail(email);
+		user.setMemCD(loginService.getMemCD(email));
 
 		if (emailCD.equals(userAuthCD)) {
-			System.err.println("emailCD.equals(userAuthCD) = "
-					+ emailCD.equals(userAuthCD));
-			return "emailAuth/emailAuth_ok";
+			loginService.updateEmailAuthCDCheck(user);
+			resultPage = "emailAuth/emailAuth_ok";
+		} else {
+			request.setAttribute("errorMSG", "인증번호를 확인하세요");
+			resultPage = "emailAuth/emailAuth_check";
 		}
 
-		return "emailAuth/emailAuth_check";
+		return resultPage;
 	}
 
 }

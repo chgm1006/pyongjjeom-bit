@@ -28,5 +28,7 @@ public interface LoginMapper {
 
 	public int updateEmailAuthCD(Member member);
 
+	public int updateEmailAuthCDCheck(Member member);
+
 	public String getEmailAuthCD(String email);
 }
