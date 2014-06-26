@@ -284,7 +284,7 @@ public class DBCode {
 
 	public static void main(String[] args) {
 		DBCode dc = new DBCode();
-		dc.getNoticeCD("no");
+		System.out.println(dc.getMemberCD("G"));
 		dc.getNoticeCD("sm");
 		dc.getNoticeCD("ev");
 		dc.getNoticeCD("");
