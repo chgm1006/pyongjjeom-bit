@@ -85,7 +85,7 @@
 						</tr>
 						
 						
-						<form:select path="code" items="${code}" itemValue="code" 						
+						<form:select path="code" name="code" items="${code}" itemValue="code" 						
 						itemLabel="codenm" />
 						
 					
