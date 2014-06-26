@@ -13,7 +13,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<context:property-placeholder order="1"
 		location="/WEB-INF/properties/*.properties" />
-<!-- 	<context:property-placeholder order="2" ignore-unresolvable="false"		location="/WEB-INF/properties/properties/mail.properties" /> -->
+	<!-- <context:property-placeholder order="2" ignore-unresolvable="false" location="/WEB-INF/properties/properties/mail.properties" 
+		/> -->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
@@ -62,7 +63,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao" />
+			value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao" />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
