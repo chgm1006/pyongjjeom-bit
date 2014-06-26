@@ -4,20 +4,14 @@
 <%
 	String emailAuthCD = (String) request.getParameter("rootc");
 	String email = (String) request.getParameter("rootm");
-	System.out.println("emailAuthCD = " + emailAuthCD);
-	System.out.println("email = " + email);
 
 	CommonAES aes = new CommonAES();
 	emailAuthCD = aes.getDecryptor(emailAuthCD);
 	email = aes.getDecryptor(email);
 
-	// 	System.out.println("emailAuthCD = " + emailAuthCD);
-	// 	System.out.println("email = " + email);
-
-	request.setAttribute("emailAuthCD", emailAuthCD);
-	request.setAttribute("email", email);
-	request.getRequestDispatcher("views/emailAuth_check.force").forward(
-			request, response);
+	String forwardJSP = "views/emailAuth_check.force?emailAuthCD="
+			+ emailAuthCD + "&email=" + email;
+	request.getRequestDispatcher(forwardJSP).forward(request, response);
 %>
 <!DOCTYPE html>
 <html>
