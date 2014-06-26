@@ -61,13 +61,13 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 
 	 * 상세 : 
 	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#applyData()
+	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeDatas()
 	 */
 	@Override
-	public List<Notice> applyData() {
+	public List<Notice> getAllNoticeDatas() {
 		// TODO Auto-generated method stub
 		
-		return noticeMapper.applyData();
+		return noticeMapper.getAllNoticeDatas();
 	}
 
 	/**
