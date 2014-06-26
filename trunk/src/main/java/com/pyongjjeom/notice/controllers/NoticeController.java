@@ -147,7 +147,7 @@ public class NoticeController {
 		
 		noticeService.deleteData(request.getParameter("notCD"));
 
-		return "board/delete_ok";
+		return "notice/delete_ok";
 	}
 
 }
