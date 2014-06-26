@@ -67,32 +67,6 @@ public class LoginServiceImpl implements LoginService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
-	 * @Method Name : createMember
-	 * @date : 2014. 6. 18.
-	 * @author : Forrest
-	 * @history :
-	 *          ------------------------------------------------------------------
-	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
-	 *          --------------------------------------- 2014. 6. 18. Forrest 최초 작성
-	 *          ------------------------------------------------------------------
-	 *          -----
-	 * 
-	 * @see com.pyongjjeom.login.service.LoginService#createMember(com.pyongjjeom.user.dto.Member)
-	 * @param user
-	 * @return
-	 */
-	@Override
-	public int createMember(Member user) {
-		
-		return loginMapper.createMember(user);
-	}
-
-	/**
-	 * <pre>
-	 * 1. 개요 : 
-	 * 2. 처리내용 :
-	 * </pre>
-	 * 
 	 * @Method Name : getMemCD
 	 * @date : 2014. 6. 24.
 	 * @author : Forrest
@@ -145,6 +119,19 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String getEmailAuthCD(String email) {
 		return loginMapper.getEmailAuthCD(email);
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.login.service.LoginService#insertMember(com.pyongjjeom.user.dto.Member)
+	 */
+	@Override
+	public int insertMember(Member user) {
+		// TODO Auto-generated method stub
+		return loginMapper.insertMember(user);
 	}
 
 }

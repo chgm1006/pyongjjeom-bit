@@ -22,7 +22,7 @@ public interface LoginService {
 
 	public int checkMemberLogin(String email);
 
-	public int createMember(Member user);
+	public int insertMember(Member user);
 
 	public String getMemCD(String email);
 
