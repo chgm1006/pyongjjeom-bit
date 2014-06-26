@@ -54,11 +54,14 @@ public class NoticeController {
 		System.out.println("왓수?");
 		List<Notice> list = noticeService.applyData();
 		model.addAttribute("add", list);
+	
 
-		System.out.println("왓수?22222222222222222");
-		return "board/boardList";
+		System.out.println("왓수?22222222222222222"+list.toString());
+		return "notice/boardList";
 	}
 
+	
+	
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
@@ -69,7 +72,7 @@ public class NoticeController {
 		System.out.println(code.size());
 		model.addAttribute("code", code);
 
-		return "board/write";
+		return "notice/write";
 	}
 
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
@@ -77,27 +80,72 @@ public class NoticeController {
 			HttpServletRequest request) {
 		
 		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
-		notice.setNotcd(notCD);
+		notice.setNotCD(notCD);
 		
 		System.out.println(request.getParameter("code"));
 		
 		notice.setCategory(request.getParameter("code"));
 	
-
-
-		System.out.println("왓수?");
+		
 		noticeService.insertData(notice);
 		System.out.println(notice.toString());
 
-		return "board/write_ok";
+		return "notice/write_ok";
 	}
 
-	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
-	public String deleteOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
+	public String editOkDo(@Valid Notice notice, Model model,HttpServletRequest request)
+	{
+		System.out.println(request.getParameter("notCD"));
+		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
+		System.out.println(newNotice);
+		model.addAttribute("nn", newNotice);
+		
+		
+		List<NoticeCode> code = noticeService.getCode();
+		System.out.println(code.size());
+		model.addAttribute("code", code);
+		
+		
+		
+		System.out.println(notice.toString());		
+		
+		
+		return "notice/edit";
+		
+	}
+	
+	@RequestMapping(value = "editok.do", method = RequestMethod.POST)
+	public String editDo(@Valid Notice notice, Model model,HttpServletRequest request)
+	{
+		
+	
+		notice.setCategory(request.getParameter("code"));
+	
+		System.out.println(notice.toString());
+		noticeService.editData(notice);
 
-		System.out.println("왓수?");
-		noticeService.deleteData(null);
+		System.out.println(notice.toString());
+		
+
+		return "notice/edit_ok";
+		
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
+	public String deleteOKDo(@Valid Notice notice, Model model,HttpServletRequest request) 
+	
+	{
+		
+		
+		request.getParameter("notCD");
+
+		System.out.println("삭제할거야??");
+		
+		noticeService.deleteData(request.getParameter("notCD"));
 
 		return "board/delete_ok";
 	}
