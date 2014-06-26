@@ -10,7 +10,7 @@ import com.pyongjjeom.test.parsing.contents.BookGrades;
 import com.pyongjjeom.test.parsing.contents.ContentsValue;
 import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
-@Service("testService")
+@Service("TestService")
 public class TestServiceImpl implements TestService {
 	@Autowired
 	private TestDao testDao;
