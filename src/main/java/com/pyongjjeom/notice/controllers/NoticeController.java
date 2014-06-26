@@ -52,7 +52,7 @@ public class NoticeController {
 			Model model, HttpServletRequest request) {
 
 		System.out.println("왓수?");
-		List<Notice> list = noticeService.applyData();
+		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 	
 
@@ -124,6 +124,8 @@ public class NoticeController {
 	
 		System.out.println(notice.toString());
 		noticeService.editData(notice);
+		
+		request.getParameter("notCD");
 
 		System.out.println(notice.toString());
 		
