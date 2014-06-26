@@ -31,4 +31,13 @@ public interface LoginMapper {
 	public int updateEmailAuthCDCheck(Member member);
 
 	public String getEmailAuthCD(String email);
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @param member
+	 * @return 
+	 */
 }
