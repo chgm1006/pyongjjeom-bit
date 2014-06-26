@@ -8,8 +8,12 @@ import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
 public interface TestService {
 	void movieTitleInsert(List<ContentsValue> Values);
+
 	void bookTitleInsert(List<ContentsValue> values);
-	void gradeUpdate(List<ContentsValue> Values,String str);
+
+	void gradeUpdate(List<ContentsValue> Values, String str);
+
 	MovieGrades movieGradeSelect(String title);
+
 	BookGrades bookGradeSelect(String title);
 }
