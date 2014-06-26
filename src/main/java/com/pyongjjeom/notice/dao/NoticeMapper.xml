@@ -25,16 +25,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getSystemNoticeDatas" resultType="Notice">
 
-		select * from notice where
-		category = 'SM';
+
+		select * from notice where ifnull(deleteyn,'N')='N' and category = 'SM';
+	
 
 	</select>
 
 	<select id="getEventNoticeDatas" resultType="Notice">
 
-		select * from notice where
-		category = 'EV';
 
+		select * from notice where ifnull(deleteyn,'N')='N' and category = 'EV';
+	
 	</select>
 
 
