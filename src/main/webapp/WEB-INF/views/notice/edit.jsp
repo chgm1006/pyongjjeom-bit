@@ -59,7 +59,8 @@
 						</tr>
 					</table>
 					<table>
-						<tr>
+					<input type ="hidden" name = "notCD"  value ="${nn.notCD}">
+						<tr>	
 							<td>&nbsp;</td>
 							<td align="center">제목</td>
 							<td><input type=text name="title" size="50" maxlength="100" value="${nn.title}"></td>
