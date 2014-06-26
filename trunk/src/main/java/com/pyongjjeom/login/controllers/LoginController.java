@@ -37,13 +37,15 @@ public class LoginController {
 
 	private Member mem;
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "login.force", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {
-		return null;
+		
+		return "login/login";
 	}
 
 	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
 	public String createMember(Member user) {
+		
 		return "login/registerMember";
 	}
 
