@@ -31,9 +31,15 @@ public interface NoticeService {
 
 	void insertData(Notice notice);
 	
+
+	
 	List <NoticeCode> getCode();
 	
 	List <Notice> applyData();
+	
+	void editData(Notice notice);
+	
+	Notice updateData(String notCD);
 	
 	void deleteData(String notCD);
 
