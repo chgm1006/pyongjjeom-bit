@@ -28,19 +28,16 @@ import com.pyongjjeom.notice.dto.NoticeCode;
 
 public interface NoticeService {
 
-
 	void insertData(Notice notice);
-	
 
-	
-	List <NoticeCode> getCode();
-	
-	List <Notice> getAllNoticeDatas();
-	
+	List<NoticeCode> getCode();
+
+	List<Notice> getAllNoticeDatas();
+
 	void editData(Notice notice);
-	
+
 	Notice updateData(String notCD);
-	
+
 	void deleteData(String notCD);
 
 }
