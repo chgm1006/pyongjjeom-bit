@@ -16,9 +16,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="applyData" resultType="Notice">
 
 		select * from notice where ifnull(deleteyn,'N')='N';
-		
+	
 		
 	</select>
+	
+	<select id="updateData" parameterType ="String" resultType="Notice">
+	    
+	    select * from notice where notCD= #{notCD};
+	
+		
+	</select>
+	
+	
 	
 	<select id="getCode" resultType="com.pyongjjeom.notice.dto.NoticeCode">
 		select code,codenm from common_cd
@@ -26,12 +35,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by code;
 	</select>
 	
-	
-<!-- 	<update id="deleteData" parameterType="String">
+
+	<update id="deleteData" parameterType="string">
 		update  notice
-		set deleteyn = 'N'
-		where deleteyn = '';
-	</update> -->
+		set deleteyn = 'Y'
+		where notCD= #{notCD};
+	</update>
+	
+		<update id="editData" parameterType="Notice">
+		update  notice
+		set writer=#{writer},
+		title=#{title},issue=#{issue},
+		notPasswd=#{notPasswd},category=#{category} where notCD=#{notCD};
+		
+	</update>
 
 
 
