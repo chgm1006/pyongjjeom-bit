@@ -34,6 +34,10 @@ public interface NoticeService {
 
 	List<Notice> getAllNoticeDatas();
 
+	List<Notice> getSystemNoticeDatas();
+	
+	List<Notice> getEventNoticeDatas();
+	
 	void editData(Notice notice);
 
 	Notice updateData(String notCD);

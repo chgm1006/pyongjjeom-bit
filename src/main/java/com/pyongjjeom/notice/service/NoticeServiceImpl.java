@@ -135,6 +135,32 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 
 	 * 상세 : 
 	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getSystemNoticeDatas()
+	 */
+	@Override
+	public List<Notice> getSystemNoticeDatas() {
+		// TODO Auto-generated method stub
+		return noticeMapper.getSystemNoticeDatas();
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getEventNoticeDatas()
+	 */
+	@Override
+	public List<Notice> getEventNoticeDatas() {
+		// TODO Auto-generated method stub
+		return noticeMapper.getEventNoticeDatas();
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getData(com.pyongjjeom.notice.dto.Notice)
 	 */
 
