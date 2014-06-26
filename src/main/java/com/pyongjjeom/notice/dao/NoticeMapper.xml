@@ -4,6 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.notice.dao.NoticeMapper">
 
+    
+    
+    
 	<insert id="insertData" parameterType="Notice">
 		insert into notice
 		(notCD,writer,title,issue,notPasswd,category,permit,deleteyn,regidate,updatedate)
@@ -16,15 +19,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllNoticeDatas" resultType="Notice">
 
 		select * from notice where ifnull(deleteyn,'N')='N';
-	
-		
+			
 	</select>
+	
+	<select id="getSystemNoticeDatas" resultType="Notice">
+
+		select * from notice where category = 'SM';
+	
+	</select>
+	
+	<select id="getEventNoticeDatas" resultType="Notice">
+
+		select * from notice where category = 'EV';
+	
+	</select>
+	
 	
 	<select id="updateData" parameterType ="String" resultType="Notice">
 	    
 	    select * from notice where notCD= #{notCD};
 	
-		
 	</select>
 	
 	
