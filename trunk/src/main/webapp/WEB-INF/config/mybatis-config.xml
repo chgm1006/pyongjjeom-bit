@@ -13,6 +13,7 @@
 	<typeAliases>
 		<typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member" />
 		<typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice" />
+		<typeAlias type="com.pyongjjeom.notice.dto.NoticeCode" alias="NoticeCode" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Post" alias="Post" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
 	</typeAliases>
