@@ -19,25 +19,30 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.notice.dao;
+package com.pyongjjeom.notice.dao; 
 
 import java.util.List;
 
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 
+
 public interface NoticeMapper {
-
+	
 	void insertData(Notice notice);
-
-	List<NoticeCode> getCode();
-
-	List<Notice> getAllNoticeDatas();
-
+		
+	List <NoticeCode> getCode();
+	
+	List <Notice> getAllNoticeDatas();
+	
+	List<Notice> getSystemNoticeDatas();
+	
+	List<Notice> getEventNoticeDatas();
+	
 	Notice updateData(String notCD);
-
+	
 	void deleteData(String notCD);
-
+	
 	void editData(Notice notice);
-
+	
 }
