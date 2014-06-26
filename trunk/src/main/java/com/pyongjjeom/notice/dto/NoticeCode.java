@@ -19,9 +19,8 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.notice.dto; 
+package com.pyongjjeom.notice.dto;
 
-import org.apache.log4j.Logger;
 
 /**
  * <pre>
@@ -41,30 +40,29 @@ import org.apache.log4j.Logger;
  *   |_ NoticeCode.java
  * </pre>
  * 
- * @author  : Kimyt
+ * @author : Kimyt
  * @version : 1.0
  */
 
 public class NoticeCode {
-	
+
 	private String code;
 	private String codenm;
-	
-	
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getCodenm() {
 		return codenm;
 	}
+
 	public void setCodenm(String codenm) {
 		this.codenm = codenm;
 	}
-	
-
-
 
 }
