@@ -123,50 +123,6 @@ public class TestController {
 		testService.gradeUpdate(Values, str);
 	}
 
-	@RequestMapping(value = "search", method = RequestMethod.GET)
-	public String getSearch(Model model, HttpServletRequest request)
-			throws UnsupportedEncodingException {
-		logger.info("EmpController getSearch");
-
-		List<?> resultList = null;
-		String bookApiKey = "0daf987df65056e8b60c4302124e1e6708d36ebb";
-		String movieApiKey = "4035f324c992b0137de59acbd52aca1546a829f7";
-		String uri;
-		String resultPage = null;
-
-		int category = Integer.parseInt(request.getParameter("category"));
-		String searchQuery = (String) request.getParameter("Search").trim();
-		System.out.println(searchQuery);
-		DaumParse daumParse = new DaumParse();
-
-		switch (category) {
-		case 0:
-			resultList = new ArrayList<DaumBook>();
-			uri = "http://apis.daum.net/search/book?q="
-					+ URLEncoder.encode(searchQuery, "UTF-8") + "&apikey=" + bookApiKey;
-			resultList = daumParse.bookParse(uri);
-			System.out.println(uri);
-			resultPage = "test/resultDaumBook";
-			break;
-		case 1:
-			resultList = new ArrayList<DaumMovie>();
-			uri = " http://apis.daum.net/contents/movie?apikey=" + movieApiKey
-					+ "&q=" + URLEncoder.encode(searchQuery, "UTF-8");
-			System.out.println(uri);
-			resultList = daumParse.movieParse(uri);
-			resultPage = "test/resultDaumMovie";
-			break;
-		default:
-			break;
-		}
-
-		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("resultList", resultList);
-		// request.setAttribute("resultList", resultList);
-
-		return resultPage;
-	}
-
 	@RequestMapping(value = "search2", method = RequestMethod.GET)
 	public String naverSearch(Model model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
@@ -211,53 +167,6 @@ public class TestController {
 		return resultPage;
 	}
 
-	@RequestMapping(value = "test.do", method = RequestMethod.GET)
-	public String test(Model model, HttpServletRequest request) {
-
-		int num = Integer.parseInt(request.getParameter("num"));
-		HttpSession httpSession = request.getSession();
-		List<DaumMovie> list = (List<DaumMovie>) httpSession
-				.getAttribute("resultList");
-		DaumMovie movie = list.get(num);
-		MovieGrades grades = testService.movieGradeSelect(movie.getTitle());
-
-		request.setAttribute("movie", movie);
-		request.setAttribute("grades", grades);
-		if (grades != null) {
-			double avg = (grades.getCgvMg() + grades.getDaumMg()
-					+ grades.getLotteMg() + grades.getMegaBoxMg() + grades.getNaverMg()) / 5;
-
-			request.setAttribute("avg", avg);
-		}
-		return "test/movieContext";
-	}
-
-	@RequestMapping(value = "test1.do", method = RequestMethod.GET)
-	public String test1(Model model, HttpServletRequest request) {
-
-		int num = Integer.parseInt(request.getParameter("num"));
-		HttpSession httpSession = request.getSession();
-		List<DaumBook> list = (List<DaumBook>) httpSession
-				.getAttribute("resultList");
-		DaumBook book = list.get(num);
-		book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
-		if (book.getTitle().contains("(")) {
-			book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
-		}
-
-		BookGrades grades = testService.bookGradeSelect(book.getTitle());
-
-		request.setAttribute("book", book);
-		request.setAttribute("grades", grades);
-		if (grades != null) {
-			double avg = (grades.getAladinBg() + grades.getBandiBg()
-					+ grades.getKyoboBg() + grades.getNaverBg() + grades.getYesBg()) / 5;
-
-			request.setAttribute("avg", avg);
-		}
-		return "test/bookContext";
-	}
-
 	@RequestMapping(value = "test2.do", method = RequestMethod.GET)
 	public String test2(Model model, HttpServletRequest request) {
 
@@ -283,19 +192,18 @@ public class TestController {
 
 			try {
 				doc = Jsoup.connect(movie.getLink()).get();
-				httpSession.setAttribute("genre",
+				request.setAttribute("genre",
 						doc.select("p[class=info_spec] a[href*=genre").text());
-				httpSession.setAttribute("nation",
+				request.setAttribute("nation",
 						doc.select("p[class=info_spec] a[href*=nation").text());
-				httpSession.setAttribute("open",
+				request.setAttribute("open",
 						doc.select("p[class=info_spec] a[href*=open").text());
-				httpSession.setAttribute("grade",
+				request.setAttribute("grade",
 						doc.select("p[class=info_spec] a[href*=grade").text());
-				httpSession.setAttribute("count",
+				request.setAttribute("count",
 						doc.select("p[class=info_spec] span[class=count]").text());
-				httpSession.setAttribute("context", doc.select("p[class=con_tx]")
-						.text());
-				httpSession.setAttribute("grades", grades);
+				request.setAttribute("context", doc.select("p[class=con_tx]").text());
+				request.setAttribute("grades", grades);
 
 				if (grades != null) {
 					int count = 0;
@@ -326,8 +234,49 @@ public class TestController {
 		List<NaverBook> list = (List<NaverBook>) httpSession
 				.getAttribute("resultList");
 		NaverBook book = list.get(num);
+		book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
+		if (book.getTitle().contains("(")) {
+			book.setTitle(book.getTitle().substring(0,
+					book.getTitle().indexOf("(")));
+		}
+
+
 		httpSession.setAttribute("book", book);
 
+		if (httpSession.getAttribute("stat").equals("search")) {
+			System.out.println("까꿍2~");
+			Document doc;
+			Jsoup jsoup = null;
+			BookGrades grades = new BookGrades();
+			System.out.println("???" + book.getTitle());
+			grades = testService.bookGradeSelect(book.getTitle());
+
+			try {
+				doc = Jsoup.connect(book.getLink()).get();
+				request.setAttribute("bookIntroContent",
+						doc.select("div[id=bookIntroContent]").text());
+				request.setAttribute("authorIntroContent",
+						doc.select("div[id=authorIntroContent]").text());
+				request.setAttribute("grades", grades);
+
+				if (grades != null) {
+					int count = 0;
+					double avg = 0;
+					double arr[] = { grades.getAladinBg(), grades.getBandiBg(),
+							grades.getKyoboBg(), grades.getNaverBg(), grades.getYesBg() };
+					for (double grade : arr) {
+						if (grade != 0) {
+							avg += grade;
+							count++;
+						}
+					}
+					request.setAttribute("avg", avg / count);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "test/searchTest2";
+		}
 		return "test/bookPostingTest";
 	}
 
@@ -348,4 +297,5 @@ public class TestController {
 		request.setAttribute("posting", str);
 		return "test/bookPostingTest2";
 	}
+
 }
