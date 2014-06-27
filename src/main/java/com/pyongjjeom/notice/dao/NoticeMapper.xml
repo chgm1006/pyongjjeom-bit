@@ -19,7 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllNoticeDatas" resultType="Notice">
 
 		select * from notice where
-		ifnull(deleteyn,'N')='N';
+		ifnull(deleteyn,'N')='N'
+		order by regidate;
 
 	</select>
 
@@ -66,8 +67,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update notice
 		set writer=#{writer},
 		title=#{title},issue=#{issue},
-		notPasswd=#{notPasswd},category=#{category}
-		where notCD=#{notCD};
+		notPasswd=#{notPasswd},category=#{category},updatedate=now() where notCD=#{notCD};
+
 
 	</update>
 
