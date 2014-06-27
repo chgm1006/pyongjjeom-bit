@@ -13,7 +13,6 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<context:property-placeholder order="1"
 		location="/WEB-INF/properties/*.properties" />
-	<util:properties id="common" location="/WEB-INF/properties/common.properties"/>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
@@ -45,8 +44,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	</bean>
 
 	<!-- enable component scanning(beware that this does not enable mapper scanning!) -->
-	<context:component-scan base-package="com.pyongjjeom.test.service" />
-	<context:component-scan base-package="com.pyongjjeom.test.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.contents.service" />
+	<context:component-scan base-package="com.pyongjjeom.contents.controllers" />
 	<context:component-scan base-package="com.pyongjjeom.login.service" />
 	<context:component-scan base-package="com.pyongjjeom.login.controllers" />
 	<context:component-scan base-package="com.pyongjjeom.user.controllers" />
@@ -62,14 +61,14 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="com.pyongjjeom.test.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao" />
+			value="com.pyongjjeom.contents.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao" />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="${sqlMap.location}" />
-		<property name="typeAliasesPackage" value="com.pyongjjeom.test.dto" />
+		<property name="typeAliasesPackage" value="com.pyongjjeom.contents.dto" />
 	</bean>
 
 	<!-- SqlSessionTemplate 정의 -->
