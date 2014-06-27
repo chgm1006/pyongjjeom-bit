@@ -8,37 +8,6 @@
 }
 
 
-/*-------------////// 메뉴부분 //////------------*/
-
-.menu{
-	margin:0 auto;
-	padding:10px;
-	width:680px;
-	height:30px;
-}
-.menu ul{
-	float:left;
-	list-style:none;
-}
-.menu li{
-	float:left;
-}
-
-a.myPageMenu{
-	display:block;
-	width:80px;
-	height:auto;
-	font-size:14px;
-	text-align:center;
-	line-height:25px;
-}
-
-a.myPageMenu:hover{
-	color:#C03;
-}
-
-
-
 /*------------////// 슬라이드 : 업로드 //////-------------*/
 
 a.close{
