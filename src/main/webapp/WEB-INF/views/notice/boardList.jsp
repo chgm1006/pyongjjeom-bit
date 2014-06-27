@@ -1,35 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>공지사항</title>
 
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/header.jsp" %>
 
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css">
 
-<script type="text/javascript">
-	$(function() {
-		$("dd").css("display", "none");
-		$("dl dt,dl dt.selected").click(function() {
-			if ($("+dd", this).css("display") == "none") {
-				$("+dd", this).slideDown("fast");
-				$("dt").removeClass("selected");
-				$(this).addClass("selected");
-			} else {
-				$("+dd", this).slideUp("fast");
-				$(this).removeClass("selected");
-			}
-		});
-	});
-</script>
+
 </head>
 <body>
+
+
+<!-- /// <header> INCLUDE /// -->
+<c:import url="../common/header2.jsp"/>
+
+<article>
 	<div id="wrap">
 		<div class="menu">
 			<ul>
@@ -47,7 +41,7 @@
 			<c:forEach var="notice" items="${add}" varStatus="cnt">
 				<dt class="listHead">
 					<h3>${notice.title}</h3>
-					<h4>${notice.regidate}</h4>
+					<h4>${notice.updatedate}</h4>
 				</dt>
 			
 				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#" OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a>
@@ -59,9 +53,10 @@
 		</div>
 		<a href="#" class="listMore">지난 공지사항 더보기</a>
 	</div>
-	<div>
 
-	</div>
-	
+<!-- /// <jQuery> INCLUDE /// -->
+<c:import url="../../../resources/js/boardList.js"/>
+
+
 </body>
 </html>

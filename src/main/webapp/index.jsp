@@ -6,105 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>PJ main</title>
 
-<!---- CSS : 기본 ---->
-<link href="${pageContext.request.contextPath}/resources/css/default1.css" rel="stylesheet" type="text/css">
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="WEB-INF/views/common/header.jsp" %>
+
+<!---- CSS  ---->
+<link href="${pageContext.request.contextPath}/resources/css/imageSlider.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/contentsList.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.7.2.min.js"></script>
 
-<!---- 이미지 좌우 슬라이드 PLUG-IN ---->
-<script type="text/javascript" language="javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 
-<!---- 이미지 좌우 슬라이드 ---->
-<script type="text/javascript" language="javascript">
-	$(function() {
-
-		//	Variable number of visible items with variable sizes
-		$('#foo3').carouFredSel({
-			width : 1030,
-			height : 480,
-			prev : '#prev3',
-			next : '#next3',
-			auto : false
-		});
-	});
-</script>
-
-<!--------- 컨텐츠 롤오버  -------->
-<script type="text/javascript">
-	$(function() {
-		$(".imgLink").mouseenter(function() {
-			$(".innerOver", this).fadeIn();
-			$(".innerOver2", this).fadeIn();
-		});
-		$(".imgLink").mouseleave(function() {
-			$(".innerOver").hide();
-			$(".innerOver2").hide();
-		});
-	});
-</script>
-
-<!--------- 모달윈도우 : 컨텐츠 상세 -------->
-<script type="text/javascript">
-	$(function() {
-		$("#glayLayer").click(function() {
-			$(this).hide()
-			$("#overLayer").hide();
-		});
-
-		$("a.imgLink, a.listImgLink").click(function() {
-			$("#glayLayer").show();
-			$("#overLayer").fadeIn("Fast");
-			return false;
-		});
-		$(".exit").click(function() {
-			$("#glayLayer").hide()
-			$("#overLayer").hide();
-		});
-
-		if ($.browser.msie && $.browser.version < 7) {
-			$(window).scroll(
-					function() {
-						$("#glayLayer").css('top', $(document).scrollTop());
-						$("#overLayer").css(
-								'top',
-								($(document).scrollTop() + $("#overLayer")
-										.height() / 2)
-										+ "px");
-					});
-		}
-	});
-</script>
 </head>
 
 <body>
+
 <!-- ########################################### -->
 <!-- #################    탑   메  뉴     ################# -->
 <!-- ########################################### -->
-	<header>
-		<div class="topMenu">
-			<div class="leftMenu">
-				<a href="#"><img src="${pageContext.request.contextPath}/resources/img/logo.jpg" class="logo" /></a>
-				<ul>
-					<li class="menu1"><a href="#">영화</a></li>
-					<li class="menu2"><a href="#">도서</a></li>
-					<li class="menu3"><a href="#">공연</a></li>
-				</ul>
-				<div class="search">
-					<input type="text"><a href="#"><img class="magnifier"
-						src="${pageContext.request.contextPath}/resources/img/magnifier.png"></a>
-				</div>
-			</div>
 
-
-			<div class="rightMenu">
-				<ul>
-					<li class="menu5"><a href="myroom.html" class="menu5_1">마이룸</a></li>
-					<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
-					<li class="menu7"><a href="views/boardList.do" class="menu7_1">공지사항</a></li>
-				</ul>
-			</div>
-		</div>
-	</header>
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="WEB-INF/views/common/header2.jsp" %>
 
 
 	<article>
@@ -259,8 +180,8 @@
 
 
 	<!-- ################################################# -->
-		<!-- #################    모달윈도우 : 영화상세    ################# -->
-		<!-- ################################################# -->
+	<!-- #################    모달윈도우 : 영화상세    ################# -->
+	<!-- ################################################# -->
 		
 <!---- 검은 바탕 ---->
 	<div id='glayLayer'></div>
@@ -386,6 +307,78 @@
 		</div>
 
 	</div>
+
+
+<!----################ 여기부터는 jQuery 모음 ################---->
+<!----################ 여기부터는 jQuery 모음 ################---->
+<!----################ 여기부터는 jQuery 모음 ################---->
+<!----################ 여기부터는 jQuery 모음 ################---->
+
+<!---- 이미지 좌우 슬라이드 PLUG-IN ---->
+<script type="text/javascript" language="javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+
+<!---- 이미지 좌우 슬라이드 ---->
+<script type="text/javascript" language="javascript">
+	$(function() {
+
+		//	Variable number of visible items with variable sizes
+		$('#foo3').carouFredSel({
+			width : 1030,
+			height : 480,
+			prev : '#prev3',
+			next : '#next3',
+			auto : false
+		});
+	});
+</script>
+
+<!--------- 컨텐츠 롤오버  -------->
+<script type="text/javascript">
+	$(function() {
+		$(".imgLink").mouseenter(function() {
+			$(".innerOver", this).fadeIn();
+			$(".innerOver2", this).fadeIn();
+		});
+		$(".imgLink").mouseleave(function() {
+			$(".innerOver").hide();
+			$(".innerOver2").hide();
+		});
+	});
+</script>
+
+<!--------- 모달윈도우 : 컨텐츠 상세 -------->
+<script type="text/javascript">
+	$(function() {
+		$("#glayLayer").click(function() {
+			$(this).hide()
+			$("#overLayer").hide();
+		});
+
+		$("a.imgLink, a.listImgLink").click(function() {
+			$("#glayLayer").show();
+			$("#overLayer").fadeIn("Fast");
+			return false;
+		});
+		$(".exit").click(function() {
+			$("#glayLayer").hide()
+			$("#overLayer").hide();
+		});
+
+		if ($.browser.msie && $.browser.version < 7) {
+			$(window).scroll(
+					function() {
+						$("#glayLayer").css('top', $(document).scrollTop());
+						$("#overLayer").css(
+								'top',
+								($(document).scrollTop() + $("#overLayer")
+										.height() / 2)
+										+ "px");
+					});
+		}
+	});
+</script>
+
 
 </body>
 </html>
