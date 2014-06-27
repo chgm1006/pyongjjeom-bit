@@ -98,9 +98,9 @@ dt.listHead img{
 
 dd.listContent{
 	background:#e6e6e6;
-	text-indent:1em;
-	font-size:12px;
-	padding:20px;
+	text-indent:1em;  /* 들여쓰기 */
+	font-size:14px; /* 폰트크기 */
+	padding:20px;  /* 간격조절 */
 }
 dd.listContent:hover{
 	background:#f3f3f3;
