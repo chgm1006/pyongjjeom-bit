@@ -1,4 +1,4 @@
-package com.pyongjjeom.test.parsing.contents;
+package com.pyongjjeom.contents.parsing.common;
 
 public class ContentsValue {
 

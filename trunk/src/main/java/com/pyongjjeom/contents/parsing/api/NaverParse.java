@@ -1,4 +1,4 @@
-package com.pyongjjeom.test.openAPI;
+package com.pyongjjeom.contents.parsing.api;
 
 import java.io.IOException;
 import java.util.ArrayList;

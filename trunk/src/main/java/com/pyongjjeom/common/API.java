@@ -3,7 +3,6 @@ package com.pyongjjeom.common;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import com.pyongjjeom.test.openAPI.APIParse;
 
 public class API {
 	private static final String NAVER_KEY = "fa605843289b5518f6f08bc683a22cdf";
@@ -65,12 +64,12 @@ public class API {
 		API api = new API();
 		String uri = api.getDaumMovieURI("xman");
 
-		APIParse apiParse = new APIParse();
+	//	APIParse apiParse = new APIParse();
 		// apiParse.parse(uri);
 
 		uri = api.getDaumBookURI("엑스맨");
 		System.out.println(uri);
-		apiParse.parse(uri);
+		//apiParse.parse(uri);
 
 	}
 }

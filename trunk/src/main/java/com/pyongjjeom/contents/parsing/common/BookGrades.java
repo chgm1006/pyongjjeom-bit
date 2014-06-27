@@ -19,7 +19,7 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.test.parsing.contents; 
+package com.pyongjjeom.contents.parsing.common; 
 
 import org.apache.log4j.Logger;
 

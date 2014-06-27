@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.pyongjjeom.contents.dto.Content;
+import com.pyongjjeom.contents.parsing.common.BookGrades;
+import com.pyongjjeom.contents.parsing.common.ContentsValue;
+import com.pyongjjeom.contents.parsing.common.MovieGrades;
 
 /**
  * <pre>
@@ -24,7 +26,13 @@ import com.pyongjjeom.contents.dto.Content;
 public interface ContentService {
 	Logger logger = (Logger) Logger.getLogger(ContentService.class);
 	
-	public Content getContents();
-	
-	public List<Content> getContentDetail(String conCD);
+	void movieTitleInsert(List<ContentsValue> Values);
+
+	void bookTitleInsert(List<ContentsValue> values);
+
+	void gradeUpdate(List<ContentsValue> Values, String str);
+
+	MovieGrades movieGradeSelect(String title);
+
+	BookGrades bookGradeSelect(String title);
 }

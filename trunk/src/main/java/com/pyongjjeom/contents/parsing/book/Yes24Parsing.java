@@ -1,10 +1,12 @@
-package com.pyongjjeom.test.parsing.book;
+package com.pyongjjeom.contents.parsing.book;
 
 import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import com.pyongjjeom.test.parsing.contents.ContentsParsing;
+import com.pyongjjeom.contents.parsing.common.ContentsParsing;
+
 
 public class Yes24Parsing extends ContentsParsing {
 
