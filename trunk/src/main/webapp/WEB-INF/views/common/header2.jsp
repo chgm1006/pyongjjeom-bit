@@ -15,7 +15,16 @@
 					<li class="menu3"><a href="#">공연</a></li>
 				</ul>
 				<div class="search">
-					<input type="text"><a href="#"><img class="magnifier"
+				<form action="views/ContentsSearch.do" method="get" id="frmLogin" name="frmLogin">
+		<select name="category">
+			<option value="book">책 
+			<option value="movie">영화
+		</select> 
+		<input type="text" id="Search" name="Search">
+		<input type="hidden"  name="stat" value="search">
+				<input type="submit" value="검색">
+	
+			</form><img class="magnifier"
 						src="${pageContext.request.contextPath}/resources/img/magnifier.png"></a>
 				</div>
 			</div>
