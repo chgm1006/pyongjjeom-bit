@@ -42,11 +42,12 @@ public class LoginController {
 	private Member mem;
 	
 	@RequestMapping(value = "login.force", method = RequestMethod.GET)
-	public String login(){
+	public String loginForm(){
 		
 		return "login/login";
 		
 	}
+	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {
