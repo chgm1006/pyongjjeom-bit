@@ -38,7 +38,6 @@ import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
-import com.pyongjjeom.test.parsing.contents.MovieGrades;
 
 @Controller
 public class NoticeController {

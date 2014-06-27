@@ -1,38 +1,37 @@
-package com.pyongjjeom.test.parsing.movie;
+package com.pyongjjeom.contents.parsing.movie;
 
 import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
-import com.pyongjjeom.test.parsing.contents.ContentsParsing;
+import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-public class LotteParsing extends ContentsParsing {
 
-	public LotteParsing() {
+public class MegaBoxParsing extends ContentsParsing {
 
-		parsing("http://www.lottecinema.co.kr/LHS/LHFS/Contents/MovieInfo/NowMovieShortComment.aspx");
+	public MegaBoxParsing() {
+
+		parsing("http://www.megabox.co.kr/Movie/moviePlayList.aspx?statuscode=50&ordtype=4");
 
 	}
 
 	public void parsing(String url) {
-
 		try {
 			doc = Jsoup.connect(url).get();
-			title = doc.select("strong");
-			grade = doc.select("strong");
+			title = doc.select("h3");
+			grade = doc.select("li strong");
 			this.addTitle();
 			this.addGrade();
+			;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void addTitle() {
-		int i = 0;
 		for (Element tit : title) {
-			i++;
-			if (i % 2 == 0)
-				titleList.add(tit.text());
+			titleList.add(tit.text());
 		}
 	}
 
@@ -40,7 +39,7 @@ public class LotteParsing extends ContentsParsing {
 		int i = 0;
 		for (Element gra : grade) {
 			i++;
-			if (i % 2 == 1 && i != 1)
+			if (i % 2 == 0)
 				gradeList.add(Double.parseDouble(gra.text()));
 		}
 	}

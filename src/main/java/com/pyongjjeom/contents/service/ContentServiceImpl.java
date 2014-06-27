@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.contents.dao.ContentsMapper;
-import com.pyongjjeom.contents.dto.Content;
+import com.pyongjjeom.contents.parsing.common.BookGrades;
+import com.pyongjjeom.contents.parsing.common.ContentsValue;
+import com.pyongjjeom.contents.parsing.common.MovieGrades;
 
 /**
  * <pre>
@@ -49,35 +51,68 @@ public class ContentServiceImpl implements ContentService {
 	 * @see com.pyongjjeom.contents.service.ContentService#getContents()
 	 * @return
 	 */
+
+	
 	@Override
-	public Content getContents() {
-		// TODO Auto-generated method stub
-		return null;
+	public void movieTitleInsert(List<ContentsValue> Values) {
+		for (ContentsValue value : Values)
+			contentsMapper.movieTitleInsert(value);
 	}
 
-	/**
-	 * <pre>
-	 * 1. 개요 : 
-	 * 2. 처리내용 : 
-	 * </pre>
-	 * @Method Name : getContentDetail
-	 * @date : 2014. 6. 18.
-	 * @author : Forrest
-	 * @history : 
-	 *	-----------------------------------------------------------------------
-	 *	변경일				작성자						변경내용  
-	 *	----------- ------------------- ---------------------------------------
-	 *	2014. 6. 18.		Forrest				최초 작성 
-	 *	-----------------------------------------------------------------------
-	 * 
-	 * @see com.pyongjjeom.contents.service.ContentService#getContentDetail(java.lang.String)
-	 * @param conCD
-	 * @return
-	 */
 	@Override
-	public List<Content> getContentDetail(String conCD) {
-		// TODO Auto-generated method stub
-		return null;
+	public void gradeUpdate(List<ContentsValue> values, String str) {
+		for (ContentsValue value : values) {
+			switch (str) {
+			case "n":
+				contentsMapper.naverMovieGradeUpdate(value);
+				break;
+			case "d":
+				contentsMapper.daumGradeUpdate(value);
+				break;
+			case "c":
+				contentsMapper.cgvGradeUpdate(value);
+				break;
+			case "m":
+				contentsMapper.megaBoxGradeUpdate(value);
+				break;
+			case "l":
+				contentsMapper.lotteGradeUpdate(value);
+				break;
+			case "y":
+				contentsMapper.yes24GradeUpdate(value);
+				break;
+			case "k":
+				contentsMapper.kyoboGradeUpdate(value);
+				break;
+			case "a":
+				contentsMapper.aladinGradeUpdate(value);
+				break;
+			case "b":
+				contentsMapper.bandinlunisGradeUpdate(value);
+				break;
+			case "nb":
+				contentsMapper.naverBookGradeUpdate(value);
+				break;
+
+			default:
+				break;
+			}
+		}
 	}
 
+	@Override
+	public void bookTitleInsert(List<ContentsValue> values) {
+		for (ContentsValue value : values)
+			contentsMapper.bookTitleInsert(value);
+	}
+
+	@Override
+	public MovieGrades movieGradeSelect(String title) {
+		return contentsMapper.movieGradeSelect(title);
+	}
+
+	@Override
+	public BookGrades bookGradeSelect(String title) {
+		return contentsMapper.bookGradeSelect(title);
+	}
 }
