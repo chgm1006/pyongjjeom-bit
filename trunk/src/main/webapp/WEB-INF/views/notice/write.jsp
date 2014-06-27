@@ -8,6 +8,27 @@
 <title>게시판</title>
 </head>
 
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/board.css">
+
+<script type="text/javascript">
+	$(function() {
+		$("dd").css("display", "none");
+		$("dl dt,dl dt.selected").click(function() {
+			if ($("+dd", this).css("display") == "none") {
+				$("+dd", this).slideDown("fast");
+				$("dt").removeClass("selected");
+				$(this).addClass("selected");
+			} else {
+				$("+dd", this).slideUp("fast");
+				$(this).removeClass("selected");
+			}
+		});
+	});
+</script>
+
 <script language="javascript">
 	// 자바 스크립트 시작
 
