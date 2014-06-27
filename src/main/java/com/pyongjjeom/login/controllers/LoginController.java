@@ -4,13 +4,16 @@
 
 package com.pyongjjeom.login.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.login.service.LoginService;
@@ -39,7 +42,14 @@ public class LoginController {
 	private UserService userService;
 	
 	private DBCode dc = new DBCode();
-	private Member mem;
+	
+	@RequestMapping(value = "loginsuccess.force", method = RequestMethod.POST)
+	public  String login(){
+		
+		System.out.println("ddd");
+		return "login/loginsuccess";
+		
+	}
 	
 	@RequestMapping(value = "login.force", method = RequestMethod.GET)
 	public String loginForm(){
@@ -54,7 +64,7 @@ public class LoginController {
 		
 			
 		loginService.checkMemberLogin(email);
-		return "login/login";
+		return null;
 	}
 	
 	@RequestMapping(value = "register.force", method = RequestMethod.POST)
