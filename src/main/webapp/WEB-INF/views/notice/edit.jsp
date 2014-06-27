@@ -117,7 +117,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">내용</td>
-							<td><textarea name="issue" cols="50" rows="13" ></textarea></td>
+							<td><textarea name="issue" cols="50" rows="13" >${nn.issue}</textarea></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">
