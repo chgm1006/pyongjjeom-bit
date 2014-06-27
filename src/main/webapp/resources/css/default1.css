@@ -164,7 +164,7 @@ article{
 
 .wrapper {
 	margin:0 auto;
-	width:1000px;
+	width:1200px;
 	padding:20px;
 	border-radius: 20px;
 	-webkit-border-radius: 20px; 
@@ -222,10 +222,10 @@ a.next:hover{
 .list_carousel {
 	margin: 0 auto;
 	margin-top:10px;
-	width: 850px;
+	width: 1050px;
 	height:500px;
-	padding:10px 0 0 20px;
-	background-color: #ccc;
+	padding:24px 0 0 20px;
+	background-color: #999;
 	border-radius: 20px;
 	-webkit-border-radius: 20px; 
 	-moz-border-radius: 20px; 
@@ -235,30 +235,18 @@ a.next:hover{
 	list-style: none;
 	margin:0 auto;
 }
-.list_carousel li {
+.list_carousel li.liList {
 	float: left;
 	display: block;
-	max-width:890px;
-	height:500px;
+	margin:5px;
+	float:left;
 	text-align: center;
 }
 
-
-.set01{
-	width:850px;
-	height:500px;
-	margin:0 0 0 10px;
-
-}
-
-.inner{
-	
-}
-
-.imgList {
+img.imgList {
 	float:left;
-	width:150px;
-	height:220px;
+	width:310px;
+	height:444px;;
 }
 
 a.imgLink {
@@ -274,8 +262,8 @@ a.imgLink:hover {
 .innerOver{
 	display:none;
 	position:absolute;
-	margin:160px 0 0 0;
-	width:140px;
+	margin:384px 0 0 0;
+	width:300px;
 	height:50px;
 	padding:5px;
 	text-align:left;
@@ -285,8 +273,8 @@ a.imgLink:hover {
 .innerOver2{
 	display:none;
 	position:absolute;
-	width:140px;
-	height:150px;
+	width:300px;
+	height:374px;
 	padding:5px;
 	background-color:#111;
 	filter:alpha(opacity=60);

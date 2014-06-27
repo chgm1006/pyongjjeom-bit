@@ -20,7 +20,7 @@
 
 		//	Variable number of visible items with variable sizes
 		$('#foo3').carouFredSel({
-			width : 830,
+			width : 1030,
 			height : 480,
 			prev : '#prev3',
 			next : '#next3',
@@ -33,8 +33,8 @@
 <script type="text/javascript">
 	$(function() {
 		$(".imgLink").mouseenter(function() {
-			$(".innerOver", this).show();
-			$(".innerOver2", this).show();
+			$(".innerOver", this).fadeIn();
+			$(".innerOver2", this).fadeIn();
 		});
 		$(".imgLink").mouseleave(function() {
 			$(".innerOver").hide();
@@ -77,7 +77,6 @@
 </head>
 
 <body>
-
 <!-- ########################################### -->
 <!-- #################    탑   메  뉴     ################# -->
 <!-- ########################################### -->
@@ -122,182 +121,70 @@
 			<!-- ########################################### -->
 			<div class="list_carousel">
 				<ul id="foo3">
-
-					<!------------------- 슬라이드 첫번째 목록 -------------------->
-					<li>
-						<div class="set01">
-							<a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목1<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/07.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목2<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/08.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목3<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/04.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목4<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/01.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목5<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/02.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목6<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/03.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목7<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/04.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목8<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/05.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목9<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목10<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a>
-
-						</div>
-					</li>
-					<!------------------- 슬라이드 두번째 목록 -------------------->
-					<li>
-						<div class="set01">
-							<a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목1<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/07.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목2<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/08.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목3<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/07.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목4<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/01.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목5<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/02.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목6<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/03.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목7<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/04.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목8<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/05.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목9<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a> <a class="imgLink" href="#">
-								<div class="inner">
-									<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-									<div class="innerOver2"></div>
-									<div class="innerOver">
-										영화제목10<br> 감독<br> 출연<br>
-									</div>
-								</div>
-							</a>
-						</div>
-					</li>
-
-				</ul>
+					<li class="liList">
+                                	<a class="imgLink" href="#">
+                                        		<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
+                                                        <div class="innerOver2">c
+                                                        </div>  
+                                                        <div class="innerOver">
+                                                                영화제목1<br>
+                                                                감독<br>
+                                                                출연<br>
+                                                        </div>  
+                                        </a>                                
+                     </li>
+                     <li class="liList">
+                                	<a class="imgLink" href="#">
+                                        		<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
+                                                        <div class="innerOver2">c
+                                                        </div>  
+                                                        <div class="innerOver">
+                                                                영화제목1<br>
+                                                                감독<br>
+                                                                출연<br>
+                                                        </div>  
+                                        </a>                                
+                     </li>
+                     <li class="liList">
+                                	<a class="imgLink" href="#">
+                                        		<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
+                                                        <div class="innerOver2">c
+                                                        </div>  
+                                                        <div class="innerOver">
+                                                                영화제목1<br>
+                                                                감독<br>
+                                                                출연<br>
+                                                        </div>  
+                                        </a>                                
+                     </li>
+                     <li class="liList">
+                                	<a class="imgLink" href="#">
+                                        		<img class="imgList" src="${pageContext.request.contextPath}/resources/img/06.jpg" />
+                                                        <div class="innerOver2">c
+                                                        </div>  
+                                                        <div class="innerOver">
+                                                                영화제목1<br>
+                                                                감독<br>
+                                                                출연<br>
+                                                        </div>  
+                                        </a>                                
+                     </li>
+                     <li class="liList">
+                                	<a class="imgLink" href="#">
+                                        		<img class="imgList" src="${pageContext.request.contextPath}/resources/img/07.jpg" />
+                                                        <div class="innerOver2">c
+                                                        </div>  
+                                                        <div class="innerOver">
+                                                                영화제목1<br>
+                                                                감독<br>
+                                                                출연<br>
+                                                        </div>  
+                                        </a>                                
+                     </li>
+                        	
+  
+           
+			</ul>
 			</div>
 			<!---- 오른쪽 화살표 ---->
 			<div class="arrow2">
