@@ -13,7 +13,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<context:property-placeholder order="1"
 		location="/WEB-INF/properties/*.properties" />
-
+	<util:properties id="api" location="/WEB-INF/properties/common.properties"/>
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClass}" />
 		<property name="url" value="${jdbc.url}" />
