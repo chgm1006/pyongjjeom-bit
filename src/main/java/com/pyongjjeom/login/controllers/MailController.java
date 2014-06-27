@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +40,9 @@ public class MailController {
 	@Autowired
 	private LoginService loginService;
 
+	@Value("#{common['urlPath']}")
+	private String urlPath;
+
 	@RequestMapping(value = "emailAuth.force", method = RequestMethod.GET)
 	public String goEmailAuth() {
 		return "emailAuth/emailAuth";
@@ -51,11 +55,13 @@ public class MailController {
 			return "emailAuth/emailAuth";
 		}
 
+		System.out.println("url = " + urlPath);
 		String memCD = loginService.getMemCD(toUser);
 		String subject = "<평쩜> 요청하신 인증번호 입니다";
 		String fromUser = "force.pyongjjeom@gmail.com";
 		String authCD = Math.round(Math.random() * 999999) / 1 + "";
 		String text = getEmailText(authCD, toUser);
+
 		Member member = new Member();
 
 		member.setEmail(toUser);
@@ -76,10 +82,8 @@ public class MailController {
 		CommonAES aes = new CommonAES();
 		text.append("<h2><b>이메일 인증 코드입니다</b></h2><br>");
 		text.append(authCD);
-		text.append("<br><a href='http://localhost:8080/pyongjjeom/emailAuth_forward.jsp?rootc="
-				+ aes.getEncryptor(authCD)
-				+ "&rootm="
-				+ aes.getEncryptor(email)
+		text.append("<br><a href='" + urlPath + "emailAuth_forward.jsp?rootc="
+				+ aes.getEncryptor(authCD) + "&rootm=" + aes.getEncryptor(email)
 				+ "'>인증번호 입력</a>");
 
 		return text.toString();
