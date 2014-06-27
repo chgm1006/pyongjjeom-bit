@@ -9,38 +9,6 @@ article{
 }
 
 
-/*---메뉴부분---*/
-
-.menu{
-	margin:0 auto;
-	padding:10px;
-	width:680px;
-	height:30px;
-}
-.menu ul{
-	float:left;
-	list-style:none;
-}
-.menu li{
-	float:left;
-}
-
-a.myBoard, a.friendBoard, a.mainBoard{
-	display:block;
-	width:80px;
-	height:auto;
-	font-size:14px;
-	text-align:center;
-	line-height:25px;
-}
-
-a.myBoard:hover, a.friendBoard:hover, a.mainBoard:hover{
-	color:#C03;
-}
-a.friendBoard{
-}
-
-
 
 /*---게시판 부분  - 제목란---*/
 
@@ -120,4 +88,12 @@ a.listMore:active{
 	border:1px solid #fe9915;
 }
 
+
+/*---모달윈도우---*/
+
+.abc{
+	width:900px;
+	height:auto;
+	background: #ff2;
+}
 
