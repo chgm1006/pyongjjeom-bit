@@ -84,42 +84,42 @@ public class ContentController {
 	 * @return index file 의 경로
 	 */
 	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
-	private String preIndex(Model model) {
+	private String preIndex(HttpServletRequest request) {
 		System.out.println("컴온요");
 
 		NaverMovieParsing parsing = new NaverMovieParsing();
-		List<String> movieList = parsing.getTitleList();
+		List<String> movieTitleList = parsing.getTitleList();
 		NaverParse parse = new NaverParse();
 		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
-		String uri,uri2;
-		String resultPage = null;
+		String uri, uri2;
 
-		List<NaverMovie> resultList = new ArrayList<NaverMovie>();
+		List<NaverMovie> movieList = new ArrayList<NaverMovie>();
 		List<String> imageList = new ArrayList<String>();
 		for (int i = 0; i < 15; i++) {
 			try {
 				uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
-						+ "&query=" + URLEncoder.encode(movieList.get(i), "UTF-8")
+						+ "&query=" + URLEncoder.encode(movieTitleList.get(i), "UTF-8")
 						+ "&display=1&yearfrom=2014&yearto&2014";
-				resultList.add(parse.currentMovieParse(uri));
-				uri2="http://openapi.naver.com/search?key=" + apiKey + "&target=image"
-						+ "&query=" + URLEncoder.encode(movieList.get(i)+" 포스터", "UTF-8")
+				movieList.add(parse.currentMovieParse(uri));
+				uri2 = "http://openapi.naver.com/search?key=" + apiKey
+						+ "&target=image" + "&query="
+						+ URLEncoder.encode(movieTitleList.get(i) + " 포스터", "UTF-8")
 						+ "&display=1&filter=large";
 				System.out.println(uri2);
-			imageList.add(parse.movieImageParse(uri2));
+				imageList.add(parse.movieImageParse(uri2));
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		model.addAttribute("resultList", resultList);
-		model.addAttribute("imageList", imageList);
- int i=0;
-		for(NaverMovie movie :resultList)
-		{
+
+		int i = 0;
+		for (NaverMovie movie : movieList) {
 			movie.setPoster(imageList.get(i));
-		i++;
+			i++;
 		}
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("movieList", movieList);
 		return "../../index";
 	}
 
@@ -214,6 +214,61 @@ public class ContentController {
 
 		return resultPage;
 	}
+
+	@RequestMapping(value = "currentMovieContext.do", method = RequestMethod.GET)
+	public String getCurrentMovieContext(Model model, HttpServletRequest request) {
+
+		int num = Integer.parseInt(request.getParameter("num"));
+		HttpSession httpSession = request.getSession();
+		List<NaverMovie> list = (List<NaverMovie>) httpSession
+				.getAttribute("movieList");
+		NaverMovie movie = list.get(num);
+		movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", ""));
+		if (movie.getTitle().contains("(")) {
+			movie.setTitle(movie.getTitle().substring(0,
+					movie.getTitle().indexOf("(")));
+		}
+		httpSession.setAttribute("movie", movie);
+			Document doc;
+			Jsoup jsoup = null;
+			MovieGrades grades = new MovieGrades();
+			System.out.println("???" + movie.getTitle());
+			grades = contentService.movieGradeSelect(movie.getTitle());
+
+				try {
+					doc = Jsoup.connect(movie.getLink()).get();
+					request.setAttribute("genre",
+							doc.select("p[class=info_spec] a[href*=genre").text());
+					request.setAttribute("nation",
+							doc.select("p[class=info_spec] a[href*=nation").text());
+					request.setAttribute("open",
+							doc.select("p[class=info_spec] a[href*=open").text());
+					request.setAttribute("grade",
+							doc.select("p[class=info_spec] a[href*=grade").text());
+					request.setAttribute("count",
+							doc.select("p[class=info_spec] span[class=count]").text());
+					request.setAttribute("context", doc.select("p[class=con_tx]").text());
+					request.setAttribute("grades", grades);
+
+					if (grades != null) {
+						int count = 0;
+						double avg = 0;
+						double arr[] = { grades.getCgvMg(), grades.getDaumMg(),
+								grades.getLotteMg(), grades.getMegaBoxMg(), grades.getNaverMg() };
+						for (double grade : arr) {
+							if (grade != 0) {
+								avg += grade;
+								count++;
+							}
+					request.setAttribute("avg", avg / count);
+						}
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return "contents/movieContext";
+			}
 
 	@RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
 	public String getMovieContext(Model model, HttpServletRequest request) {
