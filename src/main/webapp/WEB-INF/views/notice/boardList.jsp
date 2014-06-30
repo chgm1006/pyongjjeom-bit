@@ -41,7 +41,7 @@
 			<c:forEach var="notice" items="${add}" varStatus="cnt">
 				<dt class="listHead">
 					<h3>${notice.title}</h3>
-					<h4>${notice.updatedate}</h4>
+					<h5>${notice.updatedate}</h5>
 				</dt>
 			
 				<dd class="listContent">${notice.issue}<a class="mainBoard" href="#" OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a>
