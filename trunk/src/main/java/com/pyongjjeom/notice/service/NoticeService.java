@@ -38,6 +38,8 @@ public interface NoticeService {
 	
 	List<Notice> getEventNoticeDatas();
 	
+	List<Notice> getDeleteNoticeDatas();
+	
 	void editData(Notice notice);
 
 	Notice updateData(String notCD);
