@@ -130,5 +130,27 @@ public class NaverParse {
 		}
 		return movie;
 	}
+	
+	public String movieImageParse(String uri) {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    String link = null;
+		try {
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.parse(uri);
+			Element root = doc.getDocumentElement();
+			NodeList list = root.getElementsByTagName("item");
+
+				Element element = (Element) list.item(0);
+				link=getContent(element, "link");
+
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return link;
+	}
 
 }
