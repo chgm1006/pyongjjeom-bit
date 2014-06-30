@@ -134,4 +134,30 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.insertMember(user);
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.login.service.LoginService#login(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public String login(String email, String passwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.login.service.LoginService#login(com.pyongjjeom.user.dto.Member)
+	 */
+	@Override
+	public Member login(Member member) {
+		// TODO Auto-generated method stub
+		return loginMapper.login(member);
+	}
+
 }

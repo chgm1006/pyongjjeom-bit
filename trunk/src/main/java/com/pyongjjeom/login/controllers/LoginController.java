@@ -5,6 +5,7 @@
 package com.pyongjjeom.login.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -40,48 +41,79 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	private DBCode dc = new DBCode();
-	
+
 	@RequestMapping(value = "loginsuccess.force", method = RequestMethod.POST)
-	public String login(@Valid Member user){
-		
-		System.out.println("ddd");
+	public String login(@Valid Member user, HttpServletRequest request) {
+
+
+		String email = request.getParameter("email");
+		String passwd = request.getParameter("passwd");
+		System.out.println(email);
+		System.out.println(passwd);
+
+		Member member = new Member(email, passwd);
+		member = loginService.login(member);
+		if(member == null){
+			return "login/loginfail";
+		}
+		HttpSession session = request.getSession();
+
+	/*	if (!session.isNew()) {
+			session = request.getSession(true);
+		}*/
+
+		session.setAttribute("member", member);
+		System.out.println(request.getSession() + "로그인세션등록완료");
 		return "login/loginsuccess";
-		
+
 	}
-	
+
+	// 로그인폼으로 이동
 	@RequestMapping(value = "login.force", method = RequestMethod.GET)
-	public String loginForm(){
+	public String loginForm( HttpServletRequest request) {
 		
-		return "login/login";
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
 		
+		if(member ==null)
+		{
+			return "login/login";
+		}
+
+		else
+		{
+			session.removeAttribute("member");	
+			return "login/loginfail";
+				
+		}
+		 
+
 	}
-	
-	
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String checkMemberLogin(String email) {
-		
-			
+
 		loginService.checkMemberLogin(email);
 		return null;
 	}
-	
+
 	@RequestMapping(value = "register.force", method = RequestMethod.POST)
-	public String inserMember(@Valid Member user){
-		
+	public String inserMember(@Valid Member user) {
+
 		String logCD = dc.getMemberCD("G");
 		System.out.println("dd");
 		user.setMemCD(logCD);
 		System.out.println(user);
 		loginService.insertMember(user);
-		
+
 		return "login/registersucess";
 	}
-	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)	
+
+	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
 	public String createMember() {
-		
-		
+
 		return "login/registerMember";
 	}
 
