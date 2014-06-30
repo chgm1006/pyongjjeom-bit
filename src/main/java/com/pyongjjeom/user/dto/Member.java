@@ -61,7 +61,15 @@ public class Member {
 	private String emailAuthCD = "";
 	private char memValid = 'n';
 	private char fbYn = 'n';
+	private String permit = "ADMIN";
 	private String imgPath = "";
+	public String getPermit() {
+		return permit;
+	}
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+
 	private String imgNm = "";
 	private Date regiDate = null;
 	private Date updateDate = null;
