@@ -62,7 +62,6 @@ public class NaverParse {
 			e.printStackTrace();
 		}
 		return test;
-
 	}
 
 	public List<?> bookParse(String uri) {
@@ -100,4 +99,36 @@ public class NaverParse {
 		}
 		return test;
 	}
+	
+	
+	public NaverMovie currentMovieParse(String uri) {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		NaverMovie movie = new NaverMovie();
+		try {
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.parse(uri);
+			Element root = doc.getDocumentElement();
+			NodeList list = root.getElementsByTagName("item");
+
+				Element element = (Element) list.item(0);
+	
+				movie.setTitle(getContent(element, "title"));
+				movie.setSubtitle(getContent(element, "subtitle"));
+				movie.setLink(getContent(element, "link"));
+				movie.setImage(getContent(element, "image"));
+				movie.setDirector(getContent(element, "director"));
+				movie.setActor(getContent(element, "actor"));
+				movie.setPubDate(getContent(element, "pubDate"));
+				movie.setUserRating(getContent(element, "userRating"));
+
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return movie;
+	}
+
 }

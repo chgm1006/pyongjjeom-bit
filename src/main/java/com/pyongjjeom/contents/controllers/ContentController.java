@@ -84,8 +84,33 @@ public class ContentController {
 	 * @return index file 의 경로
 	 */
 	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
-	private String preIndex() {
+	private String preIndex(Model model) {
 		System.out.println("컴온요");
+
+		NaverMovieParsing parsing = new NaverMovieParsing();
+		List<String> movieList = parsing.getTitleList();
+		NaverParse parse = new NaverParse();
+		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
+		String uri;
+		String resultPage = null;
+
+		List<NaverMovie> resultList = new ArrayList<NaverMovie>();
+		for (int i = 0; i < 15; i++) {
+			try {
+				uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
+						+ "&query=" + URLEncoder.encode(movieList.get(i), "UTF-8")
+						+ "&display=1&yearfrom=2014&yearto&2014";
+				resultList.add(parse.currentMovieParse(uri));
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		model.addAttribute("resultList", resultList);
+		for(NaverMovie str :resultList)
+		{
+			System.out.println(str.toString());
+		}
 		return "../../index";
 	}
 
