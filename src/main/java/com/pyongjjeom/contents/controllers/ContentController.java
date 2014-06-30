@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,6 +90,15 @@ public class ContentController {
 
 		NaverMovieParsing parsing = new NaverMovieParsing();
 		List<String> movieTitleList = parsing.getTitleList();
+		Iterator<String > iterator =  movieTitleList.iterator();
+		while(iterator.hasNext())
+		{
+			if(iterator.next().equals("그녀"))
+			{
+				iterator.remove();
+			}
+		}
+		
 		NaverParse parse = new NaverParse();
 		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 		String uri, uri2;
@@ -103,9 +113,8 @@ public class ContentController {
 				movieList.add(parse.currentMovieParse(uri));
 				uri2 = "http://openapi.naver.com/search?key=" + apiKey
 						+ "&target=image" + "&query="
-						+ URLEncoder.encode(movieTitleList.get(i) + " 포스터", "UTF-8")
+						+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
 						+ "&display=1&filter=large";
-				System.out.println(uri2);
 				imageList.add(parse.movieImageParse(uri2));
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
