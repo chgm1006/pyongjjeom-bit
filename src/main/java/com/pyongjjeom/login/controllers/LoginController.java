@@ -44,7 +44,7 @@ public class LoginController {
 	private DBCode dc = new DBCode();
 	
 	@RequestMapping(value = "loginsuccess.force", method = RequestMethod.POST)
-	public  String login(){
+	public String login(@Valid Member user){
 		
 		System.out.println("ddd");
 		return "login/loginsuccess";
