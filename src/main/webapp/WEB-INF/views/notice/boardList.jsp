@@ -17,6 +17,7 @@
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/modalWindow.css">
 
 
+
 </head>
 <body>
 
@@ -28,6 +29,7 @@
 	<div id="wrap">
 		<div class="menu">
 			<ul>
+			
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='allList.do'">전체보기</a></li>
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='eventList.do'">행사공지</a></li>
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='systemList.do'">시스템공지</a></li>
@@ -173,6 +175,8 @@
 <!----################ 여기부터는 jQuery 모음 ################---->
 <!----################ 여기부터는 jQuery 모음 ################---->
 <!---jQuery 아코디언--->
+
+
 <script type="text/javascript">
 	$(function() {
 		$("dd").css("display", "none");
