@@ -112,6 +112,10 @@ public class NoticeController {
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
+		
+		String qnacontent = request.getParameter("issue");
+		qnacontent = qnacontent.replaceAll("'","′");
+		
 
 		return "notice/write";
 	}
@@ -119,6 +123,12 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
+		String qnacontent = notice.getIssue();
+		
+		qnacontent = qnacontent.replaceAll("′","'"); // 치환된 작은따옴표 원래 작은따옴표로 환원처리
+		qnacontent = qnacontent.replaceAll("\r\n","<br>"); // 줄바꿈처리
+		qnacontent = qnacontent.replaceAll("\u0020","&nbsp;"); // 스페이스바로 띄운 공백처리
 		
 		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
@@ -130,6 +140,8 @@ public class NoticeController {
 		
 		noticeService.insertData(notice);
 		System.out.println(notice.toString());
+		
+		
 
 		return "notice/write_ok";
 	}
