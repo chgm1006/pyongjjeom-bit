@@ -23,6 +23,7 @@ package com.pyongjjeom.notice.controllers;
 
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -38,6 +39,7 @@ import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
+import com.pyongjjeom.user.dto.Member;
 
 @Controller
 public class NoticeController {
@@ -102,21 +104,28 @@ public class NoticeController {
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 		
-	
-/*		String mm = request.getParameter("permit");
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		String mm = member.getPermit();
+		System.out.println(mm);
+		
 		if(mm.equals("ADMIN"))
 		{
 			
 			return "notice/boardList";
 		}
-		else{
-			
-			return "notice/NonboardList";
-		}
-*/
-
 		
-		return "notice/boardList";
+		else
+		{
+			return "login/registerMember";
+			
+		}
+		
+	
+
+
+		/*
+		return "notice/boardList";*/
 	}
 	
 
