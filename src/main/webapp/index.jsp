@@ -47,7 +47,7 @@
 			<!-- ########################################### -->
 			<div class="list_carousel">
 				<ul id="foo3">
-					<li class="liList"><a class="imgLink" href="#"> <img
+					<%-- 	<li class="liList"><a class="imgLink" href="#"> <img
 							class="imgList"
 							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
 							<div class="innerOver2">c</div>
@@ -86,9 +86,16 @@
 							<div class="innerOver">
 								영화제목1<br> 감독<br> 출연<br>
 							</div>
-					</a></li>
-
-
+					</a></li> --%>
+					<c:forEach items="${resultList }" var="movie">
+						<li class="liList"><a class="imgLink" href="#"> <img
+								class="imgList" src="${movie.poster}" />
+								<div class="innerOver2">c</div>
+								<div class="innerOver">
+									영화제목 : ${movie.title }<br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
+								</div>
+						</a></li>
+					</c:forEach>
 
 				</ul>
 			</div>
@@ -149,7 +156,7 @@
 							<tr>
 								<td class="listTitle1" colspan="2">${movie.title }</td>
 							</tr>
-											<tr>
+							<tr>
 								<td class="listTitle">부제</td>
 								<td class="listSynopValue">${movie.subtitle }</td>
 							</tr>
@@ -165,7 +172,7 @@
 								<td class="listTitle">개봉년도</td>
 								<td class="listSynopValue">${movie.pubDate }</td>
 							</tr>
-			
+
 							<tr>
 								<td class="listTitle">네이버평점</td>
 								<td class="listSynopValue">${movie.userRating }</td>
