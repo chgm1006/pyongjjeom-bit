@@ -67,7 +67,6 @@ public class MailController {
 		member.setEmail(toUser);
 		member.setEmailAuthCD(authCD);
 		member.setMemCD(memCD);
-		member.setEmail(toUser);
 
 		int updateCnt = loginService.updateEmailAuthCD(member);
 
