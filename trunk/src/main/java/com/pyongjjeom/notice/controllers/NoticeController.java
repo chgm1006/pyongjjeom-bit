@@ -92,10 +92,11 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
+		IssueDbtoView(notice);
 		System.out.println("왓수?");
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
-	
+	 
 
 		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
@@ -108,13 +109,13 @@ public class NoticeController {
 			HttpServletRequest request) {
 
 		System.out.println("왓수?");
-		// noticeService.insertData(notice);
+	  issueViewToDb(notice);		
+	  // noticeService.insertData(notice);
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
 		
-		String qnacontent = request.getParameter("issue");
-		qnacontent = qnacontent.replaceAll("'","′");
+
 		
 
 		return "notice/write";
@@ -124,14 +125,11 @@ public class NoticeController {
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		String qnacontent = notice.getIssue();
-		
-		qnacontent = qnacontent.replaceAll("′","'"); // 치환된 작은따옴표 원래 작은따옴표로 환원처리
-		qnacontent = qnacontent.replaceAll("\r\n","<br>"); // 줄바꿈처리
-		qnacontent = qnacontent.replaceAll("\u0020","&nbsp;"); // 스페이스바로 띄운 공백처리
-		
+
+	  IssueDbtoView(notice);
 		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
+		/*notice.setIssue(notice.getIssue().replace(" ", "&nbsp;").replace("\n", "<br>"));*/
 		
 		System.out.println(request.getParameter("code"));
 		
@@ -149,12 +147,15 @@ public class NoticeController {
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
 	public String editOkDo(@Valid Notice notice, Model model,HttpServletRequest request)
 	{
+		issueViewToDb(notice);
 		System.out.println(request.getParameter("notCD"));
+		
 		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
 		System.out.println(newNotice);
+		
 		model.addAttribute("nn", newNotice);
 		
-		
+	
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
@@ -171,9 +172,10 @@ public class NoticeController {
 	@RequestMapping(value = "editok.do", method = RequestMethod.POST)
 	public String editDo(@Valid Notice notice, Model model,HttpServletRequest request)
 	{
-		
+		IssueDbtoView(notice);
 	
 		notice.setCategory(request.getParameter("code"));
+
 	
 		System.out.println(notice.toString());
 		noticeService.editData(notice);
@@ -205,4 +207,26 @@ public class NoticeController {
 		return "notice/delete_ok";
 	}
 
+	public Notice issueViewToDb(Notice notice){
+		
+		String dbIssue = notice.getIssue();
+		dbIssue = dbIssue.replaceAll("'", "`");
+		notice.setIssue(dbIssue);
+		
+		return notice;
+	}
+	
+	public Notice IssueDbtoView(Notice notice) {
+		String viewIssue = notice.getIssue();
+		viewIssue = viewIssue.replaceAll("`", "'")
+				.replaceAll("\r\n", "<br>").replaceAll("\u0020", "&nbsp;");
+		notice.setIssue(viewIssue);
+/*		
+		 * context = context.replaceAll("\r\n", "<br>"); context =
+		 * context.replaceAll("\u0020", "&nbsp;");*/
+		 
+		return notice;
+	}
+
+	
 }
