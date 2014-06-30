@@ -21,12 +21,13 @@ dl{
 	margin:1px auto;
 }
 dt.listHead{
+	padding:3px 0;
 	display:block;
-	line-height:20px;
+	height:auto;
+	line-height:25px;
 	text-indent:3em;
 	font-weight:bold;
 	color:#F6F6F6;
-	height:auto;
 	background-color: #c5c5c5;
 	border-bottom:1px solid #DAD9FF;
 }
