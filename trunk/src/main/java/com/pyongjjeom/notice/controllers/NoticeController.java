@@ -87,6 +87,7 @@ public class NoticeController {
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
 		model.addAttribute("add", list);
 		
+		
 		return "notice/boardList";
 	}
 	
@@ -100,10 +101,24 @@ public class NoticeController {
 		System.out.println("왓수?");
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
-	 
-		System.out.println("왓수?22222222222222222"+list.toString());
+		
+	
+/*		String mm = request.getParameter("permit");
+		if(mm.equals("ADMIN"))
+		{
+			
+			return "notice/boardList";
+		}
+		else{
+			
+			return "notice/NonboardList";
+		}
+*/
+
+		
 		return "notice/boardList";
 	}
+	
 
 	
 	
@@ -118,6 +133,8 @@ public class NoticeController {
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
+		
+
 		
 
 
