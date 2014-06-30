@@ -44,67 +44,78 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
-	private DBCode dc = new DBCode(); // DBCode 정의
+	private DBCode dc = new DBCode();                //DBCode 정의
 
 	@RequestMapping(value = "allList.do")
-	public String allList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String allList(@Valid Notice notice,  Model model,
+			HttpServletRequest request) 
+	{
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
+	
 
-		System.out.println("왓수?22222222222222222" + list.toString());
+		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
+	
+	
 	@RequestMapping(value = "systemList.do")
-	public String systemList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
-
+	public String systemList(@Valid Notice notice,  Model model,
+			HttpServletRequest request) 
+	{
+		
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 		model.addAttribute("add", list);
+	
 
-		System.out.println("왓수?22222222222222222" + list.toString());
+		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
 	@RequestMapping(value = "eventList.do")
-	public String eventList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String eventList(@Valid Notice notice,  Model model,
+			HttpServletRequest request) 
+	{
 		List<Notice> list = noticeService.getEventNoticeDatas();
 		model.addAttribute("add", list);
+	
 
-		System.out.println("왓수?22222222222222222" + list.toString());
+		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
+	
+	
+	
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
+
 		IssueDbtoView(notice);
 		System.out.println("왓수?");
-		
 		List<Notice> list = noticeService.getAllNoticeDatas();
-		List<NoticeCode> code = noticeService.getCode();
-		
-		System.out.println(code.size());
-		
-		model.addAttribute("code", code);
 		model.addAttribute("add", list);
-
-		System.out.println("왓수?22222222222222222" + list.toString());
+	 
+		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
+	
+	
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
 		System.out.println("왓수?");
-		issueViewToDb(notice);
-		// noticeService.insertData(notice);
-//		List<NoticeCode> code = noticeService.getCode();
-//		System.out.println(code.size());
-//		model.addAttribute("code", code);
+	  issueViewToDb(notice);		
+	  // noticeService.insertData(notice);
+		List<NoticeCode> code = noticeService.getCode();
+		System.out.println(code.size());
+		model.addAttribute("code", code);
+		
+
+		
 
 		return "notice/write";
 	}
@@ -112,117 +123,135 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
 
-		IssueDbtoView(notice);
-		String notCD = dc.getNoticeCD("no"); // 값이 Static이라 한번 호출할때마다 변함
+	  IssueDbtoView(notice);
+		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
-		/*
-		 * notice.setIssue(notice.getIssue().replace(" ", "&nbsp;").replace("\n",
-		 * "<br>"));
-		 */
-
+		/*notice.setIssue(notice.getIssue().replace(" ", "&nbsp;").replace("\n", "<br>"));*/
+		
 		System.out.println(request.getParameter("code"));
-
+		
 		notice.setCategory(request.getParameter("code"));
-
+	
+		
 		noticeService.insertData(notice);
 		System.out.println(notice.toString());
+		
+		
 
 		return "notice/write_ok";
 	}
 
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
-	public String editOkDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
-
+	public String editOkDo(@Valid Notice notice, Model model,HttpServletRequest request)
+	{
+		
+		
+		
+		
 		System.out.println(request.getParameter("notCD"));
-
+		
+	
+		
 		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
 		issueUpdateDbtoView(newNotice);
 		System.out.println(newNotice);
+		
 
 		model.addAttribute("nn", newNotice);
-
+		
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
-
-		System.out.println(notice.toString());
-
+		
+		
+		
+		System.out.println(notice.toString());		
+		
+		
 		return "notice/edit";
-
+		
 	}
-
+	
 	@RequestMapping(value = "editok.do", method = RequestMethod.POST)
-	public String editDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String editDo(@Valid Notice notice, Model model,HttpServletRequest request)
+	{
 		IssueDbtoView(notice);
-
+	
 		notice.setCategory(request.getParameter("code"));
 
+	
 		System.out.println(notice.toString());
 		noticeService.editData(notice);
-
+		
 		request.getParameter("notCD");
 
 		System.out.println(notice.toString());
+		
 
 		return "notice/edit_ok";
-
+		
 	}
-
+	
+	
+	
+	
 	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
-	public String deleteOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request)
-
+	public String deleteOKDo(@Valid Notice notice, Model model,HttpServletRequest request) 
+	
 	{
-
+		
+		
 		request.getParameter("notCD");
 
 		System.out.println("삭제할거야??");
-
+		
 		noticeService.deleteData(request.getParameter("notCD"));
 
 		return "notice/delete_ok";
 	}
 
-	public Notice issueViewToDb(Notice notice) {
-
+	public Notice issueViewToDb(Notice notice){
+		
 		String dbIssue = notice.getIssue();
 		dbIssue = dbIssue.replaceAll("'", "`");
 		notice.setIssue(dbIssue);
-
+		
 		return notice;
 	}
-
-	public String IssueDbtoView(String viewIssue) {
-
-		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
-
+	
+	public String IssueDbtoView(String viewIssue){
+		
+		viewIssue = viewIssue.replaceAll("`", "'")
+				.replaceAll("\r\n", "<br>").replaceAll("\u0020", "&nbsp;");
+		
 		return viewIssue;
 	}
-
-	public Notice issueUpdateDbtoView(Notice newnotice) {
-
+	
+	
+	public Notice issueUpdateDbtoView(Notice newnotice){
+		
 		String viewIssue = newnotice.getIssue();
 		viewIssue = viewIssue.replaceAll("<br>", "\r\n");
 		newnotice.setIssue(viewIssue);
-
+		
 		return newnotice;
 	}
-
+	
+	
+	
 	public Notice IssueDbtoView(Notice notice) {
 		String viewIssue = notice.getIssue();
-		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
+		viewIssue = viewIssue.replaceAll("`", "'")
+				.replaceAll("\r\n", "<br>").replaceAll("\u0020", "&nbsp;");
 		notice.setIssue(viewIssue);
-		/*
+/*		
 		 * context = context.replaceAll("\r\n", "<br>"); context =
-		 * context.replaceAll("\u0020", "&nbsp;");
-		 */
-
+		 * context.replaceAll("\u0020", "&nbsp;");*/
+		 
 		return notice;
 	}
+	
 
 }
