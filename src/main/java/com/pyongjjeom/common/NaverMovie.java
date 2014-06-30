@@ -4,9 +4,18 @@ public class NaverMovie {
 	private String title = ""; // 영화 제목
 	private String link = ""; // link
 	private String image = ""; // 썸네일 이미지
+	private String poster = ""; // 포스터 이미지
 	private String subtitle = ""; // 영문 제목
 	private String pubDate = ""; // 제작년도
 	private String director = ""; // 감독
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
 	private String actor = ""; // 출연 배우
 	private String userRating = ""; // 유저 평점
 
