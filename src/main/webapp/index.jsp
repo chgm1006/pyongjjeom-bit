@@ -87,7 +87,7 @@
 								영화제목1<br> 감독<br> 출연<br>
 							</div>
 					</a></li> --%>
-					<c:forEach items="${resultList }" var="movie">
+					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList"><a class="imgLink" href="#"> <img
 								class="imgList" src="${movie.poster}" />
 								<div class="innerOver2">c</div>
@@ -147,8 +147,8 @@
 			</div> --%>
 
 
-			<c:forEach var="movie" items="${resultList }">
-				<div class="list1">
+			<c:forEach var="movie" items="${movieList }" varStatus="status">
+				<div class="list1" onclick="document.location='views/currentMovieContext.do?num=${status.index}' ">
 					<a href="#" class="listImgLink"><img src="${movie.image}"
 						class="listImg"></a>
 					<div class="detail">
