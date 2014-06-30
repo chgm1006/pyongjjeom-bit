@@ -23,11 +23,11 @@
 						<option value="movie">영화
 					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
 						name="stat" value="search"> <input type="submit" value="검색">
-
+				<a href="#">
+					<img class="magnifier" src="${pageContext.request.contextPath}/resources/img/magnifier.png">
+				</a>
 				</form>
-				<img class="magnifier"
-					src="${pageContext.request.contextPath}/resources/img/magnifier.png">
-			</div>
+			 </div>
 		</div>
 
 
