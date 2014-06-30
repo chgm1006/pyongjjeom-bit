@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<script language="javascript">
+<script type="text/javascript">
 	// 자바 스크립트 시작
 
 	function writeCheck() {
@@ -59,11 +59,12 @@
 						</tr>
 					</table>
 					<table>
-					<input type ="hidden" name = "notCD"  value ="${nn.notCD}">
-						<tr>	
+						<input type="hidden" name="notCD" value="${nn.notCD}">
+						<tr>
 							<td>&nbsp;</td>
 							<td align="center">제목</td>
-							<td><input type=text name="title" size="50" maxlength="100" value="${nn.title}"></td>
+							<td><input type=text name="title" size="50" maxlength="100"
+								value="${nn.title}"></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">
@@ -72,7 +73,8 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">이름</td>
-							<td><input name="writer" size="50" maxlength="50" value="${nn.writer}"></td>
+							<td><input name="writer" size="50" maxlength="50"
+								value="${nn.writer}"></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">
@@ -81,20 +83,21 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">비밀번호</td>
-							<td><input name="notPasswd" size="50" maxlength="50" value="${nn.notPasswd}"></td>
+							<td><input name="notPasswd" size="50" maxlength="50"
+								value="${nn.notPasswd}"></td>
 							<td>&nbsp;</td>
 						</tr>
-						
-						
-						<form:select path="code" name="code" items="${code}" itemValue="code" 						
-						itemLabel="codenm" />
-						
-					
-					
-		
-		
-		
-		
+
+
+						<form:select path="code" name="code" items="${code}" itemValue="code"
+							itemLabel="codenm" />
+
+
+
+
+
+
+
 						<%-- <tr>
 					<td width="96">공지사항코드</td>
 					<td width="172">
@@ -110,14 +113,14 @@
 					<td width="96"></td>
 					<td width="172"></td>
 				</tr> --%>
-				
+
 						<tr height="1" bgcolor="#dddddd">
 							<td colspan="4"></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">내용</td>
-							<td><textarea name="issue" cols="50" rows="13" >${nn.issue}</textarea></td>
+							<td><textarea name="issue" cols="50" rows="13">${nn.issue}</textarea></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr height="1" bgcolor="#dddddd">

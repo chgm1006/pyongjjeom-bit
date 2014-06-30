@@ -8,8 +8,7 @@
 <title>게시판</title>
 </head>
 
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css">
 
@@ -109,10 +108,10 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">카테고리</td>
-							<td>	<form:select path="code" name="code" items="${code}" itemValue="code"
-							itemLabel="codenm" style="width:50; align:center;"/></td>
+							<td><form:select path="code" name="code" items="${code}"
+									itemValue="code" itemLabel="codenm" style="width:50; align:center;" /></td>
 						</tr>
-<%-- 
+						<%-- 
 						<form:select path="code" name="code" items="${code}" itemValue="code"
 							itemLabel="codenm" />
  --%>
