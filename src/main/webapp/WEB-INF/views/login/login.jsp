@@ -31,9 +31,6 @@
 
 <!-- Javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript">
 	jQuery(document)
 			.ready(
@@ -93,9 +90,10 @@
 					<label for="password">Password</label>
 					<input type="text" id="passwd" name="passwd" placeholder="password..">
 					<button type="submit">로그인</button>
-					<button type="button">비밀번호 찾기</button>
-					<button type="button">회원가입</button>
-					<button type="button">페이스북로그인</button>
+					<button type="button" onclick="">페이스북로그인</button><br><br>
+					<a href = "views/">비밀번호를 까먹으셧나영?</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<a href = "registerMember.force">아직 회원이 아니신가영?</a>
+
 				</form>
 			</div>
 		</div>

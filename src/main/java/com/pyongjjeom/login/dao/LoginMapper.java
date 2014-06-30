@@ -6,6 +6,8 @@ package com.pyongjjeom.login.dao;
 
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.pyongjjeom.user.dto.Member;
 
 /**
@@ -31,7 +33,11 @@ public interface LoginMapper {
 	public int updateEmailAuthCDCheck(Member member);
 
 	public String getEmailAuthCD(String email);
-
+	
+	public Member login(Member member);
+	
+	public String login(@Param("email") String email,
+			@Param("passwd") String passwd);
 	/**
 	 * <PRE>
 	 * 간략 : 

@@ -20,6 +20,25 @@ import org.apache.log4j.Logger;
  */
 public class Member {
 
+	/**
+	 * <PRE>
+	 * 간략 : .
+	 * 상세 : .
+	 * </PRE>
+	 * Constructor of Member.java class 생성자
+	 * @param email2
+	 * @param passwd2 
+	 */
+	
+	public Member(){
+		
+	}
+	public Member(String email, String passwd) {
+		this.email = email;
+		this.passwd = passwd;
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Member [log=" + log + ", memCD=" + memCD + ", email=" + email
