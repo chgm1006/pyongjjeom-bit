@@ -39,6 +39,8 @@ public interface NoticeMapper {
 	
 	List<Notice> getEventNoticeDatas();
 	
+	List<Notice> getDeleteNoticeDatas();
+	
 	Notice updateData(String notCD);
 	
 	void deleteData(String notCD);

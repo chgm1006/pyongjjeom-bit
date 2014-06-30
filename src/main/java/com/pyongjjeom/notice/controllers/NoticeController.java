@@ -54,7 +54,6 @@ public class NoticeController {
 		model.addAttribute("add", list);
 	
 
-		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
@@ -69,7 +68,6 @@ public class NoticeController {
 		model.addAttribute("add", list);
 	
 
-		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
 
@@ -81,10 +79,16 @@ public class NoticeController {
 		model.addAttribute("add", list);
 	
 
-		System.out.println("왓수?22222222222222222"+list.toString());
 		return "notice/boardList";
 	}
-
+	@RequestMapping(value = "deleteList.do")
+	public String deleteList(@Valid Notice notice, Model model, HttpServletRequest request)
+	{
+		List<Notice> list = noticeService.getDeleteNoticeDatas();
+		model.addAttribute("add", list);
+		
+		return "notice/boardList";
+	}
 	
 	
 	
@@ -108,6 +112,7 @@ public class NoticeController {
 			HttpServletRequest request) {
 
 		System.out.println("왓수?");
+
 	  issueViewToDb(notice);		
 	  // noticeService.insertData(notice);
 		List<NoticeCode> code = noticeService.getCode();
@@ -115,7 +120,6 @@ public class NoticeController {
 		model.addAttribute("code", code);
 		
 
-		
 
 		return "notice/write";
 	}
@@ -128,8 +132,10 @@ public class NoticeController {
 	  IssueDbtoView(notice);
 		String notCD = dc.getNoticeCD("no");   //값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
+
 		/*notice.setIssue(notice.getIssue().replace(" ", "&nbsp;").replace("\n", "<br>"));*/
 		
+
 		System.out.println(request.getParameter("code"));
 		
 		notice.setCategory(request.getParameter("code"));
