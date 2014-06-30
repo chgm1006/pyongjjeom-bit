@@ -147,15 +147,21 @@ public class NoticeController {
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
 	public String editOkDo(@Valid Notice notice, Model model,HttpServletRequest request)
 	{
-		issueViewToDb(notice);
+		
+		
+		
+		
 		System.out.println(request.getParameter("notCD"));
 		
+	
+		
 		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
+		issueUpdateDbtoView(newNotice);
 		System.out.println(newNotice);
 		
+
 		model.addAttribute("nn", newNotice);
 		
-	
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
@@ -216,6 +222,26 @@ public class NoticeController {
 		return notice;
 	}
 	
+	public String IssueDbtoView(String viewIssue){
+		
+		viewIssue = viewIssue.replaceAll("`", "'")
+				.replaceAll("\r\n", "<br>").replaceAll("\u0020", "&nbsp;");
+		
+		return viewIssue;
+	}
+	
+	
+	public Notice issueUpdateDbtoView(Notice newnotice){
+		
+		String viewIssue = newnotice.getIssue();
+		viewIssue = viewIssue.replaceAll("<br>", "\r\n");
+		newnotice.setIssue(viewIssue);
+		
+		return newnotice;
+	}
+	
+	
+	
 	public Notice IssueDbtoView(Notice notice) {
 		String viewIssue = notice.getIssue();
 		viewIssue = viewIssue.replaceAll("`", "'")
@@ -227,6 +253,6 @@ public class NoticeController {
 		 
 		return notice;
 	}
-
 	
+
 }
