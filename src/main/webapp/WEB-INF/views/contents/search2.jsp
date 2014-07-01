@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="views/ContentsSearch.do" method="get" id="frmLogin" name="frmLogin">
+	<form action="ContentsSearch.do" method="get" id="frmLogin" name="frmLogin">
 		<select name="category">
 			<option value="book">책 
 			<option value="movie">영화

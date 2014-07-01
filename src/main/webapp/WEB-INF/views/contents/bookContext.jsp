@@ -20,6 +20,7 @@
 
 책 제목 : ${book.title}<br> <br>
 		<a href="${book.link }"> <img src="${book.image}"></a><br>  <br>
+				<a href="${book.link }"> <img src="${poster}"></a><br>  <br>
 [네이버: ${grades.naverBg}] / [알라딘: ${grades.aladinBg}] / [반디앤루니스 : ${grades.bandiBg}]/ [교보 : ${grades.kyoboBg}] / [Yes24 : ${grades.yesBg}] / [평균 :${avg}]<br> <br>
 		 저자 :${book.author }<br> <br>
 		 정가 : ${book.price }<br>  <br>
