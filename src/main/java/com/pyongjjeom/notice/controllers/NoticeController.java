@@ -90,41 +90,38 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
+		HttpSession session = request.getSession();
+
+		Member member = (Member) session.getAttribute("member");
 		IssueDbtoView(notice);
 		System.out.println("왓수?");
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
+		
+		
+		
+		if (member == null) {
+			return "notice/boardNotList";
 
-	/*	HttpSession session = request.getSession();
-		Member member = (Member) session.getAttribute("member");
-		String mm = member.getPermit();
+		} else {
+			
+			String mm = member.getPermit();
+			System.out.println(member.getPermit());
 
-		System.out.println(mm);
-		if (member == null) 
-		{
-			if (mm.equals("ADMIN")) 
-			{
+			
+			if (mm.equals("ADMIN")) {
 
+				System.out.println("asdasd");
 				return "notice/boardList";
-			} 
-			else 
-			{
-				return "login/registerMember";
-				
+
+			} else {
+
+				return "notice/boardNotList";
 
 			}
 		}
-		else(member=!null)
-		{
-			session.removeAttribute("member");
-				return "login/loginfail";
-				
-			
-		}*/
+		/* return "notice/boardNotList"; */
 
-		
-		  return "notice/boardList";
-		 
 	}
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
@@ -134,7 +131,7 @@ public class NoticeController {
 		System.out.println("왓수?");
 
 		issueViewToDb(notice);
-		// noticeService.insertData(notice);
+
 		List<NoticeCode> code = noticeService.getCode();
 		System.out.println(code.size());
 		model.addAttribute("code", code);
