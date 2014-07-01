@@ -44,7 +44,7 @@ public class LoginController {
 
 	private DBCode dc = new DBCode();
 
-	@RequestMapping(value = "loginsuccess.force", method = RequestMethod.POST)
+	@RequestMapping(value = "loginsuccess.do", method = RequestMethod.POST)
 	public String login(@Valid Member user, HttpServletRequest request) {
 
 
@@ -71,7 +71,7 @@ public class LoginController {
 	}
 
 	// 로그인폼으로 이동
-	@RequestMapping(value = "login.force", method = RequestMethod.GET)
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String loginForm( HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -92,14 +92,14 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String checkMemberLogin(String email) {
+//	@RequestMapping(value = "", method = RequestMethod.GET)
+//	public String checkMemberLogin(String email) {
+//
+//		loginService.checkMemberLogin(email);
+//		return null;
+//	}
 
-		loginService.checkMemberLogin(email);
-		return null;
-	}
-
-	@RequestMapping(value = "register.force", method = RequestMethod.POST)
+	@RequestMapping(value = "register.do", method = RequestMethod.POST)
 	public String inserMember(@Valid Member user) {
 
 		String logCD = dc.getMemberCD("G");
@@ -111,7 +111,7 @@ public class LoginController {
 		return "login/registersucess";
 	}
 
-	@RequestMapping(value = "registerMember.force", method = RequestMethod.GET)
+	@RequestMapping(value = "registerMember.do", method = RequestMethod.GET)
 	public String createMember() {
 
 		return "login/registerMember";
