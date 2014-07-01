@@ -27,7 +27,7 @@ public class FBTestController {
 
 	private Logger log = Logger.getLogger(this.getClass());
 
-	@RequestMapping(value = "FBTest.force")
+	@RequestMapping(value = "FBTest.do")
 	public String goFBTest(Model model, HttpServletRequest request) {
 		log.info("FBTestController goFBTest");
 
