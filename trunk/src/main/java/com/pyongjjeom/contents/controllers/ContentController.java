@@ -91,9 +91,12 @@ public class ContentController {
 
 		NaverMovieParsing parsing = new NaverMovieParsing();
 		List<String> movieTitleList = parsing.getTitleList();
-		Iterator<String> iterator = movieTitleList.iterator();
-		while (iterator.hasNext()) {
-			if (iterator.next().equals("그녀")) {
+		List<String> movieCodeList = parsing.getCodeList();
+		Iterator<String > iterator =  movieTitleList.iterator();
+		while(iterator.hasNext())
+		{
+			if(iterator.next().equals("그녀"))
+			{
 				iterator.remove();
 			}
 		}
@@ -109,6 +112,7 @@ public class ContentController {
 						+ "&query=" + URLEncoder.encode(movieTitleList.get(i), "UTF-8")
 						+ "&display=1&yearfrom=2014&yearto&2014";
 				movieList.add(parse.currentMovieParse(uri));
+				System.out.println(uri);
 				uri2 = "http://openapi.naver.com/search?key=" + apiKey
 						+ "&target=image" + "&query="
 						+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
@@ -122,7 +126,10 @@ public class ContentController {
 
 		int i = 0;
 		for (NaverMovie movie : movieList) {
-			movie.setPoster(imageList.get(i));
+			System.out.println(movie.getLink());
+			//movie.setPoster("http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode"+movieCodeList.get(i));
+         movie.setPoster(imageList.get(i));
+			System.out.println(movie.getPoster());
 			i++;
 		}
 		HttpSession httpSession = request.getSession();
@@ -167,12 +174,13 @@ public class ContentController {
 		List<ContentsValue> bandinlunisValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> kyoboValues = new ArrayList<ContentsValue>();
 		List<ContentsValue> naverValues = new ArrayList<ContentsValue>();
-
+		
+		updateGrade(naverParsing, naverValues, "nb");
 		updateGrade(yes24Parsing, yes24Values, "y");
 		updateGrade(kyoboParsing, kyoboValues, "k");
 		updateGrade(aladinParsing, aladinValues, "a");
 		updateGrade(bandinlunisParsing, bandinlunisValues, "b");
-		updateGrade(naverParsing, naverValues, "nb");
+		
 
 		return "contents/insertResult";
 	}
@@ -235,13 +243,15 @@ public class ContentController {
 			movie.setTitle(movie.getTitle().substring(0,
 					movie.getTitle().indexOf("(")));
 		}
+		String poster=movie.getImage().substring(movie.getImage().lastIndexOf("/")+1,movie.getImage().indexOf("_"));
+		System.out.println(poster);
 		httpSession.setAttribute("movie", movie);
 		Document doc;
 		Jsoup jsoup = null;
 		MovieGrades grades = new MovieGrades();
 		System.out.println("???" + movie.getTitle());
 		grades = contentService.movieGradeSelect(movie.getTitle());
-
+System.out.println(grades.getMovieCode());
 		try {
 			doc = Jsoup.connect(movie.getLink()).get();
 			request.setAttribute("genre",
@@ -256,7 +266,9 @@ public class ContentController {
 					doc.select("p[class=info_spec] span[class=count]").text());
 			request.setAttribute("context", doc.select("p[class=con_tx]").text());
 			request.setAttribute("grades", grades);
-
+					doc = Jsoup.connect( "http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+poster).get();
+					request.setAttribute("poster",doc.select("img[src]").attr("src"));
+					System.out.println(doc.select("img[src]").attr("src"));
 			if (grades != null) {
 				int count = 0;
 				double avg = 0;
@@ -290,7 +302,8 @@ public class ContentController {
 			movie.setTitle(movie.getTitle().substring(0,
 					movie.getTitle().indexOf("(")));
 		}
-
+		String poster=movie.getImage().substring(movie.getImage().lastIndexOf("/")+1,movie.getImage().indexOf("_"));
+		
 		httpSession.setAttribute("movie", movie);
 		if (httpSession.getAttribute("stat").equals("search")) {
 			System.out.println("까꿍~");
@@ -299,6 +312,7 @@ public class ContentController {
 			MovieGrades grades = new MovieGrades();
 			System.out.println("???" + movie.getTitle());
 			grades = contentService.movieGradeSelect(movie.getTitle());
+			
 
 			try {
 				doc = Jsoup.connect(movie.getLink()).get();
@@ -314,7 +328,9 @@ public class ContentController {
 						doc.select("p[class=info_spec] span[class=count]").text());
 				request.setAttribute("context", doc.select("p[class=con_tx]").text());
 				request.setAttribute("grades", grades);
-
+				doc = Jsoup.connect( "http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+poster).get();
+				request.setAttribute("poster",doc.select("img[src]").attr("src"));
+	
 				if (grades != null) {
 					int count = 0;
 					double avg = 0;
@@ -366,7 +382,10 @@ public class ContentController {
 				request.setAttribute("authorIntroContent",
 						doc.select("div[id=authorIntroContent]").text());
 				request.setAttribute("grades", grades);
-
+				
+				String poster = "http://bookthumb.phinf.naver.net/"+book.getImage().substring(book.getImage().indexOf("cover/"),book.getImage().indexOf(".jpg"))+".jpg";
+				System.out.println(poster);
+				request.setAttribute("poster", poster);
 				if (grades != null) {
 					int count = 0;
 					double avg = 0;
@@ -410,15 +429,15 @@ public class ContentController {
 			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), dbCode.getContentCD("m")));
+						.getGradeList().get(i),Parsing.getCodeList().get(i),dbCode.getContentCD("m")));
 			}
 			contentService.movieTitleInsert(Values);
 		}
-		if (str.equals("y") || str.equals("k")) {
+		if (str.equals("nb")) {
 			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), dbCode.getContentCD("b")));
+						.getGradeList().get(i),Parsing.getCodeList().get(i),dbCode.getContentCD("b")));
 			}
 			contentService.bookTitleInsert(Values);
 		} else
