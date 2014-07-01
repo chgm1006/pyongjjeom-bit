@@ -24,10 +24,13 @@ package com.pyongjjeom.notice.controllers;
 import java.util.List;
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.net.SyslogAppender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,39 +94,20 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
-		/*HttpSession session = request.getSession();
-
-		Member member = (Member) session.getAttribute("member");*/
+		
 		IssueDbtoView(notice);
 		List<Notice> list = noticeService.getAllNoticeDatas();
+		
+		HttpSession session = request.getSession();
+
+		Member member = (Member) session.getAttribute("member");
+		model.addAttribute("ddd", member);
 		model.addAttribute("add", list);
 		
 		
-		
-		/*if (member == null) {
-			return "notice/boardNotList";
-
-		} else {
-			
-			String mm = member.getPermit();
-			System.out.println(member.getPermit());
-
-			
-			if (mm.equals("ADMIN")) {
-
-				System.out.println("asdasd");
-				return "notice/boardList";
-
-			} else {
-
-				return "notice/boardNotList";
-
-			}
-		}
-	*/
-		return "notice/boardList";
-
+			return "notice/boardList";
 	}
+	
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
