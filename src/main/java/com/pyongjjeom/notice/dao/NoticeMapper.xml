@@ -28,16 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 		select * from notice where ifnull(deleteyn,'N')='N' and category = 'SM'
-		order by regidate desc;
+			order by regidate desc;
+		
 	
 
 	</select>
 
 	<select id="getEventNoticeDatas" resultType="Notice">
-
-
+	    
 		select * from notice where ifnull(deleteyn,'N')='N' and category = 'EV'
-	order by regidate desc;
+			order by regidate desc;
+
 	</select>
 	
 	<select id="getDeleteNoticeDatas" resultType="Notice">

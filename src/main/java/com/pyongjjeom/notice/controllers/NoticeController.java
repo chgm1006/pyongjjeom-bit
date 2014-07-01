@@ -54,7 +54,7 @@ public class NoticeController {
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 
-		return listDo(notice, model, request);
+		return "notice/boardList";
 	}
 
 	@RequestMapping(value = "systemList.do")
@@ -64,8 +64,8 @@ public class NoticeController {
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 		model.addAttribute("add", list);
 
-		return listDo(notice, model, request);
-		/*return "notice/boardList";*/
+
+		return "notice/boardList";
 	}
 
 	@RequestMapping(value = "eventList.do")
@@ -74,8 +74,8 @@ public class NoticeController {
 		List<Notice> list = noticeService.getEventNoticeDatas();
 		model.addAttribute("add", list);
 
-		return listDo(notice, model, request);
-		/*return "notice/boardList";*/
+
+		return "notice/boardList";
 	}
 
 	@RequestMapping(value = "deleteList.do")
@@ -91,16 +91,16 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 
-		Member member = (Member) session.getAttribute("member");
+		Member member = (Member) session.getAttribute("member");*/
 		IssueDbtoView(notice);
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 		
 		
 		
-		if (member == null) {
+		/*if (member == null) {
 			return "notice/boardNotList";
 
 		} else {
@@ -120,7 +120,8 @@ public class NoticeController {
 
 			}
 		}
-	
+	*/
+		return "notice/boardList";
 
 	}
 
@@ -143,7 +144,7 @@ public class NoticeController {
 			HttpServletRequest request) {
 
 		IssueDbtoView(notice);
-		String notCD = dc.getNoticeCD("no"); // 값이 Static이라 한번 호출할때마다 변함
+		String notCD = dc.getNoticeCD("sm"); // 값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
 
 		/*
