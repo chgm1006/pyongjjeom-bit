@@ -11,5 +11,7 @@
 
  현재 로그인 한사람 ${member.email}<br>
 비번 ${member.passwd }<br>
+<a href = "${pageContext.request.contextPath}/index.jsp">메인</a>
+<a href = "myRoom.do">마이룸으로 이동</a>
 </body>
 </html>
