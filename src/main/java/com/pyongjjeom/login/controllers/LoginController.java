@@ -76,19 +76,8 @@ public class LoginController {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
-		
-		if(member ==null)
-		{
-			return "login/login";
-		}
-
-		else
-		{
-			session.removeAttribute("member");	
-			return "login/loginfail";
-				
-		}
-		 
+			
+		return "login/login";
 
 	}
 
