@@ -16,7 +16,7 @@
 				<li class="menu3"><a href="#">공연</a></li>
 			</ul>
 			<div class="search">
-				<form action="views/ContentsSearch.do" method="get" id="frmLogin"
+				<form action="ContentsSearch.do" method="get" id="frmLogin"
 					name="frmLogin">
 					<select name="category">
 						<option value="book">책
