@@ -13,8 +13,8 @@ public class NaverBookParsing extends ContentsParsing {
 	public NaverBookParsing() {
 
 		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=1");
-		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=2");
-		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=3");
+	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=2");
+	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=3");
 	}
 
 	/**
@@ -41,6 +41,7 @@ public class NaverBookParsing extends ContentsParsing {
 
 		for (Element tit : title) {
 			titleList.add(tit.text());
+			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
 		}
 	}
 
