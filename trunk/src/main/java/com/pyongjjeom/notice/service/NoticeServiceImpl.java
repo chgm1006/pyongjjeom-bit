@@ -58,7 +58,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 입력하기
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeDatas()
@@ -72,7 +72,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 이벤트데이터를 List 형식으로 불러오기 
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
@@ -89,7 +89,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 삭제하기 (notCD에 해당하는 데이터 삭제)
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getCode()
@@ -104,8 +104,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
+	 * 간략 : 코드값을 가지고오기
+	 * 상세 : 셀렉트박스인 이벤트 / 행사를 구분하기위해서   공통코드인 code, codenm을 불러오기위해 사용
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#editData(com.pyongjjeom.notice.dto.Notice)
 	 */
@@ -119,7 +119,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 수정하기
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#updateData(java.lang.String)
@@ -132,8 +132,9 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
+	 * 간략 : notCD 값 가지고오기
+	 * 상세 : 수정하기를 클릭시 그에 해당하는 데이터를 불러오기 위해서는 notCD가 필요
+	 *       그래서 그값을 불러오기위해 사용
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getSystemNoticeDatas()
 	 */
@@ -145,7 +146,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 시스템데이터를 List 형식으로 불러오기
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getEventNoticeDatas()
@@ -158,7 +159,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 이벤트데이터를 List 형식으로 불러오기
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getDeleteNoticeDatas()
@@ -171,7 +172,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 : 삭제된데이터를 List 형식으로 불러오기
 	 * 상세 : 
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getData(com.pyongjjeom.notice.dto.Notice)
