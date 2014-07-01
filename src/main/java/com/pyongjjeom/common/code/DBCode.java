@@ -120,8 +120,8 @@ public class DBCode {
 	 */
 	public String getNoticeCD(String cd) {
 		int cnt = StaticField.NOTICE_CNT++;
-		if (!(cd.toUpperCase().equals("NO") || cd.toUpperCase().equals("SM") || cd
-				.toUpperCase().equals("EV"))) {
+		if (!/*(cd.toUpperCase().equals("NO") || */cd.toUpperCase().equals("SM") || cd
+				.toUpperCase().equals("EV")) {
 			System.err.println("등록되지 않은 코드입니다.");
 			return null;
 		}
