@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 
     <insert id="movieTitleInsert" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		INSERT INTO test_movie (concd,title) SELECT #{concd},#{title} FROM DUAL
+		INSERT INTO test_movie (concd,title,movieCode) SELECT #{concd},#{title},#{code} FROM DUAL
        WHERE NOT EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
 	</insert>
 	
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		
 		
 		<insert id="bookTitleInsert" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		INSERT INTO test_book (concd,title) SELECT #{concd},#{title} FROM DUAL
+		INSERT INTO test_book (concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
        WHERE NOT EXISTS( SELECT 1 FROM test_book WHERE title=#{title})
 	</insert>
 	
