@@ -1,28 +1,30 @@
 package com.pyongjjeom.contents.parsing.movie;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
 
 public class NaverMovieParsing extends ContentsParsing {
 
+
 	public NaverMovieParsing() {
 
 		parsing("http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve");
-
+//parsing("http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=94133");
 	}
 
 	public void parsing(String url) {
 		try {
 			doc = Jsoup.connect(url).get();
-
 			grade = doc.select("span[class=num]");
-			title = doc.select("dt[class=tit");
-
+			title = doc.select("dt[class=tit] a");
 			this.addTitle();
 			this.addGrade();
 		} catch (IOException e) {
@@ -33,6 +35,8 @@ public class NaverMovieParsing extends ContentsParsing {
 	private void addTitle() {
 		for (Element tit : title) {
 			titleList.add(tit.text());
+	System.out.println(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
+			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
 		}
 	}
 
@@ -52,5 +56,6 @@ public class NaverMovieParsing extends ContentsParsing {
 				+ parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
+		System.out.println(parsing.codeList.toString());
 	}
 }
