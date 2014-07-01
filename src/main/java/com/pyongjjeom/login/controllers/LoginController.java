@@ -80,6 +80,12 @@ public class LoginController {
 		return "login/login";
 
 	}
+	
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(){
+		
+		return "login/loginfail";
+	}
 
 //	@RequestMapping(value = "", method = RequestMethod.GET)
 //	public String checkMemberLogin(String email) {
