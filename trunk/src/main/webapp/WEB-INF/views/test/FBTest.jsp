@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
+	userId = "";
+
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId : '1449705105272003',
@@ -18,12 +20,18 @@
 
 		FB.login(function(response) {
 			if (response.authResponse) {
-				alert("login");
+				console.log(response.authResponse.accessToken);
+				console.log(response.authResponse.userID);
+				console.log(response.name);
+				var accessToken = response.authResponse.accessToken;
+				FB.api('/me/friends/?limit=0', function(user) {
+					console.log(user);
+				});
 			} else {
 				alert("no login");
 			}
 		}, {
-			scope : "publish_stream,offline_access"
+			scope : "publish_actions,user_friends"
 		});
 	};
 
@@ -39,40 +47,15 @@
 		d.getElementsByTagName('head')[0].appendChild(js);
 	}(document));
 
-	function login() {
-		FB.login(function(response) {
-			if (response.authResponse) {
-				alert("login");
-			} else {
-				alert("no login");
-			}
-		}, {
-			scope : "publish_stream,offline_access"
-		});
-	}
-
 	function facebookFriend(code, page) {
 
 		var facebook_count = 0;
 
-		FB.api({
-			method : 'fql.query',
-			query : 'SELECT uid, name, email, birthday, pic_square, online_presence  FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())'
-		},
-		function(response) {
-			alert(response.length);
-			var tmp_str = "";
-			for (var i = 0; i < response.length; i++) {
-				tmp_str += "<tr>";
-				tmp_str += "<td>" + response[i].name + "</td>";
-				tmp_str += "<td><img src='"+response[i].pic_square+"' alt='"+response[i].uid+"'></td>";
-				tmp_str += "</tr>";
-				response[i].uid;
-				response[i].birthday;
-				response[i].email;
-				response[i].online_presence;
+		console.log("1111");
+		FB.api("/me/members/", function(response) {
+			if (response && !response.error) {
+				console.log(response);
 			}
-			$("#friend").html(tmp_str);
 		});
 	}
 </script>
