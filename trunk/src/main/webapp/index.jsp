@@ -147,8 +147,8 @@
 
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<div class="list1" onclick="document.location='views/currentMovieContext.do?num=${status.index}' ">
-					<a href="#" class="listImgLink"><img src="${movie.image}"
+				<div class="list1" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+					<a href="#" class="listImgLink"><img   src="${movie.image}"
 						class="listImg"></a>
 					<div class="detail">
 						<table>
@@ -203,9 +203,9 @@ header 에 구현
 -->
 
 			<li><a href="search2.jsp">포스팅 (NAVER API)</a></li>
-			<li><a href="views/boardList.do">공지사항</a></li>
-			<li><a href="views/MovieDataUpdate.do">영화 평점 DB_INSERT/UPDATE</a></li>
-			<li><a href="views/BookDateUpdate.do">책 평점 DB_INSERT/UPDATE</a></li>
+			<li><a href="boardList.do">공지사항</a></li>
+			<li><a href="MovieDataUpdate.do">영화 평점 DB_INSERT/UPDATE</a></li>
+			<li><a href="BookDateUpdate.do">책 평점 DB_INSERT/UPDATE</a></li>
 			<li><a href="FBTest.do">FaceBook Test</a></li>
 			<li><a href="views/registerMember.do">회원가입</a></li>
 			<li><a href="views/emailAuth.do">인증코드 메일보내기</a></li>
