@@ -8,6 +8,6 @@
 </head>
 <body>
 	회원가입완료
-	<a href = "login/login">로그인하러가시죵</a>
+	<a href = "login.do">로그인하러가시죵</a>
 </body>
 </html>
