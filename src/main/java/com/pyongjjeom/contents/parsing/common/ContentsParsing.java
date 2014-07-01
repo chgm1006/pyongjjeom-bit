@@ -12,9 +12,13 @@ public abstract class ContentsParsing {
 	protected Elements title;
 	protected List<String> titleList= new ArrayList<String>();
 	protected List<Double> gradeList= new ArrayList<Double>();
+	protected List<String> codeList= new ArrayList<String>();
 	protected Document doc;
 
 	public ContentsParsing() {
+	}
+	public List<String> getCodeList() {
+		return codeList;
 	}
 	/**
 	 * <PRE>

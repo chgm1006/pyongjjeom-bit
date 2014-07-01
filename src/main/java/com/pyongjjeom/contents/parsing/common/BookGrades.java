@@ -44,6 +44,13 @@ public class BookGrades {
 	private double bandiBg;
 	private double kyoboBg;
 	private double yesBg;
+	private String bookCode;
+	public String getBookCode() {
+		return bookCode;
+	}
+	public void setBookCode(String bookCode) {
+		this.bookCode = bookCode;
+	}
 	@Override
 	public String toString() {
 		return "BookGrades [log=" + log + ", title=" + title + ", naverBg="

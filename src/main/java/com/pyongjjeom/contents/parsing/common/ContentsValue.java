@@ -5,6 +5,8 @@ public class ContentsValue {
 	private String title;
 	private Double grade;
 	private String concd;
+	private String code;
+
 
 	public String getConcd() {
 		return concd;
@@ -14,10 +16,20 @@ public class ContentsValue {
 		this.concd = concd;
 	}
 
-	public ContentsValue(String title, Double grade, String concd) {
+
+	public ContentsValue(String title, Double grade, String code ,String concd) {
 		this.title = title;
 		this.grade = grade;
+		this.code = code;
 		this.concd = concd;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public ContentsValue() {
@@ -48,7 +60,8 @@ public class ContentsValue {
 
 	@Override
 	public String toString() {
-		return title + "_" + grade;
+		return "ContentsValue [title=" + title + ", grade=" + grade + ", concd="
+				+ concd + ", code=" + code + "]";
 	}
 
 }

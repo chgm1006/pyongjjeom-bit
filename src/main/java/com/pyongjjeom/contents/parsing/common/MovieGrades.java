@@ -47,8 +47,15 @@ import org.apache.log4j.Logger;
 
 public class MovieGrades {
 
+	public String getMovieCode() {
+		return movieCode;
+	}
+	public void setMovieCode(String movieCode) {
+		this.movieCode = movieCode;
+	}
 	private Logger log = Logger.getLogger(this.getClass());
 	private String title;
+	private String movieCode;
 	private double naverMg;
 	private double daumMg;
 	private double cgvMg;
