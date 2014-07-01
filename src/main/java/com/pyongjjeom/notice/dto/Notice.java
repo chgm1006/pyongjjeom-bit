@@ -26,6 +26,11 @@ public class Notice {
 	private String permit = "";
 	private String notPasswd = "";
 
+	private String deleteYN = "";
+	private String regidateStr = "";
+	private Date regidate;
+	private Date updatedate;
+
 	public String getNotCD() {
 		return notCD;
 	}
@@ -106,9 +111,13 @@ public class Notice {
 		this.updatedate = updatedate;
 	}
 
-	private String deleteYN = "";
-	private Date regidate;
-	private Date updatedate;
+	public String getRegidateStr() {
+		return regidateStr;
+	}
+
+	public void setRegidateStr(String regidateStr) {
+		this.regidateStr = regidateStr;
+	}
 
 	@Override
 	public String toString() {
