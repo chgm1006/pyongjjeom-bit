@@ -10,12 +10,11 @@
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp" %>
 
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/board.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/resources/css/modalWindow.css">
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
 </head>
