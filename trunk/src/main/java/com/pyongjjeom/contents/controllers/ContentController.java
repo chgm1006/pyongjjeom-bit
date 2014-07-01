@@ -84,18 +84,16 @@ public class ContentController {
 	 * 
 	 * @return index file 의 경로
 	 */
-	
+
 	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
 	private String preIndex(HttpServletRequest request) {
 		System.out.println("컴온요");
 
 		NaverMovieParsing parsing = new NaverMovieParsing();
 		List<String> movieTitleList = parsing.getTitleList();
-		Iterator<String > iterator =  movieTitleList.iterator();
-		while(iterator.hasNext())
-		{
-			if(iterator.next().equals("그녀"))
-			{
+		Iterator<String> iterator = movieTitleList.iterator();
+		while (iterator.hasNext()) {
+			if (iterator.next().equals("그녀")) {
 				iterator.remove();
 			}
 		}
@@ -238,46 +236,46 @@ public class ContentController {
 					movie.getTitle().indexOf("(")));
 		}
 		httpSession.setAttribute("movie", movie);
-			Document doc;
-			Jsoup jsoup = null;
-			MovieGrades grades = new MovieGrades();
-			System.out.println("???" + movie.getTitle());
-			grades = contentService.movieGradeSelect(movie.getTitle());
+		Document doc;
+		Jsoup jsoup = null;
+		MovieGrades grades = new MovieGrades();
+		System.out.println("???" + movie.getTitle());
+		grades = contentService.movieGradeSelect(movie.getTitle());
 
-				try {
-					doc = Jsoup.connect(movie.getLink()).get();
-					request.setAttribute("genre",
-							doc.select("p[class=info_spec] a[href*=genre").text());
-					request.setAttribute("nation",
-							doc.select("p[class=info_spec] a[href*=nation").text());
-					request.setAttribute("open",
-							doc.select("p[class=info_spec] a[href*=open").text());
-					request.setAttribute("grade",
-							doc.select("p[class=info_spec] a[href*=grade").text());
-					request.setAttribute("count",
-							doc.select("p[class=info_spec] span[class=count]").text());
-					request.setAttribute("context", doc.select("p[class=con_tx]").text());
-					request.setAttribute("grades", grades);
+		try {
+			doc = Jsoup.connect(movie.getLink()).get();
+			request.setAttribute("genre",
+					doc.select("p[class=info_spec] a[href*=genre").text());
+			request.setAttribute("nation",
+					doc.select("p[class=info_spec] a[href*=nation").text());
+			request.setAttribute("open", doc
+					.select("p[class=info_spec] a[href*=open").text());
+			request.setAttribute("grade",
+					doc.select("p[class=info_spec] a[href*=grade").text());
+			request.setAttribute("count",
+					doc.select("p[class=info_spec] span[class=count]").text());
+			request.setAttribute("context", doc.select("p[class=con_tx]").text());
+			request.setAttribute("grades", grades);
 
-					if (grades != null) {
-						int count = 0;
-						double avg = 0;
-						double arr[] = { grades.getCgvMg(), grades.getDaumMg(),
-								grades.getLotteMg(), grades.getMegaBoxMg(), grades.getNaverMg() };
-						for (double grade : arr) {
-							if (grade != 0) {
-								avg += grade;
-								count++;
-							}
-					request.setAttribute("avg", avg / count);
-						}
+			if (grades != null) {
+				int count = 0;
+				double avg = 0;
+				double arr[] = { grades.getCgvMg(), grades.getDaumMg(),
+						grades.getLotteMg(), grades.getMegaBoxMg(), grades.getNaverMg() };
+				for (double grade : arr) {
+					if (grade != 0) {
+						avg += grade;
+						count++;
 					}
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					request.setAttribute("avg", avg / count);
 				}
-				return "contents/movieContext";
 			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "contents/movieContext";
+	}
 
 	@RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
 	public String getMovieContext(Model model, HttpServletRequest request) {
