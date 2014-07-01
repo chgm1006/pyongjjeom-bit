@@ -54,6 +54,9 @@ public class NoticeController {
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
+		
+		
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 
@@ -63,6 +66,8 @@ public class NoticeController {
 	@RequestMapping(value = "systemList.do")
 	public String systemList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
+		
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 		model.addAttribute("add", list);
@@ -74,6 +79,8 @@ public class NoticeController {
 	@RequestMapping(value = "eventList.do")
 	public String eventList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
+		
 		List<Notice> list = noticeService.getEventNoticeDatas();
 		model.addAttribute("add", list);
 
@@ -84,6 +91,9 @@ public class NoticeController {
 	@RequestMapping(value = "deleteList.do")
 	public String deleteList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+		
+		
+		
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
 		model.addAttribute("add", list);
 
@@ -101,7 +111,7 @@ public class NoticeController {
 		HttpSession session = request.getSession();
 
 		Member member = (Member) session.getAttribute("member");
-		model.addAttribute("ddd", member);
+
 		model.addAttribute("add", list);
 		
 		
