@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <% session.removeAttribute("member");%>
+      <% session.removeAttribute("member");%> <!-- member이름으로 가져온 세션 삭세 -->
 <!DOCTYPE html>
 <html>
 <head>

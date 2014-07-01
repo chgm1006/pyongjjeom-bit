@@ -59,7 +59,7 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="register.force" method="post">
+				<form action="register.do" method="post">
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
