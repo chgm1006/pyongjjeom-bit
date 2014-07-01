@@ -24,8 +24,8 @@
 				console.log(response.authResponse.userID);
 				console.log(response.name);
 				var accessToken = response.authResponse.accessToken;
-				FB.api('/me/friends/?limit=0', function(user) {
-					console.log(user);
+				FB.api('/me/taggable_friends', function(response) {
+					console.log(response);
 				});
 			} else {
 				alert("no login");
@@ -52,9 +52,11 @@
 		var facebook_count = 0;
 
 		console.log("1111");
-		FB.api("/me/members/", function(response) {
+		FB.api("/me/taggable_friends", function(response) {
+			console.log(response.error);
 			if (response && !response.error) {
 				console.log(response);
+				console.log(response.size);
 			}
 		});
 	}
