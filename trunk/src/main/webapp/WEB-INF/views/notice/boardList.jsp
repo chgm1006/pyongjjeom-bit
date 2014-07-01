@@ -28,12 +28,19 @@
 	<div id="wrap">
 		<div class="menu">
 			<ul>
-			
+
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='allList.do'">전체보기</a></li>
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='eventList.do'">행사공지</a></li>
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='systemList.do'">시스템공지</a></li>
+			
+			<c:choose>
+			<c:when test ="${ddd.permit =='ADMIN'}">
 				<li class="boardMenu"><a class="myPageMenu" id="boardWrite" href="#" OnClick="window.location='write.do'">글쓰기</a></li>
 				<li class="boardMenu"><a class="myPageMenu" href="#" OnClick="window.location='deleteList.do'">삭제된글</a></li>	
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+			</c:choose>
 			</ul>
 		</div>
 		<div class="clear"></div>
