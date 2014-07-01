@@ -123,7 +123,7 @@ public class NoticeController {
 		}*/
 
 		
-		  return "notice/boardList";
+		  return "views/notice/boardList";
 		 
 	}
 
