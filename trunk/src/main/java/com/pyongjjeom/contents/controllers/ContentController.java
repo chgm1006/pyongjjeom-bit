@@ -211,7 +211,6 @@ public class ContentController {
 					+ "&display=100";
 			resultList = naverParse.bookParse(uri);
 			System.out.println(uri);
-			resultPage = "contents/bookSearchList";
 			break;
 		case "movie":
 			resultList = new ArrayList<NaverMovie>();
@@ -220,14 +219,13 @@ public class ContentController {
 					+ "&display=100";
 			System.out.println(uri);
 			resultList = naverParse.movieParse(uri);
-			resultPage = "contents/movieSearchList";
 			break;
 		default:
 			break;
 		}
 		httpSession.setAttribute("resultList", resultList);
 
-		return resultPage;
+		return "contents/contentsSearchList";
 	}
 
 	@RequestMapping(value = "currentMovieContext.do", method = RequestMethod.GET)
@@ -286,10 +284,10 @@ System.out.println(grades.getMovieCode());
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "contents/movieContext";
+		return "contents/contentsContext";
 	}
 
-	@RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
+	@RequestMapping(value = "contentsContext.do", method = RequestMethod.GET)
 	public String getMovieContext(Model model, HttpServletRequest request) {
 
 		int num = Integer.parseInt(request.getParameter("num"));
@@ -344,12 +342,12 @@ System.out.println(grades.getMovieCode());
 					}
 					request.setAttribute("avg", avg / count);
 				}
-				return "contents/movieContext";
+				return "contents/contentsContext";
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return "contents/moviePostingWrite";
+		return "contents/contentsPostingWrite";
 	}
 
 	@RequestMapping(value = "bookContext.do", method = RequestMethod.GET)
@@ -402,9 +400,9 @@ System.out.println(grades.getMovieCode());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			return "contents/bookContext";
+			return "contents/contentsContext";
 		}
-		return "contents/bookPostingWrite";
+		return "contents/contentsPostingWrite";
 	}
 
 	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
@@ -413,14 +411,7 @@ System.out.println(grades.getMovieCode());
 		String str = request.getParameter("postContext");
 		// DB에 추가 해야함 _
 		request.setAttribute("posting", str);
-		String category = (String) request.getSession().getAttribute("category");
-		System.out.println(category);
-		if (category.equals("book"))
-			return "contents/bookPostringResult";
-		else if (category.equals("movie"))
-			return "contents/moviePostringResult";
-
-		return "content/error";
+			return "contents/contentsPostingResult";
 	}
 
 	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> Values,
