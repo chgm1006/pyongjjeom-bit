@@ -46,7 +46,6 @@ import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.Reply;
 
-
 /**
  * <pre>
  * com.pyongjjeom.contents.controllers 
@@ -85,6 +84,8 @@ public class ContentController {
 	 * 
 	 * @return index file 의 경로
 	 */
+	//@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
+	
 	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
 	private String preIndex(HttpServletRequest request) {
 		System.out.println("컴온요");
@@ -99,7 +100,6 @@ public class ContentController {
 				iterator.remove();
 			}
 		}
-		
 		NaverParse parse = new NaverParse();
 		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 		String uri, uri2;
