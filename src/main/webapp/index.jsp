@@ -211,6 +211,7 @@ header 에 구현
 			<li><a href="views/registerMember.force">회원가입</a></li>
 			<li><a href="views/emailAuth.force">인증코드 메일보내기</a></li>
 			<li><a href="views/login.force">로그인</a></li>
+			<li><a href="views/myRoom.do">로그인</a></li>
 		</ul>
 	</footer>
 
