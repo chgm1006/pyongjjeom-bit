@@ -21,7 +21,13 @@
  */
 package com.pyongjjeom.notice.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+
+
 
 
 
@@ -56,8 +62,11 @@ public class NoticeController {
 			HttpServletRequest request) {
 		
 		
-		
+//		DateFormat df = new SimpleDateFormat();
 		List<Notice> list = noticeService.getAllNoticeDatas();
+//		list.get(0).getRegidate();
+//		System.out.println(list.get(0).getRegidate());
+//		System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
 
 		return "notice/boardList";
