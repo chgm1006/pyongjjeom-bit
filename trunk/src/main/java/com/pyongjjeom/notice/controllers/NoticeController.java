@@ -23,7 +23,7 @@ package com.pyongjjeom.notice.controllers;
 
 import java.util.List;
 
-import javax.mail.Session;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -36,7 +36,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mysql.fabric.Response;
 import com.pyongjjeom.common.code.DBCode;
-import com.pyongjjeom.login.service.LoginService;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
@@ -55,7 +54,7 @@ public class NoticeController {
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 
-		return "notice/boardList";
+		return listDo(notice, model, request);
 	}
 
 	@RequestMapping(value = "systemList.do")
@@ -65,7 +64,8 @@ public class NoticeController {
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 		model.addAttribute("add", list);
 
-		return "notice/boardList";
+		return listDo(notice, model, request);
+		/*return "notice/boardList";*/
 	}
 
 	@RequestMapping(value = "eventList.do")
@@ -74,7 +74,8 @@ public class NoticeController {
 		List<Notice> list = noticeService.getEventNoticeDatas();
 		model.addAttribute("add", list);
 
-		return "notice/boardList";
+		return listDo(notice, model, request);
+		/*return "notice/boardList";*/
 	}
 
 	@RequestMapping(value = "deleteList.do")
@@ -94,7 +95,6 @@ public class NoticeController {
 
 		Member member = (Member) session.getAttribute("member");
 		IssueDbtoView(notice);
-		System.out.println("왓수?");
 		List<Notice> list = noticeService.getAllNoticeDatas();
 		model.addAttribute("add", list);
 		
@@ -120,7 +120,7 @@ public class NoticeController {
 
 			}
 		}
-		/* return "notice/boardNotList"; */
+	
 
 	}
 
@@ -128,7 +128,6 @@ public class NoticeController {
 	public String insertData(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
-		System.out.println("왓수?");
 
 		issueViewToDb(notice);
 
@@ -210,7 +209,7 @@ public class NoticeController {
 
 		request.getParameter("notCD");
 
-		System.out.println("삭제할거야??");
+
 
 		noticeService.deleteData(request.getParameter("notCD"));
 
@@ -248,10 +247,7 @@ public class NoticeController {
 		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
 		notice.setIssue(viewIssue);
-		/*
-		 * context = context.replaceAll("\r\n", "<br>"); context =
-		 * context.replaceAll("\u0020", "&nbsp;");
-		 */
+
 
 		return notice;
 	}
