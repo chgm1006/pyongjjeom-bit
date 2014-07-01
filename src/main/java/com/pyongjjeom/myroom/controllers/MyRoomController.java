@@ -52,7 +52,7 @@ public class MyRoomController {
 
 		System.out.println("myroom?");
 
-		return "myroom/myRoom";
+		return "myRoom/myRoom";
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
