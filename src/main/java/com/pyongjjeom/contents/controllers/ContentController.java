@@ -84,7 +84,6 @@ public class ContentController {
 	 * 
 	 * @return index file 의 경로
 	 */
-	//@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
 	
 	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
 	private String preIndex(HttpServletRequest request) {
