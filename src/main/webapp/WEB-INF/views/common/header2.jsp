@@ -33,7 +33,7 @@
 
 		<div class="rightMenu">
 			<ul>
-				<li class="menu5"><a href="views/login.force" class="menu5_1">마이룸</a></li>
+				<li class="menu5"><a href="login.force" class="menu5_1">마이룸</a></li>
 				<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
 				<li class="menu7"><a href="boardList.do" class="menu7_1">공지사항</a></li>
 			</ul>
