@@ -81,7 +81,7 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="loginsuccess.force" method="post">
+				<form action="loginsuccess.do" method="post">
 					<h2>
 						<span class="red"><strong>로그인</strong></span>
 					</h2>
@@ -92,7 +92,7 @@
 					<button type="submit">로그인</button>
 					<button type="button" onclick="">페이스북로그인</button><br><br>
 					<a href = "views/">비밀번호를 까먹으셧나영?</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<a href = "registerMember.force">아직 회원이 아니신가영?</a>
+					<a href = "registerMember.do">아직 회원이 아니신가영?</a>
 
 				</form>
 			</div>
