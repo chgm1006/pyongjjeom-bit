@@ -63,16 +63,16 @@
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
-					<label for="email">Email</label> 
-					<input type="text" id="email" name="email" placeholder="enter your email...">
-					<label for="name">Name</label>
-					<input type="text" id="name" name="memNm" placeholder="enter your name...">
-					<label for="birth">Birth</label>
-					<input type="text" id="birth" name="birth" placeholder="choose a birth...">
-					<label for="password">Password</label>
-					<input type="text" id="password" name="passwd" placeholder="enter your password...">
-					<label for="password_check">Password Check</label>
-					<input type="text" id="password_check" name="password_check" placeholder="enter your passwordcheck...">
+					<label for="email">이메일</label> 
+					<input type="text" id="email" name="email" placeholder="이메일...">
+					<label for="name">이름</label>
+					<input type="text" id="name" name="memNm" placeholder="이름...">
+					<label for="birth">생년월일</label>
+					<input type="text" id="birth" name="birth" placeholder="생년월일...">
+					<label for="password">비밀번호</label>
+					<input type="text" id="password" name="passwd" placeholder="비밀번호...">
+					<label for="password_check">비밀번호확인</label>
+					<input type="text" id="password_check" name="password_check" placeholder="비밀번호확인...">
 					<button type="submit">가입하기</button>
 				</form>
 			</div>
