@@ -22,7 +22,9 @@
 package com.pyongjjeom.notice.controllers;
 
 import java.text.DateFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +33,8 @@ import java.util.List;
 
 
 
+
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -63,12 +67,28 @@ public class NoticeController {
 		
 		
 //		DateFormat df = new SimpleDateFormat();
+	//	SimpleDateFormat df1 = new SimpleDateFormat("EEE MMM DD hh:mm:ss 'KST' yyyy",Locale.ENGLISH);
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+//		String inString = "Tue Jul 01 18:08:56 KST 2014";
+	//	ParsePosition pos = new ParsePosition(0);
+	//	Date frmTime = df1.parse(inString, pos);
+	//	String outString = df2.format(frmTime);
+	//	System.out.println(outString);
+	
+		
+		
 		List<Notice> list = noticeService.getAllNoticeDatas();
+		
+	
+		
+		for(Notice noti :list)
+		{
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
 //		list.get(0).getRegidate();
 //		System.out.println(list.get(0).getRegidate());
 //		System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
-
 		return "notice/boardList";
 	}
 
@@ -76,9 +96,15 @@ public class NoticeController {
 	public String systemList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
+
+		for(Notice noti :list)
+		{
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
+		
 		model.addAttribute("add", list);
 
 
@@ -89,8 +115,16 @@ public class NoticeController {
 	public String eventList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+		
 		
 		List<Notice> list = noticeService.getEventNoticeDatas();
+		
+		for(Notice noti :list)
+		{
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
+		
 		model.addAttribute("add", list);
 
 
@@ -101,9 +135,15 @@ public class NoticeController {
 	public String deleteList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
 		
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
+		
+		for(Notice noti :list)
+		{
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
+		
 		model.addAttribute("add", list);
 
 		return "notice/boardList";
