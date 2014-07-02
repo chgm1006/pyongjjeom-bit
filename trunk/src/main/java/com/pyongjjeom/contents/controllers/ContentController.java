@@ -235,6 +235,7 @@ public class ContentController {
 		HttpSession httpSession = request.getSession();
 		List<NaverMovie> list = (List<NaverMovie>) httpSession
 				.getAttribute("movieList");
+		httpSession.setAttribute("category", "movie");
 		NaverMovie movie = list.get(num);
 		movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", ""));
 		if (movie.getTitle().contains("(")) {
