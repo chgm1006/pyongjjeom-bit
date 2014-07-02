@@ -8,6 +8,17 @@ public class NaverMovie {
 	private String subtitle = ""; // 영문 제목
 	private String pubDate = ""; // 제작년도
 	private String director = ""; // 감독
+	private String code = ""; 
+	private String actor = ""; // 출연 배우
+	private String userRating = ""; // 유저 평점
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public String getPoster() {
 		return poster;
 	}
@@ -16,8 +27,7 @@ public class NaverMovie {
 		this.poster = poster;
 	}
 
-	private String actor = ""; // 출연 배우
-	private String userRating = ""; // 유저 평점
+
 
 	public String getTitle() {
 		return title;
