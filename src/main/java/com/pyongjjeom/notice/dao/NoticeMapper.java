@@ -47,4 +47,6 @@ public interface NoticeMapper {
 	
 	void editData(Notice notice);
 	
+
+	
 }
