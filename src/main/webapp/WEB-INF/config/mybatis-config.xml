@@ -11,9 +11,12 @@
 	</settings>
 
 	<typeAliases>
-	   <typeAlias type="com.pyongjjeom.contents.parsing.common.ContentsValue" alias="ContentsValue" /> 
-	   	   <typeAlias type="com.pyongjjeom.contents.parsing.common.MovieGrades" alias="MovieGrades" /> 
-	   	   	   	   <typeAlias type="com.pyongjjeom.contents.parsing.common.BookGrades" alias="BookGrades" /> 
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.ContentsValue"
+			alias="ContentsValue" />
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.MovieGrades"
+			alias="MovieGrades" />
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.BookGrades"
+			alias="BookGrades" />
 		<typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member" />
 		<typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice" />
 		<typeAlias type="com.pyongjjeom.notice.dto.NoticeCode" alias="NoticeCode" />
