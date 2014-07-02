@@ -22,7 +22,7 @@
 			<div  id="main" >
 	영화 제목 : ${movie.title}<br><br>
 		부제 : ${movie.subtitle}<br> <br>
-			 관련 영상<br>
+			 예고편<br>
 	 	 <iframe src="${video}"  width="100%" height="480" frameborder="0" scrolling="no"></iframe>
 	  <a	href="${movie.link }"> <img src="${movie.image}"></a><br> <br>
 	    <a	href="${movie.link }"> <img src="${poster}"></a><br> <br>
