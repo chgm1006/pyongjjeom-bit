@@ -55,7 +55,9 @@ public class LoginController {
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
 		if (member == null) {
-			return "login/loginfail";
+			
+			System.out.println("아이디와패스워드불일치");
+			return "login/login";
 		}
 		HttpSession session = request.getSession();
 
@@ -65,7 +67,7 @@ public class LoginController {
 
 		session.setAttribute("member", member);
 		System.out.println(request.getSession() + "로그인세션등록완료");
-		return "login/loginsuccess";
+		return "../../index";
 
 	}
 
@@ -80,7 +82,7 @@ public class LoginController {
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
 	public String logout() {
 
-		return "login/loginfail";
+		return "login/logout";
 	}
 
 	// @RequestMapping(value = "", method = RequestMethod.GET)
