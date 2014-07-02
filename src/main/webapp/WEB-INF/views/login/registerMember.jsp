@@ -74,6 +74,7 @@
 					<label for="password_check">비밀번호확인</label>
 					<input type="text" id="password_check" name="password_check" placeholder="비밀번호확인...">
 					<button type="submit">가입하기</button>
+					<button type="button" onclick="javascript:window.location=login.jsp">돌아가기</button>
 				</form>
 			</div>
 		</div>
