@@ -4,83 +4,88 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 <mapper namespace="com.pyongjjeom.contents.dao.ContentsMapper">
 
 
-    <insert id="movieTitleInsert" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		INSERT INTO test_movie (concd,title,movieCode) SELECT #{concd},#{title},#{code} FROM DUAL
-       WHERE NOT EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
+	<insert id="movieTitleInsert" parameterType="ContentsValue">
+		INSERT INTO test_movie
+		(concd,title,movieCode) SELECT #{concd},#{title},#{code} FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
 	</insert>
-	
-		<update id="naverMovieGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		update test_movie set navermg
+
+	<update id="naverMovieGradeUpdate" parameterType="ContentsValue">
+		update test_movie set
+		navermg
 		=#{grade} where title =#{title}
 	</update>
-	
-	<update id="cgvGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+
+	<update id="cgvGradeUpdate" parameterType="ContentsValue">
 		update test_movie set cgvmg
 		=#{grade} where title =#{title}
 	</update>
 
-	<update id="lotteGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+	<update id="lotteGradeUpdate" parameterType="ContentsValue">
 		update test_movie set
 		lottemg =#{grade} where title =#{title}
 	</update>
 
-	<update id="megaBoxGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
 		update test_movie set
 		megaBoxmg =#{grade} where title =#{title}
 	</update>
-	
-		<update id="daumGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+
+	<update id="daumGradeUpdate" parameterType="ContentsValue">
 		update test_movie set
-		daummg =#{grade} where title =#{title}
+		daummg
+		=#{grade} where title =#{title}
 	</update>
-	
-		<select id="movieGradeSelect"  parameterType="String"  resultType="com.pyongjjeom.contents.parsing.common.MovieGrades">
-		  
-		    select * from test_movie where title = #{title}
-		    
-		</select>
-		
-		
-		
-		
-		
-		
-		<insert id="bookTitleInsert" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		INSERT INTO test_book (concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
-       WHERE NOT EXISTS( SELECT 1 FROM test_book WHERE title=#{title})
+
+	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
+
+		select *
+		from test_movie where title = #{title}
+
+	</select>
+
+	<insert id="bookTitleInsert" parameterType="ContentsValue">
+		INSERT INTO test_book
+		(concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM test_book WHERE title=#{title})
 	</insert>
-	
-		<update id="yes24GradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+
+	<update id="yes24GradeUpdate" parameterType="ContentsValue">
 		update test_book set yesbg
 		=#{grade} where title =#{title}
 	</update>
-	
-	<update id="aladinGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
-		update test_book set aladinbg
+
+	<update id="aladinGradeUpdate" parameterType="ContentsValue">
+		update test_book set
+		aladinbg
 		=#{grade} where title =#{title}
 	</update>
 
-	<update id="kyoboGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
 		update test_book set
-		kyobobg =#{grade} where title =#{title}
+		kyobobg
+		=#{grade} where title =#{title}
 	</update>
 
-	<update id="naverBookGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
 		update test_book set
 		naverbg =#{grade} where title =#{title}
 	</update>
-	
-		<update id="bandinlunisGradeUpdate" parameterType="com.pyongjjeom.contents.parsing.common.ContentsValue">
+
+	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
 		update test_book set
 		bandibg =#{grade} where title =#{title}
 	</update>
-	
-				<select id="bookGradeSelect"  parameterType="String"  resultType="com.pyongjjeom.contents.parsing.common.BookGrades">
-		  
-		    select * from test_book where title = #{title}
-		    
-		</select>
-		
-		
-	
+
+	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
+
+		select *
+		from test_book where title = #{title}
+
+	</select>
+
+
+
 </mapper>
