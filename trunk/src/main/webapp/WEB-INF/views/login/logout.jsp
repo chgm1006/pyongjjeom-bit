@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-로그아웃됫당
+로그아웃되었습니다.
 <a href = "login.do">로그인하러가기</a>
 <a href = "${pageContext.request.contextPath}/index.jsp">메인으로</a>
 </body>
