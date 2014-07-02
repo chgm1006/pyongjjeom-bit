@@ -43,7 +43,7 @@
 				</c:choose>
 				<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
 				<li class="menu7"><a href="boardList.do" class="menu7_1">공지사항</a></li>
-				<li class="menu111"><a href = "logout.do" class="menu111_1">로그아웃</a></li>
+
 			</ul>
 		</div>
 	</div>
