@@ -7,21 +7,6 @@ window.fbAsyncInit = function() {
 		cookie : true
 	});
 
-	FB.login(function(response) {
-		if (response.authResponse) {
-			console.log(response.authResponse.accessToken);
-			console.log(response.authResponse.userID);
-			console.log(response.name);
-			var accessToken = response.authResponse.accessToken;
-			FB.api('/me/taggable_friends', function(response) {
-				console.log(response);
-			});
-		} else {
-			alert("no login");
-		}
-	}, {
-		scope : "publish_actions,user_friends"
-	});
 };
 
 (function(d) {
@@ -36,6 +21,19 @@ window.fbAsyncInit = function() {
 	d.getElementsByTagName('head')[0].appendChild(js);
 }(document));
 
+function fnLoginFB() {
+	FB.login(function(response) {
+		if (response) {
+			console.log(response.name);
+			console.log(response.authResponse.userID);
+			var accessToken = response.authResponse.accessToken;
+		} else {
+			alert("no login");
+		}
+	}, {
+		scope : "publish_stream,user_likes"
+	});
+}
 function facebookFriend(code, page) {
 	console.log("1111");
 	FB.api("/me/taggable_friends", function(response) {
