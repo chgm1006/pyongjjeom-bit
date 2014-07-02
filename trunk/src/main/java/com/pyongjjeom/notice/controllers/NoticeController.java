@@ -68,7 +68,7 @@ public class NoticeController {
 		
 //		DateFormat df = new SimpleDateFormat();
 	//	SimpleDateFormat df1 = new SimpleDateFormat("EEE MMM DD hh:mm:ss 'KST' yyyy",Locale.ENGLISH);
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 //		String inString = "Tue Jul 01 18:08:56 KST 2014";
 	//	ParsePosition pos = new ParsePosition(0);
 	//	Date frmTime = df1.parse(inString, pos);
@@ -96,7 +96,7 @@ public class NoticeController {
 	public String systemList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 
@@ -115,7 +115,7 @@ public class NoticeController {
 	public String eventList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		
 		
 		List<Notice> list = noticeService.getEventNoticeDatas();
@@ -135,7 +135,7 @@ public class NoticeController {
 	public String deleteList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
 		
@@ -155,7 +155,14 @@ public class NoticeController {
 
 		
 		IssueDbtoView(notice);
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
 		List<Notice> list = noticeService.getAllNoticeDatas();
+		
+		for(Notice noti :list)
+		{
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
 		
 		HttpSession session = request.getSession();
 
