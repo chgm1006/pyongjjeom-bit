@@ -47,7 +47,6 @@ public class LoginController {
 	@RequestMapping(value = "loginsuccess.do", method = RequestMethod.POST)
 	public String login(@Valid Member user, HttpServletRequest request) {
 
-
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
 		System.out.println(email);
@@ -55,14 +54,14 @@ public class LoginController {
 
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
-		if(member == null){
+		if (member == null) {
 			return "login/loginfail";
 		}
 		HttpSession session = request.getSession();
 
-	/*	if (!session.isNew()) {
-			session = request.getSession(true);
-		}*/
+		/*
+		 * if (!session.isNew()) { session = request.getSession(true); }
+		 */
 
 		session.setAttribute("member", member);
 		System.out.println(request.getSession() + "로그인세션등록완료");
@@ -72,24 +71,24 @@ public class LoginController {
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String loginForm( HttpServletRequest request) {
-		
+	public String loginForm(HttpServletRequest request) {
+
 		return "login/login";
 
 	}
-	
+
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
-	public String logout(){
-		
+	public String logout() {
+
 		return "login/loginfail";
 	}
 
-//	@RequestMapping(value = "", method = RequestMethod.GET)
-//	public String checkMemberLogin(String email) {
-//
-//		loginService.checkMemberLogin(email);
-//		return null;
-//	}
+	// @RequestMapping(value = "", method = RequestMethod.GET)
+	// public String checkMemberLogin(String email) {
+	//
+	// loginService.checkMemberLogin(email);
+	// return null;
+	// }
 
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
 	public String inserMember(@Valid Member user) {
