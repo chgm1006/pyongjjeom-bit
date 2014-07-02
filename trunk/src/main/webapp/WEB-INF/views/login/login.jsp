@@ -90,7 +90,7 @@
 						<span class="red"><strong>로그인</strong></span>
 					</h2>
 					<label for="email">이메일</label> <input type="text" id="email" name="email"
-						placeholder="이메일을...."> <label for="password">Password</label> <input
+						placeholder="이메일을...."> <label for="password">비밀번호</label> <input
 						type="password" id="passwd" name="passwd" placeholder="비밀번호...">
 					<button type="submit">로그인</button>
 					<button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button>
