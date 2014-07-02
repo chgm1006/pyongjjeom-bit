@@ -21,33 +21,19 @@
  */
 package com.pyongjjeom.notice.controllers;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-
-
-
-
-
-
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.net.SyslogAppender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mysql.fabric.Response;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -60,34 +46,30 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	private DBCode dc = new DBCode(); // DBCode 정의
+	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		
-		
-//		DateFormat df = new SimpleDateFormat();
-	//	SimpleDateFormat df1 = new SimpleDateFormat("EEE MMM DD hh:mm:ss 'KST' yyyy",Locale.ENGLISH);
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//		String inString = "Tue Jul 01 18:08:56 KST 2014";
-	//	ParsePosition pos = new ParsePosition(0);
-	//	Date frmTime = df1.parse(inString, pos);
-	//	String outString = df2.format(frmTime);
-	//	System.out.println(outString);
-	
-		
-		
+
+		// DateFormat df = new SimpleDateFormat();
+		// SimpleDateFormat df1 = new
+		// SimpleDateFormat("EEE MMM DD hh:mm:ss 'KST' yyyy",Locale.ENGLISH);
+
+		// String inString = "Tue Jul 01 18:08:56 KST 2014";
+		// ParsePosition pos = new ParsePosition(0);
+		// Date frmTime = df1.parse(inString, pos);
+		// String outString = df2.format(frmTime);
+		// System.out.println(outString);
+
 		List<Notice> list = noticeService.getAllNoticeDatas();
-		
-	
-		
-		for(Notice noti :list)
-		{
+
+		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-//		list.get(0).getRegidate();
-//		System.out.println(list.get(0).getRegidate());
-//		System.out.println(list.get(0).getRegidate());
+		// list.get(0).getRegidate();
+		// System.out.println(list.get(0).getRegidate());
+		// System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
 		return "notice/boardList";
 	}
@@ -95,18 +77,16 @@ public class NoticeController {
 	@RequestMapping(value = "systemList.do")
 	public String systemList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 
-		for(Notice noti :list)
-		{
+		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-		
-		model.addAttribute("add", list);
 
+		model.addAttribute("add", list);
 
 		return "notice/boardList";
 	}
@@ -114,19 +94,16 @@ public class NoticeController {
 	@RequestMapping(value = "eventList.do")
 	public String eventList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		
-		
+
+		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
 		List<Notice> list = noticeService.getEventNoticeDatas();
-		
-		for(Notice noti :list)
-		{
+
+		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-		
-		model.addAttribute("add", list);
 
+		model.addAttribute("add", list);
 
 		return "notice/boardList";
 	}
@@ -134,16 +111,15 @@ public class NoticeController {
 	@RequestMapping(value = "deleteList.do")
 	public String deleteList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-		
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		
+
+		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
-		
-		for(Notice noti :list)
-		{
+
+		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-		
+
 		model.addAttribute("add", list);
 
 		return "notice/boardList";
@@ -153,32 +129,27 @@ public class NoticeController {
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
 
-		
 		IssueDbtoView(notice);
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		
+		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
 		List<Notice> list = noticeService.getAllNoticeDatas();
-		
-		for(Notice noti :list)
-		{
+
+		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-		
+
 		HttpSession session = request.getSession();
 
 		Member member = (Member) session.getAttribute("member");
 
 		model.addAttribute("add", list);
-		
-		
-			return "notice/boardList";
+
+		return "notice/boardList";
 	}
-	
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-
 
 		issueViewToDb(notice);
 
@@ -260,8 +231,6 @@ public class NoticeController {
 
 		request.getParameter("notCD");
 
-
-
 		noticeService.deleteData(request.getParameter("notCD"));
 
 		return "notice/delete_ok";
@@ -298,7 +267,6 @@ public class NoticeController {
 		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
 		notice.setIssue(viewIssue);
-
 
 		return notice;
 	}
