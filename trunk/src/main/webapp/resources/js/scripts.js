@@ -29,11 +29,11 @@ jQuery(document)
 					$('.register form')
 							.submit(
 									function() {
-										$(this).find("label[for='email']").html('Email');
-										$(this).find("label[for='name']").html('Name');
-										$(this).find("label[for='birth']").html('Birth');
-										$(this).find("label[for='password']").html('Password');
-										$(this).find("label[for='password_check']").html('Password_check');
+										$(this).find("label[for='email']").html('이메일');
+										$(this).find("label[for='name']").html('이름');
+										$(this).find("label[for='birth']").html('생년월일');
+										$(this).find("label[for='password']").html('비밀번호');
+										$(this).find("label[for='password_check']").html('비밀번호확인');
 										// //
 										var email = $(this).find('input#email').val();
 										var name = $(this).find('input#name').val();
