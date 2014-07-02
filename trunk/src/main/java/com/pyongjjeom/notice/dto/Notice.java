@@ -31,6 +31,7 @@ public class Notice {
 	private Date regidate;
 	private Date updatedate;
 	private String formatUpdatedate;
+
 	public String getFormatUpdatedate() {
 		return formatUpdatedate;
 	}
