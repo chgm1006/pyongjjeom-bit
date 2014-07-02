@@ -82,6 +82,7 @@
 			<ul>
 				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#">설정</a></li>
 				<li class="boardMenu"><a class="myPageMenu" id="upLoadButton" href="#">평점올리기</a></li>
+				<li class="boardMenu"><a href = "logout.do" class="boardMenu_1">로그아웃</a></li>
 			</ul>
 		</div>
 
