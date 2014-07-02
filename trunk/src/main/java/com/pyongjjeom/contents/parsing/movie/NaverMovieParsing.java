@@ -1,23 +1,17 @@
 package com.pyongjjeom.contents.parsing.movie;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-
 public class NaverMovieParsing extends ContentsParsing {
-
 
 	public NaverMovieParsing() {
 
 		parsing("http://movie.naver.com/movie/running/current.nhn?view=list&tab=normal&order=reserve");
-//parsing("http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=94133");
 	}
 
 	public void parsing(String url) {
@@ -35,8 +29,10 @@ public class NaverMovieParsing extends ContentsParsing {
 	private void addTitle() {
 		for (Element tit : title) {
 			titleList.add(tit.text());
-	System.out.println(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
-			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
+			System.out.println(tit.attr("href").substring(
+					tit.attr("href").lastIndexOf("=") + 1));
+			codeList.add(tit.attr("href").substring(
+					tit.attr("href").lastIndexOf("=") + 1));
 		}
 	}
 
