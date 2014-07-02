@@ -22,6 +22,8 @@
 			<div  id="main" >
 	영화 제목 : ${movie.title}<br><br>
 		부제 : ${movie.subtitle}<br> <br>
+			 관련 영상<br>
+	 	 <iframe src="${video}"  width="100%" height="480" frameborder="0" scrolling="no"></iframe>
 	  <a	href="${movie.link }"> <img src="${movie.image}"></a><br> <br>
 	    <a	href="${movie.link }"> <img src="${poster}"></a><br> <br>
 	    	    <a	href="${movie.link }"> <img src="${movie.poster}"></a><br> <br>
@@ -37,12 +39,11 @@
 	  ${context }<br><br>
 	 관람객수<br>
 	 ${count }<br><br>
-
+	 <br><br>
    </div>
 			</c:when>
 			<c:otherwise>
 			<div  id="main" >
-
 책 제목 : ${book.title}<br> <br>
 		<a href="${book.link }"> <img src="${book.image}"></a><br>  <br>
 				<a href="${book.link }"> <img src="${poster}"></a><br>  <br>
@@ -58,13 +59,8 @@
 	 	  ${bookIntroContent }<br> <br>
 	 	 저자 소개 <br>
 	 	 ${authorIntroContent } <br> <br>
- 	
-
    </div>
 			</c:otherwise>
 			</c:choose>
-
-
- 	
 </body>
 </html>
