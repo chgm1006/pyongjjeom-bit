@@ -308,7 +308,8 @@ public class ContentController {
 					movie.getTitle().indexOf("(")));
 		}
 		String code = movie.getImage().replace("A", "1").replace("B", "2")
-				.replace("C", "3");
+				.replace("C", "3").replace("D", "4").replace("E", "5")
+				.replace("F", "6");
 		if (code.contains("_")) {
 			code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("_"));
 		} else
@@ -350,15 +351,20 @@ public class ContentController {
 						.select("ul[class=photo_video] li a[href^=mediaView]").attr("href");
 				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video)
 						.get();
-				request.setAttribute("video", "http://movie.naver.com"+doc.select("iframe[class=_videoPlayer]")
-						.attr("src"));
+				request.setAttribute("video",
+						"http://movie.naver.com"
+								+ doc.select("iframe[class=_videoPlayer]").attr("src"));
+				System.out.println("http://movie.naver.com"
+						+ doc.select("iframe[class=_videoPlayer]").attr("src"));
 				doc = Jsoup.connect(
 						"http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="
 								+ code).get();
 				request.setAttribute("poster", doc.select("img[src]").attr("src"));
+
 				return "contents/contentsContext";
 			} catch (IOException e) {
-				request.setAttribute("video", " ");
+				e.getStackTrace();
+
 				return "contents/contentsContext";
 			}
 		}
