@@ -17,11 +17,13 @@ import com.pyongjjeom.user.dto.Member;
  * @author : Forrest
  */
 public interface UserService {
-	public Member getMemberInfo(String memCd);
+	public Member getMemberInfo(String memCD);
 
-	public Member checkMemberID(String memCd);
+	public Member checkMemberID(String memCD);
 
 	public int updateMemberInfo();
 
 	public int deleteMember();
+	
+
 }
