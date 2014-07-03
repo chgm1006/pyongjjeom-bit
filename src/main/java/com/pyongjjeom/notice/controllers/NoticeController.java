@@ -153,11 +153,6 @@ public class NoticeController {
 		}
 
 
-		
-		HttpSession session = request.getSession();
-
-		Member member = (Member) session.getAttribute("member");
-
 		model.addAttribute("add", list);
 
 		return "notice/boardList";
@@ -200,7 +195,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
-	public String editOkDo(@Valid Notice notice, Model model,
+	public String editDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
 		System.out.println(request.getParameter("notCD"));
@@ -222,7 +217,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "editok.do", method = RequestMethod.POST)
-	public String editDo(@Valid Notice notice, Model model,
+	public String editOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 		IssueDbtoView(notice);
 

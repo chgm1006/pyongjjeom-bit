@@ -7,6 +7,7 @@ package com.pyongjjeom.myroom.service;
 import java.util.List;
 
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.user.dto.Member;
 
 /**
  * <pre>
@@ -19,10 +20,15 @@ import com.pyongjjeom.postandreply.dto.Post;
  * @author : Forrest
  */
 public interface MyRoomService {
+	
+	
 
 	public List<Post> getMyPost(String memCD);
 
 	public List<Post> getFriendsComments(String memCD, String friendCD);
 
 	public List<Post> getFriendsReply(String memCD, String friendCD);
+	
+	
+	
 }
