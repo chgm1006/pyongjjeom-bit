@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,8 +21,11 @@ import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
@@ -120,6 +125,113 @@ public class ContentController {
 		return "../../index";
 	}
 
+	
+	
+
+	//나중에 지울 것. json 테스트
+	//나중에 지울 것. json 테스트
+	//나중에 지울 것. json 테스트
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "movieContextJson1.do", method = RequestMethod.POST)
+	public Map<String, Object> movieContextJson1(@RequestBody Map paramMap,
+			HttpServletRequest request) {
+
+		System.out.println("name = " + paramMap.get("name"));
+		System.out.println("data = " + paramMap.get("data"));
+
+		String name = (String) paramMap.get("name");
+		String data = (String) paramMap.get("data");
+		
+		MovieGrades grades = new MovieGrades();
+        grades = contentService.movieGradeSelect(name);
+
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("grades", grades);
+		map.put("title", grades.getTitle());
+		
+        System.out.println(grades);
+        System.out.println(map);
+
+		
+		return map;
+	}
+	
+
+	@ResponseBody
+	@RequestMapping(value = "movieContextJson2.do", method = RequestMethod.POST)
+	public ModelAndView movieContextJson2(@RequestBody Map paramMap,
+			HttpServletRequest request) {
+
+		System.out.println("name = " + paramMap.get("name"));
+		System.out.println("data = " + paramMap.get("data"));
+
+		String name = (String) paramMap.get("name");
+		String data = (String) paramMap.get("data");
+
+		MovieGrades grades = new MovieGrades();
+        grades = contentService.movieGradeSelect(name);
+		
+		List<String> list = new ArrayList<String>();
+		list.add("json 테스트입니다.11111");
+		list.add("json 테스트입니다.22222");
+		list.add("json 테스트입니다.33333");
+
+		
+		ModelAndView mav = new ModelAndView();
+        mav.addObject("moviedata", grades);
+        mav.addObject("list", list);
+        
+        System.out.println(grades);
+        System.out.println(list);
+		return mav;
+	}
+
+	
+
+	@ResponseBody
+    @RequestMapping("movieContextJson.do")
+    public ModelAndView movieContextJson(@RequestBody HttpServletRequest request) throws Exception {
+ 
+        String title = request.getParameter("name");
+ 
+        MovieGrades grades = new MovieGrades();
+        grades = contentService.movieGradeSelect(title);
+ 
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("moviedata", grades);
+ 
+        System.out.println("이것은 movieContextJson"); 
+        System.out.println("grades의 값은 : " + grades);
+ 
+        return mav;
+    }
+        
+	
+	
+	//여기까지 나중에 지울 것 . json 테스트
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "MovieDataUpdate.do", method = RequestMethod.GET)
 	public String movieDataUpdate() {
 		NaverMovieParsing naverParsing = new NaverMovieParsing();
