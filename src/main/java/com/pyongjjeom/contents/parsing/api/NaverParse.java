@@ -64,7 +64,7 @@ public class NaverParse {
 		return test;
 	}
 
-	public List<?> bookParse(String uri) {
+	public List<NaverBook> bookParse(String uri) {
 		List<NaverBook> test = new ArrayList<>();
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -129,6 +129,39 @@ public class NaverParse {
 			e.printStackTrace();
 		}
 		return movie;
+	}
+	
+	public NaverBook currentBookParse(String uri) {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		NaverBook book = new NaverBook();
+		try {
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.parse(uri);
+			Element root = doc.getDocumentElement();
+			NodeList list = root.getElementsByTagName("item");
+
+				Element element = (Element) list.item(0);
+	
+				book.setTitle(getContent(element, "title"));
+				book.setLink(getContent(element, "link"));
+				book.setImage(getContent(element, "image"));
+				book.setAuthor(getContent(element, "author"));
+				book.setPrice(getContent(element, "price"));
+				book.setDiscount(getContent(element, "discount"));
+				book.setPublisher(getContent(element, "publisher"));
+				book.setPubdate(getContent(element, "pubdate"));
+				book.setIsbn(getContent(element, "isbn"));
+				book.setDescription(getContent(element, "description"));
+
+
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return book;
 	}
 	
 	public String movieImageParse(String uri) {
