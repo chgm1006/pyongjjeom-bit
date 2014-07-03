@@ -48,5 +48,7 @@ public interface NoticeMapper {
 	void editData(Notice notice);
 	
 
+  String paging();	
+
 	
 }

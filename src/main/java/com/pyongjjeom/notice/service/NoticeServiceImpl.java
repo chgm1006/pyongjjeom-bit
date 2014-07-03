@@ -32,6 +32,8 @@ import org.springframework.stereotype.Service;
 
 
 
+
+
 import com.pyongjjeom.notice.dao.NoticeMapper;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -169,6 +171,21 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		return noticeMapper.getDeleteNoticeDatas();
 	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#paging()
+	 */
+	@Override
+	public String paging() {
+		// TODO Auto-generated method stub
+		return noticeMapper.paging();
+	}
+
+	
 
 	/**
 	 * <PRE>

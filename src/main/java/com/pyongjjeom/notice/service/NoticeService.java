@@ -45,5 +45,7 @@ public interface NoticeService {
 	Notice updateData(String notCD);
 
 	void deleteData(String notCD);
+	
+	String paging();
 
 }
