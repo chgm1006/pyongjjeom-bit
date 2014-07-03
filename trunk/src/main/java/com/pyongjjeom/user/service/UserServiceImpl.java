@@ -127,4 +127,13 @@ public class UserServiceImpl implements UserService {
 		return 0;
 	}
 
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.user.service.UserService#updateData(java.lang.String)
+	 */
+
+
 }
