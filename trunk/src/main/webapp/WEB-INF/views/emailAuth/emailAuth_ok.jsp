@@ -37,7 +37,7 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="${pageContext.request.contextPath}/index.jsp" method="get">
+				<form action="movieIndex.do" method="get">
 					<h3>
 						<span class="red"><strong>인증이 완료되었습니다</strong></span>
 					</h3>

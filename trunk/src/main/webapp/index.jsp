@@ -24,6 +24,9 @@
 
 <body>
 
+현재 사용 X 입니다. 
+
+<%-- 
 	<!-- ########################################### -->
 	<!-- #################    탑   메  뉴     ################# -->
 	<!-- ########################################### -->
@@ -46,7 +49,7 @@
 			<!-- ########################################### -->
 			<div class="list_carousel">
 				<ul id="foo3">
-					<%-- 	<li class="liList"><a class="imgLink" href="#"> <img
+						<li class="liList"><a class="imgLink" href="#"> <img
 							class="imgList"
 							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
 							<div class="innerOver2">c</div>
@@ -85,7 +88,7 @@
 							<div class="innerOver">
 								영화제목1<br> 감독<br> 출연<br>
 							</div>
-					</a></li> --%>
+					</a></li>
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList"><a class="imgLink" href="#"> <img
 								class="imgList" src="${movie.poster}" />
@@ -111,7 +114,7 @@
 			<div class="title2">영화 리스트</div>
 
 			<!------------------- 리스트 첫번째 -------------------->
-			<%-- <div class="list1">
+			<div class="list1">
 				<a href="#" class="listImgLink"><img
 					src="${pageContext.request.contextPath}/resources/img/06.jpg"
 					class="listImg"></a>
@@ -143,7 +146,7 @@
 							href="#">예고편보기</a> <a class="listButtonAll" href="#">포토보기</a>
 					</div>
 				</div>
-			</div> --%>
+			</div>
 
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
@@ -418,6 +421,6 @@ header 에 구현
 		});
 	</script>
 
-
+ --%>
 </body>
 </html>
