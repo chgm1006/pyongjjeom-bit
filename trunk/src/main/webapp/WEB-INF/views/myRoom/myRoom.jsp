@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>my Room</title>
 
-<link href="css/default1.css" rel="stylesheet" type="text/css">
-<link href="css/myroom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/default1.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/myroom.css" rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript">
@@ -80,7 +80,7 @@
 
 		<div class="menu">
 			<ul>
-				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#">설정</a></li>
+				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#" OnClick="window.location='setEdit.do'">설정</a></li>
 				<li class="boardMenu"><a class="myPageMenu" id="upLoadButton" href="#">평점올리기</a></li>
 				<li class="boardMenu"><a href = "logout.do" class="boardMenu_1">로그아웃</a></li>
 			</ul>
@@ -239,16 +239,16 @@
 
 
 
-	<div id='glayLayer2'></div>
+	<!-- <div id='glayLayer2'></div>
 	<div id='overLayer2'>
 
 		<a href="#" class="exit"></a>
-
+		<form name=setupFirm method=POST action="setEdit.do">
 		<div class="setUp">
 			<table>
 				<tr>
 					<td class="item">이름</td>
-					<td class="cont"><input type="text"></td>
+					<td class="cont"><input type="text" placeholder = 'a'></td>
 				</tr>
 				<tr>
 					<td class="item">이메일</td>
@@ -292,6 +292,6 @@
 	</div>
 
 
-
+ -->
 </body>
 </html>
