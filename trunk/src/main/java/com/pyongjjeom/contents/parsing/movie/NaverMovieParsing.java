@@ -29,8 +29,6 @@ public class NaverMovieParsing extends ContentsParsing {
 	private void addTitle() {
 		for (Element tit : title) {
 			titleList.add(tit.text());
-			System.out.println(tit.attr("href").substring(
-					tit.attr("href").lastIndexOf("=") + 1));
 			codeList.add(tit.attr("href").substring(
 					tit.attr("href").lastIndexOf("=") + 1));
 		}
