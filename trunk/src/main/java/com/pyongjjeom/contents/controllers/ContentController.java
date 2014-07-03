@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,11 +19,8 @@ import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
@@ -63,175 +58,82 @@ public class ContentController {
 
 	@Autowired
 	private ContentService contentService;
+  private 	HttpSession httpSession;
 
-	/**
-	 * <pre>
-	 * 1. 개요 : 맨 처음 호출 되는 Controller
-	 * 2. 처리내용 : index 화면에서 보여줄 상영작의 정보 수집
-	 * </pre>
-	 * 
-	 * @Method Name:
-	 * @date : 2014.6.
-	 * @author : ileaf
-	 * @history :
-	 * 
-	 * @param
-	 * 
-	 * @return index file 의 경로
-	 */
-
-	@RequestMapping(value = "preIndex.do", method = RequestMethod.GET)
-	private String preIndex(HttpServletRequest request) {
-		System.out.println("컴온요");
-
-		NaverMovieParsing parsing = new NaverMovieParsing();
-		List<String> movieTitleList = parsing.getTitleList();
-		Iterator<String> iterator = movieTitleList.iterator();
-		while (iterator.hasNext()) {
-			if (iterator.next().equals("그녀")) {
-				iterator.remove();
+	@RequestMapping(value = "movieIndex.do", method = RequestMethod.GET)
+	private String movieInit(HttpServletRequest request) {
+		httpSession = request.getSession();
+		if (httpSession.getAttribute("movieList") == null) {
+			NaverMovieParsing parsing = new NaverMovieParsing();
+			List<String> movieTitleList = parsing.getTitleList();
+			Iterator<String> iterator = movieTitleList.iterator();
+			while (iterator.hasNext()) {
+				if (iterator.next().equals("그녀")) {
+					iterator.remove();
+				}
 			}
-		}
-		NaverParse parse = new NaverParse();
-		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
-		String uri, uri2;
+			NaverParse parse = new NaverParse();
+			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
+			String uri, uri2;
 
-		List<NaverMovie> movieList = new ArrayList<NaverMovie>();
-		List<String> imageList = new ArrayList<String>();
-		for (int i = 0; i < 30; i++) {
-			try {
-				uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
-						+ "&query=" + URLEncoder.encode(movieTitleList.get(i), "UTF-8")
-						+ "&display=1&yearfrom=2014&yearto&2014";
-				movieList.add(parse.currentMovieParse(uri));
-				System.out.println(uri);
-				uri2 = "http://openapi.naver.com/search?key=" + apiKey
-						+ "&target=image" + "&query="
-						+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
-						+ "&display=1&filter=large";
-				imageList.add(parse.movieImageParse(uri2));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
+			List<NaverMovie> movieList = new ArrayList<NaverMovie>();
+			List<String> imageList = new ArrayList<String>();
+			for (int i = 0; i < 30; i++) {
+				try {
+					uri = "http://openapi.naver.com/search?key=" + apiKey
+							+ "&target=movie" + "&query="
+							+ URLEncoder.encode(movieTitleList.get(i), "UTF-8")
+							+ "&display=1&yearfrom=2014&yearto&2014";
+					movieList.add(parse.currentMovieParse(uri));
+					System.out.println(uri);
+					uri2 = "http://openapi.naver.com/search?key=" + apiKey
+							+ "&target=image" + "&query="
+							+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
+							+ "&display=1&filter=large";
+					imageList.add(parse.movieImageParse(uri2));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			}
+			int i = 0;
+			for (NaverMovie movie : movieList) {
+				movie.setPoster(imageList.get(i));
+				i++;
+			}
+			httpSession.setAttribute("movieList", movieList);
 		}
-		int i = 0;
-		for (NaverMovie movie : movieList) {
-			movie.setPoster(imageList.get(i));
-			i++;
+
+		return "contents/movieIndex";
+	}
+
+	@RequestMapping(value = "bookIndex.do", method = RequestMethod.GET)
+	public String bookInit(HttpServletRequest request) {
+		httpSession = request.getSession();
+		if (httpSession.getAttribute("bookList") == null) {
+			NaverBookParsing parsing = new NaverBookParsing();
+			List<String> bookTitleList = parsing.getTitleList();
+			NaverParse parse = new NaverParse();
+			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
+			String uri;
+			List<NaverBook> bookList = new ArrayList<NaverBook>();
+			for (int i = 0; i < 100; i++) {
+				try {
+					uri = "http://openapi.naver.com/search?key="
+							+ apiKey
+							+ "&target=book"
+							+ "&query="
+							+ URLEncoder.encode(bookTitleList.get(i).replace(" ", ""),
+									"UTF-8") + "&display=1";
+					bookList.add(parse.currentBookParse(uri));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			}
+			httpSession.setAttribute("bookList", bookList);
 		}
-		HttpSession httpSession = request.getSession();
-		httpSession.setMaxInactiveInterval(3600);
-		httpSession.setAttribute("movieList", movieList);
-		return "../../index";
+		return "contents/bookIndex";
 	}
 
-	
-	
-
-	//나중에 지울 것. json 테스트
-	//나중에 지울 것. json 테스트
-	//나중에 지울 것. json 테스트
-	
-	
-	@ResponseBody
-	@RequestMapping(value = "movieContextJson1.do", method = RequestMethod.POST)
-	public Map<String, Object> movieContextJson1(@RequestBody Map paramMap,
-			HttpServletRequest request) {
-
-		System.out.println("name = " + paramMap.get("name"));
-		System.out.println("data = " + paramMap.get("data"));
-
-		String name = (String) paramMap.get("name");
-		String data = (String) paramMap.get("data");
-		
-		MovieGrades grades = new MovieGrades();
-        grades = contentService.movieGradeSelect(name);
-
-	
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("grades", grades);
-		map.put("title", grades.getTitle());
-		
-        System.out.println(grades);
-        System.out.println(map);
-
-		
-		return map;
-	}
-	
-
-	@ResponseBody
-	@RequestMapping(value = "movieContextJson2.do", method = RequestMethod.POST)
-	public ModelAndView movieContextJson2(@RequestBody Map paramMap,
-			HttpServletRequest request) {
-
-		System.out.println("name = " + paramMap.get("name"));
-		System.out.println("data = " + paramMap.get("data"));
-
-		String name = (String) paramMap.get("name");
-		String data = (String) paramMap.get("data");
-
-		MovieGrades grades = new MovieGrades();
-        grades = contentService.movieGradeSelect(name);
-		
-		List<String> list = new ArrayList<String>();
-		list.add("json 테스트입니다.11111");
-		list.add("json 테스트입니다.22222");
-		list.add("json 테스트입니다.33333");
-
-		
-		ModelAndView mav = new ModelAndView();
-        mav.addObject("moviedata", grades);
-        mav.addObject("list", list);
-        
-        System.out.println(grades);
-        System.out.println(list);
-		return mav;
-	}
-
-	
-
-	@ResponseBody
-    @RequestMapping("movieContextJson.do")
-    public ModelAndView movieContextJson(@RequestBody HttpServletRequest request) throws Exception {
- 
-        String title = request.getParameter("name");
- 
-        MovieGrades grades = new MovieGrades();
-        grades = contentService.movieGradeSelect(title);
- 
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("moviedata", grades);
- 
-        System.out.println("이것은 movieContextJson"); 
-        System.out.println("grades의 값은 : " + grades);
- 
-        return mav;
-    }
-        
-	
-	
-	//여기까지 나중에 지울 것 . json 테스트
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "MovieDataUpdate.do", method = RequestMethod.GET)
 	public String movieDataUpdate() {
 		NaverMovieParsing naverParsing = new NaverMovieParsing();
@@ -282,7 +184,7 @@ public class ContentController {
 	@RequestMapping(value = "ContentsSearch.do", method = RequestMethod.GET)
 	public String ContentsSearch(Model model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
-		HttpSession httpSession = request.getSession();
+		httpSession = request.getSession();
 		httpSession.setAttribute("stat", request.getParameter("stat"));
 		httpSession.setAttribute("category", request.getParameter("category")
 				.trim());
@@ -290,7 +192,6 @@ public class ContentController {
 		List<?> resultList = null;
 		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 		String uri;
-		String resultPage = null;
 
 		String category = request.getParameter("category");
 		String searchQuery = (String) request.getParameter("Search").trim();
@@ -326,7 +227,7 @@ public class ContentController {
 	public String getCurrentMovieContext(Model model, HttpServletRequest request) {
 
 		int num = Integer.parseInt(request.getParameter("num"));
-		HttpSession httpSession = request.getSession();
+		httpSession = request.getSession();
 		List<NaverMovie> list = (List<NaverMovie>) httpSession
 				.getAttribute("movieList");
 		httpSession.setAttribute("category", "movie");
@@ -339,7 +240,7 @@ public class ContentController {
 	public String getMovieContext(Model model, HttpServletRequest request) {
 
 		int num = Integer.parseInt(request.getParameter("num"));
-		HttpSession httpSession = request.getSession();
+		httpSession = request.getSession();
 		List<NaverMovie> list = (List<NaverMovie>) httpSession
 				.getAttribute("resultList");
 		NaverMovie movie = list.get(num);
@@ -350,7 +251,7 @@ public class ContentController {
 	public String getBookContext(Model model, HttpServletRequest request) {
 
 		int num = Integer.parseInt(request.getParameter("num"));
-		HttpSession httpSession = request.getSession();
+		httpSession = request.getSession();
 		List<NaverBook> list = (List<NaverBook>) httpSession
 				.getAttribute("resultList");
 		NaverBook book = list.get(num);
