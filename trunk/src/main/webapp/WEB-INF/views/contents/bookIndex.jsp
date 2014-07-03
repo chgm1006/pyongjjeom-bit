@@ -56,7 +56,6 @@
 								</div>
 						</a></li>
 					</c:forEach>
-
 				</ul>
 			</div>
 			<!---- 오른쪽 화살표 ---->
@@ -70,16 +69,12 @@
 		<!-- ########################################### -->
 		<div class="contentsList">
 			<div class="title2">영화 리스트</div>
-
-
 			<c:forEach var="book" items="${bookList }" varStatus="status" >
-				<div class="list1" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+				<div class="list1" onclick="document.location='currentBookContext.do?num=${status.index}' ">
 					<a href="#" class="listImgLink"><img   src="${book.image}"
 						class="listImg"></a>
 					<div class="detail">
 						<table>
-						
-						
 							<tr>
 								<td class="listTitle1" colspan="2">${book.title }</td>
 							</tr>
@@ -95,7 +90,6 @@
 								<td class="listTitle">출판일</td>
 								<td class="listSynopValue">${book.pubdate }</td>
 							</tr>
-
 							<tr>
 								<td class="listTitle">책 소개</td>
 								<td class="listSynopValue">${book.description }</td>
