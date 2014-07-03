@@ -82,6 +82,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</update>
 	
+	<select id = "paging" resultType ="String"> 
+	    
+	   select count(*) from notice where
+		ifnull(deleteyn,'N')='N';
+	    
+	    </select>
 
 
 

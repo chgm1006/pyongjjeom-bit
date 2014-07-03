@@ -128,7 +128,21 @@ public class NoticeController {
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
+		
+/*	
+	  int rowCount = Integer.parseInt(noticeService.paging());
+	 
+	  
+	  pageCount = rowCount /15;
+	  if(rowCount%15>0) pageCount++;*/
+	  
+	  
+	  
+	 
 
+
+	  
+	  
 		IssueDbtoView(notice);
 		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
@@ -138,6 +152,8 @@ public class NoticeController {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
 
+
+		
 		HttpSession session = request.getSession();
 
 		Member member = (Member) session.getAttribute("member");
@@ -270,5 +286,10 @@ public class NoticeController {
 
 		return notice;
 	}
-
+	
 }
+
+
+	
+
+
