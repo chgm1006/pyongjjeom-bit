@@ -10,6 +10,6 @@
 <body>
 로그아웃되었습니다.
 <a href = "login.do">로그인하러가기</a>
-<a href = "${pageContext.request.contextPath}/index.jsp">메인으로</a>
+<a href = "movieIndex.do">메인으로</a>
 </body>
 </html>

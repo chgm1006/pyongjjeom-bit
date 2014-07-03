@@ -8,11 +8,11 @@
 <header>
 	<div class="topMenu">
 		<div class="leftMenu">
-			<a href="${pageContext.request.contextPath}/index.jsp"><img
+			<a href="movieIndex.do"><img
 				src="${pageContext.request.contextPath}/resources/img/logo.jpg" class="logo" /></a>
 			<ul>
-				<li class="menu1"><a href="#">영화</a></li>
-				<li class="menu2"><a href="#">도서</a></li>
+				<li class="menu1"><a href="movieIndex.do">영화</a></li>
+				<li class="menu2"><a href="bookIndex.do">도서</a></li>
 				<li class="menu3"><a href="#">공연</a></li>
 			</ul>
 			<div class="search">
