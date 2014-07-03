@@ -63,6 +63,7 @@ public class ContentController {
 	@RequestMapping(value = "movieIndex.do", method = RequestMethod.GET)
 	private String movieInit(HttpServletRequest request) {
 		httpSession = request.getSession();
+		httpSession.setMaxInactiveInterval(3600);
 		if (httpSession.getAttribute("movieList") == null) {
 			NaverMovieParsing parsing = new NaverMovieParsing();
 			List<String> movieTitleList = parsing.getTitleList();
@@ -85,7 +86,6 @@ public class ContentController {
 							+ URLEncoder.encode(movieTitleList.get(i), "UTF-8")
 							+ "&display=1&yearfrom=2014&yearto&2014";
 					movieList.add(parse.currentMovieParse(uri));
-					System.out.println(uri);
 					uri2 = "http://openapi.naver.com/search?key=" + apiKey
 							+ "&target=image" + "&query="
 							+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
@@ -105,7 +105,6 @@ public class ContentController {
 
 		return "contents/movieIndex";
 	}
-
 	@RequestMapping(value = "bookIndex.do", method = RequestMethod.GET)
 	public String bookInit(HttpServletRequest request) {
 		httpSession = request.getSession();
@@ -233,7 +232,7 @@ public class ContentController {
 		httpSession.setAttribute("category", "movie");
 		httpSession.setAttribute("stat", "search");
 		NaverMovie movie = list.get(num);
-		return contextParsing(movie, httpSession, request);
+		return movieContextParsing(movie, request);
 	}
 
 	@RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
@@ -244,17 +243,34 @@ public class ContentController {
 		List<NaverMovie> list = (List<NaverMovie>) httpSession
 				.getAttribute("resultList");
 		NaverMovie movie = list.get(num);
-		return contextParsing(movie, httpSession, request);
+		return movieContextParsing(movie, request);
 	}
 
 	@RequestMapping(value = "bookContext.do", method = RequestMethod.GET)
 	public String getBookContext(Model model, HttpServletRequest request) {
-
+		System.out.println("????");
 		int num = Integer.parseInt(request.getParameter("num"));
 		httpSession = request.getSession();
 		List<NaverBook> list = (List<NaverBook>) httpSession
 				.getAttribute("resultList");
 		NaverBook book = list.get(num);
+		return bookContextParsing(book,request);
+	}
+	
+	@RequestMapping(value = "currentBookContext.do", method = RequestMethod.GET)
+	public String getcurrentBookContext(Model model, HttpServletRequest request) {
+System.out.println("????");
+		int num = Integer.parseInt(request.getParameter("num"));
+		httpSession = request.getSession();
+		List<NaverBook> list = (List<NaverBook>) httpSession
+				.getAttribute("bookList");
+		httpSession.setAttribute("category", "book");
+		httpSession.setAttribute("stat", "search");
+		NaverBook book = list.get(num);
+		return bookContextParsing(book,request);
+	}
+	
+	private String bookContextParsing(NaverBook book, HttpServletRequest request) {
 		book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
 		if (book.getTitle().contains("(")) {
 			book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
@@ -280,7 +296,6 @@ public class ContentController {
 				String poster = "http://bookthumb.phinf.naver.net/"
 						+ book.getImage().substring(book.getImage().indexOf("cover/"),
 								book.getImage().indexOf(".jpg")) + ".jpg";
-				System.out.println(poster);
 				request.setAttribute("poster", poster);
 				if (grades != null) {
 					int count = 0;
@@ -302,7 +317,6 @@ public class ContentController {
 		}
 		return "contents/contentsPostingWrite";
 	}
-
 	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
 	public String postingInsert(Model model, HttpServletRequest request) {
 
@@ -312,7 +326,7 @@ public class ContentController {
 		return "contents/contentsPostingResult";
 	}
 
-	private String contextParsing(NaverMovie movie, HttpSession httpSession,
+	private String movieContextParsing(NaverMovie movie, 
 			HttpServletRequest request) {
 
 		movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", ""));
