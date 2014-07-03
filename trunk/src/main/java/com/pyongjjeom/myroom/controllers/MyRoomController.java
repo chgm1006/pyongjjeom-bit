@@ -4,7 +4,11 @@
 
 package com.pyongjjeom.myroom.controllers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.myroom.service.MyRoomService;
+import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.Reply;
+import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
@@ -33,6 +40,8 @@ import com.pyongjjeom.user.service.UserService;
 @Controller
 public class MyRoomController {
 
+
+	
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
@@ -69,4 +78,9 @@ public class MyRoomController {
 	public String getFriendsReply(String memCD, String friendCD) {
 		return null;
 	}
+
+	
+	
+
+	
 }
