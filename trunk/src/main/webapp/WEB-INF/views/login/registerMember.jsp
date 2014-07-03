@@ -52,6 +52,7 @@
 	font-size: 11px;
 }
 </style>
+
 </head>
 
 <body>
@@ -70,11 +71,11 @@
 					<label for="birth">생년월일</label>
 					<input type="text" id="birth" name="birth" placeholder="생년월일...">
 					<label for="password">비밀번호</label>
-					<input type="text" id="password" name="passwd" placeholder="비밀번호...">
+					<input type="password" id="password" name="passwd" placeholder="비밀번호...">
 					<label for="password_check">비밀번호확인</label>
-					<input type="text" id="password_check" name="password_check" placeholder="비밀번호확인...">
+					<input type="password" id="password_check" name="password_check" placeholder="비밀번호확인...">
 					<button type="submit">가입하기</button>
-					<button type="button" onclick="javascript:window.location=login.jsp">돌아가기</button>
+					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 				</form>
 			</div>
 		</div>
