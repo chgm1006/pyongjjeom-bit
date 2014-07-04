@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pyongjjeom.user.dao.userMapper">
+<mapper namespace="com.pyongjjeom.user.dao.UserMapper">
 
 	<select id="getMemberInfo" parameterType="string" resultType="Member">
 
@@ -11,15 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	</select>
 
-	<update id="updateMemberInfo" parameterType="Member">
-
-	</update>
 	
 	<update id="upDateData" parameterType="Member">
 		update member
-		set memNm=#{memNm},
-		email=#{email},birth=#{birth},
-		passwd=#{passwd} where memCD=#{memCD};
+		set memNm='${memNm}',
+		email='${email}',birth='${birth}',
+		passwd='${passwd}' where memCD='${memCD}';
 
 
 	</update>
@@ -27,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<update id="deleteMember" parameterType="string">
 
+	    update member set memkind = 'D' where memCD = #{memCD};
 	</update>
 
 </mapper>
