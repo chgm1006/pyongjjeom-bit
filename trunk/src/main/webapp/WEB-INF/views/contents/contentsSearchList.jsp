@@ -12,7 +12,7 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-
+<article>
 <div id="nana">이곳에 출력</div>
 
 		<div class="contentsList">
@@ -110,7 +110,7 @@
 			<a href="#" class="listMore">더보기</a>
 		</div>
 
-
+</article>
 
 
 <%-- 
