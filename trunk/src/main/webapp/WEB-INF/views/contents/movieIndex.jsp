@@ -73,7 +73,7 @@
 			<div class="title2">최신 영화 리스트</div>
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<a class="listWrap" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
 					<img  class="listImg" src="${movie.image}"></a>
 					<div class="listTable">
 						<table>
@@ -82,24 +82,24 @@
 							</tr>
 							<tr>
 								<td class="tableSubtitle">부제</td>
-								<td class="tableSubtitleCont">${movie.subtitle }</td>
+								<td class="tableCont">${movie.subtitle }</td>
 							</tr>
 							<tr>
-								<td class="listTitle">감독</td>
+								<td class="tableTitle2">감독</td>
 								<td class="tableCont">${movie.director }</td>
 							</tr>
 							<tr>
-								<td class="listTitle">출연</td>
+								<td class="tableTitle2">출연</td>
 								<td class="tableCont">${movie.actor }</td>
 							</tr>
 							<tr>
-								<td class="listTitle">개봉년도</td>
+								<td class="tableTitle2">개봉년도</td>
 								<td class="tableCont">${movie.pubDate }</td>
 							</tr>
 
 							<tr>
-								<td class="listTitle">네이버평점</td>
-								<td class="listSynopValue">${movie.userRating }</td>
+								<td class="tableTitle2">평점</td>
+								<td class="tableCont">${movie.userRating }</td>
 							</tr>
 						</table>
 						<div class="listButtonWrap">
