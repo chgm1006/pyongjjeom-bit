@@ -13,10 +13,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <article>
-<div id="nana">이곳에 출력</div>
 
 		<div class="contentsList">
-			<div class="title2">검색 결과</div>
+			<div class="title3">검색 결과</div>
 	<c:choose>
 		<c:when test="${category =='movie'}">
 			<c:forEach var="movie" items="${resultList }" varStatus="status">
@@ -50,7 +49,7 @@
 							</tr>
 						</table>
 						<div class="listButtonWrap">
-							<a class="listButton" href="${movie.link }">네이버 상세</a>
+							<a class="listButton" href="${movie.link }" target="_blank">네이버 상세</a>
 							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
 						</div>
 					</div>
