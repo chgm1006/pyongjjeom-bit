@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
@@ -57,13 +59,32 @@ public class UserController {
 	
 	
 	
-	@RequestMapping(value = "setEdit.do", method = RequestMethod.GET)
-	public String updateMemberInfo(Model model, HttpServletRequest request){
+	@RequestMapping(value = "mySet.do", method = RequestMethod.GET)
+	public String mySet(Model model, HttpServletRequest request){
 		
 	
 
 
-		return "myRoom/setEdit";
+		return "myRoom/mySet";
 	}
+	
+	@RequestMapping(value = "upDateMySet.do", method = RequestMethod.POST)
+	public String updateMemberInfo( Member member, Model model, HttpServletRequest request){
+		
+		/*
+		 * if (!session.isNew()) { session = request.getSession(true); }
+		 */
+
+		
+		System.out.println("11111");
+		System.out.println(member);
+		userService.upDateData(member);
+	
+	
+
+
+		return "myRoom/myRoom";
+	}
+	
 	
 }

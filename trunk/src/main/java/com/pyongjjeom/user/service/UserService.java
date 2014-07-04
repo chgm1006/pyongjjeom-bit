@@ -25,5 +25,5 @@ public interface UserService {
 
 	public int deleteMember();
 	
-
+	void upDateData(Member member);
 }

@@ -132,6 +132,19 @@ public class UserServiceImpl implements UserService {
 	 * 간략 : 
 	 * 상세 : 
 	 * </PRE>
+	 * @see com.pyongjjeom.user.service.UserService#upDateData(java.lang.String)
+	 */
+	@Override
+	public void upDateData(Member member) {
+		// TODO Auto-generated method stub
+		 userMapper.upDateData(member);
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
 	 * @see com.pyongjjeom.user.service.UserService#updateData(java.lang.String)
 	 */
 
