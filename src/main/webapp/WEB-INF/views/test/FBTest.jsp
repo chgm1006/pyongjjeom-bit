@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>===== 평 쩜 =====</title>
@@ -23,26 +23,19 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/json2.js"></script>
 
 <script>
 	$(document).ready(function() {
-
-		// 		$("#FBLogin").click(function() {
-		// 			fnLoginFB();
-		// 		});
 
 		$("#ajaxTest").click(function() {
 			var formData = {
 				name : "최경민",
 				data : "Hello"
 			};
-			
+
 			$.ajax({
 				type : "post",
 				url : "ajaxTest.do",
-				// 				data : formData,
 				data : JSON.stringify(formData),
 				contentType : "application/json; charset=utf-8",
 				dataType : "json",
@@ -53,27 +46,35 @@
 					console.log(e.responseText);
 				},
 				success : function(data) {
-// 					var obj = JSON.parse(data);
-					console.log(data);
-					console.log(data.name);
-					console.log(data.msg);
-					$.each(data, function(key, val) {
-						console.log("Key: " + key + ", val: " + val);
-					});
+					$.each(data, function(key) {
+						var list = data[key];
 
+						console.log(list);
+						for (var i = 0; i < list.length; i++) {
+							console.log("val: " + list[i].title);
+						}
+					});
 				}
 			});
+		});
+		
+		$("#FBLogin").click(function(){
+			fnLoginFB();
+		});
+		
+		$("#FBLogout").click(function(){
+			fnLogout();
 		});
 	});
 </script>
 </head>
 <body>
 	<div id="fb-root"></div>
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-	</fb:login-button>
+	<fb:login-button max_rows="1" size="medium" show_faces="false" auto_logout_link="true"></fb:login-button>
 	<button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button>
+	<button type="button" id="FBLogout">페이스북 &nbsp; 로그아웃</button>
 	<input type="button" value="페이스북 친구" onclick="javascript:facebookFriend();">
-	<input type="button" value="ajaxTest" id="ajaxTest">
+	<input type="button" value="ajaxTest" id="ajaxTest"><br>
 	<div id="status"></div>
 </body>
 </html>

@@ -1,93 +1,3 @@
-//window.fbAsyncInit = function() {
-//	FB.init({
-//		appId : '1449705105272003',
-//		xfbml : true,
-//		oauth : true,
-//		status : true,
-//		cookie : true
-//	});
-//
-//};
-//
-//(function(d) {
-//	var js, id = 'facebook-jssdk';
-//	if (d.getElementById(id)) {
-//		return;
-//	}
-//	js = d.createElement('script');
-//	js.id = id;
-//	js.async = true;
-//	js.src = "//connect.facebook.net/ko_KR/all.js";
-//	d.getElementsByTagName('head')[0].appendChild(js);
-//}(document));
-//
-//function fnLoginFB() {
-//	alert("1111");
-//	FB.login(function(response) {
-//		var fbName;
-//		var accessToken = reponse.authResponse.accessToken;
-//	}, {
-//		scope : "publish_stream, offline_access"
-//	});
-//}
-//
-//function getUserInfo() {
-//	FB.api('/me', function(response) {
-//
-//		var str = "<b>Name</b> : " + response.name + "<br>";
-//		str += "<b>Link: </b>" + response.link + "<br>";
-//		str += "<b>Username:</b> " + response.username + "<br>";
-//		str += "<b>id: </b>" + response.id + "<br>";
-//		str += "<b>Email:</b> " + response.email + "<br>";
-//		str += "<input type='button' value='Get Photo' onclick='getPhoto();'/>";
-//		str += "<input type='button' value='Logout' onclick='Logout();'/>";
-//		document.getElementById("status").innerHTML = str;
-//
-//	});
-//}
-//
-//function facebookFriend(code, page) {
-//	console.log("1111");
-//	FB.api("/me/taggable_friends", function(response) {
-//		console.log(response.error);
-//		if (response && !response.error) {
-//			console.log(response);
-//			console.log(response.size);
-//		}
-//	});
-//}
-
-function statusChangeCallback(response) {
-	console.log('statusChangeCallback');
-	console.log(response);
-	// The response object is returned with a status field that lets the
-	// app know the current login status of the person.
-	// Full docs on the response object can be found in the documentation
-	// for FB.getLoginStatus().
-	if (response.status === 'connected') {
-		// Logged into your app and Facebook.
-		testAPI();
-	} else if (response.status === 'not_authorized') {
-		// The person is logged into Facebook, but not your app.
-		document.getElementById('status').innerHTML = 'Please log '
-				+ 'into this app.';
-	} else {
-		// The person is not logged into Facebook, so we're not sure if
-		// they are logged into this app or not.
-		document.getElementById('status').innerHTML = 'Please log '
-				+ 'into Facebook.';
-	}
-}
-
-// This function is called when someone finishes with the Login
-// Button. See the onlogin handler attached to it in the sample
-// code below.
-function checkLoginState() {
-	FB.getLoginStatus(function(response) {
-		statusChangeCallback(response);
-	});
-}
-
 window.fbAsyncInit = function() {
 	FB.init({
 		appId : '1449705105272003',
@@ -97,20 +7,8 @@ window.fbAsyncInit = function() {
 		version : 'v2.0' // use version 2.0
 	});
 
-	// Now that we've initialized the JavaScript SDK, we call
-	// FB.getLoginStatus(). This function gets the state of the
-	// person visiting this page and can return one of three states to
-	// the callback you provide. They can be:
-	//
-	// 1. Logged into your app ('connected')
-	// 2. Logged into Facebook, but not your app ('not_authorized')
-	// 3. Not logged into Facebook and can't tell if they are logged into
-	// your app or not.
-	//
-	// These three cases are handled in the callback function.
-
 	FB.getLoginStatus(function(response) {
-		statusChangeCallback(response);
+		// fnLoginFB(response);
 	});
 
 };
@@ -126,13 +24,50 @@ window.fbAsyncInit = function() {
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-// Here we run a very simple test of the Graph API after login is
-// successful. See statusChangeCallback() for when this call is made.
-function testAPI() {
-	console.log('Welcome!  Fetching your information.... ');
-	FB.api('/me', function(response) {
-		console.log('Successful login for: ' + response.name);
-		document.getElementById('status').innerHTML = 'Thanks for logging in, '
-				+ response.name + '!';
+function fnLoginFB(response) {
+	FB.login(function(response) {
+		var fbName;
+		var accessToken = response.authResponse.accessToken;
+		if (response) {
+			console.log(response);
+			window.location.reload(true);
+		}
+	}, {
+		scope : "publish_stream, user_friends"
+	});
+}
+
+function facebookFriend(code, page) {
+	FB
+			.api(
+					"/me/taggable_friends",
+					function(response) {
+						console.log(response.error);
+						if (response && !response.error) {
+							console.log(response);
+							var data = response.data;
+							console.log("1111 = " + data.length);
+							var friendsList = "<table border='1'>";
+							friendsList += "<tr><td>이름</td><td>사진 URL</td><td>is_silhouette</td></tr>";
+							for (var i = 0; i < data.length; i++) {
+								friendsList += "<tr>";
+								friendsList += "<td>" + data[i].name + "</td>";
+								friendsList += "<td><img src='" + data[i].picture.data.url + "'/></td>";
+								friendsList += "<td>" + data[i].picture.data.is_silhouette + "</td>";
+								friendsList += "</tr>";
+							}
+							friendsList += "</table>";
+							$("#status").html(friendsList);
+						}
+					});
+}
+
+function fnLogout() {
+	FB.logout(function(response) {
+
+		console.log(response);
+		console.log(response.name + "님이 로그아웃 하셨습니다.");
+		$("#status").html(response.name + "님이 로그아웃 하셨습니다.");
+		// window.location.reload(true);
 	});
 }
