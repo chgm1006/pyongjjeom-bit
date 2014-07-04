@@ -68,6 +68,8 @@ public class UserController {
      userService.deleteMember(memCD);
      session.setAttribute("member", member);
      System.out.println(member);
+     
+     session.removeAttribute("member");
      return "myRoom/deletesucess";
   }
 
