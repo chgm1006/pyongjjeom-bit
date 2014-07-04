@@ -23,7 +23,9 @@ public interface UserService {
 
 	public int updateMemberInfo();
 
-	public int deleteMember();
+	void deleteMember(String memCD);
 	
 	void upDateData(Member member);
+	
+	
 }

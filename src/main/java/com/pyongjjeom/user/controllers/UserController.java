@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.catalina.tribes.membership.MemberImpl;
 import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	private Member mem;
+/*	private Member mem;*/
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getMemberInfo() {
@@ -51,11 +52,25 @@ public class UserController {
 
 	}
 
+	@RequestMapping(value = "deleteMember.do", method = RequestMethod.GET)
+  public String deleteMember(@Valid HttpServletRequest request) {
+     HttpSession session = request.getSession();
+     System.out.println(request.getSession());
+     
+     
+     Member member = new Member();
+     member = (Member)session.getAttribute("member");
+     System.out.println(member);
+     
+     String memCD = member.getMemCD();
+     System.out.println(member.getMemKind());
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String deleteMember() {
-		return null;
-	}
+     userService.deleteMember(memCD);
+     session.setAttribute("member", member);
+     System.out.println(member);
+     return "myRoom/deletesucess";
+  }
+
 	
 	
 	
@@ -69,17 +84,32 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "upDateMySet.do", method = RequestMethod.POST)
-	public String updateMemberInfo( Member member, Model model, HttpServletRequest request){
+	public String updateMemberInfo(Member member, Model model, HttpServletRequest request){
 		
 		/*
 		 * if (!session.isNew()) { session = request.getSession(true); }
 		 */
+		
 
 		
 		System.out.println("11111");
 		System.out.println(member);
+		
 		userService.upDateData(member);
-	
+
+		System.out.println("22222222");
+		System.out.println(member.toString());
+
+		
+		
+		HttpSession session = request.getSession();
+
+		/*
+		 * if (!session.isNew()) { session = request.getSession(true); }
+		 */
+
+		session.setAttribute("member", member);
+
 	
 
 

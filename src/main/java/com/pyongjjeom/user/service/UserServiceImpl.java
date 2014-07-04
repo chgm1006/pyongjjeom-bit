@@ -5,11 +5,12 @@
 package com.pyongjjeom.user.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
-import com.pyongjjeom.user.service.UserService;
+
 
 /**
  * <pre>
@@ -25,6 +26,8 @@ import com.pyongjjeom.user.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	private Logger log = Logger.getLogger(this.getClass());
+	
+	@Autowired
 	private UserMapper userMapper;
 
 	/**
@@ -121,11 +124,7 @@ public class UserServiceImpl implements UserService {
 	 * @see com.pyongjjeom.user.service.UserService#deleteMember()
 	 * @return
 	 */
-	@Override
-	public int deleteMember() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	/**
 	 * <PRE>
@@ -137,7 +136,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void upDateData(Member member) {
 		// TODO Auto-generated method stub
+		System.out.println("????"+member);
 		 userMapper.upDateData(member);
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.user.service.UserService#deleteMember(java.lang.String)
+	 */
+	@Override
+	public void deleteMember(String memCD) {
+		// TODO Auto-generated method stub
+		System.out.println(memCD);
+		userMapper.deleteMember(memCD);
 	}
 
 	/**

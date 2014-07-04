@@ -34,5 +34,6 @@ public interface UserMapper {
 	
 	void upDateData(Member member);
 	
+	void deleteMember(String memCD);
 
 }
