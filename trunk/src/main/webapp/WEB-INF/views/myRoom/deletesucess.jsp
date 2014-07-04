@@ -8,5 +8,6 @@
 </head>
 <body>
 삭제완료
+<a href = "movieIndex.do">메인으로</a>
 </body>
 </html>
