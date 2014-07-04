@@ -70,7 +70,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="com.pyongjjeom.contents.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao" />
+			value="com.pyongjjeom.contents.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao; com.pyongjjeom.user.dao"  />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
