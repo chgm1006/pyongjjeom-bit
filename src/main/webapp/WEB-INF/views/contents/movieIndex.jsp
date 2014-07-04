@@ -46,46 +46,7 @@
 			<!-- ########################################### -->
 			<div class="list_carousel">
 				<ul id="foo3">
-					<%-- 	<li class="liList"><a class="imgLink" href="#"> <img
-							class="imgList"
-							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-							<div class="innerOver2">c</div>
-							<div class="innerOver">
-								영화제목1<br> 감독<br> 출연<br>
-							</div>
-					</a></li>
-					<li class="liList"><a class="imgLink" href="#"> <img
-							class="imgList"
-							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-							<div class="innerOver2">c</div>
-							<div class="innerOver">
-								영화제목1<br> 감독<br> 출연<br>
-							</div>
-					</a></li>
-					<li class="liList"><a class="imgLink" href="#"> <img
-							class="imgList"
-							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-							<div class="innerOver2">c</div>
-							<div class="innerOver">
-								영화제목1<br> 감독<br> 출연<br>
-							</div>
-					</a></li>
-					<li class="liList"><a class="imgLink" href="#"> <img
-							class="imgList"
-							src="${pageContext.request.contextPath}/resources/img/06.jpg" />
-							<div class="innerOver2">c</div>
-							<div class="innerOver">
-								영화제목1<br> 감독<br> 출연<br>
-							</div>
-					</a></li>
-					<li class="liList"><a class="imgLink" href="#"> <img
-							class="imgList"
-							src="${pageContext.request.contextPath}/resources/img/07.jpg" />
-							<div class="innerOver2">c</div>
-							<div class="innerOver">
-								영화제목1<br> 감독<br> 출연<br>
-							</div>
-					</a></li> --%>
+
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList"><a class="imgLink" href="#"> <img
 								class="imgList" src="${movie.poster}" />
@@ -109,41 +70,6 @@
 		<!-- ########################################### -->
 		<div class="contentsList">
 			<div class="title2">최신 영화 리스트</div>
-
-			<!------------------- 리스트 첫번째 -------------------->
-			<%-- <div class="list1">
-				<a href="#" class="listImgLink"><img
-					src="${pageContext.request.contextPath}/resources/img/06.jpg"
-					class="listImg"></a>
-				<div class="detail">
-					<table>
-						<tr>
-							<td class="listTitle1" colspan="2">그레이스 오브 모나코</td>
-						</tr>
-						<tr>
-							<td class="listTitle">감독</td>
-							<td class="listDirectorValue">니콜라스케이지</td>
-						</tr>
-						<tr>
-							<td class="listTitle">출연</td>
-							<td class="listActorValue">니콜키드먼 니콜라스케이지 휴잭맨 도나바니</td>
-						</tr>
-						<tr>
-							<td class="listTitle">줄거리</td>
-							<td class="listSynopValue">가까운 미래, 미믹이라 불리는 외계 종족의 침략으로 인류는 멸망 위기를
-								맞는다. 빌 케이지 (톰 크루즈)는 자살 작전이나 다름없는 작전에 훈련이나 장비를 제대로 갖추지 못한 상태로 배정되고 전투에
-								참여하자마자 죽음을 맞는다. 하지만 불가능한 일이 일어난다. 그가 다시 그 끔찍한 날이 시작된 시간에 다시 깨어나 다시 전투에
-								참여하게 되고 다시 죽었다가 또 다시 살아나는 것. 외계인과의 접촉으로 같은 시간대를 반복해서 겪게 되는 타임 루프에 갇히게 된
-								것이다.</td>
-						</tr>
-					</table>
-					<div class="listButton">
-						<a class="listButtonAll" href="http://naver.com">네이버 상세</a> <a
-							class="listButtonAll" href="#">다음 상세</a> <a class="listButtonAll"
-							href="#">예고편보기</a> <a class="listButtonAll" href="#">포토보기</a>
-					</div>
-				</div>
-			</div> --%>
 
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
