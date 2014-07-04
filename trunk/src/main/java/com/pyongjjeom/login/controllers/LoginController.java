@@ -59,11 +59,8 @@ public class LoginController {
 			System.out.println("아이디와패스워드불일치");
 			return "login/login";
 		}
+		
 		HttpSession session = request.getSession();
-
-		/*
-		 * if (!session.isNew()) { session = request.getSession(true); }
-		 */
 
 		session.setAttribute("member", member);
 		System.out.println(request.getSession() + "로그인세션등록완료");
