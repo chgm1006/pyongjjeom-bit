@@ -280,7 +280,7 @@
 		});
 	</script>
 
-	<!--------- 컨텐츠 롤오버  -------->
+	<!--------- 슬라이드이미지 롤오버  -------->
 	<script type="text/javascript">
 		$(function() {
 			$(".imgLink").mouseenter(function() {
