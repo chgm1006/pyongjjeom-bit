@@ -39,8 +39,8 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@Autowired
-	private UserService userService;
+/*	@Autowired
+	private UserService userService;*/
 
 	private DBCode dc = new DBCode();
 
