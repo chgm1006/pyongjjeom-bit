@@ -60,7 +60,7 @@ ${member }
 	<form name=setupFirm method=POST action="upDateMySet.do">
 		
 			<table>
-			
+			<input type="hidden" name="memCD" value="${member.memCD}">
 				<tr>
 					<td class="item">이름</td>
 					<td class="cont"><input type="text" id="memNm" name="memNm" value = "${member.memNm}"></td>
@@ -81,7 +81,7 @@ ${member }
 					<td class="item">패스워드 확인</td>
 					<td class="cont"><input type="text"></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="item">내 포스팅 공개여부</td>
 					<td class="cont">전체공개 <input type="radio" name="open" value="전체공개">
 						친구만 공개<input type="radio" name="open" value="친구만 공개"> 비공개<input
@@ -94,13 +94,13 @@ ${member }
 						친구만 허용<input type="radio" name="reply" value="친구만 허용"> 허용안함<input
 						type="radio" name="reply" value="허용안함">
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="item"><input type="submit" value="수정완료"></td>
 					<td class="cont"><input type="submit" value="탈퇴하기"></td>
 				</tr>
 			</table>
 </form>
-
+<a href = "deleteMember.do">탈퇴하기></a>
 </body>
 </html>
