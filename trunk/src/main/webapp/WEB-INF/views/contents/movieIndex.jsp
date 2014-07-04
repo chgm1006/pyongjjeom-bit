@@ -73,29 +73,28 @@
 			<div class="title2">최신 영화 리스트</div>
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
-					<a href="#" class="listImgLink"><img   src="${movie.image}"
-						class="listImg"></a>
-					<div class="detail">
+				<a class="listWrap" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+					<img  class="listImg" src="${movie.image}"></a>
+					<div class="listTable">
 						<table>
 							<tr>
-								<td class="listTitle1" colspan="2">${movie.title }</td>
+								<td class="tableTitle" colspan="2">${movie.title }</td>
 							</tr>
 							<tr>
-								<td class="listTitle">부제</td>
-								<td class="listSynopValue">${movie.subtitle }</td>
+								<td class="tableSubtitle">부제</td>
+								<td class="tableSubtitleCont">${movie.subtitle }</td>
 							</tr>
 							<tr>
 								<td class="listTitle">감독</td>
-								<td class="listDirectorValue">${movie.director }</td>
+								<td class="tableCont">${movie.director }</td>
 							</tr>
 							<tr>
 								<td class="listTitle">출연</td>
-								<td class="listActorValue">${movie.actor }</td>
+								<td class="tableCont">${movie.actor }</td>
 							</tr>
 							<tr>
 								<td class="listTitle">개봉년도</td>
-								<td class="listSynopValue">${movie.pubDate }</td>
+								<td class="tableCont">${movie.pubDate }</td>
 							</tr>
 
 							<tr>
@@ -103,10 +102,9 @@
 								<td class="listSynopValue">${movie.userRating }</td>
 							</tr>
 						</table>
-						<div class="listButton">
-							<a class="listButtonAll" href="${movie.link }">네이버 상세</a> <a
-								class="listButtonAll" href="#">다음 상세</a> <a class="listButtonAll"
-								href="#">예고편보기</a> <a class="listButtonAll" href="#">포토보기</a>
+						<div class="listButtonWrap">
+							<a class="listButton" href="${movie.link }">네이버 상세</a>
+							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
 						</div>
 					</div>
 				</div>
