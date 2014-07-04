@@ -122,9 +122,6 @@
 	<footer>
 		<h1>Spring 3, MVC Examples</h1>
 		<ul>
-			<!-- 			<li><a href="search1.jsp">검색(Naver API)</a></li> 
-header 에 구현 
--->
 
 			<li><a href="search2.jsp">포스팅 (NAVER API)</a></li>
 			<li><a href="boardList.do">공지사항</a></li>
