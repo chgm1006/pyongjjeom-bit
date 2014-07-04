@@ -271,6 +271,9 @@ header 에 구현
 		</div>
 
 	</div>
+	
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/footer.jsp"%>
 
 
 	<!----################ 여기부터는 jQuery 모음 ################---->
