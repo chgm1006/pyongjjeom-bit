@@ -63,6 +63,7 @@
 			<div class="arrow2">
 				<a id="next3" class="next" href="#"></a>
 			</div>
+			
 		</div>
 
 		<!-- ########################################### -->
@@ -71,9 +72,8 @@
 		<div class="contentsList">
 			<div class="title2">최신 영화 리스트</div>
 
-
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<div class="list1" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
 					<a href="#" class="listImgLink"><img   src="${movie.image}"
 						class="listImg"></a>
 					<div class="detail">
