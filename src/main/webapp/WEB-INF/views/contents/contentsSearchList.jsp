@@ -79,6 +79,55 @@
 
 </head>
 <body>
+
+		<div class="contentsList">
+			<div class="title2">검색 결과</div>
+
+			<c:forEach var="movie" items="${movieList }" varStatus="status">
+				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+					<img  class="listImg" src="${movie.image}"></a>
+					<div class="listTable">
+						<table>
+							<tr>
+								<td class="tableTitle" colspan="2">${movie.title }</td>
+							</tr>
+							<tr>
+								<td class="tableSubtitle">부제</td>
+								<td class="tableCont">${movie.subtitle }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">감독</td>
+								<td class="tableCont">${movie.director }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">출연</td>
+								<td class="tableCont">${movie.actor }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">개봉년도</td>
+								<td class="tableCont">${movie.pubDate }</td>
+							</tr>
+
+							<tr>
+								<td class="tableTitle2">평점</td>
+								<td class="tableCont">${movie.userRating }</td>
+							</tr>
+						</table>
+						<div class="listButtonWrap">
+							<a class="listButton" href="${movie.link }">네이버 상세</a>
+							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			<!------------------- 더보기 버튼 -------------------->
+			<a href="#" class="listMore">더보기</a>
+		</div>
+
+
+
+
+
 <div id="nana">이곳에 출력</div>
 	<c:choose>
 		<c:when test="${category =='movie'}">
