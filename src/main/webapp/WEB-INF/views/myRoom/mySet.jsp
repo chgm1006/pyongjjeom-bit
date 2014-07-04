@@ -57,25 +57,25 @@
 
 ${member }
 
-	<form name=setupFirm method=POST action="setEdit.do">
+	<form name=setupFirm method=POST action="upDateMySet.do">
 		
 			<table>
 			
 				<tr>
 					<td class="item">이름</td>
-					<td class="cont"><input type="text" value = "${member.memNm}"></td>
+					<td class="cont"><input type="text" id="memNm" name="memNm" value = "${member.memNm}"></td>
 				</tr>
 				<tr>
 					<td class="item">이메일</td>
-					<td class="cont"><input type="text" value = "${member.email}"></td>
+					<td class="cont"><input type="text" id="email" name="email" value = "${member.email}"></td>
 				</tr>
 				<tr>
 					<td class="item">생년월일</td>
-					<td class="cont"><input type="text" value = "${member.birth}"></td>
+					<td class="cont"><input type="text" id="birth" name="birth" value = "${member.birth}"></td>
 				</tr>
 				<tr>
 					<td class="item">패스워드</td>
-					<td class="cont"><input type="text"></td>
+					<td class="cont"><input type="text" id="passwd" name="passwd" value=""></td>
 				</tr>
 				<tr>
 					<td class="item">패스워드 확인</td>

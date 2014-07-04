@@ -80,7 +80,7 @@
 
 		<div class="menu">
 			<ul>
-				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#" OnClick="window.location='setEdit.do'">설정</a></li>
+				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#" OnClick="window.location='mySet.do'">설정</a></li>
 				<li class="boardMenu"><a class="myPageMenu" id="upLoadButton" href="#">평점올리기</a></li>
 				<li class="boardMenu"><a href = "logout.do" class="boardMenu_1">로그아웃</a></li>
 			</ul>
