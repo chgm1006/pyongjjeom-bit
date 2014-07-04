@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 <mapper namespace="com.pyongjjeom.login.dao.LoginMapper">
 
 	<select id="checkMemberLogin" parameterType="hashmap" resultType="Member">
-		select email from member
+		select email from member where email = #
 	</select>
 	
 	<select id="login" resultType="Member">
