@@ -7,3 +7,6 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
+<!---- CSS : Footer ---->
+<link href="${pageContext.request.contextPath}/resources/css/footer.css"
+	rel="stylesheet" type="text/css">
