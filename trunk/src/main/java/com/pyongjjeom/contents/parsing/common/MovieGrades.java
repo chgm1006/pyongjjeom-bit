@@ -19,9 +19,7 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.contents.parsing.common; 
-
-import org.apache.log4j.Logger;
+package com.pyongjjeom.contents.parsing.common;
 
 /**
  * <pre>
@@ -41,7 +39,7 @@ import org.apache.log4j.Logger;
  *   |_ ContentsGrades.java
  * </pre>
  * 
- * @author  : Administrator
+ * @author : Administrator
  * @version : 1.0
  */
 
@@ -50,10 +48,11 @@ public class MovieGrades {
 	public String getMovieCode() {
 		return movieCode;
 	}
+
 	public void setMovieCode(String movieCode) {
 		this.movieCode = movieCode;
 	}
-	private Logger log = Logger.getLogger(this.getClass());
+
 	private String title;
 	private String movieCode;
 	private double naverMg;
@@ -61,54 +60,53 @@ public class MovieGrades {
 	private double cgvMg;
 	private double lotteMg;
 	private double megaBoxMg;
-	@Override
-	public String toString() {
-		return "MovieGrades [log=" + log + ", title=" + title + ", naverMg="
-				+ naverMg + ", daumMg=" + daumMg + ", cgvMg=" + cgvMg + ", lotteMg="
-				+ lotteMg + ", megaBoxMg=" + megaBoxMg + "]";
-	}
-	public Logger getLog() {
-		return log;
-	}
-	public void setLog(Logger log) {
-		this.log = log;
-	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public double getNaverMg() {
 		return naverMg;
 	}
+
 	public void setNaverMg(double naverMg) {
 		this.naverMg = naverMg;
 	}
+
 	public double getDaumMg() {
 		return daumMg;
 	}
+
 	public void setDaumMg(double daumMg) {
 		this.daumMg = daumMg;
 	}
+
 	public double getCgvMg() {
 		return cgvMg;
 	}
+
 	public void setCgvMg(double cgvMg) {
 		this.cgvMg = cgvMg;
 	}
+
 	public double getLotteMg() {
 		return lotteMg;
 	}
+
 	public void setLotteMg(double lotteMg) {
 		this.lotteMg = lotteMg;
 	}
+
 	public double getMegaBoxMg() {
 		return megaBoxMg;
 	}
+
 	public void setMegaBoxMg(double megaBoxMg) {
 		this.megaBoxMg = megaBoxMg;
 	}
-	
-	
+
 }
