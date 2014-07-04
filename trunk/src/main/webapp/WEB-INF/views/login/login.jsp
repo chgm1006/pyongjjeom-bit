@@ -98,8 +98,10 @@
 					&nbsp; &nbsp; &nbsp; &nbsp; <a href="registerMember.do">아직 회원이 아니신가영?</a>
 
 				</form>
+				
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
