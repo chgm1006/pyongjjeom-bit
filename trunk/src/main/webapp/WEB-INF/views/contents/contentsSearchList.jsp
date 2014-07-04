@@ -1,91 +1,26 @@
-<%@page import="org.apache.ibatis.executor.ReuseExecutor"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<style>
-#main {
-	background-color: #FAF4C0;
-	border-top: 1px solid #333333;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #333333;
-	border-right: 1px solid #333333;
-}
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/header.jsp"%>
 
 
+<!---- CSS  ---->
+<link href="${pageContext.request.contextPath}/resources/css/contentsList.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
+	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/json2.js"></script>
 
-<script>
-	$(document).ready(function() {
 
-		// 		$("#FBLogin").click(function() {
-		// 			fnLoginFB();
-		// 		});
-
-		$("#main").click(function() {
-			var formData = {
-				name : "끝까지 간다",
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "movieContextJson1.do",
-				// 				data : formData,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					var obj = JSON.parse(data);
-// 					alert(data);
-// 					alert(data.list);
-					console.log(data.title);
-					console.log(obj.grades);
-// 					console.log(data.name);
-// 					console.log(data.msg);
-					$.each(data, function(key, val) {
-						console.log("Key: " + key + ", val: " + val);
-					});
-
-				}
-			});
-		});
-		
-		
-		$("#main").click(function() {
-			
-			alert("abc");
-			$("#nana").append("<p>789</p>");
-			
-		});
-	});
-</script>
-
-</head>
-<body>
 <div id="nana">이곳에 출력</div>
 
 		<div class="contentsList">
 			<div class="title2">검색 결과</div>
-
-			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
+	<c:choose>
+		<c:when test="${category =='movie'}">
+			<c:forEach var="movie" items="${resultList }" varStatus="status">
+				<div class="listWrap" onclick="document.location='movieContext.do?num=${status.index}'  ">
 					<img  class="listImg" src="${movie.image}"></a>
 					<div class="listTable">
 						<table>
@@ -121,6 +56,56 @@
 					</div>
 				</div>
 			</c:forEach>
+		</c:when>
+		
+		
+		
+		<c:when test="${category =='book'}">
+			<c:forEach var="movie" items="${resultList }" varStatus="status">
+				<div class="listWrap" onclick="document.location='bookContext.do?num=${status.index}'  ">
+					<img  class="listImg" src="${book.image}"></a>
+					<div class="listTable">
+						<table>
+							<tr>
+								<td class="tableTitle" colspan="2">${book.title }</td>
+							</tr>
+							<tr>
+								<td class="tableSubtitle">부제</td>
+								<td class="tableCont">${book.subtitle }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">감독</td>
+								<td class="tableCont">${book.director }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">출연</td>
+								<td class="tableCont">${book.actor }</td>
+							</tr>
+							<tr>
+								<td class="tableTitle2">개봉년도</td>
+								<td class="tableCont">${book.pubDate }</td>
+							</tr>
+
+							<tr>
+								<td class="tableTitle2">평점</td>
+								<td class="tableCont">${book.userRating }</td>
+							</tr>
+						</table>
+						<div class="listButtonWrap">
+							<a class="listButton" href="${book.link }">네이버 상세</a>
+							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</c:when>
+		
+		
+		
+		</c:choose>
+		
+		
+			
 			<!------------------- 더보기 버튼 -------------------->
 			<a href="#" class="listMore">더보기</a>
 		</div>
@@ -128,7 +113,7 @@
 
 
 
-
+<%-- 
 	<c:choose>
 		<c:when test="${category =='movie'}">
 
@@ -155,6 +140,8 @@
 				<br>
 			</c:forEach>
 		</c:otherwise>
-	</c:choose>
+	</c:choose> --%>
+	
+	
 </body>
 </html>
