@@ -138,10 +138,7 @@ public class NoticeController {
 	  
 	  
 	  
-	 
-
-
-	  
+	
 	  
 		IssueDbtoView(notice);
 		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
