@@ -15,7 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	</update>
 	
-	
+	<update id="upDateData" parameterType="Member">
+		update member
+		set memNm=#{memNm},
+		email=#{email},birth=#{birth},
+		passwd=#{passwd} where memCD=#{memCD};
+
+
+	</update>
 	
 
 	<update id="deleteMember" parameterType="string">

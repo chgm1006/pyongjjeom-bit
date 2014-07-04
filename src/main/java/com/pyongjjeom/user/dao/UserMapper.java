@@ -32,5 +32,7 @@ public interface UserMapper {
 	
 	public Member checkMemberID(String memCD);
 	
+	void upDateData(Member member);
+	
 
 }
