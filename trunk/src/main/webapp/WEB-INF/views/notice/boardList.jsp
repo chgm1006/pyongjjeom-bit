@@ -166,10 +166,20 @@ $(document).ready(funtion()){
 							<h5>${notice.formatUpdatedate}</h5>
 						</dt>
 
-						<dd class="listContent">${notice.issue}<a class="mainBoard" href="#"
+
+
+						<dd class="listContent">${notice.issue}
+						<c:choose>
+						<c:when test="${member.permit =='ADMIN'}">
+						<a class="mainBoard" href="#"
 								OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a> <a
 								class="mainBoard" href="#"
 								OnClick="window.location='delete.do?notCD=${notice.notCD}'">삭제</a>
+						
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+						</c:choose>
 						</dd>
 					</c:forEach>
 
