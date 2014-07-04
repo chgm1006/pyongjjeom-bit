@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- ########################################### -->
-<!-- #################    탑   메  뉴     ################# -->
-<!-- ########################################### -->
 <header>
 	<div class="topMenu">
 		<div class="leftMenu">
