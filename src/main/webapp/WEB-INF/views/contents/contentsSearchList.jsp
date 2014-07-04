@@ -79,6 +79,7 @@
 
 </head>
 <body>
+<div id="nana">이곳에 출력</div>
 
 		<div class="contentsList">
 			<div class="title2">검색 결과</div>
@@ -128,7 +129,6 @@
 
 
 
-<div id="nana">이곳에 출력</div>
 	<c:choose>
 		<c:when test="${category =='movie'}">
 
