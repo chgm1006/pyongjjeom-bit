@@ -146,7 +146,7 @@ $(document).ready(funtion()){
 					<c:choose>
 						<c:when test="${member.permit =='ADMIN'}">
 							<li class="boardMenu"><a class="myPageMenu" id="boardWrite" href="#"
-								OnClick="window.location='write.do'">>글쓰기</a></li>
+								OnClick="window.location='write.do'">글쓰기</a></li>
 							<li class="boardMenu"><a class="myPageMenu" href="#"
 								OnClick="window.location='deleteList.do'">삭제된글</a></li>
 						</c:when>
