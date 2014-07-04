@@ -39,7 +39,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-/*	private Member mem;*/
+	private Member mem;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getMemberInfo() {
