@@ -164,6 +164,7 @@ $(document).ready(funtion()){
 						<dt class="listHead">
 							<h3>${notice.title}</h3>
 							<h5>${notice.formatUpdatedate}</h5>
+
 						</dt>
 
 
@@ -186,7 +187,16 @@ $(document).ready(funtion()){
 
 				</dl>
 			</div>
-			<a href="#" class="listMore">지난 공지사항 더보기</a>
+			
+			<div class>
+			<dl>
+			<c:forEach var="notice" items="${add}" varStatus="cnt">
+			
+			</c:forEach>
+						
+			</dl>
+			<a href="#" class="listMore" onclick=>지난 공지사항 더보기</a>
+			</div>
 		</div>
 	</article>
 
@@ -312,7 +322,7 @@ $(document).ready(funtion()){
 
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
+	<!----################ 여기부터는  jQuery 모음 ################---->
 	<!---jQuery 아코디언--->
 
 
