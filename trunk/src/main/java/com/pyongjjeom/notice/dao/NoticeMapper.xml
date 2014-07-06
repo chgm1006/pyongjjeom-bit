@@ -67,7 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<update id="deleteData" parameterType="string">
+	<update id="deleteData" parameterType="String">
 		update notice
 		set deleteyn = 'Y'
 		where notCD= #{notCD};
