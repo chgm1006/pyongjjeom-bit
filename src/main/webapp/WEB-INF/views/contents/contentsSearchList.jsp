@@ -12,19 +12,68 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
+<script>
+	$(document).ready(function() {
+
+		$(".listWrap").click(function() {
+			var test=$(".statusIndex",(this)).html();
+			var formData = {
+				name : test,
+				data : "Hello"
+			};
+			
+			$.ajax({
+				type : "post",
+				url : "movieContextJson.do",
+				// 				data : formData,
+				data : JSON.stringify(formData),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				beforeSend : function() {
+					console.log(formData);
+				},
+				error : function(e) {
+					console.log(e.responseText);
+				},
+				success : function(data) {
+					
+					
+					alert(data);
+			
+
+				}
+			});
+		});
+		
+		
+		$(".listWrap").click(function() {
+			var test=$(".statusIndex",(this)).html();
+
+			alert("click");
+			$("#nana").append("<p>789</p>");
+			$("#nana").append(test);
+
+		});
+	});
+</script>
+
+
 <article>
+<div id="nana">출력</div>
 
 		<div class="contentsList">
 			<div class="title3">검색 결과</div>
 	<c:choose>
 		<c:when test="${category =='movie'}">
 			<c:forEach var="movie" items="${resultList }" varStatus="status">
-				<div class="listWrap" onclick="document.location='movieContext.do?num=${status.index}'  ">
-					<img  class="listImg" src="${movie.image}"></a>
+				<div class="listWrap" >
+					<img  class="listImg" src="${movie.image}">
 					<div class="listTable">
 						<table>
 							<tr>
-								<td class="tableTitle" colspan="2">${movie.title }</td>
+								<td class="tableTitle" colspan="2">${movie.title }
+									<p class="statusIndex">${status.index}</p>
+								</td>
 							</tr>
 							<tr>
 								<td class="tableSubtitle">부제</td>
@@ -42,7 +91,6 @@
 								<td class="tableTitle2">개봉년도</td>
 								<td class="tableCont">${movie.pubDate }</td>
 							</tr>
-
 							<tr>
 								<td class="tableTitle2">평점</td>
 								<td class="tableCont">${movie.userRating }</td>
@@ -60,38 +108,25 @@
 		
 		
 		<c:when test="${category =='book'}">
-			<c:forEach var="movie" items="${resultList }" varStatus="status">
+			<c:forEach var="book" items="${resultList }" varStatus="status">
 				<div class="listWrap" onclick="document.location='bookContext.do?num=${status.index}'  ">
-					<img  class="listImg" src="${book.image}"></a>
+					<img  class="listImg" src="${book.image}">
 					<div class="listTable">
 						<table>
 							<tr>
 								<td class="tableTitle" colspan="2">${book.title }</td>
 							</tr>
 							<tr>
-								<td class="tableSubtitle">부제</td>
-								<td class="tableCont">${book.subtitle }</td>
+								<td class="tableTitle2">저자</td>
+								<td class="tableCont">${book.author }</td>
 							</tr>
-							<tr>
-								<td class="tableTitle2">감독</td>
-								<td class="tableCont">${book.director }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">출연</td>
-								<td class="tableCont">${book.actor }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">개봉년도</td>
-								<td class="tableCont">${book.pubDate }</td>
-							</tr>
-
 							<tr>
 								<td class="tableTitle2">평점</td>
-								<td class="tableCont">${book.userRating }</td>
+								<td class="tableCont">${movie.userRating }</td>
 							</tr>
 						</table>
 						<div class="listButtonWrap">
-							<a class="listButton" href="${book.link }">네이버 상세</a>
+							<a class="listButton" href="${book.link }" target="_blank">네이버 상세</a>
 							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
 						</div>
 					</div>
@@ -99,17 +134,13 @@
 			</c:forEach>
 		</c:when>
 		
-		
-		
+
 		</c:choose>
-		
 		
 			
 			<!------------------- 더보기 버튼 -------------------->
 			<a href="#" class="listMore">더보기</a>
 		</div>
-
-
 
 
 
@@ -143,15 +174,15 @@
 			<div class="overContSpec">
 				<table class="overContSpecTable">
 					<tr>
-						<td><h1>그레이스 오브 모나코</h1></td>
+						<td><h1>${movie.title }</h1></td>
 					</tr>
 					<tr>
 						<td><h3>감독</h3></td>
-						<td><h3>감독이다.</h3></td>
+						<td><h3>${movie.director }</h3></td>
 					</tr>
 					<tr>
 						<td><h3>출연</h3></td>
-						<td><h3>출연이다.</h3></td>
+						<td><h3>${movie.actor }</h3></td>
 					</tr>
 
 					<tr>
@@ -249,14 +280,7 @@
 
 
 
-
-
-
-
-
-
 </article>
-
 
 
 <!-- /// <head> INCLUDE /// -->
@@ -276,7 +300,7 @@
 				$("#overLayer").hide();
 			});
 
-			$(".listImg").click(function() {
+			$(".listWrap").click(function() {
 				$("#glayLayer").show();
 				$("#overLayer").fadeIn("Fast");
 				return false;
@@ -303,9 +327,10 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 
-		$(".listImg").click(function() {
+		$(".listWrap").click(function() {
+			var test = $(".tableTitle",this).html().replace("<b>","").replace("</b>","");
 			var formData = {
-				name : "끝까지 간다",
+				name : test,
 				data : "Hello"
 			};
 
@@ -322,23 +347,24 @@
 				error : function(e) {
 					console.log(e.responseText);
 				},
+				
 				success : function(data) {
-					alert(data.grades.title);
 
 					var abc = data.grades.title;
-					console.log(data);
+					var abc2 = data.grades.movieCode;
 
-					$("#nana").append(abc);
-					$(".overContSpecSynop").html("wer");
+					$(".overContSpecSynop").html(abc);
+					$(".overContSpecSynop").append(abc2);
 
 				}
 			});
 		});
 
-		$(".listImg").click(function() {
-
-			alert("abc");
+		$(".listWrap").click(function() {
 			$(".overContSpecSynop h3").append("<p>영화click완료</p>");
+			$(".tableSubtitle",this).append("<p>as</p>");
+			var qwe = $(".tableTitle",this).html();
+			$(".tableSubtitle",this).append(qwe);
 
 		});
 	});

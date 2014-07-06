@@ -31,8 +31,9 @@
 				<ul id="foo3">
 
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
-						<li class="liList"><a class="imgLink" href="#"> <img
-								class="imgList" src="${movie.poster}" />
+						<li class="liList">
+								<a class="imgLink" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' "> 
+								<img class="imgList" src="${movie.poster}" />
 								<div class="innerOver2">c</div>
 								<div class="innerOver">
 									영화제목 : ${movie.title }<br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
