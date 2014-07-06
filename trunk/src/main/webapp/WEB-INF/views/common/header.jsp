@@ -34,8 +34,8 @@
 				<form action="ContentsSearch.do" method="get" id="frmLogin"
 					name="frmLogin">
 					<select name="category">
-						<option value="book">책
 						<option value="movie">영화
+						<option value="book">책
 					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
 						name="stat" value="search"> <input type="submit" value="검색">
 					<a href="#"> <img class="magnifier"
