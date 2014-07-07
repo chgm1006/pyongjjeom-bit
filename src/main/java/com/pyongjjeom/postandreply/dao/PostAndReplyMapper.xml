@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</insert>
 <select id="getPost" parameterType="String" resultType="Post"> 
     
-    select * from posting where pmemcd=#{memCD}
+    select * from posting where pmemcd=#{memCD} order by  updatedate desc;
     </select>
 	
 </mapper>
