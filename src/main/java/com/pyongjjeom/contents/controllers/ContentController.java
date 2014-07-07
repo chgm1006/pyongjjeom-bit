@@ -368,7 +368,6 @@ System.out.println(movie.getImage()+"??????????????");
 				
 				if(contentMovieDetail.getGenre().equals("")){				
 					contentMovieDetail.setGenre("9");
-					System.out.println("999");
 				}
 				if(contentMovieDetail.getNation()==null){				
 					contentMovieDetail.setNation("9");
@@ -391,10 +390,6 @@ System.out.println(movie.getImage()+"??????????????");
 				if(contentMovieDetail.getPoster()==null){				
 					contentMovieDetail.setPoster("9");
 				}
-				System.out.println(contentMovieDetail.getGenre());
-				System.out.println(contentMovieDetail.getContext());
-				System.out.println(contentMovieDetail.getPoster());
-				
 		        map.put("contentMovieDetail", contentMovieDetail);
 		        
 			}
