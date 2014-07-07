@@ -59,6 +59,20 @@
 					});
 		}
 	});
+	function button_event(){
+		if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
+		    document.location.href = "deleteMember.do";
+		}else{   //취소
+		    return;
+		}
+	}
+	function button_event1(){
+		if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+		    document.location.href = "logout.do";
+		}else{   //취소
+		    return;
+		}
+	}
 </script>
 
 
@@ -89,7 +103,8 @@
 				<li class="boardMenu"><a href="logout.do" class="boardMenu_1">로그아웃</a></li>
 			</ul>
 		</div>
-
+				<input type="button" value="회원탈퇴" onclick="Javascript:button_event();">
+				<input type="button" value="로그아웃" onclick="Javascript:button_event1();">
 		<div class="upLoad">
 			<a href="#" class="close"></a>
 			<div class="title2">평점 올리기</div>
