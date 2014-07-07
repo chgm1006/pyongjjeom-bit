@@ -32,7 +32,8 @@
 							<tr>
 								<td class="tableTitle" colspan="2">
 									<a class="tableTitleLink" href="#">${movie.title }
-									</a><p class="statusIndex">${status.index}</p>									
+										<p class="statusIndex">${status.index}</p>
+									</a>									
 								</td>
 							</tr>
 							<tr>
@@ -235,8 +236,6 @@
 		</div>
 
 	</div>
-	
-
 
 
 </article>
@@ -251,45 +250,14 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	
-	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
-	<script type="text/javascript">
-		$(function() {
-			$("#glayLayer").click(function() {
-				$(this).hide()
-				$("#overLayer").hide();
-			});
-
-			$(".imgWrap,.tableTitle").click(function() {
-				
-				
-				$("#glayLayer").show();
-				$("#overLayer").fadeIn("Fast");
-				return false;
-			});
-			$(".exit").click(function() {
-				$("#glayLayer").hide()
-				$("#overLayer").hide();
-			});
-
-			if ($.browser.msie && $.browser.version < 7) {
-				$(window).scroll(
-						function() {
-							$("#glayLayer").css('top', $(document).scrollTop());
-							$("#overLayer").css(
-									'top',
-									($(document).scrollTop() + $("#overLayer").height() / 2)
-											+ "px");
-						});
-			}
-		});
-	</script>
 
 <!--------- Ajax JSoN -------->
 <script>
 	$(document).ready(function() {
 
-		$(".imgWrap,.tableTitle").click(function() {
+		$(".imgWrap,.tableTitleLink").click(function() {
 			var test=$(".statusIndex",(this)).html();
+
 			var formData = {
 				name : test,
 				data : "Hello"
@@ -299,6 +267,7 @@
 				type : "post",
 				url : "movieContextJson.do",
 				// 				data : formData,
+ 				async : false,
 				data : JSON.stringify(formData),
 				contentType : "application/json; charset=utf-8",
 				dataType : "json",
@@ -310,59 +279,114 @@
 				},
 				success : function(data) {
 					
+			
+					
+					var genre = data.whole.contentMovieDetail.genre;
+					var nation = data.whole.contentMovieDetail.nation;
+					var open = data.whole.contentMovieDetail.open;
+					var grade = data.whole.contentMovieDetail.grade;
+					var count = data.whole.contentMovieDetail.count;
+					var context = data.whole.contentMovieDetail.context;
+					var grades = data.whole.contentMovieDetail.grades;
+					var video = data.whole.contentMovieDetail.video;
+					var poster = data.whole.contentMovieDetail.poster;
+					
 
-					$("#nana").append("장르 : " + data.whole.contentMovieDetail.genre + '<br>');
-					$("#nana").append("국가 : " + data.whole.contentMovieDetail.nation + '<br>');
-					$("#nana").append("오픈 : " + data.whole.contentMovieDetail.open + '<br>');
-					$("#nana").append("등급 : " + data.whole.contentMovieDetail.grade + '<br>');
-					$("#nana").append("관람객 : " + data.whole.contentMovieDetail.count + '<br>');
-					$("#nana").append("상세정보 : " + data.whole.contentMovieDetail.context + '<br>');
-					$("#nana").append("그레이드 : " + data.whole.contentMovieDetail.grades + '<br>');
-					$("#nana").append("비디오 : " + data.whole.contentMovieDetail.video + '<br>');
-					$("#nana").append("포스터 : " + data.whole.contentMovieDetail.poster + '<br>');
-					var poster = (data.whole.contentMovieDetail.poster);
+					
+					var title = data.movie.title;
+					var link = data.movie.link;
+					var subtitle = data.movie.subtitle;
+					var pubDate = data.movie.pubDate;
+					var director = data.movie.director;
+					var actor = data.movie.actor;
+					var userRating = data.movie.userRating;
+					
+
+					var naverMg = data.whole.grades.naverMg;
+					var daumMg = data.whole.grades.daumMg;
+					var cgvMg = data.whole.grades.cgvMg;
+					var lotteMg = data.whole.grades.lotteMg;
+					var megaBoxMg = data.whole.grades.megaBoxMg;
+
+
+					$("#nana").append("장르 : " + genre + '<br>');
+					$("#nana").append("국가 : " + nation + '<br>');
+					$("#nana").append("오픈 : " + open + '<br>');
+					$("#nana").append("등급 : " + grade + '<br>');
+					$("#nana").append("관람객 : " + count + '<br>');
+					$("#nana").append("줄거리 : " + context + '<br>');
+					$("#nana").append("그레이드 : " + grades + '<br>');
+					$("#nana").append("비디오 : " + video + '<br>');
+					$("#nana").append("포스터 : " + poster + '<br>');
+					
+
 					$(".img5").attr("src",poster);
 					$(".overContDetailImg").attr("src",poster);
 
 
-					$("#nana").append("영화명!!! : " + data.movie.title + '<br>');
-					$("#nana").append("영화명!!! : " + data.movie.title + '<br>');
-					$("#nana").append("영화명!!! : " + data.movie.link + '<br>');
-					$("#nana").append("포스터!!! : " + data.movie.poster + '<br>');
-					$("#nana").append("영문제목!!! : " + data.movie.subtitle + '<br>');
-					$("#nana").append("제작연도!!! : " + data.movie.pubDate + '<br>');
-					$("#nana").append("감독!!! : " + data.movie.director + '<br>');
-					$("#nana").append("코드!!! : " + data.movie.code + '<br>');
-					$("#nana").append("출연!!! : " + data.movie.actor + '<br>');
-					$("#nana").append("네이버평점!!! : " + data.movie.userRating + '<br><br><br><br><br>');
-					
-					
-					
-					
-					
-					
-					
-					$(".title5").text("영화제목입니다" + data.whole.grades.title + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.movieCode + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.naverMg + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.daumMg + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.cgvMg + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.lotteMg + '<br>');
-					$("#nana").append("코드 : " + data.whole.grades.megaBoxMg + '<br><br><br><br>');
-
-
+					$("#nana").append("영화명!!! : " + title + '<br>');
+					$("#nana").append("상세페이지!!! : " + link + '<br>');
+					$("#nana").append("영문제목!!! : " + subtitle + '<br>');
+					$("#nana").append("제작연도!!! : " + pubDate + '<br>');
+					$("#nana").append("감독!!! : " + director + '<br>');
+					$("#nana").append("출연!!! : " + actor + '<br>');
+					$("#nana").append("네이버평점!!! : " + userRating + '<br><br><br><br><br>');
 
 					
+					$(".title5").text(title);
+					$("#nana").append("코드 : " + naverMg + '<br>');
+					$("#nana").append("코드 : " + daumMg + '<br>');
+					$("#nana").append("코드 : " + cgvMg + '<br>');
+					$("#nana").append("코드 : " + lotteMg + '<br>');
+					$("#nana").append("코드 : " + megaBoxMg + '<br><br><br><br>');
 					
-					
-					
-					
+
 				}
 			});
 		});
 	}); 
 </script>
 
+	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
+	<script type="text/javascript">
+		$(function() {
+			$("#glayLayer").click(function() {
+				$(this).hide()
+				$("#overLayer").hide();
+			});
 
+			$(".imgWrap,.tableTitleLink").click(function() {
+				
+				
+				$("#glayLayer").show();
+				$("#overLayer").fadeIn("Fast");
+				return false;
+			});
+			$(".exit").click(function() {
+				$("#glayLayer").hide()
+				$("#overLayer").hide();
+			});
+
+		$(window).scroll(	function() {
+						$("#glayLayer").css('top', $(document).scrollTop());
+						$("#overLayer").css(
+								'top',
+								($(document).scrollTop() + $("#overLayer")
+										.height() / 2)
+										+ "px");
+					});
+
+			/* if ($.browser.msie && $.browser.version < 7) {
+				$(window).scroll(
+						function() {
+							$("#glayLayer").css('top', $(document).scrollTop());
+							$("#overLayer").css(
+									'top',
+									($(document).scrollTop() + $("#overLayer").height() / 2)
+											+ "px");
+						});
+			} */
+		});
+	</script>
 </body>
 </html>
