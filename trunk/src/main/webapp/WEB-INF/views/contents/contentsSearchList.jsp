@@ -251,7 +251,7 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	
 
-<!--------- Ajax JSoN -------->
+<!--------- Ajax JSoN Movie-------->
 <script>
 	$(document).ready(function() {
 
@@ -367,25 +367,24 @@
 				$("#overLayer").hide();
 			});
 
-		$(window).scroll(	function() {
-						$("#glayLayer").css('top', $(document).scrollTop());
-						$("#overLayer").css(
-								'top',
-								($(document).scrollTop() + $("#overLayer")
-										.height() / 2)
-										+ "px");
-					});
+		if ($.browser.msie && $.browser.version < 7) {
+				$(window)
+						.scroll(
+								function() {
+									$("#glayLayer").css('top',
+											$(document).scrollTop());
+									$("#overLayer").css(
+											'top',
+											($(document).scrollTop() + $(
+													"#overLayer").height() / 2)
+													+ "px");
+								});
+			}
 
-			/* if ($.browser.msie && $.browser.version < 7) {
-				$(window).scroll(
-						function() {
-							$("#glayLayer").css('top', $(document).scrollTop());
-							$("#overLayer").css(
-									'top',
-									($(document).scrollTop() + $("#overLayer").height() / 2)
-											+ "px");
-						});
-			} */
+			/* $(window).scroll(	function() {
+							$("#overLayer").css('top',($(document).scrollTop() + $("#overLayer").height() / 2)+ "px");
+						}); */
+
 		});
 	</script>
 </body>
