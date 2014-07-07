@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hamcrest.core.IsEqual;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -261,7 +262,7 @@ public class ContentController {
 	@ResponseBody
     @RequestMapping(value = "movieContextJson.do", method = RequestMethod.POST)
     public Map<String, Object> movieContextJson(@RequestBody Map paramMap,
-            HttpServletRequest request) {
+            HttpServletRequest request) throws IOException {
 		
 
         System.out.println("name = " + paramMap.get("name"));
@@ -281,7 +282,7 @@ public class ContentController {
 	
 	
 
-	private Map<String, Object> movieContextParsing2(NaverMovie movie,HttpServletRequest request) {
+	private Map<String, Object> movieContextParsing2(NaverMovie movie,HttpServletRequest request) throws IOException {
 		
 		// 리턴값 담을 Map 객체생성
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -292,15 +293,21 @@ public class ContentController {
 			movie.setTitle(movie.getTitle().substring(0,
 					movie.getTitle().indexOf("(")));
 		}
-		
-		//썸네일 주소 가져와서 정리하는 부분
-		String code = movie.getImage().replace("A", "1").replace("B", "2")
-				.replace("C", "3").replace("D", "4").replace("E", "5")
-				.replace("F", "6");
-		if (code.contains("_")) {
-			code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("_"));
-		} else
-			code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("-"));
+		String code = null;
+		//썸네일 주소 가져와서 영화코드 6자리 받아오는거
+System.out.println(movie.getImage()+"??????????????");
+		if(!movie.getImage().isEmpty())
+		{
+		code = movie.getImage().replace("A", "1").replace("B", "2")
+					.replace("C", "3").replace("D", "4").replace("E", "5")
+					.replace("F", "6");
+			if (code.contains("_")) {
+				code = code.substring(code.lastIndexOf("/") + 1,
+						code.indexOf("_"));
+			} else
+				code = code.substring(code.lastIndexOf("/") + 1,
+						code.indexOf("-"));
+		}
 
 		httpSession.setAttribute("movie", movie);
 
@@ -334,10 +341,11 @@ public class ContentController {
       map.put("grades", grades);
 			
 			// 네이버영화상세페이지 주소로 xml파싱하여 contentMovieDetail에 담기.
-			try {
+			
 				doc = Jsoup.connect(movie.getLink()).get();
 				ContentMovieDetail contentMovieDetail = new ContentMovieDetail();
 				contentMovieDetail.setGenre(doc.select("p[class=info_spec] a[href*=genre").text());
+				System.out.println("hjddjdkdkdk"+contentMovieDetail.getGenre()+"===="+doc.select("p[class=info_spec] a[href*=genre")+"/");
 				contentMovieDetail.setNation(doc.select("p[class=info_spec] a[href*=nation").text());
 				contentMovieDetail.setOpen(doc.select("p[class=info_spec] a[href*=open").text());
 				contentMovieDetail.setGrade(doc.select("p[class=info_spec] a[href*=grade").text());
@@ -345,19 +353,51 @@ public class ContentController {
 				contentMovieDetail.setContext(doc.select("p[class=con_tx]").text());
 				
 				String video = doc.select(	"ul[class=photo_video] li a[href^=mediaView]").attr("href");
+				System.out.println(video);
+				if(!video.isEmpty())
+				{
 				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video).get();
 				contentMovieDetail.setVideo("http://movie.naver.com"	+ doc.select("iframe[class=_videoPlayer]").attr("src"));
+				}
 
+				if(code!=null)
+				{
 				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="+ code).get();
 				contentMovieDetail.setPoster(doc.select("img[src]").attr("src"));
+				}	
+				
+				if(contentMovieDetail.getGenre().equals("")){				
+					contentMovieDetail.setGenre("9");
+					System.out.println("999");
+				}
+				if(contentMovieDetail.getNation()==null){				
+					contentMovieDetail.setNation("9");
+				}
+				if(contentMovieDetail.getOpen()==null){				
+					contentMovieDetail.setOpen("9");
+				}
+				if(contentMovieDetail.getGrade()==null){				
+					contentMovieDetail.setGrade("9");
+				}
+				if(contentMovieDetail.getCount()==null){				
+					contentMovieDetail.setCount("9");
+				}
+				if(contentMovieDetail.getContext()==null){				
+					contentMovieDetail.setContext("9");
+				}
+				if(contentMovieDetail.getVideo()==null){				
+					contentMovieDetail.setVideo("9");
+				}
+				if(contentMovieDetail.getPoster()==null){				
+					contentMovieDetail.setPoster("9");
+				}
+				System.out.println(contentMovieDetail.getGenre());
+				System.out.println(contentMovieDetail.getContext());
+				System.out.println(contentMovieDetail.getPoster());
 				
 		        map.put("contentMovieDetail", contentMovieDetail);
 		        
-			} catch (IOException e) {
-				e.getStackTrace();
-
 			}
-		}
 	    
 		return map;
     
