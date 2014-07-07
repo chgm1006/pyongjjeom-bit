@@ -65,6 +65,12 @@ a.exit:active{
 	margin:-100px 0 0 0;
 	padding:30px;
 }
+
+img.img5{
+	width:100%;
+	height:auto;
+}
+
 img.overContDetailImg{
 	float:left;
 	width:170px;
