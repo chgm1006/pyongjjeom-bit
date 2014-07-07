@@ -63,14 +63,15 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<context:component-scan base-package="com.pyongjjeom.notice.service" />
 	<context:component-scan base-package="com.pyongjjeom.myroom.controllers" />
 	<context:component-scan base-package="com.pyongjjeom.myroom.service" />
-
+	<context:component-scan base-package="com.pyongjjeom.postandreply.controllers" />
+	<context:component-scan base-package="com.pyongjjeom.postandreply.service" />
 	<!-- enable autowire -->
 	<context:annotation-config />
 
 	<!-- scan for mappers and let them be autowired -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
-			value="com.pyongjjeom.contents.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao; com.pyongjjeom.user.dao"  />
+			value="com.pyongjjeom.postandreply.dao;  com.pyongjjeom.contents.dao; com.pyongjjeom.login.dao; com.pyongjjeom.notice.dao; com.pyongjjeom.myroom.dao; com.pyongjjeom.user.dao"  />
 	</bean>
 
 	<!-- define the SqlSessionFactory -->

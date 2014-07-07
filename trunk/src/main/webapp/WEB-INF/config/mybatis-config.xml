@@ -30,5 +30,6 @@
 		<mapper resource="com/pyongjjeom/login/dao/LoginMapper.xml" />
 		<mapper resource="com/pyongjjeom/user/dao/UserMapper.xml" />
 		<mapper resource="com/pyongjjeom/myroom/dao/MyRoomMapper.xml" />
+		<mapper resource="com/pyongjjeom/postandreply/dao/PostAndReplyMapper.xml" />
 	</mappers>
 </configuration>
