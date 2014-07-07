@@ -7,8 +7,10 @@ package com.pyongjjeom.postandreply.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Post;
 
@@ -26,7 +28,7 @@ import com.pyongjjeom.postandreply.dto.Post;
 public class PostAndReplyServiceImpl implements PostAndReplyService {
 
 	private Logger log = Logger.getLogger(this.getClass());
-
+@Autowired
 	private PostAndReplyMapper parMapper;
 
 	/**
@@ -52,9 +54,8 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	 * @return
 	 */
 	@Override
-	public List<Post> getPost(String memCD, String conCD) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> getPost(String memCD) {
+		return parMapper.getPost(memCD);
 	}
 
 	/**
@@ -135,6 +136,19 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	public int deletePost(String postCD) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#insertBookPost(com.pyongjjeom.common.NaverBook, com.pyongjjeom.postandreply.dto.Post)
+	 */
+	@Override
+	public void insertBookPost(Post post) {
+		
+		parMapper.insertBookPost(post);
 	}
 
 }

@@ -4,12 +4,18 @@
 
 package com.pyongjjeom.postandreply.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pyongjjeom.common.NaverBook;
+import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.friends.service.FriendsService;
@@ -35,22 +41,38 @@ public class PostAndReplyController {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
+	private PostAndReplyService parService;
+	private HttpSession httpSession;
+/*	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private PostAndReplyService parService;
 
 	@Autowired
 	private ContentService contentService;
 
 	@Autowired
-	private FriendsService friendsService;
+	private FriendsService friendsService;*/
 
-	private Post post;
 	private Reply reply;
 	private Member mem;
 	private Content content;
 
+	
+	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
+	public String postingInsert(Post post, HttpServletRequest request) {
+
+		
+		DBCode code= new DBCode();
+		post.setPostCD(code.getPostCD("PB"));
+		// DB에 추가 해야함 _
+		
+		System.out.println(post);
+
+		parService.insertBookPost(post);
+		return "contents/contentsPostingResult";
+	}
+
+	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getPost(String memCD, String conCD) {
 		return null;

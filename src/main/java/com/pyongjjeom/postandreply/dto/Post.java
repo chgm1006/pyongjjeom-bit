@@ -20,11 +20,9 @@ import org.apache.log4j.Logger;
  */
 public class Post {
 
-	private Logger log = Logger.getLogger(this.getClass());
 
 	private String postCD = "";
 	private String pmemCD = "";
-	private String conCD = "";
 	private String review = "";
 	private float memGrade = 0.0f;
 	private String comment = "";
@@ -32,14 +30,55 @@ public class Post {
 	private char spoilYn = 'n';
 	private Date regiDate = null;
 	private Date updateDate = null;
+	private String conCD = "";
+	
+	private String title = ""; // 검색 제목
+	private String link = ""; // 검색 link
+	private String image = ""; // 썸네일 이미지
+	private String director = ""; // 저자
+	private String actor = ""; // 배우
+	
 
-	public Logger getLog() {
-		return log;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setLog(Logger log) {
-		this.log = log;
+	public void setTitle(String title) {
+		this.title = title;
 	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public String getActor() {
+		return actor;
+	}
+
+	public void setActor(String actor) {
+		this.actor = actor;
+	}
+
 
 	public String getPostCD() {
 		return postCD;

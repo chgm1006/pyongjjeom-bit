@@ -6,6 +6,7 @@ package com.pyongjjeom.postandreply.dao;
 
 import java.util.List;
 
+import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.postandreply.dto.Post;
 
 /**
@@ -30,11 +31,14 @@ import com.pyongjjeom.postandreply.dto.Post;
  */
 public interface PostAndReplyMapper {
 
-	public List<Post> getPost(String memCD, String conCD);
+	public List<Post> getPost(String memCD);
 
 	public List<Post> getReply(String memCD, String conCD);
 
 	public int updatePost(String postCD);
 
 	public int deletePost(String postCD);
+
+	public void insertBookPost(Post post);
+
 }
