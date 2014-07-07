@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -23,6 +24,7 @@ import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.Reply;
+import com.pyongjjeom.postandreply.service.PostAndReplyService;
 import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
@@ -45,11 +47,16 @@ public class MyRoomController {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
+	private PostAndReplyService parService;
+	
+	@Autowired
 	private UserService userService;
 
 	@Autowired
 	private MyRoomService myRoomService;
 
+	
+	private HttpSession httpSession;
 	private Friends frn;
 	private Member mem;
 	private Post post;
@@ -59,8 +66,11 @@ public class MyRoomController {
 	@RequestMapping(value = "myRoom.do")
 	public String listDo(	Model model, HttpServletRequest request) {
 
-		System.out.println("myroom?");
-
+		httpSession =request.getSession();
+		Member member=(Member) httpSession.getAttribute("member");
+    List<Post> postList= parService.getPost(member.getMemCD());
+		System.out.println(postList);
+		httpSession.setAttribute("postList",postList);
 		return "myRoom/myRoom";
 	}
 	
