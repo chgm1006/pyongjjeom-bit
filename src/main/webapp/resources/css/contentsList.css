@@ -9,6 +9,7 @@
 
 .listWrap{
 	display:block;
+
 	margin:10px 0;
 	border-radius :20px;	
 	overflow:hidden;
@@ -49,11 +50,14 @@ img.listImg:hover{
 	padding:10px 0 0 30px;
 }
 td.tableTitle{
+	overflow:hidden;
 	padding:10px 0;
 	width:100%;
 	font-size:18px;
 	font-weight:bold;
 }
+
+
 a.tableTitleLink:hover, a.tableTitleLink:active{
 	text-decoration: underline;
 }
