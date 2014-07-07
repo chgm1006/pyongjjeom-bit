@@ -42,7 +42,8 @@ jQuery(document)
 										var password_check = $(this).find('input#password_check').val();
 										// 이메일 유효성 검사
 										var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-										
+										// 이름 유효성 검사
+										var regName = /^[가-힣]+$/;
 										if (email == '') {
 											$(this)
 													.find("label[for='email']")
@@ -50,19 +51,26 @@ jQuery(document)
 															"<span style='display:none' class='red'> - 이메일을 입력하세요.</span>");
 											$(this).find("label[for='email'] span").fadeIn('medium');
 											return false;
-										}else if(!regEmail.test(email)){
+										} else if (!regEmail.test(email)) {
 											$(this)
-											.find("label[for='email']")
-											.append(
-													"<span style='display:none' class='red'> - 이메일 형식에 맞지 않습니다..</span>");
-									$(this).find("label[for='email'] span").fadeIn('medium');
-									return false;
+													.find("label[for='email']")
+													.append(
+															"<span style='display:none' class='red'> - 이메일 형식에 맞지 않습니다..</span>");
+											$(this).find("label[for='email'] span").fadeIn('medium');
+											return false;
 										}
 										if (name == '') {
 											$(this)
 													.find("label[for='name']")
 													.append(
 															"<span style='display:none' class='red'> - 이름을 입력하세요.</span>");
+											$(this).find("label[for='name'] span").fadeIn('medium');
+											return false;
+										}else	if (!regName.test(name)) {
+											$(this)
+													.find("label[for='name']")
+													.append(
+															"<span style='display:none' class='red'> - 한글로 2글자 이상 입력하세요.</span>");
 											$(this).find("label[for='name'] span").fadeIn('medium');
 											return false;
 										}
