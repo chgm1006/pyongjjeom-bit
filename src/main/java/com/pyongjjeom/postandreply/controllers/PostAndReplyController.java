@@ -19,6 +19,7 @@ import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.friends.service.FriendsService;
+import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
@@ -61,17 +62,21 @@ public class PostAndReplyController {
 	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
 	public String postingInsert(Post post, HttpServletRequest request) {
 
-		
 		DBCode code= new DBCode();
 		post.setPostCD(code.getPostCD("PB"));
-		// DB에 추가 해야함 _
-		
-		System.out.println(post);
-
+		post=reviewToDB(post);
 		parService.insertBookPost(post);
 		return "contents/contentsPostingResult";
 	}
 
+	public Post reviewToDB(Post post) {
+		String temp = post.getReview();
+		temp = temp.replaceAll("`", "'").replaceAll("\r\n", "<br>")
+				.replaceAll("\u0020", "&nbsp;");
+		post.setReview(temp);
+		return post;
+	}
+	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getPost(String memCD, String conCD) {
