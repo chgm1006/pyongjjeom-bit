@@ -12,67 +12,27 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<script>
-	$(document).ready(function() {
-
-		$(".listWrap").click(function() {
-			var test=$(".statusIndex",(this)).html();
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "movieContextJson.do",
-				// 				data : formData,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					
-					
-					alert(data);
-			
-
-				}
-			});
-		});
-		
-		
-		$(".listWrap").click(function() {
-			var test=$(".statusIndex",(this)).html();
-
-			alert("click");
-			$("#nana").append("<p>789</p>");
-			$("#nana").append(test);
-
-		});
-	});
-</script>
-
 
 <article>
-<div id="nana">출력</div>
 
 		<div class="contentsList">
 			<div class="title3">검색 결과</div>
 	<c:choose>
 		<c:when test="${category =='movie'}">
-			<c:forEach var="movie" items="${resultList }" varStatus="status">
+			<c:forEach var="movie" items="${resultList }" varStatus="status" >
 				<div class="listWrap" >
-					<img  class="listImg" src="${movie.image}">
+					<div class="imgWrap">
+						<a class="btnDetail" href="#">
+							<img  class="listImg" src="${movie.image}">
+							<p class="statusIndex">${status.index}</p>
+						</a>
+					</div>
 					<div class="listTable">
 						<table>
 							<tr>
-								<td class="tableTitle" colspan="2">${movie.title }
-									<p class="statusIndex">${status.index}</p>
+								<td class="tableTitle" colspan="2">
+									<a class="tableTitleLink" href="#">${movie.title }
+									</a><p class="statusIndex">${status.index}</p>									
 								</td>
 							</tr>
 							<tr>
@@ -106,7 +66,6 @@
 		</c:when>
 		
 		
-		
 		<c:when test="${category =='book'}">
 			<c:forEach var="book" items="${resultList }" varStatus="status">
 				<div class="listWrap" onclick="document.location='bookContext.do?num=${status.index}'  ">
@@ -133,15 +92,12 @@
 				</div>
 			</c:forEach>
 		</c:when>
-		
-
 		</c:choose>
 		
 			
 			<!------------------- 더보기 버튼 -------------------->
 			<a href="#" class="listMore">더보기</a>
 		</div>
-
 
 
 	<!-- ################################################# -->
@@ -156,8 +112,8 @@
 
 		<!---- 큰 포스터 JPG ---->
 		<div class="overTitle">
-			<a href="#" class="exit"></a> <img
-				src="${pageContext.request.contextPath}/resources/img/06.jpg">
+			<a href="#" class="exit"></a>
+			<img class="img5" src="${pageContext.request.contextPath}/resources/img/06.jpg">
 		</div>
 
 		<!---- 작은 포스터 JPG + 평균평점 ---->
@@ -174,15 +130,15 @@
 			<div class="overContSpec">
 				<table class="overContSpecTable">
 					<tr>
-						<td><h1>${movie.title }</h1></td>
+						<td><h1 class="title5"></h1></td>
 					</tr>
 					<tr>
 						<td><h3>감독</h3></td>
-						<td><h3>${movie.director }</h3></td>
+						<td><h3></h3></td>
 					</tr>
 					<tr>
 						<td><h3>출연</h3></td>
-						<td><h3>${movie.actor }</h3></td>
+						<td><h3></h3></td>
 					</tr>
 
 					<tr>
@@ -207,8 +163,11 @@
 
 				<!---- 줄거리 ---->
 				<div class="overContSpecSynop">
-					<h3>줄거리</h3>
+					
+				
+					<h3 class="abc">줄거리</h3>
 					<br>
+					<div id="nana">출력</div>
 					<h4>2년의 세월이 흘렀다. 갑자기 떠난 시즈루(미야자키 아오이). 2년 후 그녀에게서 온 편지를 들고 마코토(타마키
 						히로시)는 크리스마스로 들뜬 뉴욕으로 왔다. 그러나 그를 보러 온 건 미유키(쿠로키 메이사)였다. 과연 그녀에겐 무슨 일이 있는
 						것일까? 6년 전, 대학 입학식 날. 번잡한 횡단보도를 건너려는 시즈루와 마주친 마코토. "여기선 건널 수 없으니까 저쪽에서 건너는
@@ -300,7 +259,9 @@
 				$("#overLayer").hide();
 			});
 
-			$(".listWrap").click(function() {
+			$(".imgWrap,.tableTitle").click(function() {
+				
+				
 				$("#glayLayer").show();
 				$("#overLayer").fadeIn("Fast");
 				return false;
@@ -323,21 +284,21 @@
 		});
 	</script>
 
-	<!--------- Ajax JSoN -------->
-	<script type="text/javascript">
+<!--------- Ajax JSoN -------->
+<script>
 	$(document).ready(function() {
 
-		$(".listWrap").click(function() {
-			var test = $(".tableTitle",this).html().replace("<b>","").replace("</b>","");
+		$(".imgWrap,.tableTitle").click(function() {
+			var test=$(".statusIndex",(this)).html();
 			var formData = {
 				name : test,
 				data : "Hello"
 			};
-
+			
 			$.ajax({
 				type : "post",
 				url : "movieContextJson.do",
-				//                 data : formData,
+				// 				data : formData,
 				data : JSON.stringify(formData),
 				contentType : "application/json; charset=utf-8",
 				dataType : "json",
@@ -347,29 +308,60 @@
 				error : function(e) {
 					console.log(e.responseText);
 				},
-				
 				success : function(data) {
+					
 
-					var abc = data.grades.title;
-					var abc2 = data.grades.movieCode;
+					$("#nana").append("장르 : " + data.whole.contentMovieDetail.genre + '<br>');
+					$("#nana").append("국가 : " + data.whole.contentMovieDetail.nation + '<br>');
+					$("#nana").append("오픈 : " + data.whole.contentMovieDetail.open + '<br>');
+					$("#nana").append("등급 : " + data.whole.contentMovieDetail.grade + '<br>');
+					$("#nana").append("관람객 : " + data.whole.contentMovieDetail.count + '<br>');
+					$("#nana").append("상세정보 : " + data.whole.contentMovieDetail.context + '<br>');
+					$("#nana").append("그레이드 : " + data.whole.contentMovieDetail.grades + '<br>');
+					$("#nana").append("비디오 : " + data.whole.contentMovieDetail.video + '<br>');
+					$("#nana").append("포스터 : " + data.whole.contentMovieDetail.poster + '<br>');
+					var poster = (data.whole.contentMovieDetail.poster);
+					$(".img5").attr("src",poster);
+					$(".overContDetailImg").attr("src",poster);
 
-					$(".overContSpecSynop").html(abc);
-					$(".overContSpecSynop").append(abc2);
 
+					$("#nana").append("영화명!!! : " + data.movie.title + '<br>');
+					$("#nana").append("영화명!!! : " + data.movie.title + '<br>');
+					$("#nana").append("영화명!!! : " + data.movie.link + '<br>');
+					$("#nana").append("포스터!!! : " + data.movie.poster + '<br>');
+					$("#nana").append("영문제목!!! : " + data.movie.subtitle + '<br>');
+					$("#nana").append("제작연도!!! : " + data.movie.pubDate + '<br>');
+					$("#nana").append("감독!!! : " + data.movie.director + '<br>');
+					$("#nana").append("코드!!! : " + data.movie.code + '<br>');
+					$("#nana").append("출연!!! : " + data.movie.actor + '<br>');
+					$("#nana").append("네이버평점!!! : " + data.movie.userRating + '<br><br><br><br><br>');
+					
+					
+					
+					
+					
+					
+					
+					$(".title5").text("영화제목입니다" + data.whole.grades.title + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.movieCode + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.naverMg + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.daumMg + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.cgvMg + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.lotteMg + '<br>');
+					$("#nana").append("코드 : " + data.whole.grades.megaBoxMg + '<br><br><br><br>');
+
+
+
+					
+					
+					
+					
+					
 				}
 			});
 		});
-
-		$(".listWrap").click(function() {
-			$(".overContSpecSynop h3").append("<p>영화click완료</p>");
-			$(".tableSubtitle",this).append("<p>as</p>");
-			var qwe = $(".tableTitle",this).html();
-			$(".tableSubtitle",this).append(qwe);
-
-		});
-	});
+	}); 
 </script>
-
 
 
 </body>
