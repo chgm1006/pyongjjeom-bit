@@ -45,7 +45,7 @@ public class LoginController {
 	private DBCode dc = new DBCode();
 
 	@RequestMapping(value = "loginsuccess.do", method = RequestMethod.POST)
-	public String login(@Valid Member user, HttpServletRequest request) {
+	public String login(@Valid Model model, Member user, HttpServletRequest request) {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -56,7 +56,8 @@ public class LoginController {
 		member = loginService.login(member);
 		if (member == null) {
 			
-			System.out.println("아이디와패스워드불일치");
+			/*model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다."); 
+			model.addAttribute("url", "login.jsp");*/
 			return "login/login";
 		}
 		
