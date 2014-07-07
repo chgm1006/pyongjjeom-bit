@@ -39,11 +39,11 @@ public class BookGrades {
 
 	private Logger log = Logger.getLogger(this.getClass());
 	private String title;
-	private double naverBg;
-	private double aladinBg;
-	private double bandiBg;
-	private double kyoboBg;
-	private double yesBg;
+	private double naverBg=0;
+	private double aladinBg=0;
+	private double bandiBg=0;
+	private double kyoboBg=0;
+	private double yesBg=0;
 	private String bookCode;
 	public String getBookCode() {
 		return bookCode;
