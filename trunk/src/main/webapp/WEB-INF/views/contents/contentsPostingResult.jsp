@@ -18,7 +18,9 @@
 </head>
 <body>
 
-	<c:choose>
+<c:redirect  url="myRoom.do"></c:redirect>
+
+	<%-- <c:choose>
 		<c:when test="${category =='movie'}">
 
 			<div id="main" align="center">
@@ -28,8 +30,8 @@
 				</a><br> <br> 감독 : ${movie.director }<br> <br> 배우 :
 				${movie.actor }<br> <br> 평점 :${movie.userRating}<br>
 				<br>
-				<%-- 		개봉일	:${movie.pubDate}<br>
-	 --%>
+						개봉일	:${movie.pubDate}<br>
+	
 			</div>
 			<br>
 			<br>
@@ -42,18 +44,18 @@
 					src="${book.image}"></a><br> <br> 저자 :${book.author }<br>
 				<br> 출판사 :${book.publisher}<br> <br> 출간일 :${book.pubdate}<br>
 				<br>
-				<%-- 		 정가 :	${book.price }<br> 
+						 정가 :	${book.price }<br> 
 		 할인 가격 :${book.discount}<br> 
 		 ISBN :${book.isbn}<br>
-		내용 :${book.description}<br> --%>
+		내용 :${book.description}<br>
 			</div>
 			<br>
 			<br>
 			<div id="main">후기 :${posting }</div>
-
 		</c:otherwise>
 	</c:choose>
 
+ --%>
 
 
 
