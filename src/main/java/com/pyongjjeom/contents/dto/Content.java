@@ -6,7 +6,6 @@ package com.pyongjjeom.contents.dto;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
 
 /**
  * <pre>
@@ -20,7 +19,6 @@ import org.apache.log4j.Logger;
  */
 public class Content {
 
-	private Logger log = Logger.getLogger(this.getClass());
 
 	// Content 공통 필드
 	private String conCD = "";
@@ -63,13 +61,6 @@ public class Content {
 	private Date regiDate = null;
 	private Date updateDate = null;
 
-	public Logger getLog() {
-		return log;
-	}
-
-	public void setLog(Logger log) {
-		this.log = log;
-	}
 
 	public String getConCD() {
 		return conCD;
