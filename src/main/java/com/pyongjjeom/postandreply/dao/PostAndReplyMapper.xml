@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		</update> -->
 
 	<insert id="insertBookPost" parameterType="Post">
-		INSERT INTO test_posting
+		INSERT INTO posting
 		(postcd,pmemcd,review,memgrade,comment,deleteyn,spoilyn,regedate,updatedate,title,director,image,link,actor)
 		values
 		(#{postCD},#{pmemCD},#{review},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now(),#{title},#{director},#{image},#{link},#{actor})
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</insert>
 <select id="getPost" parameterType="String" resultType="Post"> 
     
-    select * from test_posting where pmemcd=#{memCD}
+    select * from posting where pmemcd=#{memCD}
     </select>
 	
 </mapper>
