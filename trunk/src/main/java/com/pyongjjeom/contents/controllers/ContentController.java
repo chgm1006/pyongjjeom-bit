@@ -437,7 +437,7 @@ System.out.println("????");
 		return "contents/contentsPostingWrite";
 	}
 	
-	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
+/*	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
 	public String postingInsert(Model model, HttpServletRequest request) {
 
 		String str = request.getParameter("postContext");
@@ -445,7 +445,7 @@ System.out.println("????");
 		request.setAttribute("posting", str);
 		return "contents/contentsPostingResult";
 	}
-	
+	*/
 	private String movieContextParsing(NaverMovie movie, 
 			HttpServletRequest request) {
 
