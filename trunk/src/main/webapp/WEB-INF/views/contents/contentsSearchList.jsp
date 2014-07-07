@@ -322,6 +322,11 @@
 
 					$(".img5").attr("src",poster);
 					$(".overContDetailImg").attr("src",poster);
+					
+					if(poster==null||poster==""){
+						$(".img5").attr("src","${pageContext.request.contextPath}/resources/img/07.jpg");
+						$(".overContDetailImg").attr("src","${pageContext.request.contextPath}/resources/img/07.jpg");
+					}
 
 
 					$("#nana").append("영화명!!! : " + title + '<br>');

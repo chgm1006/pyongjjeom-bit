@@ -367,28 +367,28 @@ System.out.println(movie.getImage()+"??????????????");
 				}	
 				
 				if(contentMovieDetail.getGenre().equals("")){				
-					contentMovieDetail.setGenre("9");
+					contentMovieDetail.setGenre("");
 				}
 				if(contentMovieDetail.getNation()==null){				
-					contentMovieDetail.setNation("9");
+					contentMovieDetail.setNation("");
 				}
 				if(contentMovieDetail.getOpen()==null){				
-					contentMovieDetail.setOpen("9");
+					contentMovieDetail.setOpen("");
 				}
 				if(contentMovieDetail.getGrade()==null){				
-					contentMovieDetail.setGrade("9");
+					contentMovieDetail.setGrade("");
 				}
 				if(contentMovieDetail.getCount()==null){				
-					contentMovieDetail.setCount("9");
+					contentMovieDetail.setCount("");
 				}
 				if(contentMovieDetail.getContext()==null){				
-					contentMovieDetail.setContext("9");
+					contentMovieDetail.setContext("");
 				}
 				if(contentMovieDetail.getVideo()==null){				
-					contentMovieDetail.setVideo("9");
+					contentMovieDetail.setVideo("");
 				}
 				if(contentMovieDetail.getPoster()==null){				
-					contentMovieDetail.setPoster("9");
+					contentMovieDetail.setPoster("");
 				}
 		        map.put("contentMovieDetail", contentMovieDetail);
 		        
