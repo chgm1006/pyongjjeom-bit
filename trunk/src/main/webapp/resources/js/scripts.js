@@ -39,11 +39,14 @@ jQuery(document)
 										var name = $(this).find('input#name').val();
 										var birth = $(this).find('input#birth').val();
 										var password = $(this).find('input#password').val();
-										var password_check = $(this).find('input#password_check').val();
+										var password_check = $(this).find('input#password_check')
+												.val();
 										// 이메일 유효성 검사
 										var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 										// 이름 유효성 검사
 										var regName = /^[가-힣]+$/;
+										// 생일 유효성 검사
+										var regBirth = /^[0-9]+$/;
 										if (email == '') {
 											$(this)
 													.find("label[for='email']")
@@ -66,7 +69,7 @@ jQuery(document)
 															"<span style='display:none' class='red'> - 이름을 입력하세요.</span>");
 											$(this).find("label[for='name'] span").fadeIn('medium');
 											return false;
-										}else	if (!regName.test(name)) {
+										} else if (!regName.test(name)) {
 											$(this)
 													.find("label[for='name']")
 													.append(
@@ -80,6 +83,13 @@ jQuery(document)
 													.find("label[for='birth']")
 													.append(
 															"<span style='display:none' class='red'> - 생일입력.</span>");
+											$(this).find("label[for='birth'] span").fadeIn('medium');
+											return false;
+										} else if (!regBirth.test(birth)) {
+											$(this)
+													.find("label[for='birth']")
+													.append(
+															"<span style='display:none' class='red'> - 숫자 이외의 문자가 들어갔습니다.</span>");
 											$(this).find("label[for='birth'] span").fadeIn('medium');
 											return false;
 										}
