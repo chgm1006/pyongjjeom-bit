@@ -18,109 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/css/modalWindow.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<%
-	final int ROWSIZE = 4;
-	final int BLOCK = 5;
 
-	int pg = 1;
-	
-	if(request.getParameter("pg")!=null) {
-		pg = Integer.parseInt(request.getParameter("pg"));
-	}
-	
-	int start = (pg*ROWSIZE) - (ROWSIZE-1);
-	int end = (pg*ROWSIZE);
-	
-	int allPage = 0;
-	
-	int startPage = ((pg-1)/BLOCK*BLOCK)+1;
-	int endPage = ((pg-1)/BLOCK*BLOCK)+BLOCK;
-
-%>
-
-
-
-
-<!-- <script>
-$(document).ready(funtion()){
-	$('table.boardList').each(function() {//반복문
-
-	var currentPage = 0;
-	var numPerPage = 5;
-	var $table = $(this);
-	
-	$table.blind('boardList', function() {
-	$table.find('td tr').hide();//기본적으로 모두 감춘다.
-	slice(currentPage * numPerPage,
-			(currentPage + 1) * numPerPage)
-			.show();});
-	
-	var numRows = $table.find('td tr').length;
-	//length로 전체길이구함
-	var numPages = Math.ceil(numRows / numPerPage);
-	//Math.ceil를 이용하여 반올림
-	var $pager = $('<div class="pager">');
-			
-			//pager라는 클래스의 div엘리먼트 작성
-			
-			for (var page = 0; page < numPages; page++) {
-			
-			$('<span class="page-number"></span>').text(page + 1)
-			.bind('click', {newPage: page}, function(event) {        
-			currentPage = event.data['newPage'];
-			$table.trigger('boardList');
-			
-			
-			//for구문을 이용하여 페이지 수만큼
-			
-			//버튼을 구현
-			
-			$(this).addClass('active')
-			
-			//활성화된페이지에는 active라는 클래스명을 붙여준다.
-			
-			.siblings().removeClass('active');
-			
-			}).appendTo($pager).addClass('clickable');
-			
-			}  
-			
-			$pager.insertBefore($table)
-			
-			//앞서 설정한 페이지키를 삽입
-			
-			.find('span.page-number:first').addClass('active');
-			
-			});
-
-	//현재페이지+1 곱하기 현재페이지까지 보여준다
-
-	};   
-	
-	$table.find('th').removeClass('sorted-asc')
-	
-	.removeClass('sorted-desc');
-	
-	if (sortDirection == 1) {
-	
-	$header.addClass('sorted-asc');
-	
-	}
-	
-	else {
-	
-	$header.addClass('sorted-desc');
-	
-	}
-	
-	$table.alternateRowColors();
-	
-	
-	$table.trigger('boardList ');     
-	
-
-</script>
- -->
 </head>
 <body>
 
@@ -188,16 +86,33 @@ $(document).ready(funtion()){
 				</dl>
 			</div>
 			
-			<div class>
-			<dl>
-			<c:forEach var="notice" items="${add}" varStatus="cnt">
+		
+	<%-- 			<c:forEach var="MoreList" items="${MoreList}" varStatus="cnt">
+	 			
+	
+						<td colspan="6" align="center">
+			<c:if test="${page <= 1 }">[이전]&nbsp; </c:if>
+				<c:if test="${page > 1 }">
+					<a href="boardList.do?notCD=${MoreList.notCD}&page=${page-1}">이전</a>&nbsp;</c:if>
+					 <c:forEach begin="${startpage }" end="${endpage }" var="a">
+					<c:if test="${a==page }">[${a}]</c:if>
+					<c:if test="${a!=page }">
+						<a href="boardList.do?notCD=${MoreList.notCD}&page=${a}">[${a}]</a>&nbsp;</c:if>
+				</c:forEach> <c:if test="${page>=maxpage }">[다음]</c:if> <c:if
+					test="${page<maxpage }">
+					<a href="boardList.do?notCD=${MoreList.notCD}&page=${page+1}">[다음]</a>
+				</c:if></td>
 			
 			</c:forEach>
-						
-			</dl>
-			<a href="#" class="listMore" onclick=>지난 공지사항 더보기</a>
+			 --%>
+			
+			
+			
+			
+			
+			<a href="MoreList.do" class="listMore">지난 공지사항 더보기</a>
 			</div>
-		</div>
+
 	</article>
 
 
@@ -257,7 +172,7 @@ $(document).ready(funtion()){
 								<%-- 
 						<form:select path="code" name="code" items="${code}" itemValue="code"
 							itemLabel="codenm" />
- --%>
+
 
 
 
