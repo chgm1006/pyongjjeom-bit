@@ -3,17 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.postandreply.dao.PostAndReplyMapper">
 
-	<select id="getPost" parameterMap="postMap" resultType="Post">
+	<!-- <select id="getPost" parameterMap="postMap" resultType="Post"> </select> <select 
+		id="getReply" parameterMap="postMap" resultType="Post"></select> <update id="updatePost" 
+		parameterMap="postMap"> </update> <update id="deletePost" parameterMap="postMap"> 
+		</update> -->
 
-	</select>
+	<insert id="insertBookPost" parameterType="Post">
+		INSERT INTO test_posting
+		(postcd,pmemcd,review,memgrade,comment,deleteyn,spoilyn,regedate,updatedate,title,director,image,link,actor)
+		values
+		(#{postCD},#{pmemCD},#{review},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now(),#{title},#{director},#{image},#{link},#{actor})
+
+	</insert>
+<select id="getPost" parameterType="String" resultType="Post"> 
+    
+    select * from test_posting where pmemcd=#{memCD}
+    </select>
 	
-	<select id="getReply" parameterMap="postMap" resultType="Post"></select>
-
-	<update id="updatePost" parameterMap="postMap">
-
-	</update>
-
-	<update id="deletePost" parameterMap="postMap">
-
-	</update>
 </mapper>
