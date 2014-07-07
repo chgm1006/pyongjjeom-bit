@@ -20,32 +20,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N'
-		order by regidate desc;
+		order by regidate desc limit 1,5;
 
 	</select>
 
 	<select id="getSystemNoticeDatas" resultType="Notice">
 
 
-		select * from notice where ifnull(deleteyn,'N')='N' and category = 'SM'
-			order by regidate desc;
-		
-	
+		select * from notice where
+		ifnull(deleteyn,'N')='N' and category = 'SM'
+		order by regidate desc;
+
+
 
 	</select>
 
 	<select id="getEventNoticeDatas" resultType="Notice">
-	    
+
 		select * from notice where ifnull(deleteyn,'N')='N' and category = 'EV'
-			order by regidate desc;
+		order by regidate desc;
 
 	</select>
-	
+
 	<select id="getDeleteNoticeDatas" resultType="Notice">
 
 
-		select * from notice where ifnull(deleteyn,'N')='Y' 
-	order by regidate desc;
+		select * from notice where
+		ifnull(deleteyn,'N')='Y'
+		order by regidate desc;
 
 	</select>
 
@@ -77,17 +79,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update notice
 		set writer=#{writer},
 		title=#{title},issue=#{issue},
-		notPasswd=#{notPasswd},category=#{category},updatedate=now() where notCD=#{notCD};
+		notPasswd=#{notPasswd},category=#{category},updatedate=now() where
+		notCD=#{notCD};
 
 
 	</update>
-	
-	<select id = "paging" resultType ="String"> 
-	    
-	   select count(*) from notice where
-		ifnull(deleteyn,'N')='N';
-	    
-	    </select>
+
+	<select id="listMore" resultType="Notice">
+
+		select * from notice where
+		ifnull(deleteyn,'N')='N' limit 5;
+
+	</select>
+
+	<select id="listCount" resultType="int">
+
+		select count(*) from notice where
+		ifnull(deleteyn,'N')='N' ;
+
+	</select>
+
+	<select id="getAllNoticeListMore" resultType="Notice">
+
+select b.* from (
+SELECT 
+    @rnum:=@rnum + 1 as rownum, a.*
+FROM
+    forcebewithyou.notice a,
+    (select @rnum:=0) r
+) b
+where b.rownum between ${startrow} and ${endrow};
+	<!-- 	 
+		select * from notice where
+		ifnull(deleteyn,'N')='N' limit ${startrow},${endrow}; -->
+		
+
+	</select>
+
+
 
 
 

@@ -21,12 +21,14 @@
  */
 package com.pyongjjeom.notice.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 
 public interface NoticeService {
+
 
 	void insertData(Notice notice);
 
@@ -46,6 +48,24 @@ public interface NoticeService {
 
 	void deleteData(String notCD);
 	
-	String paging();
+  List <Notice> listMore();
+  
+  public int listCount();
+  
+  public List<Notice> getAllNoticeListMore(HashMap<String, String> param);
+  
+
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @param notCD
+	 * @param ipage
+	 * @param limit
+	 * @return 
+	 */
+	List<Notice> getAllNoticeListMore(int page, int limit);
 
 }
