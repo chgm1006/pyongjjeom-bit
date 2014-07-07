@@ -310,7 +310,7 @@ public class ContentController {
 			MovieGrades grades = new MovieGrades();
 			grades = contentService.movieGradeSelect(movie.getTitle());
 			
-	        map.put("grades", grades);
+	  
 	        
 			if (grades != null) {
 				int count = 0;
@@ -322,10 +322,16 @@ public class ContentController {
 						avg += grade;
 						count++;
 					}
+				//	request.setAttribute("avg", avg / count);
+				   map.put("avg", avg / count);
 				}
-				request.setAttribute("avg", avg / count);
 			}
-			
+			else
+			{
+				grades= new MovieGrades();
+			  map.put("avg", 0);
+			}
+      map.put("grades", grades);
 			
 			// 네이버영화상세페이지 주소로 xml파싱하여 contentMovieDetail에 담기.
 			try {
