@@ -21,6 +21,7 @@
  */
 package com.pyongjjeom.notice.dao; 
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pyongjjeom.notice.dto.Notice;
@@ -48,7 +49,11 @@ public interface NoticeMapper {
 	void editData(Notice notice);
 	
 
-  String paging();	
+  List <Notice> listMore();
+  
+  public int listCount();
 
-	
+  public List<Notice> getAllNoticeListMore(HashMap<String, String> param);
+  
+
 }

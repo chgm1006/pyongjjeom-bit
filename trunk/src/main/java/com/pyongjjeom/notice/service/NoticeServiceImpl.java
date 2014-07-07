@@ -21,7 +21,13 @@
  */
 package com.pyongjjeom.notice.service;
 
+import java.util.HashMap;
 import java.util.List;
+
+
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +40,14 @@ import org.springframework.stereotype.Service;
 
 
 
+
+
+
+
+
+
+import org.springframework.web.servlet.ModelAndView;
+
 import com.pyongjjeom.notice.dao.NoticeMapper;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -42,6 +56,8 @@ import com.pyongjjeom.notice.dto.NoticeCode;
 public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeMapper noticeMapper;
+	
+	private static HashMap<String, String> param = new HashMap<String, String>();
 
 	/**
 	 * <PRE>
@@ -177,15 +193,91 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 
 	 * 상세 : 
 	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#paging()
+	 * @see com.pyongjjeom.notice.service.NoticeService#listMore()
 	 */
 	@Override
-	public String paging() {
+	public List<Notice> listMore() {
 		// TODO Auto-generated method stub
-		return noticeMapper.paging();
+		return noticeMapper.listMore();
 	}
 
-	
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#listCount()
+	 */
+	@Override
+	public int listCount() {
+		// TODO Auto-generated method stub
+		return noticeMapper.listCount();
+	}
+
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore(java.lang.String, int, int)
+	 */
+	@Override
+	public List<Notice> getAllNoticeListMore(int page, int limit) {
+		
+		System.out.println("22222222222222222222");
+		
+		int startrow = page;
+
+		System.out.println(param.put("startrow", String.valueOf(startrow)));
+		System.out.println(param.put("endrow", String.valueOf(startrow+ limit )));
+		
+		return noticeMapper.getAllNoticeListMore(param);
+		
+	}
+		
+	/*	int startrow = (page - 1) * 10;
+		System.out.println(startrow);
+
+		param.put("startrow", String.valueOf(startrow));
+		param.put("endrow", String.valueOf(startrow + limit));
+		
+		System.out.println(param.put("startrow", String.valueOf(startrow)));
+		System.out.println(param.put("endrow", String.valueOf(startrow+ limit )));
+		
+		List<Notice> ev=  noticeMapper.getAllNoticeListMore(param);
+
+		System.out.println("imp:e");
+		return ev;
+		
+	}*/
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore(java.util.HashMap)
+	 */
+	@Override
+	public List<Notice> getAllNoticeListMore(HashMap<String, String> param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore()
+	 */
+
+
+
+
+
+
 
 	/**
 	 * <PRE>
