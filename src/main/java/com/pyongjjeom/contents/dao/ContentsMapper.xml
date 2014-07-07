@@ -3,37 +3,130 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.contents.dao.ContentsMapper">
 
+<!-- <insert id="movieTitleInsert" parameterType="ContentsValue">
+		INSERT INTO contents
+		(concd,title,code) SELECT #{concd},#{title},#{code} FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM contents WHERE title=#{title})
+	</insert>
 
+
+<insert id="concdInsert" parameterType="String">
+		INSERT INTO contents_movie
+		(concd)  values (#{concd})
+	</insert>
+
+<delete id="nullDelete">
+    Delete from contents_movie where navermg='null'
+    
+</delete>
+
+	<update id="naverMovieGradeUpdate" parameterType="ContentsValue">
+		update contents_movie set
+		navermg
+		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+	</update>
+
+	<update id="cgvGradeUpdate" parameterType="ContentsValue">
+		update contents_movie set cgvmg
+		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+	</update>
+
+	<update id="lotteGradeUpdate" parameterType="ContentsValue">
+		update contents_movie set
+		lottemg =#{grade} where concd=(select concd from contents where contents.title=#{title});
+	</update>
+
+	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
+		update contents_movie set
+		megaBoxmg =#{grade} where concd=(select concd from contents where contents.title=#{title});
+	</update>
+
+	<update id="daumGradeUpdate" parameterType="ContentsValue">
+		update contents_movie set
+		daummg
+		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+	</update>
+
+	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
+
+		select *
+		from contents_movie where title = #{title}
+
+	</select>
+
+	<insert id="bookTitleInsert" parameterType="ContentsValue">
+		INSERT INTO contents_book
+		(concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM contents_book WHERE title=#{title})
+	</insert>
+
+	<update id="yes24GradeUpdate" parameterType="ContentsValue">
+		update contents_book set yesbg
+		=#{grade} where title =#{title}
+	</update>
+
+	<update id="aladinGradeUpdate" parameterType="ContentsValue">
+		update contents_book set
+		aladinbg
+		=#{grade} where title =#{title}
+	</update>
+
+	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
+		update contents_book set
+		kyobobg
+		=#{grade} where title =#{title}
+	</update>
+
+	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
+		update contents_book set
+		naverbg =#{grade} where title =#{title}
+	</update>
+
+	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
+		update contents_book set
+		bandibg =#{grade} where title =#{title}
+	</update>
+
+	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
+
+		select *
+		from contents_book where title = #{title}
+
+	</select>
+ -->
+    
 	<insert id="movieTitleInsert" parameterType="ContentsValue">
-		INSERT INTO test_movie
+		INSERT INTO contents_movie
 		(concd,title,movieCode) SELECT #{concd},#{title},#{code} FROM DUAL
 		WHERE NOT
-		EXISTS( SELECT 1 FROM test_movie WHERE title=#{title})
+		EXISTS( SELECT 1 FROM contents_movie WHERE title=#{title})
 	</insert>
 
 	<update id="naverMovieGradeUpdate" parameterType="ContentsValue">
-		update test_movie set
+		update contents_movie set
 		navermg
 		=#{grade} where title =#{title}
 	</update>
 
 	<update id="cgvGradeUpdate" parameterType="ContentsValue">
-		update test_movie set cgvmg
+		update contents_movie set cgvmg
 		=#{grade} where title =#{title}
 	</update>
 
 	<update id="lotteGradeUpdate" parameterType="ContentsValue">
-		update test_movie set
+		update contents_movie set
 		lottemg =#{grade} where title =#{title}
 	</update>
 
 	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
-		update test_movie set
+		update contents_movie set
 		megaBoxmg =#{grade} where title =#{title}
 	</update>
 
 	<update id="daumGradeUpdate" parameterType="ContentsValue">
-		update test_movie set
+		update contents_movie set
 		daummg
 		=#{grade} where title =#{title}
 	</update>
@@ -41,51 +134,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
 
 		select *
-		from test_movie where title = #{title}
+		from contents_movie where title = #{title}
 
 	</select>
 
 	<insert id="bookTitleInsert" parameterType="ContentsValue">
-		INSERT INTO test_book
+		INSERT INTO contents_book
 		(concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
 		WHERE NOT
-		EXISTS( SELECT 1 FROM test_book WHERE title=#{title})
+		EXISTS( SELECT 1 FROM contents_book WHERE title=#{title})
 	</insert>
 
 	<update id="yes24GradeUpdate" parameterType="ContentsValue">
-		update test_book set yesbg
+		update contents_book set yesbg
 		=#{grade} where title =#{title}
 	</update>
 
 	<update id="aladinGradeUpdate" parameterType="ContentsValue">
-		update test_book set
+		update contents_book set
 		aladinbg
 		=#{grade} where title =#{title}
 	</update>
 
 	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
-		update test_book set
+		update contents_book set
 		kyobobg
 		=#{grade} where title =#{title}
 	</update>
 
 	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
-		update test_book set
+		update contents_book set
 		naverbg =#{grade} where title =#{title}
 	</update>
 
 	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
-		update test_book set
+		update contents_book set
 		bandibg =#{grade} where title =#{title}
 	</update>
 
 	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
 
 		select *
-		from test_book where title = #{title}
+		from contents_book where title = #{title}
 
 	</select>
 
 
+	
+	
 
 </mapper>
