@@ -6,7 +6,6 @@ package com.pyongjjeom.contents.dto;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
 
 /**
  * <pre>
@@ -20,7 +19,6 @@ import org.apache.log4j.Logger;
  */
 public class ContentConcert {
 
-	private Logger log = Logger.getLogger(this.getClass());
 
 	private String conCD = "";
 	private float yesCg = 0.0f;
@@ -34,13 +32,6 @@ public class ContentConcert {
 	private String endDate = "";
 	private Date updateDate = null;
 
-	public Logger getLog() {
-		return log;
-	}
-
-	public void setLog(Logger log) {
-		this.log = log;
-	}
 
 	public String getConCD() {
 		return conCD;
