@@ -55,11 +55,11 @@ public class MovieGrades {
 
 	private String title;
 	private String movieCode;
-	private double naverMg;
-	private double daumMg;
-	private double cgvMg;
-	private double lotteMg;
-	private double megaBoxMg;
+	private double naverMg=0;
+	private double daumMg=0;
+	private double cgvMg=0;
+	private double lotteMg=0;
+	private double megaBoxMg=0;
 
 	public String getTitle() {
 		return title;
