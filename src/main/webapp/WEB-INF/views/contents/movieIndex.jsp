@@ -34,7 +34,7 @@
 						<li class="liList">
 								<a class="imgLink" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' "> 
 								<img class="imgList" src="${movie.poster}" />
-								<div class="innerOver2">c</div>
+								<div class="innerOver2"></div>
 								<div class="innerOver">
 									영화제목 : ${movie.title }<br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
 								</div>
