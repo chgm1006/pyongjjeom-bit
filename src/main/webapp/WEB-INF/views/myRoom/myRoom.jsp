@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>my Room</title>
 
-<link href="${pageContext.request.contextPath}/resources/css/default1.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/myroom.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/default1.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/myroom.css"
+	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript">
@@ -59,7 +62,7 @@
 </script>
 
 
-<!----------»ó¼¼ ½½¶óÀÌµå ´Ù¿î---------->
+<!----------ìƒì„¸ ìŠ¬ë¼ì´ë“œ ë‹¤ìš´---------->
 <script type="text/javascript">
 	$(function() {
 		$("dd").css("display", "none");
@@ -80,162 +83,162 @@
 
 		<div class="menu">
 			<ul>
-				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#" OnClick="window.location='mySet.do'">¼³Á¤</a></li>
-				<li class="boardMenu"><a class="myPageMenu" id="upLoadButton" href="#">ÆòÁ¡¿Ã¸®±â</a></li>
-				<li class="boardMenu"><a href = "logout.do" class="boardMenu_1">·Î±×¾Æ¿ô</a></li>
+				<li class="boardMenu"><a class="myPageMenu" id="setUpButton" href="#"
+					OnClick="window.location='mySet.do'">ì„¤ì •</a></li>
+				<li class="boardMenu"><a class="myPageMenu" id="upLoadButton" href="#">í‰ì ì˜¬ë¦¬ê¸°</a></li>
+				<li class="boardMenu"><a href="logout.do" class="boardMenu_1">ë¡œê·¸ì•„ì›ƒ</a></li>
 			</ul>
 		</div>
 
-
 		<div class="upLoad">
 			<a href="#" class="close"></a>
-			<div class="title2">ÆòÁ¡ ¿Ã¸®±â</div>
+			<div class="title2">í‰ì  ì˜¬ë¦¬ê¸°</div>
 			<div class="upLoadSearch">
-				<select>
-					<option>¿µÈ­</option>
-					<option>µµ¼­</option>
-					<option>°ø¿¬</option>
-				</select> <input type="text"> <input type="submit" value="°Ë»ö">
+				<form action="ContentsSearch.do" method="get" id="frmLogin" name="frmLogin">
+					<select name="category">
+						<option value="book">ì±…
+						<option value="movie">ì˜í™”
+					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
+						name="stat" value="posting"> <input type="submit" value="ê²€ìƒ‰">
+				</form>
 			</div>
 			<div class="upLoadCont">
 				<table>
 					<tr>
-						<td>³ªÀÇ ÆòÁ¡</td>
-						<td>º°Ç¥</td>
+						<td>ë‚˜ì˜ í‰ì </td>
+						<td>ë³„í‘œ</td>
 					</tr>
 					<tr>
-						<td>³ªÀÇ ÇÑÁÙÆò</td>
+						<td>ë‚˜ì˜ í•œì¤„í‰</td>
 						<td><input type="text" style="width: 500px"></td>
 					</tr>
 				</table>
 				<input type="text" class="upLoadText"><br> <input type="submit"
-					class="upLoadStart" value="±Û¿Ã¸®±â">
+					class="upLoadStart" value="ê¸€ì˜¬ë¦¬ê¸°">
 			</div>
 
 		</div>
 
-		<div class="title2">³»°¡ ¿Ã¸° Æ÷½ºÆ®</div>
+		<div class="title2">ë‚´ê°€ ì˜¬ë¦° í¬ìŠ¤íŠ¸</div>
 
+		<c:forEach items="${postList}" var="post">
+			<div class="postingList">
+				<dl>
+					<dt class="listHead">
 
-		<div class="postingList">
-			<dl>
-				<dt class="listHead">
+						<div class="list1">
+							<a href="#" class="listImgLink"><img src="${post.image} " class="listImg"></a>
 
-					<div class="list1">
-						<a href="#" class="listImgLink"><img src="img/07.jpg" class="listImg"></a>
-						<div class="detail">
-							<table>
-								<tr>
-									<td class="listTitle1" colspan="2">¹Ì³à¿Í ¾ß¼ö</td>
-								</tr>
-								<tr>
-									<td class="listTitle">³ªÀÇ ÆòÁ¡</td>
-									<td class="listDirectorValue">º°Ç¥º°Ç¥</td>
-								</tr>
-								<tr>
-									<td class="listTitle">ÇÑÁÙÆò</td>
-									<td class="listActorValue">ÀÌ°÷Àº ÇÑÁÙÆòÀÔ´Ï´Ù.</td>
-								</tr>
-								<tr>
-									<td class="listTitle">³ªÀÇ ÈÄ±â</td>
-									<td class="listSynopValue">°¡±î¿î ¹Ì·¡, ¹Ì¹ÍÀÌ¶ó ºÒ¸®´Â ¿Ü°è Á¾Á·ÀÇ Ä§·«À¸·Î ÀÎ·ù´Â ¸ê¸Á À§±â¸¦
-										¸Â´Â´Ù. ºô ÄÉÀÌÁö (Åè Å©·çÁî)´Â ÀÚ»ì ÀÛÀüÀÌ³ª ´Ù¸§¾ø´Â ÀÛÀü¿¡ ÈÆ·ÃÀÌ³ª Àåºñ¸¦ Á¦´ë·Î °®ÃßÁö ¸øÇÑ »óÅÂ·Î ¹èÁ¤µÇ°í ÀüÅõ¿¡
-										Âü¿©ÇÏÀÚ¸¶ÀÚ Á×À½À» ¸Â´Â´Ù. ÇÏÁö¸¸ ºÒ°¡´ÉÇÑ ÀÏÀÌ ÀÏ¾î³­´Ù. ±×°¡ ´Ù½Ã ±× ²ûÂïÇÑ ³¯ÀÌ ½ÃÀÛµÈ ½Ã°£¿¡ ´Ù½Ã ±ú¾î³ª ´Ù½Ã ÀüÅõ¿¡
-										Âü¿©ÇÏ°Ô µÇ°í ´Ù½Ã Á×¾ú´Ù°¡ ¶Ç ´Ù½Ã »ì¾Æ³ª´Â °Í. ¿Ü°èÀÎ°úÀÇ Á¢ÃËÀ¸·Î °°Àº ½Ã°£´ë¸¦ ¹Ýº¹ÇØ¼­ °Þ°Ô µÇ´Â Å¸ÀÓ ·çÇÁ¿¡ °¤È÷°Ô
-										µÈ °ÍÀÌ´Ù.</td>
-								</tr>
-							</table>
-							<div class="PostingReply">´ñ±Û 2°³</div>
+							<div class="detail">
+								<table>
+									<tr>
+										<td class="listTitle1" colspan="2">${post.title}</td>
+									</tr>
+									<tr>
+										<td class="listTitle">ë‚˜ì˜ í‰ì </td>
+										<td class="listDirectorValue">${post.memGrade }</td>
+									</tr>
+									<tr>
+										<td class="listTitle">í•œì¤„í‰</td>
+										<td class="listActorValue">${post.comment }</td>
+									</tr>
+									<tr>
+										<td class="listTitle">ë‚˜ì˜ í›„ê¸°</td>
+										<td class="listSynopValue">${post.review }</td>
+									</tr>
+								</table>
+								<div class="PostingReply">ëŒ“ê¸€ 2ê°œ</div>
+							</div>
+
 						</div>
+					</dt>
+					<dd class="listContent">
 
-					</div>
-				</dt>
-				<dd class="listContent">
+						<h3>ì½”ë©˜íŠ¸</h3>
+						<br>
+						<div class="commentBox">
+							<div class="userPhoto">
+								<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>ë°•í¬ë³¸
+							</div>
+							<div class="triangle"></div>
+							<div class="rectangle">
+								<h3>ë‚˜ë„ ì´ ì˜í™” ë´¤ë‹¤.</h3>
+								<h5>2014.06.19</h5>
+							</div>
+							<a href="#" class="commentDel">ì‚­ì œ</a>
+						</div>
+						<div class="clear"></div>
+						<div class="commentBox">
+							<div class="userPhoto">
+								<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>ë°•í¬ë³¸
+							</div>
+							<div class="triangle"></div>
+							<div class="rectangle">
+								<h3>ë‚˜ë„ ì´ ì˜í™” ë´¤ë‹¤.</h3>
+								<h5>2014.06.19</h5>
+							</div>
+							<a href="#" class="commentDel">ì‚­ì œ</a>
+						</div>
+						<div class="clear"></div>
+						<a href="#" class="commentMore">ë”ë³´ê¸°</a>
+					</dd>
+					<dt class="listHead">
+		</c:forEach>
+		
+	<!-- 	<div class="list1">
+			<a href="#" class="listImgLink"><img src="img/07.jpg" class="listImg"></a>
+			<div class="detail">
+				<table>
+					<tr>
+						<td class="listTitle1" colspan="2">ë¯¸ë…€ì™€ ì•¼ìˆ˜</td>
+					</tr>
+					<tr>
+						<td class="listTitle">ë‚˜ì˜ í‰ì </td>
+						<td class="listDirectorValue">ë³„í‘œë³„í‘œ</td>
+					</tr>
+					<tr>
+						<td class="listTitle">í•œì¤„í‰</td>
+						<td class="listActorValue">ì´ê³³ì€ í•œì¤„í‰ìž…ë‹ˆë‹¤.</td>
+					</tr>
+					<tr>
+						<td class="listTitle">ë‚˜ì˜ í›„ê¸°</td>
+						<td class="listSynopValue">ê°€ê¹Œìš´ ë¯¸ëž˜, ë¯¸ë¯¹ì´ë¼ ë¶ˆë¦¬ëŠ” ì™¸ê³„ ì¢…ì¡±ì˜ ì¹¨ëžµìœ¼ë¡œ ì¸ë¥˜ëŠ” ë©¸ë§ ìœ„ê¸°ë¥¼
+							ë§žëŠ”ë‹¤. ë¹Œ ì¼€ì´ì§€ (í†° í¬ë£¨ì¦ˆ)ëŠ” ìžì‚´ ìž‘ì „ì´ë‚˜ ë‹¤ë¦„ì—†ëŠ” ìž‘ì „ì— í›ˆë ¨ì´ë‚˜ ìž¥ë¹„ë¥¼ ì œëŒ€ë¡œ ê°–ì¶”ì§€ ëª»í•œ ìƒíƒœë¡œ ë°°ì •ë˜ê³  ì „íˆ¬ì—
+							ì°¸ì—¬í•˜ìžë§ˆìž ì£½ìŒì„ ë§žëŠ”ë‹¤. í•˜ì§€ë§Œ ë¶ˆê°€ëŠ¥í•œ ì¼ì´ ì¼ì–´ë‚œë‹¤. ê·¸ê°€ ë‹¤ì‹œ ê·¸ ë”ì°í•œ ë‚ ì´ ì‹œìž‘ëœ ì‹œê°„ì— ë‹¤ì‹œ ê¹¨ì–´ë‚˜ ë‹¤ì‹œ ì „íˆ¬ì—
+							ì°¸ì—¬í•˜ê²Œ ë˜ê³  ë‹¤ì‹œ ì£½ì—ˆë‹¤ê°€ ë˜ ë‹¤ì‹œ ì‚´ì•„ë‚˜ëŠ” ê²ƒ. ì™¸ê³„ì¸ê³¼ì˜ ì ‘ì´‰ìœ¼ë¡œ ê°™ì€ ì‹œê°„ëŒ€ë¥¼ ë°˜ë³µí•´ì„œ ê²ªê²Œ ë˜ëŠ” íƒ€ìž„ ë£¨í”„ì— ê°‡ížˆê²Œ ëœ
+							ê²ƒì´ë‹¤.</td>
+					</tr>
+				</table>
+				<div class="PostingReply">ëŒ“ê¸€ 2ê°œ</div>
+			</div>
 
-					<h3>ÄÚ¸àÆ®</h3>
-					<br>
-					<div class="commentBox">
-						<div class="userPhoto">
-							<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>¹ÚÈñº»
-						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<h3>³ªµµ ÀÌ ¿µÈ­ ºÃ´Ù.</h3>
-							<h5>2014.06.19</h5>
-						</div>
-						<a href="#" class="commentDel">»èÁ¦</a>
-					</div>
-					<div class="clear"></div>
-					<div class="commentBox">
-						<div class="userPhoto">
-							<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>¹ÚÈñº»
-						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<h3>³ªµµ ÀÌ ¿µÈ­ ºÃ´Ù.</h3>
-							<h5>2014.06.19</h5>
-						</div>
-						<a href="#" class="commentDel">»èÁ¦</a>
-					</div>
-					<div class="clear"></div>
-					<a href="#" class="commentMore">´õº¸±â</a>
-				</dd>
-				<dt class="listHead">
-
-					<div class="list1">
-						<a href="#" class="listImgLink"><img src="img/07.jpg" class="listImg"></a>
-						<div class="detail">
-							<table>
-								<tr>
-									<td class="listTitle1" colspan="2">¹Ì³à¿Í ¾ß¼ö</td>
-								</tr>
-								<tr>
-									<td class="listTitle">³ªÀÇ ÆòÁ¡</td>
-									<td class="listDirectorValue">º°Ç¥º°Ç¥</td>
-								</tr>
-								<tr>
-									<td class="listTitle">ÇÑÁÙÆò</td>
-									<td class="listActorValue">ÀÌ°÷Àº ÇÑÁÙÆòÀÔ´Ï´Ù.</td>
-								</tr>
-								<tr>
-									<td class="listTitle">³ªÀÇ ÈÄ±â</td>
-									<td class="listSynopValue">°¡±î¿î ¹Ì·¡, ¹Ì¹ÍÀÌ¶ó ºÒ¸®´Â ¿Ü°è Á¾Á·ÀÇ Ä§·«À¸·Î ÀÎ·ù´Â ¸ê¸Á À§±â¸¦
-										¸Â´Â´Ù. ºô ÄÉÀÌÁö (Åè Å©·çÁî)´Â ÀÚ»ì ÀÛÀüÀÌ³ª ´Ù¸§¾ø´Â ÀÛÀü¿¡ ÈÆ·ÃÀÌ³ª Àåºñ¸¦ Á¦´ë·Î °®ÃßÁö ¸øÇÑ »óÅÂ·Î ¹èÁ¤µÇ°í ÀüÅõ¿¡
-										Âü¿©ÇÏÀÚ¸¶ÀÚ Á×À½À» ¸Â´Â´Ù. ÇÏÁö¸¸ ºÒ°¡´ÉÇÑ ÀÏÀÌ ÀÏ¾î³­´Ù. ±×°¡ ´Ù½Ã ±× ²ûÂïÇÑ ³¯ÀÌ ½ÃÀÛµÈ ½Ã°£¿¡ ´Ù½Ã ±ú¾î³ª ´Ù½Ã ÀüÅõ¿¡
-										Âü¿©ÇÏ°Ô µÇ°í ´Ù½Ã Á×¾ú´Ù°¡ ¶Ç ´Ù½Ã »ì¾Æ³ª´Â °Í. ¿Ü°èÀÎ°úÀÇ Á¢ÃËÀ¸·Î °°Àº ½Ã°£´ë¸¦ ¹Ýº¹ÇØ¼­ °Þ°Ô µÇ´Â Å¸ÀÓ ·çÇÁ¿¡ °¤È÷°Ô
-										µÈ °ÍÀÌ´Ù.</td>
-								</tr>
-							</table>
-							<div class="PostingReply">´ñ±Û 2°³</div>
-						</div>
-
-					</div>
-				</dt>
-				<dd class="listContent">
-
-					<h3>ÄÚ¸àÆ®</h3>
-					<br>
-					<div class="commentBox">
-						<div class="userPhoto">
-							<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>¹ÚÈñº»
-						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<h3>³ªµµ ÀÌ ¿µÈ­ ºÃ´Ù.</h3>
-							<h5>2014.06.19</h5>
-						</div>
-						<a href="#" class="commentDel">»èÁ¦</a>
-					</div>
-					<div class="clear"></div>
-
-					<a href="#" class="commentMore">´õº¸±â</a>
-				</dd>
-			</dl>
 		</div>
+		</dt>
+		<dd class="listContent">
 
-		<a href="#" class="listMore">´õº¸±â</a>
+			<h3>ì½”ë©˜íŠ¸</h3>
+			<br>
+			<div class="commentBox">
+				<div class="userPhoto">
+					<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>ë°•í¬ë³¸
+				</div>
+				<div class="triangle"></div>
+				<div class="rectangle">
+					<h3>ë‚˜ë„ ì´ ì˜í™” ë´¤ë‹¤.</h3>
+					<h5>2014.06.19</h5>
+				</div>
+				<a href="#" class="commentDel">ì‚­ì œ</a>
+			</div>
+			<div class="clear"></div>
 
+			<a href="#" class="commentMore">ë”ë³´ê¸°</a>
+		</dd>
+		</dl>
 	</div>
+
+	<a href="#" class="listMore">ë”ë³´ê¸°</a>
+
+	</div> -->
 
 
 
@@ -247,42 +250,42 @@
 		<div class="setUp">
 			<table>
 				<tr>
-					<td class="item">ÀÌ¸§</td>
+					<td class="item">ì´ë¦„</td>
 					<td class="cont"><input type="text" placeholder = 'a'></td>
 				</tr>
 				<tr>
-					<td class="item">ÀÌ¸ÞÀÏ</td>
+					<td class="item">ì´ë©”ì¼</td>
 					<td class="cont"><input type="text"></td>
 				</tr>
 				<tr>
-					<td class="item">»ý³â¿ùÀÏ</td>
+					<td class="item">ìƒë…„ì›”ì¼</td>
 					<td class="cont"><input type="text"></td>
 				</tr>
 				<tr>
-					<td class="item">ÆÐ½º¿öµå</td>
+					<td class="item">íŒ¨ìŠ¤ì›Œë“œ</td>
 					<td class="cont"><input type="text"></td>
 				</tr>
 				<tr>
-					<td class="item">ÆÐ½º¿öµå È®ÀÎ</td>
+					<td class="item">íŒ¨ìŠ¤ì›Œë“œ í™•ì¸</td>
 					<td class="cont"><input type="text"></td>
 				</tr>
 				<tr>
-					<td class="item">³» Æ÷½ºÆÃ °ø°³¿©ºÎ</td>
-					<td class="cont">ÀüÃ¼°ø°³ <input type="radio" name="open" value="ÀüÃ¼°ø°³">
-						Ä£±¸¸¸ °ø°³<input type="radio" name="open" value="Ä£±¸¸¸ °ø°³"> ºñ°ø°³<input
-						type="radio" name="open" value="ºñ°ø°³">
+					<td class="item">ë‚´ í¬ìŠ¤íŒ… ê³µê°œì—¬ë¶€</td>
+					<td class="cont">ì „ì²´ê³µê°œ <input type="radio" name="open" value="ì „ì²´ê³µê°œ">
+						ì¹œêµ¬ë§Œ ê³µê°œ<input type="radio" name="open" value="ì¹œêµ¬ë§Œ ê³µê°œ"> ë¹„ê³µê°œ<input
+						type="radio" name="open" value="ë¹„ê³µê°œ">
 					</td>
 				</tr>
 				<tr>
-					<td class="item">³» Æ÷½ºÆÃ ´ñ±Û Âü¿© ¹üÀ§</td>
-					<td class="cont">ÀüÃ¼Çã¿ë<input type="radio" name="reply" value="ÀüÃ¼Çã¿ë">
-						Ä£±¸¸¸ Çã¿ë<input type="radio" name="reply" value="Ä£±¸¸¸ Çã¿ë"> Çã¿ë¾ÈÇÔ<input
-						type="radio" name="reply" value="Çã¿ë¾ÈÇÔ">
+					<td class="item">ë‚´ í¬ìŠ¤íŒ… ëŒ“ê¸€ ì°¸ì—¬ ë²”ìœ„</td>
+					<td class="cont">ì „ì²´í—ˆìš©<input type="radio" name="reply" value="ì „ì²´í—ˆìš©">
+						ì¹œêµ¬ë§Œ í—ˆìš©<input type="radio" name="reply" value="ì¹œêµ¬ë§Œ í—ˆìš©"> í—ˆìš©ì•ˆí•¨<input
+						type="radio" name="reply" value="í—ˆìš©ì•ˆí•¨">
 					</td>
 				</tr>
 				<tr>
-					<td class="item"><input type="submit" value="¼öÁ¤¿Ï·á"></td>
-					<td class="cont"><input type="submit" value="Å»ÅðÇÏ±â"></td>
+					<td class="item"><input type="submit" value="ìˆ˜ì •ì™„ë£Œ"></td>
+					<td class="cont"><input type="submit" value="íƒˆí‡´í•˜ê¸°"></td>
 				</tr>
 			</table>
 
