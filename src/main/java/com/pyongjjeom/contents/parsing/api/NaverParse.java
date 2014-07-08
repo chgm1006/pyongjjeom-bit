@@ -47,8 +47,8 @@ public class NaverParse {
 				movie.setSubtitle(getContent(element, "subtitle"));
 				movie.setLink(getContent(element, "link"));
 				movie.setImage(getContent(element, "image"));
-				movie.setDirector(getContent(element, "director"));
-				movie.setActor(getContent(element, "actor"));
+				movie.setDirector(getContent(element, "director").replace("|", " "));
+				movie.setActor(getContent(element, "actor").replace("|", " "));
 				movie.setPubDate(getContent(element, "pubDate"));
 				movie.setUserRating(getContent(element, "userRating"));
 
@@ -116,8 +116,8 @@ public class NaverParse {
 				movie.setSubtitle(getContent(element, "subtitle"));
 				movie.setLink(getContent(element, "link"));
 				movie.setImage(getContent(element, "image"));
-				movie.setDirector(getContent(element, "director"));
-				movie.setActor(getContent(element, "actor"));
+				movie.setDirector(getContent(element, "director").replace("|"," "));
+				movie.setActor(getContent(element, "actor").replace("|", " "));
 				movie.setPubDate(getContent(element, "pubDate"));
 				movie.setUserRating(getContent(element, "userRating"));
 
