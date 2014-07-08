@@ -25,6 +25,40 @@
 	}
 </script>
 
+<script>
+	// 자바 스크립트 시작
+
+	function writeCheck() {
+		var form = document.writeUpdate;
+		
+		if (!form.memGrade.value) {
+			alert("평점을 입력해주세요");
+			form.memGrade.focus();
+			return;
+		}
+
+		if (!form.comment.value) {
+			alert("한줄평을 적어주세요");
+			form.comment.focus();
+			return;
+		}
+
+		if (!form.review.value) // form 에 있는 name 값이 없을 때
+		{
+			alert("후기를 적어주세요"); // 경고창 띄움
+			form.review.focus(); // form 에 있는 name 위치로 이동
+			return;
+		}
+
+
+
+
+		form.submit();
+	}
+</script>
+
+
+
 
 <title>포스팅 page</title>
 </head>
@@ -99,7 +133,7 @@
 			
 			<div class="upLoadCont">
 		
-		<form action="updatePostOk.do" method="post">
+		<form action="updatePostOk.do" name =writeUpdate method="post">
 		
 		<input type="hidden"  value="${member.memCD}"  name="pmemCD">
 		<input type="hidden"  value="${book.title}"  name="title">
@@ -119,7 +153,7 @@
 							<option>6</option>
 							<option>8</option>
 							<option>10</option>
-						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade" value="${np.memGrade}"/></td>
+						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade"/></td>
 				</tr>
 				<tr>
 					<td>나의 한줄평</td>
@@ -131,8 +165,8 @@
 							style="resize: none; width: 90%; height: 400px" >${np.review}</textarea></td>
 				</tr>
 				<tr>
-					<td align="center" colspan="2" align="right"><input type="submit"
-						value="작성완료" > <input type="button" value="취소"
+					<td align="center" colspan="2" align="right"><input type="button"
+						value="작성완료" OnClick="javascript:writeCheck();"> <input type="button" value="취소"
 						onclick="document.location='../search2.jsp'"></td>
 				</tr>
 			</table>
