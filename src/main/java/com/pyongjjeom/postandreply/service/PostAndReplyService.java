@@ -30,7 +30,7 @@ public interface PostAndReplyService {
 	
 	public void editPost (Post post);
 
-	public int deletePost(String postCD);
+	public void deletePost(String postCD);
 
 	public void insertBookPost(Post post);
 

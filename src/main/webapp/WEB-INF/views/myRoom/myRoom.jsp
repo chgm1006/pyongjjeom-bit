@@ -163,6 +163,11 @@
 									</tr>
 								</table>
 								<div class="PostingReply">댓글 2개</div>
+								<a href="#"
+								OnClick="window.location='updatePost.do?postCD=${post.postCD}'">글수정</a> 
+								<a href="#"
+								OnClick="window.location='deletePost.do?postCD=${post.postCD}'">삭제</a>
+								
 							</div>
 
 						</div>
