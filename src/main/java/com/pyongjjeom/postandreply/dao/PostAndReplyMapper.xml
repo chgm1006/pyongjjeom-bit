@@ -24,18 +24,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="updatePost" parameterType="String" resultType="Post">
 
 		select * from
-		posting where postCD=#{postCD};
+		posting where postcd=#{postCD};
 
 	</select>
 	
-	<update id="editPost" parameterType="Notice">
+	<update id="editPost" parameterType="Post">
 		update posting
-		set review=#{review},memGrade=#{memgrade},
-		comment=#{comment},deleteyn=#{deleteyn},
-		spoilyn=#{spoilyn},regedate=now(), updatedate=now(), 
-		title=#{title},director=#{director},
-		image={#image},link=#{link},
-		actor=#{actor} where postCD=#{postCD}
+		set memgrade=#{memGrade},comment=#{comment}, 
+		review=#{review}
+		where postcd=#{postCD} 
 
 	</update>
 </mapper>
