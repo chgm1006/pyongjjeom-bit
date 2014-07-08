@@ -6,6 +6,7 @@ package com.pyongjjeom.postandreply.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,11 +89,47 @@ public class PostAndReplyController {
 		return null;
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String updatePost(String postCD) {
-		return null;
+	@RequestMapping(value = "updatePost.do", method = RequestMethod.GET)
+	public String updatePost(@Valid Post post, Model model,HttpServletRequest request)
+
+	{
+
+		System.out.println("11111111111111111111111");
+		
+		System.out.println(request.getParameter("postCD"));
+		
+		 Post newPost= parService.updatePost(request.getParameter("postCD"));
+		 
+		 System.out.println(newPost);
+		 
+		 model.addAttribute("np", newPost);
+		 
+		 
+		 System.out.println(post.toString());
+	
+		 return "myRoom/updatePost";
 	}
 
+	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
+	public String updatePostOk(@Valid Post post, Model model,HttpServletRequest request)
+
+	{
+
+		System.out.println("11111111111111111111111");
+		
+		System.out.println(request.getParameter("postCD"));
+		
+	 parService.editPost(post);
+	 
+	 request.getParameter("postCD");
+		 
+		 System.out.println(post.toString());
+	
+		 return "myRoom/updatePost_ok";
+	}
+
+	
+	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String deletePost(String postCD) {
 		return null;
