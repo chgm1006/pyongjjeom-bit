@@ -37,7 +37,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="tableSubtitle">부제</td>
+								<td class="tableTitle2">부제</td>
 								<td class="tableCont">${movie.subtitle }</td>
 							</tr>
 							<tr>
@@ -147,6 +147,15 @@
 			<div class="overCont1">
 				<!---- 하단 상세 설명 ---->
 				<div class="overContTableWrap">
+					<div class="averageWrap">
+						<div class="avg1">
+							<h1 class="avgPoint">9.9</h1>
+						</div>
+						<div class="avg2">
+							<h4>평균평점</h4>
+						</div>
+					</div>
+					
 					<table class="overContTable">
 						<tr>
 							<td class="overTableMovieTitle" colspan="2"></td>
@@ -196,7 +205,6 @@
 				<!---- 예고편 ---->
 				<div id="preview">
 					<h3 class="overContTitle">예고편</h3>
-					<br>
 					<iframe class="previewIframe" src="sample.mov"
 					autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
 					</iframe>
@@ -209,16 +217,13 @@
 				<div class="overSynopWrap">
 
 					<h3 class="overContTitle">줄거리</h3>
-					<br>
 					<h4 class="overSynop"></h4>
 				</div>
 			</div>
 			
 			<!---- 코멘트 목록 ---->
 			<div class="overCont3">
-				<br>
 				<h3 class="overContTitle">코멘트</h3>
-				<br>
 					
 				<div class="overCommentWrap">
 					<div class="commentBoxLeft">
@@ -281,6 +286,14 @@
 			<div class="overCont1">
 				<!---- 하단 상세 설명 ---->
 				<div class="overContTableWrap">
+					<div class="averageWrap">
+						<div class="avg1">
+							<h1 class="avgPoint">9.9</h1>
+						</div>
+						<div class="avg2">
+							<h4>평균평점</h4>
+						</div>
+					</div>
 					<table class="overContTable">
 						<tr>
 							<td class="overTableBookTitle" colspan="2"></td>
@@ -324,8 +337,8 @@
 						</tr>
 					</table><br>
 					<div class="overButtonWrap">
-						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
-						<a class="overButton" href="www.kyobobook.co.kr" target="_blank">사러가기</a>
+						<a class="overButton" id="overButtonBookLink" href="${movie.link }" target="_blank">네이버 상세</a>
+						<a class="overButton" id="overButtonBookBuy" href="www.kyobobook.co.kr" target="_blank">사러가기</a>
 					</div>
 				</div>
 			</div>
@@ -336,7 +349,6 @@
 				<div class="overAuthorInfoWrap">
 
 					<h3 class="overContTitle">저자소개</h3>
-					<br>
 					<h4 class="overAuthorInfo"></h4>
 				</div>
 				
@@ -344,16 +356,13 @@
 				<div class="overSynopWrap">
 
 					<h3 class="overContTitle">줄거리</h3>
-					<br>
 					<h4 class="overSynop"></h4>
 				</div>
 			</div>
 			
 			<!---- 코멘트 목록 ---->
 			<div class="overCont3">
-				<br>
 				<h3 class="overContTitle">코멘트</h3>
-				<br>
 					
 				<div class="overCommentWrap">
 					<div class="commentBoxLeft">
@@ -405,6 +414,31 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	
+
+		<!--------- 모달윈도우 : 도서 상세 -------->
+	<script type="text/javascript">
+		$(function() {
+			$("#glayLayerBook").click(function() {
+				$(this).hide()
+				$("#overLayerBook").hide();
+			});
+
+			$("#imgWrapBook,#tableTitleLinkBook").click(function() {
+				var scrollTest = $(document).scrollTop();
+				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
+				
+				$("#glayLayerBook").show();
+				$("#overLayerBook").fadeIn("Fast");
+				return false;
+			});
+			$(".exit").click(function() {
+				$("#glayLayerBook").hide()
+				$("#overLayerBook").hide();
+			});
+
+		});
+	</script>
+
 
 <!--------- Ajax JSoN 영화-------->
 <script>
@@ -488,29 +522,7 @@
 		});
 	}); 
 </script>
-		<!--------- 모달윈도우 : 도서 상세 -------->
-	<script type="text/javascript">
-		$(function() {
-			$("#glayLayerBook").click(function() {
-				$(this).hide()
-				$("#overLayerBook").hide();
-			});
 
-			$("#imgWrapBook,#tableTitleLinkBook").click(function() {
-				var scrollTest = $(document).scrollTop();
-				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
-				
-				$("#glayLayerBook").show();
-				$("#overLayerBook").fadeIn("Fast");
-				return false;
-			});
-			$(".exit").click(function() {
-				$("#glayLayerBook").hide()
-				$("#overLayerBook").hide();
-			});
-
-		});
-	</script>
 
 <!--------- Ajax JSoN 도서-------->
 <script>
@@ -594,9 +606,10 @@
 															$(".overAuthorInfo").text(authorIntroContent);
 															$(".overSynop").text(bookIntroContent);
 
-															$("#overButtonLink").attr("href",link);
+															$("#overButtonBookLink").attr("href",link);
 															
-
+															
+															
 														}
 													});
 										});

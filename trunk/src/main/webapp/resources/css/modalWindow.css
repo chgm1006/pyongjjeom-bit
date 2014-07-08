@@ -74,7 +74,7 @@ a.exit:active{
 /*---하단 포스터---*/
 .smallPosterWrap{
 	position:absolute;
-	margin:-60px 0 0 0;
+	margin:-80px 0 0 0;
 	padding:30px;
 }
 img.smallPoster{
@@ -94,25 +94,40 @@ img.smallPoster{
 	border-bottom:1px solid #abc;
 }
 .overContTableWrap{	
-	padding:20px 0 20px 30px;
+	padding:20px 25px 20px 30px;
 	margin:0 30px 20px 240px;
 	border-radius:20px;
 	border:4px solid #abc;
 }
+
+
 table.overContTable {
 	width: 100%;
 	border-collapse: collapse;
 }
-
-table.overContTable td{
-}
-
-td.overTableMovieTitle{
+td.overTableMovieTitle,.overTableBookTitle{
 	padding:5px;
 	font-size: 30px;
 	font-weight: bold;
+	min-width:50px;
+}
+td.overTableTitle {
+	min-width: 50px;
+	vertical-align: top;
+}
+td.overTableTitle2 {
+	min-width: 50px;
+	background: #f2e8a9;
+	vertical-align: top;
 }
 
+td.overTableDirector,td.overTableActor,td.overTableAuthor,td.overTablePublisher,td.overTablePubdate,td.overTablePrice{
+	width:90%;
+}
+
+
+
+/*---평점테이블---*/
 table.overContTable2{
 	margin:10px 0 0 0;
 	width:400px;
@@ -121,14 +136,43 @@ table.overContTable2{
 table.overContTable2 td{
 	width:25%;
 }
-table.overContTable2 td.overTableTitle2{
-	background:#f2e8a9;
-}
-.overTableNaver,.overTableDaum,.overTableCGV,.overTableMega,.overTableLotte,.overTableWoori{
+.overTableNaver,.overTableDaum,.overTableCGV,.overTableMega,.overTableLotte,.overTableWoori,.overTableNaver,.overTableYes24,.overTableAladin,.overTableBandi,.overTableKyobo,.overTableWoori{
 		text-align:center;
 		background:#e4dca8;
 }
 
+
+
+/*---평균점수---*/
+.averageWrap{
+	position: absolute;
+	margin:55px 0 0 440px;
+	width:100px;
+	height:90px;
+	overflow:hidden;
+	border-radius:10px;
+	border:4px solid #d0bd63;
+	
+}
+.avg1{
+	height:70px;
+	background: #fff;
+	text-align: center;
+}
+
+.avgPoint {
+	margin: 0 auto;
+	padding: 15px 0 0 0;
+	font-size: 40px;
+	background: #fff;
+}
+
+.avg2 {
+	height: 25px;
+	text-align: center;
+	font-size: 14px;
+	background: #ffc160;
+}
 
 /*---Button---*/
 .overButtonWrap{
@@ -156,7 +200,7 @@ a.overButton:hover{
 
 /*---하단 2---*/
 .overCont2{
-	padding:20px;
+	padding:20px 50px;
 }
 
 /*---예고편---*/
@@ -164,24 +208,19 @@ a.overButton:hover{
 }
 iframe.previewIframe{
 }
-.overSynopWrap{
-	float:left;
-	margin:70px 0 0 0;
-	
+/*---제목란---*/
+h3.overContTitle{
+	font-weight:bold;
 }
-td.overContTitle{
-	padding:0 0 0 30px;
-	border:1px dotted #123;
-}
-td.overSynop{
+/*---줄거리 + 저자소개---*/
+h4.overSynop, h4.overAuthorInfo{
+	padding:20px;
 	text-indent: 20px;	
-	border:1px dotted #123;
 }
 
 /*---하단 3 : Comment---*/
 .overCont3{
-	padding:20px;	
-	margin:20px;
+	padding:20px 50px;
 }
 .overCommentWrap{
 	float:left;
@@ -299,30 +338,6 @@ div#glayLayerBook{
 * html #overLayerBook{
 	position: absolute;
 }
-
-/*----저자소개----*/
-.overTableBookTitle{
-	padding:5px;
-	font-size: 30px;
-	font-weight: bold;
-}
-
-/*----저자소개----*/
-
-.overAuthorInfoWrap{
-	float:left;
-	margin:70px 0 0 0;
-}
-
-td.overAuthorInfo{
-	text-indent: 20px;	
-	border:1px dotted #123;
-}
-
-
-
-
-
 
 
 
