@@ -248,6 +248,7 @@ public class NoticeController {
 	public String editDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
+		
 		System.out.println(request.getParameter("notCD"));
 
 		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
