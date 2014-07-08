@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N'
-		order by regidate desc limit 1,5;
+		order by regidate desc ;
 
 	</select>
 
