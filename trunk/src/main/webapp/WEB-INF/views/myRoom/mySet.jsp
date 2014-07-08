@@ -42,52 +42,23 @@
 }
 </style>	
 
-</head>
-
-<!-- <script type="text/javascript">
-	// 자바 스크립트 시작
-
-	function writeCheck() {
-		
-		var form = document.setupFirm;
-
-		if (!form.memNm.value) {
-			alert("이름을 적어주세요");
-			form.memNm.focus();
-			return false ;
-		}
-
-		if (!form.birth.value) // form 에 있는 name 값이 없을 때
-		{
-			alert("생년월일을 입력하세요"); // 경고창 띄움
-			form.birth.focus(); // form 에 있는 name 위치로 이동
-			return false;
-		}
-
-		if (!form.passwd.value) {
-			alert("비밀번호를 적어주세요");
-			form.passwd.focus();
-			return false;
-		}
-		
-		
-
-
-
-		form.submit();
-	} -->
-	
-	
+<script type="text/javascript">
+function test_sample(){
+ var sample = document.getElementsByName('radio');
+ for(var i=0;i<sample.length;i++){
+  if(sample[i].checked == true){
+   alert(sample[i].value);
+  }
+ }
+}
 </script>
 
 
+</head>
+
+
+
 <body>
-
-
-
-
-${member }
-
 
 
 <div class="register-container container">
@@ -120,9 +91,13 @@ ${member }
 				</tr>
 				<tr>
 					<td class="item">내 포스팅 댓글 참여 범위</td>
-					<td class="cont">전체허용<input type="radio" name="reply" value="전체허용">
-						친구만 허용<input type="radio" name="reply" value="친구만 허용"> 허용안함<input
-						type="radio" name="reply" value="허용안함">
+					<td class="cont">
+					<input type = "radio" name ="reply" value ="1"/>전체허용<br>
+					<input type = "radio" name ="reply" value ="1"/>친구만허용<br>
+					<input type = "radio" name ="reply" value ="1"/>허용안함<br>
+<!-- 					전체허용<input type="radio" name="reply" value="전체허용">
+					친구만 허용<input type="radio" name="reply" value="친구만 허용"> 
+					허용안함<input type="radio" name="reply" value="허용안함"> -->
 					</td>
 				</tr>
 				
@@ -131,7 +106,7 @@ ${member }
 					
 					
 				
-					<button type="submit">가입하기</button>
+					<button type="submit">수정하기</button>
 					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 				</form>
 			</div>
