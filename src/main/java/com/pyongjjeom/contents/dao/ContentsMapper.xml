@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
     
 	<insert id="movieTitleInsert" parameterType="ContentsValue">
 		INSERT INTO contents_movie
-		(concd,title,movieCode) SELECT #{concd},#{title},#{code} FROM DUAL
+		(concd,title,movieCode,regidate,updatedate) SELECT #{concd},#{title},#{code},now(),now() FROM DUAL
 		WHERE NOT
 		EXISTS( SELECT 1 FROM contents_movie WHERE title=#{title})
 	</insert>
@@ -107,28 +107,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<update id="naverMovieGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
 		navermg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="cgvGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set cgvmg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="lotteGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		lottemg =#{grade} where title =#{title}
+		lottemg =#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		megaBoxmg =#{grade} where title =#{title}
+		megaBoxmg =#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="daumGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
 		daummg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
@@ -140,36 +140,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<insert id="bookTitleInsert" parameterType="ContentsValue">
 		INSERT INTO contents_book
-		(concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
+		(concd,title,bookCode,regidate,updatedate) SELECT #{concd},#{title},#{code},now(),now() FROM DUAL
 		WHERE NOT
 		EXISTS( SELECT 1 FROM contents_book WHERE title=#{title})
 	</insert>
 
 	<update id="yes24GradeUpdate" parameterType="ContentsValue">
 		update contents_book set yesbg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="aladinGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		aladinbg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		kyobobg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
-		naverbg =#{grade} where title =#{title}
+		naverbg =#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
-		bandibg =#{grade} where title =#{title}
+		bandibg =#{grade},updatedate=now() where title =#{title}
 	</update>
 
 	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
