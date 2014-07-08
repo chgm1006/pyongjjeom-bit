@@ -33,6 +33,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/loginscripts.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 <script type="text/javascript">
 
 	/* $(document)
@@ -103,8 +104,7 @@
 						placeholder="이메일을...."> <label for="password">비밀번호</label> <input
 						type="password" id="passwd" name="passwd" placeholder="비밀번호...">
 					<button type="submit">로그인</button>
-					<div class="fb-login-button" data-max-rows="1" data-size="xlarge"
-						data-show-faces="false" data-auto-logout-link="false"></div>
+					<button type="button" id="FBLogin">페이스북 로그인</button>
 
 					<!-- <button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button> -->
 					<br> <br> <a href="views/">비밀번호를 까먹으셧나영?</a>&nbsp; &nbsp; &nbsp;
