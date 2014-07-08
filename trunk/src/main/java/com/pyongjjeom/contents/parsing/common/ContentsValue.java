@@ -7,7 +7,6 @@ public class ContentsValue {
 	private String concd;
 	private String code;
 
-
 	public String getConcd() {
 		return concd;
 	}
@@ -16,8 +15,7 @@ public class ContentsValue {
 		this.concd = concd;
 	}
 
-
-	public ContentsValue(String title, Double grade, String code ,String concd) {
+	public ContentsValue(String title, Double grade, String code, String concd) {
 		this.title = title;
 		this.grade = grade;
 		this.code = code;
@@ -39,7 +37,7 @@ public class ContentsValue {
 	public ContentsValue(String title, Double grade) {
 		this.title = title;
 		this.grade = grade;
-		this.concd= " ";
+		this.concd = " ";
 	}
 
 	public String getTitle() {
