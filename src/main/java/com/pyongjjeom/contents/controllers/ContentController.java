@@ -31,6 +31,7 @@ import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.contents.dao.ContentsMapper;
+import com.pyongjjeom.contents.dto.ContentBookDetail;
 import com.pyongjjeom.contents.dto.ContentMovieDetail;
 import com.pyongjjeom.contents.parsing.api.NaverParse;
 import com.pyongjjeom.contents.parsing.book.AladinParsing;
@@ -255,9 +256,9 @@ public class ContentController {
 	}
 
 	
-	// AJAX부분 TEST
-	// AJAX부분 TEST
-	// AJAX부분 TEST
+	// AJAX부분 TEST - Movie
+	// AJAX부분 TEST - Movie
+	// AJAX부분 TEST - Movie
 	
 	@ResponseBody
     @RequestMapping(value = "movieContextJson.do", method = RequestMethod.POST)
@@ -279,7 +280,6 @@ public class ContentController {
         map.put("movie", movie);
         return map;
     }
-	
 	
 
 	private Map<String, Object> movieContextParsing2(NaverMovie movie,HttpServletRequest request) throws IOException {
@@ -399,9 +399,109 @@ System.out.println(movie.getImage()+"??????????????");
 	}
 
 	
+	// AJAX부분 TEST - Book
+	// AJAX부분 TEST - Book
+	// AJAX부분 TEST - Book
 	
-	
-	
+	@ResponseBody
+	  @RequestMapping(value = "bookContextJson.do", method = RequestMethod.POST)
+	public Map<String, Object> bookContextJson(@RequestBody Map paramMap,
+	          HttpServletRequest request) throws IOException {
+		
+	      System.out.println("name = " + paramMap.get("name"));
+	      System.out.println("data = " + paramMap.get("data"));
+	      
+	      int num = Integer.parseInt((String) paramMap.get("name"));
+		httpSession = request.getSession();
+		List<NaverBook> list = (List<NaverBook>) httpSession.getAttribute("resultList");
+		NaverBook book = list.get(num);
+		
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      map.put("abc", "나와라아아아아아아아");
+	     map.put("whole", bookContextParsing2(book, request));
+	      map.put("book", book);
+	      System.out.println(map.toString());
+
+	      return map;
+	  }
+
+
+	private Map<String, Object> bookContextParsing2(NaverBook book,HttpServletRequest request) throws IOException {
+			
+			// 리턴값 담을 Map 객체생성
+			Map<String, Object> map = new HashMap<String, Object>();
+
+			//movie 제목가져와서 정리하는 부분
+			book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
+			if (book.getTitle().contains("(")) {
+				book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
+			}
+			String code = null;
+			//썸네일 주소 가져와서 영화코드 6자리 받아오는거
+
+			httpSession.setAttribute("book", book);
+
+			// 검색결과에 대한 영화정보요청일 때 if문 실행 -> 각 사이트의 평점을 갖고 와서 평균을 구함.
+			if (httpSession.getAttribute("stat").equals("search")) {
+				Document doc;
+				BookGrades grades = new BookGrades();
+				grades = contentService.bookGradeSelect(book.getTitle());
+				
+		  
+		        
+				if (grades != null) {
+					int count = 0;
+					double avg = 0;
+					double arr[] = { grades.getNaverBg(), grades.getYesBg(),
+							grades.getAladinBg(), grades.getBandiBg(), grades.getKyoboBg() };
+					for (double grade : arr) {
+						if (grade != 0) {
+							avg += grade;
+							count++;
+						}
+					//	request.setAttribute("avg", avg / count);
+					   map.put("avg", avg / count);
+					}
+				}
+				else
+				{
+					grades= new BookGrades();
+				  map.put("avg", 0);
+				}
+	      map.put("grades", grades);
+				
+				// 네이버영화상세페이지 주소로 xml파싱하여 contentMovieDetail에 담기.
+				
+					doc = Jsoup.connect(book.getLink()).get();
+					ContentBookDetail contentBookDetail = new ContentBookDetail();
+					contentBookDetail.setBookIntroContent(doc.select("div[id=bookIntroContent]").text());
+					contentBookDetail.setAuthorIntroContent(	doc.select("div[id=authorIntroContent]").text());
+					String poster ="";
+					if(!book.getImage().isEmpty())
+					{
+					 poster = "http://bookthumb.phinf.naver.net/"
+							+ book.getImage().substring(book.getImage().indexOf("cover/"),
+									book.getImage().indexOf(".jpg")) + ".jpg";
+					contentBookDetail.setPoster(poster);
+					}
+
+					
+					if(contentBookDetail.getBookIntroContent().equals("")){				
+						contentBookDetail.setBookIntroContent("");
+					}
+					if(contentBookDetail.getAuthorIntroContent()==null){				
+						contentBookDetail.setAuthorIntroContent("");
+					}
+					if(contentBookDetail.getPoster()==null){				
+						contentBookDetail.setPoster("");
+					}
+			        map.put("contentBookDetail", contentBookDetail);
+			        
+				}
+		    
+			return map;
+	    
+		}
 	
 	
 	
