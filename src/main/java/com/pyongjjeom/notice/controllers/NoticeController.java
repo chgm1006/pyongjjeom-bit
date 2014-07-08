@@ -157,6 +157,7 @@ public class NoticeController {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
 
+		System.out.println();
 		model.addAttribute("add", list);
 		
 		
