@@ -55,6 +55,7 @@ td.tableTitle{
 	width:100%;
 	font-size:18px;
 	font-weight:bold;
+	text-overflow:ellipsis;
 }
 
 
@@ -76,7 +77,6 @@ td.tableTitle2{
 td.tableCont{
 	width:500px;
 	vertical-align:top;
-	text-overflow:ellipsis;
 }
 
 /*---Button---*/
@@ -107,7 +107,7 @@ a.listButton:hover{
 a.listMore{
 	display:block;
 	padding:30px 0 0 0;
-	width:100%;
+	width:99%;
 	height:50px;
 	text-align:center;
 	font-size:20px;

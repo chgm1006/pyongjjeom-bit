@@ -1,5 +1,7 @@
 
-/*-------- 모달윈도우 : 컨텐츠 상세 -------*/
+/*-------- 모달윈도우 : 영화 상세 -------*/
+/*-------- 모달윈도우 : 영화 상세 -------*/
+/*-------- 모달윈도우 : 영화 상세 -------*/
 
 
 div#glayLayer{
@@ -62,6 +64,7 @@ a.exit:active{
 
 /*---하단 시작---*/
 .overCont{
+	padding:0 0 20px 0;
 	width:100%;
 	height:auto;
 	border-radius:0 0 20px 20px;
@@ -158,13 +161,8 @@ a.overButton:hover{
 
 /*---예고편---*/
 .preview{
-	display: none;
-		left:100px;
-	
 }
 iframe.previewIframe{
-	width:512px;
-	height: 310px;
 }
 .overSynopWrap{
 	float:left;
@@ -180,11 +178,157 @@ td.overSynop{
 	border:1px dotted #123;
 }
 
-/*---하단 3---*/
+/*---하단 3 : Comment---*/
 .overCont3{
+	padding:20px;	
+	margin:20px;
 }
 .overCommentWrap{
 	float:left;
 	margin:30px 0 0 0;
 }
+.commentBoxLeft{
+	float:left;
+	padding:20px;
+	width:100px;
+	height:auto;
+}
+.userPhoto {
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border: 4px solid #fff;
+	border-radius: 15px;
+}
+
+a.userRoomLink {
+	display: block;
+	background: #es9fb4;
+}
+
+a.userRoomLink img {
+	width:80px;
+	height:auto;
+}
+span.commentName{
+	
+}
+
+.commentBoxRight{
+	float:left;
+	padding:20px;
+	width:600px;
+	height:auto;
+	min-height:100px;
+	border:4px dotted #fff;
+	border-radius:15px;
+	background:#e8dfb4;
+}
+.userComment{
+	
+}
+.userDate{
+	
+}
+
+
+
+/*---More---*/
+a.commentMore{
+	margin:20px 0 0 0;
+	display:block;
+	padding:30px 0 0 0;
+	width:100%;
+	height:50px;
+	text-align:center;
+	font-size:20px;
+	line-height:15px;
+	border-radius :20px;	
+	background:#e4e4e4;
+	border:4px solid #f6f4f4;
+}
+a.commentMore:hover{
+	text-decoration:underline;
+	border:4px dotted #fea915;
+	font-weight:bold;
+}
+a.commentMore:active{
+	text-decoration:underline;	
+	border:4px solid #fe9915;
+	font-weight:bold;
+}
+
+
+
+
+
+
+/*-------- 모달윈도우 : 도서 상세 -------*/
+/*-------- 모달윈도우 : 도서 상세 -------*/
+/*-------- 모달윈도우 : 도서 상세 -------*/
+
+
+
+
+div#glayLayerBook{
+	display:none;
+	position:fixed;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	background:black;
+	filter:alpha(opacity=80);
+	opacity: 0.80;
+	z-index:50;
+}
+* html div#glayLayerBook{
+	position:absolute;
+}
+#overLayerBook{
+	display:none;
+	position: absolute;
+	top:50%;
+	left:50%;
+	max-width:900px;
+	height:auto;
+	margin-top:-244px;
+	margin-left:-450px;
+	z-index:51;	
+}
+* html #overLayerBook{
+	position: absolute;
+}
+
+/*----저자소개----*/
+.overTableBookTitle{
+	padding:5px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/*----저자소개----*/
+
+.overAuthorInfoWrap{
+	float:left;
+	margin:70px 0 0 0;
+}
+
+td.overAuthorInfo{
+	text-indent: 20px;	
+	border:1px dotted #123;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
