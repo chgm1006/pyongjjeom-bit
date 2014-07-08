@@ -88,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listMore" resultType="Notice">
 
 		select * from notice where
-		ifnull(deleteyn,'N')='N' limit 5;
+		ifnull(deleteyn,'N')='N' ;
 
 	</select>
 
