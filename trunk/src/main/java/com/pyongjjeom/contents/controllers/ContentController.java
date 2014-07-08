@@ -275,11 +275,62 @@ public class ContentController {
 		List<NaverMovie> list = (List<NaverMovie>) httpSession.getAttribute("resultList");
 		NaverMovie movie = list.get(num);
 		
+		
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("whole", movieContextParsing2(movie, request));
         map.put("movie", movie);
         return map;
     }
+	
+	@ResponseBody
+  @RequestMapping(value = "currentBookContextJson.do", method = RequestMethod.POST)
+public Map<String, Object> correntBookContextJson(@RequestBody Map paramMap,
+          HttpServletRequest request) throws IOException {
+	
+      System.out.println("name = " + paramMap.get("name"));
+      System.out.println("data = " + paramMap.get("data"));
+      
+      int num = Integer.parseInt((String) paramMap.get("name"));
+  		httpSession.setAttribute("category", "book");
+  		httpSession.setAttribute("stat", "search");
+      
+	httpSession = request.getSession();
+	List<NaverBook> list = (List<NaverBook>) httpSession.getAttribute("bookList");
+	NaverBook book = list.get(num);
+	
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("abc", "나와라아아아아아아아");
+     map.put("whole", bookContextParsing2(book, request));
+      map.put("book", book);
+      System.out.println(map.toString());
+
+      return map;
+  }
+
+	
+	@ResponseBody
+  @RequestMapping(value = "currentMovieContextJson.do", method = RequestMethod.POST)
+  public Map<String, Object> currentMovieContextJson(@RequestBody Map paramMap,
+          HttpServletRequest request) throws IOException {
+	
+		System.out.println("까꾸우웅");
+
+      System.out.println("name = " + paramMap.get("name"));
+      System.out.println("data = " + paramMap.get("data"));
+      
+  		httpSession.setAttribute("category", "movie");
+  		httpSession.setAttribute("stat", "search");
+      
+      int num = Integer.parseInt((String) paramMap.get("name"));
+	httpSession = request.getSession();
+	List<NaverMovie> list = (List<NaverMovie>) httpSession.getAttribute("movieList");
+	NaverMovie movie = list.get(num);
+	
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("whole", movieContextParsing2(movie, request));
+      map.put("movie", movie);
+      return map;
+  }
 	
 
 	private Map<String, Object> movieContextParsing2(NaverMovie movie,HttpServletRequest request) throws IOException {
@@ -424,6 +475,8 @@ System.out.println(movie.getImage()+"??????????????");
 
 	      return map;
 	  }
+	
+	
 
 
 	private Map<String, Object> bookContextParsing2(NaverBook book,HttpServletRequest request) throws IOException {
