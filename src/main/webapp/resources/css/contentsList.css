@@ -3,6 +3,7 @@
 
 .contentsList{
 	margin:0 auto;
+	max-width:70%;
 	padding:10px;
 	max-width:70%;
 }
@@ -46,16 +47,14 @@ img.listImg:hover{
 /*---table---*/
 .listTable{
 	float:left;
-	max-width:800px;
+	width:82%;
 	padding:10px 0 0 30px;
 }
 td.tableTitle{
 	overflow:hidden;
 	padding:10px 0;
-	width:100%;
 	font-size:18px;
 	font-weight:bold;
-	text-overflow:ellipsis;
 }
 
 
@@ -75,7 +74,6 @@ td.tableTitle2{
 }
 
 td.tableCont{
-	width:500px;
 	vertical-align:top;
 }
 
