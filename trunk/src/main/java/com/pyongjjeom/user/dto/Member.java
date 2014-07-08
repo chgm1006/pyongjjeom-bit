@@ -39,15 +39,19 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Member [log=" + log + ", memCD=" + memCD + ", email=" + email
-				+ ", memKind=" + memKind + ", memNm=" + memNm + ", birth=" + birth
-				+ ", passwd=" + passwd + ", emailAuthYn=" + emailAuthYn
-				+ ", emailAuthCD=" + emailAuthCD + ", memValid=" + memValid + ", fbYn="
-				+ fbYn + ", permit=" + permit + ", imgPath=" + imgPath + ", imgNm="
-				+ imgNm + ", regiDate=" + regiDate + ", updateDate=" + updateDate + "]";
+		return "Member [memCD=" + memCD + ", email=" + email + ", memKind="
+				+ memKind + ", memNm=" + memNm + ", birth=" + birth + ", passwd="
+				+ passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD="
+				+ emailAuthCD + ", memValid=" + memValid + ", fbYn=" + fbYn
+				+ ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
+				+ regiDate + ", updateDate=" + updateDate + "]";
 	}
+
+
 
 	private Logger log = Logger.getLogger(this.getClass());
 
@@ -61,14 +65,8 @@ public class Member {
 	private String emailAuthCD = "";
 	private char memValid = 'n';
 	private char fbYn = 'n';
-	private String permit = "ADMIN";
 	private String imgPath = "";
-	public String getPermit() {
-		return permit;
-	}
-	public void setPermit(String permit) {
-		this.permit = permit;
-	}
+	
 
 	private String imgNm = "";
 	private Date regiDate = null;
