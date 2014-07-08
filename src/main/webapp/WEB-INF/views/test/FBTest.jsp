@@ -21,6 +21,7 @@
 	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 
