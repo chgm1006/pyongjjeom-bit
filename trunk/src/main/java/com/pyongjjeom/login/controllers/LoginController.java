@@ -44,7 +44,7 @@ public class LoginController {
 
 	private DBCode dc = new DBCode();
 
-	@RequestMapping(value = "loginsuccess.do", method = RequestMethod.POST)
+	@RequestMapping(value = "loginsuccess.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String login(@Valid Model model, Member user, HttpServletRequest request) {
 
 		String email = request.getParameter("email");
@@ -54,18 +54,23 @@ public class LoginController {
 
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
-		if (member == null) {
-			
-			/*model.addAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다."); 
-			model.addAttribute("url", "login.jsp");*/
-			return "login/login";
+		/*member.getMemKind() == "D"*/
+		if (member == null) 
+		{
+			return "login/login_check1";
+		}else if(member.getMemKind().equals("D")){
+			return "login/login_check2";
 		}
 		
+		else{
+		System.out.println(member.getMemKind());
 		HttpSession session = request.getSession();
 
 		session.setAttribute("member", member);
 		System.out.println(request.getSession() + "로그인세션등록완료");
 		return "contents/movieIndex";
+		
+		}
 
 	}
 
