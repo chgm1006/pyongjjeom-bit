@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <style>
 #main {
 	background-color: #FAF4C0;
@@ -15,13 +16,9 @@
 }
 </style>
 
-<script>
-	function valueChange() {
-		var x = document.getElementById('range');
-		var y = document.getElementById('inputValue');
-		y.value = x.value;
-	}
-</script>
+
+
+
 <title>포스팅 page</title>
 </head>
 <body>
@@ -42,7 +39,7 @@
  
  
  <div class="upLoadCont">
-		<form action="updatePostOk.do" method="post">
+		<form name = updateWrite  id =updateWrite action="updatePostOk.do" method="post">
 		<input type="hidden"  value="${book.isbn}"  name="ISBN">
 					
 					<table border="0" width="90%" align="center">
@@ -108,14 +105,14 @@
 				<tr>
 					<td>나의 평점</td>
 					<td><input id="range" type="range" value="0" min="0" step="0.5"
-						max="10" list="number" onchange="valueChange();" /> <datalist id="number">
+						max="10" list="number" onchange="valueChange();"  /> <datalist id="number">
 							<option>0</option>
 							<option>2</option>
 							<option>4</option>
 							<option>6</option>
 							<option>8</option>
 							<option>10</option>
-						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade"  /></td>
+						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade" value = "${np.memGrade}" /></td>
 				</tr>
 				<tr>
 					<td>나의 한줄평</td>
@@ -128,7 +125,7 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="2" align="right"><input type="submit"
-						value="작성완료"> <input type="button" value="취소"
+						value="작성완료" > <input type="button" value="취소"
 						onclick="document.location='../search2.jsp'"></td>
 				</tr>
 			</table>
