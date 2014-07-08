@@ -37,7 +37,6 @@ import org.apache.log4j.Logger;
 
 public class BookGrades {
 
-	private Logger log = Logger.getLogger(this.getClass());
 	private String title;
 	private double naverBg=0;
 	private double aladinBg=0;
@@ -51,18 +50,7 @@ public class BookGrades {
 	public void setBookCode(String bookCode) {
 		this.bookCode = bookCode;
 	}
-	@Override
-	public String toString() {
-		return "BookGrades [log=" + log + ", title=" + title + ", naverBg="
-				+ naverBg + ", aladinBg=" + aladinBg + ", bandiBg=" + bandiBg
-				+ ", kyoboBg=" + kyoboBg + ", yesBg=" + yesBg + "]";
-	}
-	public Logger getLog() {
-		return log;
-	}
-	public void setLog(Logger log) {
-		this.log = log;
-	}
+
 	public String getTitle() {
 		return title;
 	}
