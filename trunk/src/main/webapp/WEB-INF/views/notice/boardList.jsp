@@ -22,10 +22,6 @@
 </head>
 <body>
 
-
-
-
-
 	<!-- /// <header> INCLUDE /// -->
 	<c:import url="../common/header2.jsp" />
 
@@ -39,10 +35,11 @@
 					<li class="boardMenu"><a class="myPageMenu" href="#"
 						OnClick="window.location='eventList.do'">행사공지</a></li>
 					<li class="boardMenu"><a class="myPageMenu" href="#"
-						OnClick="window.location='systemList.do'">시스템공지</a></li>
+						OnClick="window.location='systemList.do'">시스템공지
+						</a></li>
 
 					<c:choose>
-						<c:when test="${member.permit =='ADMIN'}">
+						<c:when test="${member.memKind =='A'}">
 							<li class="boardMenu"><a class="myPageMenu" id="boardWrite" href="#"
 								OnClick="window.location='write.do'">글쓰기</a></li>
 							<li class="boardMenu"><a class="myPageMenu" href="#"
@@ -69,7 +66,7 @@
 
 						<dd class="listContent">${notice.issue}
 						<c:choose>
-						<c:when test="${member.permit =='ADMIN'}">
+						<c:when test="${member.memKind =='A'}">
 						<a class="mainBoard" href="#"
 								OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a> <a
 								class="mainBoard" href="#"
