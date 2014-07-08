@@ -297,8 +297,9 @@ public class NoticeController {
 
 		return "notice/delete_ok";
 	}
-
-	public Notice issueViewToDb(Notice notice) {
+/*
+ * 맨처음 글을쓸때 체크해주는것
+*/	public Notice issueViewToDb(Notice notice) {
 
 		String dbIssue = notice.getIssue();
 		dbIssue = dbIssue.replaceAll("'", "`");
@@ -306,16 +307,21 @@ public class NoticeController {
 
 		return notice;
 	}
-
-	public String IssueDbtoView(String viewIssue) {
-
+/*
+ * view에서 DB로 넘어갈때 체크해주는 것
+*/	public Notice IssueDbtoView(Notice notice) {
+		String viewIssue = notice.getIssue();
 		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
+		notice.setIssue(viewIssue);
 
-		return viewIssue;
+		return notice;
 	}
 
-	public Notice issueUpdateDbtoView(Notice newnotice) {
+
+/*
+ * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
+*/	public Notice issueUpdateDbtoView(Notice newnotice) {
 
 		String viewIssue = newnotice.getIssue();
 		viewIssue = viewIssue.replaceAll("<br>", "\r\n");
@@ -324,14 +330,7 @@ public class NoticeController {
 		return newnotice;
 	}
 
-	public Notice IssueDbtoView(Notice notice) {
-		String viewIssue = notice.getIssue();
-		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
-		notice.setIssue(viewIssue);
-
-		return notice;
-	}
+	
 	
 }
 

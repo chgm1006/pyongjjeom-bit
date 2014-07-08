@@ -10,14 +10,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<insert id="insertBookPost" parameterType="Post">
 		INSERT INTO posting
-		(postcd,pmemcd,review,memgrade,comment,deleteyn,spoilyn,regedate,updatedate,title,director,image,link,actor)
+		(postcd,pmemcd,review,memgrade,comment,deleteyn,spoilyn,regidate,updatedate,title,director,image,link,actor)
 		values
 		(#{postCD},#{pmemCD},#{review},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now(),#{title},#{director},#{image},#{link},#{actor})
 
 	</insert>
 <select id="getPost" parameterType="String" resultType="Post"> 
     
-    select * from posting where pmemcd=#{memCD} order by  updatedate desc;
+    select * from posting where pmemcd=#{memCD} and ifnull(deleteyn,'N')='N' order by  updatedate desc;
     </select>
     
 
@@ -26,14 +26,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		select * from
 		posting where postcd=#{postCD};
 
-	</select>
+	</select> 
 	
 	<update id="editPost" parameterType="Post">
 		update posting
 		set memgrade=#{memGrade},comment=#{comment}, 
-		review=#{review}
+		review=#{review},updatedate=now()
 		where postcd=#{postCD} 
 
 	</update>
+	
+	<update id="deletePost" parameterType="String">
+		update posting
+		set deleteyn = 'Y'
+		where postcd= #{postCD};
+	</update>
+	
+	
+	
 </mapper>
 

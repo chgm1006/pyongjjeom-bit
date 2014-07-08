@@ -45,6 +45,8 @@ public class PostAndReplyController {
 	@Autowired
 	private PostAndReplyService parService;
 	private HttpSession httpSession;
+	
+	
 /*	@Autowired
 	private UserService userService;
 
@@ -59,25 +61,17 @@ public class PostAndReplyController {
 	private Member mem;
 	private Content content;
 
-	
+	DBCode code= new DBCode();
 	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
 	public String postingInsert(Post post, HttpServletRequest request) {
 
-		DBCode code= new DBCode();
+		reviewDbToView(post);
 		post.setPostCD(code.getPostCD("PB"));
-		post=reviewToDB(post);
+		
 		parService.insertBookPost(post);
 		return "contents/contentsPostingResult";
 	}
 
-	public Post reviewToDB(Post post) {
-		String temp = post.getReview();
-		temp = temp.replaceAll("`", "'").replaceAll("\r\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
-		post.setReview(temp);
-		return post;
-	}
-	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getPost(String memCD, String conCD) {
@@ -91,11 +85,7 @@ public class PostAndReplyController {
 
 	@RequestMapping(value = "updatePost.do", method = RequestMethod.GET)
 	public String updatePost(@Valid Post post, Model model,HttpServletRequest request)
-
 	{
-
-		System.out.println("11111111111111111111111");
-		
 		System.out.println(request.getParameter("postCD"));
 		
 		 Post newPost= parService.updatePost(request.getParameter("postCD"));
@@ -104,6 +94,7 @@ public class PostAndReplyController {
 		 
 		 model.addAttribute("np", newPost);
 		 
+		 reviewUpdateDbtoView(newPost);
 		 
 		 System.out.println(post.toString());
 	
@@ -114,8 +105,8 @@ public class PostAndReplyController {
 	public String updatePostOk(@Valid Post post, Model model,HttpServletRequest request)
 
 	{
-
-		System.out.println("11111111111111111111111");
+		
+		reviewDbToView(post);
 		
 		System.out.println(request.getParameter("postCD"));
 		
@@ -130,8 +121,52 @@ public class PostAndReplyController {
 
 	
 	
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String deletePost(String postCD) {
-		return null;
+	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
+	public String deletePost(@Valid Post post, Model model,HttpServletRequest request) {
+		
+		request.getParameter("postCD");
+		
+		parService.deletePost(request.getParameter("postCD"));
+		
+
+		
+		
+		return "myRoom/deletePost_ok";
 	}
+/*
+ * 맨처음 포스팅을 쓸때 체크해주는 것	
+	*/public Post reviewViewToDb(Post post) { //DB에서 View로
+
+		String viewReview = post.getReview();
+		viewReview = viewReview.replaceAll("'", "`");
+		post.setReview(viewReview);
+
+		return post;
+	}
+		
+/*
+* view에서 DB로 넘어갈때 체크해주는 것
+*/	public Post reviewDbToView(Post post) { 
+		String dbReview = post.getReview();
+		dbReview = dbReview.replaceAll("`", "'").replaceAll("\r\n", "<br>")
+				.replaceAll("\u0020", "&nbsp;");
+		post.setReview(dbReview);
+		return post;
+	}
+	
+/*
+ * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
+*/	public Post reviewUpdateDbtoView(Post newPost) {
+
+		String viewPost = newPost.getReview();
+		viewPost = viewPost.replaceAll("<br>", "\r\n");
+		newPost.setReview(viewPost);
+		
+		return newPost;
+	}
+
+	
+	
+	
+	
 }

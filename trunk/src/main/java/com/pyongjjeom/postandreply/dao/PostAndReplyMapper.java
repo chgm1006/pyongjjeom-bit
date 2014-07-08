@@ -38,7 +38,7 @@ public interface PostAndReplyMapper {
 	
 	public Post updatePost(String postCD);
 
-	public int deletePost(String postCD);
+	public void deletePost(String postCD);
 	
 	public void editPost (Post post);
 

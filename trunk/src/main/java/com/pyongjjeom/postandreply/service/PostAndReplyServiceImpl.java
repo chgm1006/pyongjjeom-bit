@@ -129,9 +129,11 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	 * @return
 	 */
 	@Override
-	public int deletePost(String postCD) {
+	public void deletePost(String postCD) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		parMapper.deletePost(postCD);
+	
 	}
 
 	/**
