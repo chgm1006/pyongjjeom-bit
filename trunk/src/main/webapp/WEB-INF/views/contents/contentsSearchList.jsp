@@ -114,71 +114,88 @@
 		<!---- 큰 포스터 JPG ---->
 		<div class="overTitle">
 			<a href="#" class="exit"></a>
-			<img class="img5" src="${pageContext.request.contextPath}/resources/img/06.jpg">
+			<img class="bigPoster" src="${pageContext.request.contextPath}/resources/img/ready.jpg">
 		</div>
 
 		<!---- 작은 포스터 JPG + 평균평점 ---->
 		<div class="overCont">
-			<div class="overContDetail">
-				<img src="${pageContext.request.contextPath}/resources/img/06.jpg"
-					class="overContDetailImg">
-				<div class="overContDetailText">
-					평균평점 : 7.5<img src="img/bigstar.png">
+			<div class="smallPosterWrap">
+				<img class="smallPoster"
+					src="${pageContext.request.contextPath}/resources/img/ready.jpg">
+			</div>
+
+			<div class="overCont1">
+				<!---- 하단 상세 설명 ---->
+				<div class="overContTableWrap">
+					<table class="overContTable">
+						<tr>
+							<td class="overTableMovieTitle" colspan="2"></td>
+						</tr>
+						<tr>
+							<td class="overTableSubtitle" colspan="2"></td>
+						</tr>
+						<tr>
+							<td class="overTableTitle">감독</td>
+							<td class="overTableDirector"></td>
+						</tr>
+						<tr>
+							<td class="overTableTitle">출연</td>
+							<td class="overTableActor"></td>
+						</tr>
+					</table>
+
+					<table class="overContTable2">
+						<tr>
+							<td class="overTableTitle2">네이버 평점</td>
+							<td class="overTableNaver">0.0</td>
+							<td class="overTableTitle2">다음 평점</td>
+							<td class="overTableDaum">0.0</td>
+						</tr>
+						<tr>
+							<td class="overTableTitle2">CGV</td>
+							<td class="overTableCGV">0.0</td>
+							<td class="overTableTitle2">메가박스</td>
+							<td class="overTableMega">0.0</td>
+						</tr>
+						<tr>
+							<td class="overTableTitle2">롯데시네마</td>
+							<td class="overTableLotte">0.0</td>
+							<td class="overTableTitle2">평쩜닷컴</td>
+							<td class="overTableWoori">0.0</td>
+						</tr>
+					</table><br>
+					<div class="overButtonWrap">
+						<a class="overButton" href="${movie.link }" target="_blank">네이버 상세</a>
+						<a class="overButton" id="overButtonPreview" href="#preview">예고편보기</a>
+						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
+					</div>
 				</div>
 			</div>
 
-			<!---- 하단 상세 설명 ---->
-			<div class="overContSpec">
-				<table class="overContSpecTable">
-					<tr>
-						<td><h1 class="title5"></h1></td>
-					</tr>
-					<tr>
-						<td><h3>감독</h3></td>
-						<td><h3></h3></td>
-					</tr>
-					<tr>
-						<td><h3>출연</h3></td>
-						<td><h3></h3></td>
-					</tr>
-
-					<tr>
-						<td>네이버 평점</td>
-						<td>7.2</td>
-						<td>다음 평점</td>
-						<td>8.5</td>
-					</tr>
-					<tr>
-						<td>CGV</td>
-						<td>7.2</td>
-						<td>메가박스</td>
-						<td>8.5</td>
-					</tr>
-					<tr>
-						<td>롯데시네마</td>
-						<td>7.2</td>
-						<td>우리 평쩜</td>
-						<td>8.5</td>
-					</tr>
-				</table>
-
-				<!---- 줄거리 ---->
-				<div class="overContSpecSynop">
-					
-				
-					<h3 class="abc">줄거리</h3>
+			<div class="overCont2">
+				<!---- 예고편 ---->
+				<div id="preview">
+					<h3 class="overContTitle">예고편</h3>
 					<br>
-					<div id="nana">출력</div>
-					<h4>2년의 세월이 흘렀다. 갑자기 떠난 시즈루(미야자키 아오이). 2년 후 그녀에게서 온 편지를 들고 마코토(타마키
-						히로시)는 크리스마스로 들뜬 뉴욕으로 왔다. 그러나 그를 보러 온 건 미유키(쿠로키 메이사)였다. 과연 그녀에겐 무슨 일이 있는
-						것일까? 6년 전, 대학 입학식 날. 번잡한 횡단보도를 건너려는 시즈루와 마주친 마코토. "여기선 건널 수 없으니까 저쪽에서 건너는
-						게 좋을 거야" 마코토는 조금은 별난 행동을 하는 그녀를 향해 셔터를 누른다. 둘 만의 숲. 늘 약 냄새가 난다고 생각하는 마코토,
-						냄새를 잘 못 맡는 시즈루. 둘은 친구가 되고, 매일 캠퍼스 뒷 숲에서 사진을 찍는다. 그러나 시즈루를 여자로 보지 않는 마코토는
-						퀸카 미유키를 짝사랑하고 있다. 시즈루는 성숙한 여자가 되기로 결심하는데...</h4>
-				</div>
+					<iframe class="previewIframe" src="sample.mov"
+					autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
+					</iframe>
 
+				</div>
+				
+				
+				
+				<!---- 줄거리 ---->
+				<div class="overSynopWrap">
+
+					<h3 class="overContTitle">줄거리</h3>
+					<br>
+					<h4 class="overSynop"></h4>
+				</div>
+			</div>
+			<div class="overCont3">
 				<!---- 한줄평 목록 ---->
-				<div class="overContSpecComment">
+				<div class="overCommentWrap">
 					<h3>코멘트</h3>
 					<br>
 					<div class="commentBox">
@@ -237,7 +254,6 @@
 
 	</div>
 
-
 </article>
 
 
@@ -279,8 +295,6 @@
 				},
 				success : function(data) {
 					
-			
-					
 					var genre = data.whole.contentMovieDetail.genre;
 					var nation = data.whole.contentMovieDetail.nation;
 					var open = data.whole.contentMovieDetail.open;
@@ -289,9 +303,9 @@
 					var context = data.whole.contentMovieDetail.context;
 					var grades = data.whole.contentMovieDetail.grades;
 					var video = data.whole.contentMovieDetail.video;
-					var poster = data.whole.contentMovieDetail.poster;
 					
-
+					
+					var poster = data.whole.contentMovieDetail.poster;
 					
 					var title = data.movie.title;
 					var link = data.movie.link;
@@ -301,55 +315,52 @@
 					var actor = data.movie.actor;
 					var userRating = data.movie.userRating;
 					
-
 					var naverMg = data.whole.grades.naverMg;
 					var daumMg = data.whole.grades.daumMg;
 					var cgvMg = data.whole.grades.cgvMg;
 					var lotteMg = data.whole.grades.lotteMg;
 					var megaBoxMg = data.whole.grades.megaBoxMg;
 
-
-					$("#nana").append("장르 : " + genre + '<br>');
-					$("#nana").append("국가 : " + nation + '<br>');
-					$("#nana").append("오픈 : " + open + '<br>');
-					$("#nana").append("등급 : " + grade + '<br>');
-					$("#nana").append("관람객 : " + count + '<br>');
-					$("#nana").append("줄거리 : " + context + '<br>');
-					$("#nana").append("그레이드 : " + grades + '<br>');
-					$("#nana").append("비디오 : " + video + '<br>');
-					$("#nana").append("포스터 : " + poster + '<br>');
-					
-
-					$(".img5").attr("src",poster);
-					$(".overContDetailImg").attr("src",poster);
+					$(".bigPoster").attr("src",poster);
+					$(".smallPoster").attr("src",poster);
 					
 					if(poster==null||poster==""){
-						$(".img5").attr("src","${pageContext.request.contextPath}/resources/img/07.jpg");
-						$(".overContDetailImg").attr("src","${pageContext.request.contextPath}/resources/img/07.jpg");
+						$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
+						$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
 					}
-
-
-					$("#nana").append("영화명!!! : " + title + '<br>');
-					$("#nana").append("상세페이지!!! : " + link + '<br>');
-					$("#nana").append("영문제목!!! : " + subtitle + '<br>');
-					$("#nana").append("제작연도!!! : " + pubDate + '<br>');
-					$("#nana").append("감독!!! : " + director + '<br>');
-					$("#nana").append("출연!!! : " + actor + '<br>');
-					$("#nana").append("네이버평점!!! : " + userRating + '<br><br><br><br><br>');
-
 					
-					$(".title5").text(title);
-					$("#nana").append("코드 : " + naverMg + '<br>');
-					$("#nana").append("코드 : " + daumMg + '<br>');
-					$("#nana").append("코드 : " + cgvMg + '<br>');
-					$("#nana").append("코드 : " + lotteMg + '<br>');
-					$("#nana").append("코드 : " + megaBoxMg + '<br><br><br><br>');
+					$(".overTableMovieTitle").text(title + " " +pubDate);
+					$(".overTableSubtitle").text(subtitle +"  "+ genre +" | "+ nation +" | "+ open);
+					$(".overTableDirector").text(director);
+					$(".overTableActor").text(actor);
 					
+					$(".overTableNaver").text(userRating);
+					$(".overTableDaum").text(daumMg);
+					$(".overTableCGV").text(cgvMg);
+					$(".overTableMega").text(megaBoxMg);
+					$(".overTableLotte").text(lotteMg);
+
+					$(".overSynop").text(context);
+					$(".previewIframe").attr("src",video);
+
 
 				}
 			});
 		});
 	}); 
+</script>
+
+	<!--------- 슬라이드 다운 - 예고편 -------->
+<script type="text/javascript">
+	$(function() {
+		$("#overButtonPreview").click(function() {
+			if ($("#preview").css("display") == "block") {
+				$("#preview:not(:animated)").slideUp("slow");
+			} else {
+				$("#preview").slideDown("slow");
+			}
+		});
+	});
 </script>
 
 	<!--------- 모달윈도우 : 컨텐츠 상세 -------->

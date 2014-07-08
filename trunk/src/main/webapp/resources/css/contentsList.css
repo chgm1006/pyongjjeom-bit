@@ -69,13 +69,14 @@ td.tableSubtitle{
 	vertical-align:top;
 }
 td.tableTitle2{
-	width:70px;
+	min-width:70px;
 	vertical-align:top;
 }
 
 td.tableCont{
 	width:500px;
 	vertical-align:top;
+	text-overflow:ellipsis;
 }
 
 /*---Button---*/
