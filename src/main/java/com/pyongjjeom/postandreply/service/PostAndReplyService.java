@@ -7,6 +7,7 @@ package com.pyongjjeom.postandreply.service;
 import java.util.List;
 
 import com.pyongjjeom.common.NaverBook;
+import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Post;
 
 /**
@@ -25,7 +26,9 @@ public interface PostAndReplyService {
 
 	public List<Post> getReply(String memCD, String conCD);
 
-	public int updatePost(String postCD);
+	public Post updatePost(String postCD);
+	
+	public void editPost (Post post);
 
 	public int deletePost(String postCD);
 

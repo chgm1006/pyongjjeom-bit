@@ -19,5 +19,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
     
     select * from posting where pmemcd=#{memCD} order by  updatedate desc;
     </select>
+    
+
+	<select id="updatePost" parameterType="String" resultType="Post">
+
+		select * from
+		posting where postCD=#{postCD};
+
+	</select>
 	
+	<update id="editPost" parameterType="Notice">
+		update posting
+		set review=#{review},memGrade=#{memgrade},
+		comment=#{comment},deleteyn=#{deleteyn},
+		spoilyn=#{spoilyn},regedate=now(), updatedate=now(), 
+		title=#{title},director=#{director},
+		image={#image},link=#{link},
+		actor=#{actor} where postCD=#{postCD}
+
+	</update>
 </mapper>
+
