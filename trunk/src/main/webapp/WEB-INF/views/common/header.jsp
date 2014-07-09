@@ -16,7 +16,6 @@
 <!---- CSS : Footer ---->
 <link href="${pageContext.request.contextPath}/resources/css/footer.css"
 	rel="stylesheet" type="text/css">
-
 	
 </head>
 <body>

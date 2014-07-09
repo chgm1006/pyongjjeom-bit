@@ -17,6 +17,10 @@
 
 
 	<article>
+<!-- ########################################### -->
+<!-- #################  슬라이드 시작  ################# -->
+<!-- ########################################### -->
+
 		<div class="wrapper">
 			<div class="title1">현재 상영 영화</div>
 
@@ -25,10 +29,7 @@
 				<a id="prev3" class="prev" href="#"></a>
 			</div>
 
-			<!-- ########################################### -->
-			<!-- #################  슬라이드 시작  ################# -->
-			<!-- ########################################### -->
-			<div class="list_carousel">
+						<div class="list_carousel">
 				<ul id="foo3">
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList">
@@ -67,7 +68,11 @@
 					<div class="listTable">
 						<table>
 							<tr>
-								<td class="tableTitle" colspan="2">${movie.title }</td>
+								<td class="tableTitle" colspan="2">
+									<a class="tableTitleLink"  id="tableTitleLinkMovie" href="#">${movie.title }
+										<p class="statusIndex">${status.index}</p>
+									</a>									
+								</td>
 							</tr>
 							<tr>
 								<td class="tableSubtitle">부제</td>
@@ -101,6 +106,9 @@
 			</c:forEach>
 			<!------------------- 더보기 버튼 -------------------->
 			<a href="#" class="listMore">더보기</a>
+			<!------------------- scroll Top 버튼 -------------------->
+			<a href="article" data-scroll><h1>Top</h1></a>
+			
 		</div>
 	</article>
 
@@ -185,7 +193,7 @@
 					</table><br>
 					<div class="overButtonWrap">
 						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
-						<a class="overButton" id="overButtonPreview" href="#preview">예고편보기</a>
+						<a class="overButton" id="overButtonPreview" href="#overButtonPreview" data-scroll>예고편보기</a>
 						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
 					</div>
 				</div>
@@ -193,15 +201,14 @@
 
 			<div class="overCont2">
 				<!---- 예고편 ---->
-				<div id="preview">
-					<h3 class="overContTitle">예고편</h3>
-					<iframe class="previewIframe" src="sample.mov"
-					autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
-					</iframe>
-
+				<div class="overPreviewWrap">
+					<h3 class="overContTitle">예고편</h3>				
+					<div id="preview">
+						<iframe class="previewIframe" src=""
+						autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
+						</iframe>
+					</div>
 				</div>
-				
-				
 				
 				<!---- 줄거리 ---->
 				<div class="overSynopWrap">
@@ -250,11 +257,17 @@
 
 	</div>
 
+	<!----################ 여기부터는 jQuery 모음 ################---->
+	<!----################ 여기부터는 jQuery 모음 ################---->
+	<!----################ 여기부터는 jQuery 모음 ################---->
+	<!----################ 여기부터는 jQuery 모음 ################---->
 
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
+	<!---- ScrollTop button PLUG-IN ---->
+	<script type="text/javascript" language="javascript"
+		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
+<script type="text/javascript">
+    smoothScroll.init();
+</script>
 
 	<!---- 이미지 좌우 슬라이드 PLUG-IN ---->
 	<script type="text/javascript" language="javascript"
@@ -289,15 +302,29 @@
 		});
 	</script>
 
+	<!--------- 예고편 슬라이드 다운  -------->
+	<script type="text/javascript">
+		$(function() {
+			$("#overButtonPreview").click(function() {
+				$(".overPreviewWrap").slideDown();
+			});
+		});
+	</script>
+
+
 	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
 	<script type="text/javascript">
 		$(function() {
 			$("#glayLayer").click(function() {
 				$(this).hide()
 				$("#overLayer").hide();
+				$(".overPreviewWrap").css("display","none");
 			});
 
-			$("a.imgLink,.imgWrap").click(function() {
+			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
+				var scrollTest = $(document).scrollTop();
+				$("#overLayer").css('top',scrollTest + 400 + "px");
+
 				$("#glayLayer").show();
 				$("#overLayer").fadeIn("Fast");
 				return false;
@@ -325,7 +352,7 @@
 <script>
 	$(document).ready(function() {
 
-		$(".imgLink,.imgWrap").click(function() {
+		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
 			var test=$(".statusIndex",(this)).html();
 
 			var formData = {
@@ -394,8 +421,17 @@
 					$(".overTableLotte").text(lotteMg);
 
 					$(".overSynop").text(context);
-					$(".previewIframe").attr("src",video);
 					$("#overButtonLink").attr("href",link);
+					
+					
+					$("#overButtonPreview").click(function() {
+						$(".previewIframe").attr("src",video);
+
+							});
+					$("#glayLayer,.exit").click(function() {
+						$(".previewIframe").attr("src","");
+
+							});
 
 				}
 			});
@@ -406,6 +442,7 @@
 
 
 
+</body>
 
 
 </body>
