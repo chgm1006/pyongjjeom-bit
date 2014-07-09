@@ -87,7 +87,7 @@ public class ContentController {
 
 			List<NaverMovie> movieList = new ArrayList<NaverMovie>();
 			List<String> imageList = new ArrayList<String>();
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 15; i++) {
 				try {
 					uri = "http://openapi.naver.com/search?key=" + apiKey
 							+ "&target=movie" + "&query="
