@@ -128,29 +128,18 @@ public class NoticeController {
 		return "notice/boardList";
 	}
 
+	@RequestMapping(value = "MoreList.do")
+	public String MoreList(@Valid Notice notice, Model model) {
 
-
-@RequestMapping(value = "MoreList.do")
-	public String MoreList(@Valid Notice notice, Model model)
-	{
-		
-		
-		
-	
-		
 		return null;
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
-		
-		
+
 		IssueDbtoView(notice);
-		
+
 		List<Notice> list = noticeService.getAllNoticeDatas();
 
 		for (Notice noti : list) {
@@ -159,55 +148,41 @@ public class NoticeController {
 
 		System.out.println();
 		model.addAttribute("add", list);
-		
-		
-	
-		
-		
-		
+
 		return "notice/boardList";
 	}
-		
-	/*//////////////////////////////////////////////////////////////////
-		
-	  int page = 1;
-			int limit = 5;
-	 리스트 수
-		int listcount = noticeService.listCount();
-		System.out.println("count는 " + listcount);
-		
-		List<Notice> MoreList = noticeService.getAllNoticeListMore(page, limit);
 
-		System.out.println(MoreList.toString());
-		
-	// 총 페이지 수
-		// 0.95를 더해서 올림 처리
-		int maxpage = (int) ((double) listcount / limit + 0.95);
-		// 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
-		int startpage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
-		// 현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30 등...)
-		int endpage = startpage + 10 - 1;
-		if (endpage > maxpage) endpage = maxpage;
-		
-
-
-	
-		model.addAttribute("MoreList", MoreList);
-		model.addAttribute("page",page);
-		model.addAttribute("maxpage", startpage);
-		model.addAttribute("endpage", endpage);
-		model.addAttribute("listcount", listcount);
-		//return
-		ModelAndView view = new ModelAndView("notice/boardList");
-
-		view.addObject("page", page); // 현재 페이지 수
-		view.addObject("maxpage", maxpage); // 최대 페이지 수
-		view.addObject("startpage", startpage); // 현재 페이지에 표시할 첫 페이지 수
-		view.addObject("endpage", endpage); // 현재 페이지에 표시할 끝 페이지 수
-		view.addObject("listcount", listcount); // 모든 아이템의 총 글 수
-	
-		view.addObject("listmore", listMore); // 게시글 리스트
-	}*/
+	/*
+	 * //////////////////////////////////////////////////////////////////
+	 * 
+	 * int page = 1; int limit = 5; 리스트 수 int listcount =
+	 * noticeService.listCount(); System.out.println("count는 " + listcount);
+	 * 
+	 * List<Notice> MoreList = noticeService.getAllNoticeListMore(page, limit);
+	 * 
+	 * System.out.println(MoreList.toString());
+	 * 
+	 * // 총 페이지 수 // 0.95를 더해서 올림 처리 int maxpage = (int) ((double) listcount /
+	 * limit + 0.95); // 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...) int startpage =
+	 * (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1; // 현재 페이지에 보여줄 마지막 페이지
+	 * 수(10, 20, 30 등...) int endpage = startpage + 10 - 1; if (endpage > maxpage)
+	 * endpage = maxpage;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * model.addAttribute("MoreList", MoreList); model.addAttribute("page",page);
+	 * model.addAttribute("maxpage", startpage); model.addAttribute("endpage",
+	 * endpage); model.addAttribute("listcount", listcount); //return ModelAndView
+	 * view = new ModelAndView("notice/boardList");
+	 * 
+	 * view.addObject("page", page); // 현재 페이지 수 view.addObject("maxpage",
+	 * maxpage); // 최대 페이지 수 view.addObject("startpage", startpage); // 현재 페이지에
+	 * 표시할 첫 페이지 수 view.addObject("endpage", endpage); // 현재 페이지에 표시할 끝 페이지 수
+	 * view.addObject("listcount", listcount); // 모든 아이템의 총 글 수
+	 * 
+	 * view.addObject("listmore", listMore); // 게시글 리스트 }
+	 */
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
@@ -249,7 +224,6 @@ public class NoticeController {
 	public String editDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
-		
 		System.out.println(request.getParameter("notCD"));
 
 		Notice newNotice = noticeService.updateData(request.getParameter("notCD"));
@@ -298,9 +272,10 @@ public class NoticeController {
 
 		return "notice/delete_ok";
 	}
-/*
- * 맨처음 글을쓸때 체크해주는것
-*/	public Notice issueViewToDb(Notice notice) {
+
+	/*
+	 * 맨처음 글을쓸때 체크해주는것
+	 */public Notice issueViewToDb(Notice notice) {
 
 		String dbIssue = notice.getIssue();
 		dbIssue = dbIssue.replaceAll("'", "`");
@@ -308,9 +283,10 @@ public class NoticeController {
 
 		return notice;
 	}
-/*
- * view에서 DB로 넘어갈때 체크해주는 것
-*/	public Notice IssueDbtoView(Notice notice) {
+
+	/*
+	 * view에서 DB로 넘어갈때 체크해주는 것
+	 */public Notice IssueDbtoView(Notice notice) {
 		String viewIssue = notice.getIssue();
 		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
@@ -319,10 +295,9 @@ public class NoticeController {
 		return notice;
 	}
 
-
-/*
- * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
-*/	public Notice issueUpdateDbtoView(Notice newnotice) {
+	/*
+	 * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
+	 */public Notice issueUpdateDbtoView(Notice newnotice) {
 
 		String viewIssue = newnotice.getIssue();
 		viewIssue = viewIssue.replaceAll("<br>", "\r\n");
@@ -331,11 +306,4 @@ public class NoticeController {
 		return newnotice;
 	}
 
-	
-	
 }
-
-
-	
-
-

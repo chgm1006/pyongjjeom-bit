@@ -4,16 +4,21 @@
 
 package com.pyongjjeom.login.controllers;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pyongjjeom.common.code.DBCode;
@@ -39,13 +44,16 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-/*	@Autowired
-	private UserService userService;*/
+	/*
+	 * @Autowired private UserService userService;
+	 */
 
 	private DBCode dc = new DBCode();
 
-	@RequestMapping(value = "loginsuccess.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String login(@Valid Model model, Member user, HttpServletRequest request) {
+	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String login(@Valid Model model, Member user,
+			HttpServletRequest request) {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -54,22 +62,21 @@ public class LoginController {
 
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
-		/*member.getMemKind() == "D"*/
-		if (member == null) 
-		{
+		/* member.getMemKind() == "D" */
+		if (member == null) {
 			return "login/login_check1";
-		}else if(member.getMemKind().equals("D")){
+		} else if (member.getMemKind().equals("D")) {
 			return "login/login_check2";
 		}
-		
-		else{
-		System.out.println(member.getMemKind());
-		HttpSession session = request.getSession();
 
-		session.setAttribute("member", member);
-		System.out.println(request.getSession() + "로그인세션등록완료");
-		return "contents/movieIndex";
-		
+		else {
+			System.out.println(member.getMemKind());
+			HttpSession session = request.getSession();
+
+			session.setAttribute("member", member);
+			System.out.println(request.getSession() + "로그인세션등록완료");
+			return "contents/movieIndex";
+
 		}
 
 	}
@@ -111,6 +118,15 @@ public class LoginController {
 	public String createMember() {
 
 		return "login/registerMember";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
+	public Map<String, Object> fbLogin(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) {
+		log.info("fbLogin");
+		
+		System.out.println(paramMap.get("email"));
+		return null;
 	}
 
 }

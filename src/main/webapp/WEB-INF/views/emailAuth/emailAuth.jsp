@@ -77,7 +77,7 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="emailAuth_sendCD.force" method="post">
+				<form action="emailAuth_sendCD.do" method="post">
 					<h2>
 						<span class="red"><strong>이메일 인증</strong></span>
 					</h2>

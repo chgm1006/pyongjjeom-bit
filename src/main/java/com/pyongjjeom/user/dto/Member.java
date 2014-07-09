@@ -25,21 +25,22 @@ public class Member {
 	 * 간략 : .
 	 * 상세 : .
 	 * </PRE>
+	 * 
 	 * Constructor of Member.java class 생성자
+	 * 
 	 * @param email2
-	 * @param passwd2 
+	 * @param passwd2
 	 */
-	
-	public Member(){
-		
+
+	public Member() {
+
 	}
+
 	public Member(String email, String passwd) {
 		this.email = email;
 		this.passwd = passwd;
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -51,10 +52,6 @@ public class Member {
 				+ regiDate + ", updateDate=" + updateDate + "]";
 	}
 
-
-
-	private Logger log = Logger.getLogger(this.getClass());
-
 	private String memCD = "";
 	private String email = "";
 	private String memKind = "";
@@ -64,21 +61,13 @@ public class Member {
 	private char emailAuthYn = 'n';
 	private String emailAuthCD = "";
 	private char memValid = 'n';
+	private String fbId = "";
 	private char fbYn = 'n';
 	private String imgPath = "";
-	
 
 	private String imgNm = "";
 	private Date regiDate = null;
 	private Date updateDate = null;
-
-	public Logger getLog() {
-		return log;
-	}
-
-	public void setLog(Logger log) {
-		this.log = log;
-	}
 
 	public String getMemCD() {
 		return memCD;
@@ -150,6 +139,14 @@ public class Member {
 
 	public void setMemValid(char memValid) {
 		this.memValid = memValid;
+	}
+
+	public String getFbId() {
+		return fbId;
+	}
+
+	public void setFbId(String fbId) {
+		this.fbId = fbId;
 	}
 
 	public char getFbYn() {
