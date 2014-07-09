@@ -646,7 +646,6 @@
 </script>
 
 
-
 <!--------- 모달윈도우 : 영화 상세 -------->
 <script type="text/javascript">
 		$(function() {
