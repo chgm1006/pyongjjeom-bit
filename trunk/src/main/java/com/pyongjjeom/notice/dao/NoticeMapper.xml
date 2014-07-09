@@ -105,7 +105,7 @@ select b.* from (
 SELECT 
     @rnum:=@rnum + 1 as rownum, a.*
 FROM
-    forcebewithyou.notice a,
+    notice a,
     (select @rnum:=0) r
 ) b
 where b.rownum between ${startrow} and ${endrow};

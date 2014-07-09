@@ -43,12 +43,12 @@ public class MailController {
 	@Value("#{common['urlPath']}")
 	private String urlPath;
 
-	@RequestMapping(value = "emailAuth.force", method = RequestMethod.GET)
+	@RequestMapping(value = "emailAuth.do", method = RequestMethod.GET)
 	public String goEmailAuth() {
 		return "emailAuth/emailAuth";
 	}
 
-	@RequestMapping(value = "emailAuth_sendCD.force", method = RequestMethod.POST)
+	@RequestMapping(value = "emailAuth_sendCD.do", method = RequestMethod.POST)
 	public String sendEmailAuth(Member user, HttpServletRequest request) {
 		String toUser = (String) request.getParameter("email");
 		if (toUser == null) {
@@ -88,12 +88,12 @@ public class MailController {
 		return text.toString();
 	}
 
-	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.GET)
+	@RequestMapping(value = "emailAuth_check.do", method = RequestMethod.GET)
 	public String checkEmailAuthGET(Member user, HttpServletRequest request) {
 		return checkEmailAuth(user, request);
 	}
 
-	@RequestMapping(value = "emailAuth_check.force", method = RequestMethod.POST)
+	@RequestMapping(value = "emailAuth_check.do", method = RequestMethod.POST)
 	public String checkEmailAuth(Member user, HttpServletRequest request) {
 		String emailCD = (String) request.getParameter("emailAuthCD");
 		String email = (String) request.getParameter("email");

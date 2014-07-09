@@ -12,7 +12,7 @@
 				<li><a href="BookDateUpdate.do">책 평점 DB_INSERT/UPDATE</a></li>
 				<li><a href="FBTest.do">FaceBook Test</a></li>
 				<li><a href="views/registerMember.do">회원가입</a></li>
-				<li><a href="views/emailAuth.do">인증코드 메일보내기</a></li>
+				<li><a href="emailAuth.do">인증코드 메일보내기</a></li>
 				<li><a href="views/login.do">로그인</a></li>
 				<li><a href="views/myRoom.do">로그인</a></li>
 			</ol>

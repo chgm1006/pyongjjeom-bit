@@ -9,7 +9,7 @@
 	emailAuthCD = aes.getDecryptor(emailAuthCD);
 	email = aes.getDecryptor(email);
 
-	String forwardJSP = "views/emailAuth_check.force?emailAuthCD="
+	String forwardJSP = "emailAuth_check.do?emailAuthCD="
 			+ emailAuthCD + "&email=" + email;
 	request.getRequestDispatcher(forwardJSP).forward(request, response);
 %>
