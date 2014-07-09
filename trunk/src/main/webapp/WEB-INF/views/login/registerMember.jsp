@@ -34,10 +34,23 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript">
-
+	function openCheckId() {
+		var email = document.all.email.value;
+		if (email) {
+			url = "idCheck.jsp?email=" + email;
+			window.open(url, "chkid", "width=500,height=500,menubar=no,toolbar=no");
+		}
+		function chkForm() {
+			var checkemail = document.all.checkemail.value;
+			if (checkemail == 0) {
+				alert("ID 중복체크를 하세요!");
+				return false;
+			}
+			return true;
+		}
+	}
 </script>
 <style>
 .ui-datepicker {
@@ -56,33 +69,31 @@
 </style>
 
 </head>
+<div class="register-container container">
+	<div class="row">
 
-<body>
-
-	<div class="register-container container">
-		<div class="row">
-
-			<div class="register span6">
-				<form action="register.do" method="post">
-					<h2>
-						<span class="red"><strong>평쩜</strong></span>
-					</h2>
-					<label for="email">이메일</label> 
-					<input type="text" id="email" name="email" placeholder="이메일...">
-					<label for="name">이름</label>
-					<input type="text" id="name" name="memNm" placeholder="이름...">
-					<label for="birth">생년월일</label>
-					<input type="text" id="birth" name="birth" placeholder="생년월일...">
-					<label for="password">비밀번호</label>
-					<input type="password" id="password" name="passwd" placeholder="비밀번호...">
-					<label for="password_check">비밀번호확인</label>
-					<input type="password" id="password_check" name="password_check" placeholder="비밀번호확인...">
-					<button type="submit">가입하기</button>
-					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
-				</form>
-			</div>
+		<div class="register span6">
+			<form action="register.do" method="post" enctype="multipart/form-data"
+				onSubmit="return chkForm();">
+				<h2>
+					<span class="red"><strong>평쩜</strong></span>
+				</h2>
+				<label for="email">이메일</label> <input type="text" id="email" name="email"
+					placeholder="이메일..."> <input type="hidden" name="checkid" value=0>
+				<input type="button" value="중복확인" onClick="openCheckId();"> <label
+					for="name">이름</label> <input type="text" id="name" name="memNm"
+					placeholder="이름..."> <label for="birth">생년월일</label> <input
+					type="text" id="birth" name="birth" placeholder="생년월일..."> <label
+					for="password">비밀번호</label> <input type="password" id="password"
+					name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
+				<input type="password" id="password_check" name="password_check"
+					placeholder="비밀번호확인...">
+				<button type="submit">가입하기</button>
+				<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
+			</form>
 		</div>
 	</div>
+</div>
 </body>
 
 
