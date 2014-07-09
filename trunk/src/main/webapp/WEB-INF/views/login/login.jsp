@@ -46,8 +46,8 @@
 	<div class="register-container container">
 		<div class="row">
 
-			<div class="register span6">
-				<form action="loginsuccess.do" method="post">
+			<div class="register span6">  <!--크기 -->				
+			<form action="loginsuccess.do" method="post">
 					<h2>
 						<span class="red"><strong>로그인</strong></span>
 					</h2>
