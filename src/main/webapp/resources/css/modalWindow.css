@@ -204,9 +204,14 @@ a.overButton:hover{
 }
 
 /*---예고편---*/
-.preview{
+.overPreviewWrap{
+	display:none;
+}
+#preview{
+	padding:0 150px;
 }
 iframe.previewIframe{
+	margin:0 auto;
 }
 /*---제목란---*/
 h3.overContTitle{

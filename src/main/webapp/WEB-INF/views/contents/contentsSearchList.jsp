@@ -195,27 +195,25 @@
 					</table><br>
 					<div class="overButtonWrap">
 						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
-						<a class="overButton" id="overButtonPreview" href="#preview">예고편보기</a>
+						<a class="overButton" id="overButtonPreview" href="#overButtonPreview" data-scroll>예고편보기</a>
 						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
 					</div>
 				</div>
 			</div>
 
 			<div class="overCont2">
-				<!---- 예고편 ---->
-				<div id="preview">
-					<h3 class="overContTitle">예고편</h3>
-					<iframe class="previewIframe" src="sample.mov"
-					autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
-					</iframe>
-
+			<!---- 예고편 ---->
+				<div class="overPreviewWrap">
+					<h3 class="overContTitle">예고편</h3>				
+					<div id="preview">
+						<iframe class="previewIframe" src=""
+						autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
+						</iframe>
+					</div>
 				</div>
-				
-				
-				
+			
 				<!---- 줄거리 ---->
 				<div class="overSynopWrap">
-
 					<h3 class="overContTitle">줄거리</h3>
 					<h4 class="overSynop"></h4>
 				</div>
@@ -419,10 +417,25 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
-	
+<!---- ScrollTop button PLUG-IN ---->
+<script type="text/javascript" language="javascript"
+		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
+<script type="text/javascript">
+    smoothScroll.init();
+</script>
 
-		<!--------- 모달윈도우 : 도서 상세 -------->
+	<!--------- 예고편 슬라이드 다운  -------->
 	<script type="text/javascript">
+		$(function() {
+			$("#overButtonPreview").click(function() {
+				$(".overPreviewWrap").slideDown();
+			});
+		});
+	</script>
+
+
+<!--------- 모달윈도우 : 도서 상세 -------->
+<script type="text/javascript">
 		$(function() {
 			$("#glayLayerBook").click(function() {
 				$(this).hide()
@@ -520,15 +533,25 @@
 					$(".overTableLotte").text(lotteMg);
 
 					$(".overSynop").text(context);
-					$(".previewIframe").attr("src",video);
 					$("#overButtonLink").attr("href",link);
+					
+					$("#overButtonPreview").click(function() {
+						$(".previewIframe").attr("src",video);
+
+							});
+					$("#glayLayer,.exit").click(function() {
+						$(".previewIframe").attr("src","");
+
+							});
+
 
 				}
 			});
+			
 		});
+
 	}); 
 </script>
-
 
 <!--------- Ajax JSoN 도서-------->
 <script>
@@ -622,25 +645,15 @@
 					});
 </script>
 
-<!--------- 슬라이드 다운 - 예고편 -------->
-<script type="text/javascript">
-	$(function() {
-		$("#overButtonPreview").click(function() {
-			if ($("#preview").css("display") == "block") {
-				$("#preview:not(:animated)").slideUp("slow");
-			} else {
-				$("#preview").slideDown("slow");
-			}
-		});
-	});
-</script>
 
-	<!--------- 모달윈도우 : 영화 상세 -------->
-	<script type="text/javascript">
+
+<!--------- 모달윈도우 : 영화 상세 -------->
+<script type="text/javascript">
 		$(function() {
 			$("#glayLayer").click(function() {
 				$(this).hide()
 				$("#overLayer").hide();
+				$(".overPreviewWrap").css("display","none");
 			});
 
 			$("#imgWrapMovie,#tableTitleLinkMovie").click(function() {
