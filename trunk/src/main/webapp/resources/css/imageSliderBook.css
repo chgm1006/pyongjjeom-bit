@@ -1,10 +1,8 @@
-
-/*----------///-----image slider-----////--------*/
-
+/*----------///---Book screenSlider-------////--------*/
 .wrapper {
 	margin:0 auto;
-	padding:10px 10px 30px 10px;
-	width:1200px;
+	width:1000px;
+	padding:20px;
 	border-radius: 20px;
 	-webkit-border-radius: 20px; 
 	-moz-border-radius: 20px; 
@@ -12,7 +10,6 @@
 	box-shadow:0px 1px #e6e6e6;
 	border:1px solid #e6e6e6;
 }
-
 .arrow1{
 	margin:230px 0 0 0;
 	float:left;
@@ -52,10 +49,10 @@ a.next:hover{
 .list_carousel {
 	margin: 0 auto;
 	margin-top:10px;
-	width: 1050px;
+	width: 850px;
 	height:500px;
-	padding:24px 0 0 20px;
-	background-color: #999;
+	padding:10px 0 0 20px;
+	background-color: #ccc;
 	border-radius: 20px;
 	-webkit-border-radius: 20px; 
 	-moz-border-radius: 20px; 
@@ -65,22 +62,32 @@ a.next:hover{
 	list-style: none;
 	margin:0 auto;
 }
-.list_carousel li.liList {
+.list_carousel li {
 	float: left;
 	display: block;
-	margin:5px;
-	float:left;
+	max-width:890px;
+	height:500px;
 	text-align: center;
 }
 
-img.imgList {
-	float:left;
-	width:310px;
-	height:444px;;
+
+.set01{
+	width:850px;
+	height:500px;
+	margin:0 0 0 10px;
+
 }
 
+.inner{
+	
+}
 
-/*-----롤오버-----*/
+.imgList {
+	float:left;
+	width:150px;
+	height:220px;
+}
+
 a.imgLink {
 	float:left;
 	margin:5px;
@@ -94,22 +101,19 @@ a.imgLink:hover {
 .innerOver{
 	display:none;
 	position:absolute;
-	margin:362px 0 0 0;
-	width:300px;
-	height:72px;
+	margin:160px 0 0 0;
+	width:140px;
+	height:50px;
 	padding:5px;
 	text-align:left;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-	background-color:#fff7c0;	
+	background-color:#fff;	
 
 }
 .innerOver2{
 	display:none;
 	position:absolute;
-	width:300px;
-	height:374px;
+	width:140px;
+	height:150px;
 	padding:5px;
 	background-color:#111;
 	filter:alpha(opacity=60);
@@ -117,3 +121,285 @@ a.imgLink:hover {
 		
 }
 
+
+/*----------///---contentsList-------////--------*/
+
+
+.contentsList{
+	margin:0 auto;
+	max-width:920px;
+	min-height:500px;	
+}
+
+.list1{
+	margin:10px 0;
+	border-radius :20px;	
+	overflow:hidden;
+	background:#e4e4e4;
+	border:4px solid #f6f4f4;
+}
+.list1:hover{
+		border:4px solid #fea915;
+}
+.list1:active{
+		border:4px solid #ff8400;
+}
+a.listImgLink{
+	
+}
+.listImg{
+	float:left;
+	width:170px;
+	height:auto;
+}
+
+
+
+.detail{
+	padding:30px 30px 0 200px;
+	font-size:14px;
+}
+.listTitle1{
+	padding:5px 0;
+	width:70px;
+	font-size:18px;
+	font-weight:bold;
+}
+.listTitle{
+	width:70px;
+	font-size:14px;
+}
+
+.listSynopValue{
+	max-height:54px;
+	display:block;
+	display:-webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.listButton{
+	float:left;
+	margin:20px 0 0 80px;
+	width:600px;
+	height:auto;
+}
+a.listButtonAll{
+	float:left;
+	display:block;
+	margin:5px;
+	width:88px;
+	height:25px;	
+	text-align:center;
+	font-size:12px;
+	line-height:25px;
+	background-color:#eee;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+a.listButtonAll:hover{
+	background-color:#f8e693;
+	border:2px solid #fff;
+}
+
+
+a.listMore{
+	display:block;
+	padding:35px 0 0 0;
+	width:910px;
+	height:60px;
+	text-align:center;
+	font-size:16px;
+	line-height:20px;
+	border-radius :20px;	
+	background:#e4e4e4;
+	border:4px solid #f6f4f4;
+}
+a.listMore:hover{
+	text-decoration:underline;
+	border:4px dotted #fea915;
+}
+a.listMore:active{
+	text-decoration:underline;	
+	border:4px solid #fe9915;
+}
+
+/*---FOOTER---*/
+footer{
+	width:100%;
+	height:200px;
+	background-color:#666;
+	box-shadow:0 -5px 5px #222;
+}
+
+
+
+
+
+
+/*---플로팅창  띄우기부분---*/
+
+
+div#glayLayer{
+	display:none;
+	position:fixed;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	background:black;
+	filter:alpha(opacity=80);
+	opacity: 0.80;
+	z-index:50;
+}
+* html div#glayLayer{
+	position:absolute;
+}
+#overLayer{
+	display:none;
+	position: absolute;
+	top:50%;
+	left:50%;
+	width:900px;
+	height:auto;
+	margin-top:-244px;
+	margin-left:-450px;
+	z-index:51;	
+}
+* html #overLayer{
+	position: absolute;
+}
+
+.overTitle{
+	border-radius:20px 20px 0 0;
+	overflow:hidden;
+	width:900px;
+	height:500px;
+
+}
+a.exit{
+	display:block;
+	position:absolute;
+	margin:-30px 0 0 850px;
+	width:81px;
+	height:81px;
+	background:url(../img/exit.png) no-repeat;
+}
+a.exit:hover{
+	background-position:0px -81px;
+}
+a.exit:active{
+	background-position:0px -161px;
+}
+.overCont{
+	width:900px;
+	height:auto;
+	border-radius:0 0 20px 20px;
+	background-color:#fbf3ce;
+}
+.overContDetail{
+	position:absolute;
+	margin:-100px 0 0 0;
+	padding:30px;
+}
+img.overContDetailImg{
+	float:left;
+	width:170px;
+	height:auto;
+	border-radius:10px;
+	border:4px solid #FFF;
+	
+	
+	
+}
+.overContDetailText{
+	float:left;
+	margin:10px 0 0 30px;
+	font-size:16px;
+	color:#CCC;
+}
+
+.overContSpec{	
+	padding:30px;
+}
+
+table.overContSpecTable{
+	margin:0 0 0 250px;
+	border:1px dotted #999;
+	border-collapse: collapse;
+}
+
+.overContSpecSynop{
+	float:left;
+	margin:70px 0 0 0;
+	
+}
+
+.overContSpecComment{
+	float:left;
+	margin:30px 0 0 0;
+}
+
+
+
+/*---삼각형 만들기---*/
+.commentBox{
+	margin:10px 0 0 0;
+}
+.userPhoto{
+	float:left;
+	margin:0 0 0 30px;
+	text-align:center;
+}
+a.userRoom{
+	float:left;
+	border-radius:5px;
+	border:3px solid #fff;
+}
+a.userRoom:hover{
+	border:3px solid #f8d94a;
+}
+.userPhoto img{
+	width:50px;
+	height:50px;
+}
+.triangle{
+	float:left;
+	position:absolute;
+	margin:5px 0 0 105px;
+	border-color: transparent #fff transparent transparent;
+	border-style:solid;
+	border-width:10px;
+	width:0;
+	height:0;
+}
+
+.rectangle{
+	float:left;
+	margin:0 0 0 40px;
+	padding:10px;
+	width:600px;
+	min-height:80px;
+	line-height:20px;
+	background-color:#fff;
+	border-radius:10px;
+	border:3px dotted #f8d94a;
+}
+a.commentMore{
+	margin:30px;
+	display:block;
+	padding:15px 0 0 0;
+	width:750px;
+	height:40px;
+	text-align:center;
+	font-size:16px;
+	line-height:16px;
+	border-radius :10px;	
+	background:#d3d3d3;
+	border:2px solid #fbf3ce;
+}
+a.commentMore:hover{
+	text-decoration:underline;
+	border:2px solid #f8d94a;
+}
