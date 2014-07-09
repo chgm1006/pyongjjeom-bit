@@ -45,7 +45,7 @@ img.listImg:hover{
 /*---table---*/
 .listTable{
 	float:left;
-	width:82%;
+	width:80%;
 	padding:10px 0 0 30px;
 }
 td.tableTitle{
@@ -69,6 +69,7 @@ td.tableSubtitle{
 td.tableTitle2{
 	min-width:70px;
 	vertical-align:top;
+	
 }
 
 td.tableCont{
