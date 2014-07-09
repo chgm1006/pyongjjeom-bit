@@ -1,8 +1,18 @@
-
 /*---FOOTER---*/
-footer{
-	width:100%;
-	height:200px;
-	background-color:#666;
-	box-shadow:0 -5px 5px #222;
+footer {
+	width: 100%;
+	height: auto;
+	color: white;
+	font-color:white;
+	background-color: #666;
+	box-shadow: 0 -5px 5px #222;
+}
+
+.footerWrap {
+	margin: 0 auto;
+	width: 300px;
+}
+
+.footerWrap ol li {
+	color: white;
 }
