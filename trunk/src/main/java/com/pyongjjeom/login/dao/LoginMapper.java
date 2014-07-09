@@ -33,17 +33,13 @@ public interface LoginMapper {
 	public int updateEmailAuthCDCheck(Member member);
 
 	public String getEmailAuthCD(String email);
-	
+
 	public Member login(Member member);
-	
+
 	public String login(@Param("email") String email,
 			@Param("passwd") String passwd);
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @param member
-	 * @return 
-	 */
+
+	public int regiesterFBMember(Member member);
+
+	public int updateFBMember(Member member);
 }

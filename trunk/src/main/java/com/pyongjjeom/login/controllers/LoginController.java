@@ -95,13 +95,6 @@ public class LoginController {
 		return "login/logout";
 	}
 
-	// @RequestMapping(value = "", method = RequestMethod.GET)
-	// public String checkMemberLogin(String email) {
-	//
-	// loginService.checkMemberLogin(email);
-	// return null;
-	// }
-
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
 	public String inserMember(@Valid Member user) {
 
@@ -122,10 +115,31 @@ public class LoginController {
 
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
-	public Map<String, Object> fbLogin(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) {
+	public Map<String, Object> fbLogin(@RequestBody Member member,
+			HttpServletRequest request) {
 		log.info("fbLogin");
-		
-		System.out.println(paramMap.get("email"));
+
+		// System.out.println(paramMap.get("email"));
+
+		member.setMemCD(dc.getMemberCD("F"));
+		member.setPasswd(Math.round(Math.random() * 10) + "");
+
+		String memCD = loginService.getMemCD(member.getEmail());
+
+		System.out.println(member.getMemCD());
+		System.out.println(member.getEmail());
+		System.out.println(member.getMemNm());
+		System.out.println(member.getBirth());
+		System.out.println(member.getPasswd());
+		System.out.println(member.getFbId());
+		System.out.println(memCD);
+		System.out.println(member.getImgPath());
+		int cnt = 0;
+		if (memCD == null || memCD == "") {
+			cnt = loginService.regiesterFBMember(member);
+		} else {
+			cnt = loginService.updateFBMember(member);
+		}
 		return null;
 	}
 
