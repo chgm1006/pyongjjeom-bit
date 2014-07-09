@@ -32,13 +32,13 @@
 				<ul id="foo3">
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList">
-								<a class="imgLink" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' "> 
-								<img class="imgList" src="${movie.poster}" />
+							<a class="imgLink" href="#"> 
+								<img class="imgList" src="${movie.poster}" /><p class="statusIndex">${status.index}</p>
 								<div class="innerOver2"></div>
 								<div class="innerOver">
 									<h2>${movie.title }</h2><br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
 								</div>
-						</a></li>
+							</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -55,8 +55,15 @@
 			<div class="title2">최신 영화 리스트</div>
 
 			<c:forEach var="movie" items="${movieList }" varStatus="status">
-				<div class="listWrap" onclick="document.location='currentMovieContext.do?num=${status.index}' ">
-					<img  class="listImg" src="${movie.image}"></a>
+				<div class="listWrap">
+				
+					<div class="imgWrap" id="imgWrapMovie">
+						<a class="btnDetail" href="#">
+							<img  class="listImg" src="${movie.image}">
+							<p class="statusIndex">${status.index}</p>
+						</a>
+					</div>
+				
 					<div class="listTable">
 						<table>
 							<tr>
@@ -85,8 +92,9 @@
 							</tr>
 						</table>
 						<div class="listButtonWrap">
-							<a class="listButton" href="${movie.link }">네이버 상세</a>
-							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
+							<a class="listButton" href="${movie.link }" target="_blank">네이버 상세</a>
+							<a class="listButton" href="${movie.link }" target="_blank">예고편보기</a> 
+							<a class="listButton" href="${movie.link }" target="_blank">포토보기</a>
 						</div>
 					</div>
 				</div>
@@ -115,111 +123,117 @@
 
 		<!---- 큰 포스터 JPG ---->
 		<div class="overTitle">
-			<a href="#" class="exit"></a> <img
-				src="${pageContext.request.contextPath}/resources/img/06.jpg">
+			<a href="#" class="exit"></a>
+			<img class="bigPoster" src="${pageContext.request.contextPath}/resources/img/ready.jpg">
 		</div>
 
 		<!---- 작은 포스터 JPG + 평균평점 ---->
 		<div class="overCont">
-			<div class="overContDetail">
-				<img src="${pageContext.request.contextPath}/resources/img/06.jpg"
-					class="overContDetailImg">
-				<div class="overContDetailText">
-					평균평점 : 7.5<img src="img/bigstar.png">
+			<div class="smallPosterWrap">
+				<img class="smallPoster"
+					src="${pageContext.request.contextPath}/resources/img/ready.jpg">
+			</div>
+
+			<div class="overCont1">
+				<!---- 하단 상세 설명 ---->
+				<div class="overContTableWrap">
+					<div class="averageWrap">
+						<div class="avg1">
+							<h1 class="avgPoint">9.9</h1>
+						</div>
+						<div class="avg2">
+							<h4>평균평점</h4>
+						</div>
+					</div>
+					
+					<table class="overContTable">
+						<tr>
+							<td class="overTableMovieTitle" colspan="2"></td>
+						</tr>
+						<tr>
+							<td class="overTableSubtitle" colspan="2"></td>
+						</tr>
+						<tr>
+							<td class="overTableTitle">감독</td>
+							<td class="overTableDirector"></td>
+						</tr>
+						<tr>
+							<td class="overTableTitle">출연</td>
+							<td class="overTableActor"></td>
+						</tr>
+					</table>
+
+					<table class="overContTable2">
+						<tr>
+							<td class="overTableTitle2">네이버 평점</td>
+							<td class="overTableNaver">0.0</td>
+							<td class="overTableTitle2">다음 평점</td>
+							<td class="overTableDaum">0.0</td>
+						</tr>
+						<tr>
+							<td class="overTableTitle2">CGV</td>
+							<td class="overTableCGV">0.0</td>
+							<td class="overTableTitle2">메가박스</td>
+							<td class="overTableMega">0.0</td>
+						</tr>
+						<tr>
+							<td class="overTableTitle2">롯데시네마</td>
+							<td class="overTableLotte">0.0</td>
+							<td class="overTableTitle2">평쩜닷컴</td>
+							<td class="overTableWoori">0.0</td>
+						</tr>
+					</table><br>
+					<div class="overButtonWrap">
+						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
+						<a class="overButton" id="overButtonPreview" href="#preview">예고편보기</a>
+						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
+					</div>
 				</div>
 			</div>
 
-			<!---- 하단 상세 설명 ---->
-			<div class="overContSpec">
-				<table class="overContSpecTable">
-					<tr>
-						<td><h1>그레이스 오브 모나코</h1></td>
-					</tr>
-					<tr>
-						<td><h3>감독</h3></td>
-						<td><h3>감독이다.</h3></td>
-					</tr>
-					<tr>
-						<td><h3>출연</h3></td>
-						<td><h3>출연이다.</h3></td>
-					</tr>
+			<div class="overCont2">
+				<!---- 예고편 ---->
+				<div id="preview">
+					<h3 class="overContTitle">예고편</h3>
+					<iframe class="previewIframe" src="sample.mov"
+					autoplay="false" frameborder='no' scrolling='no' marginwidth='0' marginheight='0' width="512" height="410">
+					</iframe>
 
-					<tr>
-						<td>네이버 평점</td>
-						<td>7.2</td>
-						<td>다음 평점</td>
-						<td>8.5</td>
-					</tr>
-					<tr>
-						<td>CGV</td>
-						<td>7.2</td>
-						<td>메가박스</td>
-						<td>8.5</td>
-					</tr>
-					<tr>
-						<td>롯데시네마</td>
-						<td>7.2</td>
-						<td>우리 평쩜</td>
-						<td>8.5</td>
-					</tr>
-				</table>
-
-				<!---- 줄거리 ---->
-				<div class="overContSpecSynop">
-					<h3>줄거리</h3>
-					<br>
-					<h4>2년의 세월이 흘렀다. 갑자기 떠난 시즈루(미야자키 아오이). 2년 후 그녀에게서 온 편지를 들고 마코토(타마키
-						히로시)는 크리스마스로 들뜬 뉴욕으로 왔다. 그러나 그를 보러 온 건 미유키(쿠로키 메이사)였다. 과연 그녀에겐 무슨 일이 있는
-						것일까? 6년 전, 대학 입학식 날. 번잡한 횡단보도를 건너려는 시즈루와 마주친 마코토. "여기선 건널 수 없으니까 저쪽에서 건너는
-						게 좋을 거야" 마코토는 조금은 별난 행동을 하는 그녀를 향해 셔터를 누른다. 둘 만의 숲. 늘 약 냄새가 난다고 생각하는 마코토,
-						냄새를 잘 못 맡는 시즈루. 둘은 친구가 되고, 매일 캠퍼스 뒷 숲에서 사진을 찍는다. 그러나 시즈루를 여자로 보지 않는 마코토는
-						퀸카 미유키를 짝사랑하고 있다. 시즈루는 성숙한 여자가 되기로 결심하는데...</h4>
 				</div>
+				
+				
+				
+				<!---- 줄거리 ---->
+				<div class="overSynopWrap">
 
-				<!---- 한줄평 목록 ---->
-				<div class="overContSpecComment">
-					<h3>코멘트</h3>
-					<br>
-					<div class="commentBox">
+					<h3 class="overContTitle">줄거리</h3>
+					<h4 class="overSynop"></h4>
+				</div>
+			</div>
+			
+			<!---- 코멘트 목록 ---->
+			<div class="overCont3">
+				<h3 class="overContTitle">코멘트</h3>
+					
+				<div class="overCommentWrap">
+					<div class="commentBoxLeft">
+					
 						<div class="userPhoto">
-							<a href="#" class="userRoom"><img
-								src="${pageContext.request.contextPath}/resources/img/user1.jpg"></a><br>박희본
+							<a href="#" class="userRoomLink">
+								<img src="${pageContext.request.contextPath}/resources/img/user1.jpg">
+							</a><br>
 						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<img src="img/star2.jpg">
-							<h3>이 영화 재밌게 봤습니다.</h3>
-							<h5>2014.06.19</h5>
+						
+						<div class="commentName">박희본
 						</div>
 					</div>
-					<div class="clear"></div>
-					<div class="commentBox">
-						<div class="userPhoto">
-							<a href="#" class="userRoom"><img
-								src="${pageContext.request.contextPath}/resources/img/user1.jpg"></a><br>박희본
-						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<img src="img/star2.jpg">
-							<h3>이 영화 재밌게 봤습니다.</h3>
-							<h5>2014.06.19</h5>
-						</div>
+					
+					<div class="commentBoxRight">
+						<h3 class="userComment">이 영화 재밌게 봤습니다.</h3>
+						<h5 class="userDate">2014.06.19</h5>
 					</div>
+					
 					<div class="clear"></div>
-					<div class="commentBox">
-						<div class="userPhoto">
-							<a href="#" class="userRoom"><img
-								src="${pageContext.request.contextPath}/resources/img/user1.jpg"></a><br>박희본
-						</div>
-						<div class="triangle"></div>
-						<div class="rectangle">
-							<img src="img/star2.jpg">
-							<h3>이 영화 재밌게 봤습니다.</h3>
-							<h5>2014.06.19</h5>
-						</div>
-					</div>
-					<div class="clear"></div>
-
 
 					<!---- 더보기 ---->
 					<a href="#" class="commentMore">더보기</a>
@@ -283,7 +297,7 @@
 				$("#overLayer").hide();
 			});
 
-			$("a.imgLink, a.listImgLink").click(function() {
+			$("a.imgLink,.imgWrap").click(function() {
 				$("#glayLayer").show();
 				$("#overLayer").fadeIn("Fast");
 				return false;
@@ -311,7 +325,7 @@
 <script>
 	$(document).ready(function() {
 
-		$("#imgWrapMovie,#tableTitleLinkMovie").click(function() {
+		$(".imgLink,.imgWrap").click(function() {
 			var test=$(".statusIndex",(this)).html();
 
 			var formData = {
