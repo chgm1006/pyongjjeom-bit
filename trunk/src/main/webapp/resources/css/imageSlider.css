@@ -94,12 +94,15 @@ a.imgLink:hover {
 .innerOver{
 	display:none;
 	position:absolute;
-	margin:384px 0 0 0;
+	margin:362px 0 0 0;
 	width:300px;
-	height:50px;
+	height:72px;
 	padding:5px;
 	text-align:left;
-	background-color:#fff;	
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	background-color:#fff7c0;	
 
 }
 .innerOver2{
