@@ -1,0 +1,119 @@
+
+/*----------///-----image slider-----////--------*/
+
+.wrapper {
+	margin:0 auto;
+	padding:10px 10px 30px 10px;
+	width:1200px;
+	border-radius: 20px;
+	-webkit-border-radius: 20px; 
+	-moz-border-radius: 20px; 
+	-ms-border-radius:20px;
+	box-shadow:0px 1px #e6e6e6;
+	border:1px solid #e6e6e6;
+}
+
+.arrow1{
+	margin:230px 0 0 0;
+	float:left;
+}
+a.prev {
+	display:block;
+	float:left;
+	overflow:hidden;
+	width:28px;
+	height:45px;
+	background:url(../img/leftArrow.png) no-repeat;
+	z-index:10;
+}
+a.prev:hover{
+	background-position:0px  -45px;
+}
+.arrow2{
+	float:right;	
+	margin:-285px 0 0 0;	
+}
+a.next {
+	display:block;
+	float:right;	
+	overflow:hidden;
+	width:28px;
+	height:45px;
+	background:url(../img/rightArrow.png) no-repeat;
+	z-index:10;
+}
+a.next:hover{
+	background-position:0px  -45px;
+}
+
+/*----------///---이미지 슬라이더 플러그인-------////--------*/
+
+
+.list_carousel {
+	margin: 0 auto;
+	margin-top:10px;
+	width: 1050px;
+	height:500px;
+	padding:24px 0 0 20px;
+	background-color: #999;
+	border-radius: 20px;
+	-webkit-border-radius: 20px; 
+	-moz-border-radius: 20px; 
+	-ms-border-radius:20px;
+}
+.list_carousel ul {
+	list-style: none;
+	margin:0 auto;
+}
+.list_carousel li.liList {
+	float: left;
+	display: block;
+	margin:5px;
+	float:left;
+	text-align: center;
+}
+
+img.imgList {
+	float:left;
+	width:310px;
+	height:444px;;
+}
+
+
+/*-----롤오버-----*/
+a.imgLink {
+	float:left;
+	margin:5px;
+	border-radius:5px;
+	background-color:#000;
+	border:4px solid #383937;
+}
+a.imgLink:hover {
+	border:4px solid #fea915;
+}
+.innerOver{
+	display:none;
+	position:absolute;
+	margin:362px 0 0 0;
+	width:300px;
+	height:72px;
+	padding:5px;
+	text-align:left;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	background-color:#fff7c0;	
+
+}
+.innerOver2{
+	display:none;
+	position:absolute;
+	width:300px;
+	height:374px;
+	padding:5px;
+	background-color:#111;
+	filter:alpha(opacity=60);
+	opacity:0.6;
+		
+}
+
