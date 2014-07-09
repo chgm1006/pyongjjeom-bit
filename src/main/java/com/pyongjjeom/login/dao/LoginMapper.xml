@@ -4,17 +4,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 <mapper namespace="com.pyongjjeom.login.dao.LoginMapper">
 
 	<select id="checkMemberLogin" parameterType="hashmap" resultType="Member">
-		select email from member where email = #
+		select
+		email from member where email = #
 	</select>
-	
+
 	<select id="login" resultType="Member">
-	    select *  from member where email=#{email}  and passwd=#{passwd}
-	    
+		select * from member where email=#{email}
+		and passwd=#{passwd}
+
 	</select>
-	
+
 	<insert id="insertMember" parameterType="Member">
-		insert into member(memcd, email, memkind, memnm, birth, passwd, emailauthyn, memvalid, fbyn, regidate, updatedate)
-		values(#{memCD},#{email},'G',#{memNm},#{birth},#{passwd},'N','A','N',now(),now()); 
+		insert into member(memcd, email,
+		memkind, memnm, birth, passwd, emailauthyn, memvalid, fbyn, regidate,
+		updatedate)
+		values(#{memCD},#{email},'G',#{memNm},#{birth},#{passwd},'N','A','N',now(),now());
 	</insert>
 
 	<select id="getMemCD" parameterType="string" resultType="string">
@@ -48,5 +52,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		emailauthcd FROM member
 		where email = #{email};
 	</select>
+
+	<insert id="regiesterFBMember" parameterType="Member">
+		INSERT INTO member
+		(memCD,
+		email,
+		memkind,
+		memnm,
+		birth,
+		passwd,
+		emailauthyn,
+		emailauthcd,
+		memvalid,
+		fbid,
+		fbyn,
+		imgpathcd,
+		imgnm,
+		regidate,
+		updatedate)
+		VALUES
+		(
+		#{memCD },
+		#{email },
+		'F',
+		#{memNm },
+		#{birth },
+		password('${passwd }'),
+		'Y',
+		'',
+		'A',
+		#{fbId },
+		'Y',
+		#{imgPath },
+		'',
+		now(),
+		now());
+
+	</insert>
+
+	<update id="updateFBMember" parameterType="Member">
+
+	</update>
 
 </mapper>

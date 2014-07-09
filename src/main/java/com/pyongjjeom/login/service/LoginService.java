@@ -31,8 +31,12 @@ public interface LoginService {
 	public int updateEmailAuthCDCheck(Member member);
 
 	public String getEmailAuthCD(String email);
-	
+
 	public Member login(Member member);
-	
+
 	public String login(String email, String passwd);
+
+	public int regiesterFBMember(Member member);
+
+	public int updateFBMember(Member member);
 }

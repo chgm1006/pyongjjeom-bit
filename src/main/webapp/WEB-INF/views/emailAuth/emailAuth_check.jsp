@@ -68,7 +68,7 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="emailAuth_check.force" method="post">
+				<form action="emailAuth_check.do" method="post">
 					<h2>
 						<span class="red"><strong>인증번호 입력</strong></span>
 					</h2>
