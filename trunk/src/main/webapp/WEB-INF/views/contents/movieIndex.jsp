@@ -30,18 +30,16 @@
 			<!-- ########################################### -->
 			<div class="list_carousel">
 				<ul id="foo3">
-
 					<c:forEach items="${movieList }" var="movie" varStatus="status">
 						<li class="liList">
 								<a class="imgLink" href="#" onclick="document.location='currentMovieContext.do?num=${status.index}' "> 
 								<img class="imgList" src="${movie.poster}" />
 								<div class="innerOver2"></div>
 								<div class="innerOver">
-									영화제목 : ${movie.title }<br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
+									<h2>${movie.title }</h2><br> 감독 : ${movie.director}<br> 출연 : ${movie.actor }<br>
 								</div>
 						</a></li>
 					</c:forEach>
-
 				</ul>
 			</div>
 			<!---- 오른쪽 화살표 ---->
@@ -100,25 +98,12 @@
 
 	</article>
 
-
 	<!-- ########################################### -->
 	<!-- #################    FOOTER    ################# -->
 	<!-- ########################################### -->
-	<footer>
-		<h1>Spring 3, MVC Examples</h1>
-		<ul>
 
-			<li><a href="search2.jsp">포스팅 (NAVER API)</a></li>
-			<li><a href="boardList.do">공지사항</a></li>
-			<li><a href="MovieDataUpdate.do">영화 평점 DB_INSERT/UPDATE</a></li>
-			<li><a href="BookDateUpdate.do">책 평점 DB_INSERT/UPDATE</a></li>
-			<li><a href="FBTest.do">FaceBook Test</a></li>
-			<li><a href="views/registerMember.do">회원가입</a></li>
-			<li><a href="views/emailAuth.do">인증코드 메일보내기</a></li>
-			<li><a href="views/login.do">로그인</a></li>
-			<li><a href="views/myRoom.do">로그인</a></li>
-		</ul>
-	</footer>
+<!-- /// <footer> INCLUDE /// -->
+<%@ include file="../common/footer.jsp"%>
 
 
 	<!-- ################################################# -->
