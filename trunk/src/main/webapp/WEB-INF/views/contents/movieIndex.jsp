@@ -374,7 +374,6 @@
 					var cgvMg = data.whole.grades.cgvMg;
 					var lotteMg = data.whole.grades.lotteMg;
 					var megaBoxMg = data.whole.grades.megaBoxMg;
-
 					$(".bigPoster").attr("src",poster);
 					$(".smallPoster").attr("src",poster);
 					
