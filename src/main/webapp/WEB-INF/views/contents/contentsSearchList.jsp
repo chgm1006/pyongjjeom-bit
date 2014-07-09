@@ -234,8 +234,8 @@
 							</a><br>
 						</div>
 						
-						<span class="commentName">박희본
-						</span>
+						<div class="commentName">박희본
+						</div>
 					</div>
 					
 					<div class="commentBoxRight">
@@ -373,8 +373,8 @@
 							</a><br>
 						</div>
 						
-						<span class="commentName">박희본
-						</span>
+						<div class="commentName">박희본
+						</div>
 					</div>
 					
 					<div class="commentBoxRight">
