@@ -175,13 +175,15 @@ public class NaverParse {
 
 				Element element = (Element) list.item(0);
 				link=getContent(element, "link");
-
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		catch (Exception e) {
+			link="";
 		}
 		return link;
 	}
