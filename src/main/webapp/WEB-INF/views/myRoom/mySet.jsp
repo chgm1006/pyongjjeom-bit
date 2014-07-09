@@ -93,8 +93,8 @@ function test_sample(){
 					<td class="item">내 포스팅 댓글 참여 범위</td>
 					<td class="cont">
 					<input type = "radio" name ="reply" value ="1"/>전체허용<br>
-					<input type = "radio" name ="reply" value ="1"/>친구만허용<br>
-					<input type = "radio" name ="reply" value ="1"/>허용안함<br>
+					<input type = "radio" name ="reply" value ="2"/>친구만허용<br>
+					<input type = "radio" name ="reply" value ="3"/>허용안함<br>
 <!-- 					전체허용<input type="radio" name="reply" value="전체허용">
 					친구만 허용<input type="radio" name="reply" value="친구만 허용"> 
 					허용안함<input type="radio" name="reply" value="허용안함"> -->
