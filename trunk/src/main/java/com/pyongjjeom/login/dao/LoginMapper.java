@@ -23,6 +23,8 @@ import com.pyongjjeom.user.dto.Member;
 public interface LoginMapper {
 
 	public int checkMemberLogin(Map<String, String> loginMap);
+	
+	public Member getEmail(String email);
 
 	public int insertMember(Member user);
 
