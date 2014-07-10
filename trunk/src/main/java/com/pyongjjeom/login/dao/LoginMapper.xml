@@ -29,6 +29,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		from member where email = #{email};
 	</select>
 
+	<select id="getMemCDbyFBID" parameterType="string" resultType="string">
+		select
+		memcd
+		from member where fbid = #{fbId};
+	</select>
+
 	<update id="updateEmailAuthCD" parameterType="Member">
 		UPDATE member
 		SET
@@ -69,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		memvalid,
 		fbid,
 		fbyn,
-		imgpathcd,
+		imgpath,
 		imgnm,
 		regidate,
 		updatedate)
@@ -94,7 +100,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</insert>
 
 	<update id="updateFBMember" parameterType="Member">
-
+		UPDATE member
+		SET
+		email =
+		#{email} ,
+		memnm = #{memNm} ,
+		birth = #{birth} ,
+		imgpath = #{imgPath} ,
+		updatedate = now()
+		WHERE fbid = #{fbId};
 	</update>
 
+	<select id="getMemberInfoByFBID" parameterType="String" resultType="Member">
+		select memCD,
+		email,
+		memNm,
+		birth,
+		fbId,
+		imgPath
+		from member where fbid = #{fbId};
+	</select>
 </mapper>
