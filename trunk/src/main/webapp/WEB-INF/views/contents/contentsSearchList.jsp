@@ -77,8 +77,6 @@
 						</a>
 					</div>
 					
-					
-					
 					<div class="listTable">
 						<table>
 							<tr>
@@ -107,11 +105,12 @@
 						</table>
 						<div class="listButtonWrap">
 							<a class="listButton" href="${book.link }" target="_blank">네이버 상세</a>
-							<a class="listButton" href="#">예고편보기</a> <a class="listButton" href="#">포토보기</a>
+							<a class="listButton" href="www.kyobobook.co.kr">사러가기</a>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+
 		</c:when>
 		</c:choose>
 		
@@ -149,7 +148,7 @@
 				<div class="overContTableWrap">
 					<div class="averageWrap">
 						<div class="avg1">
-							<h1 class="avgPoint">9.9</h1>
+							<h1 class="avgPoint">0.0</h1>
 						</div>
 						<div class="avg2">
 							<h4>평균평점</h4>
@@ -286,7 +285,7 @@
 				<div class="overContTableWrap">
 					<div class="averageWrap">
 						<div class="avg1">
-							<h1 class="avgPoint">9.9</h1>
+							<h1 class="avgPoint">0.0</h1>
 						</div>
 						<div class="avg2">
 							<h4>평균평점</h4>
@@ -411,7 +410,6 @@
 <!-- /// <footer> INCLUDE /// -->
 <%@ include file="../common/footer.jsp"%>
 
-
 	
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
@@ -432,7 +430,6 @@
 			});
 		});
 	</script>
-
 
 <!--------- 모달윈도우 : 도서 상세 -------->
 <script type="text/javascript">
@@ -457,7 +454,6 @@
 
 		});
 	</script>
-
 
 <!--------- Ajax JSoN 영화-------->
 <script>
@@ -512,6 +508,16 @@
 					var cgvMg = data.whole.grades.cgvMg;
 					var lotteMg = data.whole.grades.lotteMg;
 					var megaBoxMg = data.whole.grades.megaBoxMg;
+					
+					
+					var avg = data.whole.avg;
+
+					alert("avg " + avg);
+					
+					$(".avgPoint").text(avg);
+
+					
+					
 
 					$(".bigPoster").attr("src",poster);
 					$(".smallPoster").attr("src",poster);
@@ -601,8 +607,11 @@
 															var aladinBg = data.whole.grades.aladinBg;
 															var bandiBg = data.whole.grades.bandiBg;
 															var kyoboBg = data.whole.grades.kyoboBg;
-															var avg = data.whole.grades.avg;
 
+															var avg = data.whole.avg;
+															$(".avgPoint").text(avg);
+
+															
 															var authorIntroContent = data.whole.contentBookDetail.authorIntroContent;
 															var bookIntroContent = data.whole.contentBookDetail.bookIntroContent;
 															var poster = data.whole.contentBookDetail.poster;
