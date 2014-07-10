@@ -42,9 +42,5 @@ jQuery(document)
 											}
 
 										});
-						
-						$("#FBLogin").click(function() {
-							fnLoginFB();
-						});
 
 					});
