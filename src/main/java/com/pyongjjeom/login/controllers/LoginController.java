@@ -114,19 +114,9 @@ public class LoginController {
 		return "login/registerMember";
 	}
 
-	/*
-	 * @RequestMapping(value = "idCheck.do", method = RequestMethod.GET) public
-	 * String getEamil(String email, Model model){
-	 * 
-	 * Member member = loginService.getEmail(email); if(member == null){
-	 * model.addAttribute("result", "true"); }else{ model.addAttribute("result",
-	 * "false"); } return "login/idCheck"; }
-	 */
-
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
-	public Map<String, Object> fbLogin(@RequestBody Member member,
-			HttpServletRequest request) {
+	public Member fbLogin(@RequestBody Member member, HttpServletRequest request) {
 		log.info("fbLogin");
 
 		// System.out.println(paramMap.get("email"));
@@ -134,23 +124,29 @@ public class LoginController {
 		member.setMemCD(dc.getMemberCD("F"));
 		member.setPasswd(Math.round(Math.random() * 10) + "");
 
-		String memCD = loginService.getMemCD(member.getEmail());
+		String memCD = loginService.getMemCDbyFBID(member.getFbId().trim());
 
-		System.out.println(member.getMemCD());
-		System.out.println(member.getEmail());
-		System.out.println(member.getMemNm());
-		System.out.println(member.getBirth());
-		System.out.println(member.getPasswd());
-		System.out.println(member.getFbId());
-		System.out.println(memCD);
-		System.out.println(member.getImgPath());
 		int cnt = 0;
 		if (memCD == null || memCD == "") {
 			cnt = loginService.regiesterFBMember(member);
 		} else {
 			cnt = loginService.updateFBMember(member);
 		}
-		return null;
+
+		Member sMember = loginService.getMemberInfoByFBID(member.getFbId());
+		System.out.println("cnt = " + cnt);
+		HttpSession session = request.getSession(false);
+		if (cnt > 1) {
+			session.setAttribute("memCD", sMember.getMemCD());
+			session.setAttribute("email", sMember.getEmail());
+			session.setAttribute("memCD", sMember.getMemNm());
+			session.setAttribute("memNm", sMember.getMemCD());
+			session.setAttribute("fbId", sMember.getFbId());
+			session.setAttribute("imgPath", sMember.getImgPath());
+		}else{
+			session.setAttribute("errorMSG", "정보가 정상적으로 저장되지 않았습니다.");
+		}
+		return sMember;
 	}
 
 }
