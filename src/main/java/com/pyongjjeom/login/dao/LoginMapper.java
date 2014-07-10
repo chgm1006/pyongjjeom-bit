@@ -44,4 +44,46 @@ public interface LoginMapper {
 	public int regiesterFBMember(Member member);
 
 	public int updateFBMember(Member member);
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : getMemCDbyFBID
+	 * @date : 2014. 7. 10.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 7. 10. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @param fbId
+	 * @return
+	 */
+	public String getMemCDbyFBID(String fbId);
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
+	 * @Method Name : getMemberInfoByFBID
+	 * @date : 2014. 7. 10.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 7. 10. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @param fbId
+	 * @return
+	 */
+	public Member getMemberInfoByFBID(String fbId);
 }
