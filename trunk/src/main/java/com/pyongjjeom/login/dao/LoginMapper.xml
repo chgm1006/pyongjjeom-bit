@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		email from member where email = #
 	</select>
 
-	<select id="getEmail" parameterType="Member" resultType="Member">
+	<select id="getEmail" parameterType="string" resultType="Member">
 	    select email from member where email = #{email}
 	</select>
 	<select id="login" resultType="Member">
@@ -30,11 +30,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</select>
 
 
-	<select id ="getEmail" parameterType = "string" resultType = "Member">
-	    select * from member where email= #{email};
-	    
-	    
-	</select>
 
 	<select id="getMemCDbyFBID" parameterType="string" resultType="string">
 		select
