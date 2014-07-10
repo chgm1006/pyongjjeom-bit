@@ -4,9 +4,11 @@
 
 package com.pyongjjeom.login.controllers;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -53,7 +55,7 @@ public class LoginController {
 	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String login(@Valid Model model, Member user,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -62,7 +64,6 @@ public class LoginController {
 
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
-		/* member.getMemKind() == "D" */
 		if (member == null) {
 			return "login/login_check1";
 		} else if (member.getMemKind().equals("D")) {
@@ -75,8 +76,8 @@ public class LoginController {
 
 			session.setAttribute("member", member);
 			System.out.println(request.getSession() + "로그인세션등록완료");
-			return "contents/movieIndex";
 
+			return "login/loginsuccess";
 		}
 
 	}
@@ -112,6 +113,15 @@ public class LoginController {
 
 		return "login/registerMember";
 	}
+
+	/*
+	 * @RequestMapping(value = "idCheck.do", method = RequestMethod.GET) public
+	 * String getEamil(String email, Model model){
+	 * 
+	 * Member member = loginService.getEmail(email); if(member == null){
+	 * model.addAttribute("result", "true"); }else{ model.addAttribute("result",
+	 * "false"); } return "login/idCheck"; }
+	 */
 
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
