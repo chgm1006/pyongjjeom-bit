@@ -513,8 +513,6 @@
 					var avg = data.whole.avg;
 					$(".avgPoint").text(avg);
 
-					
-					
 
 					$(".bigPoster").attr("src",poster);
 					$(".smallPoster").attr("src",poster);
