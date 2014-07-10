@@ -52,7 +52,7 @@
 						<li class="menu5"><a href="login.do" class="menu5_1">로그인</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="menu5_1"><a href="myRoom.do" class="menu5_1_1">마이룸</a></li>
+						<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
