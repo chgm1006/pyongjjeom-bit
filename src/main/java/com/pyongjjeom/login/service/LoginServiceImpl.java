@@ -92,6 +92,31 @@ public class LoginServiceImpl implements LoginService {
 	 * 2. 처리내용 :
 	 * </pre>
 	 * 
+	 * @Method Name : getMemCDbyFBID
+	 * @date : 2014. 7. 10.
+	 * @author : Forrest
+	 * @history :
+	 *          ------------------------------------------------------------------
+	 *          ----- 변경일 작성자 변경내용 ----------- -------------------
+	 *          --------------------------------------- 2014. 7. 10. Forrest 최초 작성
+	 *          ------------------------------------------------------------------
+	 *          -----
+	 * 
+	 * @see com.pyongjjeom.login.service.LoginService#getMemCDbyFBID(java.lang.String)
+	 * @param fbId
+	 * @return
+	 */
+	@Override
+	public String getMemCDbyFBID(String fbId) {
+		return loginMapper.getMemCDbyFBID(fbId);
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 :
+	 * </pre>
+	 * 
 	 * @Method Name : updateEmailAuthCD
 	 * @date : 2014. 6. 24.
 	 * @author : Forrest
@@ -165,19 +190,6 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.login.service.LoginService#getEmail(com.pyongjjeom.user.dto.Member)
-	 */
-	@Override
-	public Member getEmail(String email) {
-		// TODO Auto-generated method stub
-		return loginMapper.getEmail(email);
-	}
-
-	/**
 	 * <pre>
 	 * 1. 개요 : FaceBook 회원 정보 가입.
 	 * 2. 처리내용 : FaceBook 회원 정보 가입하기.
@@ -229,6 +241,12 @@ public class LoginServiceImpl implements LoginService {
 	public int updateFBMember(Member member) {
 		// TODO Auto-generated method stub
 		return loginMapper.updateFBMember(member);
+	}
+
+	@Override
+	public Member getMemberInfoByFBID(String fbId) {
+		// TODO Auto-generated method stub
+		return loginMapper.getMemberInfoByFBID(fbId);
 	}
 
 }
