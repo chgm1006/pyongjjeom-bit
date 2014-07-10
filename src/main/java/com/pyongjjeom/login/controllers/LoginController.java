@@ -77,7 +77,7 @@ public class LoginController {
 			session.setAttribute("member", member);
 			System.out.println(request.getSession() + "로그인세션등록완료");
 
-			return "contexts/movieIndex";
+			return "contents/movieIndex";
 		}
 
 	}
