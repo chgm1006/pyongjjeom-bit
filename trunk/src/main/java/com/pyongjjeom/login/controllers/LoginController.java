@@ -55,7 +55,8 @@ public class LoginController {
 	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String login(@Valid Model model, Member user,
-			HttpServletRequest request, HttpServletResponse response) throws IOException {
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -81,10 +82,6 @@ public class LoginController {
 		}
 
 	}
-	
-	
-	
-	
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
@@ -156,7 +153,7 @@ public class LoginController {
 			session.setAttribute("memNm", sMember.getMemCD());
 			session.setAttribute("fbId", sMember.getFbId());
 			session.setAttribute("imgPath", sMember.getImgPath());
-		}else{
+		} else {
 			session.setAttribute("errorMSG", "정보가 정상적으로 저장되지 않았습니다.");
 		}
 		return sMember;
