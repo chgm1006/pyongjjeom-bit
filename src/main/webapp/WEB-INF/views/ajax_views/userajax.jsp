@@ -3,7 +3,5 @@
 
 	<result>
         <check> ${result } </check>
-        <checkid> ${idpwResultid} </checkid>
-		<checkpass> ${idpwResultpass} </checkpass>
 	</result>
 	
