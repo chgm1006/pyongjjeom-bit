@@ -511,9 +511,6 @@
 					
 					
 					var avg = data.whole.avg;
-
-					alert("avg " + avg);
-					
 					$(".avgPoint").text(avg);
 
 					

@@ -329,7 +329,7 @@
 				$("#overLayerBook").hide();
 			});
 
-			$(".imgLink,#tableTitleLinkBook").click(function() {
+			$(".imgLink,.imgWrap,#tableTitleLinkBook").click(function() {
 				var scrollTest = $(document).scrollTop();
 				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
 				
@@ -349,7 +349,7 @@
 <script>
 	$(document).ready(function() {
 
-		$(".imgLink,#tableTitleLinkBook").click(function() {
+		$(".imgLink,.imgWrap,#tableTitleLinkBook").click(function() {
 			var test=$(".statusIndex",(this)).html();
 
 			var formData = {
