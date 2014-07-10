@@ -44,5 +44,9 @@ public interface LoginService {
 
 	public int updateFBMember(Member member);
 
+	
+
+
 	public Member getMemberInfoByFBID(String fbId);
+
 }

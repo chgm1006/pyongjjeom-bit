@@ -256,6 +256,17 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.updateFBMember(member);
 	}
 
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.login.service.LoginService#getEmail(java.lang.String)
+	 */
+
+
+
 	@Override
 	public Member getMemberInfoByFBID(String fbId) {
 		// TODO Auto-generated method stub
