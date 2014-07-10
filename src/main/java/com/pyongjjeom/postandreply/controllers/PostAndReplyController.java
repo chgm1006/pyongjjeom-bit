@@ -69,7 +69,7 @@ public class PostAndReplyController {
 		post.setPostCD(code.getPostCD("PB"));
 		
 		parService.insertBookPost(post);
-		return "contents/contentsPostingResult";
+		return "postandreply/contentsPostingResult";
 	}
 
 	
@@ -98,7 +98,7 @@ public class PostAndReplyController {
 		 
 		 System.out.println(post.toString());
 	
-		 return "myRoom/updatePost";
+		 return "postandreply/updatePost";
 	}
 
 	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
@@ -116,7 +116,7 @@ public class PostAndReplyController {
 		 
 		 System.out.println(post.toString());
 	
-		 return "myRoom/updatePost_ok";
+		 return "postandreply/updatePost_ok";
 	}
 
 	
@@ -131,7 +131,7 @@ public class PostAndReplyController {
 
 		
 		
-		return "myRoom/deletePost_ok";
+		return "postandreply/deletePost_ok";
 	}
 /*
  * 맨처음 포스팅을 쓸때 체크해주는 것	

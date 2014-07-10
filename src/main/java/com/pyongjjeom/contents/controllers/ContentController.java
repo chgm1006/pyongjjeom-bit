@@ -632,7 +632,7 @@ System.out.println("????");
 			}
 			return "contents/contentsContext";
 		}
-		return "contents/contentsPostingWrite";
+		return "postandreply/contentsPostingWrite";
 	}
 	
 /*	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
@@ -641,7 +641,7 @@ System.out.println("????");
 		String str = request.getParameter("postContext");
 		// DB에 추가 해야함 _
 		request.setAttribute("posting", str);
-		return "contents/contentsPostingResult";
+		return "postandreply/contentsPostingResult";
 	}
 	*/
 	private String movieContextParsing(NaverMovie movie, 
@@ -1016,7 +1016,7 @@ System.out.println("????");
 		String str = request.getParameter("postContext");
 		// DB에 추가 해야함 _
 		request.setAttribute("posting", str);
-		return "contents/contentsPostingResult";
+		return "postandreply/contentsPostingResult";
 	}
 
 	private String movieContextParsing(NaverMovie movie, 
@@ -1091,7 +1091,7 @@ System.out.println("????");
 				return "contents/contentsContext";
 			}
 		}
-		return "contents/contentsPostingWrite";
+		return "postandreply/contentsPostingWrite";
 	}
 
 	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> Values,
