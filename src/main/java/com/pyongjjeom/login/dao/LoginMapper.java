@@ -24,7 +24,6 @@ public interface LoginMapper {
 
 	public int checkMemberLogin(Map<String, String> loginMap);
 	
-	public Member getEmail1(String email);
 
 	public int insertMember(Member user);
 
