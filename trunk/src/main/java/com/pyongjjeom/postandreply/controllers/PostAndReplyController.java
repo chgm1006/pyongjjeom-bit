@@ -102,14 +102,14 @@ public class PostAndReplyController {
 	}
 
 	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
-	public String updatePostOk(@Valid Post post, Model model,HttpServletRequest request)
+	public String updatePostOk( Post post, Model model,HttpServletRequest request)
 
 	{
 		
 		reviewDbToView(post);
 		
 		System.out.println(request.getParameter("postCD"));
-		
+		System.out.println(request.getParameter("memGrade"));
 	 parService.editPost(post);
 	 
 	 request.getParameter("postCD");
