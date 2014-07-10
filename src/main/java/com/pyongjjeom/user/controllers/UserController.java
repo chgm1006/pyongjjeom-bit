@@ -70,7 +70,7 @@ public class UserController {
      System.out.println(member);
      
      session.removeAttribute("member");
-     return "myRoom/deletesucess";
+     return "myRoom/deleteSuccess";
   }
 
 	
