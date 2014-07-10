@@ -1,31 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>공지사항</title>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp"%>
 
+
+<!---- CSS  ---->
+<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindowBoard.css"
+	rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/modalWindow.css">
+	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 
-
-</head>
-<body>
-
-	<!-- /// <header> INCLUDE /// -->
-	<c:import url="../common/header2.jsp" />
 
 	<article>
+
 		<div id="wrap">
 			<div class="menu">
 				<ul>
@@ -82,28 +77,6 @@
 
 				</dl>
 			</div>
-			
-		
-	<%-- 			<c:forEach var="MoreList" items="${MoreList}" varStatus="cnt">
-	 			
-	
-						<td colspan="6" align="center">
-			<c:if test="${page <= 1 }">[이전]&nbsp; </c:if>
-				<c:if test="${page > 1 }">
-					<a href="boardList.do?notCD=${MoreList.notCD}&page=${page-1}">이전</a>&nbsp;</c:if>
-					 <c:forEach begin="${startpage }" end="${endpage }" var="a">
-					<c:if test="${a==page }">[${a}]</c:if>
-					<c:if test="${a!=page }">
-						<a href="boardList.do?notCD=${MoreList.notCD}&page=${a}">[${a}]</a>&nbsp;</c:if>
-				</c:forEach> <c:if test="${page>=maxpage }">[다음]</c:if> <c:if
-					test="${page<maxpage }">
-					<a href="boardList.do?notCD=${MoreList.notCD}&page=${page+1}">[다음]</a>
-				</c:if></td>
-			
-			</c:forEach>
-			 --%>
-			
-			
 			
 			
 			

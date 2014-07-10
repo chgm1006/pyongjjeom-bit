@@ -9,7 +9,6 @@ article{
 }
 
 
-
 /*---게시판 부분  - 제목란---*/
 
 .boardList{
@@ -89,12 +88,4 @@ a.listMore:active{
 	border:1px solid #fe9915;
 }
 
-
-/*---모달윈도우---*/
-
-.abc{
-	width:900px;
-	height:auto;
-	background: #ff2;
-}
 

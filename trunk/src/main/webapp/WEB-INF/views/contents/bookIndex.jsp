@@ -12,6 +12,8 @@
 	rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
 	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindowBook.css"
+	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 
