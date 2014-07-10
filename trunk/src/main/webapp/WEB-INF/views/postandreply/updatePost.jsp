@@ -70,7 +70,8 @@ $(document).ready(function(){
       $(".basic").jRating({
       	onClick : function(element,rate) {
           alert(rate);
-          
+          memGrade = rate;
+         $('input[name=memGrade]').attr('value',memGrade);
          
       	}
       })
@@ -188,7 +189,7 @@ $(document).ready(function(){
 		<input type="hidden"  value="${book.author}"  name="director">
 								
 					<table border="0" width="90%" align="center">
-						<input type="hidden" name="postCD" value="${np.postCD}">
+						<input type="hidden" id = "postCD" name="postCD" value="${np.postCD}">
 				<!-- <tr>
 					<td>나의 평점</td>
 					<td><input id="range" type="range" value="0" min="0" step="0.5"
@@ -208,7 +209,7 @@ $(document).ready(function(){
 <td><div class="exemple">
  
    <!-- in this exemple, 12 is the average and 1 is the id of the line to update in DB -->
-   <div class="basic" data-average="5" data-id="1" name = "memGrade"></div>
+   <div class="basic" data-average="5" data-id="1"  ><input id="memGrade" type="hidden" name="memGrade"/></div>
  
     <!-- in this other exemple, 8 is the average and 2 is the id of the line to update in DB -->
    <div class="basic1" data-average="5" data-id="2"></div>
