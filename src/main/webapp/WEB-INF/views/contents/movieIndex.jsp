@@ -110,6 +110,7 @@
 			<a href="article" data-scroll><h1>Top</h1></a>
 			
 		</div>
+	
 	</article>
 
 	<!-- ########################################### -->
@@ -147,7 +148,7 @@
 				<div class="overContTableWrap">
 					<div class="averageWrap">
 						<div class="avg1">
-							<h1 class="avgPoint">9.9</h1>
+							<h1 class="avgPoint">0.0</h1>
 						</div>
 						<div class="avg2">
 							<h4>평균평점</h4>
@@ -188,7 +189,7 @@
 							<td class="overTableTitle2">롯데시네마</td>
 							<td class="overTableLotte">0.0</td>
 							<td class="overTableTitle2">평쩜닷컴</td>
-							<td class="overTableWoori">0.0</td>
+							<td class="overTableWoori">0</td>
 						</tr>
 					</table><br>
 					<div class="overButtonWrap">
@@ -401,6 +402,12 @@
 					var cgvMg = data.whole.grades.cgvMg;
 					var lotteMg = data.whole.grades.lotteMg;
 					var megaBoxMg = data.whole.grades.megaBoxMg;
+					
+					var avg = data.whole.avg;					
+					$(".avgPoint").text(avg);
+
+				
+
 					$(".bigPoster").attr("src",poster);
 					$(".smallPoster").attr("src",poster);
 					
