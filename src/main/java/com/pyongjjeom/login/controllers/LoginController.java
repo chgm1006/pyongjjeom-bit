@@ -188,12 +188,17 @@ public class LoginController {
 
 		return view;
 	}
-		
+		else{
+			System.out.println("아이디를 사용할 수 있습니다");
+			view.addObject("result","fail");
+			
+			
+		}
 
 	
 
 		
 
-		return null;
+		return view;
 	}
 }

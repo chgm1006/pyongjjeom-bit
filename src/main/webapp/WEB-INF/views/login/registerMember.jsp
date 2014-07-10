@@ -61,6 +61,7 @@
 						var result = $(xml).find('check').text();
 		
 						if (result.trim() == 'fail') {
+							alert("이 아이디는 사용가능합니다");
 							$('#register').submit();
 							return true;
 						} else
@@ -75,6 +76,17 @@
 		});
 
 	});
+</script>
+
+<script>
+
+function checksubmit(){ 
+var data = document.mainform; 
+if(!data.IDcodeCheck.value){ 
+alert('check please'); 
+return false; 
+} 
+} 
 </script>
 
 <style>
@@ -103,8 +115,11 @@
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
 				<label for="email">이메일</label> <input type="text" id="email" name="email"
-					placeholder="이메일..."> <input type="button" value="중복확인"
-					id="emailCheck"> --> <label for="name">이름</label> <input type="text"
+					placeholder="이메일..."> 
+					<input type="button" value="중복확인" id="emailCheck">
+	
+				
+					<label for="name">이름</label> <input type="text"
 					id="name" name="memNm" placeholder="이름..."> <label for="birth">생년월일</label>
 				<input type="text" id="birth" name="birth" placeholder="생년월일..."> <label
 					for="password">비밀번호</label> <input type="password" id="password"
