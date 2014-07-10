@@ -5,6 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- include CSS & JS files -->
+<!-- CSS file -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/jquery/jRating.jquery.css" media="screen" />
+<!-- jQuery files -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jRating.jquery.js"></script>
+
 
 <style>
 #main {
@@ -25,17 +32,17 @@
 	}
 </script>
 
+
+
 <script>
 	// 자바 스크립트 시작
 
 	function writeCheck() {
+	
 		var form = document.writeUpdate;
 		
-		if (!form.memGrade.value) {
-			alert("평점을 입력해주세요");
-			form.memGrade.focus();
-			return;
-		}
+
+
 
 		if (!form.comment.value) {
 			alert("한줄평을 적어주세요");
@@ -57,13 +64,52 @@
 	}
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+       // simple jRating call
+      $(".basic").jRating({
+      	onClick : function(element,rate) {
+          alert(rate);
+          
+         
+      	}
+      })
+       
+      
+       
+ 
+    /*   // more complex jRating call
+      $(".basic").jRating({
+         step:true,
+         length : 10, // nb of stars
+         onSuccess : function(){
+           alert('Success : your rate has been saved :)');
+         }
+       });
+ 
+      // you can rate 3 times ! After, jRating will be disabled
+      $(".basic").jRating({
+         canRateAgain : true,
+         nbRates : 3
+       });
+ 
+      // get the clicked rate !
+      $(".basic").jRating({
+        onClick : function(element,rate) {
+         alert(rate);
+        }
+      }); */
 
+
+
+     
+});
+</script>
 
 
 <title>포스팅 page</title>
 </head>
 <body>
-
 
 	<c:choose>
 		<c:when test="${category =='movie'}">
@@ -143,7 +189,7 @@
 								
 					<table border="0" width="90%" align="center">
 						<input type="hidden" name="postCD" value="${np.postCD}">
-				<tr>
+				<!-- <tr>
 					<td>나의 평점</td>
 					<td><input id="range" type="range" value="0" min="0" step="0.5"
 						max="10" list="number" onchange="valueChange();"/> <datalist id="number">
@@ -154,6 +200,21 @@
 							<option>8</option>
 							<option>10</option>
 						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade"/></td>
+				</tr> -->
+				
+				<tr>
+				<td>나의평점</td>
+				<!-- basic exemple -->
+<td><div class="exemple">
+ 
+   <!-- in this exemple, 12 is the average and 1 is the id of the line to update in DB -->
+   <div class="basic" data-average="5" data-id="1" name = "memGrade"></div>
+ 
+    <!-- in this other exemple, 8 is the average and 2 is the id of the line to update in DB -->
+   <div class="basic1" data-average="5" data-id="2"></div>
+ 
+</div>
+		</td>		
 				</tr>
 				<tr>
 					<td>나의 한줄평</td>
