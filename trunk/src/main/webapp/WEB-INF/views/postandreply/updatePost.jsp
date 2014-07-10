@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- include CSS & JS files -->
 <!-- CSS file -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/jquery/jRating.jquery.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
 <!-- jQuery files -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jRating.jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 
 
 <style>
