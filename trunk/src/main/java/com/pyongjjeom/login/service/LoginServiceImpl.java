@@ -190,6 +190,19 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.login.service.LoginService#getEmail(com.pyongjjeom.user.dto.Member)
+	 */
+	@Override
+	public Member getEmail(String email) {
+		// TODO Auto-generated method stub
+		return loginMapper.getEmail(email);
+	}
+
+	/**
 	 * <pre>
 	 * 1. 개요 : FaceBook 회원 정보 가입.
 	 * 2. 처리내용 : FaceBook 회원 정보 가입하기.
