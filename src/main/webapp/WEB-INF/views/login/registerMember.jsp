@@ -36,11 +36,12 @@
 <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script type="text/javascript">
-	function openCheckId() {
+	/* function openCheckId() {
 		var email = document.all.email.value;
 		if (email) {
 			url = "idCheck.jsp?email=" + email;
-			window.open(url, "chkid", "width=500,height=500,menubar=no,toolbar=no");
+			
+			window.open(url, "chkemail", "width=500,height=500,menubar=no,toolbar=no");
 		}
 		function chkForm() {
 			var checkemail = document.all.checkemail.value;
@@ -50,7 +51,7 @@
 			}
 			return true;
 		}
-	}
+	} */
 </script>
 <style>
 .ui-datepicker {
@@ -73,15 +74,14 @@
 	<div class="row">
 
 		<div class="register span6">
-			<form action="register.do" method="post" enctype="multipart/form-data"
-				onSubmit="return chkForm();">
+			<form action="register.do" method="post">
 				<h2>
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
-				<label for="email">이메일</label> <input type="text" id="email" name="email"
-					placeholder="이메일..."> <input type="hidden" name="checkid" value=0>
-				<input type="button" value="중복확인" onClick="openCheckId();"> <label
-					for="name">이름</label> <input type="text" id="name" name="memNm"
+				<label for="email">이메일</label> 
+				<input type="text" id="email" name="email" placeholder="이메일..."> <!-- <input type="hidden" name="checkid" value=0>
+				<input type="button" value="중복확인" onClick="openCheckId();">  -->
+				<label for="name">이름</label> <input type="text" id="name" name="memNm"
 					placeholder="이름..."> <label for="birth">생년월일</label> <input
 					type="text" id="birth" name="birth" placeholder="생년월일..."> <label
 					for="password">비밀번호</label> <input type="password" id="password"
