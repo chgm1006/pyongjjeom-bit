@@ -29,11 +29,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		from member where email = #{email};
 	</select>
 
+
+	<select id ="getEmail" parameterType = "string" resultType = "Member">
+	    select * from member where email= #{email};
+	    
+	    
+	</select>
+
 	<select id="getMemCDbyFBID" parameterType="string" resultType="string">
 		select
 		memcd
 		from member where fbid = #{fbId};
 	</select>
+
 
 	<update id="updateEmailAuthCD" parameterType="Member">
 		UPDATE member

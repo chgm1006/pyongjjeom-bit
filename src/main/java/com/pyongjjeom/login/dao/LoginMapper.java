@@ -24,7 +24,7 @@ public interface LoginMapper {
 
 	public int checkMemberLogin(Map<String, String> loginMap);
 	
-	public Member getEmail(String email);
+	public Member getEmail1(String email);
 
 	public int insertMember(Member user);
 
@@ -44,6 +44,9 @@ public interface LoginMapper {
 	public int regiesterFBMember(Member member);
 
 	public int updateFBMember(Member member);
+
+	
+	public Member getEmail(String email);
 
 	/**
 	 * <pre>
@@ -86,4 +89,5 @@ public interface LoginMapper {
 	 * @return
 	 */
 	public Member getMemberInfoByFBID(String fbId);
+
 }
