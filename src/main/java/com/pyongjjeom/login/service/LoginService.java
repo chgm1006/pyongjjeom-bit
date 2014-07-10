@@ -21,6 +21,8 @@ import com.pyongjjeom.user.dto.Member;
 public interface LoginService {
 
 	public int checkMemberLogin(String email);
+	
+	public Member getEmail(String email);
 
 	public int insertMember(Member user);
 
