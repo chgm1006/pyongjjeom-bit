@@ -367,7 +367,8 @@ System.out.println(movie.getImage()+"??????????????");
 			grades = contentService.movieGradeSelect("M"+code);
 			
 	  
-	        
+
+
 			if (grades != null) {
 				int count = 0;
 				double avg = 0;
@@ -379,15 +380,19 @@ System.out.println(movie.getImage()+"??????????????");
 						count++;
 					}
 				//	request.setAttribute("avg", avg / count);
-				   map.put("avg", avg / count);
+				   map.put("avg", String.valueOf((avg / count)).substring(0,3));
 				}
 			}
 			else
 			{
 				grades= new MovieGrades();
-			  map.put("avg", 0);
+			  map.put("avg", movie.getUserRating().substring(0,3));
 			}
+
+			System.out.println("평균점수 " + map.get("avg"));
       map.put("grades", grades);
+			
+
 			
 			// 네이버영화상세페이지 주소로 xml파싱하여 contentMovieDetail에 담기.
 			
@@ -506,6 +511,8 @@ System.out.println(movie.getImage()+"??????????????");
 				
 		  
 		        
+
+
 				if (grades != null) {
 					int count = 0;
 					double avg = 0;
@@ -517,7 +524,7 @@ System.out.println(movie.getImage()+"??????????????");
 							count++;
 						}
 					//	request.setAttribute("avg", avg / count);
-					   map.put("avg", avg / count);
+					   map.put("avg", (String.valueOf(avg / count)).substring(0,3));
 					}
 				}
 				else
@@ -526,6 +533,7 @@ System.out.println(movie.getImage()+"??????????????");
 				  map.put("avg", 0);
 				}
 	      map.put("grades", grades);
+				
 				
 				// 네이버영화상세페이지 주소로 xml파싱하여 contentMovieDetail에 담기.
 				
