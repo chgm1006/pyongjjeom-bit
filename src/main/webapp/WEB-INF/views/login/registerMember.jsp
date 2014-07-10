@@ -44,8 +44,8 @@
 				alert("이메일 값을 넣어 주세요");
 				return false;
 			} else {
-				var email = $('#email').val();
-				alert(email);
+				var email = $('#email').serialize();
+		
 				$.ajax({
 					cache : false, // cache가 남아 있지 않게 false
 					async : false, // 순차적으로(동기방식) 동작한다.
@@ -59,12 +59,12 @@
 					},
 					success : function(xml) { // 성공시 해당함수 실행
 						var result = $(xml).find('check').text();
-					alert("1111");
-						if (result.trim() == 'true') {
+		
+						if (result.trim() == 'fail') {
 							$('#register').submit();
 							return true;
 						} else
-							(result.trim() == 'fail')
+							(result.trim() == 'true')
 						{
 							alert("아이디가 존재합니다.");
 							return false;
