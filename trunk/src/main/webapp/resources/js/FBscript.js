@@ -44,13 +44,9 @@ function fnLoginFB(response) {
 	FB.login(function(response) {
 		if (response) {
 			FB.api("/me/picture", function(response) {
-				console.log(response);
-
 				fbIMGURL = response.data.url;
 			});
 			FB.api("/me", function(response) {
-				console.log(response);
-
 				fbUid = response.id;
 				fbName = response.first_name + " " + response.last_name;
 				fbEmail = response.email;
@@ -65,12 +61,6 @@ function fnLoginFB(response) {
 }
 
 function ajaxFBRegisterMember() {
-	console.log(fbUid);
-	console.log(fbName);
-	console.log(fbEmail);
-	console.log(fbBirthday);
-	console.log(fbIMGURL);
-
 	var formData = {
 		fbId : fbUid,
 		memNm : fbName,
@@ -79,15 +69,13 @@ function ajaxFBRegisterMember() {
 		imgPath : fbIMGURL
 	};
 
-	console.log(formData);
-	 $.ajax({
+	$.ajax({
 		type : "post",
 		url : "fbLogin.do",
 		data : JSON.stringify(formData),
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		beforeSend : function() {
-
 			console.log(formData);
 		},
 		error : function(e) {
@@ -96,11 +84,7 @@ function ajaxFBRegisterMember() {
 		success : function(data) {
 			$.each(data, function(key) {
 				var list = data[key];
-
-				console.log(list);
-				for (var i = 0; i < list.length; i++) {
-					console.log("val: " + list[i].title);
-				}
+				console.log(key + " = " + list);
 			});
 		}
 	});
@@ -144,17 +128,16 @@ function fnLogout() {
 	FB.logout(function(response) {
 
 		if (response) {
-			// $("#status").html(fbName + "님이 로그아웃 하셨습니다.");
 			console.log(fbName + "님이 로그아웃 하셨습니다.");
 		}
 		// window.location.reload(true);
 	});
 }
 
-// $("#FBLogin").click(function() {
-// fnLoginFB();
-// });
-//
-// $("#FBLogout").click(function() {
-// fnLogout();
-// });
+$("#FBLogin").click(function() {
+	fnLoginFB();
+});
+
+$("#FBLogout").click(function() {
+	fnLogout();
+});
