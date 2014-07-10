@@ -32,7 +32,7 @@ public interface ContentService {
 
 	void gradeUpdate(List<ContentsValue> Values, String str);
 
-	MovieGrades movieGradeSelect(String title);
+	MovieGrades movieGradeSelect(String concd);
 
-	BookGrades bookGradeSelect(String title);
+	BookGrades bookGradeSelect(String concd);
 }

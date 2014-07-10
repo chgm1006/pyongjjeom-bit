@@ -19,9 +19,13 @@ import com.pyongjjeom.contents.parsing.common.MovieGrades;
  * @author : Forrest
  */
 public interface ContentsMapper {
-	void movieTitleInsert(ContentsValue value);
+	
+	void conCDMInsert(String  concd);
 
-	void bookTitleInsert(ContentsValue value);
+	void conCDBInsert(String  concd);
+	
+	
+	void contentsTitleInsert(ContentsValue value);
 
 	void cgvGradeUpdate(ContentsValue contentsValue);
 
@@ -43,7 +47,7 @@ public interface ContentsMapper {
 
 	void bandinlunisGradeUpdate(ContentsValue value);
 
-	MovieGrades movieGradeSelect(String title);
+	MovieGrades movieGradeSelect(String concd);
 
 	BookGrades bookGradeSelect(String title);
 }
