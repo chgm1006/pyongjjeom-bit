@@ -16,7 +16,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hamcrest.core.IsEqual;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.common.code.DBCode;
-import com.pyongjjeom.contents.dao.ContentsMapper;
 import com.pyongjjeom.contents.dto.ContentBookDetail;
 import com.pyongjjeom.contents.dto.ContentMovieDetail;
 import com.pyongjjeom.contents.parsing.api.NaverParse;
@@ -366,7 +364,7 @@ System.out.println(movie.getImage()+"??????????????");
 		if (httpSession.getAttribute("stat").equals("search")) {
 			Document doc;
 			MovieGrades grades = new MovieGrades();
-			grades = contentService.movieGradeSelect(movie.getTitle());
+			grades = contentService.movieGradeSelect("M"+code);
 			
 	  
 	        
@@ -409,6 +407,7 @@ System.out.println(movie.getImage()+"??????????????");
 				{
 				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video).get();
 				contentMovieDetail.setVideo("http://movie.naver.com"	+ doc.select("iframe[class=_videoPlayer]").attr("src"));
+				httpSession.setAttribute("video", contentMovieDetail.getVideo());
 				}
 
 				if(code!=null)
@@ -490,7 +489,12 @@ System.out.println(movie.getImage()+"??????????????");
 				book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
 			}
 			String code = null;
-			//썸네일 주소 가져와서 영화코드 6자리 받아오는거
+			System.out.println(book.getImage()+"??????????????");
+			if(!book.getImage().isEmpty())
+			{
+			code = book.getImage().substring(book.getImage().lastIndexOf("/0")+2,book.getImage().indexOf(".jpg"));
+			}
+
 
 			httpSession.setAttribute("book", book);
 
@@ -498,7 +502,7 @@ System.out.println(movie.getImage()+"??????????????");
 			if (httpSession.getAttribute("stat").equals("search")) {
 				Document doc;
 				BookGrades grades = new BookGrades();
-				grades = contentService.bookGradeSelect(book.getTitle());
+				grades = contentService.bookGradeSelect("B"+code);
 				
 		  
 		        
@@ -719,20 +723,16 @@ System.out.println("????");
 	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> Values,
 			String str) {
 		if (str.equals("n")) {
-			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), Parsing.getCodeList().get(i), dbCode
-						.getContentCD("m")));
+						.getGradeList().get(i), "M"+Parsing.getCodeList().get(i)));
 			}
 			contentService.movieTitleInsert(Values);
 		}
 		if (str.equals("nb")) {
-			DBCode dbCode = new DBCode();
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
 				Values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), Parsing.getCodeList().get(i), dbCode
-						.getContentCD("b")));
+						.getGradeList().get(i), "B"+Parsing.getCodeList().get(i)));
 			}
 			contentService.bookTitleInsert(Values);
 		} else

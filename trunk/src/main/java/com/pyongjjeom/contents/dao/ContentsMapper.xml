@@ -3,101 +3,102 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.contents.dao.ContentsMapper">
 
-<!-- <insert id="movieTitleInsert" parameterType="ContentsValue">
+<insert id="contentsTitleInsert" parameterType="ContentsValue">
 		INSERT INTO contents
-		(concd,title,code) SELECT #{concd},#{title},#{code} FROM DUAL
+		(concd,title,regidate,updatedate) SELECT #{concd},#{title},now(),now() FROM DUAL
 		WHERE NOT
-		EXISTS( SELECT 1 FROM contents WHERE title=#{title})
+		EXISTS( SELECT 1 FROM contents WHERE concd=#{concd})
 	</insert>
 
 
-<insert id="concdInsert" parameterType="String">
-		INSERT INTO contents_movie
-		(concd)  values (#{concd})
+<insert id="conCDMInsert" parameterType="String">
+	INSERT INTO contents_movie
+		(concd,regidate,updatedate) SELECT #{concd},now(),now() FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM contents_movie WHERE concd=#{concd})
 	</insert>
-
-<delete id="nullDelete">
-    Delete from contents_movie where navermg='null'
-    
-</delete>
+	
+<insert id="conCDBInsert" parameterType="String">
+	INSERT INTO contents_book
+		(concd,regidate,updatedate) SELECT #{concd},now(),now() FROM DUAL
+		WHERE NOT
+		EXISTS( SELECT 1 FROM contents_book WHERE concd=#{concd})
+	</insert>
 
 	<update id="naverMovieGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
 		navermg
-		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+		=#{grade},updatedate=now() where concd=#{concd};
 	</update>
 
 	<update id="cgvGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set cgvmg
-		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
 	</update>
 
 	<update id="lotteGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		lottemg =#{grade} where concd=(select concd from contents where contents.title=#{title});
+		lottemg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
 	</update>
 
 	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		megaBoxmg =#{grade} where concd=(select concd from contents where contents.title=#{title});
+		megaBoxmg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
 	</update>
 
 	<update id="daumGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
 		daummg
-		=#{grade} where concd=(select concd from contents where contents.title=#{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents  where concd like 'M%' and title= #{title});
 	</update>
 
 	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
 
 		select *
-		from contents_movie where title = #{title}
+		from contents_movie where concd = #{concd}
 
 	</select>
 
-	<insert id="bookTitleInsert" parameterType="ContentsValue">
-		INSERT INTO contents_book
-		(concd,title,bookCode) SELECT #{concd},#{title},#{code} FROM DUAL
-		WHERE NOT
-		EXISTS( SELECT 1 FROM contents_book WHERE title=#{title})
-	</insert>
-
 	<update id="yes24GradeUpdate" parameterType="ContentsValue">
 		update contents_book set yesbg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
 	</update>
 
 	<update id="aladinGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		aladinbg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
 	</update>
 
 	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		kyobobg
-		=#{grade} where title =#{title}
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
 	</update>
 
 	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
-		naverbg =#{grade} where title =#{title}
+		naverbg =#{grade},updatedate=now() where concd=#{concd};
 	</update>
 
 	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
-		bandibg =#{grade} where title =#{title}
+		bandibg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
 	</update>
 
 	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
 
 		select *
-		from contents_book where title = #{title}
-
+		from contents_book where concd = #{concd}
+		
 	</select>
- -->
+
     
-	<insert id="movieTitleInsert" parameterType="ContentsValue">
+    
+    
+    
+    
+	<!-- <insert id="movieTitleInsert" parameterType="ContentsValue">
 		INSERT INTO contents_movie
 		(concd,title,movieCode,regidate,updatedate) SELECT #{concd},#{title},#{code},now(),now() FROM DUAL
 		WHERE NOT
@@ -178,7 +179,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		from contents_book where title = #{title}
 
 	</select>
-
+ -->
 
 	
 	

@@ -2,7 +2,7 @@
  * 
  */
 
-package com.pyongjjeom.contents.service; 
+package com.pyongjjeom.contents.service;
 
 import java.util.List;
 
@@ -21,42 +21,24 @@ import com.pyongjjeom.contents.parsing.common.MovieGrades;
  *    |_ ContentServiceImpl.java
  * 
  * </pre>
- * @version : 
+ * 
+ * @version :
  * @author : Forrest
  */
 @Service("contentService")
 public class ContentServiceImpl implements ContentService {
 
 	private Logger log = Logger.getLogger(this.getClass());
-	
+
 	@Autowired
 	private ContentsMapper contentsMapper;
-	
 
-	/**
-	 * <pre>
-	 * 1. 개요 : 
-	 * 2. 처리내용 : 
-	 * </pre>
-	 * @Method Name : getContents
-	 * @date : 2014. 6. 18.
-	 * @author : Forrest
-	 * @history : 
-	 *	-----------------------------------------------------------------------
-	 *	변경일				작성자						변경내용  
-	 *	----------- ------------------- ---------------------------------------
-	 *	2014. 6. 18.		Forrest				최초 작성 
-	 *	-----------------------------------------------------------------------
-	 * 
-	 * @see com.pyongjjeom.contents.service.ContentService#getContents()
-	 * @return
-	 */
-
-	
 	@Override
 	public void movieTitleInsert(List<ContentsValue> Values) {
-		for (ContentsValue value : Values)
-			contentsMapper.movieTitleInsert(value);
+		for (ContentsValue value : Values) {
+			contentsMapper.contentsTitleInsert(value);
+			contentsMapper.conCDMInsert(value.getConcd());
+		}
 	}
 
 	@Override
@@ -102,17 +84,19 @@ public class ContentServiceImpl implements ContentService {
 
 	@Override
 	public void bookTitleInsert(List<ContentsValue> values) {
-		for (ContentsValue value : values)
-			contentsMapper.bookTitleInsert(value);
+		for (ContentsValue value : values) {
+			contentsMapper.contentsTitleInsert(value);
+			contentsMapper.conCDBInsert(value.getConcd());
+		}
 	}
 
 	@Override
-	public MovieGrades movieGradeSelect(String title) {
-		return contentsMapper.movieGradeSelect(title);
+	public MovieGrades movieGradeSelect(String concd) {
+		return contentsMapper.movieGradeSelect(concd);
 	}
 
 	@Override
-	public BookGrades bookGradeSelect(String title) {
-		return contentsMapper.bookGradeSelect(title);
+	public BookGrades bookGradeSelect(String concd) {
+		return contentsMapper.bookGradeSelect(concd);
 	}
 }
