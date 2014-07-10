@@ -81,6 +81,10 @@ public class LoginController {
 		}
 
 	}
+	
+	
+	
+	
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
@@ -113,6 +117,15 @@ public class LoginController {
 
 		return "login/registerMember";
 	}
+
+	/*
+	 * @RequestMapping(value = "idCheck.do", method = RequestMethod.GET) public
+	 * String getEamil(String email, Model model){
+	 * 
+	 * Member member = loginService.getEmail(email); if(member == null){
+	 * model.addAttribute("result", "true"); }else{ model.addAttribute("result",
+	 * "false"); } return "login/idCheck"; }
+	 */
 
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
