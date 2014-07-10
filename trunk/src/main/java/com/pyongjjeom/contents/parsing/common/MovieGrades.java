@@ -61,6 +61,7 @@ public class MovieGrades {
 	private double lotteMg=0;
 	private double megaBoxMg=0;
 
+	
 	public String getTitle() {
 		return title;
 	}
