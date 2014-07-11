@@ -4,6 +4,7 @@
 
 package com.pyongjjeom.contents.dao;
 
+import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
 import com.pyongjjeom.contents.parsing.common.MovieGrades;
@@ -50,4 +51,6 @@ public interface ContentsMapper {
 	MovieGrades movieGradeSelect(String concd);
 
 	BookGrades bookGradeSelect(String title);
+
+	void contentsInfoInsert(Content content);
 }
