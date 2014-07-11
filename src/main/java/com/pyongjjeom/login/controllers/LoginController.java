@@ -6,6 +6,7 @@ package com.pyongjjeom.login.controllers;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -74,11 +75,24 @@ public class LoginController {
 
 			session.setAttribute("member", member);
 			System.out.println(request.getSession() + "로그인세션등록완료");
-
 			return "contents/movieIndex";
 		}
 
 	}
+	
+	/*@RequestMapping(value="gologin.do", method=RequestMethod.GET)
+	public void gologin(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		String redirectPage = request.getParameter("uri");
+		String redirectPage = (String) request.getAttribute("redirectURI");
+		System.out.println(request.getAttribute("redirectURI")+"uri체크");
+    if(redirectPage ==null){     
+            redirectPage = "movieIndex.do";
+    }else{
+    	response.sendRedirect(redirectPage);
+    	
+    }
+	}*/
+
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
