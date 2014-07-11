@@ -275,4 +275,10 @@ public class LoginServiceImpl implements LoginService {
 	public Member getMemberInfoByMember(Member member) {
 		return loginMapper.getMemberInfoByMember(member);
 	}
+
+	@Override
+	public int updateMemberPasswd(Member member) {
+		return loginMapper.updateMemberPasswd(member);
+	}
+
 }
