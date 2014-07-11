@@ -24,8 +24,6 @@
 			}
 		});
 	});
-</script>
-<script>
 	function valueChange() {
 		var x = document.getElementById('range');
 		var y = document.getElementById('inputValue');
@@ -69,18 +67,18 @@
 					});
 		}
 	});
-	function button_event(){
-		if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
-		    document.location.href = "deleteMember.do";
-		}else{   //취소
-		    return;
+	function button_event() {
+		if (confirm("정말 탈퇴하시겠습니까??") == true) { //확인
+			document.location.href = "deleteMember.do";
+		} else { //취소
+			return;
 		}
 	}
-	function button_event1(){
-		if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
-		    document.location.href = "logout.do";
-		}else{   //취소
-		    return;
+	function button_event1() {
+		if (confirm("정말 로그아웃하시겠습니까??") == true) { //확인
+			document.location.href = "logout.do";
+		} else { //취소
+			return;
 		}
 	}
 </script>
@@ -113,8 +111,8 @@
 				<li class="boardMenu"><a href="logout.do" class="boardMenu_1">로그아웃</a></li>
 			</ul>
 		</div>
-				<input type="button" value="회원탈퇴" onclick="Javascript:button_event();">
-				<input type="button" value="로그아웃" onclick="Javascript:button_event1();">
+		<input type="button" value="회원탈퇴" onclick="Javascript:button_event();">
+		<input type="button" value="로그아웃" onclick="Javascript:button_event1();">
 		<div class="upLoad">
 			<a href="#" class="close"></a>
 			<div class="title2">평점 올리기</div>
@@ -123,44 +121,44 @@
 					<select name="category">
 						<option value="book">책
 						<option value="movie">영화
-					</select>
-					 <input type="text" id="Search" name="Search"> <input type="hidden"
+					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
 						name="stat" value="posting"> <input type="submit" value="검색">
 				</form>
 			</div>
 			<div class="upLoadCont">
 				<form action="postingInsert.do" method="post">
-				<table>
-					<tr>
-						<td>나의 평점</td>
+					<table>
+						<tr>
+							<td>나의 평점</td>
 							<td><input id="range" type="range" value="0" min="0" step="0.5"
-						max="10" list="number" onchange="valueChange();" /> <datalist id="number">
-							<option>0</option>
-							<option>2</option>
-							<option>4</option>
-							<option>6</option>
-							<option>8</option>
-							<option>10</option>
-						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade"  /></td>
-					</tr>
-					<tr>
-						<td>나의 한줄평</td>
-						<td><input type="text" style="width: 500px" name="comment"></td>
-					</tr>
-				</table>
-				<input type="text" class="upLoadText"  name="review"><br> 
-				<input type="hidden"  name="pmemCD" value=${member.memCD }>
-					<input type="hidden"  name="title" value="의형제">
-							<input type="hidden"  name=director value="장훈">
-							<input type="hidden"  name="image" value="http://imgmovie.naver.com/mdi/mit110/0525/52548_P43_123614.jpg">
-									<input type="hidden"  name="actor" value="송강호|강동원|">
-													<input type="hidden"  name="category" value="movie">
-											<input type="hidden"  name="link" value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
+								max="10" list="number" onchange="valueChange();" /> <datalist
+									id="number">
+									<option>0</option>
+									<option>2</option>
+									<option>4</option>
+									<option>6</option>
+									<option>8</option>
+									<option>10</option>
+								</datalist> <input id="inputValue" type="text" size="5" name="memGrade" /></td>
+						</tr>
+						<tr>
+							<td>나의 한줄평</td>
+							<td><input type="text" style="width: 500px" name="comment"></td>
+						</tr>
+					</table>
+					<input type="text" class="upLoadText" name="review"><br> <input
+						type="hidden" name="pmemCD" value=${member.memCD }> <input
+						type="hidden" name="title" value="의형제"> <input type="hidden"
+						name=director value="장훈"> <input type="hidden" name="image"
+						value="http://imgmovie.naver.com/mdi/mit110/0525/52548_P43_123614.jpg">
+					<input type="hidden" name="actor" value="송강호|강동원|"> <input
+						type="hidden" name="category" value="movie"> <input type="hidden"
+						name="link"
+						value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
 ">
-											
-				<input type="submit"
-					class="upLoadStart" value="글올리기">
-					</form>
+
+					<input type="submit" class="upLoadStart" value="글올리기">
+				</form>
 			</div>
 
 		</div>
@@ -173,7 +171,8 @@
 					<dt class="listHead">
 
 						<div class="list1">
-							<a href="#" class="listImgLink"><img src="${post.image} " class="listImg"></a>
+							<a href="#" class="listImgLink"><img src="${post.image} "
+								class="listImg"></a>
 
 							<div class="detail">
 								<table>
@@ -195,10 +194,10 @@
 								</table>
 								<div class="PostingReply">댓글 2개</div>
 								<a href="#"
-								OnClick="window.location='updatePost.do?postCD=${post.postCD}'">글수정</a> 
+									OnClick="window.location='updatePost.do?postCD=${post.postCD}'">글수정</a>
 								<a href="#"
-								OnClick="window.location='deletePost.do?postCD=${post.postCD}'">삭제</a>
-								
+									OnClick="window.location='deletePost.do?postCD=${post.postCD}'">삭제</a>
+
 							</div>
 
 						</div>
@@ -235,8 +234,8 @@
 					</dd>
 					<dt class="listHead">
 		</c:forEach>
-		
-	<!-- 	<div class="list1">
+
+		<!-- 	<div class="list1">
 			<a href="#" class="listImgLink"><img src="img/07.jpg" class="listImg"></a>
 			<div class="detail">
 				<table>
@@ -293,7 +292,7 @@
 
 
 
-	<!-- <div id='glayLayer2'></div>
+		<!-- <div id='glayLayer2'></div>
 	<div id='overLayer2'>
 
 		<a href="#" class="exit"></a>
