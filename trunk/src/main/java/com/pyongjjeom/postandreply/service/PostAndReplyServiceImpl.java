@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.postandreply.dto.PostAndContents;
 
 /**
  * <pre>
@@ -54,7 +55,7 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	 * @return
 	 */
 	@Override
-	public List<Post> getPost(String memCD) {
+	public List<PostAndContents> getPost(String memCD) {
 		return parMapper.getPost(memCD);
 	}
 
@@ -144,9 +145,9 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#insertBookPost(com.pyongjjeom.common.NaverBook, com.pyongjjeom.postandreply.dto.Post)
 	 */
 	@Override
-	public void insertBookPost(Post post) {
+	public void insertPost(Post post) {
 		
-		parMapper.insertBookPost(post);
+		parMapper.insertPost(post);
 	}
 
 	/**
