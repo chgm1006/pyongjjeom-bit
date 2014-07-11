@@ -71,8 +71,9 @@ public class PostAndReplyController {
 		httpSession = request.getSession();
 		String conCD = null;
 		String nCode = null;
-		String category = (String) httpSession.getAttribute("category");
-
+	//	String category = (String) httpSession.getAttribute("category");
+		String category = request.getParameter("category");
+		
 		if (category.equals("movie")) {
 			if (!content.getImage().isEmpty()) {
 				nCode = content.getImage().replace("A", "1").replace("B", "2")
