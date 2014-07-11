@@ -192,8 +192,9 @@ public class LoginServiceImpl implements LoginService {
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.login.service.LoginService#getEmail(com.pyongjjeom.user.dto.Member)
 	 */
 	@Override
@@ -256,16 +257,14 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.updateFBMember(member);
 	}
 
-
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.login.service.LoginService#getEmail(java.lang.String)
 	 */
-
-
 
 	@Override
 	public Member getMemberInfoByFBID(String fbId) {
@@ -273,4 +272,7 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.getMemberInfoByFBID(fbId);
 	}
 
+	public Member getMemberInfoByMember(Member member) {
+		return loginMapper.getMemberInfoByMember(member);
+	}
 }

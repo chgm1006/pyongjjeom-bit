@@ -52,7 +52,8 @@ public class LoginController {
 	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String login(@Valid Model model, Member user,
-			HttpServletRequest request, HttpServletResponse response) throws IOException {
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -78,10 +79,6 @@ public class LoginController {
 		}
 
 	}
-	
-	
-	
-	
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
@@ -134,10 +131,10 @@ public class LoginController {
 		member.setMemCD(dc.getMemberCD("F"));
 		member.setPasswd(Math.round(Math.random() * 10) + "");
 
-		String memCD = loginService.getMemCDbyFBID(member.getFbId().trim());
+		Member memInfo = loginService.getMemberInfoByMember(member);
 
 		int cnt = 0;
-		if (memCD == null || memCD == "") {
+		if (memInfo.getMemCD().equals("") && memInfo.getFbId().equals("")) {
 			cnt = loginService.regiesterFBMember(member);
 		} else {
 			cnt = loginService.updateFBMember(member);
@@ -153,25 +150,24 @@ public class LoginController {
 			session.setAttribute("memNm", sMember.getMemCD());
 			session.setAttribute("fbId", sMember.getFbId());
 			session.setAttribute("imgPath", sMember.getImgPath());
-		}else{
+		} else {
 			session.setAttribute("errorMSG", "정보가 정상적으로 저장되지 않았습니다.");
 		}
 		return sMember;
-		
-		
+
 	}
 
 	@RequestMapping(value = "ajaxLoginCheck.do", method = RequestMethod.POST)
-	public ModelAndView AjaxCheck(@Valid Member user,HttpServletRequest request ) {
+	public ModelAndView AjaxCheck(@Valid Member user, HttpServletRequest request) {
 		System.out.println("로그인 체크");
 		ModelAndView view = new ModelAndView("ajax_views/userajax");
 		System.out.println("11111");
 		System.out.println(request.getParameter("email"));
 		String email = request.getParameter("email");
-		
+
 		Member emailStr = loginService.getEmail(email);
 		System.out.println("emailStr : " + emailStr);
-		
+
 		if (emailStr != null) {
 			if (email.trim().equals(emailStr.getEmail().trim()) == true) {
 				view.addObject("result", "true");
@@ -180,20 +176,13 @@ public class LoginController {
 				System.out.println("아이디오류 오류");
 				view.addObject("result", "fail");
 			}
-	
 
-		return view;
-	}
-		else{
+			return view;
+		} else {
 			System.out.println("아이디를 사용할 수 있습니다");
-			view.addObject("result","fail");
-			
-			
+			view.addObject("result", "fail");
+
 		}
-
-	
-
-		
 
 		return view;
 	}
