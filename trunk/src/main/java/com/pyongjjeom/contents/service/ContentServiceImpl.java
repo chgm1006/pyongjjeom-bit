@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.contents.dao.ContentsMapper;
+import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
 import com.pyongjjeom.contents.parsing.common.MovieGrades;
@@ -98,5 +99,11 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public BookGrades bookGradeSelect(String concd) {
 		return contentsMapper.bookGradeSelect(concd);
+	}
+
+	@Override
+	public void contentsInfoInsert(Content content) {
+
+		contentsMapper.contentsInfoInsert(content);
 	}
 }

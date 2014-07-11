@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
 import com.pyongjjeom.contents.parsing.common.MovieGrades;
@@ -35,4 +36,6 @@ public interface ContentService {
 	MovieGrades movieGradeSelect(String concd);
 
 	BookGrades bookGradeSelect(String concd);
+
+	void contentsInfoInsert(Content content);
 }
