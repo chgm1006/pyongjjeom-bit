@@ -45,6 +45,13 @@ package com.pyongjjeom.contents.parsing.common;
 
 public class MovieGrades {
 
+	@Override
+	public String toString() {
+		return "MovieGrades [title=" + title + ", movieCode=" + movieCode
+				+ ", naverMg=" + naverMg + ", daumMg=" + daumMg + ", cgvMg=" + cgvMg
+				+ ", lotteMg=" + lotteMg + ", megaBoxMg=" + megaBoxMg + "]";
+	}
+
 	public String getMovieCode() {
 		return movieCode;
 	}
