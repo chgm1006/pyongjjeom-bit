@@ -37,11 +37,12 @@
 		<div class="row">
 
 			<div class="register span6">
-				<form action="movieIndex.do" method="get">
+				<form action="goChangePasswd.do" method="post">
 					<h3>
 						<span class="red"><strong>인증이 완료되었습니다</strong></span>
 					</h3>
-					<button type="submit" id="btn">로그인</button>
+					<input type="hidden" id="email" name="email" value="${email }">
+					<button type="submit" id="btn">비밀번호 변경</button>
 				</form>
 			</div>
 		</div>
