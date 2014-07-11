@@ -23,6 +23,7 @@ import com.pyongjjeom.myroom.service.MyRoomService;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.postandreply.dto.PostAndContents;
 import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
 import com.pyongjjeom.user.dao.UserMapper;
@@ -68,7 +69,7 @@ public class MyRoomController {
 
 		httpSession =request.getSession();
 		Member member=(Member) httpSession.getAttribute("member");
-    List<Post> postList= parService.getPost(member.getMemCD());
+    List<PostAndContents> postList= parService.getPost(member.getMemCD());
 		System.out.println(postList);
 		httpSession.setAttribute("postList",postList);
 		return "myRoom/myRoom";
