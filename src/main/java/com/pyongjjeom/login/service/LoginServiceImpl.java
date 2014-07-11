@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.login.dao.LoginMapper;
-import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 
 /**
@@ -156,7 +155,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int insertMember(Member user) {
-		// TODO Auto-generated method stub
 		return loginMapper.insertMember(user);
 	}
 
@@ -171,7 +169,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public String login(String email, String passwd) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -185,7 +182,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public Member login(Member member) {
-		// TODO Auto-generated method stub
 		return loginMapper.login(member);
 	}
 
@@ -199,7 +195,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public Member getEmail(String email) {
-		// TODO Auto-generated method stub
 		return loginMapper.getEmail(email);
 	}
 
@@ -226,7 +221,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int regiesterFBMember(Member member) {
-		// TODO Auto-generated method stub
 		return loginMapper.regiesterFBMember(member);
 	}
 
@@ -253,7 +247,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public int updateFBMember(Member member) {
-		// TODO Auto-generated method stub
 		return loginMapper.updateFBMember(member);
 	}
 
@@ -268,7 +261,6 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public Member getMemberInfoByFBID(String fbId) {
-		// TODO Auto-generated method stub
 		return loginMapper.getMemberInfoByFBID(fbId);
 	}
 
