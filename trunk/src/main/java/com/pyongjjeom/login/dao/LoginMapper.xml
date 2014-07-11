@@ -125,7 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		birth,
 		fbId,
 		imgPath
-		from member where fbid = #{fbId};
+		from member where fbid = #{fbId} and fbyn = 'Y';
 	</select>
 	<select id="getMemberInfoByMember" parameterType="Member" resultType="Member">
 		SELECT memCD ,
