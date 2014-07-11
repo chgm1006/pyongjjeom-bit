@@ -58,6 +58,7 @@
 			<div class="register span6">
 				<!--크기 -->
 				<form action="loginsuccess.do" method="post">
+					
 					<h2>
 						<span class="red"><strong>로그인</strong></span>
 					</h2>
