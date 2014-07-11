@@ -23,7 +23,34 @@
 <!-- jQuery files -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jscripts.js"></script>
 
+
+<script>
+	
+	$(function() {
+
+		var returnVar = false;
+		$('#insertCheck').click(function() {
+
+	
+			if ($('#comment').val() == '') {
+				alert("한줄평을 넣어 주세요");
+				returnVar = false;
+			} else if ($('#memGrade').val() == '') {
+				alert("평점을 입력해주세요");
+				returnVar = false;
+			}	else if ($('#reveiw').val() == '') {
+				alert("후기을 입력해주세요");
+				returnVar = false;
+			}	else {
+				returnVar = true;
+			}
+
+		return returnVar;
+		});
+	});
+</script>
 
 
 <script type="text/javascript">
@@ -153,7 +180,7 @@
 				</form>
 			</div>
 			<div class="upLoadCont">
-				<form action="postingInsert.do" method="post">
+				<form id = "insert" action="postingInsert.do" method="post" >
 					<table>
 						<tr>
 							<td>나의 평점</td>
@@ -184,10 +211,12 @@
 						</tr>
 						<tr>
 							<td>나의 한줄평</td>
-							<td><input type="text" style="width: 500px" name="comment"></td>
+							<td><input type="text" style="width: 500px" id = "comment" name="comment"></td>
 						</tr>
 					</table>
-					<input type="text" class="upLoadText" name="review"><br> <input
+					<td>나의 후기</td>
+					<input type="text" class="upLoadText" id = "reveiw" name="review"><br> 
+					<input
 						type="hidden" name="pmemCD" value=${member.memCD }> <input
 						type="hidden" name="title" value="의형제"> <input type="hidden"
 						name=director value="장훈"> <input type="hidden" name="image"
@@ -198,7 +227,7 @@
 						value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
 ">
 
-					<input type="submit" class="upLoadStart" value="글올리기">
+					<input type="submit" class="upLoadStart"  id = "insertCheck" name= "insertCheck" value="글올리기">
 				</form>
 			</div>
 
