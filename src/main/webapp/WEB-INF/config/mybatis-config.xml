@@ -21,6 +21,7 @@
 		<typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice" />
 		<typeAlias type="com.pyongjjeom.notice.dto.NoticeCode" alias="NoticeCode" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Post" alias="Post" />
+			<typeAlias type="com.pyongjjeom.postandreply.dto.PostAndContents" alias="PostAndContents" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
 				<typeAlias type="com.pyongjjeom.contents.dto.Content"
 			alias="Content" />
