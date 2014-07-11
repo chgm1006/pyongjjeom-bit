@@ -33,23 +33,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<update id="cgvGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set cgvmg
-		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="lotteGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		lottemg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
+		lottemg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="megaBoxGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
-		megaBoxmg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and title= #{title});
+		megaBoxmg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'M%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="daumGradeUpdate" parameterType="ContentsValue">
 		update contents_movie set
 		daummg
-		=#{grade},updatedate=now() where concd=(select concd from contents  where concd like 'M%' and title= #{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents  where concd like 'M%' and replace(title," ","")= #{title});
 	</update>
 
 	<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades">
@@ -61,19 +61,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<update id="yes24GradeUpdate" parameterType="ContentsValue">
 		update contents_book set yesbg
-		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="aladinGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		aladinbg
-		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="kyoboGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
 		kyobobg
-		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
+		=#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and replace(title," ","")= #{title});
 	</update>
 
 	<update id="naverBookGradeUpdate" parameterType="ContentsValue">
@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<update id="bandinlunisGradeUpdate" parameterType="ContentsValue">
 		update contents_book set
-		bandibg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and title= #{title});
+		bandibg =#{grade},updatedate=now() where concd=(select concd from contents where concd like 'B%' and replace(title," ","")= #{title});
 	</update>
 
 	<select id="bookGradeSelect" parameterType="String" resultType="BookGrades">
