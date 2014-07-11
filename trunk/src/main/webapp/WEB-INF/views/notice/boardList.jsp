@@ -109,10 +109,10 @@ jquery.jscroll.js
 			<div class = "more">
 			<p>Content here...</p>
 			<input type = "button" id = "button" value ="지난공지사항 더보기"/>
-	<!-- 		<class = "button">지난공지사항 더보기
+			<class = "button">지난공지사항 더보기
 	
 	
-	<a href="moreList.do" class="button">지난 공지사항 더보기</a>  -->
+	<a href="moreList.do" class="button">지난 공지사항 더보기</a> 
 			</div>
 			</div>
 		
