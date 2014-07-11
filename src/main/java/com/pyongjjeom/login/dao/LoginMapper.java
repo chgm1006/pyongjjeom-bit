@@ -23,7 +23,6 @@ import com.pyongjjeom.user.dto.Member;
 public interface LoginMapper {
 
 	public int checkMemberLogin(Map<String, String> loginMap);
-	
 
 	public int insertMember(Member user);
 
@@ -44,7 +43,6 @@ public interface LoginMapper {
 
 	public int updateFBMember(Member member);
 
-	
 	public Member getEmail(String email);
 
 	/**
@@ -88,5 +86,7 @@ public interface LoginMapper {
 	 * @return
 	 */
 	public Member getMemberInfoByFBID(String fbId);
+
+	public Member getMemberInfoByMember(Member member);
 
 }

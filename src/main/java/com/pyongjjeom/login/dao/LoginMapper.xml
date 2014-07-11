@@ -9,7 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</select>
 
 	<select id="getEmail" parameterType="string" resultType="Member">
-	    select email from member where email = #{email}
+		select email
+		from member where email = #{email}
 	</select>
 	<select id="login" resultType="Member">
 		select * from member where email=#{email}
@@ -105,14 +106,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<update id="updateFBMember" parameterType="Member">
 		UPDATE member
 		SET
-		email = #{email} ,
+		email =
+		#{email} ,
 		memnm = #{memNm} ,
 		birth = #{birth} ,
 		fbid = #{fbId} ,
 		fbyn = 'Y',
 		imgpath = #{imgPath} ,
 		updatedate = now()
-		WHERE fbid = #{fbId};
+		WHERE email = #{email} or fbid =
+		#{fbId};
 	</update>
 
 	<select id="getMemberInfoByFBID" parameterType="String" resultType="Member">
@@ -123,5 +126,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		fbId,
 		imgPath
 		from member where fbid = #{fbId};
+	</select>
+	<select id="getMemberInfoByMember" parameterType="Member" resultType="Member">
+		SELECT memCD ,
+		email ,
+		memKind ,
+		memNm ,
+		birth ,
+		passwd ,
+		emailAuthYn ,
+		emailauthcd ,
+		memvalid ,
+		fbId ,
+		fbYn ,
+		imgPath ,
+		imgNm ,
+		regiDate ,
+		updateDate
+		FROM member
+		where
+		email = #{email} or fbid=#{fbId};
+
 	</select>
 </mapper>
