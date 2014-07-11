@@ -37,6 +37,12 @@ import org.apache.log4j.Logger;
 
 public class BookGrades {
 
+	@Override
+	public String toString() {
+		return "BookGrades [title=" + title + ", naverBg=" + naverBg
+				+ ", aladinBg=" + aladinBg + ", bandiBg=" + bandiBg + ", kyoboBg="
+				+ kyoboBg + ", yesBg=" + yesBg + ", bookCode=" + bookCode + "]";
+	}
 	private String title;
 	private double naverBg=0;
 	private double aladinBg=0;

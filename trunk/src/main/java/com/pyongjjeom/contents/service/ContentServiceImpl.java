@@ -45,6 +45,7 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void gradeUpdate(List<ContentsValue> values, String str) {
 		for (ContentsValue value : values) {
+			value.setTitle(value.getTitle().replace(" ","").replace(",","").trim());
 			switch (str) {
 			case "n":
 				contentsMapper.naverMovieGradeUpdate(value);
