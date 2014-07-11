@@ -154,6 +154,7 @@
 							<input type="hidden"  name=director value="장훈">
 							<input type="hidden"  name="image" value="http://imgmovie.naver.com/mdi/mit110/0525/52548_P43_123614.jpg">
 									<input type="hidden"  name="actor" value="송강호|강동원|">
+													<input type="hidden"  name="category" value="movie">
 											<input type="hidden"  name="link" value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
 ">
 											
