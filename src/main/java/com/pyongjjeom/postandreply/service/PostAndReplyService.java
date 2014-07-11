@@ -9,6 +9,7 @@ import java.util.List;
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.postandreply.dto.PostAndContents;
 
 /**
  * <pre>
@@ -22,7 +23,7 @@ import com.pyongjjeom.postandreply.dto.Post;
  */
 public interface PostAndReplyService {
 
-	public List<Post> getPost(String memCD);
+	public List<PostAndContents> getPost(String memCD);
 
 	public List<Post> getReply(String memCD, String conCD);
 
@@ -32,7 +33,7 @@ public interface PostAndReplyService {
 
 	public void deletePost(String postCD);
 
-	public void insertBookPost(Post post);
+	public void insertPost(Post post);
 
 	
 }

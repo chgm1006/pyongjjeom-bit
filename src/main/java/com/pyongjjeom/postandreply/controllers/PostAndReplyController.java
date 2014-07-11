@@ -44,35 +44,67 @@ public class PostAndReplyController {
 
 	@Autowired
 	private PostAndReplyService parService;
-	private HttpSession httpSession;
-	
-	
-/*	@Autowired
-	private UserService userService;
-
 
 	@Autowired
 	private ContentService contentService;
 
-	@Autowired
-	private FriendsService friendsService;*/
+	private HttpSession httpSession;
+
+	/*
+	 * @Autowired private UserService userService;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @Autowired private FriendsService friendsService;
+	 */
 
 	private Reply reply;
 	private Member mem;
-	private Content content;
 
-	DBCode code= new DBCode();
+	DBCode code = new DBCode();
+
 	@RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
-	public String postingInsert(Post post, HttpServletRequest request) {
+	public String postingInsert(Content content, Post post,
+			HttpServletRequest request) {
 
+		httpSession = request.getSession();
+		String conCD = null;
+		String nCode = null;
+		String category = (String) httpSession.getAttribute("category");
+
+		if (category.equals("movie")) {
+			if (!content.getImage().isEmpty()) {
+				nCode = content.getImage().replace("A", "1").replace("B", "2")
+						.replace("C", "3").replace("D", "4").replace("E", "5")
+						.replace("F", "6");
+				if (nCode.contains("_")) {
+					nCode = nCode.substring(nCode.lastIndexOf("/") + 1,
+							nCode.indexOf("_"));
+				} else
+					nCode = nCode.substring(nCode.lastIndexOf("/") + 1,
+							nCode.indexOf("-"));
+			}
+			conCD = "M" + nCode;
+		} else if (category.equals("book")) {
+			if (!content.getImage().isEmpty()) {
+				nCode = content.getImage().substring(
+						content.getImage().lastIndexOf("/0") + 2,
+						content.getImage().indexOf(".jpg"));
+			}
+			conCD = "B" + nCode;
+		}
 		reviewDbToView(post);
 		post.setPostCD(code.getPostCD("PB"));
-		
-		parService.insertBookPost(post);
+		post.setConCD(conCD);
+		content.setConCD(conCD);
+		content.setActor(content.getActor().replace("|", " "));
+		content.setDirector(content.getDirector().replace("|", " "));
+		parService.insertPost(post);
+		contentService.contentsInfoInsert(content);
 		return "postandreply/contentsPostingResult";
 	}
 
-	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getPost(String memCD, String conCD) {
 		return null;
@@ -84,58 +116,55 @@ public class PostAndReplyController {
 	}
 
 	@RequestMapping(value = "updatePost.do", method = RequestMethod.GET)
-	public String updatePost(@Valid Post post, Model model,HttpServletRequest request)
-	{
+	public String updatePost(@Valid Post post, Model model,
+			HttpServletRequest request) {
 		System.out.println(request.getParameter("postCD"));
-		
-		 Post newPost= parService.updatePost(request.getParameter("postCD"));
-		 
-		 System.out.println(newPost);
-		 
-		 model.addAttribute("np", newPost);
-		 
-		 reviewUpdateDbtoView(newPost);
-		 
-		 System.out.println(post.toString());
-	
-		 return "postandreply/updatePost";
+
+		Post newPost = parService.updatePost(request.getParameter("postCD"));
+
+		System.out.println(newPost);
+
+		model.addAttribute("np", newPost);
+
+		reviewUpdateDbtoView(newPost);
+
+		System.out.println(post.toString());
+
+		return "postandreply/updatePost";
 	}
 
 	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
-	public String updatePostOk( Post post, Model model,HttpServletRequest request)
+	public String updatePostOk(Post post, Model model, HttpServletRequest request)
 
 	{
-		
+
 		reviewDbToView(post);
-		
+
 		System.out.println(request.getParameter("postCD"));
 		System.out.println(request.getParameter("memGrade"));
-	 parService.editPost(post);
-	 
-	 request.getParameter("postCD");
-		 
-		 System.out.println(post.toString());
-	
-		 return "postandreply/updatePost_ok";
+		parService.editPost(post);
+
+		request.getParameter("postCD");
+
+		System.out.println(post.toString());
+
+		return "postandreply/updatePost_ok";
 	}
 
-	
-	
 	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
-	public String deletePost(@Valid Post post, Model model,HttpServletRequest request) {
-		
-		request.getParameter("postCD");
-		
-		parService.deletePost(request.getParameter("postCD"));
-		
+	public String deletePost(@Valid Post post, Model model,
+			HttpServletRequest request) {
 
-		
-		
+		request.getParameter("postCD");
+
+		parService.deletePost(request.getParameter("postCD"));
+
 		return "postandreply/deletePost_ok";
 	}
-/*
- * 맨처음 포스팅을 쓸때 체크해주는 것	
-	*/public Post reviewViewToDb(Post post) { //DB에서 View로
+
+	/*
+	 * 맨처음 포스팅을 쓸때 체크해주는 것
+	 */public Post reviewViewToDb(Post post) { // DB에서 View로
 
 		String viewReview = post.getReview();
 		viewReview = viewReview.replaceAll("'", "`");
@@ -143,30 +172,26 @@ public class PostAndReplyController {
 
 		return post;
 	}
-		
-/*
-* view에서 DB로 넘어갈때 체크해주는 것
-*/	public Post reviewDbToView(Post post) { 
+
+	/*
+	 * view에서 DB로 넘어갈때 체크해주는 것
+	 */public Post reviewDbToView(Post post) {
 		String dbReview = post.getReview();
 		dbReview = dbReview.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
 		post.setReview(dbReview);
 		return post;
 	}
-	
-/*
- * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
-*/	public Post reviewUpdateDbtoView(Post newPost) {
+
+	/*
+	 * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
+	 */public Post reviewUpdateDbtoView(Post newPost) {
 
 		String viewPost = newPost.getReview();
 		viewPost = viewPost.replaceAll("<br>", "\r\n");
 		newPost.setReview(viewPost);
-		
+
 		return newPost;
 	}
 
-	
-	
-	
-	
 }

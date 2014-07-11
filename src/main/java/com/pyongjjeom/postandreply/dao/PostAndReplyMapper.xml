@@ -8,16 +8,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		parameterMap="postMap"> </update> <update id="deletePost" parameterMap="postMap"> 
 		</update> -->
 
-	<insert id="insertBookPost" parameterType="Post">
+	<insert id="insertPost" parameterType="Post">
 		INSERT INTO posting
-		(postcd,pmemcd,review,memgrade,comment,deleteyn,spoilyn,regidate,updatedate,title,director,image,link,actor)
+		(postcd,pmemcd,concd,review,memgrade,comment,deleteyn,spoilyn,regidate,updatedate)
 		values
-		(#{postCD},#{pmemCD},#{review},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now(),#{title},#{director},#{image},#{link},#{actor})
+		(#{postCD},#{pmemCD},#{conCD},#{review},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now())
 
 	</insert>
-<select id="getPost" parameterType="String" resultType="Post"> 
-    
-    select * from posting where pmemcd=#{memCD} and ifnull(deleteyn,'N')='N' order by  updatedate desc;
+<select id="getPost" parameterType="String" resultType="PostAndContents"> 
+    select posting.postcd,posting.pmemCD,posting.concd,posting.review,posting.memgrade,posting.comment,contents.title,contents.director,contents.image,contents.link,contents.actor from posting,contents where posting.pmemcd=#{memCD} and ifnull(posting.deleteyn,'N')='N' and contents.concd=posting.concd order by  updatedate desc;
     </select>
     
 
