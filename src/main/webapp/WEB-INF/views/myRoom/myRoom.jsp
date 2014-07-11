@@ -25,6 +25,15 @@
 		});
 	});
 </script>
+<script>
+	function valueChange() {
+		var x = document.getElementById('range');
+		var y = document.getElementById('inputValue');
+		y.value = x.value;
+	}
+</script>
+
+
 <script type="text/javascript">
 	$(function() {
 
@@ -114,23 +123,43 @@
 					<select name="category">
 						<option value="book">책
 						<option value="movie">영화
-					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
+					</select>
+					 <input type="text" id="Search" name="Search"> <input type="hidden"
 						name="stat" value="posting"> <input type="submit" value="검색">
 				</form>
 			</div>
 			<div class="upLoadCont">
+				<form action="postingInsert.do" method="post">
 				<table>
 					<tr>
 						<td>나의 평점</td>
-						<td>별표</td>
+							<td><input id="range" type="range" value="0" min="0" step="0.5"
+						max="10" list="number" onchange="valueChange();" /> <datalist id="number">
+							<option>0</option>
+							<option>2</option>
+							<option>4</option>
+							<option>6</option>
+							<option>8</option>
+							<option>10</option>
+						</datalist> <input id="inputValue" type="text" size="5"  name="memGrade"  /></td>
 					</tr>
 					<tr>
 						<td>나의 한줄평</td>
-						<td><input type="text" style="width: 500px"></td>
+						<td><input type="text" style="width: 500px" name="comment"></td>
 					</tr>
 				</table>
-				<input type="text" class="upLoadText"><br> <input type="submit"
+				<input type="text" class="upLoadText"  name="review"><br> 
+				<input type="hidden"  name="pmemCD" value=${member.memCD }>
+					<input type="hidden"  name="title" value="의형제">
+							<input type="hidden"  name=director value="장훈">
+							<input type="hidden"  name="image" value="http://imgmovie.naver.com/mdi/mit110/0525/52548_P43_123614.jpg">
+									<input type="hidden"  name="actor" value="송강호|강동원|">
+											<input type="hidden"  name="link" value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
+">
+											
+				<input type="submit"
 					class="upLoadStart" value="글올리기">
+					</form>
 			</div>
 
 		</div>
