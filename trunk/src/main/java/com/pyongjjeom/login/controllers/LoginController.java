@@ -6,7 +6,6 @@ package com.pyongjjeom.login.controllers;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -79,20 +78,19 @@ public class LoginController {
 		}
 
 	}
-	
-	/*@RequestMapping(value="gologin.do", method=RequestMethod.GET)
-	public void gologin(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		String redirectPage = request.getParameter("uri");
-		String redirectPage = (String) request.getAttribute("redirectURI");
-		System.out.println(request.getAttribute("redirectURI")+"uri체크");
-    if(redirectPage ==null){     
-            redirectPage = "movieIndex.do";
-    }else{
-    	response.sendRedirect(redirectPage);
-    	
-    }
-	}*/
 
+	/*
+	 * @RequestMapping(value="gologin.do", method=RequestMethod.GET) public void
+	 * gologin(HttpServletRequest request, HttpServletResponse response)throws
+	 * ServletException, IOException{ String redirectPage =
+	 * request.getParameter("uri"); String redirectPage = (String)
+	 * request.getAttribute("redirectURI");
+	 * System.out.println(request.getAttribute("redirectURI")+"uri체크");
+	 * if(redirectPage ==null){ redirectPage = "movieIndex.do"; }else{
+	 * response.sendRedirect(redirectPage);
+	 * 
+	 * } }
+	 */
 
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
@@ -164,8 +162,9 @@ public class LoginController {
 			session.setAttribute("memNm", sMember.getMemCD());
 			session.setAttribute("fbId", sMember.getFbId());
 			session.setAttribute("imgPath", sMember.getImgPath());
+			session.setAttribute("fbErrorMSG", "");
 		} else {
-			session.setAttribute("errorMSG", "정보가 정상적으로 저장되지 않았습니다.");
+			session.setAttribute("fbErrorMSG", "정보가 정상적으로 저장되지 않았습니다.");
 		}
 		return sMember;
 
