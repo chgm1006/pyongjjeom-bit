@@ -88,23 +88,25 @@ public class MailController {
 		return text.toString();
 	}
 
-	@RequestMapping(value = "emailAuth_check.do", method = RequestMethod.GET)
-	public String checkEmailAuthGET(Member user, HttpServletRequest request) {
-		return checkEmailAuth(user, request);
-	}
+	// @RequestMapping(value = "emailAuth_check.do", method = RequestMethod.GET)
+	// public String checkEmailAuthGET(Member user, HttpServletRequest request) {
+	// return checkEmailAuth(user, request);
+	// }
 
-	@RequestMapping(value = "emailAuth_check.do", method = RequestMethod.POST)
-	public String checkEmailAuth(Member user, HttpServletRequest request) {
+	@RequestMapping(value = "emailAuth_check.do", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String checkEmailAuth(Member member, HttpServletRequest request) {
 		String emailCD = (String) request.getParameter("emailAuthCD");
 		String email = (String) request.getParameter("email");
 
 		String userAuthCD = loginService.getEmailAuthCD(email);
 		String resultPage = "";
-		user.setEmail(email);
-		user.setMemCD(loginService.getMemCD(email));
+		member.setEmail(email);
+		member.setMemCD(loginService.getMemCD(email));
 
 		if (emailCD.equals(userAuthCD)) {
-			loginService.updateEmailAuthCDCheck(user);
+			loginService.updateEmailAuthCDCheck(member);
+			request.setAttribute("email", email);
 			resultPage = "emailAuth/emailAuth_ok";
 		} else {
 			request.setAttribute("errorMSG", "인증번호를 확인하세요");
@@ -112,6 +114,26 @@ public class MailController {
 		}
 
 		return resultPage;
+	}
+
+	@RequestMapping(value = "goChangePasswd.do", method = RequestMethod.POST)
+	public String goChangePasswd(Member member, HttpServletRequest request) {
+
+		request.setAttribute("email", member.getEmail());
+		System.out.println("email = " + member.getEmail());
+
+		return "emailAuth/changePasswd";
+	}
+
+	@RequestMapping(value = "changePasswd.do", method = RequestMethod.POST)
+	public String changePasswd(Member member, HttpServletRequest request) {
+//		String passwd = (String) REQUEST.GETPARAMETER("PASSWD");
+//		STRING PASSWD = (STRING) request.getParameter("email");
+
+		System.out.println("passwd = " + member.getPasswd());
+		System.out.println("email = " + member.getEmail());
+
+		return "emailAuth/changePasswd_success";
 	}
 
 }
