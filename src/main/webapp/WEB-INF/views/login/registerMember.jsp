@@ -36,6 +36,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
+
+
 <script>
 	$(document).ready(function() {
 
@@ -62,6 +64,7 @@
 
 						if (result.trim() == 'fail') {
 							alert("이 아이디는 사용가능합니다");
+							$('#email').show();
 							$('#register').submit();
 							return true;
 						} else if (result.trim() == 'true') {
@@ -76,15 +79,7 @@
 	});
 </script>
 
-<script>
-	function checksubmit() {
-		var data = document.mainform;
-		if (!data.IDcodeCheck.value) {
-			alert('check please');
-			return false;
-		}
-	}
-</script>
+
 
 <style>
 .ui-datepicker {
@@ -120,7 +115,7 @@
 					name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
 				<input type="password" id="password_check" name="password_check"
 					placeholder="비밀번호확인...">
-				<button type="submit">가입하기</button>
+				<button type="submit" id = "submit" >가입하기</button>
 				<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 			</form>
 		</div>
