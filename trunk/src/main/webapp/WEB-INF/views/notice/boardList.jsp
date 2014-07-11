@@ -17,6 +17,33 @@
 	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
+jquery.jscroll.js
+<!-- jQuery files -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.js"></script>
+
+<script>
+	$(document).ready(function() {
+		
+		$("#button").click(function(){
+			
+ 		$("#more" ).load( "boardList.jsp" );
+		
+		});
+	
+		$('.more').jscroll({
+				lockDirection : false,
+		    fadScrollbar : true,
+				autoTrigger: false
+		
+		
+		});
+	}
+			
+			</script>
+		
+
 
 
 	<article>
@@ -78,9 +105,19 @@
 				</dl>
 			</div>
 			
+		
+			<div class = "more">
+			<p>Content here...</p>
+			<input type = "button" id = "button" value ="지난공지사항 더보기"/>
+	<!-- 		<class = "button">지난공지사항 더보기
+	
+	
+	<a href="moreList.do" class="button">지난 공지사항 더보기</a>  -->
+			</div>
+			</div>
+		
 			
-			
-			<a href="MoreList.do" class="listMore">지난 공지사항 더보기</a>
+
 			</div>
 
 	</article>
