@@ -115,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		imgpath = #{imgPath} ,
 		updatedate = now()
 		WHERE email = #{email} or fbid =
-		#{fbId};
+		#{fbId}  and fbyn = 'Y';
 	</update>
 
 	<select id="getMemberInfoByFBID" parameterType="String" resultType="Member">
