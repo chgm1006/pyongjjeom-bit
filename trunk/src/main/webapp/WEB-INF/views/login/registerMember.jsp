@@ -45,7 +45,7 @@
 				return false;
 			} else {
 				var email = $('#email').serialize();
-		
+
 				$.ajax({
 					cache : false, // cache가 남아 있지 않게 false
 					async : false, // 순차적으로(동기방식) 동작한다.
@@ -59,14 +59,12 @@
 					},
 					success : function(xml) { // 성공시 해당함수 실행
 						var result = $(xml).find('check').text();
-		
+
 						if (result.trim() == 'fail') {
 							alert("이 아이디는 사용가능합니다");
 							$('#register').submit();
 							return true;
-						} else
-							(result.trim() == 'true')
-						{
+						} else if (result.trim() == 'true') {
 							alert("아이디가 존재합니다.");
 							return false;
 						}
@@ -79,14 +77,13 @@
 </script>
 
 <script>
-
-function checksubmit(){ 
-var data = document.mainform; 
-if(!data.IDcodeCheck.value){ 
-alert('check please'); 
-return false; 
-} 
-} 
+	function checksubmit() {
+		var data = document.mainform;
+		if (!data.IDcodeCheck.value) {
+			alert('check please');
+			return false;
+		}
+	}
 </script>
 
 <style>
@@ -115,11 +112,8 @@ return false;
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
 				<label for="email">이메일</label> <input type="text" id="email" name="email"
-					placeholder="이메일..."> 
-					<input type="button" value="중복확인" id="emailCheck">
-	
-				
-					<label for="name">이름</label> <input type="text"
+					placeholder="이메일..."> <input type="button" value="중복확인"
+					id="emailCheck"> <label for="name">이름</label> <input type="text"
 					id="name" name="memNm" placeholder="이름..."> <label for="birth">생년월일</label>
 				<input type="text" id="birth" name="birth" placeholder="생년월일..."> <label
 					for="password">비밀번호</label> <input type="password" id="password"
