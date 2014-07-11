@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 <insert id="contentsTitleInsert" parameterType="ContentsValue">
 		INSERT INTO contents
-		(concd,title,regidate,updatedate) SELECT #{concd},#{title},now(),now() FROM DUAL
+		(concd,title,regidate) SELECT #{concd},#{title},now() FROM DUAL
 		WHERE NOT
 		EXISTS( SELECT 1 FROM contents WHERE concd=#{concd})
 	</insert>
