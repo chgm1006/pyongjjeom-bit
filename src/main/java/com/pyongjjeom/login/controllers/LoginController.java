@@ -5,17 +5,14 @@
 package com.pyongjjeom.login.controllers;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.catalina.connector.Request;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.login.service.LoginService;
 import com.pyongjjeom.user.dto.Member;
-import com.pyongjjeom.user.service.UserService;
 
 /**
  * <pre>
