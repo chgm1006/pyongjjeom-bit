@@ -8,175 +8,181 @@
 <!---- CSS  ---->
 <link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
 	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/modalWindowBoard.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/modalWindowBoard.css"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
-	
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 jquery.jscroll.js
 <!-- jQuery files -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.js"></script>
 
-<script>
+
+
+
+
+
+
+<!-- <script>
 	$(document).ready(function() {
 		
-		$("#button").click(function(){
-			
- 		$("#more" ).load( "boardList.jsp" );
+		$("#btn").click(function(){
+			alert("11111111111111");
+ 		$("#more" ).load( "more.jsp" );
+ 		alert("222222222222");
 		
 		});
-	
+	/* 
 		$('.more').jscroll({
 				lockDirection : false,
 		    fadScrollbar : true,
 				autoTrigger: false
 		
 		
-		});
-	}
-			
+		}); */
+	});
 			</script>
-		
+
+
+ -->
+
+<article>
+
+	<div id="wrap">
+		<div class="menu">
+			<ul>
+
+				<li class="boardMenu"><a class="myPageMenu" href="#"
+					OnClick="window.location='allList.do'">전체보기</a></li>
+				<li class="boardMenu"><a class="myPageMenu" href="#"
+					OnClick="window.location='eventList.do'">행사공지</a></li>
+				<li class="boardMenu"><a class="myPageMenu" href="#"
+					OnClick="window.location='systemList.do'">시스템공지 </a></li>
+
+				<c:choose>
+					<c:when test="${member.memKind =='A'}">
+						<li class="boardMenu"><a class="myPageMenu" id="boardWrite" href="#"
+							OnClick="window.location='write.do'">글쓰기</a></li>
+						<li class="boardMenu"><a class="myPageMenu" href="#"
+							OnClick="window.location='deleteList.do'">삭제된글</a></li>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div>
+		<div class="clear"></div>
+
+
+		<div class="boardList">
+			<dl>
+				<c:forEach var="notice" items="${add}" varStatus="cnt">
+					<dt class="listHead">
+						<h3>${notice.title}</h3>
+						<h5>${notice.formatUpdatedate}</h5>
+
+					</dt>
 
 
 
-	<article>
-
-		<div id="wrap">
-			<div class="menu">
-				<ul>
-
-					<li class="boardMenu"><a class="myPageMenu" href="#"
-						OnClick="window.location='allList.do'">전체보기</a></li>
-					<li class="boardMenu"><a class="myPageMenu" href="#"
-						OnClick="window.location='eventList.do'">행사공지</a></li>
-					<li class="boardMenu"><a class="myPageMenu" href="#"
-						OnClick="window.location='systemList.do'">시스템공지
-						</a></li>
-
-					<c:choose>
-						<c:when test="${member.memKind =='A'}">
-							<li class="boardMenu"><a class="myPageMenu" id="boardWrite" href="#"
-								OnClick="window.location='write.do'">글쓰기</a></li>
-							<li class="boardMenu"><a class="myPageMenu" href="#"
-								OnClick="window.location='deleteList.do'">삭제된글</a></li>
-						</c:when>
-						<c:otherwise>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</div>
-			<div class="clear"></div>
-
-
-			<div class="boardList">
-				<dl>
-					<c:forEach var="notice" items="${add}" varStatus="cnt">
-						<dt class="listHead">
-							<h3>${notice.title}</h3>
-							<h5>${notice.formatUpdatedate}</h5>
-
-						</dt>
-
-
-
-						<dd class="listContent">${notice.issue}
+					<dd class="listContent">${notice.issue}
 						<c:choose>
-						<c:when test="${member.memKind =='A'}">
-						<a class="mainBoard" href="#"
-								OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a> <a
-								class="mainBoard" href="#"
-								OnClick="window.location='delete.do?notCD=${notice.notCD}'">삭제</a>
-						
-						</c:when>
-						<c:otherwise>
-						</c:otherwise>
+							<c:when test="${member.memKind =='A'}">
+								<a class="mainBoard" href="#"
+									OnClick="window.location='edit.do?notCD=${notice.notCD}'">글수정</a>
+								<a class="mainBoard" href="#"
+									OnClick="window.location='delete.do?notCD=${notice.notCD}'">삭제</a>
+
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
 						</c:choose>
-						</dd>
-					</c:forEach>
+					</dd>
+				</c:forEach>
 
 
-				</dl>
-			</div>
-			
-		
-			<div class = "more">
-			<p>Content here...</p>
-			<input type = "button" id = "button" value ="지난공지사항 더보기"/>
-			<class = "button">지난공지사항 더보기
+			</dl>
+		</div>
+
+
+
 	
-	
-	<a href="moreList.do" class="button">지난 공지사항 더보기</a> 
-			</div>
-			</div>
-		
-			
+		<div id = "more"><p>Content here...</p></div>
+		<input type="button" id="btn" name="btn" value="지난공지사항 더보기" />
+		<div class="more">
 
-			</div>
-
-	</article>
+			<a href="moreList.do" class="button">지난 공지사항 더보기</a>
+		</div>
+	</div>
 
 
-	<!---- 검은 바탕 ---->
-	<div id='glayLayer'></div>
 
-	<!---- above page 시작 ---->
-	<div id='overLayer'>
-		<div class="abc">
-			<form name=writeform method=POST action="write_ok.do">
-				<table>
-
-					<tr>
-						<td>
-							<table width="100%" cellpadding="0" cellspacing="0" border="0">
-								<tr>
-									<td width="5" />
-									<td>글쓰기</td>
-									<td width="5" />
-								</tr>
-							</table>
-							<table>
-								<tr>
-									<td>&nbsp;</td>
-									<td align="center">제목</td>
-									<td><input name="title" size="50" maxlength="100"></td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr height="1" bgcolor="#dddddd">
-									<td colspan="4"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td align="center">이름</td>
-									<td><input name="writer" size="50" maxlength="50"></td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr height="1" bgcolor="#dddddd">
-									<td colspan="4"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td align="center">비밀번호</td>
-									<td><input name="notPasswd" size="50" maxlength="50"></td>
-									<td>&nbsp;</td>
-								</tr>
+</article>
 
 
-								<tr>
-									<td>&nbsp;</td>
-									<td align="center">카테고리</td>
-									<td><form:select path="code" name="code" items="${code}"
-											itemValue="code" itemLabel="codenm" style="width:50; align:center;" />
+<!---- 검은 바탕 ---->
+<div id='glayLayer'></div>
 
-									</td>
-								</tr>
-								<%-- 
+<!---- above page 시작 ---->
+<div id='overLayer'>
+	<div class="abc">
+		<form name=writeform method=POST action="write_ok.do">
+			<table>
+
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td width="5" />
+								<td>글쓰기</td>
+								<td width="5" />
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td>&nbsp;</td>
+								<td align="center">제목</td>
+								<td><input name="title" size="50" maxlength="100"></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr height="1" bgcolor="#dddddd">
+								<td colspan="4"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td align="center">이름</td>
+								<td><input name="writer" size="50" maxlength="50"></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr height="1" bgcolor="#dddddd">
+								<td colspan="4"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td align="center">비밀번호</td>
+								<td><input name="notPasswd" size="50" maxlength="50"></td>
+								<td>&nbsp;</td>
+							</tr>
+
+
+							<tr>
+								<td>&nbsp;</td>
+								<td align="center">카테고리</td>
+								<td><form:select path="code" name="code" items="${code}"
+										itemValue="code" itemLabel="codenm" style="width:50; align:center;" />
+
+								</td>
+							</tr>
+							<%-- 
 						<form:select path="code" name="code" items="${code}" itemValue="code"
 							itemLabel="codenm" />
 
@@ -201,54 +207,55 @@ jquery.jscroll.js
 					<td width="172"></td>
 				</tr> --%>
 
-								<tr height="1" bgcolor="#dddddd">
-									<td colspan="4"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-									<td align="center">내용</td>
-									<td><textarea name="issue" cols="50" rows="13"></textarea></td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr height="1" bgcolor="#dddddd">
-									<td colspan="4"></td>
-								</tr>
-								<tr height="1" bgcolor="#82B5DF">
-									<td colspan="4"></td>
-								</tr>
-								<tr align="center">
-									<td>&nbsp;</td>
+							<tr height="1" bgcolor="#dddddd">
+								<td colspan="4"></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td align="center">내용</td>
+								<td><textarea name="issue" cols="50" rows="13"></textarea></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr height="1" bgcolor="#dddddd">
+								<td colspan="4"></td>
+							</tr>
+							<tr height="1" bgcolor="#82B5DF">
+								<td colspan="4"></td>
+							</tr>
+							<tr align="center">
+								<td>&nbsp;</td>
 
-									<td colspan="2"><input type=button value="등록"
-										OnClick="javascript:writeCheck();"> <input type=button
-										value="취소" OnClick="javascript:history.back(-1)">
-									<td>&nbsp;</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-		
-		  <tr align="center">
-   <td><input type=button value="글쓰기" OnClick="window.location='write.jsp'"></td>
-  </tr> 
-</table>
-					
-					
+								<td colspan="2"><input type=button value="등록"
+									OnClick="javascript:writeCheck();"> <input type=button
+									value="취소" OnClick="javascript:history.back(-1)">
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
 
-				</table>
-			</form>
-		</div>
+				<tr align="center">
+					<td><input type=button value="글쓰기"
+						OnClick="window.location='write.jsp'"></td>
+				</tr>
+			</table>
+
+
+
+			</table>
+		</form>
 	</div>
+</div>
 
 
 
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는  jQuery 모음 ################---->
-	<!---jQuery 아코디언--->
+<!----################ 여기부터는 jQuery 모음 ################---->
+<!----################ 여기부터는 jQuery 모음 ################---->
+<!----################ 여기부터는  jQuery 모음 ################---->
+<!---jQuery 아코디언--->
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(function() {
 			$("dd").css("display", "none");
 			$("dl dt,dl dt.selected").click(function() {
@@ -263,8 +270,8 @@ jquery.jscroll.js
 			});
 		});
 	</script>
-	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
-	<script type="text/javascript">
+<!--------- 모달윈도우 : 컨텐츠 상세 -------->
+<script type="text/javascript">
 		$(function() {
 			$("#glayLayer").click(function() {
 				$(this).hide();
