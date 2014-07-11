@@ -89,4 +89,5 @@ public interface LoginMapper {
 
 	public Member getMemberInfoByMember(Member member);
 
+	public int updateMemberPasswd(Member member);
 }

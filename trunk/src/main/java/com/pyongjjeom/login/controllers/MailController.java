@@ -127,12 +127,10 @@ public class MailController {
 
 	@RequestMapping(value = "changePasswd.do", method = RequestMethod.POST)
 	public String changePasswd(Member member, HttpServletRequest request) {
-//		String passwd = (String) REQUEST.GETPARAMETER("PASSWD");
-//		STRING PASSWD = (STRING) request.getParameter("email");
-
 		System.out.println("passwd = " + member.getPasswd());
 		System.out.println("email = " + member.getEmail());
 
+		int cnt = loginService.updateMemberPasswd(member);
 		return "emailAuth/changePasswd_success";
 	}
 
