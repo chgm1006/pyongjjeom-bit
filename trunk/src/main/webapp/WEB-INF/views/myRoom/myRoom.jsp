@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- /// <head> INCLUDE /// -->
+<%-- <%@ include file="../common/header.jsp"%>
+ --%>
 
 <!DOCTYPE HTML>
 <html>
@@ -14,6 +18,14 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<!-- CSS file -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
+<!-- jQuery files -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
+
+
+
 <script type="text/javascript">
 	$(function() {
 		$("#upLoadButton,.close").click(function() {
@@ -30,6 +42,21 @@
 		y.value = x.value;
 	}
 </script>
+
+<script>
+	$(document).ready(function() {
+		// simple jRating call
+		$(".basic").jRating({
+			onClick : function(element, rate) {
+				alert(rate);
+				memGrade = rate;
+				$('input[name=memGrade]').attr('value', memGrade);
+
+			}
+		})
+	});
+</script>
+
 
 
 <script type="text/javascript">
@@ -130,7 +157,7 @@
 					<table>
 						<tr>
 							<td>나의 평점</td>
-							<td><input id="range" type="range" value="0" min="0" step="0.5"
+							<!-- <td><input id="range" type="range" value="0" min="0" step="0.5"
 								max="10" list="number" onchange="valueChange();" /> <datalist
 									id="number">
 									<option>0</option>
@@ -139,7 +166,21 @@
 									<option>6</option>
 									<option>8</option>
 									<option>10</option>
-								</datalist> <input id="inputValue" type="text" size="5" name="memGrade" /></td>
+								</datalist> <input id="inputValue" type="text" size="5" name="memGrade" /></td> -->
+
+							<td>
+								<div class="exemple">
+
+									<!-- in this exemple, 12 is the average and 1 is the id of the line to update in DB -->
+									<div class="basic" data-average="5" data-id="1">
+										<input id="memGrade" type="hidden" name="memGrade" />
+									</div>
+
+									<!-- in this other exemple, 8 is the average and 2 is the id of the line to update in DB -->
+									<div class="basic1" data-average="5" data-id="2"></div>
+
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td>나의 한줄평</td>
