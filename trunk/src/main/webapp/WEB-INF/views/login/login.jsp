@@ -36,12 +36,22 @@
 <script src="${pageContext.request.contextPath}/resources/js/loginscripts.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 <script type="text/javascript">
+	$(document).ready(function() {
+		$("#FBLogin").click(function() {
+			fnLoginFB();
+		});
+
+		$("#FBLogout").click(function() {
+			fnLogout();
+		});
+
+	});
 	
 </script>
 
 </head>
 <body>
-${sMember.memNm }
+	${sMember.memNm }
 	<div class="register-container container">
 		<div class="row">
 

@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="getMemCDbyFBID" parameterType="string" resultType="string">
 		select
 		memcd
-		from member where fbid = #{fbId};
+		from member where fbid = #{fbId} and fbyn = 'Y';
 	</select>
 
 
@@ -105,10 +105,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<update id="updateFBMember" parameterType="Member">
 		UPDATE member
 		SET
-		email =
-		#{email} ,
+		email = #{email} ,
 		memnm = #{memNm} ,
 		birth = #{birth} ,
+		fbid = #{fbId} ,
+		fbyn = 'Y',
 		imgpath = #{imgPath} ,
 		updatedate = now()
 		WHERE fbid = #{fbId};
