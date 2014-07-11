@@ -25,8 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +33,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import com.pyongjjeom.common.code.DBCode;
-import com.pyongjjeom.notice.dao.NoticeMapper;
+
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
-import com.pyongjjeom.user.dto.Member;
+
+
+
 
 @Controller
 public class NoticeController {
@@ -50,7 +51,11 @@ public class NoticeController {
 
 	private DBCode dc = new DBCode(); // DBCode 정의
 	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	
+	int n= 1;
 
+	
+	
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
@@ -128,11 +133,29 @@ public class NoticeController {
 		return "notice/boardList";
 	}
 
-	@RequestMapping(value = "MoreList.do")
+	@RequestMapping(value = "moreList.do")
 	public String MoreList(@Valid Notice notice, Model model) {
 
-		return null;
+		
+		n=n+5;
+		
+		
+/*		noticeService.getAllNoticeListMore(n, n+5);*/
+		
+		System.out.println(noticeService.getAllNoticeListMore(n, n+5));
+		
+		List<Notice> list = noticeService.getAllNoticeListMore(n, n+5);
+		
+		model.addAttribute("add", list);
+
+		
+		return "notice/boardList";
+	
+	
+	
 	}
+	
+	
 
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
