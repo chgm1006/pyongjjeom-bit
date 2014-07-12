@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,6 @@
 
 <!-- Javascript -->
 
-<script src="jquery-1.9.1.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
@@ -25,7 +24,7 @@
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-	
+
 <style>
 .ui-datepicker {
 	font-size: 12px;
@@ -40,17 +39,17 @@
 	width: 50%;
 	font-size: 11px;
 }
-</style>	
+</style>
 
 <script type="text/javascript">
-function test_sample(){
- var sample = document.getElementsByName('radio');
- for(var i=0;i<sample.length;i++){
-  if(sample[i].checked == true){
-   alert(sample[i].value);
-  }
- }
-}
+	function test_sample() {
+		var sample = document.getElementsByName('radio');
+		for (var i = 0; i < sample.length; i++) {
+			if (sample[i].checked == true) {
+				alert(sample[i].value);
+			}
+		}
+	}
 </script>
 
 
@@ -61,7 +60,7 @@ function test_sample(){
 <body>
 
 
-<div class="register-container container">
+	<div class="register-container container">
 		<div class="row">
 
 			<div class="register span6">
@@ -71,42 +70,43 @@ function test_sample(){
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 					<label for="email">이메일</label> 
-					<input type="text" id="email" name="email" value = "${member.email}" placeholder="${member.email}" disabled>
-					<label for="name">이름</label>
-					<input type="text" id="name" name="memNm" value = "${member.memNm}">
-					<label for="birth">생년월일</label>
-					<input type="text" id="birth" name="birth" value = "${member.birth}">
-					<label for="password">비밀번호</label>
-					<input type="password" id="password" name="passwd" value = "${member.passwd}">
-					<label for="password_check">비밀번호확인</label>
+					<input type="text" id="email" name="email" value="${member.email}" placeholder="${member.email}" disabled> 
+					<label for="name">이름</label> 
+					<input type="text" id="name" name="memNm" value="${member.memNm}"> 
+					<label for="birth">생년월일</label> 
+					<input type="text" id="birth" name="birth" value="${member.birth}"> 
+					<label for="password">비밀번호</label> 
+					<input type="password" id="password" name="passwd" value="${member.passwd}"> 
+					<label for="password_check">비밀번호확인</label> 
 					<input type="password" id="password_check" name="password_check" placeholder="비밀번호확인...">
-			\
+					
 					<table>
 						<tr>
-					<td class="item">내 포스팅 공개여부</td>
-					<td class="cont">전체공개 <input type="radio" name="open" value="전체공개">
-						친구만 공개<input type="radio" name="open" value="친구만 공개"> 비공개<input
-						type="radio" name="open" value="비공개">
-					</td>
-				</tr>
-				<tr>
-					<td class="item">내 포스팅 댓글 참여 범위</td>
-					<td class="cont">
-					<input type = "radio" name ="reply" value ="1"/>전체허용<br>
-					<input type = "radio" name ="reply" value ="2"/>친구만허용<br>
-					<input type = "radio" name ="reply" value ="3"/>허용안함<br>
-<!-- 					전체허용<input type="radio" name="reply" value="전체허용">
+							<td class="item">내 포스팅 공개여부</td>
+							<td class="cont">
+							전체공개<input type="radio" name="open" value="전체공개">
+							친구만 공개<input type="radio" name="open" value="친구만 공개"> 
+							비공개<input type="radio" name="open" value="비공개">
+							</td>
+						</tr>
+						<tr>
+							<td class="item">내 포스팅 댓글 참여 범위</td>
+							<td class="cont">
+							전체허용<input type="radio" name="reply" value="1" />
+							친구만허용<input type="radio" name="reply" value="2" /> 
+							허용안함<input type="radio" name="reply" value="3" /> 
+							<!-- 					전체허용<input type="radio" name="reply" value="전체허용">
 					친구만 허용<input type="radio" name="reply" value="친구만 허용"> 
-					허용안함<input type="radio" name="reply" value="허용안함"> -->
-					</td>
-				</tr>
-				
+					허용안함<input type="radio" name="reply" value="허용안함"> --></td>
+						</tr>
+
 					</table>
-				
-					
-					
-				
+
+
+
+
 					<button type="submit">수정하기</button>
+					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 				</form>
 			</div>
@@ -116,7 +116,7 @@ function test_sample(){
 
 
 
-<%-- 	<form name=setupFirm method=POST action="upDateMySet.do">
+	<%-- 	<form name=setupFirm method=POST action="upDateMySet.do">
 		
 			<table>
 			<input type="hidden" name="memCD" value="${member.memCD}">
@@ -160,6 +160,6 @@ function test_sample(){
 				</tr>
 			</table>
 </form> --%>
-<a href = "deleteMember.do">탈퇴하기></a>
+	<a href="deleteMember.do">탈퇴하기></a>
 </body>
 </html>
