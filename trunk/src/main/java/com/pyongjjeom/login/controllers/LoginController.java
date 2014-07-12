@@ -107,7 +107,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
-	public String inserMember(@Valid Member user) {
+	public String insertMember(@Valid Member user) {
 
 		String logCD = dc.getMemberCD("G");
 		System.out.println("dd");
@@ -137,7 +137,7 @@ public class LoginController {
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
 	public Member fbLogin(@RequestBody Member member, HttpServletRequest request) {
 		log.info("fbLogin");
-
+		
 		// System.out.println(paramMap.get("email"));
 
 		member.setMemCD(dc.getMemberCD("F"));
