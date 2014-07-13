@@ -1,6 +1,6 @@
 
-/*----------///---contentsList---////--------*/
 
+/*----------///---contentsList---////--------*/
 .contentsList{
 	margin:0 auto;
 	padding:10px;
@@ -37,7 +37,6 @@ img.listImg{
 img.listImg:hover{
 	cursor: pointer;
 	opacity:0.3;
-	
 }
 
 

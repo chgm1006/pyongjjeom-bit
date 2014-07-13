@@ -14,7 +14,13 @@
 
 
 <article>
-
+<!-- ########################################### -->
+<!-- #################  Top으로 이동  ################# -->
+<!-- ########################################### -->
+		<a  id="quick" href="article" data-scroll>
+			<img class="quickImg" src="${pageContext.request.contextPath}/resources/img/forTop1.png">
+		</a>
+	
 		<div class="contentsList">
 			<div class="title3">검색 결과</div>
 	<c:choose>
@@ -415,12 +421,27 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
-<!---- ScrollTop button PLUG-IN ---->
-<script type="text/javascript" language="javascript"
+
+
+	<!--------- 슬라이드이미지 롤오버  -------->
+	<script type="text/javascript">
+		$(function() {
+			$(".quickImg").mouseenter(function() {
+				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop2.png");
+			});
+			$(".quickImg").mouseleave(function() {
+				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop1.png");
+			});
+		});
+	</script>
+
+	<!---- ScrollTop button PLUG-IN ---->
+	<script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
 <script type="text/javascript">
     smoothScroll.init();
 </script>
+
 
 	<!--------- 예고편 슬라이드 다운  -------->
 	<script type="text/javascript">
