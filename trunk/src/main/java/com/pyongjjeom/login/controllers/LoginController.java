@@ -102,8 +102,7 @@ public class LoginController {
 
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
 	public String logout() {
-				
-		
+
 		return "login/logout";
 	}
 
@@ -138,7 +137,7 @@ public class LoginController {
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
 	public Member fbLogin(@RequestBody Member member, HttpServletRequest request) {
 		log.info("fbLogin");
-		
+
 		// System.out.println(paramMap.get("email"));
 
 		member.setMemCD(dc.getMemberCD("F"));
