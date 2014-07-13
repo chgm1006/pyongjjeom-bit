@@ -17,9 +17,14 @@
 <link href="${pageContext.request.contextPath}/resources/css/footer.css"
 	rel="stylesheet" type="text/css">
 	
+<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
+
+
+	
 </head>
 <body>
 <header>
+
 	<div class="topMenu">
 		<div class="leftMenu">
 			<a href="movieIndex.do"><img
@@ -62,5 +67,3 @@
 		</div>
 	</div>
 </header>
-
-	

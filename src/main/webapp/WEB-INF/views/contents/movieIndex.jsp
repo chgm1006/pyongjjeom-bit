@@ -14,9 +14,18 @@
 	rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 
 
 	<article>
+
+<!-- ########################################### -->
+<!-- #################  Top으로 이동  ################# -->
+<!-- ########################################### -->
+		<a  id="quick" href="article" data-scroll>
+			<img class="quickImg" src="${pageContext.request.contextPath}/resources/img/forTop1.png">
+		</a>
+	
 <!-- ########################################### -->
 <!-- #################  슬라이드 시작  ################# -->
 <!-- ########################################### -->
@@ -106,8 +115,6 @@
 			</c:forEach>
 			<!------------------- 더보기 버튼 -------------------->
 			<a href="#" class="listMore">더보기</a>
-			<!------------------- scroll Top 버튼 -------------------->
-			<a href="article" data-scroll><h1>Top</h1></a>
 			
 		</div>
 	
@@ -262,6 +269,19 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
+
+
+	<!--------- 슬라이드이미지 롤오버  -------->
+	<script type="text/javascript">
+		$(function() {
+			$(".quickImg").mouseenter(function() {
+				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop2.png");
+			});
+			$(".quickImg").mouseleave(function() {
+				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop1.png");
+			});
+		});
+	</script>
 
 	<!---- ScrollTop button PLUG-IN ---->
 	<script type="text/javascript" language="javascript"

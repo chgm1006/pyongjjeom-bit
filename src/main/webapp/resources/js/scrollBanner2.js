@@ -1,6 +1,6 @@
 ﻿var xPosition = 0;  // 가로 위치 값
 var yPosition = 0;   // 세로 위치 값
-var yStartPosition = 400;  // 퀵메뉴 시작 위치
+var yStartPosition = 600;  // 퀵메뉴 시작 위치
 var Ygravity = 0.05;  // B타입인 경우 움직임 속도
 var scrollPosition = 0;   // 현재 스크롤의 세로 위치값
 var Y_B = 0;
