@@ -65,8 +65,7 @@
 						if (result.trim() == 'fail') {
 							alert("이 아이디는 사용가능합니다");
 							$('#email').show();
-							//$('#register').submit();
-							document.all.checkid.value = 1;
+							$('#register').submit();
 							return true;
 						} else if (result.trim() == 'true') {
 							alert("아이디가 존재합니다.");
@@ -78,27 +77,9 @@
 		});
 
 	});
-	function chkForm() {
-		var checkid = document.all.checkid.value;
-		if (checkid == 0) {
-			alert("ID 중복체크를 하세요!");
-			
-			return false;
-		}
-		return true;
-	}
 </script>
 
-<script>
-	function checksubmit() {
-		var data = document.mainform;
-		if (!data.IDcodeCheck.value) {
-			alert('check please');
-			return false;
-		}
-	}
-	
-</script>
+
 
 <style>
 .ui-datepicker {
@@ -121,13 +102,12 @@
 	<div class="row">
 
 		<div class="register span6">
-			<form id="register" action="register.do" method="post" enctype="multipart/form-data" onSubmit="return chkForm();">
+			<form id="register" action="register.do" method="post">
 				<h2>
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
 				<label for="email">이메일</label> <input type="text" id="email" name="email"
-					placeholder="이메일..."> <input type="hidden" id="checkid"
-					name="checkid" value=0> <input type="button" value="중복확인"
+					placeholder="이메일..."> <input type="button" value="중복확인"
 					id="emailCheck"> <label for="name">이름</label> <input type="text"
 					id="name" name="memNm" placeholder="이름..."> <label for="birth">생년월일</label>
 				<input type="text" id="birth" name="birth" placeholder="생년월일..."> <label
@@ -135,7 +115,7 @@
 					name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
 				<input type="password" id="password_check" name="password_check"
 					placeholder="비밀번호확인...">
-				<button type="submit" id="submit">가입하기</button>
+				<button type="submit" id="btn_submit">가입하기</button>
 				<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 			</form>
 		</div>
