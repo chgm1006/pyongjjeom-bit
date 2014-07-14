@@ -52,8 +52,8 @@ public class NoticeController {
 	private DBCode dc = new DBCode(); // DBCode 정의
 	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
-	int n= 1;
-
+/*	int n= 0;
+*/
 	
 	
 	@RequestMapping(value = "allList.do")
@@ -133,14 +133,13 @@ public class NoticeController {
 		return "notice/boardList";
 	}
 
-	@RequestMapping(value = "moreList.do")
+	/*@RequestMapping(value = "moreList.do")
 	public String MoreList(@Valid Notice notice, Model model) {
 
 		
 		n=n+5;
 		
-		
-/*		noticeService.getAllNoticeListMore(n, n+5);*/
+		noticeService.getAllNoticeListMore(n, n+5);
 		
 		System.out.println(noticeService.getAllNoticeListMore(n, n+5));
 		
@@ -153,7 +152,7 @@ public class NoticeController {
 	
 	
 	
-	}
+	}*/
 	
 	
 
@@ -171,6 +170,8 @@ public class NoticeController {
 
 		System.out.println();
 		model.addAttribute("add", list);
+		
+		
 
 		return "notice/boardList";
 	}
@@ -328,5 +329,8 @@ public class NoticeController {
 
 		return newnotice;
 	}
+	 
+	
+	 
 
 }
