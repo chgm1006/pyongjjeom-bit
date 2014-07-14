@@ -17,7 +17,7 @@ public class NaverBook {
 		return "NaverBook [title=" + title + ", link=" + link + ", image=" + image
 				+ ", author=" + author + ", price=" + price + ", discount=" + discount
 				+ ", publisher=" + publisher + ", pubdate=" + pubdate + ", isbn="
-				+ isbn + ", description=" + description + "]";
+				+ isbn + ", description=" + description + ", code=" + conCD + "]";
 	}
 
 	/**
@@ -33,6 +33,16 @@ public class NaverBook {
 	private String pubdate = ""; // 출간일
 	private String isbn = ""; // ISBN
 	private String description = ""; // 내용
+	private String conCD = ""; 
+
+
+	public String getConCD() {
+		return conCD;
+	}
+
+	public void setConCD(String conCD) {
+		this.conCD = conCD;
+	}
 
 	/**
 	 * <PRE>
