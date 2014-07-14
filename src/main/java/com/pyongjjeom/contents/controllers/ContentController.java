@@ -122,11 +122,24 @@ public class ContentController {
 		if (httpSession.getAttribute("bookList") == null) {
 			NaverBookParsing parsing = new NaverBookParsing();
 			List<String> bookTitleList = parsing.getTitleList();
+			
+			Iterator<String> iterator = bookTitleList.iterator();
+			while (iterator.hasNext()) {
+				if (iterator.next().toUpperCase().contains("TOEIC")) {
+					iterator.remove();
+				}
+			}
+			Iterator<String> iterator2 = bookTitleList.iterator();
+			while (iterator2.hasNext()) {
+				if (iterator2.next().contains("토익")) {
+					iterator2.remove();
+				}
+			}
 			NaverParse parse = new NaverParse();
 			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 			String uri;
 			List<NaverBook> bookList = new ArrayList<NaverBook>();
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i <bookTitleList.size(); i++) {
 				try {
 					uri = "http://openapi.naver.com/search?key="
 							+ apiKey
@@ -139,6 +152,7 @@ public class ContentController {
 					e.printStackTrace();
 				}
 			}
+			request.setAttribute("size", bookList.size()/10-1);
 			httpSession.setAttribute("bookList", bookList);
 		}
 		return "contents/bookIndex";
