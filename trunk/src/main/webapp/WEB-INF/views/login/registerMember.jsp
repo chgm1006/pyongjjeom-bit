@@ -66,6 +66,7 @@
 							alert("이 아이디는 사용가능합니다");
 							$('#email').show();
 							$('#register').submit();
+							document.register.checkemail.value=1;
 							return true;
 						} else if (result.trim() == 'true') {
 							alert("아이디가 존재합니다.");
@@ -102,17 +103,18 @@
 	<div class="row">
 
 		<div class="register span6">
-			<form id="register" action="register.do" method="post">
+			<form id="register" name="register" action="register.do" method="post">
 				<h2>
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
-				<label for="email">이메일</label> <input type="text" id="email" name="email"
+				<input type="hidden" id="checkemail" name="checkemail" value='0' /> <label
+					for="email">이메일</label> <input type="text" id="email" name="email"
 					placeholder="이메일..."> <input type="button" value="중복확인"
 					id="emailCheck"> <label for="name">이름</label> <input type="text"
 					id="name" name="memNm" placeholder="이름..."> <label for="birth">생년월일</label>
-				<input type="text" id="birth" name="birth" placeholder="생년월일..."> <label
+				<input type="text" id="birth" name="birth" placeholder="'-'빼고 숫자만..."> <label
 					for="password">비밀번호</label> <input type="password" id="password"
-					name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
+					name="passwd" placeholder="6자~20자..."> <label for="password_check">비밀번호확인</label>
 				<input type="password" id="password_check" name="password_check"
 					placeholder="비밀번호확인...">
 				<button type="submit" id="btn_submit">가입하기</button>
