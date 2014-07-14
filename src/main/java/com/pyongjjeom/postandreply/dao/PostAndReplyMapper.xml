@@ -9,10 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		</update> -->
 
 	<insert id="insertPost" parameterType="Post">
-		INSERT INTO posting
+	INSERT INTO posting
 		(postcd,pmemcd,concd,memgrade,comment,deleteyn,spoilyn,regidate,updatedate)
 		values
 		(#{postCD},#{pmemCD},#{conCD},#{memGrade},#{comment},#{deleteYn},#{spoilYn},now(),now())
+ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now();
 
 	</insert>
 <select id="getPost" parameterType="String" resultType="PostAndContents"> 
