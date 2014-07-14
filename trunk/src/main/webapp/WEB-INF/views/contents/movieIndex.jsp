@@ -283,7 +283,7 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 
 
-	<!--------- 슬라이드이미지 롤오버  -------->
+	<!--------- Quick TOP  롤오버  -------->
 	<script type="text/javascript">
 		$(function() {
 			$(".quickImg").mouseenter(function() {
@@ -349,6 +349,7 @@
 	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
 	<script type="text/javascript">
 		$(function() {
+						
 			$("#glayLayer").click(function() {
 				$(this).hide()
 				$("#overLayer").hide();

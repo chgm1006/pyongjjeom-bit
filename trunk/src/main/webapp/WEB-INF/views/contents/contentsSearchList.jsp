@@ -72,7 +72,6 @@
 			</c:forEach>
 		</c:when>
 		
-		
 		<c:when test="${category =='book'}">
 			<c:forEach var="book" items="${resultList }" varStatus="status">
 				<div class="listWrap">
@@ -118,7 +117,7 @@
 			</c:forEach>
 
 		</c:when>
-		</c:choose>
+	</c:choose>
 		
 			
 			<!------------------- 더보기 버튼 -------------------->
@@ -202,8 +201,6 @@
 						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
 						<a class="overButton" id="overButtonPreview" href="#overButtonPreview" data-scroll>예고편보기</a>
 						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
-						
-						
 						<a class="overButton2" id="overButtonPoint"  href=".overContTable" data-scroll>My 평점</a>
 					</div>
 				</div>
@@ -278,18 +275,18 @@
 
 		</div>
 
+		</div>
 	</div>
 
 	<!-- ################################################# -->
 	<!-- #################    모달윈도우 : 도서상세    ################# -->
 	<!-- ################################################# -->
 
-	<!---- 검은 바탕 ---->
-	<div id='glayLayerBook'></div>
 
 	<!---- above page 시작 ---->
 	<div id='overLayerBook'>
 
+		
 		<!---- 큰 포스터 JPG ---->
 		<div class="overTitle">
 			<a href="#" class="exit"></a>
@@ -417,6 +414,9 @@
 
 		</div>
 		
+		
+	
+
 
 	</div>
 
@@ -440,7 +440,7 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 
 
-	<!--------- 슬라이드이미지 롤오버  -------->
+	<!--------- Quick TOP  롤오버  -------->
 	<script type="text/javascript">
 		$(function() {
 			$(".quickImg").mouseenter(function() {
@@ -451,6 +451,7 @@
 			});
 		});
 	</script>
+
 
 	<!---- ScrollTop button PLUG-IN ---->
 	<script type="text/javascript" language="javascript"
@@ -469,30 +470,6 @@
 			$("#overButtonPoint").click(function() {
 					$(".overPointWrap").toggle("slow");
 			});
-		});
-	</script>
-
-<!--------- 모달윈도우 : 도서 상세 -------->
-<script type="text/javascript">
-		$(function() {
-			$("#glayLayerBook").click(function() {
-				$(this).hide()
-				$("#overLayerBook").hide();
-			});
-
-			$("#imgWrapBook,#tableTitleLinkBook").click(function() {
-				var scrollTest = $(document).scrollTop();
-				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
-				
-				$("#glayLayerBook").show();
-				$("#overLayerBook").fadeIn("Fast");
-				return false;
-			});
-			$(".exit").click(function() {
-				$("#glayLayerBook").hide()
-				$("#overLayerBook").hide();
-			});
-
 		});
 	</script>
 
@@ -697,6 +674,7 @@
 			$("#glayLayer").click(function() {
 				$(this).hide()
 				$("#overLayer").hide();
+				$("#overLayerBook").hide();
 				$(".overPreviewWrap").css("display","none");
 			});
 
@@ -708,10 +686,21 @@
 				$("#overLayer").fadeIn("Fast");
 				return false;
 			});
+			$("#imgWrapBook,#tableTitleLinkBook").click(function() {
+				var scrollTest = $(document).scrollTop();
+				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
+				
+				$("#glayLayer").show();
+				$("#overLayerBook").fadeIn("Fast");
+				return false;
+			});
 			$(".exit").click(function() {
 				$("#glayLayer").hide()
 				$("#overLayer").hide();
+				$("#overLayerBook").hide();
 			});
+			
+			
 
 		});
 	</script>
