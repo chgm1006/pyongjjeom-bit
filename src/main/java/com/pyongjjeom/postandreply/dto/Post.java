@@ -32,7 +32,7 @@ public class Post {
 	private String conCD = "";
 	private String pmemCD = "";
 	private String review = "";
-	private float memGrade = 0.0f;
+	private Double memGrade = 0.0;
 	private String comment = "";
 	public String getConCD() {
 		return conCD;
@@ -71,11 +71,11 @@ public class Post {
 		this.review = review;
 	}
 
-	public float getMemGrade() {
+	public double getMemGrade() {
 		return memGrade;
 	}
 
-	public void setMemGrade(float memGrade) {
+	public void setMemGrade(double memGrade) {
 		this.memGrade = memGrade;
 	}
 
