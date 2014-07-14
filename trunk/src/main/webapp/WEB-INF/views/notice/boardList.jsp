@@ -17,17 +17,12 @@
 	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-jquery.jscroll.js
+
 <!-- jQuery files -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery.jscroll.js"></script>
 
-
-
+<script>
+	
+</script>
 
 
 
@@ -115,13 +110,15 @@ jquery.jscroll.js
 
 
 
-	
-		<div id = "more"><p>Content here...</p></div>
-		<input type="button" id="btn" name="btn" value="지난공지사항 더보기" />
+
+		<p>Content here...</p>
+		<div id= "ajaxList2"></div>
+		
+		<input type="button" value="지난공지사항 더보기" id="ajaxList">
+
 		<div class="more">
 
-			<a href="moreList.do" class="button">지난 공지사항 더보기</a>
-					<a href="#" class="listMore">더보기</a>
+			<a href="#" class="listMore">더보기</a>
 		</div>
 	</div>
 
@@ -257,50 +254,93 @@ jquery.jscroll.js
 
 
 <script type="text/javascript">
-		$(function() {
-			$("dd").css("display", "none");
-			$("dl dt,dl dt.selected").click(function() {
-				if ($("+dd", this).css("display") == "none") {
-					$("+dd", this).slideDown("fast");
-					$("dt").removeClass("selected");
-					$(this).addClass("selected");
-				} else {
-					$("+dd", this).slideUp("fast");
-					$(this).removeClass("selected");
-				}
-			});
+$(document).ready(function () {
+
+
+	$()
+
+	$('#ajaxList').click(function() {
+
+
+		$.ajax({
+
+			type : "post",
+			url : "listJson.do",
+			dataType : "json",
+
+			success : function(notice) {
+				$.each(notice, function(key) {
+
+
+					var list = notice[key];
+
+					var content = "<table class ='boardList'>";
+					
+
+					for (i = 0; i < list.length; i++) {
+
+						content += "<tr>";
+						content += "<td>" + list[i].title + "</td>";
+						content += "<td>" + list[i].formatUpdatedate + "</td>";
+						content += "</tr>";
+					}
+					content += "<table>";
+
+					$("#ajaxList2").html(content);
+
+				});
+
+			}
+
 		});
-	</script>
-<!--------- 모달윈도우 : 컨텐츠 상세 -------->
-<script type="text/javascript">
-		$(function() {
-			$("#glayLayer").click(function() {
-				$(this).hide();
-				$("#overLayer").hide();
-			});
+	});
+});
+	
 
-			$("a#boardWrite").click(function() {
-				$("#glayLayer").show();
-				$("#overLayer").fadeIn("Fast");
-				return false;
-			});
-			$(".exit").click(function() {
-				$("#glayLayer").hide()
-				$("#overLayer").hide();
-			});
-
-			if ($.browser.msie && $.browser.version < 7) {
-				$(window).scroll(
-						function() {
-							$("#glayLayer").css('top', $(document).scrollTop());
-							$("#overLayer").css(
-									'top',
-									($(document).scrollTop() + $("#overLayer").height() / 2)
-											+ "px");
-						});
+	$(function() {
+		$("dd").css("display", "none");
+		$("dl dt,dl dt.selected").click(function() {
+			if ($("+dd", this).css("display") == "none") {
+				$("+dd", this).slideDown("fast");
+				$("dt").removeClass("selected");
+				$(this).addClass("selected");
+			} else {
+				$("+dd", this).slideUp("fast");
+				$(this).removeClass("selected");
 			}
 		});
-	</script>
+	});
+	
+	$(function() {
+		$("#glayLayer").click(function() {
+			$(this).hide();
+			$("#overLayer").hide();
+		});
+
+		$("a#boardWrite").click(function() {
+			$("#glayLayer").show();
+			$("#overLayer").fadeIn("Fast");
+			return false;
+		});
+		$(".exit").click(function() {
+			$("#glayLayer").hide()
+			$("#overLayer").hide();
+		});
+
+		if ($.browser.msie && $.browser.version < 7) {
+			$(window).scroll(
+					function() {
+						$("#glayLayer").css('top', $(document).scrollTop());
+						$("#overLayer")
+								.css(
+										'top',
+										($(document).scrollTop() + $("#overLayer").height() / 2)
+												+ "px");
+					});
+		}
+	});
+
+</script>
 
 
 </body>
