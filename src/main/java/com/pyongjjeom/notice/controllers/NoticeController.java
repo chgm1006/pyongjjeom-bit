@@ -23,26 +23,24 @@ package com.pyongjjeom.notice.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pyongjjeom.common.code.DBCode;
-
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 import com.pyongjjeom.notice.service.NoticeService;
-
-
-
 
 @Controller
 public class NoticeController {
@@ -51,11 +49,11 @@ public class NoticeController {
 
 	private DBCode dc = new DBCode(); // DBCode 정의
 	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	
-/*	int n= 0;
-*/
-	
-	
+
+	/*
+	 * int n= 0;
+	 */
+
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
@@ -133,28 +131,28 @@ public class NoticeController {
 		return "notice/boardList";
 	}
 
-	/*@RequestMapping(value = "moreList.do")
-	public String MoreList(@Valid Notice notice, Model model) {
-
-		
-		n=n+5;
-		
-		noticeService.getAllNoticeListMore(n, n+5);
-		
-		System.out.println(noticeService.getAllNoticeListMore(n, n+5));
-		
-		List<Notice> list = noticeService.getAllNoticeListMore(n, n+5);
-		
-		model.addAttribute("add", list);
-
-		
-		return "notice/boardList";
-	
-	
-	
-	}*/
-	
-	
+	/*
+	 * @RequestMapping(value = "moreList.do") public String MoreList(@Valid Notice
+	 * notice, Model model) {
+	 * 
+	 * 
+	 * n=n+5;
+	 * 
+	 * noticeService.getAllNoticeListMore(n, n+5);
+	 * 
+	 * System.out.println(noticeService.getAllNoticeListMore(n, n+5));
+	 * 
+	 * List<Notice> list = noticeService.getAllNoticeListMore(n, n+5);
+	 * 
+	 * model.addAttribute("add", list);
+	 * 
+	 * 
+	 * return "notice/boardList";
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
@@ -170,8 +168,6 @@ public class NoticeController {
 
 		System.out.println();
 		model.addAttribute("add", list);
-		
-		
 
 		return "notice/boardList";
 	}
@@ -329,8 +325,23 @@ public class NoticeController {
 
 		return newnotice;
 	}
-	 
+
+	@RequestMapping("/ajaxVeiw.do")
+	public void ajaxView(@RequestParam Map<String, Object> paramMap, Model model) {
+
+	}
+
+	@RequestMapping("/listJson.do")
+	public @ResponseBody Map<?, ?> listJson(
+			@RequestParam Map<String, Object> paramMap, ModelMap model) {
+
+		System.out.println("33333333333333333333");
+		
+		System.out.println("JSON 테스트 결과: "+noticeService.getMoreMoreList(paramMap));
 	
-	 
+		model.put("notice", noticeService.getMoreMoreList(paramMap));
+
+		return model;
+	}
 
 }
