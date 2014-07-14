@@ -33,6 +33,7 @@
 
 	<div class="wrapper">
         	<div class="title1">베스트 셀러
+        	
                 </div>
         	<div class="arrow1"> 
                 	<a id="prev3" class="prev" href="#"></a> 
@@ -40,7 +41,7 @@
 		
 		<div class="list_carousel">
 			<ul id="foo3">
-                         	<c:forEach  varStatus="count" begin="0" end="9">
+                         	<c:forEach  varStatus="count" begin="0" end="${size }">
 					<li>
                          <div class="set01">
                          				<c:forEach var="book" items="${bookList }" varStatus="status" begin="${count.index*10}" end="${count.index*10+9}">
