@@ -202,9 +202,26 @@
 						<a class="overButton" id="overButtonLink" href="${movie.link }" target="_blank">네이버 상세</a>
 						<a class="overButton" id="overButtonPreview" href="#overButtonPreview" data-scroll>예고편보기</a>
 						<a class="overButton" href="${movie.link }" target="_blank">포토보기</a>
+						
+						
+						<a class="overButton2" id="overButtonPoint"  href=".overContTable" data-scroll>My 평점</a>
 					</div>
 				</div>
 			</div>
+
+			<div class="overCont2">
+				<!---- My 평점 ---->
+				<div class="overPointWrap">
+					<h3 class="overContTitle">My 평점</h3>				
+					<div id="myPoint">
+						<form>
+							<input type="text" style="width:500px; padding:10px; font-size:20px;">
+							<input type="submit" value="완료" style="line-height:20px;">
+						</form>
+						
+					</div>
+				</div>
+						
 
 			<div class="overCont2">
 			<!---- 예고편 ---->
@@ -443,11 +460,14 @@
 </script>
 
 
-	<!--------- 예고편 슬라이드 다운  -------->
+	<!--------- 모달 내부 : My 평점, 예고편 슬라이드 다운  -------->
 	<script type="text/javascript">
 		$(function() {
 			$("#overButtonPreview").click(function() {
-				$(".overPreviewWrap").slideDown();
+				$(".overPreviewWrap").slideDown("slow");
+			});
+			$("#overButtonPoint").click(function() {
+					$(".overPointWrap").toggle("slow");
 			});
 		});
 	</script>

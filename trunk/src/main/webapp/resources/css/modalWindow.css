@@ -146,7 +146,7 @@ table.overContTable2 td{
 /*---평균점수---*/
 .averageWrap{
 	position: absolute;
-	margin:55px 0 0 440px;
+	margin:65px 0 0 440px;
 	width:100px;
 	height:90px;
 	overflow:hidden;
@@ -176,7 +176,7 @@ table.overContTable2 td{
 
 /*---Button---*/
 .overButtonWrap{
-	width:300px;
+	width:450px;
 	height:30px;
 }
 a.overButton{
@@ -197,10 +197,34 @@ a.overButton:hover{
 	border:2px solid #fff;
 	font-weight: bold;
 }
-
+a.overButton2{
+	float:left;
+	display:block;
+	margin:5px;
+	width:110px;
+	height:25px;	
+	text-align:center;
+	line-height:25px;
+	font-size:16px;
+	font-weight: bold;
+	background-color:#ff6c00;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+a.overButton2:hover{
+	background-color:#f9be4d;
+	border:2px solid #ff4e00;
+	font-weight: bold;
+}
 /*---하단 2---*/
 .overCont2{
 	padding:20px 50px;
+}
+
+/*---My 평점---*/
+.overPointWrap{
+	margin:0 auto;
+	display: none;
 }
 
 /*---예고편---*/
