@@ -29,6 +29,8 @@ import java.util.List;
 
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -201,19 +203,6 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.listMore();
 	}
 
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#listCount()
-	 */
-	@Override
-	public int listCount() {
-		// TODO Auto-generated method stub
-		return noticeMapper.listCount();
-	}
-
 
 	/**
 	 * <PRE>
@@ -234,6 +223,19 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		return noticeMapper.getAllNoticeListMore(param);
 		
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreMoreList(java.util.Map)
+	 */
+	@Override
+	public List getMoreMoreList(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return noticeMapper.getMoreMoreList(paramMap);
 	}
 		
 	/*	int startrow = (page - 1) * 10;
@@ -259,11 +261,7 @@ public class NoticeServiceImpl implements NoticeService {
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore(java.util.HashMap)
 	 */
-	@Override
-	public List<Notice> getAllNoticeListMore(HashMap<String, String> param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	/**
 	 * <PRE>

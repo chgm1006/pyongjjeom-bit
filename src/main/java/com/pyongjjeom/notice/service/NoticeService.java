@@ -21,8 +21,9 @@
  */
 package com.pyongjjeom.notice.service;
 
-import java.util.HashMap;
+
 import java.util.List;
+import java.util.Map;
 
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
@@ -50,9 +51,11 @@ public interface NoticeService {
 	
   List <Notice> listMore();
   
-  public int listCount();
+  public List getMoreMoreList(Map<String, Object> paramMap);
   
-  public List<Notice> getAllNoticeListMore(HashMap<String, String> param);
+
+  
+
   
 
 
