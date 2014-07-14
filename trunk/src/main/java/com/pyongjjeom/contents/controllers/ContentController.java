@@ -449,6 +449,7 @@ public class ContentController {
 			map.put("contentMovieDetail", contentMovieDetail);
 		 List<Comment> commentList= parService.getComent(movie.getConCD());
 		map.put("commentList", commentList);
+		System.out.println(commentList);
 		}
 		return map;
 
