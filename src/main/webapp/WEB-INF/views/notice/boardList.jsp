@@ -121,6 +121,7 @@ jquery.jscroll.js
 		<div class="more">
 
 			<a href="moreList.do" class="button">지난 공지사항 더보기</a>
+					<a href="#" class="listMore">더보기</a>
 		</div>
 	</div>
 
