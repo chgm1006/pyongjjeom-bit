@@ -93,12 +93,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		
 	</select>
 
-	<insert id="contentsInfoInsert" parameterType="Content">
+	<insert id="movieInfoInsert" parameterType="NaverMovie">
 INSERT INTO contents (concd, title,director,image,link ,actor,regidate) VALUES (#{conCD}, #{title},#{director}, #{image},#{link}, #{actor},now())
 ON DUPLICATE KEY update  actor=#{actor},director=#{director},link=#{link},image= #{image}
 	</insert>
-    
-    
+    	<insert id="bookInfoInsert" parameterType="NaverBook">
+INSERT INTO contents (concd, title,director,image,link ,regidate) VALUES (#{conCD}, #{title},#{author}, #{image},#{link},now())
+ON DUPLICATE KEY update  director=#{author},link=#{link},image= #{image}
+	</insert>
     
     
     
