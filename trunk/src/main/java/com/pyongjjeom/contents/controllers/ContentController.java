@@ -447,12 +447,9 @@ public class ContentController {
 				contentMovieDetail.setPoster("");
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
-
-			
-		 List<Comment> comments= parService.getComent(movie.getConCD());
-		System.out.println(comments);
+		 List<Comment> commentList= parService.getComent(movie.getConCD());
+		map.put("commentList", commentList);
 		}
-
 		return map;
 
 	}
