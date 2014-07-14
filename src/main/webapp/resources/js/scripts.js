@@ -47,7 +47,8 @@ jQuery(document)
 										var regName = /^[가-힣]+$/;
 										// 생일 유효성 검사
 										var regBirth = /^[0-9]+$/;
-
+										var checkemail = document.register.checkemail.value;
+										
 										if (email == '') {
 											$(this)
 													.find("label[for='email']")
@@ -63,14 +64,7 @@ jQuery(document)
 											$(this).find("label[for='email'] span").fadeIn('medium');
 											return false;
 										}
-										/*if (checkid == 0) {
-											$(this)
-													.find("label[for='email']")
-													.append(
-															"<span style='display:none' class='red'> - 중복체크 하세요.</span>");
-											$(this).find("label[for='email'] span").fadeIn('medium');
-											return false;
-										}*/
+										
 										if (name == '') {
 											$(this)
 													.find("label[for='name']")
@@ -111,6 +105,15 @@ jQuery(document)
 													'medium');
 											return false;
 										}
+										if(password.length < 6 || password.length > 20){
+											$(this)
+											.find("label[for='password']")
+											.append(
+													"<span style='display:none' class='red'> - 영문/숫자 조합해서 6자에서 20자이내로 설정해주세요.</span>");
+									$(this).find("label[for='password'] span").fadeIn(
+											'medium');
+									return false;
+										}
 										if (password_check == '') {
 											$(this)
 													.find("label[for='password_check']")
@@ -128,7 +131,14 @@ jQuery(document)
 													'medium');
 											return false;
 										}
-										
+										if (checkemail == '0') {
+											$(this)
+													.find("label[for='email']")
+													.append(
+															"<span style='display:none' class='red'> - 중복체크 하세요.</span>");
+											$(this).find("label[for='email'] span").fadeIn('medium');
+											return false;
+										}
 									});
 
 				});
