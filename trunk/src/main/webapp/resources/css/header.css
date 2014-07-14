@@ -87,16 +87,17 @@ header{
 	background: url(../img/logo.png) no-repeat;
 }
 .logo:hover,.logo:active{
-	background-position: 1px -60px;
+	background-position: 0px -60px;
 }
 .leftMenu{
 	float:left;
-	width:720px;	
+	margin:0 0 0 50px;
+	width:550px;	
 }
 .leftMenu li{
 	float:left;
 	width:45px;
-	margin:0 5px;
+	margin:0 10px;
 	padding:25px 0 0 0;
 	list-style:none;	
 	text-align:center;	
@@ -131,13 +132,13 @@ header{
 	margin:32px 0 0 30px;
 }
 .magnifier{
-	margin:0 0 0 5px;
+	margin:0 0 0 20px;
 }
 
 /*----------///---오른쪽 메뉴 관련-------////--------*/
 
 .rightMenu{
-	float:left;	
+	float:right;	
 	height:auto;
 }
 
