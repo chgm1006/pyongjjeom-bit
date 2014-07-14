@@ -22,6 +22,14 @@
 <!---- jQuery : 메인로고, 마이룸, 공지사항 RollOver ---->
 <script>
 	$(document).ready(function(){
+		$(".performanceButton").mouseenter(function(){
+			$(".performanceHidden").show();
+			$(".performanceButton").css("border-top","4px solid #8dc63f");	
+		});
+		$(".performanceButton").mouseleave(function(){
+			$(".performanceHidden").hide();
+			$(".performanceButton").css("border-top","4px solid #f4f4f4");	
+		});
 		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
 			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border","2px solid #fea915");
@@ -58,7 +66,12 @@
 			<ul>
 				<li class="menu1"><a href="movieIndex.do">영화</a></li>
 				<li class="menu2"><a href="bookIndex.do">도서</a></li>
-				<li class="menu3"><a href="#">공연</a></li>
+				<li class="menu3">
+					<a class="performanceButton" href="#">공연</a>
+					<div class="performanceHidden">
+						<img src="${pageContext.request.contextPath}/resources/img/prepare.png">
+					</div>
+				</li>
 			</ul>
 			<div class="search">
 				<form action="ContentsSearch.do" method="get" id="frmLogin"
@@ -75,7 +88,6 @@
 				</form>
 			</div>
 		</div>
-
 
 		<div class="rightMenu">
 			<ul>
