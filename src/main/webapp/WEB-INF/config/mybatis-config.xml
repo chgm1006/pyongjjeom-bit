@@ -23,9 +23,8 @@
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Post" alias="Post" />
 			<typeAlias type="com.pyongjjeom.postandreply.dto.PostAndContents" alias="PostAndContents" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
-				<typeAlias type="com.pyongjjeom.contents.dto.Content"
-			alias="Content" />
-		
+		<typeAlias type="com.pyongjjeom.common.NaverMovie" 	alias="NaverMovie" />
+				<typeAlias type="com.pyongjjeom.common.NaverBook" 	alias="NaverBook" />
 	</typeAliases>
 	<!-- SQL Mapper는 여기에 추가 -->
 	<mappers>
