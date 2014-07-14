@@ -20,7 +20,6 @@
 
 
 
-
 	<article>
 
 <!-- ########################################### -->
@@ -231,6 +230,10 @@
 				</div>
 				
 				<!---- My 평점 ---->
+				<c:choose>
+					<c:when test="${member==null}">
+					</c:when>
+					<c:otherwise>
 				<div class="overPointWrap">
 					<h3 class="overContTitle">My 평점</h3>				
 					<div id="myPoint">
@@ -243,6 +246,8 @@
 						<p class="starPoint" style="display:none;"></p>
 					</div>
 				</div>
+				</c:otherwise>
+				</c:choose>
 			
 			
 			</div>
@@ -298,7 +303,6 @@
 				$(".starPoint").text(rate);
 				memGrade = rate;
 				$('input[name=memGrade]').attr('value', memGrade);
-
 			}
 		});
 	});
@@ -340,9 +344,6 @@
 		});
 	}); 
 </script>
-
-
-
 
 
 	<!--------- Quick TOP  롤오버  -------->
@@ -413,6 +414,7 @@
 				$(this).hide()
 				$("#overLayer").hide();
 				$(".overPreviewWrap").css("display","none");
+				$(".pointText").val("");
 			});
 
 			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
