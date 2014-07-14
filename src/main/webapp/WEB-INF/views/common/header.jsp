@@ -53,9 +53,8 @@
 <header>
 
 	<div class="topMenu">
+		<a  class="logo"  href="movieIndex.do"></a>
 		<div class="leftMenu">
-			<a  class="logo"  href="movieIndex.do"><img
-				src="${pageContext.request.contextPath}/resources/img/logo.png"/></a>
 			<ul>
 				<li class="menu1"><a href="movieIndex.do">영화</a></li>
 				<li class="menu2"><a href="bookIndex.do">도서</a></li>
