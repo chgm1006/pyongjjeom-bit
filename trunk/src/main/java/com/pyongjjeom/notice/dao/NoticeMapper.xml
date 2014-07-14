@@ -90,13 +90,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ifnull(deleteyn,'N')='N' ;
 
 	</select>
+	
+	<select id = 	"getMoreMoreList" parameterType="Map" resultType="HashMap"> 
 
-	<select id="listCount" resultType="int">
-
-		select count(*) from notice where
+	    
+		select * from notice where
 		ifnull(deleteyn,'N')='N' ;
-
+	    
 	</select>
+
+
 
 	<select id="getAllNoticeListMore" resultType="Notice">
 
