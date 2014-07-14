@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pyongjjeom.common.NaverBook;
+import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.contents.dao.ContentsMapper;
 import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
@@ -37,7 +39,7 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void movieTitleInsert(List<ContentsValue> Values) {
 		for (ContentsValue value : Values) {
-			value.setTitle(value.getTitle().replace(", ",""));
+			value.setTitle(value.getTitle().replace(", "," "));
 			contentsMapper.contentsTitleInsert(value);
 			contentsMapper.conCDMInsert(value.getConcd());
 		}
@@ -109,8 +111,13 @@ public class ContentServiceImpl implements ContentService {
 	}
 
 	@Override
-	public void contentsInfoInsert(Content content) {
+	public void movieInfoInsert(NaverMovie movie) {
 
-		contentsMapper.contentsInfoInsert(content);
+		contentsMapper.movieInfoInsert(movie);
+	}
+
+	@Override
+	public void bookInfoInsert(NaverBook book) {
+		contentsMapper.bookInfoInsert(book);
 	}
 }

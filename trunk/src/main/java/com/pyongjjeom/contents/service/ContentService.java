@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.pyongjjeom.common.NaverBook;
+import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
@@ -37,5 +39,7 @@ public interface ContentService {
 
 	BookGrades bookGradeSelect(String concd);
 
-	void contentsInfoInsert(Content content);
+	void movieInfoInsert(NaverMovie movie);
+
+	void bookInfoInsert(NaverBook book);
 }

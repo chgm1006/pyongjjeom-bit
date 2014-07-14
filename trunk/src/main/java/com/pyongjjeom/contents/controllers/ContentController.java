@@ -352,7 +352,7 @@ public class ContentController {
 			} else
 				code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("-"));
 		}
-
+		movie.setConCD("M" + code);
 		httpSession.setAttribute("movie", movie);
 
 		// 검색결과에 대한 영화정보요청일 때 if문 실행 -> 각 사이트의 평점을 갖고 와서 평균을 구함.
@@ -493,19 +493,21 @@ public class ContentController {
 		if (!book.getImage().isEmpty()) {
 			code = book.getImage().substring(book.getImage().lastIndexOf("/0") + 2,
 					book.getImage().indexOf(".jpg"));
+			if (code.startsWith("0")) {
+				code = code.substring(1, 7);
+			}
 		}
 
+		book.setConCD("B"+code);
 		httpSession.setAttribute("book", book);
 
 		// 검색결과에 대한 영화정보요청일 때 if문 실행 -> 각 사이트의 평점을 갖고 와서 평균을 구함.
 		if (httpSession.getAttribute("stat").equals("search")) {
 			Document doc;
 			BookGrades grades = new BookGrades();
-			
-			// Book 코드의 자리수를 맞춰 줌 
-			if (code.startsWith("0")) {
-				code = code.substring(1, 7);
-			}
+
+			// Book 코드의 자리수를 맞춰 줌
+
 			grades = contentService.bookGradeSelect("B" + code);
 
 			if (grades != null) {

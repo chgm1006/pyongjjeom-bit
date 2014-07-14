@@ -4,6 +4,8 @@
 
 package com.pyongjjeom.contents.dao;
 
+import com.pyongjjeom.common.NaverBook;
+import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
@@ -52,5 +54,7 @@ public interface ContentsMapper {
 
 	BookGrades bookGradeSelect(String title);
 
-	void contentsInfoInsert(Content content);
+	void movieInfoInsert(NaverMovie movie);
+
+	void bookInfoInsert(NaverBook book);
 }
