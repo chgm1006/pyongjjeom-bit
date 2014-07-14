@@ -254,12 +254,8 @@
 										<td class="listDirectorValue">${post.memGrade }</td>
 									</tr>
 									<tr>
-										<td class="listTitle">한줄평</td>
+										<td class="listTitle">나의 후기 </td>
 										<td class="listActorValue">${post.comment }</td>
-									</tr>
-									<tr>
-										<td class="listTitle">나의 후기</td>
-										<td class="listSynopValue">${post.review }</td>
 									</tr>
 								</table>
 								<div class="PostingReply">댓글 2개</div>
