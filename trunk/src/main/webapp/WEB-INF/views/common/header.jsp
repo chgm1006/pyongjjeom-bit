@@ -22,12 +22,6 @@
 <!---- jQuery : 메인로고, 마이룸, 공지사항 RollOver ---->
 <script>
 	$(document).ready(function(){
-		$(".logo").mouseenter(function(){
-			$(".logo > img").attr("src","${pageContext.request.contextPath}/resources/img/logoOver.png");
-		});
-		$(".logo").mouseleave(function(){
-			$(".logo > img").attr("src","${pageContext.request.contextPath}/resources/img/logo.png");
-		});
 		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
 			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border","2px solid #fea915");
