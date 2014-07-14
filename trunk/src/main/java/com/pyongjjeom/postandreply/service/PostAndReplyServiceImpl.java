@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
+import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
 
@@ -176,6 +177,18 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		
 		parMapper.editPost(post);
 		
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#getComent(java.lang.String)
+	 */
+	@Override
+	public List<Comment> getComent(String conCD) {
+		return parMapper.getComent(conCD);
 	}
 
 

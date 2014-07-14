@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.notice.dto.Notice;
+import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
 
@@ -44,5 +45,7 @@ public interface PostAndReplyMapper {
 	public void editPost (Post post);
 
 	public void insertPost(Post post);
+
+	public List<Comment> getComent(String conCD);
 
 }

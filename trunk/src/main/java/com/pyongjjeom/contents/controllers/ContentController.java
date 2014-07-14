@@ -47,6 +47,8 @@ import com.pyongjjeom.contents.parsing.movie.LotteParsing;
 import com.pyongjjeom.contents.parsing.movie.MegaBoxParsing;
 import com.pyongjjeom.contents.parsing.movie.NaverMovieParsing;
 import com.pyongjjeom.contents.service.ContentService;
+import com.pyongjjeom.postandreply.dto.Comment;
+import com.pyongjjeom.postandreply.service.PostAndReplyService;
 
 /**
  * <pre>
@@ -64,6 +66,8 @@ public class ContentController {
 
 	@Autowired
 	private ContentService contentService;
+	@Autowired
+	private PostAndReplyService parService;
 	private HttpSession httpSession;
 
 	@RequestMapping(value = "movieIndex.do", method = RequestMethod.GET)
@@ -444,6 +448,9 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 
+			
+		 List<Comment> comments= parService.getComent(movie.getConCD());
+		System.out.println(comments);
 		}
 
 		return map;
