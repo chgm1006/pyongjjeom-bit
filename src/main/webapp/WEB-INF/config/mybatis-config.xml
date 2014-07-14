@@ -22,7 +22,8 @@
 		<typeAlias type="com.pyongjjeom.notice.dto.NoticeCode" alias="NoticeCode" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Post" alias="Post" />
 			<typeAlias type="com.pyongjjeom.postandreply.dto.PostAndContents" alias="PostAndContents" />
-		<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
+				<typeAlias type="com.pyongjjeom.postandreply.dto.Comment" alias="Comment" />
+				<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
 		<typeAlias type="com.pyongjjeom.common.NaverMovie" 	alias="NaverMovie" />
 				<typeAlias type="com.pyongjjeom.common.NaverBook" 	alias="NaverBook" />
 	</typeAliases>
