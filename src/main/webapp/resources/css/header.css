@@ -194,14 +194,35 @@ a.menu5a_1{
   transition: all 0.1s ease-out;
 }
 
-a.menu5a_1:hover{
-	border: 2px solid #fea915;
-	background-color:#ffe4b5;
+
+.myRoomHidden{
+	position: absolute;
+	display:none;
+	margin:29px 0 0 -25px;
+	padding:10px;
+	width:100px;
+	height:50px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
 }
-a.menu5a_1:active{
-	border: 2px solid #fea915;
-	background-color:#fcc86f;
+.boardHidden{
+	position: absolute;
+	display:none;
+	margin:0px 0 0 -25px;
+	padding:10px;
+	width:100px;
+	height:50px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
 }
+a.myRoomSub,a.boardSub{
+}
+a.myRoomSub:hover,a.myRoomSub:active,a.boardSub:hover,a.boardSub:active{
+	color:#fea915;
+}
+
 /*---ARTICLE---*/
 article{
 	padding:90px 0 30px 0;

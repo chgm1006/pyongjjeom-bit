@@ -19,6 +19,34 @@
 	
 <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 
+<!---- jQuery : 마이룸 RollOver ---->
+<script>
+	$(document).ready(function(){
+		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
+			$(".myRoomHidden").show();
+			$(".menu5a_1").css("border","2px solid #fea915");
+			$(".menu5a_1").css("background-color","#ffe4b5");
+
+		});
+		$(".menu5a_1,.myRoomHidden").mouseleave(function(){
+			$(".myRoomHidden").hide();
+			$(".menu5a_1").css("border","2px solid #f4f4f4");
+			$(".menu5a_1").css("background-color","");
+		});
+		$(".menu7_1,.boardHidden").mouseenter(function(){
+			$(".boardHidden").show();
+			$(".menu7_1").css("border","2px solid #fea915");
+			$(".menu7_1").css("background-color","#ffe4b5");
+
+		});
+		$(".menu7_1,.boardHidden").mouseleave(function(){
+			$(".boardHidden").hide();
+			$(".menu7_1").css("border","2px solid #f4f4f4");
+			$(".menu7_1").css("background-color","");
+		});
+	});
+	
+</script>
 
 	
 </head>
@@ -40,7 +68,8 @@
 					<select name="category">
 						<option value="movie">영화
 						<option value="book">책
-					</select> <input type="text" id="Search" name="Search"> <input type="hidden"
+					</select> 
+					<input type="text" id="Search" name="Search"> <input type="hidden"
 						name="stat" value="search"> <input type="submit" value="검색">
 					<a href="#"> <img class="magnifier"
 						src="${pageContext.request.contextPath}/resources/img/magnifier.png">
@@ -57,11 +86,25 @@
 						<li class="menu5"><a href="login.do" class="menu5_1">로그인</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a></li>
+						<li class="menu5a">
+							<a href="myRoom.do" class="menu5a_1">마이룸</a>
+							<div class="myRoomHidden">
+								<a class="myRoomSub" href="">My 평점</a><br>
+								<a class="myRoomSub" href="">로그아웃</a><br>
+								<a class="myRoomSub" href="">설정</a><br>
+							</div>
+						</li>
 					</c:otherwise>
 				</c:choose>
 				<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
-				<li class="menu7"><a href="boardList.do" class="menu7_1">공지사항</a></li>
+				<li class="menu7">
+					<a href="boardList.do" class="menu7_1">공지사항</a>
+					<div class="boardHidden">
+								<a class="boardSub" href="">전체보기</a><br>
+								<a class="boardSub" href="">행사보기</a><br>
+								<a class="boardSub" href="">시스템공지</a><br>
+					</div>
+				</li>
 
 			</ul>
 		</div>
