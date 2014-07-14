@@ -30,6 +30,17 @@
 			$(".performanceHidden").hide();
 			$(".performanceButton").css("border-top","4px solid #f4f4f4");	
 		});
+		$(".menu5_1,.loginHidden").mouseenter(function(){
+			$(".loginHidden").show();
+			$(".menu5_1").css("border","2px solid #fea915"); 
+			$(".menu5_1").css("background-color","#ffe4b5");
+
+		});
+		$(".menu5_1,.loginHidden").mouseleave(function(){
+			$(".loginHidden").hide();
+			$(".menu5_1").css("border","2px solid #f4f4f4");
+			$(".menu5_1").css("background-color","");
+		});
 		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
 			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border","2px solid #fea915");
@@ -93,7 +104,27 @@
 			<ul>
 				<c:choose>
 					<c:when test="${member==null}">
-						<li class="menu5"><a href="login.do" class="menu5_1">로그인</a></li>
+						<li class="menu5">
+							<a href="login.do" class="menu5_1">로그인</a>
+								<div class="loginHidden">
+									<form action=" " method="post">
+										<h2>로그인</h2>
+										<label for="email">이메일</label>
+										<input type="text" id="email" name="email" placeholder="이메일을...."> 
+										<label for="password">비밀번호</label>
+										<input type="password" id="passwd" name="passwd" placeholder="비밀번호...">
+										<button type="submit">로그인</button>
+										<button type="button" id="FBLogin">페이스북 로그인</button>
+
+										<!-- <button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button> -->
+										<br> <br> <a href="emailAuth.do">비밀번호를 까먹으셧나영?</a>&nbsp;
+										&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a
+											href="registerMember.do">아직 회원이 아니신가영?</a>
+
+									</form>
+								</div>
+							</li>
+						
 					</c:when>
 					<c:otherwise>
 						<li class="menu5a">
