@@ -51,9 +51,15 @@ public class Comment {
 
 	private String Comment;
 	private String memGrade;
-	private Date regiDate;
-	private String name;
-	private String image;
+	private Date updateDate;
+	private String memNm;
+	private String imgPath;
+	@Override
+	public String toString() {
+		return "Comment [Comment=" + Comment + ", memGrade=" + memGrade
+				+ ", updateDate=" + updateDate + ", memNm=" + memNm + ", imgPath="
+				+ imgPath + "]";
+	}
 	public String getComment() {
 		return Comment;
 	}
@@ -66,31 +72,23 @@ public class Comment {
 	public void setMemGrade(String memGrade) {
 		this.memGrade = memGrade;
 	}
-	public Date getRegiDate() {
-		return regiDate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
-	public void setRegiDate(Date regiDate) {
-		this.regiDate = regiDate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
-	public String getName() {
-		return name;
+	public String getMemNm() {
+		return memNm;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMemNm(String memNm) {
+		this.memNm = memNm;
 	}
-	public String getImage() {
-		return image;
+	public String getImgPath() {
+		return imgPath;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
-	@Override
-	public String toString() {
-		return "Comment [Comment=" + Comment + ", memGrade=" + memGrade
-				+ ", regiDate=" + regiDate + ", name=" + name + ", image=" + image
-				+ "]";
-	}
-	
-	
 
 }
