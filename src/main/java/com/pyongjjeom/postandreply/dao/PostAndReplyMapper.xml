@@ -41,7 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		where postcd= #{postCD};
 	</update>
 	
-	
-	
+	<select id="getComent" parameterType="String" resultType="Comment"> 
+ select member.memNm,member.imgPath,posting.memgrade,posting.comment,posting.updatedate from posting,member where posting.concd=#{conCD} and ifnull(posting.deleteyn,'N')='N' and posting.pmemcd=member.memCD order by  posting.updatedate desc;
+
+    </select>
 </mapper>
 
