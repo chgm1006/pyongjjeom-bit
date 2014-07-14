@@ -37,6 +37,7 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void movieTitleInsert(List<ContentsValue> Values) {
 		for (ContentsValue value : Values) {
+			value.setTitle(value.getTitle().replace(", ",""));
 			contentsMapper.contentsTitleInsert(value);
 			contentsMapper.conCDMInsert(value.getConcd());
 		}
@@ -46,6 +47,10 @@ public class ContentServiceImpl implements ContentService {
 	public void gradeUpdate(List<ContentsValue> values, String str) {
 		for (ContentsValue value : values) {
 			value.setTitle(value.getTitle().replace(" ","").replace(",","").trim());
+			if (value.getTitle().contains("(")) {
+				value.setTitle(value.getTitle().substring(0,
+						value.getTitle().indexOf("(")));
+			}
 			switch (str) {
 			case "n":
 				contentsMapper.naverMovieGradeUpdate(value);
@@ -87,6 +92,7 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void bookTitleInsert(List<ContentsValue> values) {
 		for (ContentsValue value : values) {
+			value.setTitle(value.getTitle().replace(", "," "));
 			contentsMapper.contentsTitleInsert(value);
 			contentsMapper.conCDBInsert(value.getConcd());
 		}
