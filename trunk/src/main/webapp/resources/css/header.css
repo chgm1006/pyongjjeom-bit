@@ -81,6 +81,10 @@ header{
 .logo{
 	float:left;
 	padding:0 30px 0 0;
+	background: url(../img/logo.png) no-repeat;
+}
+.logo:hover,.logo:active{
+	background-position: 0px -60px;
 }
 .leftMenu{
 	float:left;
