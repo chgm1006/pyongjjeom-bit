@@ -75,7 +75,7 @@ header{
 }
 .topMenu{
 	margin:0 auto;
-	width:1000px;
+	width:1100px;
 	height:60px;
 }
 .logo{
@@ -125,7 +125,15 @@ header{
 	font-weight:bold;
 	border-top:4px solid #8dc63f ;		
 }
-
+.performanceHidden{
+	position: absolute;
+	display:none;
+	margin:0 0 0 -35px;
+	padding:0 10px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
+}
 .search{
 	float:left;
 	width:300px;
