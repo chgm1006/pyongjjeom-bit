@@ -19,9 +19,15 @@
 	
 <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 
-<!---- jQuery : 마이룸 RollOver ---->
+<!---- jQuery : 메인로고, 마이룸, 공지사항 RollOver ---->
 <script>
 	$(document).ready(function(){
+		$(".logo").mouseenter(function(){
+			$(".logo > img").attr("src","${pageContext.request.contextPath}/resources/img/logoOver.png");
+		});
+		$(".logo").mouseleave(function(){
+			$(".logo > img").attr("src","${pageContext.request.contextPath}/resources/img/logo.png");
+		});
 		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
 			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border","2px solid #fea915");
@@ -48,15 +54,14 @@
 	
 </script>
 
-	
 </head>
 <body>
 <header>
 
 	<div class="topMenu">
 		<div class="leftMenu">
-			<a href="movieIndex.do"><img
-				src="${pageContext.request.contextPath}/resources/img/logo.jpg" class="logo" /></a>
+			<a  class="logo"  href="movieIndex.do"><img
+				src="${pageContext.request.contextPath}/resources/img/logo.png"/></a>
 			<ul>
 				<li class="menu1"><a href="movieIndex.do">영화</a></li>
 				<li class="menu2"><a href="bookIndex.do">도서</a></li>
