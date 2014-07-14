@@ -58,12 +58,12 @@
 				}
 			});
 		});
-		
-		$("#FBLogin").click(function(){
+
+		$("#FBLogin").click(function() {
 			fnLoginFB();
 		});
-		
-		$("#FBLogout").click(function(){
+
+		$("#FBLogout").click(function() {
 			fnLogout();
 		});
 	});
@@ -71,11 +71,13 @@
 </head>
 <body>
 	<div id="fb-root"></div>
-	<fb:login-button max_rows="1" size="medium" show_faces="false" auto_logout_link="true"></fb:login-button>
+	<fb:login-button max_rows="1" size="medium" show_faces="false"
+		auto_logout_link="true"></fb:login-button>
 	<button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button>
 	<button type="button" id="FBLogout">페이스북 &nbsp; 로그아웃</button>
 	<input type="button" value="페이스북 친구" onclick="javascript:facebookFriend();">
-	<input type="button" value="ajaxTest" id="ajaxTest"><br>
+	<input type="button" value="ajaxTest" id="ajaxTest">
+	<br>
 	<div id="status"></div>
 </body>
 </html>
