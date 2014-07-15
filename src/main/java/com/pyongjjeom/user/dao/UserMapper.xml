@@ -14,9 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	
 	<update id="upDateData" parameterType="Member">
 		update member
-		set memNm='${memNm}',
+		set
+
+		memNm='${memNm}',
 		birth='${birth}',
-		passwd='${passwd}' where memCD='${memCD}';
+		passwd=password('${passwd}'),
+		updatedate = now() where memCD='${memCD}';
 
 
 	</update>
