@@ -71,7 +71,7 @@
 </head>
 <body>
 	<div id="fb-root"></div>
-	<fb:login-button max_rows="1" size="medium" show_faces="false"
+	<fb:login-button max_rows="1" size="medium" show_faces="true"
 		auto_logout_link="true"></fb:login-button>
 	<button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button>
 	<button type="button" id="FBLogout">페이스북 &nbsp; 로그아웃</button>

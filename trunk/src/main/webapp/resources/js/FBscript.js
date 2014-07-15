@@ -43,15 +43,15 @@ function fnLoginFB(response) {
 
 	FB.login(function(response) {
 		if (response) {
-//			FB.api("/me/picture", function(response) {
-//				fbIMGURL = response.data.url;
-//			});
 			FB.api("/me", function(response) {
 				fbUid = response.id;
 				fbName = response.first_name + " " + response.last_name;
 				fbEmail = response.email;
 				fbBirthday = StringToDate(response.birthday);
 				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
+				console.log(response);
+				console.log(fbIMGURL);
+				
 				ajaxFBRegisterMember();
 			});
 			// window.location.reload(true);
@@ -102,7 +102,7 @@ function StringToDate(strDate) {
 function facebookFriend(code, page) {
 	FB
 			.api(
-					"/me/friends",
+					"/me/taggable_friends",
 					function(response) {
 						console.log(response.error);
 						if (response && !response.error) {
