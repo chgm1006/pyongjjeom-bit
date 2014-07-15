@@ -289,24 +289,21 @@
 						content += "</dl>";
 
 						$(".testdiv").append(content);
-						$(".testdiv").find(".listHead").slideDown("slow");
-						
+						$(".testdiv").find(".listHead").slideDown("fast");
+
 						$(function() {
 							$("dd").css("display", "none");
-							$("dl dt,dl dt.selected").click(function() {
-								if ($("+dd", this).css("display") == "none") {
-									$("+dd", this).slideDown("fast");
-									$("dt").removeClass("selected");
-									$(this).addClass("selected");
-								} else {
-									$("+dd", this).slideUp("fast");
-									$(this).removeClass("selected");
-								}
+							$("dl dt,dl dt.selected").toggle(function() {
+								$("+dd", this).slideDown("fast");
+								$("dt").removeClass("selected");
+							}, function() {
+								$("+dd", this).slideUp("fast");
+								$(this).removeClass("selected");
 							});
 						});
 
 					});
-					
+
 				}
 
 			});
@@ -315,17 +312,28 @@
 
 	$(function() {
 		$("dd").css("display", "none");
-		$("dl dt,dl dt.selected").click(function() {
-			if ($("+dd", this).css("display") == "none") {
-				$("+dd", this).slideDown("fast");
-				$("dt").removeClass("selected");
-				$(this).addClass("selected");
-			} else {
-				$("+dd", this).slideUp("fast");
-				$(this).removeClass("selected");
-			}
+		$("dl dt,dl dt.selected").toggle(function() {
+			$("+dd", this).slideDown("fast");
+			$("dt").removeClass("selected");
+		}, function() {
+			$("+dd", this).slideUp("fast");
+			$(this).removeClass("selected");
 		});
 	});
+
+	// 	$(function() {
+	// 		$("dd").css("display", "none");
+	// 		$("dl dt,dl dt.selected").click(function() {
+	// 			if ($("+dd", this).css("display") == "none") {
+	// 				$("+dd", this).slideDown("fast");
+	// 				$("dt").removeClass("selected");
+	// 				$(this).addClass("selected");
+	// 			} else {
+	// 				$("+dd", this).slideUp("fast");
+	// 				$(this).removeClass("selected");
+	// 			}
+	// 		});
+	// 	});
 
 	$(function() {
 		$("#glayLayer").click(function() {
