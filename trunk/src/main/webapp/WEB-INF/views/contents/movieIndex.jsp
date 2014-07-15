@@ -254,32 +254,7 @@
 			
 			<!---- 코멘트 목록 ---->
 			<div class="overCont3">
-				<h3 class="overContTitle">코멘트</h3>
-					
-				<div class="overCommentWrap">
-					<div class="commentBoxLeft">
-					
-						<div class="userPhoto">
-							<a href="#" class="userRoomLink">
-								<img src="${pageContext.request.contextPath}/resources/img/user1.jpg">
-							</a><br>
-						</div>
-						
-						<div class="commentName">박희본
-						</div>
-					</div>
-					
-					<div class="commentBoxRight">
-						<h3 class="userComment">이 영화 재밌게 봤습니다.</h3>
-						<h5 class="userDate">2014.06.19</h5>
-					</div>
-					
-					<div class="clear"></div>
-
-					<!---- 더보기 ---->
-					<a href="#" class="commentMore">더보기</a>
-
-				</div>
+				
 			</div>
 
 			<!---- clear:both 지우지 말 것. ---->
@@ -502,7 +477,6 @@
 					var avg = data.whole.avg;					
 					$(".avgPoint").text(avg);
 
-				
 
 					$(".bigPoster").attr("src",poster);
 					$(".smallPoster").attr("src",poster);
@@ -530,14 +504,37 @@
 					
 					$("#overButtonPreview").click(function() {
 						$(".previewIframe").attr("src",video);
-
 							});
 					$("#glayLayer,.exit").click(function() {
 						$(".previewIframe").attr("src","");
-
 							});
+					
+					
+					var commentList = data.whole.commentList;
+					var content = '<h3 class="overContTitle">코멘트</h3>';
+					
 
-				}
+					var list = commentList;
+							
+					for (var i = 0; i < list.length; i++) {
+								content += '<div class="commentBoxLeft">';
+								content += '<div class="userPhoto">';
+								content += '<a href="#" class="userRoomLink">';
+								content += '<img src="' + list[i].imgPath + '">';
+								content += '</a></div>';
+								content += '<div class="commentName">' + list[i].memNm + '</div>';
+								content += '</div>';
+								content += '<div class="commentBoxRight">';
+								content += '<h3 class="userComment">' + list[i].comment + '</h3>';
+								content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
+								content += '</div>';
+								content += '<div class="clear"></div>';
+					}
+							
+					content += '<a href="#" class="commentMore">더보기</a>';
+					$(".overCont3").append(content);
+
+				}//success End
 			});
 		});
 	}); 
