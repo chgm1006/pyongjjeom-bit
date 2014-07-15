@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 package com.pyongjjeom.contents.controllers;
 
 import java.io.IOException;
@@ -29,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
-import com.pyongjjeom.common.code.DBCode;
 import com.pyongjjeom.contents.dto.ContentBookDetail;
 import com.pyongjjeom.contents.dto.ContentMovieDetail;
 import com.pyongjjeom.contents.parsing.api.NaverParse;
@@ -48,7 +43,6 @@ import com.pyongjjeom.contents.parsing.movie.LotteParsing;
 import com.pyongjjeom.contents.parsing.movie.MegaBoxParsing;
 import com.pyongjjeom.contents.parsing.movie.NaverMovieParsing;
 import com.pyongjjeom.contents.service.ContentService;
-import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
 import com.pyongjjeom.user.dto.Member;
@@ -250,30 +244,6 @@ public class ContentController {
 		return "contents/contentsSearchList";
 	}
 
-	@RequestMapping(value = "currentMovieContext.do", method = RequestMethod.GET)
-	public String getCurrentMovieContext(Model model, HttpServletRequest request) {
-
-		int num = Integer.parseInt(request.getParameter("num"));
-		httpSession = request.getSession();
-		List<NaverMovie> list = (List<NaverMovie>) httpSession
-				.getAttribute("movieList");
-		httpSession.setAttribute("category", "movie");
-		httpSession.setAttribute("stat", "search");
-		NaverMovie movie = list.get(num);
-		return movieContextParsing(movie, request);
-	}
-
-	@RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
-	public String getMovieContext(Model model, HttpServletRequest request) {
-
-		int num = Integer.parseInt(request.getParameter("num"));
-		httpSession = request.getSession();
-		List<NaverMovie> list = (List<NaverMovie>) httpSession
-				.getAttribute("resultList");
-		NaverMovie movie = list.get(num);
-		return movieContextParsing(movie, request);
-	}
-
 	// AJAX부분 TEST - Movie
 	// AJAX부분 TEST - Movie
 	// AJAX부분 TEST - Movie
@@ -464,28 +434,30 @@ public class ContentController {
 				contentMovieDetail.setPoster("");
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
+			String pjGrade = parService.getPjGrade(movie.getConCD());
+			System.out.println("평균 평점은 = "+pjGrade);
+			map.put("pjGrade", pjGrade);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
-			System.out.println("일반 유저 "+commentList);
+			System.out.println("일반 유저 " + commentList);
 			Comment myComment = new Comment();
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Member member = (Member) httpSession.getAttribute("member");
-			int i=0,index = 0;
+			int i = 0, index = 0;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
 						myComment = comment;
-					  index = i;
+						index = i;
 					}
 					i++;
 				}
 			}
-			if(member!=null)
-			{
+			if (member != null&&!commentList.isEmpty()) {
 				commentList.remove(index);
 			}
-			System.out.println("일반 유저 "+commentList);
-			System.out.println("내 자신 "+myComment);
+			System.out.println("일반 유저 " + commentList);
+			System.out.println("내 자신 " + myComment);
 			map.put("commentList", commentList);
 			map.put("myComment", myComment);
 		}
@@ -598,162 +570,38 @@ public class ContentController {
 			}
 			map.put("contentBookDetail", contentBookDetail);
 
+		String pjGrade = parService.getPjGrade(book.getConCD());
+			
+			System.out.println("평균 평점은 = "+pjGrade);
+			map.put("pjGrade", pjGrade);
+			
+			List<Comment> commentList = parService.getComent(book.getConCD());
+			System.out.println("일반 유저 " + commentList);
+			Comment myComment = new Comment();
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			Member member = (Member) httpSession.getAttribute("member");
+			int i = 0, index = 0;
+			for (Comment comment : commentList) {
+				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
+				if (member != null) {
+					if (comment.getMemCD().equals(member.getMemCD())) {
+						myComment = comment;
+						index = i;
+					}
+					i++;
+				}
+			}
+			if (member != null&&commentList!=null) {
+				commentList.remove(index);
+			}
+			System.out.println("일반 유저 " + commentList);
+			System.out.println("내 자신 " + myComment);
+			map.put("commentList", commentList);
+			map.put("myComment", myComment);
 		}
 
 		return map;
 
-	}
-
-	@RequestMapping(value = "bookContext.do", method = RequestMethod.GET)
-	public String getBookContext(Model model, HttpServletRequest request) {
-		System.out.println("????");
-		int num = Integer.parseInt(request.getParameter("num"));
-		httpSession = request.getSession();
-		List<NaverBook> list = (List<NaverBook>) httpSession
-				.getAttribute("resultList");
-		NaverBook book = list.get(num);
-		return bookContextParsing(book, request);
-	}
-
-	@RequestMapping(value = "currentBookContext.do", method = RequestMethod.GET)
-	public String getcurrentBookContext(Model model, HttpServletRequest request) {
-		System.out.println("????");
-		int num = Integer.parseInt(request.getParameter("num"));
-		httpSession = request.getSession();
-		List<NaverBook> list = (List<NaverBook>) httpSession
-				.getAttribute("bookList");
-		httpSession.setAttribute("category", "book");
-		httpSession.setAttribute("stat", "search");
-		NaverBook book = list.get(num);
-		return bookContextParsing(book, request);
-	}
-
-	private String bookContextParsing(NaverBook book, HttpServletRequest request) {
-		book.setTitle(book.getTitle().replace("<b>", "").replace("</b>", ""));
-		if (book.getTitle().contains("(")) {
-			book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
-		}
-
-		httpSession.setAttribute("book", book);
-
-		if (httpSession.getAttribute("stat").equals("search")) {
-			System.out.println("까꿍2~");
-			Document doc;
-			BookGrades grades = new BookGrades();
-			System.out.println("???" + book.getTitle());
-			grades = contentService.bookGradeSelect(book.getTitle());
-
-			try {
-				doc = Jsoup.connect(book.getLink()).get();
-				request.setAttribute("bookIntroContent",
-						doc.select("div[id=bookIntroContent]").text());
-				request.setAttribute("authorIntroContent",
-						doc.select("div[id=authorIntroContent]").text());
-				request.setAttribute("grades", grades);
-
-				String poster = "http://bookthumb.phinf.naver.net/"
-						+ book.getImage().substring(book.getImage().indexOf("cover/"),
-								book.getImage().indexOf(".jpg")) + ".jpg";
-				request.setAttribute("poster", poster);
-				if (grades != null) {
-					int count = 0;
-					double avg = 0;
-					double arr[] = { grades.getAladinBg(), grades.getBandiBg(),
-							grades.getKyoboBg(), grades.getNaverBg(), grades.getYesBg() };
-					for (double grade : arr) {
-						if (grade != 0) {
-							avg += grade;
-							count++;
-						}
-					}
-					request.setAttribute("avg", avg / count);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return "contents/contentsContext";
-		}
-		return "postandreply/contentsPostingWrite";
-	}
-
-	/*
-	 * @RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
-	 * public String postingInsert(Model model, HttpServletRequest request) {
-	 * 
-	 * String str = request.getParameter("postContext"); // DB에 추가 해야함 _
-	 * request.setAttribute("posting", str); return
-	 * "postandreply/contentsPostingResult"; }
-	 */
-	private String movieContextParsing(NaverMovie movie,
-			HttpServletRequest request) {
-
-		movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", ""));
-		if (movie.getTitle().contains("(")) {
-			movie.setTitle(movie.getTitle().substring(0,
-					movie.getTitle().indexOf("(")));
-		}
-		String code = movie.getImage().replace("A", "1").replace("B", "2")
-				.replace("C", "3").replace("D", "4").replace("E", "5")
-				.replace("F", "6");
-		if (code.contains("_")) {
-			code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("_"));
-		} else
-			code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("-"));
-
-		httpSession.setAttribute("movie", movie);
-		if (httpSession.getAttribute("stat").equals("search")) {
-			Document doc;
-			MovieGrades grades = new MovieGrades();
-			grades = contentService.movieGradeSelect(movie.getTitle());
-			if (grades != null) {
-				int count = 0;
-				double avg = 0;
-				double arr[] = { grades.getCgvMg(), grades.getDaumMg(),
-						grades.getLotteMg(), grades.getMegaBoxMg(), grades.getNaverMg() };
-				for (double grade : arr) {
-					if (grade != 0) {
-						avg += grade;
-						count++;
-					}
-				}
-				request.setAttribute("avg", avg / count);
-			}
-			try {
-				doc = Jsoup.connect(movie.getLink()).get();
-				request.setAttribute("genre",
-						doc.select("p[class=info_spec] a[href*=genre").text());
-				request.setAttribute("nation",
-						doc.select("p[class=info_spec] a[href*=nation").text());
-				request.setAttribute("open",
-						doc.select("p[class=info_spec] a[href*=open").text());
-				request.setAttribute("grade",
-						doc.select("p[class=info_spec] a[href*=grade").text());
-				request.setAttribute("count",
-						doc.select("p[class=info_spec] span[class=count]").text());
-				request.setAttribute("context", doc.select("p[class=con_tx]").text());
-				request.setAttribute("grades", grades);
-				String video = doc
-						.select("ul[class=photo_video] li a[href^=mediaView]").attr("href");
-				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video)
-						.get();
-				request.setAttribute("video",
-						"http://movie.naver.com"
-								+ doc.select("iframe[class=_videoPlayer]").attr("src"));
-				System.out.println("http://movie.naver.com"
-						+ doc.select("iframe[class=_videoPlayer]").attr("src"));
-				doc = Jsoup.connect(
-						"http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="
-								+ code).get();
-				request.setAttribute("poster", doc.select("img[src]").attr("src"));
-
-				return "contents/contentsContext";
-			} catch (IOException e) {
-				e.getStackTrace();
-
-				return "contents/contentsContext";
-			}
-		}
-		return "contents/contentsPostingWrite";
 	}
 
 	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> values,
@@ -778,6 +626,135 @@ public class ContentController {
 			}
 		contentService.gradeUpdate(values, str);
 	}
+
+	/*
+	 * @RequestMapping(value = "currentMovieContext.do", method =
+	 * RequestMethod.GET) public String getCurrentMovieContext(Model model,
+	 * HttpServletRequest request) {
+	 * 
+	 * int num = Integer.parseInt(request.getParameter("num")); httpSession =
+	 * request.getSession(); List<NaverMovie> list = (List<NaverMovie>)
+	 * httpSession .getAttribute("movieList");
+	 * httpSession.setAttribute("category", "movie");
+	 * httpSession.setAttribute("stat", "search"); NaverMovie movie =
+	 * list.get(num); return movieContextParsing(movie, request); }
+	 * 
+	 * @RequestMapping(value = "movieContext.do", method = RequestMethod.GET)
+	 * public String getMovieContext(Model model, HttpServletRequest request) {
+	 * 
+	 * int num = Integer.parseInt(request.getParameter("num")); httpSession =
+	 * request.getSession(); List<NaverMovie> list = (List<NaverMovie>)
+	 * httpSession .getAttribute("resultList"); NaverMovie movie = list.get(num);
+	 * return movieContextParsing(movie, request); }
+	 */
+
+	/*
+	 * @RequestMapping(value = "bookContext.do", method = RequestMethod.GET)
+	 * public String getBookContext(Model model, HttpServletRequest request) {
+	 * System.out.println("????"); int num =
+	 * Integer.parseInt(request.getParameter("num")); httpSession =
+	 * request.getSession(); List<NaverBook> list = (List<NaverBook>) httpSession
+	 * .getAttribute("resultList"); NaverBook book = list.get(num); return
+	 * bookContextParsing(book, request); }
+	 * 
+	 * @RequestMapping(value = "currentBookContext.do", method =
+	 * RequestMethod.GET) public String getcurrentBookContext(Model model,
+	 * HttpServletRequest request) { System.out.println("????"); int num =
+	 * Integer.parseInt(request.getParameter("num")); httpSession =
+	 * request.getSession(); List<NaverBook> list = (List<NaverBook>) httpSession
+	 * .getAttribute("bookList"); httpSession.setAttribute("category", "book");
+	 * httpSession.setAttribute("stat", "search"); NaverBook book = list.get(num);
+	 * return bookContextParsing(book, request); }
+	 * 
+	 * private String bookContextParsing(NaverBook book, HttpServletRequest
+	 * request) { book.setTitle(book.getTitle().replace("<b>", "").replace("</b>",
+	 * "")); if (book.getTitle().contains("(")) {
+	 * book.setTitle(book.getTitle().substring(0, book.getTitle().indexOf("(")));
+	 * }
+	 * 
+	 * httpSession.setAttribute("book", book);
+	 * 
+	 * if (httpSession.getAttribute("stat").equals("search")) {
+	 * System.out.println("까꿍2~"); Document doc; BookGrades grades = new
+	 * BookGrades(); System.out.println("???" + book.getTitle()); grades =
+	 * contentService.bookGradeSelect(book.getTitle());
+	 * 
+	 * try { doc = Jsoup.connect(book.getLink()).get();
+	 * request.setAttribute("bookIntroContent",
+	 * doc.select("div[id=bookIntroContent]").text());
+	 * request.setAttribute("authorIntroContent",
+	 * doc.select("div[id=authorIntroContent]").text());
+	 * request.setAttribute("grades", grades);
+	 * 
+	 * String poster = "http://bookthumb.phinf.naver.net/" +
+	 * book.getImage().substring(book.getImage().indexOf("cover/"),
+	 * book.getImage().indexOf(".jpg")) + ".jpg"; request.setAttribute("poster",
+	 * poster); if (grades != null) { int count = 0; double avg = 0; double arr[]
+	 * = { grades.getAladinBg(), grades.getBandiBg(), grades.getKyoboBg(),
+	 * grades.getNaverBg(), grades.getYesBg() }; for (double grade : arr) { if
+	 * (grade != 0) { avg += grade; count++; } } request.setAttribute("avg", avg /
+	 * count); } } catch (IOException e) { e.printStackTrace(); } return
+	 * "contents/contentsContext"; } return "postandreply/contentsPostingWrite"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "postingInsert.do", method = RequestMethod.POST)
+	 * public String postingInsert(Model model, HttpServletRequest request) {
+	 * 
+	 * String str = request.getParameter("postContext"); // DB에 추가 해야함 _
+	 * request.setAttribute("posting", str); return
+	 * "postandreply/contentsPostingResult"; }
+	 */
+	/*
+	 * private String movieContextParsing(NaverMovie movie, HttpServletRequest
+	 * request) {
+	 * 
+	 * movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", "")); if
+	 * (movie.getTitle().contains("(")) {
+	 * movie.setTitle(movie.getTitle().substring(0,
+	 * movie.getTitle().indexOf("("))); } String code =
+	 * movie.getImage().replace("A", "1").replace("B", "2") .replace("C",
+	 * "3").replace("D", "4").replace("E", "5") .replace("F", "6"); if
+	 * (code.contains("_")) { code = code.substring(code.lastIndexOf("/") + 1,
+	 * code.indexOf("_")); } else code = code.substring(code.lastIndexOf("/") + 1,
+	 * code.indexOf("-"));
+	 * 
+	 * httpSession.setAttribute("movie", movie); if
+	 * (httpSession.getAttribute("stat").equals("search")) { Document doc;
+	 * MovieGrades grades = new MovieGrades(); grades =
+	 * contentService.movieGradeSelect(movie.getTitle()); if (grades != null) {
+	 * int count = 0; double avg = 0; double arr[] = { grades.getCgvMg(),
+	 * grades.getDaumMg(), grades.getLotteMg(), grades.getMegaBoxMg(),
+	 * grades.getNaverMg() }; for (double grade : arr) { if (grade != 0) { avg +=
+	 * grade; count++; } } request.setAttribute("avg", avg / count); } try { doc =
+	 * Jsoup.connect(movie.getLink()).get(); request.setAttribute("genre",
+	 * doc.select("p[class=info_spec] a[href*=genre").text());
+	 * request.setAttribute("nation",
+	 * doc.select("p[class=info_spec] a[href*=nation").text());
+	 * request.setAttribute("open",
+	 * doc.select("p[class=info_spec] a[href*=open").text());
+	 * request.setAttribute("grade",
+	 * doc.select("p[class=info_spec] a[href*=grade").text());
+	 * request.setAttribute("count",
+	 * doc.select("p[class=info_spec] span[class=count]").text());
+	 * request.setAttribute("context", doc.select("p[class=con_tx]").text());
+	 * request.setAttribute("grades", grades); String video = doc
+	 * .select("ul[class=photo_video] li a[href^=mediaView]").attr("href"); doc =
+	 * Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video) .get();
+	 * request.setAttribute("video", "http://movie.naver.com" +
+	 * doc.select("iframe[class=_videoPlayer]").attr("src"));
+	 * System.out.println("http://movie.naver.com" +
+	 * doc.select("iframe[class=_videoPlayer]").attr("src")); doc = Jsoup.connect(
+	 * "http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=" +
+	 * code).get(); request.setAttribute("poster",
+	 * doc.select("img[src]").attr("src"));
+	 * 
+	 * return "contents/contentsContext"; } catch (IOException e) {
+	 * e.getStackTrace();
+	 * 
+	 * return "contents/contentsContext"; } } return
+	 * "contents/contentsPostingWrite"; }
+	 */
 
 	/*
 	 * 위에거 전체 백업.

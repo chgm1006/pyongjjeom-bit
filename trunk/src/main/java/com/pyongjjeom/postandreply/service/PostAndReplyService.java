@@ -38,5 +38,7 @@ public interface PostAndReplyService {
 
 	public List<Comment> getComent(String conCD);
 
+	public String getPjGrade(String conCD);
+
 	
 }

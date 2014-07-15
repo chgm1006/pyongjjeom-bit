@@ -43,7 +43,11 @@ ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now(
 	
 	<select id="getComent" parameterType="String" resultType="Comment"> 
  select member.memCD,member.memNm,member.imgPath,posting.memgrade,posting.comment,posting.updatedate from posting,member where posting.concd=#{conCD} and ifnull(posting.deleteyn,'N')='N' and posting.pmemcd=member.memCD order by  posting.updatedate desc;
-
     </select>
+
+<select id="getPjGrade" parameterType="String" resultType="String"> 
+select avg(memgrade) from posting where concd=#{conCD}
+</select>
+
 </mapper>
 

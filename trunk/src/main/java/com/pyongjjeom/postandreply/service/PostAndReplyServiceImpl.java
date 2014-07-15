@@ -151,26 +151,12 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		parMapper.insertPost(post);
 	}
 
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#updatePost(java.lang.String)
-	 */
 	@Override
 	public Post updatePost(String postCD) {
 		// TODO Auto-generated method stub
 		return parMapper.updatePost(postCD);
 	}
 
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#editPost(com.pyongjjeom.postandreply.dto.Post)
-	 */
 	@Override
 	public void editPost(Post post) {
 		// TODO Auto-generated method stub
@@ -179,16 +165,14 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		
 	}
 
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#getComent(java.lang.String)
-	 */
 	@Override
 	public List<Comment> getComent(String conCD) {
 		return parMapper.getComent(conCD);
+	}
+
+	@Override
+	public String getPjGrade(String conCD) {
+		return parMapper.getPjGrade(conCD);
 	}
 
 
