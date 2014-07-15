@@ -1,33 +1,20 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- /// <head> INCLUDE /// -->
-<%-- <%@ include file="../common/header.jsp"%>
- --%>
+<%@ include file="../common/header.jsp"%>
 
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>my Room</title>
-
-<link href="${pageContext.request.contextPath}/resources/css/default1.css"
-	rel="stylesheet" type="text/css">
+<!-- CSS file -->
 <link href="${pageContext.request.contextPath}/resources/css/myroom.css"
 	rel="stylesheet" type="text/css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-<!-- CSS file -->
+
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css"
 	media="screen" />
 <!-- jQuery files -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jscripts.js"></script>
-
 
 <script>
 	$(function() {
@@ -52,7 +39,6 @@
 		});
 	});
 </script>
-
 
 <script type="text/javascript">
 	$(function() {
@@ -88,8 +74,6 @@
 
 	});
 </script>
-
-
 
 <script type="text/javascript">
 	$(function() {
@@ -142,7 +126,6 @@
 	}
 </script>
 
-
 <!----------상세 슬라이드 다운---------->
 <script type="text/javascript">
 	$(function() {
@@ -156,9 +139,8 @@
 		});
 	});
 </script>
-</head>
 
-<body>
+<article>
 
 	<div class="myPageWrap">
 
@@ -454,5 +436,6 @@
 
 
  -->
+ </article>
 </body>
 </html>

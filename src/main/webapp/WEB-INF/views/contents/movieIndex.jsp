@@ -270,7 +270,8 @@
 							<input id="memGrade" type="hidden" name="memGrade" />
 							
 						</div>
-						<input class="pointText" type="text" style="float:left; width:500px; padding:10px; font-size:20px;">
+						<textarea class="pointText" style="float:left; width:500px; padding:10px; font-size:20px;">
+						</textarea>
 						<input class="pointSubmit" type="submit" value="완료" style="line-height:20px;">
 						<p class="starPoint" style="display:none;"></p>
 					</div>
@@ -278,7 +279,6 @@
 					</c:otherwise>
 				</c:choose>
 				</div>
-			
 			
 			</div>
 			
@@ -547,7 +547,7 @@
 					$("#glayLayer,.exit").click(function() {
 						$(".previewIframe").attr("src","");
 							});
-					
+
 					
 					var commentList = data.whole.commentList;
 					var content = '<h3 class="overContTitle">코멘트</h3>';
@@ -558,7 +558,7 @@
 					for (var i = 0; i < list.length; i++) {
 								content += '<div class="commentBoxLeft">';
 								content += '<div class="userPhoto">';
-								content += '<a href="#" class="userRoomLink">';
+								content += '<a href="userRoomLink.do?memCD=' + list[i].memCD + '" class="userRoomLink">';
 								content += '<img src="' + list[i].imgPath + '">';
 								content += '</a></div>';
 								content += '<div class="commentName">' + list[i].memNm + '</div>';
@@ -569,9 +569,12 @@
 								content += '</div>';
 								content += '<div class="clear"></div>';
 					}
-							
 					content += '<a href="#" class="commentMore">더보기</a>';
 					$(".overCont3").html(content);
+					
+					var myComment = data.whole.myComment.comment;
+					$(".pointText").attr("value",myComment);
+
 
 				}//success End
 			});
