@@ -56,11 +56,11 @@
 		<div class="menu">
 			<ul>
 
-				<li class="boardMenu"><a class="myPageMenu" href="#"
+				<li class="boardMenu"><a class="myPageMenu" id = "NoticeList" href="#"
 					OnClick="window.location='allList.do'">전체보기</a></li>
-				<li class="boardMenu"><a class="myPageMenu" href="#"
+				<li class="boardMenu"><a class="myPageMenu" href="#" id = "NoticeList"
 					OnClick="window.location='eventList.do'">행사공지</a></li>
-				<li class="boardMenu"><a class="myPageMenu" href="#"
+				<li class="boardMenu"><a class="myPageMenu" href="#" id = "NoticeList"
 					OnClick="window.location='systemList.do'">시스템공지 </a></li>
 
 				<c:choose>
@@ -256,11 +256,15 @@
 <!---jQuery 아코디언--->
 
 
-<script type="text/javascript">
+<script>
 $(document).ready(function () {
 
-
-
+	/* $("#NoticeList").click(function() {
+		Json();
+	});
+	
+	 */
+	
 
 	$('#ajaxList').click(function() {
 
@@ -289,7 +293,7 @@ $(document).ready(function () {
 					}
 					content += "</dl>";
 
-					$(".testdiv").html(content);
+					$(".testdiv").append(content);
 					
 					
 					$(function() {
