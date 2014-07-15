@@ -105,15 +105,7 @@ public class UserController {
 		
 		
 		HttpSession session = request.getSession();
-
-		/*
-		 * if (!session.isNew()) { session = request.getSession(true); }
-		 */
-
 		session.setAttribute("member", member);
-
-	
-
 
 		return "myRoom/myRoom";
 	}
