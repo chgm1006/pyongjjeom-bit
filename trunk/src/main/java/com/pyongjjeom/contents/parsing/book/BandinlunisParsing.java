@@ -17,7 +17,6 @@ public class BandinlunisParsing extends ContentsParsing {
 		parsing("http://www.bandinlunis.com/front/display/listBest.do?page=3");
 		parsing("http://www.bandinlunis.com/front/display/listBest.do?page=4");
 		parsing("http://www.bandinlunis.com/front/display/listBest.do?page=5");
-
 	}
 
 	@Override

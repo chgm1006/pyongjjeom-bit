@@ -12,7 +12,7 @@ public class Yes24Parsing extends ContentsParsing {
 
 	public Yes24Parsing() {
 
-		parsing("http://www.yes24.com/24/category/bestseller?CategoryNumber=001&sumgb=06&FetchSize=100");
+		parsing("http://www.yes24.com/24/category/bestseller?CategoryNumber=001&sumgb=06&FetchSize=300");
 		
 	}
 

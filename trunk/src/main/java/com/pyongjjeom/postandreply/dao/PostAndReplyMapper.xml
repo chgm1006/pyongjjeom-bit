@@ -36,11 +36,10 @@ ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now(
 
 	</update>
 	
-	<update id="deletePost" parameterType="String">
-		update posting
-		set deleteyn = 'Y'
-		where postcd= #{postCD};
-	</update>
+	<delete id="deletePost" parameterType="String">
+		DELETE FROM posting WHERE 	postcd= #{postCD};
+
+	</delete>
 	
 	<select id="getComent" parameterType="String" resultType="Comment"> 
  select member.memNm,member.imgPath,posting.memgrade,posting.comment,posting.updatedate from posting,member where posting.concd=#{conCD} and ifnull(posting.deleteyn,'N')='N' and posting.pmemcd=member.memCD order by  posting.updatedate desc;

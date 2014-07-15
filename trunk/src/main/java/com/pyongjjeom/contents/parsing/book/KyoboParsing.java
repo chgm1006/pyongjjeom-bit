@@ -11,7 +11,7 @@ public class KyoboParsing extends ContentsParsing {
 
 	public KyoboParsing() {
 
-		parsing("http://www.kyobobook.co.kr/bestseller/bestSellerKyoboKorList.laf?mallGb=KOR&perPage=100");
+		parsing("http://www.kyobobook.co.kr/bestseller/bestSellerKyoboKorList.laf?mallGb=KOR&perPage=200");
 	}
 
 	public void parsing(String url) {
