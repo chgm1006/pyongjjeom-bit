@@ -275,7 +275,6 @@
 					$.each(notice, function(key) {
 
 						var list = notice[key];
-// 						alert(list);
 						var content = "<dl>";
 
 						for (var i = 0; i < list.length; i++) {
