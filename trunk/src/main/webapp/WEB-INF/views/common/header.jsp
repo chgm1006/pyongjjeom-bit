@@ -41,6 +41,12 @@
 			$(".menu5_1").css("border","2px solid #f4f4f4");
 			$(".menu5_1").css("background-color","");
 		});
+		$(".notLogin,.loginHidden2").mouseenter(function(){
+			$(".loginHidden2").show();
+		});
+		$(".notLogin,.loginHidden2").mouseleave(function(){
+			$(".loginHidden2").hide();
+		});
 		$(".menu5a_1,.myRoomHidden").mouseenter(function(){
 			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border","2px solid #fea915");
