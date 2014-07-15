@@ -52,7 +52,7 @@ public interface NoticeMapper {
 
   List <Notice> listMore();
   
-  public List getMoreMoreList(Map<String, Object> paramMap);
+  public List<Notice> getMoreMoreList(Map<String, Object> paramMap);
 
   public List<Notice> getAllNoticeListMore(HashMap<String, String> param);
   

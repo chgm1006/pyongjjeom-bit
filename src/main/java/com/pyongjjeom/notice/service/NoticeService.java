@@ -51,7 +51,7 @@ public interface NoticeService {
 	
   List <Notice> listMore();
   
-  public List getMoreMoreList(Map<String, Object> paramMap);
+  public List<Notice> getMoreMoreList(Map<String, Object> paramMap);
   
 
   

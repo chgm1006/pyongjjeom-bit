@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N'
-		order by regidate desc;
+		order by regidate desc limit 0,5;
 
 	</select>
 	<select id="getSystemNoticeDatas" resultType="Notice">
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N' and category = 'SM'
-		order by regidate desc;
+		order by regidate desc limit 0,5;;
 
 
 
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getEventNoticeDatas" resultType="Notice">
 
 		select * from notice where ifnull(deleteyn,'N')='N' and category = 'EV'
-		order by regidate desc;
+		order by regidate desc limit 0,5;
 
 	</select>
 
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='Y'
-		order by regidate desc;
+		order by regidate desc limit 0,5;
 
 	</select>
 
@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="deleteData" parameterType="String">
 		update notice
 		set deleteyn = 'Y'
-		where notCD= #{notCD};
+		where notCD= #{notCD} ;
 	</update>
 
 	<update id="editData" parameterType="Notice">
@@ -91,12 +91,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
-	<select id = 	"getMoreMoreList" parameterType="Map" resultType="HashMap"> 
+	<select id = 	"getMoreMoreList" parameterType="Map" resultType="Notice"> 
 
 	    
 		select * from notice where
 		ifnull(deleteyn,'N')='N'  
-		order by regidate desc;
+		order by regidate desc limit ${row}, 5;
 	    
 	</select>
 
