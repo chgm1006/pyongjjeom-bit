@@ -88,7 +88,6 @@
 					</dt>
 
 
-
 					<dd class="listContent">${notice.issue}
 						<c:choose>
 							<c:when test="${member.memKind =='A'}">
@@ -111,14 +110,18 @@
 
 
 
-		<p>Content here...</p>
-		<div id= "ajaxList2"></div>
-		
-		<input type="button" value="지난공지사항 더보기" id="ajaxList">
 
+		<div class="boardList">
+			<div class="testdiv">
+			
+			</div>
+		
+		</div>
+		
+	
 		<div class="more">
 
-			<a href="#" class="listMore">더보기</a>
+			<a href="#" class="listMore" id = "ajaxList">지난 공지사항 더보기</a>
 		</div>
 	</div>
 
@@ -257,7 +260,7 @@
 $(document).ready(function () {
 
 
-	$()
+
 
 	$('#ajaxList').click(function() {
 
@@ -271,22 +274,40 @@ $(document).ready(function () {
 			success : function(notice) {
 				$.each(notice, function(key) {
 
-
 					var list = notice[key];
-
-					var content = "<table class ='boardList'>";
-					
+					alert(list);
+					var content = "<dl>";
 
 					for (i = 0; i < list.length; i++) {
-
-						content += "<tr>";
-						content += "<td>" + list[i].title + "</td>";
-						content += "<td>" + list[i].formatUpdatedate + "</td>";
-						content += "</tr>";
+						content += "<dt class='listHead'>";
+						content += "<h3>" + list[i].title + "</h3>";
+						content += "<h5>" + list[i].formatUpdatedate + "</h5>";
+						content += "</dt>";
+						content += "<dd class='listContent')>";
+						content += "<h3>" + list[i].issue + "</h3>";
+						content +="</dd>"
 					}
-					content += "<table>";
+					content += "</dl>";
 
-					$("#ajaxList2").html(content);
+					$(".testdiv").html(content);
+					
+					
+					$(function() {
+						$("dd").css("display", "none");
+						$("dl dt,dl dt.selected").click(function() {
+							if ($("+dd", this).css("display") == "none") {
+								$("+dd", this).slideDown("fast");
+								$("dt").removeClass("selected");
+								$(this).addClass("selected");
+							} else {
+								$("+dd", this).slideUp("fast");
+								$(this).removeClass("selected");
+							}
+						});
+					});
+					
+					
+					
 
 				});
 

@@ -50,9 +50,6 @@ public class NoticeController {
 	private DBCode dc = new DBCode(); // DBCode 정의
 	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-	/*
-	 * int n= 0;
-	 */
 
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
@@ -172,37 +169,7 @@ public class NoticeController {
 		return "notice/boardList";
 	}
 
-	/*
-	 * //////////////////////////////////////////////////////////////////
-	 * 
-	 * int page = 1; int limit = 5; 리스트 수 int listcount =
-	 * noticeService.listCount(); System.out.println("count는 " + listcount);
-	 * 
-	 * List<Notice> MoreList = noticeService.getAllNoticeListMore(page, limit);
-	 * 
-	 * System.out.println(MoreList.toString());
-	 * 
-	 * // 총 페이지 수 // 0.95를 더해서 올림 처리 int maxpage = (int) ((double) listcount /
-	 * limit + 0.95); // 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...) int startpage =
-	 * (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1; // 현재 페이지에 보여줄 마지막 페이지
-	 * 수(10, 20, 30 등...) int endpage = startpage + 10 - 1; if (endpage > maxpage)
-	 * endpage = maxpage;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * model.addAttribute("MoreList", MoreList); model.addAttribute("page",page);
-	 * model.addAttribute("maxpage", startpage); model.addAttribute("endpage",
-	 * endpage); model.addAttribute("listcount", listcount); //return ModelAndView
-	 * view = new ModelAndView("notice/boardList");
-	 * 
-	 * view.addObject("page", page); // 현재 페이지 수 view.addObject("maxpage",
-	 * maxpage); // 최대 페이지 수 view.addObject("startpage", startpage); // 현재 페이지에
-	 * 표시할 첫 페이지 수 view.addObject("endpage", endpage); // 현재 페이지에 표시할 끝 페이지 수
-	 * view.addObject("listcount", listcount); // 모든 아이템의 총 글 수
-	 * 
-	 * view.addObject("listmore", listMore); // 게시글 리스트 }
-	 */
+	
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
@@ -338,7 +305,10 @@ public class NoticeController {
 		System.out.println("33333333333333333333");
 		
 		System.out.println("JSON 테스트 결과: "+noticeService.getMoreMoreList(paramMap));
-	
+		
+
+
+		
 		model.put("notice", noticeService.getMoreMoreList(paramMap));
 
 		return model;
