@@ -13,6 +13,11 @@ public class AladinParsing extends ContentsParsing {
 	public AladinParsing() {
 		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BranchType=1");
 		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0&page=2&cnt=300&SortOrder=1");
+		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0&page=3&cnt=300&SortOrder=1");
+		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0&page=4&cnt=300&SortOrder=1");
+		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0&page=5&cnt=300&SortOrder=1");
+		parsing("http://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0&page=6&cnt=300&SortOrder=1");
+
 	}
 
 	@Override
