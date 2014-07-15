@@ -122,7 +122,7 @@ public class ContentController {
 		if (httpSession.getAttribute("bookList") == null) {
 			NaverBookParsing parsing = new NaverBookParsing();
 			List<String> bookTitleList = parsing.getTitleList();
-			
+
 			Iterator<String> iterator = bookTitleList.iterator();
 			while (iterator.hasNext()) {
 				if (iterator.next().toUpperCase().contains("TOEIC")) {
@@ -139,7 +139,7 @@ public class ContentController {
 			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 			String uri;
 			List<NaverBook> bookList = new ArrayList<NaverBook>();
-			for (int i = 0; i <bookTitleList.size(); i++) {
+			for (int i = 0; i < bookTitleList.size(); i++) {
 				try {
 					uri = "http://openapi.naver.com/search?key="
 							+ apiKey
@@ -152,7 +152,7 @@ public class ContentController {
 					e.printStackTrace();
 				}
 			}
-			request.setAttribute("size", bookList.size()/10-1);
+			request.setAttribute("size", bookList.size() / 10 - 1);
 			httpSession.setAttribute("bookList", bookList);
 		}
 		return "contents/bookIndex";
@@ -199,8 +199,8 @@ public class ContentController {
 		updateGrade(naverParsing, naverValues, "nb");
 		updateGrade(yes24Parsing, yes24Values, "y");
 		updateGrade(kyoboParsing, kyoboValues, "k");
-		updateGrade(aladinParsing, aladinValues, "a");
 		updateGrade(bandinlunisParsing, bandinlunisValues, "b");
+		updateGrade(aladinParsing, aladinValues, "a");
 
 		return "contents/insertResult";
 	}
@@ -461,9 +461,9 @@ public class ContentController {
 				contentMovieDetail.setPoster("");
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
-		 List<Comment> commentList= parService.getComent(movie.getConCD());
-		map.put("commentList", commentList);
-		System.out.println(commentList);
+			List<Comment> commentList = parService.getComent(movie.getConCD());
+			map.put("commentList", commentList);
+			System.out.println(commentList);
 		}
 		return map;
 
@@ -517,7 +517,7 @@ public class ContentController {
 			}
 		}
 
-		book.setConCD("B"+code);
+		book.setConCD("B" + code);
 		httpSession.setAttribute("book", book);
 
 		// 검색결과에 대한 영화정보요청일 때 if문 실행 -> 각 사이트의 평점을 갖고 와서 평균을 구함.
