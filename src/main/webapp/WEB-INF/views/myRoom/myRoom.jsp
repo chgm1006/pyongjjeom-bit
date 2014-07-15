@@ -19,10 +19,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <!-- CSS file -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css"
+	media="screen" />
 <!-- jQuery files -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jscripts.js"></script>
 
 
@@ -74,13 +77,23 @@
 	$(document).ready(function() {
 		// simple jRating call
 		$(".basic").jRating({
+			
+			
+		
 			onClick : function(element, rate) {
 				alert(rate);
 				memGrade = rate;
+		
+			
 				$('input[name=memGrade]').attr('value', memGrade);
-
+		
+			
 			}
-		})
+		
+		
+		
+		});
+	
 	});
 </script>
 
@@ -180,7 +193,7 @@
 				</form>
 			</div>
 			<div class="upLoadCont">
-				<form id = "insert" action="postingInsert.do" method="post" >
+				<form id="insert" action="postingInsert.do" method="post">
 					<table>
 						<tr>
 							<td>나의 평점</td>
@@ -201,6 +214,7 @@
 									<!-- in this exemple, 12 is the average and 1 is the id of the line to update in DB -->
 									<div class="basic" data-average="5" data-id="1">
 										<input id="memGrade" type="hidden" name="memGrade" />
+										
 									</div>
 
 									<!-- in this other exemple, 8 is the average and 2 is the id of the line to update in DB -->
@@ -211,15 +225,15 @@
 						</tr>
 						<tr>
 							<td>나의 한줄평</td>
-							<td><input type="text" style="width: 500px" id = "comment" name="comment"></td>
+							<td><input type="text" style="width: 500px" id="comment"
+								name="comment"></td>
 						</tr>
 					</table>
-					<td>나의 후기</td>
-					<input type="text" class="upLoadText" id = "reveiw" name="review"><br> 
-					<input
-						type="hidden" name="pmemCD" value=${member.memCD }> <input
-						type="hidden" name="title" value="의형제"> <input type="hidden"
-						name=director value="장훈"> <input type="hidden" name="image"
+					<td>나의 후기</td> <input type="text" class="upLoadText" id="reveiw"
+						name="review"><br> <input type="hidden" name="pmemCD"
+						value=${member.memCD }> <input type="hidden" name="title"
+						value="의형제"> <input type="hidden" name=director value="장훈">
+					<input type="hidden" name="image"
 						value="http://imgmovie.naver.com/mdi/mit110/0525/52548_P43_123614.jpg">
 					<input type="hidden" name="actor" value="송강호|강동원|"> <input
 						type="hidden" name="category" value="movie"> <input type="hidden"
@@ -227,7 +241,8 @@
 						value="http://openapi.naver.com/l?AAADWLywrDIBREv+ZmKaKR6MJFyOM/1FxRSjS1NuDfNwkUhjPMgXl/sTQNywRqBiVheajEbUYKaupqO1Dv+YzYvbBpxzZvpWB8GAxaQ6lEyzz1fsCtF5J3oaDXodYD+AhsvfKcSTInFuLy/jdX23iPG9Z8oiMpJOCryxsCnwUTvfwBScpS06AAAAA=
 ">
 
-					<input type="submit" class="upLoadStart"  id = "insertCheck" name= "insertCheck" value="글올리기">
+					<input type="submit" class="upLoadStart" id="insertCheck"
+						name="insertCheck" value="글올리기">
 				</form>
 			</div>
 
@@ -251,10 +266,50 @@
 									</tr>
 									<tr>
 										<td class="listTitle">나의 평점</td>
-										<td class="listDirectorValue">${post.memGrade }</td>
+										<td class="listDirectorValue">
+										<c:choose>
+					<c:when test="${post.memGrade == 10}">
+					<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == 9 } ">
+				<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '8' } ">
+					<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '7' } ">
+					<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '6' } ">
+					<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '5' } ">
+		<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '4' } ">
+		<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '3' } ">
+			<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '2' } ">
+<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '1' } ">
+		<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
+					</c:when>
+						<c:when test="${post.memGrade == '0' } ">
+			<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
+					</c:when>
+				
+					
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
+										</td>
 									</tr>
 									<tr>
-										<td class="listTitle">나의 후기 </td>
+										<td class="listTitle">나의 후기</td>
 										<td class="listActorValue">${post.comment }</td>
 									</tr>
 								</table>
