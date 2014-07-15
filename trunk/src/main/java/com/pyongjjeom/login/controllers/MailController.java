@@ -54,8 +54,12 @@ public class MailController {
 		if (toUser == null) {
 			return "emailAuth/emailAuth";
 		}
+		System.out.println("urlPath = " + urlPath);
+		System.out.println("getServerName() = " + request.getServerName());
+		urlPath = urlPath.equals(request.getServerName()) ? urlPath : "http://localhost:8080/pyongjjeom/" ;
 
-		System.out.println("url = " + urlPath);
+		
+		System.out.println("urlPath = " + urlPath);
 		String memCD = loginService.getMemCD(toUser);
 		String subject = "<평쩜> 요청하신 인증번호 입니다";
 		String fromUser = "force.pyongjjeom@gmail.com";
@@ -81,7 +85,7 @@ public class MailController {
 		CommonAES aes = new CommonAES();
 		text.append("<h2><b>이메일 인증 코드입니다</b></h2><br>");
 		text.append(authCD);
-		text.append("<br><a href='" + urlPath + "emailAuth_forward.jsp?rootc="
+		text.append("<br><a href='" + urlPath + "/emailAuth_forward.jsp?rootc="
 				+ aes.getEncryptor(authCD) + "&rootm=" + aes.getEncryptor(email)
 				+ "'>인증번호 입력</a>");
 

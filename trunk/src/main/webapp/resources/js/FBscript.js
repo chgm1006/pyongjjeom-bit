@@ -3,10 +3,13 @@ var fbName;
 var fbEmail;
 var fbBirthday;
 var fbIMGURL;
+var FB_APPID;
 
 window.fbAsyncInit = function() {
+	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624" : "1449705105272003";
+	
 	FB.init({
-		appId : '1449705105272003',
+		appId : FB_APPID,
 		cookie : true, // enable cookies to allow the server to access
 		// the session
 		xfbml : true, // parse social plugins on this page
@@ -40,7 +43,6 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 function fnLoginFB(response) {
-
 	FB.login(function(response) {
 		if (response) {
 			FB.api("/me", function(response) {
@@ -49,8 +51,8 @@ function fnLoginFB(response) {
 				fbEmail = response.email;
 				fbBirthday = StringToDate(response.birthday);
 				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
-				console.log(response);
-				console.log(fbIMGURL);
+//				console.log(response);
+//				console.log(fbIMGURL);
 				
 				ajaxFBRegisterMember();
 			});
@@ -102,7 +104,7 @@ function StringToDate(strDate) {
 function facebookFriend(code, page) {
 	FB
 			.api(
-					"/me/taggable_friends",
+					"/me/friends",
 					function(response) {
 						console.log(response.error);
 						if (response && !response.error) {
