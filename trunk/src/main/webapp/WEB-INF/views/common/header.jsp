@@ -120,8 +120,8 @@
 											</tr>
 										</table>
 										<div class="loginButtonWrap">
-											<a class="loginButton" href="loginsuccess.do">로그인</a>
-											<a class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</a>
+											<button type="submit" class="loginButton" href="loginsuccess.do">로그인</button>
+											<button type="button" class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</button>
 										</div>
 										<div class="loginElseWrap">
 											<a class="loginElse" href="emailAuth.do">비밀번호를 까먹으셧나영?</a><br>
