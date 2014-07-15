@@ -442,7 +442,7 @@ public class ContentController {
 			Comment myComment = new Comment();
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Member member = (Member) httpSession.getAttribute("member");
-			int i = 0, index = 0;
+			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
 				if (member != null) {
@@ -453,7 +453,7 @@ public class ContentController {
 					i++;
 				}
 			}
-			if (member != null&&!commentList.isEmpty()) {
+			if (member != null&&!commentList.isEmpty()&&index!=-1) {
 				commentList.remove(index);
 			}
 			System.out.println("일반 유저 " + commentList);
