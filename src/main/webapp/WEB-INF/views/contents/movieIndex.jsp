@@ -571,7 +571,7 @@
 					}
 							
 					content += '<a href="#" class="commentMore">더보기</a>';
-					$(".overCont3").append(content);
+					$(".overCont3").html(content);
 
 				}//success End
 			});
