@@ -22,6 +22,7 @@
 package com.pyongjjeom.notice.controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class NoticeController {
 
 	private DBCode dc = new DBCode(); // DBCode 정의
 	private SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+   int row;
 
 	@RequestMapping(value = "allList.do")
 	public String allList(@Valid Notice notice, Model model,
@@ -154,7 +155,8 @@ public class NoticeController {
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
 			Model model, HttpServletRequest request) {
-
+ row=0;
+ System.out.println("AAAA");
 		IssueDbtoView(notice);
 
 		List<Notice> list = noticeService.getAllNoticeDatas();
@@ -168,8 +170,6 @@ public class NoticeController {
 
 		return "notice/boardList";
 	}
-
-	
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String insertData(@Valid Notice notice, Model model,
@@ -302,14 +302,22 @@ public class NoticeController {
 	public @ResponseBody Map<?, ?> listJson(
 			@RequestParam Map<String, Object> paramMap, ModelMap model) {
 
+		row = row + 5;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("row", row);
 		System.out.println("33333333333333333333");
 		
-		System.out.println("JSON 테스트 결과: "+noticeService.getMoreMoreList(paramMap));
+		List<Notice> list = noticeService.getMoreMoreList(map);
+
+		for (Notice noti : list) {
+			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
+		}
+		
 		
 
+//		System.out.println("JSON 테스트 결과: " + noticeService.getMoreMoreList(map));
 
-		
-		model.put("notice", noticeService.getMoreMoreList(paramMap));
+		model.put("notice", list);
 
 		return model;
 	}

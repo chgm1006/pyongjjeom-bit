@@ -235,6 +235,9 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List getMoreMoreList(Map<String, Object> paramMap) {
 		// TODO Auto-generated method stub
+	
+		
+		
 		return noticeMapper.getMoreMoreList(paramMap);
 	}
 		
