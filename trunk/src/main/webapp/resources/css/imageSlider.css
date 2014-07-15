@@ -14,8 +14,9 @@
 }
 
 .arrow1{
-	margin:230px 0 0 0;
+	margin:250px 0 0 0;
 	float:left;
+	border:1px dotted #123;
 }
 a.prev {
 	display:block;
