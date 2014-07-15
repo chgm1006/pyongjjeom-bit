@@ -30,27 +30,25 @@
 
 
 <script>
-	
 	$(function() {
 
 		var returnVar = false;
 		$('#insertCheck').click(function() {
 
-	
 			if ($('#comment').val() == '') {
 				alert("한줄평을 넣어 주세요");
 				returnVar = false;
 			} else if ($('#memGrade').val() == '') {
 				alert("평점을 입력해주세요");
 				returnVar = false;
-			}	else if ($('#reveiw').val() == '') {
+			} else if ($('#reveiw').val() == '') {
 				alert("후기을 입력해주세요");
 				returnVar = false;
-			}	else {
+			} else {
 				returnVar = true;
 			}
 
-		return returnVar;
+			return returnVar;
 		});
 	});
 </script>
@@ -77,23 +75,17 @@
 	$(document).ready(function() {
 		// simple jRating call
 		$(".basic").jRating({
-			
-			
-		
+
 			onClick : function(element, rate) {
 				alert(rate);
 				memGrade = rate;
-		
-			
+
 				$('input[name=memGrade]').attr('value', memGrade);
-		
-			
+
 			}
-		
-		
-		
+
 		});
-	
+
 	});
 </script>
 
@@ -214,7 +206,7 @@
 									<!-- in this exemple, 12 is the average and 1 is the id of the line to update in DB -->
 									<div class="basic" data-average="5" data-id="1">
 										<input id="memGrade" type="hidden" name="memGrade" />
-										
+
 									</div>
 
 									<!-- in this other exemple, 8 is the average and 2 is the id of the line to update in DB -->
@@ -266,47 +258,42 @@
 									</tr>
 									<tr>
 										<td class="listTitle">나의 평점</td>
-										<td class="listDirectorValue">
-										<c:choose>
-					<c:when test="${post.memGrade == 10}">
-					<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
+										<td class="listDirectorValue"><c:choose>
+												<c:when test="${post.memGrade == 10}">
+													<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == 9 } ">
-				<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 9 }">
+													<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '8' } ">
-					<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 8 }">
+													<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '7' } ">
-					<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 7 }">
+													<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '6' } ">
-					<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 6 }">
+													<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '5' } ">
-		<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 5 } ">
+													<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '4' } ">
-		<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 4 } ">
+													<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '3' } ">
-			<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 3 } ">
+													<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '2' } ">
-<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 2 } ">
+													<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '1' } ">
-		<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
+												<c:when test="${post.memGrade == 1 } ">
+													<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
 					</c:when>
-						<c:when test="${post.memGrade == '0' } ">
-			<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
-					</c:when>
-				
-					
-					<c:otherwise>
+												<c:otherwise>
+													<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
 					</c:otherwise>
-				</c:choose>
-										</td>
+
+											</c:choose></td>
 									</tr>
 									<tr>
 										<td class="listTitle">나의 후기</td>
