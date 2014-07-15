@@ -109,8 +109,9 @@
 				</h2>
 				<input type="hidden" id="checkemail" name="checkemail" value='0' /> <label
 					for="email">이메일</label> <input type="text" id="email" name="email"
-					placeholder="이메일..."> <input type="button" value="중복확인"
-					id="emailCheck"> <label for="name">이름</label> <input type="text"
+					placeholder="이메일..."> 
+					<input type="button" value="중복확인" id="emailCheck"> 
+					<label for="name">이름</label> <input type="text"
 					id="name" name="memNm" placeholder="이름..."> <label for="birth">생년월일</label>
 				<input type="text" id="birth" name="birth" placeholder="'-'빼고 숫자만..."> <label
 					for="password">비밀번호</label> <input type="password" id="password"
