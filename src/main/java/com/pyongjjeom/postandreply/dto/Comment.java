@@ -49,6 +49,13 @@ import org.apache.log4j.Logger;
 
 public class Comment {
 
+	private String memCD;
+	public String getMemCD() {
+		return memCD;
+	}
+	public void setMemCD(String memCD) {
+		this.memCD = memCD;
+	}
 	private String Comment;
 	private String memGrade;
 	private Date updateDate;
@@ -63,8 +70,8 @@ public class Comment {
 	private String imgPath;
 	@Override
 	public String toString() {
-		return "Comment [Comment=" + Comment + ", memGrade=" + memGrade
-				+ ", updateDate=" + updateDate + ", formatUpdateDate="
+		return "Comment [memCD=" + memCD + ", Comment=" + Comment + ", memGrade="
+				+ memGrade + ", updateDate=" + updateDate + ", formatUpdateDate="
 				+ formatUpdateDate + ", memNm=" + memNm + ", imgPath=" + imgPath + "]";
 	}
 	public String getComment() {

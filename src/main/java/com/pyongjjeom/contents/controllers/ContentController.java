@@ -51,6 +51,7 @@ import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
+import com.pyongjjeom.user.dto.Member;
 
 /**
  * <pre>
@@ -464,17 +465,31 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
+			System.out.println("일반 유저 "+commentList);
+			Comment myComment = new Comment();
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-			for (Comment coment : commentList) {
-				coment.setFormatUpdateDate(df2.format(coment.getUpdateDate()));
+			Member member = (Member) httpSession.getAttribute("member");
+			int i=0,index = 0;
+			for (Comment comment : commentList) {
+				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
+				if (member != null) {
+					if (comment.getMemCD().equals(member.getMemCD())) {
+						myComment = comment;
+					  index = i;
+					}
+					i++;
+				}
 			}
-			
+			if(member!=null)
+			{
+				commentList.remove(index);
+			}
+			System.out.println("일반 유저 "+commentList);
+			System.out.println("내 자신 "+myComment);
 			map.put("commentList", commentList);
-			System.out.println(commentList);
+			map.put("myComment", myComment);
 		}
 		return map;
-
 	}
 
 	// AJAX부분 TEST - Book
