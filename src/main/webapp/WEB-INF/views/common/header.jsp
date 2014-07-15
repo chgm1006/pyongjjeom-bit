@@ -107,20 +107,26 @@
 						<li class="menu5">
 							<a href="login.do" class="menu5_1">로그인</a>
 								<div class="loginHidden">
-									<form action=" " method="post">
+									<form action="loginsuccess.do" method="post">
 										<h2>로그인</h2>
-										<label for="email">이메일</label>
-										<input type="text" id="email" name="email" placeholder="이메일을...."> 
-										<label for="password">비밀번호</label>
-										<input type="password" id="passwd" name="passwd" placeholder="비밀번호...">
-										<button type="submit">로그인</button>
-										<button type="button" id="FBLogin">페이스북 로그인</button>
-
-										<!-- <button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button> -->
-										<br> <br> <a href="emailAuth.do">비밀번호를 까먹으셧나영?</a>&nbsp;
-										&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a
-											href="registerMember.do">아직 회원이 아니신가영?</a>
-
+										<table class="loginBox">
+											<tr>
+												<td class="loginBoxTd1"><label for="email">e-메일</label></td>
+												<td class="loginBoxTd2"><input type="text" id="email" name="email" placeholder="이메일을...."></td>
+											</tr>
+											<tr>
+												<td class="loginBoxTd1"><label for="password">비밀번호</label></td>
+												<td class="loginBoxTd2"><input type="password" id="passwd" name="passwd" placeholder="비밀번호..."></td>
+											</tr>
+										</table>
+										<div class="loginButtonWrap">
+											<a class="loginButton" href="loginsuccess.do">로그인</a>
+											<a class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</a>
+										</div>
+										<div class="loginElseWrap">
+											<a class="loginElse" href="emailAuth.do">비밀번호를 까먹으셧나영?</a><br>
+											<a class="loginElse" href="registerMember.do">아직 회원이 아니신가영?</a>
+										</div>
 									</form>
 								</div>
 							</li>
@@ -131,7 +137,7 @@
 							<a href="myRoom.do" class="menu5a_1">마이룸</a>
 							<div class="myRoomHidden">
 								<a class="myRoomSub" href="">My 평점</a><br>
-								<a class="myRoomSub" href="">로그아웃</a><br>
+								<a class="myRoomSub" href="logout.do">로그아웃</a><br>
 								<a class="myRoomSub" href="">설정</a><br>
 							</div>
 						</li>

@@ -125,6 +125,8 @@ header{
 	font-weight:bold;
 	border-top:4px solid #8dc63f ;		
 }
+
+
 .performanceHidden{
 	position: absolute;
 	display:none;
@@ -211,7 +213,62 @@ a.menu5a_1{
   transition: all 0.1s ease-out;
 }
 
+/*-----Login Box-------*/
+.loginHidden{
+	position: absolute;
+	display:none;
+	margin:0px 0 0 -95px;
+	padding:15px;
+	width:250px;
+	height:200px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;	
+}
+table.loginBox{
+	margin:0 auto;
+	padding:15px 0 5px 0;
+}
 
+td.loginBoxTd1 {
+	text-align: right;
+	padding:0 5px 0 0;
+}
+
+td.loginBoxTd2 {
+	text-align: left;
+}
+td.loginBoxTd2 input{
+		padding: 0 0 0 5px;
+}
+
+.loginButtonWrap{
+	margin:0 auto;
+	width:80%;
+}
+a.loginButton{
+	display:block;
+	margin:5px;
+	width:95%;
+	height:25px;
+	line-height:25px;
+	border-radius:2px;
+	border:1px dotted #999;
+	background:#fea915;
+}
+a.loginButton:hover,a.loginButton:active{
+	background:#ff860f;
+}
+.loginElseWrap{
+	margin:0 auto;
+}
+a.loginElse{
+	font-size:12px;
+}
+a.loginElse:hover,a.loginElse:active{
+	color: red;
+}
+/*-----Myroom Box-------*/
 .myRoomHidden{
 	position: absolute;
 	display:none;
