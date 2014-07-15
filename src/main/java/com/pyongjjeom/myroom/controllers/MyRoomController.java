@@ -75,21 +75,16 @@ public class MyRoomController {
 		return "myRoom/myRoom";
 	}
 	
-	
-
 	@RequestMapping(value = "userRoomLink.do", method = RequestMethod.GET)
-	private String userRoomLink(HttpServletRequest request) {
-		System.out.println("abc.do");
-		System.out.println(request.getParameter("memCD"));
+	private String userRoomLink(Model model, String memCD) {
+    List<PostAndContents> postList= parService.getPost(memCD);
 
-		return null;
+    //내일 합시다~!
+    /*Member member = userService.getMemberInfo(memCD);
+		model.addAttribute("userName",member.getMemNm());*/
+    model.addAttribute("postList",postList);
+		return "myRoom/userRoom";
 		}
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getMyPost(String memCD) {
