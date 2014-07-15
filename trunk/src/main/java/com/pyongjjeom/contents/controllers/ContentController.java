@@ -7,6 +7,7 @@ package com.pyongjjeom.contents.controllers;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,6 +48,7 @@ import com.pyongjjeom.contents.parsing.movie.LotteParsing;
 import com.pyongjjeom.contents.parsing.movie.MegaBoxParsing;
 import com.pyongjjeom.contents.parsing.movie.NaverMovieParsing;
 import com.pyongjjeom.contents.service.ContentService;
+import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
 
@@ -462,6 +464,12 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+			for (Comment coment : commentList) {
+				coment.setFormatUpdateDate(df2.format(coment.getUpdateDate()));
+			}
+			
 			map.put("commentList", commentList);
 			System.out.println(commentList);
 		}

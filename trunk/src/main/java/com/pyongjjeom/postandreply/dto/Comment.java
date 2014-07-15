@@ -52,13 +52,20 @@ public class Comment {
 	private String Comment;
 	private String memGrade;
 	private Date updateDate;
+	private String formatUpdateDate;
+	public String getFormatUpdateDate() {
+		return formatUpdateDate;
+	}
+	public void setFormatUpdateDate(String formatUpdateDate) {
+		this.formatUpdateDate = formatUpdateDate;
+	}
 	private String memNm;
 	private String imgPath;
 	@Override
 	public String toString() {
 		return "Comment [Comment=" + Comment + ", memGrade=" + memGrade
-				+ ", updateDate=" + updateDate + ", memNm=" + memNm + ", imgPath="
-				+ imgPath + "]";
+				+ ", updateDate=" + updateDate + ", formatUpdateDate="
+				+ formatUpdateDate + ", memNm=" + memNm + ", imgPath=" + imgPath + "]";
 	}
 	public String getComment() {
 		return Comment;
