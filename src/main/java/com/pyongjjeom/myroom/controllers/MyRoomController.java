@@ -80,7 +80,7 @@ public class MyRoomController {
 	@RequestMapping(value = "userRoomLink.do", method = RequestMethod.GET)
 	private String userRoomLink(HttpServletRequest request) {
 		System.out.println("abc.do");
-		System.out.println(request.getParameter("memCode"));
+		System.out.println(request.getParameter("memCD"));
 
 		return null;
 		}
