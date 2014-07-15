@@ -30,6 +30,7 @@
 			length:5, // number of star to display 
 			decimalLength : 0, // number of decimals.
 			rateMax : 10, // maximal rate - integer from 0 to 9999 (or more)
+	
 			rateInfosX : -45, // relative position in X axis of the info box when mouseover
 			rateInfosY : 5, // relative position in Y axis of the info box when mouseover
 			nbRates : 1000,
