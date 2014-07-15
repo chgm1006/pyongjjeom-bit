@@ -230,12 +230,41 @@
 				</div>
 				
 				<!---- My 평점 ---->
+				<div class="overPointWrap">
+					<h3 class="overContTitle">My 평점</h3>	
 				<c:choose>
 					<c:when test="${member==null}">
+						<div c lass="notLoginWrap"> 
+							<a class="notLogin">
+								<strong>로그인</strong>하시면 평점을 남길 수 있습니다.
+							</a>
+							<div class="loginHidden2">
+									<form action="loginsuccess.do" method="post">
+										<h2>로그인</h2>
+										<table class="loginBox">
+											<tr>
+												<td class="loginBoxTd1"><label for="email">e-메일</label></td>
+												<td class="loginBoxTd2"><input type="text" id="email" name="email" placeholder="이메일을...."></td>
+											</tr>
+											<tr>
+												<td class="loginBoxTd1"><label for="password">비밀번호</label></td>
+												<td class="loginBoxTd2"><input type="password" id="passwd" name="passwd" placeholder="비밀번호..."></td>
+											</tr>
+										</table>
+										<div class="loginButtonWrap">
+											<button type="submit" class="loginButton" href="loginsuccess.do">로그인</button>
+											<button type="button" class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</button>
+										</div>
+										<div class="loginElseWrap">
+											<a class="loginElse" href="emailAuth.do">비밀번호를 까먹으셧나영?</a><br>
+											<a class="loginElse" href="registerMember.do">아직 회원이 아니신가영?</a>
+										</div>
+									</form>
+							</div>
+						</div>
 					</c:when>
 					<c:otherwise>
-				<div class="overPointWrap">
-					<h3 class="overContTitle">My 평점</h3>				
+							
 					<div id="myPoint">
 						<div class="basic" data-average="5" data-id="1" style="float:left;padding:10px 10px 0 0">
 							<input id="memGrade" type="hidden" name="memGrade" />
@@ -245,9 +274,10 @@
 						<input class="pointSubmit" type="submit" value="완료" style="line-height:20px;">
 						<p class="starPoint" style="display:none;"></p>
 					</div>
-				</div>
-				</c:otherwise>
+				
+					</c:otherwise>
 				</c:choose>
+				</div>
 			
 			
 			</div>
@@ -269,6 +299,15 @@
 	<!----################ 여기부터는 jQuery 모음 ################---->
 	<!----################ 여기부터는 jQuery 모음 ################---->
 
+	<!--------- 모달윈도우 내 로그인창  -------->
+<script>
+	$(document).ready(function() {
+		// simple jRating call
+		$(".notLogin").click(function(){
+			$(".loginHidden2").attr("display","block");
+		});
+	});
+</script>
 	<!--------- 별표  -------->
 <script>
 	$(document).ready(function() {
