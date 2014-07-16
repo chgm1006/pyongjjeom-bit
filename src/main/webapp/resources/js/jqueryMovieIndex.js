@@ -229,105 +229,17 @@
 					var myComment = data.whole.myComment.comment;
 					$(".pointText").attr("value",myComment);
 					$(".myPointText").text(myComment);
+					
+					var myPostCD = data.whole.myComment.postCD;
+					$(".myPostCD").text(myPostCD);
 
+					
+					
 				}//success End
 			});
 		});
-/*********************Ajax JSoN : My 평점 올리기*******************/
 
-		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-			var test=$(".statusIndex",(this)).html();
-
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "currentMovieContextJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					
-					var genre = data.whole.contentMovieDetail.genre;
-					var nation = data.whole.contentMovieDetail.nation;
-					var open = data.whole.contentMovieDetail.open;
-					var grade = data.whole.contentMovieDetail.grade;
-					var count = data.whole.contentMovieDetail.count;
-					var context = data.whole.contentMovieDetail.context;
-					var grades = data.whole.contentMovieDetail.grades;
-					var video = data.whole.contentMovieDetail.video;
-					
-					
-					var poster = data.whole.contentMovieDetail.poster;
-					
-					var title = data.movie.title;
-					var code = data.movie.code;
-
-					var link = data.movie.link;
-					var subtitle = data.movie.subtitle;
-					var pubDate = data.movie.pubDate;
-					var director = data.movie.director;
-					var actor = data.movie.actor;
-					var userRating = data.movie.userRating;
-					
-					var naverMg = data.whole.grades.naverMg;
-					var daumMg = data.whole.grades.daumMg;
-					var cgvMg = data.whole.grades.cgvMg;
-					var lotteMg = data.whole.grades.lotteMg;
-					var megaBoxMg = data.whole.grades.megaBoxMg;
-					
-					var avg = data.whole.avg;					
-					$(".avgPoint").text(avg);
-
-				
-
-					$(".bigPoster").attr("src",poster);
-					$(".smallPoster").attr("src",poster);
-					
-					if(poster==null||poster==""){
-						$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-						$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-					}
-					
-					$(".overTableMovieTitle").text(title + " " +pubDate);
-					$(".overTableMovieTitle").append(code);
-					$(".overTableSubtitle").text(subtitle +"  "+ genre +" | "+ nation +" | "+ open);
-					$(".overTableDirector").text(director);
-					$(".overTableActor").text(actor);
-					
-					$(".overTableNaver").text(userRating);
-					$(".overTableDaum").text(daumMg);
-					$(".overTableCGV").text(cgvMg);
-					$(".overTableMega").text(megaBoxMg);
-					$(".overTableLotte").text(lotteMg);
-
-					$(".overSynop").text(context);
-					$("#overButtonLink").attr("href",link);
-					
-					
-					$("#overButtonPreview").click(function() {
-						$(".previewIframe").attr("src",video);
-
-							});
-					$("#glayLayer,.exit").click(function() {
-						$(".previewIframe").attr("src","");
-
-							});
-
-				}
-			});
-		});
+		
 /*******************모달 : 내 평점 수정하기*********************/
 			$(".pointModify,.pointText").click(function() {
 				$(".pointText").removeAttr("disabled");
