@@ -6,9 +6,10 @@
 
 	<!---- 검은 바탕 ---->
 	<div id='glayLayer'></div>
-
+	
 	<!---- above page 시작 ---->
 	<div id='overLayer'>
+	
 
 		<!---- 큰 포스터 JPG ---->
 		<div class="overTitle">
@@ -79,6 +80,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="clear"></div>
 
 			<div class="overCont2">
 				<!---- 예고편 ---->
@@ -101,6 +103,10 @@
 				<!---- My 평점 ---->
 				<div class="overPointWrap">
 					<h3 class="overContTitle">My 평점</h3>	
+					<!---- 한줄평 확인 플로팅 창 ---->
+					<div class="overCompleted">
+						<h3></h3>		
+					</div>
 				<c:choose>
 					<c:when test="${member==null}">
 						<div c lass="notLoginWrap"> 
@@ -150,8 +156,10 @@
 							<div id="myPoint">
 								<textarea class="pointText"  disabled="disabled"></textarea>
 								<a class="pointSubmit">완료</a>
-								<a class="pointModify">수정</a>
-								<a class="pointDelete">삭제</a>
+								<div class="pointModifyWrap">
+									<a class="pointModify">수정</a>
+									<a class="pointDelete">삭제</a>
+								</div>
 								<p class="starPoint"></p><p class="myPostCD"></p>
 							</div>
 						</div>
@@ -173,3 +181,4 @@
 
 	</div>
 
+	
