@@ -135,8 +135,10 @@
 	<!-- #################    모달윈도우 : 도서상세    ################# -->
 	<!-- ################################################# -->
 
-<!-- /// <footer> INCLUDE /// -->
+<!-- /// 모달윈도우 INCLUDE /// -->
 <%@ include file="../common/modalBookIndex.jsp"%>
+
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>

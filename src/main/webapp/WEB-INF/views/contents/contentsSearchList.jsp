@@ -290,8 +290,14 @@
 <!-- /// <footer> INCLUDE /// -->
 <%@ include file="../common/footer.jsp"%>
 
-<!-- /// <footer> INCLUDE /// -->
-<%@ include file="../common/modalContentsList.jsp"%>
+<!-- ################################################# -->
+<!-- #################    모달윈도우 : 영화상세    ################# -->
+<!-- ################################################# -->
+
+<!-- /// 모달윈도우 INCLUDE /// -->
+<%@ include file="../common/modalContentsSearchList.jsp"%>
+	
+	
 	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	
