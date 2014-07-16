@@ -118,12 +118,21 @@
 					name="passwd" placeholder="6자~20자..."> <label for="password_check">비밀번호확인</label>
 				<input type="password" id="password_check" name="password_check"
 					placeholder="비밀번호확인...">
+	
 				<button type="submit" id="btn_submit">가입하기</button>
 				<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
+		    <button type="button" OnClick="window.location='uploadFile.do'">파일업로드</button>
+		
 			</form>
+			
+		
 		</div>
 	</div>
 </div>
+
+
+
+
 </body>
 
 
