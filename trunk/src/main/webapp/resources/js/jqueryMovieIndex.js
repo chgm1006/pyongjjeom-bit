@@ -196,11 +196,26 @@
 					
 					var myComment = data.whole.myComment.comment;
 					$(".pointText").attr("value",myComment);
-					$(".myPointText").text(myComment);
+					if(myComment == null){
+						$(".pointText").removeAttr("disabled");
+					}
+					
+					var myStarPoint = data.whole.myComment.memGrade;
+					$(".starPoint").text(myStarPoint);
+					if(myStarPoint != null){
+						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
+						$(".myStarPoint1").show("fast");
+						$(".myStarPoint2").hide("fast");
+					}else{
+						$(".myStarPoint2").show("fast");
+						$(".myStarPoint1").hide("fast");
+					}
+					
 					
 					var myPostCD = data.whole.myComment.postCD;
 					$(".myPostCD").text(myPostCD);
 
+					
 					
 					
 				}//success End
@@ -235,17 +250,21 @@
 				},
 				success : function(data) {
 					$(".pointText").attr("disabled","disabled");
+					
+						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starPoint+".png");
+						$(".myStarPoint1").show("fast");
+						$(".myStarPoint2").hide("fast");
+					
 					alert("postingInsertJson success");
 
 				}
 			});
 		});
 
-		/***********Ajax JSoN : 내 평점 올리기 ************/
+		/***********Ajax JSoN : 내 평점 삭제하기 ************/
 		$(".pointDelete").click(function() {
 			var myPostCD=$(".myPostCD").html();
 
-			alert(myPostCD);
 			var formData = {
 				name : myPostCD,
 				data : "포스트 코드 전달"
@@ -267,15 +286,20 @@
 				},
 				success : function(data) {
 					alert("postingDeleteJson success");
-
+					
+					$(".pointText").removeAttr("value").removeAttr("disabled");
+					$(".myStarPoint2").show("fast");
+					$(".myStarPoint1").hide("fast");
 				}
 			});
 		});
 				
 		
-/*******************모달 : 내 평점 수정하기*********************/
-			$(".pointModify,.pointText").click(function() {
+/*******************모달 : 내 평점 수정 버튼*********************/
+			$("a.pointModify").click(function() {
 				$(".pointText").removeAttr("disabled");
+				$(".myStarPoint2").show("fast");
+				$(".myStarPoint1").hide("fast");
 			});
 			
 })(jQuery);
