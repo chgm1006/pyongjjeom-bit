@@ -235,11 +235,43 @@
 				},
 				success : function(data) {
 					$(".pointText").attr("disabled","disabled");
-					alert("success");
+					alert("postingInsertJson success");
 
 				}
 			});
 		});
+
+		/***********Ajax JSoN : 내 평점 올리기 ************/
+		$(".pointDelete").click(function() {
+			var myPostCD=$(".myPostCD").html();
+
+			alert(myPostCD);
+			var formData = {
+				name : myPostCD,
+				data : "포스트 코드 전달"
+			};
+			
+			$.ajax({
+				type : "post",
+				url : "postingDeleteJson.do",
+				// 				data : formData,
+ 				async : false,
+				data : JSON.stringify(formData),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				beforeSend : function() {
+					console.log(formData);
+				},
+				error : function(e) {
+					console.log(e.responseText);
+				},
+				success : function(data) {
+					alert("postingDeleteJson success");
+
+				}
+			});
+		});
+				
 		
 /*******************모달 : 내 평점 수정하기*********************/
 			$(".pointModify,.pointText").click(function() {
