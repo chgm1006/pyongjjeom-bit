@@ -23,15 +23,18 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [postCD=" + postCD + ", conCD=" + conCD + ", pmemCD=" + pmemCD
-				+ ", review=" + review + ", memGrade=" + memGrade + ", comment="
-				+ comment + ", deleteYn=" + deleteYn + ", spoilYn=" + spoilYn
-				+ ", regiDate=" + regiDate + ", updateDate=" + updateDate + "]";
+				+ ", memGrade=" + memGrade + ", comment=" + comment + ", deleteYn="
+				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
+				+ ", updateDate=" + updateDate + "]";
+	}
+
+	public void setMemGrade(Double memGrade) {
+		this.memGrade = memGrade;
 	}
 
 	private String postCD = "";
 	private String conCD = "";
 	private String pmemCD = "";
-	private String review = "";
 	private Double memGrade = 0.0;
 	private String comment = "";
 	public String getConCD() {
@@ -63,13 +66,6 @@ public class Post {
 		this.pmemCD = pmemCD;
 	}
 
-	public String getReview() {
-		return review;
-	}
-
-	public void setReview(String review) {
-		this.review = review;
-	}
 
 	public double getMemGrade() {
 		return memGrade;

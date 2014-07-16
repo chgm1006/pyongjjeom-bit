@@ -244,9 +244,6 @@ public class ContentController {
 		return "contents/contentsSearchList";
 	}
 
-	// AJAX부분 TEST - Movie
-	// AJAX부분 TEST - Movie
-	// AJAX부분 TEST - Movie
 
 	@ResponseBody
 	@RequestMapping(value = "movieContextJson.do", method = RequestMethod.POST)
@@ -435,10 +432,8 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 			String pjGrade = parService.getPjGrade(movie.getConCD());
-			System.out.println("평균 평점은 = "+pjGrade);
 			map.put("pjGrade", pjGrade);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
-			System.out.println("일반 유저 " + commentList);
 			Comment myComment = new Comment();
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Member member = (Member) httpSession.getAttribute("member");
@@ -453,8 +448,10 @@ public class ContentController {
 					i++;
 				}
 			}
-			if (member != null&&!commentList.isEmpty()&&index!=-1) {
+			if (member != null && !commentList.isEmpty() && index != -1) {
 				commentList.remove(index);
+				myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
+						.replaceAll("&nbsp;", "\u0020"));
 			}
 			System.out.println("일반 유저 " + commentList);
 			System.out.println("내 자신 " + myComment);
@@ -464,9 +461,6 @@ public class ContentController {
 		return map;
 	}
 
-	// AJAX부분 TEST - Book
-	// AJAX부분 TEST - Book
-	// AJAX부분 TEST - Book
 
 	@ResponseBody
 	@RequestMapping(value = "bookContextJson.do", method = RequestMethod.POST)
@@ -570,11 +564,10 @@ public class ContentController {
 			}
 			map.put("contentBookDetail", contentBookDetail);
 
-		String pjGrade = parService.getPjGrade(book.getConCD());
-			
-			System.out.println("평균 평점은 = "+pjGrade);
+			String pjGrade = parService.getPjGrade(book.getConCD());
+
 			map.put("pjGrade", pjGrade);
-			
+
 			List<Comment> commentList = parService.getComent(book.getConCD());
 			System.out.println("일반 유저 " + commentList);
 			Comment myComment = new Comment();
@@ -591,11 +584,11 @@ public class ContentController {
 					i++;
 				}
 			}
-			if (member != null&&commentList!=null) {
+			if (member != null && !commentList.isEmpty() && index != -1) {
 				commentList.remove(index);
+				myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
+						.replaceAll("&nbsp;", "\u0020"));
 			}
-			System.out.println("일반 유저 " + commentList);
-			System.out.println("내 자신 " + myComment);
 			map.put("commentList", commentList);
 			map.put("myComment", myComment);
 		}

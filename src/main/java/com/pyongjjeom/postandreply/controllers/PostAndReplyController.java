@@ -96,32 +96,11 @@ public class PostAndReplyController {
 		post.setPostCD(code.getPostCD("PB"));
 		post.setMemGrade(memGrade);
 		post.setComment(coment);
-		reviewDbToView(post);
-		System.out.println(post);
+		System.out.println("개행 전 "+post.getComment());
+		post=reviewDbToView(post);
+		System.out.println("개행 후"+post.getComment());
 		parService.insertPost(post);
 		return null;
-		/*
-		 * httpSession = request.getSession(); String conCD = null; String nCode =
-		 * null; // String category = (String) httpSession.getAttribute("category");
-		 * String category = request.getParameter("category");
-		 * 
-		 * if (category.equals("movie")) { if (!content.getImage().isEmpty()) {
-		 * nCode = content.getImage().replace("A", "1").replace("B", "2")
-		 * .replace("C", "3").replace("D", "4").replace("E", "5") .replace("F",
-		 * "6"); if (nCode.contains("_")) { nCode =
-		 * nCode.substring(nCode.lastIndexOf("/") + 1, nCode.indexOf("_")); } else
-		 * nCode = nCode.substring(nCode.lastIndexOf("/") + 1, nCode.indexOf("-"));
-		 * } conCD = "M" + nCode; } else if (category.equals("book")) { if
-		 * (!content.getImage().isEmpty()) { nCode = content.getImage().substring(
-		 * content.getImage().lastIndexOf("/0") + 2,
-		 * content.getImage().indexOf(".jpg")); } conCD = "B" + nCode; }
-		 * reviewDbToView(post); post.setPostCD(code.getPostCD("PB"));
-		 * post.setConCD(conCD); content.setConCD(conCD);
-		 * content.setActor(content.getActor().replace("|", " "));
-		 * content.setDirector(content.getDirector().replace("|", " "));
-		 * parService.insertPost(post); contentService.contentsInfoInsert(content);
-		 * return "postandreply/contentsPostingResult";
-		 */
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -187,7 +166,7 @@ public class PostAndReplyController {
 
 		String viewReview = post.getComment();
 		viewReview = viewReview.replaceAll("'", "`");
-		post.setReview(viewReview);
+		post.setComment(viewReview);
 
 		return post;
 	}
@@ -196,9 +175,9 @@ public class PostAndReplyController {
 	 * view에서 DB로 넘어갈때 체크해주는 것
 	 */public Post reviewDbToView(Post post) {
 		String dbReview = post.getComment();
-		dbReview = dbReview.replaceAll("`", "'").replaceAll("\r\n", "<br>")
+		dbReview = dbReview.replaceAll("`", "'").replaceAll("\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
-		post.setReview(dbReview);
+		post.setComment(dbReview);
 		return post;
 	}
 
@@ -208,7 +187,7 @@ public class PostAndReplyController {
 
 		String viewPost = newPost.getComment();
 		viewPost = viewPost.replaceAll("<br>", "\r\n");
-		newPost.setReview(viewPost);
+		newPost.setComment(viewPost);
 
 		return newPost;
 	}
