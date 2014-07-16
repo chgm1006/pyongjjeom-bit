@@ -79,7 +79,11 @@ public class UserController {
 	@RequestMapping(value = "mySet.do", method = RequestMethod.GET)
 	public String mySet(Model model, HttpServletRequest request){
 		
-	
+		Member member = new Member();
+		HttpSession session = request.getSession();
+		member = (Member) session.getAttribute("member");
+		model.addAttribute("commOpenChk", member.getCommOpenChk());
+		System.out.println("라디오버튼체크값" + member.getCommOpenChk() + member.getCommReplyChk());
 
 
 		return "myRoom/mySet";
@@ -92,13 +96,13 @@ public class UserController {
 		 * if (!session.isNew()) { session = request.getSession(true); }
 		 */
 		
-
+		
 		
 		System.out.println("11111");
 		System.out.println(member);
 		
 		userService.upDateData(member);
-
+		System.out.println(member.getCommOpenChk() + member.getCommReplyChk());
 		System.out.println("22222222");
 		System.out.println(member.toString());
 
