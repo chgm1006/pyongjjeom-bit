@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.myroom.dao.MyRoomMapper;
 import com.pyongjjeom.postandreply.dto.Post;
+import com.pyongjjeom.user.dto.Member;
 
 /**
  * <pre>
@@ -111,6 +112,32 @@ public class MyRoomServiceImpl implements MyRoomService {
 	public List<Post> getFriendsReply(String memCD, String friendCD) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.myroom.service.MyRoomService#insertImage(com.pyongjjeom.user.dto.Member)
+	 */
+	@Override
+	public void insertImage(Member member) {
+		// TODO Auto-generated method stub
+		myRoomMapper.insertImage(member);
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see com.pyongjjeom.myroom.service.MyRoomService#updateData(java.lang.String)
+	 */
+	@Override
+	public Member updateImage(String memcd) {
+		// TODO Auto-generated method stub
+		return myRoomMapper.updateImage(memcd);
 	}
 
 }
