@@ -449,7 +449,7 @@ public class ContentController {
 			}
 			System.out.println(myComment+"!!!!");
 			
-			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
@@ -577,15 +577,27 @@ public class ContentController {
 
 			String pjGrade = parService.getPjGrade(book.getConCD());
 
+			if (pjGrade == null) {
+				pjGrade = "0";
+			}
+			System.out.println(pjGrade + "/" + pjGrade.length());
+			if (pjGrade.length() > 4) {
+				pjGrade = pjGrade.substring(0, 4);
+			}
+			System.out.println(pjGrade);
 			map.put("pjGrade", pjGrade);
 
 			List<Comment> commentList = parService.getComent(book.getConCD());
 			Comment myComment = new Comment();
 			Member member = (Member) httpSession.getAttribute("member");
-
+			if(member!=null)
+			{
+				myComment= parService.getMyComent(book.getConCD(),member.getMemCD());
+			}
+			System.out.println(myComment+"!!!!");
 			
 			
-			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			int i = 0, index = 0;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
