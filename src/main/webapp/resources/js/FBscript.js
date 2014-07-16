@@ -28,9 +28,12 @@ window.fbAsyncInit = function() {
 				var url = "fbLogin.do";
 				ajaxFBRegisterMember(url);
 			});
+			window.location.reload(true);
 		} else if (response.status === "not_authorized") {
 
 		} else {
+			fnLogout(response);
+			// console.log(response.status );
 		}
 	});
 
@@ -174,7 +177,7 @@ function facebookFriend(code, page) {
 					});
 }
 
-function fnLogout() {
+function fnLogout(response) {
 	console.log(fbName);
 	console.log(response);
 	FB.logout(function(response) {
