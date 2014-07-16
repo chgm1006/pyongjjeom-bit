@@ -12,39 +12,7 @@
 				$('input[name=memGrade]').attr('value', memGrade);
 			}
 		});
-/***********Ajax JSoN 별표************/
-		$(".pointSubmit").click(function() {
-			var starPoint=$(".starPoint").html();
-			var pointText=$(".pointText").val();
 
-			alert(starPoint);
-			alert(pointText);
-			var formData = {
-				name : starPoint,
-				data : pointText
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "postingInsertJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					$(".pointText").attr("disabled","disabled");
-					alert("success");
-
-				}
-			});
-		});
 		
 		/******************Quick TOP  롤오버***********************/
 		$(function() {
@@ -112,7 +80,7 @@
 			}
 			
 			
-	/*******************Ajax JSoN 영화*********************/
+	/*******************Ajax JSoN 영화 상세 페이지*********************/
 		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
 			var test=$(".statusIndex",(this)).html();
 
@@ -239,6 +207,39 @@
 			});
 		});
 
+		/***********Ajax JSoN : 내 평점 올리기 ************/
+		$(".pointSubmit").click(function() {
+			var starPoint=$(".starPoint").html();
+			var pointText=$(".pointText").val();
+
+			alert(starPoint);
+			alert(pointText);
+			var formData = {
+				name : starPoint,
+				data : pointText
+			};
+			
+			$.ajax({
+				type : "post",
+				url : "postingInsertJson.do",
+				// 				data : formData,
+ 				async : false,
+				data : JSON.stringify(formData),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				beforeSend : function() {
+					console.log(formData);
+				},
+				error : function(e) {
+					console.log(e.responseText);
+				},
+				success : function(data) {
+					$(".pointText").attr("disabled","disabled");
+					alert("success");
+
+				}
+			});
+		});
 		
 /*******************모달 : 내 평점 수정하기*********************/
 			$(".pointModify,.pointText").click(function() {
