@@ -75,6 +75,8 @@ public class NoticeController {
 		// System.out.println(list.get(0).getRegidate());
 		// System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
+		
+		row = 0;
 		return "notice/boardList";
 	}
 
@@ -91,7 +93,7 @@ public class NoticeController {
 		}
 
 		model.addAttribute("add", list);
-
+		row = 0;
 		return "notice/boardList";
 	}
 
@@ -108,7 +110,7 @@ public class NoticeController {
 		}
 
 		model.addAttribute("add", list);
-
+		row = 0;
 		return "notice/boardList";
 	}
 
@@ -125,7 +127,7 @@ public class NoticeController {
 		}
 
 		model.addAttribute("add", list);
-
+		row = 0;
 		return "notice/boardList";
 	}
 
