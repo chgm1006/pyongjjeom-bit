@@ -46,11 +46,6 @@
 </style>
 
 <script type="text/javascript">
-
-	
-</script>
-
-<script type="text/javascript">
 $(document).ready(function(){
 		$("#birth").datepicker(
 				{
@@ -215,17 +210,18 @@ $(document).ready(function(){
 					<table>
 						<tr>
 							<td class="item">내 포스팅 공개여부</td>
-							<td class="cont">전체공개<input type="radio" name="commOpenChk"
-								value="A"> 친구만 공개<input type="radio" name="commOpenChk"
-								value="F"> 비공개<input type="radio" name="commOpenChk" value="N">
+							<td class="cont">
+							전체공개<input type="radio" name="commOpenChk"	value="A" <c:if test="${commOpenChk eq 'A'}"> checked="checked"</c:if> > 
+							친구만 공개<input type="radio" name="commOpenChk"	value="F" <c:if test="${commOpenChk eq 'F'}"> checked="checked"</c:if>> 
+							비공개<input type="radio" name="commOpenChk" value="N" <c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
 							</td>
 						</tr>
 						<tr>
 							<td class="item">내 포스팅 댓글 참여 범위</td>
-							<td class="cont">전체허용<input type="radio" name="commReplyChk"
-								checked="checked" value="A"> 친구만 허용<input type="radio"
-								name="commReplyChk" value="F"> 허용안함<input type="radio"
-								name="commReplyChk" value="N"></td>
+							<td class="cont">
+							전체허용<input type="radio" name="commReplyChk"checked="checked" value="A"<c:if test="${commReplyChk eq 'A'}"> checked="checked"</c:if>>
+							친구만 허용<input type="radio"name="commReplyChk" value="F"<c:if test="${commReplyChk eq 'F'}"> checked="checked"</c:if>>
+							허용안함<input type="radio"name="commReplyChk" value="N"<c:if test="${commReplyChk eq 'N'}"> checked="checked"</c:if>></td>
 						</tr>
 
 					</table>
