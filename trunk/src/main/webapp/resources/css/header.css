@@ -309,7 +309,12 @@ article{
 	position:absolute; 	
 	right:15px; 
 	width:50px; 
-	height:55px;  
-	z-index:10;  
+	height:55px;
+	overflow: hidden;
+	z-index: 10;
+	background: url(../img/forTop.png) no-repeat;
 }
 
+#quick:hover,#quick:active {
+	background-position:0px -55px;
+}
