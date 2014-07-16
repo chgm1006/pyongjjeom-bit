@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +44,11 @@
 	font-size: 11px;
 }
 </style>
+
+<script type="text/javascript">
+
+	
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -205,29 +211,24 @@ $(document).ready(function(){
 					<label for="password_check">비밀번호확인</label> <input type="password"
 						id="password_check" name="password_check" placeholder="비밀번호확인...">
 
-					<!-- <table>
+
+					<table>
 						<tr>
 							<td class="item">내 포스팅 공개여부</td>
-							<td class="cont">
-							전체공개<input type="radio" name="open" value="전체공개">
-							친구만 공개<input type="radio" name="open" value="친구만 공개"> 
-							비공개<input type="radio" name="open" value="비공개">
+							<td class="cont">전체공개<input type="radio" name="commOpenChk"
+								value="A"> 친구만 공개<input type="radio" name="commOpenChk"
+								value="F"> 비공개<input type="radio" name="commOpenChk" value="N">
 							</td>
 						</tr>
 						<tr>
 							<td class="item">내 포스팅 댓글 참여 범위</td>
-							<td class="cont">
-							전체허용<input type="radio" name="reply" value="1" />
-							친구만허용<input type="radio" name="reply" value="2" /> 
-							허용안함<input type="radio" name="reply" value="3" /> 
-												전체허용<input type="radio" name="reply" value="전체허용">
-					친구만 허용<input type="radio" name="reply" value="친구만 허용"> 
-					허용안함<input type="radio" name="reply" value="허용안함"></td>
+							<td class="cont">전체허용<input type="radio" name="commReplyChk"
+								checked="checked" value="A"> 친구만 허용<input type="radio"
+								name="commReplyChk" value="F"> 허용안함<input type="radio"
+								name="commReplyChk" value="N"></td>
 						</tr>
 
-					</table> -->
-
-
+					</table>
 
 
 					<button type="submit">수정하기</button>
