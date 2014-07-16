@@ -110,6 +110,8 @@
 											+ "px");
 						});
 			}
+			
+			
 	/*******************Ajax JSoN 영화*********************/
 		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
 			var test=$(".statusIndex",(this)).html();
@@ -162,6 +164,7 @@
 					var cgvMg = data.whole.grades.cgvMg;
 					var lotteMg = data.whole.grades.lotteMg;
 					var megaBoxMg = data.whole.grades.megaBoxMg;
+					var pjGrade = data.whole.pjGrade;
 					
 					var avg = data.whole.avg;					
 					$(".avgPoint").text(avg);
@@ -186,6 +189,7 @@
 					$(".overTableCGV").text(cgvMg);
 					$(".overTableMega").text(megaBoxMg);
 					$(".overTableLotte").text(lotteMg);
+					$(".overTableWoori").text(pjGrade);
 
 					$(".overSynop").text(context);
 					$("#overButtonLink").attr("href",link);
