@@ -29,6 +29,10 @@ public interface MyRoomService {
 
 	public List<Post> getFriendsReply(String memCD, String friendCD);
 	
+	Member updateImage(String memcd);
+	
+	void insertImage(Member member);
+	
 	
 	
 }

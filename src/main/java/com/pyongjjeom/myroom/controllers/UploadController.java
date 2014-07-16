@@ -18,14 +18,16 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.login.controllers;
+package com.pyongjjeom.myroom.controllers;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +36,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.pyongjjeom.myroom.service.MyRoomService;
+import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.dto.UploadItem;
 
 /**
@@ -62,6 +65,8 @@ import com.pyongjjeom.user.dto.UploadItem;
 @Controller
 @RequestMapping(value = "uploadFile.do")
 public class UploadController {
+	@Autowired
+	MyRoomService myRoomService;
 
 	@Autowired
 	private FileSystemResource fsResource; // 파일다운로드
@@ -72,12 +77,18 @@ public class UploadController {
 		System.out.println("첫번째 model 부분 실행?");
 		model.addAttribute(new UploadItem()); // name ,fileData 를 끌고 오겟다.
 
-		return "login/uploadCheck";
+		return "myRoom/uploadCheck";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(UploadItem uploadItem, BindingResult result) {
+	public String create(UploadItem uploadItem, BindingResult result,
+			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
+
+		Member member;
+		HttpSession session = request.getSession();
+
+		member = (Member) session.getAttribute("member");
 
 		if (result.hasErrors()) // 에러체크
 		{
@@ -85,12 +96,11 @@ public class UploadController {
 				System.err.println("Error: " + error.getCode() + " - "
 						+ error.getDefaultMessage());
 			}
-			return "login/uploadCheck";
+			return "myRoom/uploadCheck";
 		}
 
 		if (!uploadItem.getFileData().isEmpty()) {
-			
-			
+
 			String filename = uploadItem.getFileData().getOriginalFilename(); // 파일의
 																																				// 실제명을
 																																				// 가지고온다.
@@ -100,40 +110,48 @@ public class UploadController {
 			System.out.println(filename);
 			System.out.println(imgExt);
 
+
+
+	
+
 			// lastIndexof는끝에서부터 읽어들임
 			// imgExt = 파일명을 읽어들임
 
 			// upload 가능한 파일 타입 지정
 			if (imgExt.equalsIgnoreCase("JPG") || imgExt.equalsIgnoreCase("JPEG")
-					|| imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")) 
-			{
+					|| imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")) {
 				byte[] bytes = uploadItem.getFileData().getBytes();
-				
+
 				System.out.println(bytes);
-				
+
 				try {
 					File lOutFile = new File(fsResource.getPath() + "_" + filename);
 					System.out.println(lOutFile); // 이미지 경로
-	
-	/*				String lOutFile2 =		lOutFile.toString().replace("\\", "/");*/
-				
+
+					/* String lOutFile2 = lOutFile.toString().replace("\\", "/"); */
+
 					System.out.println(lOutFile);
-									
+
 					FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
+
+					System.out.println(lFileOutputStream); // 이미지 경로
 					
-					System.out.println(lFileOutputStream); //이미지 경로
-					
-			    lFileOutputStream.write(bytes);
+					member.setImgPath(lOutFile.toString());
+
+					lFileOutputStream.write(bytes);
 					lFileOutputStream.close();
 				} catch (IOException ie) {
 					// Exception 처리
 					ie.printStackTrace();
-	
+
 					System.err.println("File writing error! ");
-				
+
 				}
-				
+
 				System.err.println("File upload success! ");
+				
+				myRoomService.insertImage(member);
+
 			} else {
 				System.err.println("File type error! ");
 			}
@@ -146,7 +164,7 @@ public class UploadController {
 				+ uploadItem.getFileData().getOriginalFilename());
 		System.err.println("-------------------------------------------");
 
-		return "login/uploadCheck";
+		return "myRoom/uploadCheck";
 	}
 
 }
