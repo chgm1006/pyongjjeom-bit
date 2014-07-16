@@ -131,24 +131,28 @@
 									</form>
 							</div>
 						</div>
+						
 					</c:when>
 					<c:otherwise>
 						<div class="myPointWrap">
+						
 							<div class="myStarPoint">
-							별표 그림</div>
-							<div class="myPointText">여기는 그냥
-							</div>
-						</div>
-						<div class="myPointModify"><p class="myPostCD"></p>
-							<div id="myPoint">
-								<div class="basic" data-average="5" data-id="1" style="float:left;padding:10px 10px 0 0">
-									<input id="memGrade" type="hidden" name="memGrade" />
+								<div class="myStarPoint1">
+									<img class="myStarPointCompleted" src="">
 								</div>
-								<textarea class="pointText"  disabled="disabled" style="resize:none; float:left; width:500px; padding:10px; font-size:20px;">
-								</textarea>
-								<a class="pointSubmit" style="cursor:pointer; line-height:20px;">완료</a>
-								<a class="pointModify" style="cursor:pointer; line-height:20px;">수정</a>
-								<p class="starPoint" style="display:none;"></p>
+								<div class="myStarPoint2">
+									<div class="basic" data-average="5" data-id="1">
+										<input id="memGrade" type="hidden" name="memGrade" />
+									</div>
+								</div>
+							</div>
+							
+							<div id="myPoint">
+								<textarea class="pointText"  disabled="disabled"></textarea>
+								<a class="pointSubmit">완료</a>
+								<a class="pointModify">수정</a>
+								<a class="pointDelete">삭제</a>
+								<p class="starPoint"></p><p class="myPostCD"></p>
 							</div>
 						</div>
 					</c:otherwise>
