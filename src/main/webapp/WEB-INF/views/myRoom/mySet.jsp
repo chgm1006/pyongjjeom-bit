@@ -207,29 +207,44 @@ $(document).ready(function(){
 						id="password_check" name="password_check" placeholder="비밀번호확인...">
 
 
+
+
 					<table>
 						<tr>
 							<td class="item">내 포스팅 공개여부</td>
-							<td class="cont">
-							전체공개<input type="radio" name="commOpenChk"	value="A" <c:if test="${commOpenChk eq 'A'}"> checked="checked"</c:if> > 
-							친구만 공개<input type="radio" name="commOpenChk"	value="F" <c:if test="${commOpenChk eq 'F'}"> checked="checked"</c:if>> 
-							비공개<input type="radio" name="commOpenChk" value="N" <c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
+							<td class="cont">전체공개<input type="radio" name="commOpenChk"
+								value="A" <c:if test="${commOpenChk eq 'A'}"> checked="checked"</c:if>>
+								친구만 공개<input type="radio" name="commOpenChk" value="F"
+								<c:if test="${commOpenChk eq 'F'}"> checked="checked"</c:if>>
+								비공개<input type="radio" name="commOpenChk" value="N"
+								<c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
 							</td>
 						</tr>
 						<tr>
 							<td class="item">내 포스팅 댓글 참여 범위</td>
-							<td class="cont">
-							전체허용<input type="radio" name="commReplyChk"checked="checked" value="A"<c:if test="${commReplyChk eq 'A'}"> checked="checked"</c:if>>
-							친구만 허용<input type="radio"name="commReplyChk" value="F"<c:if test="${commReplyChk eq 'F'}"> checked="checked"</c:if>>
-							허용안함<input type="radio"name="commReplyChk" value="N"<c:if test="${commReplyChk eq 'N'}"> checked="checked"</c:if>></td>
+							<td class="cont">전체허용<input type="radio" name="commReplyChk"
+								checked="checked" value="A"
+								<c:if test="${commReplyChk eq 'A'}"> checked="checked"</c:if>>
+								친구만 허용<input type="radio" name="commReplyChk" value="F"
+								<c:if test="${commReplyChk eq 'F'}"> checked="checked"</c:if>>
+								허용안함<input type="radio" name="commReplyChk" value="N"
+								<c:if test="${commReplyChk eq 'N'}"> checked="checked"</c:if>></td>
 						</tr>
 
 					</table>
 
+					<!-- <label for="email">파일업로드</label> <input type = "hidden" path="name" id="name"></input>
+					<input path="fileData" id="fileData" type="file">File</input> <input
+						type="submit" />
+
+
+
+ -->
+
 
 					<button type="submit">수정하기</button>
 					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
-					 <button type="button" OnClick="window.location='uploadFile.do'">파일업로드</button>
+					<button type="button" OnClick="window.location='uploadFile.do'">파일업로드</button>
 				</form>
 			</div>
 		</div>
