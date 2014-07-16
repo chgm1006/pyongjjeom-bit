@@ -26,7 +26,6 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script> --%>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
 <style>
