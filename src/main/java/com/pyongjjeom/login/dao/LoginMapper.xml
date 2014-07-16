@@ -133,16 +133,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		memKind ,
 		memNm ,
 		birth ,
-		passwd ,
-		emailAuthYn ,
-		emailauthcd ,
 		memvalid ,
 		fbId ,
 		fbYn ,
 		imgPath ,
-		imgNm ,
-		regiDate ,
-		updateDate
+		imgNm 
 		FROM member
 		where
 		email = #{email} or fbid=#{fbId} and fbyn = 'Y';

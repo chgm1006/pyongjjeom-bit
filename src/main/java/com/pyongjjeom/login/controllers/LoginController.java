@@ -101,10 +101,17 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
-	public String logout() {
+	@ResponseBody
+	@RequestMapping(value = "logout.do", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public Member logout(HttpSession session) {
+		log.info("logout.do");
+		Member member = (Member) session.getAttribute("member");
+		System.out.println(member);
+		session.removeAttribute("member");
+		System.out.println(session.getAttribute("member"));
 
-		return "login/logout";
+		return member;
 	}
 
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
@@ -136,8 +143,28 @@ public class LoginController {
 
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
-	public Member fbLogin(@RequestBody Member member, HttpServletRequest request) {
+	public Member fbLogin(@RequestBody Member member, HttpSession session) {
 		log.info("fbLogin");
+
+		Member memInfo = loginService.getMemberInfoByMember(member);
+
+		boolean isMemInfo = (memInfo.getEmail().equals(member.getEmail())
+				&& memInfo.getFbId().equals(member.getFbId()) && memInfo.getFbYn() == 'Y');
+
+		if (isMemInfo) {
+			session.setAttribute("member", memInfo);
+		} else {
+			memInfo = null;
+		}
+		return memInfo;
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "fbRegisterMember.do", method = RequestMethod.POST)
+	public Member fbRegisterMember(@RequestBody Member member,
+			HttpServletRequest request) {
+		log.info("fbRegisterMember");
 
 		// System.out.println(paramMap.get("email"));
 
@@ -155,14 +182,9 @@ public class LoginController {
 
 		Member sMember = loginService.getMemberInfoByFBID(member.getFbId());
 		System.out.println("cnt = " + cnt);
-		HttpSession session = request.getSession(false);
-		if (cnt > 1) {
-			session.setAttribute("memCD", sMember.getMemCD());
-			session.setAttribute("email", sMember.getEmail());
-			session.setAttribute("memCD", sMember.getMemNm());
-			session.setAttribute("memNm", sMember.getMemCD());
-			session.setAttribute("fbId", sMember.getFbId());
-			session.setAttribute("imgPath", sMember.getImgPath());
+		HttpSession session = request.getSession();
+		if (cnt > 0) {
+			session.setAttribute("member", sMember);
 			session.setAttribute("fbErrorMSG", "");
 		} else {
 			session.setAttribute("fbErrorMSG", "정보가 정상적으로 저장되지 않았습니다.");
@@ -200,4 +222,5 @@ public class LoginController {
 
 		return view;
 	}
+
 }

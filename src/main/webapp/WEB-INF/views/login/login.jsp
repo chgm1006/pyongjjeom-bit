@@ -68,7 +68,6 @@
 					<button type="submit">로그인</button>
 					<button type="button" id="FBLogin">페이스북 로그인</button>
 
-					<!-- <button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button> -->
 					<br> <br> <a href="emailAuth.do">비밀번호를 까먹으셧나영?</a>&nbsp; &nbsp; &nbsp;
 					&nbsp; &nbsp; &nbsp; &nbsp; <a href="registerMember.do">아직 회원이 아니신가영?</a>
 
