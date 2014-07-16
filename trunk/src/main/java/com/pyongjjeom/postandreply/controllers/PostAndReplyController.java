@@ -69,8 +69,6 @@ public class PostAndReplyController {
 
 	@RequestMapping(value = "postingInsertJson.do", method = RequestMethod.POST)
 	public Map postingInsert( @RequestBody Map paramMap,HttpServletRequest request) {
-
-		
 		Post post = new Post();
 		double memGrade = Double.parseDouble((String) paramMap.get("name"));
 		String coment = (String) paramMap.get("data");
@@ -103,8 +101,13 @@ public class PostAndReplyController {
 		return null;
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String getPost(String memCD, String conCD) {
+	@RequestMapping(value = "postingDeleteJson.do", method = RequestMethod.POST)
+public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
+
+	/*	String postCD = (String) paramMap.get("data");
+		
+		parService.deletePost(postCD);*/
+		
 		return null;
 	}
 
