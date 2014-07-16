@@ -6,8 +6,6 @@ package com.pyongjjeom.postandreply.dao;
 
 import java.util.List;
 
-import com.pyongjjeom.common.NaverBook;
-import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
@@ -49,5 +47,7 @@ public interface PostAndReplyMapper {
 	public List<Comment> getComent(String conCD);
 
 	public String getPjGrade(String conCD);
+
+	public Comment getMyComent(Post post);
 
 }

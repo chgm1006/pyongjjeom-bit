@@ -6,7 +6,6 @@ package com.pyongjjeom.postandreply.dto;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
 
 /**
  * <pre>

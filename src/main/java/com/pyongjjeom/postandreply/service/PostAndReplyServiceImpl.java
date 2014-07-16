@@ -6,11 +6,9 @@ package com.pyongjjeom.postandreply.service;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
@@ -29,7 +27,6 @@ import com.pyongjjeom.postandreply.dto.PostAndContents;
 @Service("postAndReplyService")
 public class PostAndReplyServiceImpl implements PostAndReplyService {
 
-	private Logger log = Logger.getLogger(this.getClass());
 @Autowired
 	private PostAndReplyMapper parMapper;
 
@@ -175,6 +172,13 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		return parMapper.getPjGrade(conCD);
 	}
 
-
+	@Override
+	public Comment getMyComent(String conCD, String memCD) {
+		Post post = new Post();
+		post.setConCD(conCD);
+		post.setPmemCD(memCD);
+		
+		return parMapper.getMyComent(post);
+	}
 
 }
