@@ -244,7 +244,6 @@ public class ContentController {
 		return "contents/contentsSearchList";
 	}
 
-
 	@ResponseBody
 	@RequestMapping(value = "movieContextJson.do", method = RequestMethod.POST)
 	public Map<String, Object> movieContextJson(@RequestBody Map paramMap,
@@ -432,23 +431,30 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 			String pjGrade = parService.getPjGrade(movie.getConCD());
-			System.out.println(pjGrade+"/"+pjGrade.length());
-			if(pjGrade.length()>4)
-			{
-				pjGrade=pjGrade.substring(0,4);
+			if (pjGrade == null) {
+				pjGrade = "0";
+			}
+			System.out.println(pjGrade + "/" + pjGrade.length());
+			if (pjGrade.length() > 4) {
+				pjGrade = pjGrade.substring(0, 4);
 			}
 			System.out.println(pjGrade);
 			map.put("pjGrade", pjGrade);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
 			Comment myComment = new Comment();
-			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Member member = (Member) httpSession.getAttribute("member");
+			if(member!=null)
+			{
+				myComment= parService.getMyComent(movie.getConCD(),member.getMemCD());
+			}
+			System.out.println(myComment+"!!!!");
+			
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
-						myComment = comment;
 						index = i;
 					}
 					i++;
@@ -466,7 +472,6 @@ public class ContentController {
 		}
 		return map;
 	}
-
 
 	@ResponseBody
 	@RequestMapping(value = "bookContextJson.do", method = RequestMethod.POST)
@@ -575,16 +580,17 @@ public class ContentController {
 			map.put("pjGrade", pjGrade);
 
 			List<Comment> commentList = parService.getComent(book.getConCD());
-			System.out.println("일반 유저 " + commentList);
 			Comment myComment = new Comment();
-			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Member member = (Member) httpSession.getAttribute("member");
+
+			
+			
+			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			int i = 0, index = 0;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
-						myComment = comment;
 						index = i;
 					}
 					i++;
