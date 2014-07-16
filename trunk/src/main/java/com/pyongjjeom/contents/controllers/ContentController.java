@@ -432,6 +432,12 @@ public class ContentController {
 			}
 			map.put("contentMovieDetail", contentMovieDetail);
 			String pjGrade = parService.getPjGrade(movie.getConCD());
+			System.out.println(pjGrade+"/"+pjGrade.length());
+			if(pjGrade.length()>4)
+			{
+				pjGrade=pjGrade.substring(0,4);
+			}
+			System.out.println(pjGrade);
 			map.put("pjGrade", pjGrade);
 			List<Comment> commentList = parService.getComent(movie.getConCD());
 			Comment myComment = new Comment();
