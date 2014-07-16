@@ -229,6 +229,7 @@ $(document).ready(function(){
 
 					<button type="submit">수정하기</button>
 					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
+					 <button type="button" OnClick="window.location='uploadFile.do'">파일업로드</button>
 				</form>
 			</div>
 		</div>
