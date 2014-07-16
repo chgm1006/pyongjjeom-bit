@@ -229,7 +229,11 @@
 
 		/***********Ajax JSoN : 내 평점 올리기 ************/
 		$(".pointSubmit").click(function() {
-			var pointTextLength = $('.pointText').val().length;
+			var pointText=$(".pointText").val();
+			var starPoint=$(".starPoint").html();
+			alert(starPoint);
+
+			var pointTextLength = pointText.length;
 		     var maxLength = 100;
 		     if(pointTextLength > maxLength){
 		    	 $(".overCompleted h3").text("100자이내로 작성해주세요.");
@@ -239,8 +243,14 @@
 		     }
 			alert("return after");
 			
-			var starPoint=$(".starPoint").html();
-			var pointText=$(".pointText").val();
+			if(starPoint == null){
+		    	 $(".overCompleted h3").text("별점을 체크해주세요.");
+				 $(".overCompleted").show();
+				 $(".overCompleted").fadeOut(3000);
+				 return false;
+		     }
+			alert("return after");
+
 
 			var formData = {
 				name : starPoint,
