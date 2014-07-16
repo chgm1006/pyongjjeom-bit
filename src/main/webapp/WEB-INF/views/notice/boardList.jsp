@@ -347,7 +347,7 @@
 			return false;
 		});
 		$(".exit").click(function() {
-			$("#glayLayer").hide()
+			$("#glayLayer").hide();
 			$("#overLayer").hide();
 		});
 
