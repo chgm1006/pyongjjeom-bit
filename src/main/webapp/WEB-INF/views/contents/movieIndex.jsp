@@ -13,10 +13,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 
 
 
@@ -264,18 +260,24 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-							
-					<div id="myPoint">
-						<div class="basic" data-average="5" data-id="1" style="float:left;padding:10px 10px 0 0">
-							<input id="memGrade" type="hidden" name="memGrade" />
-							
+						<div class="myPointWrap">
+							<div class="myStarPoint">
+							별표 그림</div>
+							<div class="myPointText">여기는 그냥
+							</div>
 						</div>
-						<textarea class="pointText" style="float:left; width:500px; padding:10px; font-size:20px;">
-						</textarea>
-						<input class="pointSubmit" type="submit" value="완료" style="line-height:20px;">
-						<p class="starPoint" style="display:none;"></p>
-					</div>
-				
+						<div class="myPointModify">
+							<div id="myPoint">
+								<div class="basic" data-average="5" data-id="1" style="float:left;padding:10px 10px 0 0">
+									<input id="memGrade" type="hidden" name="memGrade" />
+								</div>
+								<textarea class="pointText"  disabled="disabled" style="resize:none; float:left; width:500px; padding:10px; font-size:20px;">
+								</textarea>
+								<a class="pointSubmit" style="cursor:pointer; line-height:20px;">완료</a>
+								<a class="pointModify" style="cursor:pointer; line-height:20px;">수정</a>
+								<p class="starPoint" style="display:none;"></p>
+							</div>
+						</div>
 					</c:otherwise>
 				</c:choose>
 				</div>
@@ -293,398 +295,16 @@
 		</div>
 
 	</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-	<!----################ 여기부터는 jQuery 모음 ################---->
-
-	<!--------- 모달윈도우 내 로그인창  -------->
-<script>
-	$(document).ready(function() {
-		// simple jRating call
-		$(".notLogin").click(function(){
-			$(".loginHidden2").attr("display","block");
-		});
-	});
-</script>
-	<!--------- 별표  -------->
-<script>
-	$(document).ready(function() {
-		// simple jRating call
-		$(".basic").jRating({
-			onClick : function(element, rate) {
-				$(".starPoint").text(rate);
-				memGrade = rate;
-				$('input[name=memGrade]').attr('value', memGrade);
-			}
-		});
-	});
-</script>
-<!--------- Ajax JSoN 별표------->
-<script>
-	$(document).ready(function() {
-
-		$(".pointSubmit").click(function() {
-			var starPoint=$(".starPoint").html();
-			var pointText=$(".pointText").val();
-
-			alert(starPoint);
-			alert(pointText);
-			var formData = {
-				name : starPoint,
-				data : pointText
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "postingInsertJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					alert("success");
-
-				}
-			});
-		});
-	}); 
-</script>
-
-
-	<!--------- Quick TOP  롤오버  -------->
-	<script type="text/javascript">
-		$(function() {
-			$(".quickImg").mouseenter(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop2.png");
-			});
-			$(".quickImg").mouseleave(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop1.png");
-			});
-		});
-	</script>
-
-	<!---- ScrollTop button PLUG-IN ---->
-	<script type="text/javascript" language="javascript"
+<script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
-<script type="text/javascript">
-    smoothScroll.init();
-</script>
-
-	<!---- 이미지 좌우 슬라이드 PLUG-IN ---->
-	<script type="text/javascript" language="javascript"
-		src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-
-	<!---- 이미지 좌우 슬라이드 ---->
-	<script type="text/javascript" language="javascript">
-		$(function() {
-
-			//	Variable number of visible items with variable sizes
-			$('#foo3').carouFredSel({
-				width : 1030,
-				height : 480,
-				prev : '#prev3',
-				next : '#next3',
-				auto : false
-			});
-		});
-	</script>
-
-	<!--------- 슬라이드이미지 롤오버  -------->
-	<script type="text/javascript">
-		$(function() {
-			$(".imgLink").mouseenter(function() {
-				$(".innerOver", this).fadeIn();
-				$(".innerOver2", this).fadeIn();
-			});
-			$(".imgLink").mouseleave(function() {
-				$(".innerOver").hide();
-				$(".innerOver2").hide();
-			});
-		});
-	</script>
-
-	<!--------- 모달 내부 : 예고편 슬라이드 다운  -------->
-	<script type="text/javascript">
-		$(function() {
-			$("#overButtonPreview").click(function() {
-				$(".overPreviewWrap").slideDown("slow");
-			});
-		});
-	</script>
-	<!--------- 모달윈도우 : 컨텐츠 상세 -------->
-	<script type="text/javascript">
-		$(function() {
-						
-			$("#glayLayer").click(function() {
-				$(this).hide()
-				$("#overLayer").hide();
-				$(".overPreviewWrap").css("display","none");
-				$(".pointText").val("");
-			});
-
-			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-				var scrollTest = $(document).scrollTop();
-				$("#overLayer").css('top',scrollTest + 400 + "px");
-
-				$("#glayLayer").show();
-				$("#overLayer").fadeIn("Fast");
-				return false;
-			});
-			$(".exit").click(function() {
-				$("#glayLayer").hide()
-				$("#overLayer").hide();
-			});
-
-			if ($.browser.msie && $.browser.version < 7) {
-				$(window).scroll(
-						function() {
-							$("#glayLayer").css('top', $(document).scrollTop());
-							$("#overLayer").css(
-									'top',
-									($(document).scrollTop() + $("#overLayer").height() / 2)
-											+ "px");
-						});
-			}
-		});
-	</script>
-
-<!--------- Ajax JSoN 영화-------->
-<script>
-	$(document).ready(function() {
-
-		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-			var test=$(".statusIndex",(this)).html();
-
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "currentMovieContextJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					
-					var genre = data.whole.contentMovieDetail.genre;
-					var nation = data.whole.contentMovieDetail.nation;
-					var open = data.whole.contentMovieDetail.open;
-					var grade = data.whole.contentMovieDetail.grade;
-					var count = data.whole.contentMovieDetail.count;
-					var context = data.whole.contentMovieDetail.context;
-					var grades = data.whole.contentMovieDetail.grades;
-					var video = data.whole.contentMovieDetail.video;
-					
-					
-					var poster = data.whole.contentMovieDetail.poster;
-					
-					var title = data.movie.title;
-					var code = data.movie.code;
-
-					var link = data.movie.link;
-					var subtitle = data.movie.subtitle;
-					var pubDate = data.movie.pubDate;
-					var director = data.movie.director;
-					var actor = data.movie.actor;
-					var userRating = data.movie.userRating;
-					
-					var naverMg = data.whole.grades.naverMg;
-					var daumMg = data.whole.grades.daumMg;
-					var cgvMg = data.whole.grades.cgvMg;
-					var lotteMg = data.whole.grades.lotteMg;
-					var megaBoxMg = data.whole.grades.megaBoxMg;
-					
-					var avg = data.whole.avg;					
-					$(".avgPoint").text(avg);
-
-
-					$(".bigPoster").attr("src",poster);
-					$(".smallPoster").attr("src",poster);
-					
-					if(poster==null||poster==""){
-						$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-						$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-					}
-					
-					$(".overTableMovieTitle").text(title + " " +pubDate);
-					$(".overTableMovieTitle").append(code);
-					$(".overTableSubtitle").text(subtitle +"  "+ genre +" | "+ nation +" | "+ open);
-					$(".overTableDirector").text(director);
-					$(".overTableActor").text(actor);
-					
-					$(".overTableNaver").text(userRating);
-					$(".overTableDaum").text(daumMg);
-					$(".overTableCGV").text(cgvMg);
-					$(".overTableMega").text(megaBoxMg);
-					$(".overTableLotte").text(lotteMg);
-
-					$(".overSynop").text(context);
-					$("#overButtonLink").attr("href",link);
-					
-					
-					$("#overButtonPreview").click(function() {
-						$(".previewIframe").attr("src",video);
-							});
-					$("#glayLayer,.exit").click(function() {
-						$(".previewIframe").attr("src","");
-							});
-
-					
-					var commentList = data.whole.commentList;
-					var content = '<h3 class="overContTitle">코멘트</h3>';
-					
-
-					var list = commentList;
-							
-					for (var i = 0; i < list.length; i++) {
-								content += '<div class="commentBoxLeft">';
-								content += '<div class="userPhoto">';
-								content += '<a href="userRoomLink.do?memCD=' + list[i].memCD + '" class="userRoomLink">';
-								content += '<img src="' + list[i].imgPath + '">';
-								content += '</a></div>';
-								content += '<div class="commentName">' + list[i].memNm + '</div>';
-								content += '</div>';
-								content += '<div class="commentBoxRight">';
-								content += '<h3 class="userComment">' + list[i].comment + '</h3>';
-								content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
-								content += '</div>';
-								content += '<div class="clear"></div>';
-					}
-					content += '<a href="#" class="commentMore">더보기</a>';
-					$(".overCont3").html(content);
-					
-					var myComment = data.whole.myComment.comment;
-					$(".pointText").attr("value",myComment);
-
-
-				}//success End
-			});
-		});
-	}); 
-</script>
-
-<!--------- Ajax JSoN : My 평점 올리기 -------->
-<script>
-	$(document).ready(function() {
-
-		$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-			var test=$(".statusIndex",(this)).html();
-
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "currentMovieContextJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					
-					var genre = data.whole.contentMovieDetail.genre;
-					var nation = data.whole.contentMovieDetail.nation;
-					var open = data.whole.contentMovieDetail.open;
-					var grade = data.whole.contentMovieDetail.grade;
-					var count = data.whole.contentMovieDetail.count;
-					var context = data.whole.contentMovieDetail.context;
-					var grades = data.whole.contentMovieDetail.grades;
-					var video = data.whole.contentMovieDetail.video;
-					
-					
-					var poster = data.whole.contentMovieDetail.poster;
-					
-					var title = data.movie.title;
-					var code = data.movie.code;
-
-					var link = data.movie.link;
-					var subtitle = data.movie.subtitle;
-					var pubDate = data.movie.pubDate;
-					var director = data.movie.director;
-					var actor = data.movie.actor;
-					var userRating = data.movie.userRating;
-					
-					var naverMg = data.whole.grades.naverMg;
-					var daumMg = data.whole.grades.daumMg;
-					var cgvMg = data.whole.grades.cgvMg;
-					var lotteMg = data.whole.grades.lotteMg;
-					var megaBoxMg = data.whole.grades.megaBoxMg;
-					
-					var avg = data.whole.avg;					
-					$(".avgPoint").text(avg);
-
-				
-
-					$(".bigPoster").attr("src",poster);
-					$(".smallPoster").attr("src",poster);
-					
-					if(poster==null||poster==""){
-						$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-						$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-					}
-					
-					$(".overTableMovieTitle").text(title + " " +pubDate);
-					$(".overTableMovieTitle").append(code);
-					$(".overTableSubtitle").text(subtitle +"  "+ genre +" | "+ nation +" | "+ open);
-					$(".overTableDirector").text(director);
-					$(".overTableActor").text(actor);
-					
-					$(".overTableNaver").text(userRating);
-					$(".overTableDaum").text(daumMg);
-					$(".overTableCGV").text(cgvMg);
-					$(".overTableMega").text(megaBoxMg);
-					$(".overTableLotte").text(lotteMg);
-
-					$(".overSynop").text(context);
-					$("#overButtonLink").attr("href",link);
-					
-					
-					$("#overButtonPreview").click(function() {
-						$(".previewIframe").attr("src",video);
-
-							});
-					$("#glayLayer,.exit").click(function() {
-						$(".previewIframe").attr("src","");
-
-							});
-
-				}
-			});
-		});
-	}); 
-</script>
-
-
-</body>
-
+<script type="text/javascript" language="javascript"
+		src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>		
+<script src="${pageContext.request.contextPath}/resources/js/jqueryMovieIndex.js"></script>
 
 </body>
 </html>
