@@ -256,19 +256,19 @@
 												<c:when test="${post.memGrade == 6 }">
 													<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 5 } ">
+												<c:when test="${post.memGrade == 5 }">
 													<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 4 } ">
+												<c:when test="${post.memGrade == 4 }">
 													<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 3 } ">
+												<c:when test="${post.memGrade == 3 }">
 													<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 2 } ">
+												<c:when test="${post.memGrade == 2 }">
 													<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 1 } ">
+												<c:when test="${post.memGrade == 1 }">
 													<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
 					</c:when>
 												<c:otherwise>
