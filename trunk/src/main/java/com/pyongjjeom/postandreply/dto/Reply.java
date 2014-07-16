@@ -6,7 +6,6 @@ package com.pyongjjeom.postandreply.dto;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
 
 /**
  * <pre>
@@ -20,8 +19,6 @@ import org.apache.log4j.Logger;
  */
 public class Reply {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	private String replyCD = "";
 	private String postCD = "";
 	private String conCD = "";
@@ -31,13 +28,7 @@ public class Reply {
 	private Date regiDate = null;
 	private Date updateDate = null;
 
-	public Logger getLog() {
-		return log;
-	}
 
-	public void setLog(Logger log) {
-		this.log = log;
-	}
 
 	public String getReplyCD() {
 		return replyCD;

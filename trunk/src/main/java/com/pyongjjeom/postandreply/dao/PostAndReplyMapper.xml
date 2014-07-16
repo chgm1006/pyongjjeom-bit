@@ -44,6 +44,10 @@ ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now(
 	<select id="getComent" parameterType="String" resultType="Comment"> 
  select member.memCD,member.memNm,member.imgPath,posting.memgrade,posting.postCD,posting.comment,posting.updatedate from posting,member where posting.concd=#{conCD} and ifnull(posting.deleteyn,'N')='N' and posting.pmemcd=member.memCD and member.commOpenChk='A'  order by  posting.updatedate desc;
     </select>
+    
+		<select id="getMyComent" parameterType="Post" resultType="Comment"> 
+ select memgrade,postCD,comment from posting where concd=#{conCD} and  pmemCD=#{pmemCD};
+    </select>
 
 <select id="getPjGrade" parameterType="String" resultType="String"> 
 select avg(memgrade) from posting where concd=#{conCD}
