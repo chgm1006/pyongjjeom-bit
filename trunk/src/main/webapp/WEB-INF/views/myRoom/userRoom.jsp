@@ -143,8 +143,9 @@
 <article>
 
 
-
-		<div class="title2">${userName} 님의 코멘트</div>
+			<div class="userPhoto">
+		<img alt="" src="${user.imgPath} "/>
+</div>	 <div class="title2">&nbsp;&nbsp; ${user.memNm}님의 코멘트</div>
 
 		<c:forEach items="${postList}" var="post">
 			<div class="postingList">
@@ -161,7 +162,7 @@
 										<td class="listTitle1" colspan="2">${post.title}</td>
 									</tr>
 									<tr>
-										<td class="listTitle">나의 평점</td>
+										<td class="listTitle">평 점</td>
 										<td class="listDirectorValue"><c:choose>
 												<c:when test="${post.memGrade == 10}">
 													<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
@@ -200,18 +201,12 @@
 											</c:choose></td>
 									</tr>
 									<tr>
-										<td class="listTitle">나의 후기</td>
+										<td class="listTitle">후 기</td>
 										<td class="listActorValue">${post.comment }</td>
 									</tr>
 								</table>
 								<div class="PostingReply">댓글 2개</div>
-								<a href="#"
-									OnClick="window.location='updatePost.do?postCD=${post.postCD}'">글수정</a>
-								<a href="#"
-									OnClick="window.location='deletePost.do?postCD=${post.postCD}'">삭제</a>
-
 							</div>
-
 						</div>
 					</dt>
 					<dd class="listContent">
