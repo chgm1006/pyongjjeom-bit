@@ -78,10 +78,11 @@ public class MyRoomController {
 	@RequestMapping(value = "userRoomLink.do", method = RequestMethod.GET)
 	private String userRoomLink(Model model, String memCD) {
     List<PostAndContents> postList= parService.getPost(memCD);
-
-    //내일 합시다~!
-    /*Member member = userService.getMemberInfo(memCD);
-		model.addAttribute("userName",member.getMemNm());*/
+    
+    System.out.println("???");
+    Member user = userService.getMemberInfo(memCD);
+    System.out.println(user);
+		model.addAttribute("user",user);
     model.addAttribute("postList",postList);
 		return "myRoom/userRoom";
 		}
