@@ -42,15 +42,20 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Member [memCD=" + memCD + ", email=" + email + ", memKind="
 				+ memKind + ", memNm=" + memNm + ", birth=" + birth + ", passwd="
 				+ passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD="
-				+ emailAuthCD + ", memValid=" + memValid + ", fbYn=" + fbYn
-				+ ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
-				+ regiDate + ", updateDate=" + updateDate + "]";
+				+ emailAuthCD + ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn="
+				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
+				+ regiDate + ", updateDate=" + updateDate + ", commOpenChk="
+				+ commOpenChk + ", commReplyChk=" + commReplyChk + "]";
 	}
+
+
 
 	private String memCD = "";
 	private String email = "";
@@ -68,6 +73,26 @@ public class Member {
 	private String imgNm = "";
 	private Date regiDate = null;
 	private Date updateDate = null;
+	
+	private String commOpenChk = "";
+	private String commReplyChk = "";
+	
+
+	public String getCommOpenChk() {
+		return commOpenChk;
+	}
+
+	public void setCommOpenChk(String commOpenChk) {
+		this.commOpenChk = commOpenChk;
+	}
+
+	public String getCommReplyChk() {
+		return commReplyChk;
+	}
+
+	public void setCommReplyChk(String commReplyChk) {
+		this.commReplyChk = commReplyChk;
+	}
 
 	public String getMemCD() {
 		return memCD;
