@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
@@ -66,7 +67,7 @@ public class PostAndReplyController {
 	private Member mem;
 
 	DBCode code = new DBCode();
-
+@ResponseBody
 	@RequestMapping(value = "postingInsertJson.do", method = RequestMethod.POST)
 	public Map postingInsert( @RequestBody Map paramMap,HttpServletRequest request) {
 		Post post = new Post();
@@ -98,17 +99,17 @@ public class PostAndReplyController {
 		post=reviewDbToView(post);
 		System.out.println("개행 후"+post.getComment());
 		parService.insertPost(post);
-		return null;
+		return paramMap;
 	}
-
+@ResponseBody
 	@RequestMapping(value = "postingDeleteJson.do", method = RequestMethod.POST)
 public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 
-	/*	String postCD = (String) paramMap.get("data");
+		String postCD = (String) paramMap.get("name");
 		
-		parService.deletePost(postCD);*/
+		parService.deletePost(postCD);
 		
-		return null;
+		return paramMap;
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
