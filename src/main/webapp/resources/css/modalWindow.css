@@ -207,6 +207,7 @@ a.overButton:hover{
 .overPointWrap{
 	margin:0 auto;
 }
+/*---My 평점 : 비로그인---*/
 .notLogin{
 	margin:0 auto;
 	display:block;
@@ -222,6 +223,13 @@ a.overButton:hover{
 .notLogin:hover,.notLogin:active {
 	border: 3px solid #f9e89a;
 	cursor:pointer;
+}
+/*---My 평점 : 비로그인---*/
+.myPointWrap{
+	
+}
+.myPointModify{
+	
 }
 /*---예고편---*/
 .overPreviewWrap{
@@ -315,7 +323,7 @@ div.commentName{
 	
 }
 .userDate{
-	
+	margin:5px 0 0 0;
 }
 
 
