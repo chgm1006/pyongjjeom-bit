@@ -139,7 +139,7 @@
 							<div class="myPointText">여기는 그냥
 							</div>
 						</div>
-						<div class="myPointModify">
+						<div class="myPointModify"><p class="myPostCD"></p>
 							<div id="myPoint">
 								<div class="basic" data-average="5" data-id="1" style="float:left;padding:10px 10px 0 0">
 									<input id="memGrade" type="hidden" name="memGrade" />
