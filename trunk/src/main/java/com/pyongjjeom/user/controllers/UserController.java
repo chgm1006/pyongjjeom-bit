@@ -83,6 +83,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		member = (Member) session.getAttribute("member");
 		model.addAttribute("commOpenChk", member.getCommOpenChk());
+		model.addAttribute("commReplyChk", member.getCommReplyChk());
 		System.out.println("라디오버튼체크값" + member.getCommOpenChk() + member.getCommReplyChk());
 
 
