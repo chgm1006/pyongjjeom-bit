@@ -5,7 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<select id="getMemberInfo" parameterType="string" resultType="Member">
 
-	</select>
+	    select * from member where memCD=#{memCD};
+	    	</select>
 
 	<select id="checkMemberID" parameterType="string" resultType="Member">
 
