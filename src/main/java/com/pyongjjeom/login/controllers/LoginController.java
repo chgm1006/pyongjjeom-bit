@@ -73,6 +73,7 @@ public class LoginController {
 			HttpSession session = request.getSession();
 
 			session.setAttribute("member", member);
+			System.out.println(member);
 			System.out.println(request.getSession() + "로그인세션등록완료");
 			return "contents/movieIndex";
 		}
