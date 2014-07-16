@@ -131,7 +131,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 
 <script type="text/javascript" language="javascript"

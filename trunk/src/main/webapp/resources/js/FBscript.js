@@ -6,8 +6,9 @@ var fbIMGURL;
 var FB_APPID;
 
 window.fbAsyncInit = function() {
-	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624" : "1449705105272003";
-	
+	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624"
+			: "1449705105272003";
+
 	FB.init({
 		appId : FB_APPID,
 		cookie : true, // enable cookies to allow the server to access
@@ -18,15 +19,47 @@ window.fbAsyncInit = function() {
 
 	FB.getLoginStatus(function(response) {
 		if (response.status === "connected") {
-			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
+			FB.api("/me", function(user) {
+				fbUid = user.id;
+				fbName = user.last_name + " " + user.first_name;
+				fbEmail = user.email;
+				fbBirthday = StringToDate(user.birthday);
+				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
+				var url = "fbLogin.do";
+				ajaxFBRegisterMember(url);
+			});
 		} else if (response.status === "not_authorized") {
-			console.log(response);
-			console.log("not login");
 
 		} else {
-			console.log(response);
 		}
+	});
+
+	FB.Event.subscribe('auth.login', function(response) {
+		// window.location.reload(true);
+	});
+
+	FB.Event.subscribe('auth.logout', function(response) {
+
+		var url = "logout.do";
+		$.ajax({
+			type : "post",
+			url : url,
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			error : function(e) {
+				console.log(e.responseText);
+			},
+			success : function(data) {
+
+				console.log("fbLogout 시작");
+				console.log(data);
+				$.each(data, function(key) {
+					var list = data[key];
+					console.log(key + " = " + list);
+				});
+				console.log("fbLogout 종료");
+			}
+		});
 	});
 
 };
@@ -51,19 +84,18 @@ function fnLoginFB(response) {
 				fbEmail = response.email;
 				fbBirthday = StringToDate(response.birthday);
 				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
-//				console.log(response);
-//				console.log(fbIMGURL);
-				
-				ajaxFBRegisterMember();
+
+				var url = "fbLogin.do";
+				ajaxFBRegisterMember(url);
+
 			});
-			// window.location.reload(true);
 		}
 	}, {
 		scope : "public_profile, email, user_friends, user_birthday"
 	});
 }
 
-function ajaxFBRegisterMember() {
+function ajaxFBRegisterMember(url) {
 	var formData = {
 		fbId : fbUid,
 		memNm : fbName,
@@ -74,7 +106,7 @@ function ajaxFBRegisterMember() {
 
 	$.ajax({
 		type : "post",
-		url : "fbLogin.do",
+		url : url,
 		data : JSON.stringify(formData),
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
@@ -85,11 +117,26 @@ function ajaxFBRegisterMember() {
 			console.log(e.responseText);
 		},
 		success : function(data) {
-			$.each(data, function(key) {
-				var list = data[key];
-				console.log(key + " = " + list);
-			});
+			console.log("fbLogin 시작");
+			if (data == null) {
+				alert("회원 정보가 잘못되었습니다.");
+
+			} else {
+				$.each(data, function(key) {
+					var list = data[key];
+					console.log(key + " = " + list);
+
+				});
+				console.log("fbLogin 종료");
+			}
+
 		}
+	}).done(function(data) {
+		if (console && console.log) {
+			console.log(data);
+			// window.location.reload(true);
+		}
+
 	});
 }
 
@@ -128,12 +175,15 @@ function facebookFriend(code, page) {
 }
 
 function fnLogout() {
+	console.log(fbName);
+	console.log(response);
 	FB.logout(function(response) {
+		console.log(response);
+		// return false;
 
 		if (response) {
 			console.log(fbName + "님이 로그아웃 하셨습니다.");
 		}
-		// window.location.reload(true);
 	});
-}
 
+}
