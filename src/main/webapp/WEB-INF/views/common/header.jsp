@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>PJ main</title>
-
+<link rel="SHORTCUT ICON" href="${pageContext.request.contextPath}/resources/img/logo.ico">
 
 <!---- CSS : Header ---->
 <link href="${pageContext.request.contextPath}/resources/css/header.css"
