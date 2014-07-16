@@ -46,15 +46,9 @@
 </style>
 
 <script type="text/javascript">
-	function test_sample() {
-		var sample = document.getElementsByName('radio');
-		for (var i = 0; i < sample.length; i++) {
-			if (sample[i].checked == true) {
-				alert(sample[i].value);
-			}
-		}
-	}
-
+$(document).ready(function(){
+	
+});
 </script>
 
 
@@ -64,7 +58,7 @@
 
 
 
-
+<body>
 	<div class="register-container container">
 		<div class="row">
 
@@ -74,7 +68,7 @@
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 					<input type="hidden" name="memCD" value="${member.memCD}">
-						<input type="hidden" name="email" value="${member.email}">
+					<input type="hidden" name="email" value="${member.email}">
 					<label for="email">이메일</label> 
 					<input type="text" id="email"  value="${member.email}" disabled> 
 					
