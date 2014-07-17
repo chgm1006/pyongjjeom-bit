@@ -53,5 +53,14 @@ ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now(
 select avg(memgrade) from posting where concd=#{conCD}
 </select>
 
+	<select id="getReplyList" parameterType="String" resultType="Reply"> 
+ select member.memNm,
+member.imgPath,
+reply.replycd,
+reply.reply,
+reply.updatedate from reply,member where  reply.postcd=#{postCD} and reply.memcd=member.memcd
+order by  reply.updatedate desc;    </select>
+
+
 </mapper>
 

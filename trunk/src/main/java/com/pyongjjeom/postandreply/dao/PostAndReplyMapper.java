@@ -9,6 +9,7 @@ import java.util.List;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
+import com.pyongjjeom.postandreply.dto.Reply;
 
 /**
  * <pre>
@@ -49,5 +50,7 @@ public interface PostAndReplyMapper {
 	public String getPjGrade(String conCD);
 
 	public Comment getMyComent(Post post);
+
+	public List<Reply> getReplyList(String postCD);
 
 }

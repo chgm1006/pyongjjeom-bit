@@ -13,6 +13,7 @@ import com.pyongjjeom.postandreply.dao.PostAndReplyMapper;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
+import com.pyongjjeom.postandreply.dto.Reply;
 
 /**
  * <pre>
@@ -179,6 +180,12 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		post.setPmemCD(memCD);
 		
 		return parMapper.getMyComent(post);
+	}
+
+	@Override
+	public List<Reply> getReplyList(String postCD) {
+		// TODO Auto-generated method stub
+		return parMapper.getReplyList(postCD);
 	}
 
 }
