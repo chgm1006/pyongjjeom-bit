@@ -141,7 +141,7 @@ public class UploadController {
 				System.out.println(bytes);
 
 				try {
-					File lOutFile = new File(path + filename);
+					File lOutFile = new File(path + "/resources/userImages/" + filename);
 					System.out.println(lOutFile); // 이미지 경로
 
 					/* String lOutFile2 = lOutFile.toString().replace("\\", "/"); */
