@@ -103,16 +103,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	</bean>
 
 	<!-- Configure the file upload directory -->
-	
-	<!-- <bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
-		
-		<constructor-arg>
-			<value>C:\Eclipse downLoad\eclipse-jee-kepler-SR2-Java8-win32-x86_64\eclipse\workspace\pyongjjeom\src\main\webapp\resources\userImages</value>
-		</constructor-arg>
-	</bean> -->
-	
 
-	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
 
 	<!-- javascript/jquery -->
 	<!-- <mvc:resources mapping="/js/**" location="/resources/js/" /> img path <mvc:resources 
@@ -161,5 +152,5 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</list>
 		</property>
 	</bean>
-	
+
 </beans>
