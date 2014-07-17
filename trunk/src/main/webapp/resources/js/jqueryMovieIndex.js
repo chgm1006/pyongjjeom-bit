@@ -355,5 +355,19 @@
 			
 		});
 
+		/*******************모달 : 페이스북 로그인, 로그아웃*********************/
+		$("#FBLogin").click(function() {
+			fnLoginFB();
+		});
+
+		$("#FBLogout").click(function() {
+			fnLogout();
+
+		});
+
+		$("#inviteFriends").click(function() {
+			fnInviteFriends();
+			console.log("1111");
+		});
 
 })(jQuery);
