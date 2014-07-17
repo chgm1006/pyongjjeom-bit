@@ -148,7 +148,7 @@ public class ContentController {
 					e.printStackTrace();
 				}
 			}
-			request.setAttribute("size", bookList.size() / 10 - 1);
+			httpSession.setAttribute("size", bookList.size() / 10 - 1);
 			httpSession.setAttribute("bookList", bookList);
 		}
 		return "contents/bookIndex";

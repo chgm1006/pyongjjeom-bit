@@ -49,72 +49,65 @@ import com.pyongjjeom.user.service.UserService;
 @Controller
 public class MyRoomController {
 
-
-	
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private PostAndReplyService parService;
-	
+
 	@Autowired
 	private UserService userService;
 
 	@Autowired
 	private MyRoomService myRoomService;
 
-	
 	private HttpSession httpSession;
 	private Friends frn;
 	private Member mem;
 	private Post post;
 	private Reply reply;
 
-
 	@RequestMapping(value = "myRoom.do")
-	public String listDo(	Model model, HttpServletRequest request) {
+	public String listDo(Model model, HttpServletRequest request) {
 
-		httpSession =request.getSession();
-		Member member=(Member) httpSession.getAttribute("member");
-    List<PostAndContents> postList= parService.getPost(member.getMemCD());
-		System.out.println(postList);
-		for(PostAndContents post : postList)
-		{
+		httpSession = request.getSession();
+		Member member = (Member) httpSession.getAttribute("member");
+		List<PostAndContents> postList = parService.getPost(member.getMemCD());
+		for (PostAndContents post : postList) {
 			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
 		}
-		System.out.println(postList);
-		httpSession.setAttribute("postList",postList);
+		model.addAttribute("user", member);
+		httpSession.setAttribute("postList", postList);
 		return "myRoom/myRoom";
 	}
-	
+
 	@RequestMapping(value = "userRoomLink.do", method = RequestMethod.GET)
 	private String userRoomLink(Model model, String memCD) {
-    List<PostAndContents> postList= parService.getPost(memCD);
-    
-    System.out.println("???");
-    Member user = userService.getMemberInfo(memCD);
-    System.out.println(user);
-		model.addAttribute("user",user);
-    model.addAttribute("postList",postList);
-		return "myRoom/userRoom";
+		List<PostAndContents> postList = parService.getPost(memCD);
+		Member user = userService.getMemberInfo(memCD);
+		for (PostAndContents post : postList) {
+			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
 		}
-	
+		model.addAttribute("user", user);
+		model.addAttribute("postList", postList);
+		return "myRoom/myRoom";
+	}
+
 	@ResponseBody
 	@RequestMapping(value = "myRoomJson.do", method = RequestMethod.POST)
-	public Map getReplyList(@RequestBody Map paramMap,HttpServletRequest request) {
+	public Map getReplyList(@RequestBody Map paramMap, HttpServletRequest request) {
 		String postCD = (String) paramMap.get("name");
-		
-		List<Reply>replyList =parService.getReplyList(postCD);
-		
+
+		List<Reply> replyList = parService.getReplyList(postCD);
+
 		System.out.println(replyList);
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		for(Reply reply :replyList)
-		{
+		for (Reply reply : replyList) {
 			reply.setFormatUpdateDate(df2.format(reply.getUpdateDate()));
 		}
 		System.out.println(replyList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyList", replyList);
-		
+
 		return map;
 	}
 
@@ -128,8 +121,4 @@ public class MyRoomController {
 		return null;
 	}
 
-	
-	
-
-	
 }
