@@ -71,25 +71,26 @@
 			$(".menu7_1").css("background-color", "");
 		});
 
-// 		$("#FBLogin").click(function() {
-// 			fnLoginFB();
-// 		});
+		// 		$("#FBLogin").click(function() {
+		// 			fnLoginFB();
+		// 		});
 
-// 		$("#FBLogout").click(function() {
-// 			fnLogout();
+		// 		$("#FBLogout").click(function() {
+		// 			fnLogout();
 
-// 		});
-		
-// 		$("#inviteFriends").click(function(){
-// 			fnInviteFriends();
-// 			console.log("1111");
-// 		});
+		// 		});
+
+		// 		$("#inviteFriends").click(function(){
+		// 			fnInviteFriends();
+		// 			console.log("1111");
+		// 		});
 
 	});
 </script>
 
 </head>
 <body>
+	<div id="fb-root"></div>
 	<header>
 
 		<div class="topMenu">
@@ -150,13 +151,13 @@
 
 						</c:when>
 						<c:otherwise>
-							<div id="fb-root"></div>
+							<li><c:if test="${member.imgPath != null}"><img id="userImg" src="${member.imgPath }" /></c:if></li>
 							<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a>
 								<div class="myRoomHidden">
 									<a class="myRoomSub" href="myRoom.do">My 평점</a><br> 
 									<a class="myRoomSub" id="inviteFriends">친구초대</a><br> 
 									<a class="myRoomSub" id="FBLogout" style="cursor: pointer;" onclick="FB.logout();">로그아웃</a><br>
-									<a class="myRoomSub" href="logout.do">로그아웃ㄱ</a><br>
+									<a class="myRoomSub" href="logout.do">로그아웃ㄱ</a><br>									
 									<a class="myRoomSub" href="mySet.do">설정</a><br>
 								</div></li>
 						</c:otherwise>
