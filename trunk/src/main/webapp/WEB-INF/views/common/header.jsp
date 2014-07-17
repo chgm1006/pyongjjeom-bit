@@ -74,17 +74,17 @@
 			fnLoginFB();
 		});
 
-// 		$("#FBLogout").click(function() {
-// 			fnLogout();
+		$("#FBLogout").click(function() {
+			fnLogout();
 			
-// 		});
+		});
+		
 	});
 	
 </script>
 
 </head>
 <body>
-${member}
 <header>
 
 	<div class="topMenu">

@@ -109,6 +109,7 @@ public class LoginController {
 		Member member = (Member) session.getAttribute("member");
 		System.out.println(member);
 		session.removeAttribute("member");
+		member = null;
 		System.out.println(session.getAttribute("member"));
 
 		return member;

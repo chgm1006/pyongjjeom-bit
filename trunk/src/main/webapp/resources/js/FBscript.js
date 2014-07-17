@@ -11,58 +11,36 @@ window.fbAsyncInit = function() {
 
 	FB.init({
 		appId : FB_APPID,
+		status : true,
 		cookie : true, // enable cookies to allow the server to access
 		// the session
 		xfbml : true, // parse social plugins on this page
-		version : 'v2.0' // use version 2.0
+		version : 'v2.0', // use version 2.0
+		oauth : true
 	});
 
-	FB.getLoginStatus(function(response) {
-		if (response.status === "connected") {
-			FB.api("/me", function(user) {
-				fbUid = user.id;
-				fbName = user.last_name + " " + user.first_name;
-				fbEmail = user.email;
-				fbBirthday = StringToDate(user.birthday);
-				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
-				var url = "fbLogin.do";
-				ajaxFBRegisterMember(url);
-			});
-			window.location.reload(true);
-		} else if (response.status === "not_authorized") {
-
-		} else {
-			fnLogout(response);
-			// console.log(response.status );
-		}
-	});
+	// $(document).trigger("FB:init");
+	// FB.getLoginStatus(function(response) {
+	// if (response.status === "connected") {
+	// console.log(response);
+	// fnLoginFB(response);
+	// } else if (response.status === "not_authorized") {
+	//
+	// } else {
+	// fnLogout(response);
+	// }
+	// });
 
 	FB.Event.subscribe('auth.login', function(response) {
-		// window.location.reload(true);
+		console.log(response);
 	});
 
 	FB.Event.subscribe('auth.logout', function(response) {
+		window.location.reload(true);
+	});
 
-		var url = "logout.do";
-		$.ajax({
-			type : "post",
-			url : url,
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
-			error : function(e) {
-				console.log(e.responseText);
-			},
-			success : function(data) {
-
-				console.log("fbLogout 시작");
-				console.log(data);
-				$.each(data, function(key) {
-					var list = data[key];
-					console.log(key + " = " + list);
-				});
-				console.log("fbLogout 종료");
-			}
-		});
+	FB.Event.subscribe("xfbml.render", function() {
+		return $(document).trigger("FB:xfbml.render");
 	});
 
 };
@@ -113,6 +91,7 @@ function ajaxFBRegisterMember(url) {
 		data : JSON.stringify(formData),
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
+		async : false,
 		beforeSend : function() {
 			console.log(formData);
 		},
@@ -131,16 +110,13 @@ function ajaxFBRegisterMember(url) {
 
 				});
 				console.log("fbLogin 종료");
+				window.location.reload(true);
 			}
 
 		}
-	}).done(function(data) {
-		if (console && console.log) {
-			console.log(data);
-			// window.location.reload(true);
-		}
 
 	});
+
 }
 
 function StringToDate(strDate) {
@@ -177,15 +153,22 @@ function facebookFriend(code, page) {
 					});
 }
 
-function fnLogout(response) {
-	console.log(fbName);
-	console.log(response);
-	FB.logout(function(response) {
-		console.log(response);
-		// return false;
-
-		if (response) {
-			console.log(fbName + "님이 로그아웃 하셨습니다.");
+function fnLogout() {
+	var url = "logout.do";
+	console.log("fnLogout");
+	$.ajax({
+		type : "post",
+		url : url,
+		async : false,
+		contentType : "application/json; charset=utf-8",
+		dataType : "json",
+		error : function(e) {
+			console.log(e.responseText);
+		},
+		success : function(data) {
+			console.log("fbLogout 시작");
+			console.log(data);
+			console.log("fbLogout 종료");
 		}
 	});
 
