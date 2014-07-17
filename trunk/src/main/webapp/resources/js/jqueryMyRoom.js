@@ -74,61 +74,7 @@
 					console.log(e.responseText);
 				},
 				success : function(data) {
-					
-					var commentList = data.whole.commentList;
-					var content = '<br><h3 class="overContTitle">댓글</h3>';
-					
-
-					var list = commentList;
-							
-					for (var i = 0; i < list.length; i++) {
-								content += '<div class="commentBoxLeft">';
-								content += '<div class="userPhoto">';
-								content += '<a href="userRoomLink.do?memCD=' + list[i].memCD + '" class="userRoomLink">';
-								content += '<img src="' + list[i].imgPath + '">';
-								content += '</a></div>';
-								content += '<div class="commentName">' + list[i].memNm + '</div>';
-								content += '</div>';
-								content += '<div class="commentBoxRight">';
-								content += '<img class="StarPointCompleted" src="/pyongjjeom/resources/img/p' + list[i].memGrade + '.png">';
-								content += '<p class="StarPointCompletedP">' + list[i].memGrade + '점</p>';
-								content += '<div class="clear"></div>';
-								
-								content += '<h3 class="userComment">' + list[i].comment + '</h3>';
-								content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
-								content += '</div>';
-								content += '<div class="clear"></div>';
-					}
-					content += '<a href="#" class="commentMore">더보기</a>';
-					$(".overCont3").html(content);
-					
-					var myComment = data.whole.myComment.comment;
-					$(".pointText").attr("value",myComment);
-					if(myComment == null){
-						$(".pointText").removeAttr("disabled");
-					}else{
-						$(".pointText").attr("disabled","disabled");
-					}
-					
-					var myStarPoint = data.whole.myComment.memGrade;
-					$(".starPoint").text(myStarPoint);
-					if(myStarPoint == null){
-						$(".myStarPoint2").show("fast");
-						$(".myStarPoint1").hide("fast");
-						$(".pointModifyWrap").hide();
-
-					}else{
-						
-						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
-						$(".myStarPoint1").show("fast");
-						$(".myStarPoint2").hide("fast");
-						$(".pointModifyWrap").attr("left","710px");
-					}
-					
-					
-					var myPostCD = data.whole.myComment.postCD;
-					$(".myPostCD").text(myPostCD);
-
+					alert("success");
 					
 				}//success End
 			});
