@@ -3,15 +3,13 @@
 	
 	$(".myStarPointP").append(" 점");
 
-	
+
 
 /**************상세 슬라이드 다운*************/
 			$("dd").css("display", "none");
 			$("dl dt").click(function() {
 				
-				alert("start");
 				var test=$("#postCD",(this)).html();
-				alert(test);
 
 				var formData = {
 					name : test,
@@ -33,25 +31,50 @@
 						console.log(e.responseText);
 					},
 					success : function(data) {
-						alert("success");
+
+						var replyList = data.replyList;
+						var content = '<br><h3 class="overContTitle">댓글</h3>';
+
+								
+						for (var i = 0; i < replyList.length; i++) {
+									content += '<div class="commentBoxLeft">';
+									content += '<div class="userPhoto">';
+									content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+									content += '<img src="' + replyList[i].imgPath + '">';
+									content += '</a></div>';
+									content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+									content += '</div>';
+									content += '<div class="commentBoxRight">';
+									content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+									content += '<div class="clear"></div>';
+									
+									content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+									content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+									content += '</div>';
+									content += '<div class="clear"></div>';
+						}
+						
+						$(".overCont3Reply").html(content);
+
+
+						
+						
 						
 					}//success End
 				});
 				
 				
 				
-				
-				
-				
-				
-				
-				
+				$("dl dt").click(function(){
+					if($("+dd",this).css("display")=="none"){
+						$("dd").slideUp("fast");
+						$("+dd",this).slideDown("fast");
+						$("dt").removeClass("selected");
+						$(this).addClass("selected");
+					}
+				});
 
-				if ($("+dd", this).css("display") == "none") {
-					$("+dd", this).slideDown("slow");
-				} else {
-					$("+dd", this).slideUp("slow");
-				}
+				
 			});
 	
 	

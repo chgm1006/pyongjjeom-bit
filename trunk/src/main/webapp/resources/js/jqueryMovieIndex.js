@@ -225,7 +225,7 @@
 		$(".pointSubmit").click(function() {
 			var pointText=$(".pointText").val();
 			var starPoint=$(".starPoint").html();
-			alert(starPoint);
+
 			var pointTextLength = pointText.length;
 		    var maxLength = 100;
 		     
