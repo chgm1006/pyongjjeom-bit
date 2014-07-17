@@ -241,38 +241,38 @@
 									<tr>
 										<td class="listTitle">나의 평점</td>
 										<td class="listDirectorValue"><c:choose>
-												<c:when test="${post.memGrade == 10}">
+												<c:when test="${post.memGrade ==10}">
 													<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 9 }">
+												<c:when test="${post.memGrade ==9}">
 													<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 8 }">
+												<c:when test="${post.memGrade ==8}">
 													<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 7 }">
+												<c:when test="${post.memGrade ==7}">
 													<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 6 }">
+												<c:when test="${post.memGrade ==6}">
 													<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 5 }">
+												<c:when test="${post.memGrade ==5}">
 													<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 4 }">
+												<c:when test="${post.memGrade ==4}">
 													<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 3 }">
+												<c:when test="${post.memGrade ==3}">
 													<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 2 }">
+												<c:when test="${post.memGrade ==2}">
 													<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 1 }">
+												<c:when test="${post.memGrade ==1}">
 													<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
 					</c:when>
 												<c:otherwise>
-													<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
+													<img src="/pyongjjeom/resources/img/p0123.png"> ${post.memGrade}점
 					</c:otherwise>
 
 											</c:choose></td>
