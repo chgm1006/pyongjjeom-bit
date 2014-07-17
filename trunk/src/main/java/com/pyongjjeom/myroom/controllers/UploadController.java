@@ -138,7 +138,7 @@ public class UploadController {
 					|| imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")) {
 				byte[] bytes = uploadItem.getFileData().getBytes();
 
-				System.out.println(bytes);
+				System.out.println(bytes);  //
 
 				try {
 					File lOutFile = new File(path + "/resources/userImages/" + filename);
@@ -152,6 +152,8 @@ public class UploadController {
 
 					System.out.println(lFileOutputStream); // 이미지 경로
 					System.out.println("urlPath =" + urlPath); // 이미지 경로
+
+
 					urlPath = urlPath.equals(request.getServerName()) ? urlPath
 							: "http://localhost:8080/pyongjjeom/";
 					String realImgPath = urlPath + "/resources/userImages/" + filename;
