@@ -4,6 +4,8 @@
 
 package com.pyongjjeom.user.controllers;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -17,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
@@ -92,12 +95,28 @@ public class UserController {
 	
 	@RequestMapping(value = "upDateMySet.do", method = RequestMethod.POST)
 	public String updateMemberInfo(Member member, Model model, HttpServletRequest request){
-		
-		/*
-		 * if (!session.isNew()) { session = request.getSession(true); }
-		 */
-		
-		
+		MultipartFile uploadFile = member.getFileData();
+		System.out.println(uploadFile.getOriginalFilename());
+		System.out.println(member.getMemCD());
+		System.out.println(member.getEmail());
+		System.out.println(member.getMemNm());
+		System.out.println(member.getPasswd());
+		System.out.println(member.getBirth());
+
+		if(uploadFile != null){
+			String fileName = uploadFile.getOriginalFilename();
+			member.setFileName(fileName);
+			
+			try {
+				String filePath = "D:/02. Java/01. tools/eclipse-jee-kepler-SR2-Java8-win32/workspace/pyongjjeom/src/main/webapp/resources/userImages";
+				File file = new File(filePath + fileName); 
+				uploadFile.transferTo(file);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("upDateMySet.do Exception 발생....");
+				e.printStackTrace();
+			}
+		}
 		
 		System.out.println("11111");
 		System.out.println(member);
