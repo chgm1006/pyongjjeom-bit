@@ -103,13 +103,19 @@ public class UserController {
 		System.out.println(member.getPasswd());
 		System.out.println(member.getBirth());
 
+		System.out.println(request.getSession().getServletContext().getRealPath("/"));
 		if(uploadFile != null){
 			String fileName = uploadFile.getOriginalFilename();
-			member.setFileName(fileName);
+			member.setImgNm(fileName);
 			
 			try {
 				String filePath = "D:/02. Java/01. tools/eclipse-jee-kepler-SR2-Java8-win32/workspace/pyongjjeom/src/main/webapp/resources/userImages";
-				File file = new File(filePath + fileName); 
+				System.out.println("filePath = " + filePath + fileName);
+				File file = new File("userImages"); 
+				if(!file.exists()){
+//					System.out.println("디렉토리 생성 실패");
+					file.mkdir();
+				}
 				uploadFile.transferTo(file);
 			} catch (Exception e) {
 				// TODO: handle exception

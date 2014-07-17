@@ -7,6 +7,7 @@ package com.pyongjjeom.user.dto;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <pre>
@@ -42,21 +43,6 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Member [memCD=" + memCD + ", email=" + email + ", memKind="
-				+ memKind + ", memNm=" + memNm + ", birth=" + birth + ", passwd="
-				+ passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD="
-				+ emailAuthCD + ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn="
-				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
-				+ regiDate + ", updateDate=" + updateDate + ", commOpenChk="
-				+ commOpenChk + ", commReplyChk=" + commReplyChk + "]";
-	}
-
-
-
 	private String memCD = "";
 	private String email = "";
 	private String memKind = "";
@@ -73,26 +59,12 @@ public class Member {
 	private String imgNm = "";
 	private Date regiDate = null;
 	private Date updateDate = null;
-	
+
 	private String commOpenChk = "";
 	private String commReplyChk = "";
-	
 
-	public String getCommOpenChk() {
-		return commOpenChk;
-	}
-
-	public void setCommOpenChk(String commOpenChk) {
-		this.commOpenChk = commOpenChk;
-	}
-
-	public String getCommReplyChk() {
-		return commReplyChk;
-	}
-
-	public void setCommReplyChk(String commReplyChk) {
-		this.commReplyChk = commReplyChk;
-	}
+	private String fileName;
+	private MultipartFile fileData;
 
 	public String getMemCD() {
 		return memCD;
@@ -212,6 +184,50 @@ public class Member {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public String getCommOpenChk() {
+		return commOpenChk;
+	}
+
+	public void setCommOpenChk(String commOpenChk) {
+		this.commOpenChk = commOpenChk;
+	}
+
+	public String getCommReplyChk() {
+		return commReplyChk;
+	}
+
+	public void setCommReplyChk(String commReplyChk) {
+		this.commReplyChk = commReplyChk;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public MultipartFile getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(MultipartFile fileData) {
+		this.fileData = fileData;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [memCD=" + memCD + ", email=" + email + ", memKind="
+				+ memKind + ", memNm=" + memNm + ", birth=" + birth + ", passwd="
+				+ passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD="
+				+ emailAuthCD + ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn="
+				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
+				+ regiDate + ", updateDate=" + updateDate + ", commOpenChk="
+				+ commOpenChk + ", commReplyChk=" + commReplyChk + ", fileName="
+				+ fileName + ", fileData=" + fileData + "]";
 	}
 
 }
