@@ -71,14 +71,19 @@
 			$(".menu7_1").css("background-color", "");
 		});
 
-		$("#FBLogin").click(function() {
-			fnLoginFB();
-		});
+// 		$("#FBLogin").click(function() {
+// 			fnLoginFB();
+// 		});
 
-		$("#FBLogout").click(function() {
-			fnLogout();
+// 		$("#FBLogout").click(function() {
+// 			fnLogout();
 
-		});
+// 		});
+		
+// 		$("#inviteFriends").click(function(){
+// 			fnInviteFriends();
+// 			console.log("1111");
+// 		});
 
 	});
 </script>
@@ -134,8 +139,7 @@
 										</table>
 										<div class="loginButtonWrap">
 											<button type="submit" class="loginButton" href="loginsuccess.do">로그인</button>
-											<button type="button" class="loginButton" id="FBLogin">페이스북
-												로그인</button>
+											<button type="button" class="loginButton" id="FBLogin">페이스북 로그인</button>
 										</div>
 										<div class="loginElseWrap">
 											<a class="loginElse" href="emailAuth.do">비밀번호를 잊어버리셨나요?</a><br>
@@ -149,8 +153,9 @@
 							<div id="fb-root"></div>
 							<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a>
 								<div class="myRoomHidden">
-									<a class="myRoomSub" href="">My 평점</a><br> <a class="myRoomSub"
-										id="FBLogout" style="cursor: pointer;" onclick="FB.logout();">로그아웃</a><br>
+									<a class="myRoomSub" href="">My 평점</a><br> 
+									<a class="myRoomSub" id="inviteFriends">친구초대</a><br> 
+									<a class="myRoomSub" id="FBLogout" style="cursor: pointer;" onclick="FB.logout();">로그아웃</a><br>
 									<a class="myRoomSub" href="">설정</a><br>
 								</div></li>
 						</c:otherwise>
