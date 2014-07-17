@@ -19,7 +19,7 @@
 				};
 				
 				$.ajax({
-					type : "get",
+					type : "post",
 					url : "myRoomJson.do",
 					// 				data : formData,
 	 				async : false,
