@@ -104,11 +104,8 @@ public class PostAndReplyController {
 @ResponseBody
 	@RequestMapping(value = "postingDeleteJson.do", method = RequestMethod.POST)
 public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
-
 		String postCD = (String) paramMap.get("name");
-		
 		parService.deletePost(postCD);
-		
 		return paramMap;
 	}
 
@@ -121,57 +118,40 @@ public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 	public String updatePost(@Valid Post post, Model model,
 			HttpServletRequest request) {
 		System.out.println(request.getParameter("postCD"));
-
 		Post newPost = parService.updatePost(request.getParameter("postCD"));
-
 		System.out.println(newPost);
-
 		model.addAttribute("np", newPost);
-
 		reviewUpdateDbtoView(newPost);
-
 		System.out.println(post.toString());
-
 		return "postandreply/updatePost";
 	}
 
 	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
 	public String updatePostOk(Post post, Model model, HttpServletRequest request)
-
 	{
-
 		reviewDbToView(post);
-
 		System.out.println(request.getParameter("postCD"));
 		System.out.println(request.getParameter("memGrade"));
 		parService.editPost(post);
-
 		request.getParameter("postCD");
-
 		System.out.println(post.toString());
-
 		return "postandreply/updatePost_ok";
 	}
 
 	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
 	public String deletePost(@Valid Post post, Model model,
 			HttpServletRequest request) {
-
 		request.getParameter("postCD");
-
 		parService.deletePost(request.getParameter("postCD"));
-
 		return "postandreply/deletePost_ok";
 	}
 
 	/*
 	 * 맨처음 포스팅을 쓸때 체크해주는 것
 	 */public Post reviewViewToDb(Post post) { // DB에서 View로
-
 		String viewReview = post.getComment();
 		viewReview = viewReview.replaceAll("'", "`");
 		post.setComment(viewReview);
-
 		return post;
 	}
 
@@ -188,11 +168,9 @@ public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 	/*
 	 * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
 	 */public Post reviewUpdateDbtoView(Post newPost) {
-
 		String viewPost = newPost.getComment();
 		viewPost = viewPost.replaceAll("<br>", "\r\n");
 		newPost.setComment(viewPost);
-
 		return newPost;
 	}
 
