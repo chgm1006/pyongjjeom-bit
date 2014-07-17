@@ -186,6 +186,8 @@
 								content += '<div class="commentName">' + list[i].memNm + '</div>';
 								content += '</div>';
 								content += '<div class="commentBoxRight">';
+								content += '<img class="StarPointCompleted" src="/pyongjjeom/resources/img/p' + list[i].memGrade + '.png">';
+								
 								content += '<h3 class="userComment">' + list[i].comment + '</h3>';
 								content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
 								content += '</div>';
