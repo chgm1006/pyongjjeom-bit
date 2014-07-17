@@ -8,6 +8,45 @@
 /**************상세 슬라이드 다운*************/
 			$("dd").css("display", "none");
 			$("dl dt").click(function() {
+				
+				alert("start");
+				var test=$("#postCD",(this)).html();
+				alert(test);
+
+				var formData = {
+					name : test,
+					data : "Hello"
+				};
+				
+				$.ajax({
+					type : "get",
+					url : "myRoomJson.do",
+					// 				data : formData,
+	 				async : false,
+					data : JSON.stringify(formData),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					beforeSend : function() {
+						console.log(formData);
+					},
+					error : function(e) {
+						console.log(e.responseText);
+					},
+					success : function(data) {
+						alert("success");
+						
+					}//success End
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
 				if ($("+dd", this).css("display") == "none") {
 					$("+dd", this).slideDown("slow");
 				} else {
@@ -50,35 +89,6 @@
 /**********************ScrollTop button PLUG-IN******************/
     smoothScroll.init();
 			
-	/*******************Ajax JSoN 내 평점 상세 페이지*********************/
-		$(".listHead").click(function() {
-			var test=$(".postCD",(this)).html();
-
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "myRoomJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
-					alert("success");
-					
-				}//success End
-			});
-		});
 
 
 })(jQuery);
