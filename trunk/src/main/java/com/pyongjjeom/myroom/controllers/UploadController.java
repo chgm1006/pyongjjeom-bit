@@ -45,16 +45,6 @@ import com.pyongjjeom.user.dto.UploadItem;
 
 /**
  * <pre>
- * com.pyongjjeom.login.controllers
- *    |_ UploadController.java
- *
- * </pre>
- * @date : 2014. 7. 15. 오후 9:26:46
- * @version :
- * @author : Kimyt
- */
-/**
- * <pre>
  * 간략 :
  * 상세 :
  * com.pyongjjeom.login.controllers
@@ -91,13 +81,15 @@ public class UploadController {
 			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
-		 String path = request.getSession().getServletContext().getRealPath("/");
+		String path = request.getSession().getServletContext().getRealPath("/");
 		// //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
-//		String path = "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp"; // 어느서버에서든
-																																																																				// getRealPath를
-																																																																				// 이용하면
-																																																																				// 그경로가
-																																																																				// 나타남
+		// String path =
+		// "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp";
+		// // 어느서버에서든
+		// getRealPath를
+		// 이용하면
+		// 그경로가
+		// 나타남
 
 		String path2 = System.getProperty("user.dir");
 		System.out.println("path : " + path);
@@ -136,11 +128,12 @@ public class UploadController {
 			// upload 가능한 파일 타입 지정
 			if (imgExt.equalsIgnoreCase("JPG") || imgExt.equalsIgnoreCase("JPEG")
 					|| imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")) {
-				byte[] bytes = uploadItem.getFileData().getBytes();
+				byte[] bytes = null;
 
-				System.out.println(bytes);  //
+				System.out.println(bytes); //
 
 				try {
+					bytes = uploadItem.getFileData().getBytes();
 					File lOutFile = new File(path + "/resources/userImages/" + filename);
 					System.out.println(lOutFile); // 이미지 경로
 
@@ -152,7 +145,6 @@ public class UploadController {
 
 					System.out.println(lFileOutputStream); // 이미지 경로
 					System.out.println("urlPath =" + urlPath); // 이미지 경로
-
 
 					urlPath = urlPath.equals(request.getServerName()) ? urlPath
 							: "http://localhost:8080/pyongjjeom/";
@@ -181,7 +173,7 @@ public class UploadController {
 
 		// Some type of file processing...
 		System.err.println("-------------------------------------------");
-		System.err.println("Test upload: " + uploadItem.getName());
+		System.err.println("Test upload: " + uploadItem.getFileName());
 		System.err.println("Test upload: "
 				+ uploadItem.getFileData().getOriginalFilename());
 		System.err.println("-------------------------------------------");
