@@ -39,10 +39,6 @@ window.fbAsyncInit = function() {
 		window.location.reload(true);
 	});
 
-	FB.Event.subscribe("xfbml.render", function() {
-		return $(document).trigger("FB:xfbml.render");
-	});
-
 };
 
 // Load the SDK asynchronously
