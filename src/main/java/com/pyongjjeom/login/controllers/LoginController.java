@@ -101,18 +101,17 @@ public class LoginController {
 
 	}
 
-	@ResponseBody
 	@RequestMapping(value = "logout.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public Member logout(HttpSession session) {
+	public String logout(HttpSession session) {
 		log.info("logout.do");
 		Member member = (Member) session.getAttribute("member");
-		System.out.println(member);
+		System.out.println("세션 삭제 전 member 데이터 : " + member.toString());
 		session.removeAttribute("member");
 		member = null;
-		System.out.println(session.getAttribute("member"));
+		System.out.println("세션 삭제 후 member 데이터 : " + member);
 
-		return member;
+		return "contents/movieIndex";
 	}
 
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
