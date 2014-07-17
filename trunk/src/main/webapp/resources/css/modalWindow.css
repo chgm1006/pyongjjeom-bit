@@ -387,6 +387,20 @@ div.commentName{
 	border-radius:15px;
 	background:#e8dfb4;
 }
+
+img.StarPointCompleted{
+	float:left;
+	margin:0 0 10px 0;
+	
+}
+p.StarPointCompletedP{
+	float:left;
+	margin:0 0 0 10px;
+	font-size:16px;
+	font-weight: bold;
+}
+
+
 .userComment{
 	
 }
