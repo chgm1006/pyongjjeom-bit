@@ -89,7 +89,8 @@ dd.listContent{
 	margin:0 auto;
 	width:80%;
 	height:auto;
-	background-color: #b3b;
+	border-radius:0 0 20px 20px;
+	background-color: #e4e4e4;
 }
 .overCommentWrap{
 	float:left;
@@ -128,7 +129,7 @@ div.commentName{
 	float:left;
 	margin:14px;
 	padding:20px;
-	width:600px;
+	width: 75%;
 	height:auto;
 	min-height:40px;
 	border:4px dotted #fff;
@@ -136,16 +137,8 @@ div.commentName{
 	background:#e8dfb4;
 }
 
-img.StarPointCompleted{
-	float:left;
-	margin:0 0 10px 0;
-	
-}
-p.StarPointCompletedP{
-	float:left;
-	margin:0 0 0 10px;
-	font-size:16px;
-	font-weight: bold;
+p.replyCD{
+	display:none;
 }
 
 
