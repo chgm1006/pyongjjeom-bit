@@ -156,7 +156,8 @@
 									<a class="myRoomSub" href="">My 평점</a><br> 
 									<a class="myRoomSub" id="inviteFriends">친구초대</a><br> 
 									<a class="myRoomSub" id="FBLogout" style="cursor: pointer;" onclick="FB.logout();">로그아웃</a><br>
-									<a class="myRoomSub" href="">설정</a><br>
+									<a class="myRoomSub" href="logout.do">로그아웃ㄱ</a><br>
+									<a class="myRoomSub" href="myRoom.do">설정</a><br>
 								</div></li>
 						</c:otherwise>
 					</c:choose>
