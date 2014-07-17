@@ -14,15 +14,6 @@
 		});
 
 		
-		/******************Quick TOP  롤오버***********************/
-		$(function() {
-			$(".quickImg").mouseenter(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop2.png");
-			});
-			$(".quickImg").mouseleave(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop1.png");
-			});
-		});
 /**********************ScrollTop button PLUG-IN******************/
     smoothScroll.init();
 
@@ -355,19 +346,5 @@
 			
 		});
 
-		/*******************모달 : 페이스북 로그인, 로그아웃*********************/
-		$("#FBLogin").click(function() {
-			fnLoginFB();
-		});
-
-		$("#FBLogout").click(function() {
-			fnLogout();
-
-		});
-
-		$("#inviteFriends").click(function() {
-			fnInviteFriends();
-			console.log("1111");
-		});
 
 })(jQuery);
