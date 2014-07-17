@@ -3,10 +3,10 @@
  *
  * 1. FileName : UploadController.java
  * 2. Package : com.pyongjjeom.login.controllers
- * 3. Comment : 
+ * 3. Comment :
  * 4. 작성자  : Kimyt
- * 5. 작성일  : 2014. 7. 15. 
- * 6. 변경이력 : 
+ * 5. 작성일  : 2014. 7. 15.
+ * 6. 변경이력 :
  *                    이름     : 일자          : 근거자료   : 변경내용
  *                   ------------------------------------------------------
  *                    Kimyt : 2014. 7. 15. :            : 신규 개발.
@@ -14,7 +14,7 @@
 
 /* * Copyright yysvip.tistory.com.,LTD.
  * All rights reserved.
- * 
+ *
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
@@ -24,10 +24,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,22 +45,22 @@ import com.pyongjjeom.user.dto.UploadItem;
 
 /**
  * <pre>
- * com.pyongjjeom.login.controllers 
+ * com.pyongjjeom.login.controllers
  *    |_ UploadController.java
- * 
+ *
  * </pre>
  * @date : 2014. 7. 15. 오후 9:26:46
- * @version : 
+ * @version :
  * @author : Kimyt
  */
 /**
  * <pre>
- * 간략 : 
- * 상세 : 
+ * 간략 :
+ * 상세 :
  * com.pyongjjeom.login.controllers
  *   |_ UploadController.java
  * </pre>
- * 
+ *
  * @author : Kimyt
  * @version : 1.0
  */
@@ -67,10 +70,13 @@ import com.pyongjjeom.user.dto.UploadItem;
 public class UploadController {
 	@Autowired
 	MyRoomService myRoomService;
-	
-/*	@Autowired
-	private FileSystemResource fsResource; // 파일다운로드
-*/
+
+	@Value("#{common['urlPath']}")
+	private String urlPath;
+
+	/*
+	 * @Autowired private FileSystemResource fsResource; // 파일다운로드
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String getUploadForm(Model model) {
 
@@ -85,8 +91,19 @@ public class UploadController {
 			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
-		String path = request.getSession().getServletContext().getRealPath("/"); //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
+		 String path = request.getSession().getServletContext().getRealPath("/");
+		// //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
+//		String path = "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp"; // 어느서버에서든
+																																																																				// getRealPath를
+																																																																				// 이용하면
+																																																																				// 그경로가
+																																																																				// 나타남
+
+		String path2 = System.getProperty("user.dir");
 		System.out.println("path : " + path);
+		System.out.println("path2 : " + path2);
+
+		// String path2 = path.substring(path.length()-11);
 		Member member;
 		HttpSession session = request.getSession();
 
@@ -106,6 +123,7 @@ public class UploadController {
 			String filename = uploadItem.getFileData().getOriginalFilename(); // 파일의
 																																				// 실제명을
 																																				// 가지고온다.
+
 			String imgExt = filename.substring(filename.lastIndexOf(".") + 1,
 					filename.length());
 
@@ -123,7 +141,7 @@ public class UploadController {
 				System.out.println(bytes);
 
 				try {
-					File lOutFile = new File(path +"\\resources\\userImages\\"+ filename);
+					File lOutFile = new File(path + filename);
 					System.out.println(lOutFile); // 이미지 경로
 
 					/* String lOutFile2 = lOutFile.toString().replace("\\", "/"); */
@@ -133,21 +151,25 @@ public class UploadController {
 					FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
 
 					System.out.println(lFileOutputStream); // 이미지 경로
-					
-					member.setImgPath(lOutFile.toString());
+					System.out.println("urlPath =" + urlPath); // 이미지 경로
+					urlPath = urlPath.equals(request.getServerName()) ? urlPath
+							: "http://localhost:8080/pyongjjeom/";
+					String realImgPath = urlPath + "resources/userImages/" + filename;
+					member.setImgPath(realImgPath.toString());
 
 					lFileOutputStream.write(bytes);
 					lFileOutputStream.close();
 				} catch (IOException ie) {
 					// Exception 처리
-					ie.printStackTrace(); //어떤문제인지 알려줌
+					ie.printStackTrace(); // 어떤문제인지 알려줌
 
 					System.err.println("File writing error! ");
 
 				}
 
 				System.err.println("File upload success! ");
-				
+
+				System.out.println("member.imgPath = " + member.getImgPath());
 				myRoomService.insertImage(member);
 
 			} else {
@@ -164,5 +186,4 @@ public class UploadController {
 
 		return "myRoom/uploadCheck";
 	}
-
 }
