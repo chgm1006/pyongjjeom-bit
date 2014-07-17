@@ -43,9 +43,6 @@
 									<tr>
 										<td class="tableCont" id="postCD">${post.postCD }</td>
 									</tr>
-									<div class="PostingReply">
-										댓글 <p class="PostingReplyP"></p>개
-									</div>
 								</table>
 							</div>
 						</a>
