@@ -71,6 +71,11 @@ public class MyRoomController {
 		Member member=(Member) httpSession.getAttribute("member");
     List<PostAndContents> postList= parService.getPost(member.getMemCD());
 		System.out.println(postList);
+		for(PostAndContents post : postList)
+		{
+			post.setMemGradeStr(String.valueOf(post.getMemGrade()).charAt(0));
+		}
+		System.out.println(postList);
 		httpSession.setAttribute("postList",postList);
 		return "myRoom/myRoom";
 	}
