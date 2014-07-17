@@ -70,7 +70,6 @@ public class ContentController {
 	@RequestMapping(value = "movieIndex.do", method = RequestMethod.GET)
 	private String movieInit(HttpServletRequest request) {
 		httpSession = request.getSession();
-		httpSession.setMaxInactiveInterval(3600);
 		if (httpSession.getAttribute("movieList") == null) {
 			NaverMovieParsing parsing = new NaverMovieParsing();
 			List<String> movieTitleList = parsing.getTitleList();
