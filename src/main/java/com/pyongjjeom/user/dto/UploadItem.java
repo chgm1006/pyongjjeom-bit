@@ -19,11 +19,10 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.user.dto; 
+package com.pyongjjeom.user.dto;
 
-import org.apache.log4j.Logger;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
 
 /**
  * <pre>
@@ -43,28 +42,29 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
  *   |_ UploadItem.java
  * </pre>
  * 
- * @author  : Kimyt
+ * @author : Kimyt
  * @version : 1.0
  */
 
 public class UploadItem {
 
-private String name;
-private CommonsMultipartFile fileData;
+	private String fileName;
+	private MultipartFile fileData;
 
+	public String getFileName() {
+		return fileName;
+	}
 
-public String getName() {
-	return name;
-}
-public void setName(String name) {
-	this.name = name;
-}
-public CommonsMultipartFile getFileData() {
-	return fileData;
-}
-public void setFileData(CommonsMultipartFile fileData) {
-	this.fileData = fileData;
-}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
+	public MultipartFile getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(MultipartFile fileData) {
+		this.fileData = fileData;
+	}
 
 }
