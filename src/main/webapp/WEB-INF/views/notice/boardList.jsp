@@ -17,6 +17,7 @@
 	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ 
 
 <!-- jQuery files -->
 
@@ -115,11 +116,14 @@
 			<div class="testdiv"></div>
 
 		</div>
-
+		
+	
 
 		<div class="more">
 
-			<a href="#" class="listMore" id="ajaxList">지난 공지사항 더보기</a>
+			<a class="listMore" id="ajaxList"  >지난 공지사항 더보기</a>
+			
+			
 		</div>
 	</div>
 
@@ -364,6 +368,7 @@
 		}
 	});
 </script>
+
 
 
 </body>
