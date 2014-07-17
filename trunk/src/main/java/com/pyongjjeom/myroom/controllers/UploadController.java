@@ -91,9 +91,9 @@ public class UploadController {
 			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
-		// String path = request.getSession().getServletContext().getRealPath("/");
+		 String path = request.getSession().getServletContext().getRealPath("/");
 		// //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
-		String path = "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp"; // 어느서버에서든
+//		String path = "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp"; // 어느서버에서든
 																																																																				// getRealPath를
 																																																																				// 이용하면
 																																																																				// 그경로가
@@ -154,7 +154,7 @@ public class UploadController {
 					System.out.println("urlPath =" + urlPath); // 이미지 경로
 					urlPath = urlPath.equals(request.getServerName()) ? urlPath
 							: "http://localhost:8080/pyongjjeom/";
-					String realImgPath = urlPath + "resources/userImages/" + filename;
+					String realImgPath = urlPath + "/resources/userImages/" + filename;
 					member.setImgPath(realImgPath.toString());
 
 					lFileOutputStream.write(bytes);
