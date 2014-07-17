@@ -1,7 +1,7 @@
 (function($) {
 	
 	
-	$(".myStarPointP").append("점");
+	$(".myStarPointP").append(" 점");
 
 	
 
