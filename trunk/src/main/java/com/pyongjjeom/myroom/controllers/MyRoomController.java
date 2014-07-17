@@ -73,7 +73,7 @@ public class MyRoomController {
 		System.out.println(postList);
 		for(PostAndContents post : postList)
 		{
-			post.setMemGradeStr(String.valueOf(post.getMemGrade()).charAt(0));
+			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
 		}
 		System.out.println(postList);
 		httpSession.setAttribute("postList",postList);
