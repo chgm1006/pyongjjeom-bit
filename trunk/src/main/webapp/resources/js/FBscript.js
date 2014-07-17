@@ -36,7 +36,7 @@ window.fbAsyncInit = function() {
 	});
 
 	FB.Event.subscribe('auth.logout', function(response) {
-		window.location.reload(true);
+		
 	});
 
 };
@@ -167,5 +167,5 @@ function fnLogout() {
 			console.log("fbLogout 종료");
 		}
 	});
-
+	window.location.reload(true);
 }
