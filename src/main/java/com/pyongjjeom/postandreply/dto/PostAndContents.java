@@ -23,17 +23,31 @@ public class PostAndContents {
 	public String toString() {
 		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
 				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
-				+ memGrade + ", comment=" + comment + ", title=" + title + ", image="
-				+ image + ", link=" + link + ", director=" + director + ", actor="
-				+ actor + ", deleteYn=" + deleteYn + ", spoilYn=" + spoilYn
-				+ ", regiDate=" + regiDate + ", updateDate=" + updateDate + "]";
+				+ memGrade + ", memGradeStr=" + memGradeChar + ", comment=" + comment
+				+ ", title=" + title + ", image=" + image + ", link=" + link
+				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
+				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
+				+ ", updateDate=" + updateDate + "]";
 	}
 
 	private String postCD = "";
 	private String conCD = "";
 	private String pmemCD = "";
 	private String review = "";
-	private float memGrade = 0.0f;
+	private Double memGrade = 0.0;
+	private char memGradeChar ;
+	public char getMemGradeStr() {
+		return memGradeChar;
+	}
+
+	public void setMemGradeStr(char memGradeStr) {
+		this.memGradeChar = memGradeStr;
+	}
+
+	public void setMemGrade(Double memGrade) {
+		this.memGrade = memGrade;
+	}
+
 	private String comment = "";
 	private String title = "";
 	private String image = "";
@@ -118,11 +132,11 @@ public class PostAndContents {
 		this.review = review;
 	}
 
-	public float getMemGrade() {
+	public double getMemGrade() {
 		return memGrade;
 	}
 
-	public void setMemGrade(float memGrade) {
+	public void setMemGrade(double memGrade) {
 		this.memGrade = memGrade;
 	}
 
