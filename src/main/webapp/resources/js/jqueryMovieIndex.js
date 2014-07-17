@@ -224,7 +224,7 @@
 		/***********Ajax JSoN : 내 평점 올리기 ************/
 		$(".pointSubmit").click(function() {
 			var pointText=$(".pointText").val();
-			var starPoint=$(".starPoint").html();
+			var starPoint=$(".starPoint").val();
 
 			var pointTextLength = pointText.length;
 		    var maxLength = 100;
