@@ -23,7 +23,7 @@ public class PostAndContents {
 	public String toString() {
 		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
 				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
-				+ memGrade + ", memGradeStr=" + memGradeChar + ", comment=" + comment
+				+ memGrade + ", memGradeChar=" + memGradeChar + ", comment=" + comment
 				+ ", title=" + title + ", image=" + image + ", link=" + link
 				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
 				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
@@ -40,7 +40,7 @@ public class PostAndContents {
 		return memGradeChar;
 	}
 
-	public void setMemGradeStr(char memGradeStr) {
+	public void setMemGradeChar(char memGradeStr) {
 		this.memGradeChar = memGradeStr;
 	}
 
@@ -73,6 +73,10 @@ public class PostAndContents {
 
 	public String getLink() {
 		return link;
+	}
+
+	public char getMemGradeChar() {
+		return memGradeChar;
 	}
 
 	public void setLink(String link) {
