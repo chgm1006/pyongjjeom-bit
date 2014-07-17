@@ -395,7 +395,6 @@ div.commentName{
 }
 
 
-
 /*---More---*/
 a.commentMore{
 	margin:20px 0 0 0;
@@ -422,16 +421,9 @@ a.commentMore:active{
 }
 
 
-
-
-
-
 /*-------- 모달윈도우 : 도서 상세 -------*/
 /*-------- 모달윈도우 : 도서 상세 -------*/
 /*-------- 모달윈도우 : 도서 상세 -------*/
-
-
-
 
 div#glayLayerBook{
 	display:none;
@@ -467,12 +459,16 @@ div#glayLayerBook{
 .overCompleted{
 	position:absolute;
 	display:none;
-	left:300px;
-	top:800px;
+	left:190px;
+	top:780px;
 	padding:50px;
-	min-width:200px;
+	width:400px;
+	text-align:center;
 	border-radius:20px;
 	border:4px solid #999;
 	background-color:#fff;
 }
 
+p.overCompletedP{
+	font-size:30px;
+}

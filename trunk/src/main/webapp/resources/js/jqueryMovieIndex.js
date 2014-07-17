@@ -204,24 +204,23 @@
 					
 					var myStarPoint = data.whole.myComment.memGrade;
 					$(".starPoint").text(myStarPoint);
-					if(myStarPoint != null){
+					if(myStarPoint == null){
+						$(".myStarPoint2").show("fast");
+						$(".myStarPoint1").hide("fast");
+						$(".pointModifyWrap").hide();
+
+					}else{
+						
 						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
 						$(".myStarPoint1").show("fast");
 						$(".myStarPoint2").hide("fast");
 						$(".pointModifyWrap").attr("left","710px");
-
-					}else{
-						$(".myStarPoint2").show("fast");
-						$(".myStarPoint1").hide("fast");
-
 					}
 					
 					
 					var myPostCD = data.whole.myComment.postCD;
 					$(".myPostCD").text(myPostCD);
 
-
-					
 					
 				}//success End
 			});
@@ -232,24 +231,29 @@
 			var pointText=$(".pointText").val();
 			var starPoint=$(".starPoint").html();
 			alert(starPoint);
-
 			var pointTextLength = pointText.length;
-		     var maxLength = 100;
+		    var maxLength = 100;
+		     
+		     if((starPoint == null) || (starPoint == "")){
+		    	 $(".overCompletedP").text("별점을 체크해주세요.");
+				 $(".overCompleted").show();
+				 $(".overCompleted").fadeOut(3000);
+				 return false;
+		     }
+		     if(pointTextLength <= 0){
+		    	 $(".overCompletedP").text("한글자이상 적어주세요.");
+				 $(".overCompleted").show();
+				 $(".overCompleted").fadeOut(3000);
+				 return false;
+		     }
 		     if(pointTextLength > maxLength){
-		    	 $(".overCompleted h3").text("100자이내로 작성해주세요.");
+		    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
 				 $(".overCompleted").show();
 				 $(".overCompleted").fadeOut(3000);
 				 return false;
 		     }
-			alert("return after");
 			
-			if(starPoint == null){
-		    	 $(".overCompleted h3").text("별점을 체크해주세요.");
-				 $(".overCompleted").show();
-				 $(".overCompleted").fadeOut(3000);
-				 return false;
-		     }
-			alert("return after");
+			
 
 
 			var formData = {
@@ -279,13 +283,13 @@
 						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starPoint+".png");
 						$(".myStarPoint1").show("fast");
 						$(".myStarPoint2").hide("fast");
-						$(".pointModifyWrap").attr("left","710px");
+						$(".pointModifyWrap").show();
+						$(".pointModifyWrap").animate( { left:'710px' }, 500 );
 
-						$(".overCompleted h3").text("한줄평이 입력되었습니다!!");
+						$(".overCompletedP").text("한줄평이 입력되었습니다!!");
 						$(".overCompleted").show();
 						$(".overCompleted").fadeOut(2000);
 						
-						alert("end");
 
 						
 				}
@@ -320,8 +324,10 @@
 					$(".pointText").removeAttr("value").removeAttr("disabled");
 					$(".myStarPoint2").show("fast");
 					$(".myStarPoint1").hide("fast");
+					$(".pointModifyWrap").hide();
+
 					
-					$(".overCompleted h3").text("한줄평이 삭제되었습니다.");
+					$(".overCompletedP").text("한줄평이 삭제되었습니다.");
 					$(".overCompleted").show();
 					$(".overCompleted").fadeOut(2000);
 				}

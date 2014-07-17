@@ -104,8 +104,7 @@
 				<div class="overPointWrap">
 					<h3 class="overContTitle">My 평점</h3>	
 					<!---- 한줄평 확인 플로팅 창 ---->
-					<div class="overCompleted">
-						<h3></h3>		
+					<div class="overCompleted"><p class="overCompletedP"></p>		
 					</div>
 				<c:choose>
 					<c:when test="${member==null}">
