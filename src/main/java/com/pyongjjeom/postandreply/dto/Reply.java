@@ -20,78 +20,70 @@ import java.util.Date;
 public class Reply {
 
 	private String replyCD = "";
-	private String postCD = "";
-	private String conCD = "";
 	private String memCD = "";
-	private char deleteYn = 'n';
+	private String memNm= "";
+	private String imgPath= "";
+	private String reply = "";
 	private char spoilYn = 'n';
-	private Date regiDate = null;
 	private Date updateDate = null;
+	private String formatUpdateDate = "";
 
-
-
+	public String getMemNm() {
+		return memNm;
+	}
+	public void setMemNm(String memNm) {
+		this.memNm = memNm;
+	}
+	@Override
+	public String toString() {
+		return "Reply [replyCD=" + replyCD + ", memCD=" + memCD + ", imgPath="
+				+ imgPath + ", reply=" + reply + ", spoilYn=" + spoilYn
+				+ ", updateDate=" + updateDate + ", formatUpdateDate="
+				+ formatUpdateDate + "]";
+	}
 	public String getReplyCD() {
 		return replyCD;
 	}
-
 	public void setReplyCD(String replyCD) {
 		this.replyCD = replyCD;
 	}
-
-	public String getPostCD() {
-		return postCD;
-	}
-
-	public void setPostCD(String postCD) {
-		this.postCD = postCD;
-	}
-
-	public String getConCD() {
-		return conCD;
-	}
-
-	public void setConCD(String conCD) {
-		this.conCD = conCD;
-	}
-
 	public String getMemCD() {
 		return memCD;
 	}
-
 	public void setMemCD(String memCD) {
 		this.memCD = memCD;
 	}
-
-	public char getDeleteYn() {
-		return deleteYn;
+	public String getImgPath() {
+		return imgPath;
 	}
-
-	public void setDeleteYn(char deleteYn) {
-		this.deleteYn = deleteYn;
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
-
+	public String getReply() {
+		return reply;
+	}
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
 	public char getSpoilYn() {
 		return spoilYn;
 	}
-
 	public void setSpoilYn(char spoilYn) {
 		this.spoilYn = spoilYn;
 	}
-
-	public Date getRegiDate() {
-		return regiDate;
-	}
-
-	public void setRegiDate(Date regiDate) {
-		this.regiDate = regiDate;
-	}
-
 	public Date getUpdateDate() {
 		return updateDate;
 	}
-
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	public String getFormatUpdateDate() {
+		return formatUpdateDate;
+	}
+	public void setFormatUpdateDate(String formatUpdateDate) {
+		this.formatUpdateDate = formatUpdateDate;
+	}
+
+
 
 }
