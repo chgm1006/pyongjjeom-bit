@@ -4,329 +4,190 @@
 .myPageWrap{
 	max-width:950px;
 	margin:0 auto;
-	margin-top:100px;
 }
 
+/*******test**********/
+/*******test**********/
+/*******test**********/
+/*******test**********/
+/*******test**********/
+/*******test**********/
+/*******test**********/
 
-/*------------////// 슬라이드 : 공지사항 쓰기 //////-------------*/
 
-a.close{
+
+/*----------///---contentsList---////--------*/
+
+.listWrap{
 	display:block;
-	position:absolute;
-	margin:-30px 0 0 850px;
-	width:81px;
-	height:81px;
-	background:url(../img/exit.png) no-repeat;	
-}
-a.close:hover{
-	background-position:0px -81px;
-}
-a.close:active{
-	background-position:0px -161px;
-}
-
-.upLoad{
-	margin:10px auto;
-	display:none;
-	width:900px;
-	height:500px;
-	border-radius:10px;
-	border:4px solid #f6f4f4;
-	background-color:#e4e4e4;
-}
-
-.upLoad:hover{
-	border:4px solid #fea915;
-}
-
-.upLoadSearch{
-	margin:10px auto;
-	width:280px;
-}
-
-.upLoadSearch input{
-	text-indent:5px;
-}
-
-.upLoadCont{
-	margin:0 auto;
-	width:800px;
-}
-
-.upLoadText{
-	margin:0 auto;
-	width:800px;
-	height:300px;
-	text-indent:10px;
-}
-
-.upLoadStart{
-	margin:0 auto;
-}
-
-
-
-
-
-
-/*------------////// 플로팅 윈도우 : 설정 //////-------------*/
-
-div#glayLayer2{
-	display:none;
-	position:fixed;
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
-	background:black;
-	filter:alpha(opacity=80);
-	opacity: 0.80;
-	z-index:50;
-}
-* html div#glayLayer2{
-	position:absolute;
-}
-#overLayer2{
-	display:none;
-	position: absolute;
-	top:50%;
-	left:50%;
-	width:900px;
-	height:450px;
-	padding:10px;
-	margin-top:-244px;
-	margin-left:-450px;
-	border-radius:20px;
-	border:4px solid #fff;
-	background-color:#CCC;
-	z-index:51;	
-}
-* html #overLayer2{
-	position: absolute;
-}
-
-
-.setUp{
-	margin:0 auto;
-	width:600px;
-	height:auto;
-}
-
-.setUp table{
-	margin:30px auto;
-	font-size:16px;
-	border:1px dotted #123;
-	border-collapse:collapse;
-}
-
-.setUp table td{
-	padding:10px;
-	border:1px dotted #123;
-	text-align:center;
-}
-
-.setUp table.item{
-
-}
-
-.setUp table.cont{
-}
-
-
-
-/*------------//////   내 포스팅 리스트   //////-------------*/
-
-
-
-
-.postingList{
-	margin:0 auto;
-	width:900px;
-	height:auto;
-}
-
-
-
-.list1{
 	margin:10px 0;
 	border-radius :20px;	
 	overflow:hidden;
 	background:#e4e4e4;
 	border:4px solid #f6f4f4;
 }
-.list1:hover{
+.listWrap:hover{
 		border:4px solid #fea915;
 }
-.list1:active{
+.listWrap:active{
 		border:4px solid #ff8400;
 }
 
-
-.listImg{
+img.listImg{
 	float:left;
-	width:170px;
+	width:140px;
 	height:auto;
 }
 
-.detail{
-	padding:30px 30px 0 200px;
-	font-size:14px;
+/*---table---*/
+.listTable{
+	float:left;
+	width:77%;
+	padding:10px 0 0 30px;
 }
-.listTitle1{
-	padding:5px 0;
-	width:70px;
+td.tableTitle{
+	overflow:hidden;
+	padding:10px 0;
 	font-size:18px;
 	font-weight:bold;
 }
 
-.listTitle{
-	width:70px;
-	font-size:14px;
+td.tableCont{
 	vertical-align:top;
 }
 
-.listSynopValue{
-	max-height:54px;
-	display:block;
-	display:-webkit-box;
-	-webkit-line-clamp:3;
-	-webkit-box-orient:vertical;
-	overflow:hidden;
-	text-overflow:ellipsis;
+img.myStarPoint {
+	float: left;
+	margin:0 10px 0 0;
 }
 
+p.myStarPointP {
+	float: left;
+		margin:5px 10px 0 0;
+	
+}
 
 .PostingReply{
 	float:right;
-	font-weight:bold;
 }
-
-
-/*--- 더보기 ---*/
-
-
-a.listMore{
-	display:block;
-	margin:10px auto;
-	padding:5px;
-	width:880px;
-	height:80px;
-	text-align:center;
-	font-size:20px;
-	line-height:80px;
-	background:#e4e4e4;
-	border:4px solid #e4e4e4;
-}
-a.listMore:hover{
-	text-decoration:underline;
-	background-color:#d0d0d0;
-	border:4px solid #fea915;
-}
-a.listMore:active{
-	text-decoration:underline;	
-	border:4px solid #fe9915;
+p.PostingReplyP{
+	float:left;
+	font-weight: bold;
 }
 
 
 
-/*------------//////   슬라이드 : 내 포스팅 상세   //////-------------*/
 
 
-/*----내용란---*/
 
+
+
+
+
+
+
+
+/*---하단  : Comment---*/
 
 dd.listContent{
+}
+
+.overCont3{
+	padding:20px 50px;
 	margin:0 auto;
-	margin-bottom:30px;
-	width:800px;
+	width:80%;
 	height:auto;
-	background:#e6e6e6;
-	font-size:12px;
-	padding:20px;
-	border-radius:0 0 20px 20px;
+	background-color: #b3b;
 }
-
-.commentBox{
-	margin:10px 0 0 0;
-}
-.userPhoto{
+.overCommentWrap{
 	float:left;
-	margin:0 0 0 30px;
-	text-align:center;
 }
-a.userRoom{
+.commentBoxLeft{
 	float:left;
-	border-radius:5px;
-	border:3px solid #fff;
-}
-a.userRoom:hover{
-	border:3px solid #f8d94a;
-}
-.userPhoto img{
-	width:50px;
-	height:50px;
-}
-.triangle{
-	float:left;
-	position:absolute;
-	margin:5px 0 0 105px;
-	border-color: transparent #fff transparent transparent;
-	border-style:solid;
-	border-width:10px;
-	width:0;
-	height:0;
-}
-
-
-.rectangle{
-	float:left;
-	margin:0 0 0 40px;
 	padding:10px;
-	width:550px;
+	width:80px;
 	height:auto;
-	min-height:80px;
-	line-height:20px;
-	background-color:#fff;
-	border-radius:10px;
-	border:3px dotted #f8d94a;
 }
-/*---삭제---*/
+.userPhoto {
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border: 4px solid #fff;
+	border-radius: 15px;
+}
+.userPhoto:hover{
+	border:4px solid #ff7e00;
+}
+a.userRoomLink {
+	display: block;
+	background: #es9fb4;
+}
 
-a.commentDel{
+a.userRoomLink img {
+	width:80px;
+	height:auto;
+}
+div.commentName{
+	width:80px;
+	text-align: center;
+}
+
+.commentBoxRight{
+	float:left;
+	margin:14px;
+	padding:20px;
+	width:600px;
+	height:auto;
+	min-height:40px;
+	border:4px dotted #fff;
+	border-radius:15px;
+	background:#e8dfb4;
+}
+
+img.StarPointCompleted{
+	float:left;
+	margin:0 0 10px 0;
+	
+}
+p.StarPointCompletedP{
 	float:left;
 	margin:0 0 0 10px;
-	display:block;
-	width:50px;
-	height:100px;
-	text-align:center;
 	font-size:16px;
-	line-height:100px;
-	border-radius :10px;	
-	background:#d3d3d3;
-	border:2px solid #fbf3ce;	
-}
-a.commentDel:hover{
-	border:2px solid #f8d94a;
+	font-weight: bold;
 }
 
-/*---더보기---*/
 
+.userComment{
+	
+}
+.userDate{
+	margin:5px 0 0 0;
+}
+
+
+
+/*---More---*/
 a.commentMore{
-	margin:30px;
+	margin:20px 0 0 0;
 	display:block;
-	padding:15px 0 0 0;
-	width:750px;
-	height:40px;
+	padding:30px 0 0 0;
+	width:780px;
+	height:50px;
 	text-align:center;
-	font-size:16px;
-	line-height:16px;
-	border-radius :10px;	
-	background:#d3d3d3;
-	border:2px solid #fbf3ce;
+	font-size:20px;
+	line-height:15px;
+	border-radius :20px;	
+	background:#e4e4e4;
+	border:4px solid #f6f4f4;
 }
 a.commentMore:hover{
 	text-decoration:underline;
-	border:2px solid #f8d94a;
+	border:4px dotted #fea915;
+	font-weight:bold;
 }
-
+a.commentMore:active{
+	text-decoration:underline;	
+	border:4px solid #fe9915;
+	font-weight:bold;
+}
 
