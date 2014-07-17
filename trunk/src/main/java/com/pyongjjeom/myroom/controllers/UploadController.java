@@ -67,10 +67,10 @@ import com.pyongjjeom.user.dto.UploadItem;
 public class UploadController {
 	@Autowired
 	MyRoomService myRoomService;
-
-	@Autowired
+	
+/*	@Autowired
 	private FileSystemResource fsResource; // 파일다운로드
-
+*/
 	@RequestMapping(method = RequestMethod.GET)
 	public String getUploadForm(Model model) {
 
@@ -85,6 +85,8 @@ public class UploadController {
 			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
+		String path = request.getSession().getServletContext().getRealPath("/"); //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
+		System.out.println("path : " + path);
 		Member member;
 		HttpSession session = request.getSession();
 
@@ -110,10 +112,6 @@ public class UploadController {
 			System.out.println(filename);
 			System.out.println(imgExt);
 
-
-
-	
-
 			// lastIndexof는끝에서부터 읽어들임
 			// imgExt = 파일명을 읽어들임
 
@@ -125,7 +123,7 @@ public class UploadController {
 				System.out.println(bytes);
 
 				try {
-					File lOutFile = new File(fsResource.getPath() + "_" + filename);
+					File lOutFile = new File(path +"\\resources\\userImages\\"+ filename);
 					System.out.println(lOutFile); // 이미지 경로
 
 					/* String lOutFile2 = lOutFile.toString().replace("\\", "/"); */
@@ -142,7 +140,7 @@ public class UploadController {
 					lFileOutputStream.close();
 				} catch (IOException ie) {
 					// Exception 처리
-					ie.printStackTrace();
+					ie.printStackTrace(); //어떤문제인지 알려줌
 
 					System.err.println("File writing error! ");
 
