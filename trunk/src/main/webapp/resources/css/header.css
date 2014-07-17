@@ -149,8 +149,26 @@ header{
 
 .rightMenu{
 	float:right;	
+	width:300px;
 	height:auto;
 }
+
+.myFaceWrap {
+	margin:10px 0 0 0;
+	float:left;
+	overflow: hidden;
+	width: 40px;
+	height:40px;
+	border-radius: 10px;
+}
+img.myFace{
+	width:40px;
+	height: auto;
+}
+
+
+
+
 
 .rightMenu li{
 	display:block;
