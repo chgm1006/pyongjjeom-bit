@@ -52,7 +52,7 @@ reply.reply,
 reply.updatedate from reply,member where  reply.postcd=#{postCD} and reply.memcd=member.memcd
 order by  reply.updatedate desc;    </select>
 
-		<insert id="insertPost" parameterType="Reply">
+		<insert id="insertReply" parameterType="Reply">
 	INSERT INTO reply
 		(replycd,postcd,memcd,reply,regidate,updatedate)
 		values
