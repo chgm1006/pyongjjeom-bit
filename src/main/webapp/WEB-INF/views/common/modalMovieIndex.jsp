@@ -159,7 +159,7 @@
 									<a class="pointModify">수정</a>
 									<a class="pointDelete">삭제</a>
 								</div>
-								<p class="starPoint"></p><p class="myPostCD"></p>
+								<p class="myPostCD"></p>
 							</div>
 						</div>
 					</c:otherwise>

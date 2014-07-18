@@ -10,7 +10,6 @@
 				$(".starPoint").text(rate);
 				starGrade = rate;
 				$('input[name=starGrade]').attr('value', starGrade);
-				alert($("#starGrade").val());
 			}
 		});
 
@@ -192,23 +191,17 @@
 
 
 					var totalComment = data.whole.myComment;
-					alert("myStarPoint null before123");
 					
 
 					
 					if((totalComment == null) || (totalComment=="")){
-						alert("myStarPoint null");
-
 						$(".myStarPoint2").show("fast");
 						$(".myStarPoint1").hide("fast");
 						$(".pointModifyWrap").hide();
 						$(".pointText").removeAttr("disabled");
 					}else{
-						
-						alert("ooooooooooooo");
 						var myStarPoint = data.whole.myComment.memGrade;
 						var myComment = data.whole.myComment.comment;
-						alert("myStarPoint null before2222222222222222");
 						$(".pointText").attr("disabled","disabled");
 						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
 						$(".pointText").attr("value",myComment);
@@ -216,14 +209,11 @@
 						$(".myStarPoint2").hide("fast");
 						$(".pointModifyWrap").show();
 						$(".pointModifyWrap").animate( { left:'710px' }, 500 );
-						alert("oooooooooooendendendend");
-
 					}
 
 					
 					var myPostCD = data.whole.myComment.postCD;
 					$(".myPostCD").text(myPostCD);
-					alert("success");
 
 					
 				}//success End
@@ -233,9 +223,7 @@
 		/***********Ajax JSoN : 내 평점 올리기 ************/
 		$(".pointSubmit").click(function() {
 			var pointText=$(".pointText").val();
-			var starPoint=$(".starPoint").val();
 			var starGrade=$("#starGrade").val();
-			alert("starGrade : "+starGrade);
 
 			var pointTextLength = pointText.length;
 		    var maxLength = 100;
@@ -246,7 +234,7 @@
 				 $(".overCompleted").fadeOut(3000);
 				 return false;
 		     }
-		     if(pointTextLength <= 0){
+		     if(pointTextLength <= 0 || pointText==" "){
 		    	 $(".overCompletedP").text("한글자이상 적어주세요.");
 				 $(".overCompleted").show();
 				 $(".overCompleted").fadeOut(3000);
