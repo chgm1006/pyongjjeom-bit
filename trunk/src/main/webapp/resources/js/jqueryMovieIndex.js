@@ -163,7 +163,7 @@
 
 
 					var commentList = data.whole.commentList;
-					var content = '<br><h3 class="overContTitle">코멘트</h3>';
+					var content = '<div class="clear"></div><h3 class="overContTitle">코멘트</h3>';
 					
 
 					var list = commentList;
