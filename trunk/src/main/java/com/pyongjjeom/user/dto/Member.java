@@ -6,8 +6,7 @@ package com.pyongjjeom.user.dto;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  * <pre>
@@ -64,7 +63,7 @@ public class Member {
 	private String commReplyChk = "";
 
 	private String fileName;
-	private MultipartFile fileData;
+	private CommonsMultipartFile fileData;
 
 	public String getMemCD() {
 		return memCD;
@@ -210,11 +209,11 @@ public class Member {
 		this.fileName = fileName;
 	}
 
-	public MultipartFile getFileData() {
+	public CommonsMultipartFile getFileData() {
 		return fileData;
 	}
 
-	public void setFileData(MultipartFile fileData) {
+	public void setFileData(CommonsMultipartFile fileData) {
 		this.fileData = fileData;
 	}
 
