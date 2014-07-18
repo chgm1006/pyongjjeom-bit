@@ -23,6 +23,15 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="url" value="#{db['jdbc.url']}" />
 		<property name="username" value="#{db['jdbc.username']}" />
 		<property name="password" value="#{db['jdbc.password']}" />
+<!-- 		<property name="maximumActiveConnections" value="5" /> -->
+<!-- 		<property name="maximumIdleConnections" value="3" /> -->
+<!-- 		<property name="maximumWait" value="60000" /> -->
+		<!-- validationQuery:유효 검사용 쿼리( 1개 이상의 row를 반환하는 쿼리를 넣어주면 된다. ) -->
+<!-- 		<property name="validationQuery" value="select 1" /> -->
+		<!-- testOnBorrow:컨넥션이 놀고 있을때 -_-; validationQuery 를 이용해서 유효성 검사를 할지 여부. -->
+<!-- 		<property name="testOnBorrow" value="true" /> -->
+		<!-- timeBetweenEvictionRunsMillis:해당 밀리초마다 validationQuery 를 이용하여 유효성 검사 진행 -->
+<!-- 		<property name="timeBetweenEvictionRunsMillis" value="7200000" /> -->
 	</bean>
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
