@@ -81,8 +81,8 @@
 		});
 
 		$("#inviteFriends").click(function() {
-			fnInviteFriends();
 			console.log("1111");
+			fnInviteFriends();
 		});
 
 	});
@@ -92,7 +92,7 @@
 <body>
 	<div id="fb-root"></div>
 	<header>
-
+${member }
 		<div class="topMenu">
 			<a class="logo" href="movieIndex.do"></a>
 			<div class="leftMenu">
