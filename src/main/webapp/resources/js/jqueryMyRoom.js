@@ -83,7 +83,7 @@
 				var postCD=$("#postCD").html();
 				var pointText=$(".pointText").val();
 
-				
+		
 				var pointTextLength = pointText.length;
 			    var maxLength = 20;
 			     
