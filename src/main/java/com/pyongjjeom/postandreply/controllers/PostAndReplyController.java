@@ -109,12 +109,100 @@ public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 		return paramMap;
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String getReply(String memCD, String conCD) {
-		return null;
-	}
+//Post CD , comment, memGrade 필요 
+@ResponseBody
+@RequestMapping(value = "postingUpdateJson.do", method = RequestMethod.POST)
+public Map postingUpdate(@RequestBody Map paramMap,HttpServletRequest request) {
+	String postCD = (String) paramMap.get("name");
+	String coment = (String) paramMap.get("data");
+	String memGrade = (String) paramMap.get("data");
+	
+	Post post = new Post();
+	System.out.println(request.getParameter("postCD"));
+	System.out.println(request.getParameter("memGrade"));
 
-	@RequestMapping(value = "updatePost.do", method = RequestMethod.GET)
+	post.setPostCD(postCD);
+	post.setMemGrade(Double.parseDouble(memGrade));
+	post.setComment(coment);
+	reviewDbToView(post);
+	parService.updatePost(post);
+	System.out.println(post.toString());
+	return paramMap;
+}
+
+
+
+
+
+
+
+
+//////// reply  insert / update / delete 
+
+//post CD,reply 받기  memCD - session 에서 추출 
+@ResponseBody
+@RequestMapping(value = "replyInsertJson.do", method = RequestMethod.POST)
+public Map replyInsert( @RequestBody Map paramMap,HttpServletRequest request) {
+
+	String postCD = (String) paramMap.get("name");
+	String replyStr = (String) paramMap.get("data");
+	
+	Reply reply 	= new Reply();
+	//개행 적용 
+	replyStr=replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
+			.replaceAll("\u0020", "&nbsp;");
+	System.out.println(postCD + " ////" + replyStr);
+	
+	httpSession = request.getSession();
+	Member member = (Member) httpSession.getAttribute("member");
+	reply.setMemCD(member.getMemCD());
+	reply.setReplyCD(code.getReplyCD("R"));
+	reply.setReply(replyStr);
+	reply.setPostCD(postCD);
+	parService.insertReply(reply);
+	
+	return paramMap;
+}
+
+
+//reply Code ,reply 필요 
+@ResponseBody
+@RequestMapping(value = "replyUpdateJson.do", method = RequestMethod.POST)
+public Map replyUpdate(@RequestBody Map paramMap,HttpServletRequest request) {
+	String replyCD = (String) paramMap.get("name");
+	String replyStr= (String) paramMap.get("data");
+	
+	Reply reply = new Reply();
+	
+	replyStr=replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
+			.replaceAll("\u0020", "&nbsp;");
+
+	
+	reply.setReplyCD(replyCD);
+	reply.setReply(replyStr);
+	
+	parService.updateReply(reply);
+	return paramMap;
+}
+
+
+// reply Code 필요 
+@ResponseBody
+@RequestMapping(value = "replyDeleteJson.do", method = RequestMethod.POST)
+public Map replyDelete(@RequestBody Map paramMap,HttpServletRequest request) {
+	String replyCD = (String) paramMap.get("name");
+	
+	parService.deleteReply(replyCD);	
+	return paramMap;
+}
+
+
+
+
+
+
+	/*
+	 	@RequestMapping(value = "updatePost.do", method = RequestMethod.GET)
 	public String updatePost(@Valid Post post, Model model,
 			HttpServletRequest request) {
 		System.out.println(request.getParameter("postCD"));
@@ -125,8 +213,7 @@ public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 		System.out.println(post.toString());
 		return "postandreply/updatePost";
 	}
-
-	@RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
+	  @RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
 	public String updatePostOk(Post post, Model model, HttpServletRequest request)
 	{
 		reviewDbToView(post);
@@ -145,7 +232,7 @@ public Map postingDelete(@RequestBody Map paramMap,HttpServletRequest request) {
 		parService.deletePost(request.getParameter("postCD"));
 		return "postandreply/deletePost_ok";
 	}
-
+*/
 	/*
 	 * 맨처음 포스팅을 쓸때 체크해주는 것
 	 */public Post reviewViewToDb(Post post) { // DB에서 View로
