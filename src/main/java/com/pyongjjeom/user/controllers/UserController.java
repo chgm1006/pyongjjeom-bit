@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pyongjjeom.postandreply.dto.PostAndContents;
+import com.pyongjjeom.postandreply.service.PostAndReplyService;
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
@@ -42,6 +45,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private PostAndReplyService parService;
 
 	@Value("#{common['urlPath']}")
 	private String urlPath;
@@ -96,7 +102,7 @@ public class UserController {
 		urlPath = urlPath.equals(request.getServerName()) ? urlPath
 				+ "/resources/userImages/" : "http://localhost:8080/pyongjjeom"
 				+ "/resources/userImages/";
-		
+
 		System.out.println("urlPath = " + urlPath);
 		try {
 			MultipartFile file = member.getFileData();
@@ -204,6 +210,12 @@ public class UserController {
 		System.out.println("22222222");
 		System.out.println(member.toString());
 
+		List<PostAndContents> postList = parService.getPost(member.getMemCD());
+		for (PostAndContents post : postList) {
+			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
+		}
+		
+		session.setAttribute("postList", postList);
 		session.setAttribute("member", member);
 
 		return "myRoom/myRoom";

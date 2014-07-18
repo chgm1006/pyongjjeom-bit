@@ -108,6 +108,7 @@ public class LoginController {
 		log.info("logout.do");
 		Member member = (Member) session.getAttribute("member");
 		System.out.println("세션 삭제 전 member 데이터 : " + member.toString());
+		System.out.println("세션 데이터 : " + session.toString());
 		session.removeAttribute("member");
 		member = null;
 		System.out.println("세션 삭제 후 member 데이터 : " + member);
