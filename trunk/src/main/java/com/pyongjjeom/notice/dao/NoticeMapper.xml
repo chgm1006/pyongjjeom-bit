@@ -31,12 +31,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by regidate desc limit 0,5;;
 
 
-
 	</select>
+
+
+
+
 
 	<select id="getEventNoticeDatas" resultType="Notice">
 
-		select * from notice where ifnull(deleteyn,'N')='N' and category = 'EV'
+		select * from notice where
+		ifnull(deleteyn,'N')='N' and category = 'EV'
 		order by regidate desc limit 0,5;
 
 	</select>
@@ -90,32 +94,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ifnull(deleteyn,'N')='N' ;
 
 	</select>
-	
-	<select id = 	"getMoreMoreList" parameterType="Map" resultType="Notice"> 
 
-	    
-		select * from notice where
-		ifnull(deleteyn,'N')='N'  
+	<select id="getMoreNoticeList" parameterType="Map" resultType="Notice">
+
+		select * from notice
+		where	ifnull(deleteyn,'N')='N'
+		<if test="category != ''">
+			and category = #{category}
+		</if>
 		order by regidate desc limit ${row}, 5;
-	    
+
 	</select>
 
+		<select id="getAllNoticeListMore" resultType="Notice">
 
+		select b.* from (
+		SELECT
+		@rnum:=@rnum + 1 as rownum, a.*
+		FROM
+		notice a,
+		(select
+		@rnum:=0) r
+		) b
+		where b.rownum between ${startrow} and ${endrow};
+		<!-- select * from notice where ifnull(deleteyn,'N')='N' limit ${startrow},${endrow}; -->
 
-	<select id="getAllNoticeListMore" resultType="Notice">
-
-select b.* from (
-SELECT 
-    @rnum:=@rnum + 1 as rownum, a.*
-FROM
-    notice a,
-    (select @rnum:=0) r
-) b
-where b.rownum between ${startrow} and ${endrow};
-	<!-- 	 
-		select * from notice where
-		ifnull(deleteyn,'N')='N' limit ${startrow},${endrow}; -->
-		
 
 	</select>
 
