@@ -295,7 +295,7 @@ a.pointSubmit:hover,a.pointModify:hover,a.pointDelete:hover {
 	background-color: #f9be4d;
 }
 
-p.starPoint,p.myPostCD{
+p.myPostCD{
 	display:none;
 }
 
