@@ -141,13 +141,13 @@
 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/jqueryBookIndex.js"></script>
