@@ -215,6 +215,7 @@
 					var myPostCD = data.whole.myComment.postCD;
 					$(".myPostCD").text(myPostCD);
 
+					$('input[name=starGrade]').removeAttr('value');
 					
 				}//success End
 			});
