@@ -45,7 +45,7 @@ select avg(memgrade) from posting where concd=#{conCD}
 </select>
 
 	<select id="getReplyList" parameterType="String" resultType="Reply"> 
- select member.memNm,
+ select member.memNm,member.memCD,
 member.imgPath,
 reply.replycd,
 reply.reply,
