@@ -8,7 +8,8 @@
 /**************상세 슬라이드 다운*************/
 			$("dd").css("display", "none");
 			$("dl dt").click(function() {
-				
+				alert("test7788888887");
+
 				var test=$("#postCD",(this)).html();
 
 				var formData = {
@@ -31,10 +32,13 @@
 						console.log(e.responseText);
 					},
 					success : function(data) {
+						alert("test8");
 
 						var replyList = data.replyList;
-						var content = '<br><h3 class="overContTitle">댓글</h3>';
-
+						alert(replyList);
+						
+						
+						var content = '<h3 class="overContTitle">댓글</h3>';
 								
 						for (var i = 0; i < replyList.length; i++) {
 									content += '<div class="commentBoxLeft">';
@@ -55,9 +59,12 @@
 						}
 						
 						$(".overCont3Reply").html(content);
-
-
 						
+						alert(content);
+
+
+						alert("test9");
+
 						
 						
 					}//success End
@@ -77,6 +84,70 @@
 				
 			});
 	
+/***********Ajax JSoN : 댓글 올리기 ************/
+			$(".replyUpload").click(function() {
+				
+				alert("test12112123213");
+				
+				var postCD=$("#postCD").html();
+				var pointText=$(".pointText").val();
+				
+				alert(postCD);
+
+
+				var pointTextLength = pointText.length;
+			    var maxLength = 100;
+			     
+			     if(pointTextLength <= 0 || pointText==" "){
+			    	 $(".overCompletedP").text("한글자이상 적어주세요.");
+					 $(".overCompleted").show();
+					 $(".overCompleted").fadeOut(3000);
+					 return false;
+			     }
+			     if(pointTextLength > maxLength){
+			    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
+					 $(".overCompleted").show();
+					 $(".overCompleted").fadeOut(3000);
+					 return false;
+			     }
+
+
+				var formData = {
+					name : postCD,
+					data : pointText
+				};
+				
+				$.ajax({
+					type : "post",
+					url : "replyInsertJson.do",
+					// 				data : formData,
+	 				async : false,
+					data : JSON.stringify(formData),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					beforeSend : function() {
+						console.log(formData);
+					},
+					error : function(e) {
+						console.log(e.responseText);
+					},
+					success : function(data) {
+						alert("test2");
+
+
+							$(".overCompletedP").text("한줄평이 입력되었습니다!!");
+							$(".overCompleted").show();
+							$(".overCompleted").fadeOut(3000);
+							
+							
+							
+							
+							alert("test3");
+
+							
+					}
+				});
+			});
 	
 	
 	
