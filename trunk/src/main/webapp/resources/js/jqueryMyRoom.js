@@ -8,7 +8,6 @@
 /**************상세 슬라이드 다운*************/
 			$("dd").css("display", "none");
 			$("dl dt").click(function() {
-				alert("test7788888887");
 
 				var test=$("#postCD",(this)).html();
 
@@ -32,11 +31,8 @@
 						console.log(e.responseText);
 					},
 					success : function(data) {
-						alert("test8");
 
 						var replyList = data.replyList;
-						alert(replyList);
-						
 						
 						var content = '<h3 class="overContTitle">댓글</h3>';
 								
@@ -60,10 +56,6 @@
 						
 						$(".overCont3Reply").html(content);
 						
-						alert(content);
-
-
-						alert("test9");
 
 						
 						
@@ -87,16 +79,13 @@
 /***********Ajax JSoN : 댓글 올리기 ************/
 			$(".replyUpload").click(function() {
 				
-				alert("test12112123213");
 				
 				var postCD=$("#postCD").html();
 				var pointText=$(".pointText").val();
+
 				
-				alert(postCD);
-
-
 				var pointTextLength = pointText.length;
-			    var maxLength = 100;
+			    var maxLength = 20;
 			     
 			     if(pointTextLength <= 0 || pointText==" "){
 			    	 $(".overCompletedP").text("한글자이상 적어주세요.");
@@ -105,7 +94,7 @@
 					 return false;
 			     }
 			     if(pointTextLength > maxLength){
-			    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
+			    	 $(".overCompletedP").text("20자이내로 작성해주세요.");
 					 $(".overCompleted").show();
 					 $(".overCompleted").fadeOut(3000);
 					 return false;
@@ -132,18 +121,11 @@
 						console.log(e.responseText);
 					},
 					success : function(data) {
-						alert("test2");
 
 
 							$(".overCompletedP").text("한줄평이 입력되었습니다!!");
 							$(".overCompleted").show();
 							$(".overCompleted").fadeOut(3000);
-							
-							
-							
-							
-							alert("test3");
-
 							
 					}
 				});
