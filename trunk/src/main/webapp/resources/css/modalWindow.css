@@ -434,6 +434,12 @@ a.commentMore:active{
 	font-weight:bold;
 }
 
+.histats{
+	opacity:0.1;
+	width:5px;
+	height: 5px;
+	overflow:hidden;
+}
 
 /*-------- 모달윈도우 : 도서 상세 -------*/
 /*-------- 모달윈도우 : 도서 상세 -------*/
