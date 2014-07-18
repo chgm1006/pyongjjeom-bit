@@ -5,20 +5,20 @@
 package com.pyongjjeom.user.controllers;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.catalina.tribes.membership.MemberImpl;
-import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pyongjjeom.user.dto.Member;
@@ -78,7 +78,7 @@ public class UserController {
 
 	@RequestMapping(value = "upDateMySet.do", method = RequestMethod.POST)
 	public String updateMemberInfo(Member member, Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpSession session) {
 		MultipartFile uploadFile = member.getFileData();
 		System.out.println(uploadFile.getOriginalFilename());
 		System.out.println(member.getMemCD());
@@ -87,25 +87,131 @@ public class UserController {
 		System.out.println(member.getPasswd());
 		System.out.println(member.getBirth());
 
-		System.out.println(request.getSession().getServletContext()
-				.getRealPath("/"));
-		if (uploadFile != null) {
-			String fileName = uploadFile.getOriginalFilename();
-			member.setImgNm(fileName);
+		// System.out.println(request.getSession().getServletContext()
+		// .getRealPath("userImg").replace("\\", "/"));
+		// if (uploadFile != null) {
+		// String fileName = uploadFile.getOriginalFilename();
+		// member.setImgNm(fileName);
+		//
+		// try {
+		// // String filePath =
+		// "D:/02. Java/01. tools/eclipse-jee-kepler-SR2-Java8-win32/workspace/pyongjjeom/src/main/webapp/resources/userImages";
+		// String filePath = request.getSession().getServletContext()
+		// .getRealPath("userImg").replace("\\", "/");
+		// System.out.println("filePath = " + filePath + fileName);
+		// File file = new File("userImages");
+		// if (!file.isFile()) {
+		// if (!file.isDirectory()) {
+		// boolean dir = file.mkdir();
+		// System.out.println(dir);
+		// }
+		// }
+		// uploadFile.transferTo(file);
+		// } catch (Exception e) {
+		// System.out.println("upDateMySet.do Exception 발생....");
+		// e.printStackTrace();
+		// }
+		// }
 
-			try {
-				String filePath = "D:/02. Java/01. tools/eclipse-jee-kepler-SR2-Java8-win32/workspace/pyongjjeom/src/main/webapp/resources/userImages";
-				System.out.println("filePath = " + filePath + fileName);
-				File file = new File("userImages");
-				if (!file.exists()) {
-					// System.out.println("디렉토리 생성 실패");
-					file.mkdir();
+		String originFile = "";
+		String callingFile = "";
+		try {
+			MultipartFile file = member.getFileData();
+			String filePath = null;
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+
+			// 파일 확장자 구하기
+			int index = file.getOriginalFilename().lastIndexOf(".");
+			String fileExt = file.getOriginalFilename().substring(index + 1);
+
+			System.out.println("fileExt = " + fileExt);
+
+			if (file.getSize() > 0) {
+				inputStream = file.getInputStream();
+
+				if (file.getSize() > 200000) {
+					System.out.println("File Size:::" + file.getSize());
+					session.setAttribute("fileErrMsg", "파일 확장자가 맞지 않습니다.");
+					return "myRoom/mySet";
 				}
-				uploadFile.transferTo(file);
-			} catch (Exception e) {
-				System.out.println("upDateMySet.do Exception 발생....");
-				e.printStackTrace();
+
+				System.out.println("size::" + file.getSize());
+				filePath = request.getSession().getServletContext()
+						.getRealPath("/resources/userImages/").replace("\\", "/");
+
+				// "/resources/userImages/" 디렉토리가 없으면 디렉토리 생성
+				File f = new File(filePath);
+				if (!f.isFile()) {
+					if (!f.isDirectory()) {
+						f.mkdir();
+						System.out.println("디렉토리 생성완료");
+					}
+				}
+
+				// "jpg", "jpeg", "png", "gif"만 업로드 가능
+				if (!(fileExt.equalsIgnoreCase("jpg")
+						|| fileExt.equalsIgnoreCase("jpeg")
+						|| fileExt.equalsIgnoreCase("png") || fileExt
+							.equalsIgnoreCase("gif"))) {
+					session.setAttribute("fileErrMsg", "파일 확장자가 맞지 않습니다.");
+					return "myRoom/mySet";
+				}
+
+				outputStream = new FileOutputStream(filePath + "/"
+						+ file.getOriginalFilename());
+
+				System.out.println("filePath:" + filePath);
+				System.out.println("fileName:" + file.getOriginalFilename() + "."
+						+ fileExt);
+
+				int readBytes = 0;
+				byte[] buffer = new byte[10000];
+				while ((readBytes = inputStream.read(buffer, 0, 10000)) != -1) {
+					outputStream.write(buffer, 0, readBytes);
+				}
+				outputStream.close();
+				inputStream.close();
+				System.out.println("파일 업로드 완료");
 			}
+
+			originFile = filePath + "/" + file.getOriginalFilename();
+			callingFile = filePath + "/" + member.getMemCD() + "." + fileExt;
+			File originFileNM = new File(originFile);
+			File renameFileNM = new File(callingFile);
+
+			System.out.println("originFileNM = " + originFile);
+			System.out.println("callingFileNM = " + callingFile);
+			
+			File f = new File(callingFile);
+
+			// memCD로 변경한 이미지 파일이 이미 존재한다면, 삭제한다.
+			if (f.exists()) {
+				f.delete();
+				System.out.println((member.getMemCD() + "." + fileExt) + "이 삭제 되었습니다.");
+			}
+
+			// 파일명을 user가 하나의 파일만 올릴수 있도록 memCD로 변경
+			if (!(originFileNM.renameTo(renameFileNM))) {
+				System.out.println("파일명 변경 에러 = " + originFileNM);
+			} else {
+				System.out.println("파일명 변경.");
+			}
+			
+			// 유저가 업로드한 파일을 삭제하기 위해 File 객체를 다시 생성.
+			f = new File(originFile);
+			if (f.exists()) {
+				f.delete();
+				System.out.println(file.getOriginalFilename() + "이 삭제되었습니다.");
+			} else {
+				System.out.println(file.getOriginalFilename() + "파일이 존재하지 않습니다.");
+			}
+
+			member.setImgPath(callingFile);
+			// ..........................................
+		} catch (Exception e) {
+			System.out.println("upDateMySet.do Exception 발생....");
+			e.printStackTrace();
 		}
 
 		System.out.println("11111");
@@ -116,10 +222,9 @@ public class UserController {
 		System.out.println("22222222");
 		System.out.println(member.toString());
 
-		HttpSession session = request.getSession();
+		member.setImgPath("callingFileNM = " + callingFile);
 		session.setAttribute("member", member);
 
 		return "myRoom/myRoom";
 	}
-
 }

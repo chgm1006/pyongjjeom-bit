@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		memNm='${memNm}',
 		birth='${birth}',
 		passwd=password('${passwd}'),
+		imgPath='${imgPath}',
 		updatedate = now(),
 		commOpenChk = '${commOpenChk}',
 		commReplyChk = '${commReplyChk}'
