@@ -99,10 +99,6 @@
 								<td class="tableCont">${movie.pubDate }</td>
 							</tr>
 
-							<tr>
-								<td class="tableTitle2">평점</td>
-								<td class="tableCont">${movie.userRating }</td>
-							</tr>
 						</table>
 						<div class="listButtonWrap">
 							<a class="listButton" href="${movie.link }" target="_blank">네이버 상세</a>
