@@ -3,10 +3,10 @@
  *
  * 1. FileName : NoticeServiceImpl.java
  * 2. Package : com.pyongjjeom.test.service
- * 3. Comment : 
+ * 3. Comment :
  * 4. 작성자  : Kimyt
- * 5. 작성일  : 2014. 6. 20. 
- * 6. 변경이력 : 
+ * 5. 작성일  : 2014. 6. 20.
+ * 6. 변경이력 :
  *                    이름     : 일자          : 근거자료   : 변경내용
  *                   ------------------------------------------------------
  *                    Kimyt : 2014. 6. 20. :            : 신규 개발.
@@ -15,7 +15,7 @@
 /*
  * Copyright yysvip.tistory.com.,LTD.
  * All rights reserved.
- * 
+ *
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
@@ -58,15 +58,15 @@ import com.pyongjjeom.notice.dto.NoticeCode;
 public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeMapper noticeMapper;
-	
+
 	private static HashMap<String, String> param = new HashMap<String, String>();
 
 	/**
 	 * <PRE>
-	 * 간략 : 
+	 * 간략 :
 	 * 상세 :
 	 * </PRE>
-	 * 
+	 *
 	 * @see com.pyongjjeom.notice.service.NoticeService#insertData(com.pyongjjeom.notice.dto.Notice)
 	 */
 	@Override
@@ -79,38 +79,38 @@ public class NoticeServiceImpl implements NoticeService {
 	/**
 	 * <PRE>
 	 * 간략 : 입력하기
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeDatas()
 	 */
 	@Override
 	public List<Notice> getAllNoticeDatas() {
 		// TODO Auto-generated method stub
-		
+
 		return noticeMapper.getAllNoticeDatas();
 	}
 
 	/**
 	 * <PRE>
-	 * 간략 : 이벤트데이터를 List 형식으로 불러오기 
-	 * 상세 : 
+	 * 간략 : 이벤트데이터를 List 형식으로 불러오기
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
 	 */
 	@Override
 	public void deleteData(String notCD) {
 		// TODO Auto-generated method stub
-		
+
 		noticeMapper.deleteData(notCD);
-		
-		
-		
+
+
+
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 삭제하기 (notCD에 해당하는 데이터 삭제)
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getCode()
 	 */
@@ -118,7 +118,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeCode> getCode() {
 		// TODO Auto-generated method stub
 		List<NoticeCode> code = noticeMapper.getCode();
-		
+
 		return code;
 	}
 
@@ -132,15 +132,15 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void editData(Notice notice) {
 		// TODO Auto-generated method stub
-		
+
 		noticeMapper.editData(notice);
-		
+
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 수정하기
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#updateData(java.lang.String)
 	 */
@@ -167,7 +167,7 @@ public class NoticeServiceImpl implements NoticeService {
 	/**
 	 * <PRE>
 	 * 간략 : 시스템데이터를 List 형식으로 불러오기
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getEventNoticeDatas()
 	 */
@@ -180,7 +180,7 @@ public class NoticeServiceImpl implements NoticeService {
 	/**
 	 * <PRE>
 	 * 간략 : 이벤트데이터를 List 형식으로 불러오기
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getDeleteNoticeDatas()
 	 */
@@ -192,8 +192,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
+	 * 간략 :
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#listMore()
 	 */
@@ -206,87 +206,63 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
+	 * 간략 :
+	 * 상세 :
 	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore(java.lang.String, int, int)
+	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreNoticeList(java.util.Map)
 	 */
 	@Override
-	public List<Notice> getAllNoticeListMore(int page, int limit) {
-		
-		System.out.println("22222222222222222222");
-		
-		int startrow = page;
-
-		System.out.println(param.put("startrow", String.valueOf(startrow)));
-		System.out.println(param.put("endrow", String.valueOf(startrow+ limit )));
-		
-		return noticeMapper.getAllNoticeListMore(param);
-		
+	public List<Notice> getMoreNoticeList(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return noticeMapper.getMoreNoticeList(paramMap);
 	}
 
 	/**
 	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
+	 * 간략 :
+	 * 상세 :
 	 * </PRE>
 	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreMoreList(java.util.Map)
 	 */
 	@Override
-	public List getMoreMoreList(Map<String, Object> paramMap) {
+	public List<Notice> getMoreMoreList(Map<String, Object> paramMap) {
 		// TODO Auto-generated method stub
-	
-		
-		
-		return noticeMapper.getMoreMoreList(paramMap);
+		return null;
 	}
-		
+
+	/**
+	 * <PRE>
+	 * 간략 :
+	 * 상세 :
+	 * </PRE>
+	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreAllList(java.util.Map)
+	 */
+	@Override
+	public List<Notice> getMoreAllList(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return noticeMapper.getMoreAllList(paramMap);
+	}
+
+
+
+
+
 	/*	int startrow = (page - 1) * 10;
 		System.out.println(startrow);
 
 		param.put("startrow", String.valueOf(startrow));
 		param.put("endrow", String.valueOf(startrow + limit));
-		
+
 		System.out.println(param.put("startrow", String.valueOf(startrow)));
 		System.out.println(param.put("endrow", String.valueOf(startrow+ limit )));
-		
+
 		List<Notice> ev=  noticeMapper.getAllNoticeListMore(param);
 
 		System.out.println("imp:e");
 		return ev;
-		
+
 	}*/
 
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore(java.util.HashMap)
-	 */
-
-
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeListMore()
-	 */
-
-
-
-
-
-
-
-	/**
-	 * <PRE>
-	 * 간략 : 삭제된데이터를 List 형식으로 불러오기
-	 * 상세 : 
-	 * </PRE>
-	 * @see com.pyongjjeom.notice.service.NoticeService#getData(com.pyongjjeom.notice.dto.Notice)
-	 */
 
 
 

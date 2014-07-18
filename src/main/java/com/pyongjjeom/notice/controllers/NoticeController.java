@@ -92,6 +92,7 @@ public class NoticeController {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
 
+		model.addAttribute("category", "SM");
 		model.addAttribute("add", list);
 		row = 0;
 		return "notice/boardList";
@@ -108,7 +109,7 @@ public class NoticeController {
 		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-
+		model.addAttribute("category", "EV");
 		model.addAttribute("add", list);
 		row = 0;
 		return "notice/boardList";
@@ -300,26 +301,31 @@ public class NoticeController {
 
 	}
 
-	@RequestMapping("/listJson.do")
-	public @ResponseBody Map<?, ?> listJson(
-			@RequestParam Map<String, Object> paramMap, ModelMap model) {
+	@RequestMapping(value = "listJson.do", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> listJson(ModelMap model,
+			HttpServletRequest request) {
+		String category = (String) request.getParameter("category"); // requestbody를
+																																	// 못받는다. 그래서
+																																	// 이렇게사용
+
+		System.out.println("name = " + category);
 
 		row = row + 5;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("row", row);
+		map.put("category", category);
+
 		System.out.println("33333333333333333333");
 
-		List<Notice> list = noticeService.getMoreMoreList(map);
+		List<Notice> list = noticeService.getMoreNoticeList(map);
 
 		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-
-		// System.out.println("JSON 테스트 결과: " + noticeService.getMoreMoreList(map));
-
 		model.put("notice", list);
 
 		return model;
+
 	}
 
-}
+}// System.out.println("JSON 테스트 결과: " + noticeService.getMoreMoreList(map));
