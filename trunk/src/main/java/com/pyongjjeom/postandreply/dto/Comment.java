@@ -63,7 +63,7 @@ public class Comment {
 		this.postCD = postCD;
 	}
 
-	private String memCD;
+	private String memCD=" ";
 	private String Comment;
 	private String memGrade;
 	private Date updateDate;

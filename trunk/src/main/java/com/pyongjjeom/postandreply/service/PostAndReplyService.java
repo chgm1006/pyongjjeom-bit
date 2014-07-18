@@ -27,9 +27,8 @@ public interface PostAndReplyService {
 
 	public List<Post> getReply(String memCD, String conCD);
 
-	public Post updatePost(String postCD);
 	
-	public void editPost (Post post);
+	public void updatePost (Post post);
 
 	public void deletePost(String postCD);
 
@@ -42,6 +41,12 @@ public interface PostAndReplyService {
 	public Comment getMyComent(String conCD, String memCD);
 
 	public List<Reply> getReplyList(String postCD);
+
+	public void insertReply(Reply reply);
+
+	public void updateReply(Reply reply);
+
+	public void deleteReply(String replyCD);
 
 	
 }

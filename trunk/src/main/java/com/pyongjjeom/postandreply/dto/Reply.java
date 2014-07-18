@@ -18,7 +18,21 @@ import java.util.Date;
  * @author : Forrest
  */
 public class Reply {
-
+	private String postCD = "";
+	/**
+	 * Comment   : 
+	 * @return the postCD
+	 */
+	public String getPostCD() {
+		return postCD;
+	}
+	/**
+	 * Comment   : 
+	 * @parameters postCD the postCD to set
+	 */
+	public void setPostCD(String postCD) {
+		this.postCD = postCD;
+	}
 	private String replyCD = "";
 	private String memCD = "";
 	private String memNm= "";
@@ -34,12 +48,19 @@ public class Reply {
 	public void setMemNm(String memNm) {
 		this.memNm = memNm;
 	}
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Reply [replyCD=" + replyCD + ", memCD=" + memCD + ", imgPath="
-				+ imgPath + ", reply=" + reply + ", spoilYn=" + spoilYn
-				+ ", updateDate=" + updateDate + ", formatUpdateDate="
-				+ formatUpdateDate + "]";
+		return "Reply [postCD=" + postCD + ", replyCD=" + replyCD + ", memCD="
+				+ memCD + ", memNm=" + memNm + ", imgPath=" + imgPath + ", reply="
+				+ reply + ", spoilYn=" + spoilYn + ", updateDate=" + updateDate
+				+ ", formatUpdateDate=" + formatUpdateDate + "]";
 	}
 	public String getReplyCD() {
 		return replyCD;

@@ -41,7 +41,7 @@ public interface PostAndReplyMapper {
 
 	public void deletePost(String postCD);
 	
-	public void editPost (Post post);
+	public void updatePost (Post post);
 
 	public void insertPost(Post post);
 
@@ -52,5 +52,11 @@ public interface PostAndReplyMapper {
 	public Comment getMyComent(Post post);
 
 	public List<Reply> getReplyList(String postCD);
+
+	public void insertReply(Reply reply);
+
+	public void updateReply(Reply reply);
+
+	public void deleteReply(String replyCD);
 
 }

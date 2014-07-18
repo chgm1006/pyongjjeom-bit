@@ -149,17 +149,12 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		parMapper.insertPost(post);
 	}
 
-	@Override
-	public Post updatePost(String postCD) {
-		// TODO Auto-generated method stub
-		return parMapper.updatePost(postCD);
-	}
 
 	@Override
-	public void editPost(Post post) {
+	public void updatePost(Post post) {
 		// TODO Auto-generated method stub
 		
-		parMapper.editPost(post);
+		parMapper.updatePost(post);
 		
 	}
 
@@ -184,8 +179,24 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 
 	@Override
 	public List<Reply> getReplyList(String postCD) {
-		// TODO Auto-generated method stub
 		return parMapper.getReplyList(postCD);
+	}
+
+	@Override
+	public void insertReply(Reply reply) {
+parMapper.insertReply(reply);		
+	}
+
+	@Override
+	public void updateReply(Reply reply) {
+		parMapper.updateReply(reply);
+		
+	}
+
+	@Override
+	public void deleteReply(String replyCD) {
+
+		parMapper.deleteReply(replyCD);
 	}
 
 }

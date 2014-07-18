@@ -20,25 +20,16 @@ ON DUPLICATE KEY update  memGrade=#{memGrade},comment=#{comment},updatedate=now(
     select posting.postcd,posting.pmemCD,posting.concd,posting.memgrade,posting.comment,contents.title,contents.director,contents.image,contents.link,contents.actor from posting,contents where posting.pmemcd=#{memCD} and ifnull(posting.deleteyn,'N')='N' and contents.concd=posting.concd order by  updatedate desc;
     </select>
     
-
-	<select id="updatePost" parameterType="String" resultType="Post">
-
-		select * from
-		posting where postcd=#{postCD};
-
-	</select> 
 	
-	<update id="editPost" parameterType="Post">
+	<update id="updatePost" parameterType="Post">
 		update posting
-		set memgrade=#{memGrade},comment=#{comment}, 
-		review=#{review},updatedate=now()
+		set memgrade=#{memGrade},comment=#{comment},updatedate=now()
 		where postcd=#{postCD} 
 
 	</update>
 	
 	<delete id="deletePost" parameterType="String">
 		DELETE FROM posting WHERE 	postcd= #{postCD};
-
 	</delete>
 	
 	<select id="getComent" parameterType="String" resultType="Comment"> 
@@ -61,6 +52,22 @@ reply.reply,
 reply.updatedate from reply,member where  reply.postcd=#{postCD} and reply.memcd=member.memcd
 order by  reply.updatedate desc;    </select>
 
-
+		<insert id="insertPost" parameterType="Reply">
+	INSERT INTO reply
+		(replycd,postcd,memcd,reply,regidate,updatedate)
+		values
+		(#{replyCD},#{postCD},#{memCD},#{reply},now(),now())
+	</insert>
+	
+	<update id="updateReply" parameterType="Reply">
+		update reply
+		set reply=#{reply},updatedate=now()
+		where replycd=#{replyCD} 
+	</update>
+	
+	<delete id="deleteReply" parameterType="String">
+		DELETE FROM reply WHERE 	reply= #{replyCD};
+	</delete>
+	
 </mapper>
 
