@@ -125,16 +125,16 @@
 <!-- /// 모달윈도우JSP  INCLUDE /// -->
 <%@ include file="../common/modalMovieIndex.jsp"%>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
-
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>		
 <script src="${pageContext.request.contextPath}/resources/js/jqueryMovieIndex.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
+
+
 
 </body>
 </html>
