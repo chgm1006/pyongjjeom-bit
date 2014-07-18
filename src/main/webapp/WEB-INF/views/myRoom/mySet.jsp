@@ -191,31 +191,25 @@ $(document).ready(function(){
 		<div class="row">
 
 			<div class="register span6">
-				<form id="register" name="register" action="upDateMySet.do" method="post" enctype="multipart/form-data">
+				<form id="register" name="register" action="upDateMySet.do" method="post"
+					enctype="multipart/form-data">
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
-					
-					<label for="fileData" id="fileData">File</label><br/>
-          <input id="fileData" name="fileData" type="file"/>
-          
-					<input type="hidden" name="memCD" value="${member.memCD}"> 
-					<input type="hidden" name="email" value="${member.email}"> 
-					
-					<label for="email">이메일</label> 
-					<input type="text" id="email" value="${member.email}" disabled="disabled"> 
-					
-					<label for="name">이름</label> 
-					<input type="text" id="name" name="memNm" value="${member.memNm}"> 
-					
-					<label for="birth">생년월일</label> 
-					<input type="text" id="birth" name="birth" value="${member.birth}"> 
-					
-					<label for="password">비밀번호</label> 
-					<input type="password" id="password" name="passwd" placeholder="비밀번호...">
-					
-					<label for="password_check">비밀번호확인</label> 
-					<input type="password" id="password_check" name="password_check" placeholder="비밀번호확인...">
+
+					<label for="fileData" id="fileData">File</label><span class='red'> ${fileErrMsg }</span><br /> <input id="fileData"
+						name="fileData" type="file" /> <input type="hidden" name="memCD"
+						value="${member.memCD}"> <input type="hidden" name="email"
+						value="${member.email}"> <label for="email">이메일</label> <input
+						type="text" id="email" value="${member.email}" disabled="disabled">
+
+					<label for="name">이름</label> <input type="text" id="name" name="memNm"
+						value="${member.memNm}"> <label for="birth">생년월일</label> <input
+						type="text" id="birth" name="birth" value="${member.birth}"> <label
+						for="password">비밀번호</label> <input type="password" id="password"
+						name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
+					<input type="password" id="password_check" name="password_check"
+						placeholder="비밀번호확인...">
 
 
 
