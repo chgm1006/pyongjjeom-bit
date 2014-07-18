@@ -51,9 +51,8 @@ public class LoginController {
 
 	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String login(@Valid Model model, Member user,
-			HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+	public String login(@Valid Model model, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session) throws IOException {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -62,6 +61,8 @@ public class LoginController {
 
 		Member member = new Member(email, passwd);
 		member = loginService.login(member);
+		System.out.println("세션 등록 전 = " + member);
+
 		if (member == null) {
 			return "login/login_check1";
 		} else if (member.getMemKind().equals("D")) {
@@ -70,10 +71,10 @@ public class LoginController {
 
 		else {
 			System.out.println(member.getMemKind());
-			HttpSession session = request.getSession();
 
 			session.setAttribute("member", member);
-			System.out.println(member);
+			System.out.println("sessiong = " + member);
+			System.out.println(session.getAttribute("member"));
 			System.out.println(request.getSession() + "로그인세션등록완료");
 			return "contents/movieIndex";
 		}

@@ -15,6 +15,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Value("#{common['urlPath']}")
+	private String urlPath;
 
 	@RequestMapping(value = "deleteMember.do", method = RequestMethod.GET)
 	public String deleteMember(@Valid HttpServletRequest request) {
@@ -115,6 +119,9 @@ public class UserController {
 
 		String originFile = "";
 		String callingFile = "";
+		urlPath = urlPath.equals(request.getServerName()) ? urlPath
+				+ "resources/userImages/" : "http://localhost:8080/pyongjjeom/"
+				+ "resources/userImages/";
 		try {
 			MultipartFile file = member.getFileData();
 			String filePath = null;
@@ -182,7 +189,7 @@ public class UserController {
 
 			System.out.println("originFileNM = " + originFile);
 			System.out.println("callingFileNM = " + callingFile);
-			
+
 			File f = new File(callingFile);
 
 			// memCD로 변경한 이미지 파일이 이미 존재한다면, 삭제한다.
@@ -197,7 +204,7 @@ public class UserController {
 			} else {
 				System.out.println("파일명 변경.");
 			}
-			
+
 			// 유저가 업로드한 파일을 삭제하기 위해 File 객체를 다시 생성.
 			f = new File(originFile);
 			if (f.exists()) {
@@ -207,7 +214,7 @@ public class UserController {
 				System.out.println(file.getOriginalFilename() + "파일이 존재하지 않습니다.");
 			}
 
-			member.setImgPath(callingFile);
+			member.setImgPath(urlPath + member.getMemCD() +"."+ fileExt);
 			// ..........................................
 		} catch (Exception e) {
 			System.out.println("upDateMySet.do Exception 발생....");
@@ -222,7 +229,6 @@ public class UserController {
 		System.out.println("22222222");
 		System.out.println(member.toString());
 
-		member.setImgPath("callingFileNM = " + callingFile);
 		session.setAttribute("member", member);
 
 		return "myRoom/myRoom";
