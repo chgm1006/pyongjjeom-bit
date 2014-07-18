@@ -20,13 +20,14 @@
 
 
 
-
+${user }
 			<div class="myRoomMyFaceWrap">
 				<a href="userRoomLink.do?memCD=${user.memCD }" class="myRoomMyFaceLink">
 					<img class="myRoomMyFace" src="${user.imgPath}">
 				</a>
 			</div>
-			<p class="myRoomMyFaceP"><string>${user.memNm}</string>님이 올린 평점</p>
+			<p class="myRoomMyFaceP"><strong>${user.memNm}</strong>님이 올린 평점</p>
+		</div>
 		</div>
 		<div class="clear"></div>
 		<!---- 한줄평 확인 플로팅 창 ---->

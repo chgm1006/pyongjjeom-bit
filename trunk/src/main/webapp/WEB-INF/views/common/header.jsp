@@ -92,7 +92,6 @@
 <body>
 	<div id="fb-root"></div>
 	<header>
-${member }
 		<div class="topMenu">
 			<a class="logo" href="movieIndex.do"></a>
 			<div class="leftMenu">
@@ -119,10 +118,10 @@ ${member }
 			</div>
 
 			<div class="rightMenu">
-		
-			<div class="myFaceWrap">
-				<img class="myFace" src="${member.imgPath}">
-			</div>
+
+				<div class="myFaceWrap">
+					<img class="myFace" src="${member.imgPath}">
+				</div>
 				<ul>
 					<c:choose>
 						<c:when test="${member==null}">
@@ -159,10 +158,9 @@ ${member }
 							<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a>
 								<div class="myRoomHidden">
 									<a class="myRoomSub" href="myRoom.do">My 평점</a><br> <a
-										class="myRoomSub" id="inviteFriends">친구초대</a><br> 
-										<a class="myRoomSub" id="FBLogout" style="cursor: pointer;">로그아웃</a><br>
-									<a class="myRoomSub" href="logout.do">로그아웃ㄱ</a><br> <a
-										class="myRoomSub" href="mySet.do">설정</a><br>
+										class="myRoomSub" id="inviteFriends">친구초대</a><br> <a
+										class="myRoomSub" id="FBLogout" style="cursor: pointer;">로그아웃</a><br>
+									<a class="myRoomSub" href="mySet.do">설정</a><br>
 								</div></li>
 						</c:otherwise>
 					</c:choose>

@@ -91,37 +91,13 @@ public class UserController {
 		System.out.println(member.getPasswd());
 		System.out.println(member.getBirth());
 
-		// System.out.println(request.getSession().getServletContext()
-		// .getRealPath("userImg").replace("\\", "/"));
-		// if (uploadFile != null) {
-		// String fileName = uploadFile.getOriginalFilename();
-		// member.setImgNm(fileName);
-		//
-		// try {
-		// // String filePath =
-		// "D:/02. Java/01. tools/eclipse-jee-kepler-SR2-Java8-win32/workspace/pyongjjeom/src/main/webapp/resources/userImages";
-		// String filePath = request.getSession().getServletContext()
-		// .getRealPath("userImg").replace("\\", "/");
-		// System.out.println("filePath = " + filePath + fileName);
-		// File file = new File("userImages");
-		// if (!file.isFile()) {
-		// if (!file.isDirectory()) {
-		// boolean dir = file.mkdir();
-		// System.out.println(dir);
-		// }
-		// }
-		// uploadFile.transferTo(file);
-		// } catch (Exception e) {
-		// System.out.println("upDateMySet.do Exception 발생....");
-		// e.printStackTrace();
-		// }
-		// }
-
 		String originFile = "";
 		String callingFile = "";
 		urlPath = urlPath.equals(request.getServerName()) ? urlPath
-				+ "resources/userImages/" : "http://localhost:8080/pyongjjeom/"
-				+ "resources/userImages/";
+				+ "/resources/userImages/" : "http://localhost:8080/pyongjjeom"
+				+ "/resources/userImages/";
+		
+		System.out.println("urlPath = " + urlPath);
 		try {
 			MultipartFile file = member.getFileData();
 			String filePath = null;
@@ -169,8 +145,7 @@ public class UserController {
 						+ file.getOriginalFilename());
 
 				System.out.println("filePath:" + filePath);
-				System.out.println("fileName:" + file.getOriginalFilename() + "."
-						+ fileExt);
+				System.out.println("fileName:" + file.getOriginalFilename());
 
 				int readBytes = 0;
 				byte[] buffer = new byte[10000];
@@ -214,7 +189,7 @@ public class UserController {
 				System.out.println(file.getOriginalFilename() + "파일이 존재하지 않습니다.");
 			}
 
-			member.setImgPath(urlPath + member.getMemCD() +"."+ fileExt);
+			member.setImgPath(urlPath + member.getMemCD() + "." + fileExt);
 			// ..........................................
 		} catch (Exception e) {
 			System.out.println("upDateMySet.do Exception 발생....");

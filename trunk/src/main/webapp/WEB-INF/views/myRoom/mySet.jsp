@@ -62,7 +62,7 @@ $(document).ready(function(){
 					showMonthAfterYear : true,
 					showAnim : "slide", // 애니메이션을 적용한다.
 					yearSuffix : '년',
-					showAnim : 'slideDown',
+					showAnim : 'slideDown'
 				});
 
 		$('.links a.home').tooltip();
@@ -77,6 +77,7 @@ $(document).ready(function(){
 				$(this).find("label[for='birth']").html('생년월일');
 				$(this).find("label[for='password']").html('비밀번호');
 				$(this).find("label[for='password_check']").html('비밀번호확인');
+				$(this).find("label[for='fileData']").html('비밀번호확인');
 				
 				// //
 				var email = $(this).find('input#email').val();
@@ -91,8 +92,6 @@ $(document).ready(function(){
 				var regName = /^[가-힣]+$/;
 				// 생일 유효성 검사
 				var regBirth = /^[0-9]+$/;
-// 				console.log("1111");
-// 				return false;
 				if (email == '') {
 					$(this)
 							.find("label[for='email']")
@@ -174,9 +173,29 @@ $(document).ready(function(){
 					$(this).find("label[for='password_check'] span").fadeIn(
 							'medium');
 					return false;
-				}
+				};
 			});
+	
+	
+	$("#fileData").change(function() {
+		imgThumbnail(this);
+		});
+
 });
+
+function imgThumbnail(imgObj) {
+	if (imgObj.files && imgObj.files[0]) {
+	console.log(imgObj.files);
+	var reader = new FileReader();
+	reader.onload = function(e) {
+	$("#userImg").attr("src", e.target.result).css({
+	"width" : "100px",
+	"height" : "100px"
+	});
+	};
+	reader.readAsDataURL(imgObj.files[0]);
+	}
+}
 </script>
 
 
@@ -197,19 +216,19 @@ $(document).ready(function(){
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 
-					<label for="fileData" id="fileData">File</label><span class='red'> ${fileErrMsg }</span><br /> <input id="fileData"
-						name="fileData" type="file" /> <input type="hidden" name="memCD"
-						value="${member.memCD}"> <input type="hidden" name="email"
-						value="${member.email}"> <label for="email">이메일</label> <input
-						type="text" id="email" value="${member.email}" disabled="disabled">
-
-					<label for="name">이름</label> <input type="text" id="name" name="memNm"
-						value="${member.memNm}"> <label for="birth">생년월일</label> <input
-						type="text" id="birth" name="birth" value="${member.birth}"> <label
-						for="password">비밀번호</label> <input type="password" id="password"
-						name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
-					<input type="password" id="password_check" name="password_check"
-						placeholder="비밀번호확인...">
+					<label for="fileData">File <span class='red'> ${fileErrMsg }</span></label>
+					<img id="userImg" src="${member.imgPath}" width="100" height="100"
+						align="left"> <input id="fileData" name="fileData" type="file" /> <input
+						type="hidden" name="memCD" value="${member.memCD}"> <input
+						type="hidden" name="email" value="${member.email}"> <label
+						for="email">이메일</label> <input type="text" id="email"
+						value="${member.email}" disabled="disabled"> <label for="name">이름</label>
+					<input type="text" id="name" name="memNm" value="${member.memNm}">
+					<label for="birth">생년월일</label> <input type="text" id="birth" name="birth"
+						value="${member.birth}"> <label for="password">비밀번호</label> <input
+						type="password" id="password" name="passwd" placeholder="비밀번호...">
+					<label for="password_check">비밀번호확인</label> <input type="password"
+						id="password_check" name="password_check" placeholder="비밀번호확인...">
 
 
 
