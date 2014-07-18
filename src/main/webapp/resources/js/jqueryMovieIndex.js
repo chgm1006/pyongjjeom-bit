@@ -8,12 +8,13 @@
 		$(".basic").jRating({
 			onClick : function(element, rate) {
 				$(".starPoint").text(rate);
-				memGrade = rate;
-				$('input[name=memGrade]').attr('value', memGrade);
+				starGrade = rate;
+				$('input[name=starGrade]').attr('value', starGrade);
+				alert($("#starGrade").val());
 			}
 		});
 
-		
+
 /**********************ScrollTop button PLUG-IN******************/
     smoothScroll.init();
 
@@ -161,7 +162,7 @@
 						$(".previewIframe").attr("src","");
 							});
 
-					
+
 					var commentList = data.whole.commentList;
 					var content = '<br><h3 class="overContTitle">코멘트</h3>';
 					
@@ -188,33 +189,41 @@
 					}
 					content += '<a href="#" class="commentMore">더보기</a>';
 					$(".overCont3").html(content);
+
+
+					var totalComment = data.whole.myComment;
+					alert("myStarPoint null before123");
 					
-					var myComment = data.whole.myComment.comment;
-					$(".pointText").attr("value",myComment);
-					if(myComment == null){
-						$(".pointText").removeAttr("disabled");
-					}else{
-						$(".pointText").attr("disabled","disabled");
-					}
+
 					
-					var myStarPoint = data.whole.myComment.memGrade;
-					$(".starPoint").text(myStarPoint);
-					if(myStarPoint == null){
+					if((totalComment == null) || (totalComment=="")){
+						alert("myStarPoint null");
+
 						$(".myStarPoint2").show("fast");
 						$(".myStarPoint1").hide("fast");
 						$(".pointModifyWrap").hide();
-
+						$(".pointText").removeAttr("disabled");
 					}else{
 						
+						alert("ooooooooooooo");
+						var myStarPoint = data.whole.myComment.memGrade;
+						var myComment = data.whole.myComment.comment;
+						alert("myStarPoint null before2222222222222222");
+						$(".pointText").attr("disabled","disabled");
 						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
+						$(".pointText").attr("value",myComment);
 						$(".myStarPoint1").show("fast");
 						$(".myStarPoint2").hide("fast");
-						$(".pointModifyWrap").attr("left","710px");
+						$(".pointModifyWrap").show();
+						$(".pointModifyWrap").animate( { left:'710px' }, 500 );
+						alert("oooooooooooendendendend");
+
 					}
-					
+
 					
 					var myPostCD = data.whole.myComment.postCD;
 					$(".myPostCD").text(myPostCD);
+					alert("success");
 
 					
 				}//success End
@@ -225,11 +234,13 @@
 		$(".pointSubmit").click(function() {
 			var pointText=$(".pointText").val();
 			var starPoint=$(".starPoint").val();
+			var starGrade=$("#starGrade").val();
+			alert("starGrade : "+starGrade);
 
 			var pointTextLength = pointText.length;
 		    var maxLength = 100;
 		     
-		     if((starPoint == null) || (starPoint == "")){
+		     if((starGrade == null) || (starGrade == "") || (starGrade == 0)){
 		    	 $(".overCompletedP").text("별점을 체크해주세요.");
 				 $(".overCompleted").show();
 				 $(".overCompleted").fadeOut(3000);
@@ -252,7 +263,7 @@
 
 
 			var formData = {
-				name : starPoint,
+				name : starGrade,
 				data : pointText
 			};
 			
@@ -275,7 +286,7 @@
 
 						$(".pointText").attr("disabled","disabled");
 					
-						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starPoint+".png");
+						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starGrade+".png");
 						$(".myStarPoint1").show("fast");
 						$(".myStarPoint2").hide("fast");
 						$(".pointModifyWrap").show();
