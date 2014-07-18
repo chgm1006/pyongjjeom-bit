@@ -66,7 +66,7 @@ order by  reply.updatedate desc;    </select>
 	</update>
 	
 	<delete id="deleteReply" parameterType="String">
-		DELETE FROM reply WHERE 	reply= #{replyCD};
+		DELETE FROM reply WHERE 	replyCD= #{replyCD};
 	</delete>
 	
 </mapper>
