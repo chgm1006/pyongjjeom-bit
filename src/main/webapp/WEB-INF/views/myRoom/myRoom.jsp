@@ -17,8 +17,14 @@
 <article>
 	<div class="myPageWrap">
 		<div class="title3">
+
+
+
+
 			<div class="myRoomMyFaceWrap">
-				<img class="myRoomMyFace" src="${user.imgPath}">
+				<a href="userRoomLink.do?memCD=${user.memCD }" class="myRoomMyFaceLink">
+					<img class="myRoomMyFace" src="${user.imgPath}">
+				</a>
 			</div>
 			<p class="myRoomMyFaceP"><string>${user.memNm}</string>님이 올린 평점</p>
 		</div>
@@ -113,7 +119,7 @@
 										<div class="commentBoxLeft">
 											<div class="userPhoto">
 												<a href="userRoomLink.do?memCD=${member.memCD }"
-													class="userRoomLink"> <img src="${member.imgPath }">
+													class="userRoomLink"> <img class="userImgPath" src="${member.imgPath }">
 												</a>
 											</div>
 											<div class="commentName">${member.memNm }</div>
@@ -121,7 +127,7 @@
 
 
 										<div class="myPoint">
-											<textarea class="pointText"></textarea>
+											<textarea class="pointText" placeholder="20자이내로 적어주세요."></textarea>
 											<a class="replyUpload">올리기</a>
 											<p class="starPoint"></p>
 											<p class="myPostCD"></p>
