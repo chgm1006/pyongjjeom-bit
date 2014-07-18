@@ -612,6 +612,7 @@ public class ContentController {
 				myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
 						.replaceAll("&nbsp;", "\u0020"));
 			}
+			
 			map.put("commentList", commentList);
 			map.put("myComment", myComment);
 		}
