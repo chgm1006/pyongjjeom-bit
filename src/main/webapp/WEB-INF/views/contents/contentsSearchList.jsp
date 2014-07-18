@@ -17,7 +17,7 @@
 <!-- #################  Top으로 이동  ################# -->
 <!-- ########################################### -->
 		<a  id="quick" href="article" data-scroll>
-			<img class="quickImg" src="${pageContext.request.contextPath}/resources/img/forTop1.png">
+			<img class="quickImg" src="">
 		</a>
 	
 		<div class="contentsList">
@@ -56,10 +56,6 @@
 							<tr>
 								<td class="tableTitle2">개봉년도</td>
 								<td class="tableCont">${movie.pubDate }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">평점</td>
-								<td class="tableCont">${movie.userRating }</td>
 							</tr>
 						</table>
 						<div class="listButtonWrap">
