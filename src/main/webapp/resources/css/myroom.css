@@ -5,18 +5,28 @@
 	max-width:950px;
 	margin:0 auto;
 }
+/*******제목 + 사진**********/
 
-/*******test**********/
-/*******test**********/
-/*******test**********/
-/*******test**********/
-/*******test**********/
-/*******test**********/
-/*******test**********/
-
+.myRoomMyFaceWrap {
+	margin:10px 0 0 0;
+	float:left;
+	overflow: hidden;
+	width: 80px;
+	height:80px;
+	border-radius: 10px;
+}
+img.myRoomMyFace{
+	width:80px;
+	height: auto;
+}
+p.myRoomMyFaceP{
+	float:left;
+	margin:60px 0 0 20px;
+}
 
 
 /*----------///---contentsList---////--------*/
+
 
 .listWrap{
 	display:block;
@@ -74,6 +84,122 @@ p.myStarPointP {
 
 
 
+/*---하단 2---*/
+.overCont2{
+	padding:20px 50px;
+}
+
+/*---My 평점---*/
+.overPointWrap{
+	margin:0 auto;
+}
+
+/*---My 평점 : 비로그인---*/
+.notLogin{
+	margin:0 auto;
+	display:block;
+	width:700px;
+	height:50px;
+	font-size:18px;
+	color:red;
+	text-align:center;
+	line-height:50px;
+	border-radius:5px;
+	border:3px solid #ecd774;
+}
+.notLogin:hover,.notLogin:active {
+	border: 3px solid #f9e89a;
+	cursor:pointer;
+}
+
+
+/*-----Modal : Login Box-------*/
+.loginHidden2{
+	position: absolute;
+	display:none;
+	margin:0px 0 0 250px;
+	padding:15px;
+	width:250px;
+	height:200px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;	
+}
+
+
+
+
+/*---My 평점 : 로그인---*/
+.myPointWrap{
+}
+.myStarPoint{
+	float:left;
+	width:120px;
+	padding:20px 10px 0 0;
+}
+.myStarPoint1,.myStarPoint2{
+	display: none;
+	float:left;
+}
+.myPoint{
+	float:left;
+	padding:15px 0 0 0;
+}
+textarea.pointText{
+	resize:none; 
+	float:left; 
+	width:500px; 
+	padding:10px; 
+	font-size:14px;
+}
+a.replyUpload{
+	float:left;
+	display:block;
+	margin:0 0 0 8px;
+	width:100px;
+	height:50px;	
+	text-align:center;
+	line-height:50px;
+	font-size:16px;
+	cursor:pointer;
+	background-color:#f5d540;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+.pointModifyWrap{
+	position: absolute;
+	display:block;
+	margin:3px 2px 3px 0;
+	left:710px;
+	width:80px;
+	height:60px;	
+	background-color:#fbf3ce;
+}
+a.pointModify,a.pointDelete{
+	float:left;
+	display:block;
+	margin:3px;
+	width:60px;
+	height:23px;	
+	text-align:center;
+	line-height:22px;
+	font-size:14px;
+	cursor:pointer;
+	background-color:#f5d540;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+
+a.pointSubmit:hover,a.pointModify:hover,a.pointDelete:hover {
+	border: 2px solid #ffa854;
+	transition: 0.7;
+	background-color: #f9be4d;
+}
+
+p.myPostCD{
+	display:none;
+}
+
 
 
 
@@ -90,7 +216,8 @@ dd.listContent{
 	width:80%;
 	height:auto;
 	border-radius:0 0 20px 20px;
-	background-color: #e4e4e4;
+	background-color: #fbf3ce;
+	border:4px solid #e4e4e4;
 }
 .overCommentWrap{
 	float:left;
@@ -103,13 +230,13 @@ dd.listContent{
 }
 .userPhoto {
 	overflow: hidden;
-	width: 80px;
-	height: 80px;
-	border: 4px solid #fff;
-	border-radius: 15px;
+	width: 60px;
+	height: 60px;
+	border: 2px solid #fff;
+	border-radius: 5px;
 }
 .userPhoto:hover{
-	border:4px solid #ff7e00;
+	border:2px solid #ff7e00;
 }
 a.userRoomLink {
 	display: block;
@@ -117,11 +244,11 @@ a.userRoomLink {
 }
 
 a.userRoomLink img {
-	width:80px;
+	width:60px;
 	height:auto;
 }
 div.commentName{
-	width:80px;
+	width:60px;
 	text-align: center;
 }
 
@@ -176,3 +303,25 @@ a.commentMore:active{
 	font-weight:bold;
 }
 
+
+
+
+
+
+/****** 알림창 **********/
+.overCompleted{
+	position:absolute;
+	display:none;
+	left:190px;
+	top:780px;
+	padding:50px;
+	width:400px;
+	text-align:center;
+	border-radius:20px;
+	border:4px solid #999;
+	background-color:#fff;
+}
+
+p.overCompletedP{
+	font-size:30px;
+}

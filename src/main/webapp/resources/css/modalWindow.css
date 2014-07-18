@@ -207,6 +207,7 @@ a.overButton:hover{
 .overPointWrap{
 	margin:0 auto;
 }
+
 /*---My 평점 : 비로그인---*/
 .notLogin{
 	margin:0 auto;
@@ -475,7 +476,7 @@ div#glayLayerBook{
 	position: absolute;
 }
 
-
+/****** 알림창 **********/
 .overCompleted{
 	position:absolute;
 	display:none;
