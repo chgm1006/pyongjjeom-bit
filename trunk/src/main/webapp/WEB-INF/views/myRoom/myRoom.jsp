@@ -20,13 +20,13 @@
 
 
 
-${user }
+${member }
 			<div class="myRoomMyFaceWrap">
-				<a href="userRoomLink.do?memCD=${user.memCD }" class="myRoomMyFaceLink">
-					<img class="myRoomMyFace" src="${user.imgPath}">
+				<a href="userRoomLink.do?memCD=${member.memCD }" class="myRoomMyFaceLink">
+					<img class="myRoomMyFace" src="${member.imgPath}">
 				</a>
 			</div>
-			<p class="myRoomMyFaceP"><strong>${user.memNm}</strong>님이 올린 평점</p>
+			<p class="myRoomMyFaceP"><strong>${member.memNm}</strong>님이 올린 평점</p>
 		</div>
 		</div>
 		<div class="clear"></div>

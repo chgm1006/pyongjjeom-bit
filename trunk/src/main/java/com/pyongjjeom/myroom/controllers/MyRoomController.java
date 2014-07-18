@@ -75,7 +75,7 @@ public class MyRoomController {
 		for (PostAndContents post : postList) {
 			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
 		}
-		model.addAttribute("user", member);
+		model.addAttribute("member", member);
 		httpSession.setAttribute("postList", postList);
 		return "myRoom/myRoom";
 	}
