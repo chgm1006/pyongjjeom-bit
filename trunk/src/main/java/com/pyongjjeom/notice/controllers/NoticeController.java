@@ -3,10 +3,10 @@
  *
  * 1. FileName : NoticeController.java
  * 2. Package : com.pyongjjeom.test.controllers
- * 3. Comment : 
+ * 3. Comment :
  * 4. 작성자  : Kimyt
- * 5. 작성일  : 2014. 6. 20. 
- * 6. 변경이력 : 
+ * 5. 작성일  : 2014. 6. 20.
+ * 6. 변경이력 :
  *                    이름     : 일자          : 근거자료   : 변경내용
  *                   ------------------------------------------------------
  *                    Kimyt : 2014. 6. 20. :            : 신규 개발.
@@ -15,7 +15,7 @@
 /*
  * Copyright yysvip.tistory.com.,LTD.
  * All rights reserved.
- * 
+ *
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
@@ -75,7 +75,7 @@ public class NoticeController {
 		// System.out.println(list.get(0).getRegidate());
 		// System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
-		
+
 		row = 0;
 		return "notice/boardList";
 	}
@@ -134,23 +134,23 @@ public class NoticeController {
 	/*
 	 * @RequestMapping(value = "moreList.do") public String MoreList(@Valid Notice
 	 * notice, Model model) {
-	 * 
-	 * 
+	 *
+	 *
 	 * n=n+5;
-	 * 
+	 *
 	 * noticeService.getAllNoticeListMore(n, n+5);
-	 * 
+	 *
 	 * System.out.println(noticeService.getAllNoticeListMore(n, n+5));
-	 * 
+	 *
 	 * List<Notice> list = noticeService.getAllNoticeListMore(n, n+5);
-	 * 
+	 *
 	 * model.addAttribute("add", list);
-	 * 
-	 * 
+	 *
+	 *
 	 * return "notice/boardList";
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * }
 	 */
 
@@ -191,7 +191,7 @@ public class NoticeController {
 			HttpServletRequest request) {
 
 		IssueDbtoView(notice);
-		String notCD = dc.getNoticeCD("sm"); // 값이 Static이라 한번 호출할때마다 변함
+		String notCD = dc.getNoticeCD("NO"); // 값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
 
 		/*
