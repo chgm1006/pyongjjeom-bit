@@ -325,6 +325,9 @@
 					$(".overCompletedP").text("한줄평이 삭제되었습니다.");
 					$(".overCompleted").show();
 					$(".overCompleted").fadeOut(2000);
+					
+					$('input[name=starGrade]').removeAttr('value');
+
 				}
 			});
 		});
