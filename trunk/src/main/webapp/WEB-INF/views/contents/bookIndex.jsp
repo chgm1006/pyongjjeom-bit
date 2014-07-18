@@ -22,7 +22,7 @@
 <!-- #################  Top으로 이동  ################# -->
 <!-- ########################################### -->
 		<a  id="quick" href="article" data-scroll>
-			<img class="quickImg" src="${pageContext.request.contextPath}/resources/img/forTop1.png">
+			<img class="quickImg" src="">
 		</a>
 	
 <!-- ########################################### -->
