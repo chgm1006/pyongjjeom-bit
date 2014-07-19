@@ -81,7 +81,7 @@ public class UploadController {
 			HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
-		String path = request.getSession().getServletContext().getRealPath("/");
+		String path = request.getSession().getServletContext().getRealPath("userImg").replace("\\","/");
 		// //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
 		// String path =
 		// "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp";
