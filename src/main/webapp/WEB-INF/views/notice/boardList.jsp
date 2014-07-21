@@ -261,13 +261,13 @@
 <script>
 	$(document).ready(function() {
 
-		alert('${category}');
+
 		var category = {
 			category : '${category}'
 		};
 
 		$('#ajaxList').click(function() {
-			alert("111111");
+
 			alert(JSON.stringify(category));
 			$.ajax({
 
