@@ -55,15 +55,11 @@ public class MyRoomController {
 	private MyRoomService myRoomService;
 
 	private HttpSession httpSession;
-	private Friends frn;
-	private Member mem;
-	private Post post;
-	private Reply reply;
 
 	@RequestMapping(value = "myRoom.do")
-	public String listDo(Model model, HttpServletRequest request) {
+	public String listDo(Model model, HttpServletRequest request,
+			HttpSession httpSession) {
 
-		httpSession = request.getSession();
 		Member member = (Member) httpSession.getAttribute("member");
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
