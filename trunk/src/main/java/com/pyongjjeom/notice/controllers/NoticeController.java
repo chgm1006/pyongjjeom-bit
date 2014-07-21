@@ -190,15 +190,14 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
+String code = (String) request.getParameter("code");
 
 		IssueDbtoView(notice);
-		String notCD = dc.getNoticeCD("NO"); // 값이 Static이라 한번 호출할때마다 변함
+		String notCD = dc.getNoticeCD(code); // 값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
 
-		/*
-		 * notice.setIssue(notice.getIssue().replace(" ", "&nbsp;").replace("\n",
-		 * "<br>"));
-		 */
+
+
 
 		System.out.println(request.getParameter("code"));
 
