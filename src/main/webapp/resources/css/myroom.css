@@ -162,7 +162,7 @@ textarea.pointText{
 	font-size:14px;
 }
 a.replyUpload{
-	float:left;
+	float:right;
 	display:block;
 	margin:0 0 0 8px;
 	width:100px;
@@ -175,6 +175,14 @@ a.replyUpload{
 	border:2px solid #fff;
 	border-radius:5px;
 }
+a.replyUpload:hover{
+	border: 2px solid #ffa854;
+	transition: 0.7;
+	background-color: #f9be4d;
+	color:#fff;
+}
+
+	
 .pointModifyWrap{
 	position: absolute;
 	display:block;
