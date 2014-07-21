@@ -4,6 +4,7 @@
 
 package com.pyongjjeom.postandreply.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -150,6 +151,11 @@ public class PostAndReplyController {
 		parService.insertReply(reply);
 
 		List<Reply> replyList =parService.getReplyList(postCD);
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		for (Reply reply2 : replyList) {
+			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyList", replyList);
 		return map;
