@@ -1,56 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/header.jsp"%>
 
-<html>
-<head>
-
-<meta charset="utf-8">
-<title>===== 평 쩜 =====</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css">
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-<!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
-<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/loginscripts.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#FBLogin").click(function() {
-			fnLoginFB();
-		});
 
-		$("#FBLogout").click(function() {
-			fnLogout();
-		});
-
-	});
-	
-</script>
-
-</head>
-<body>
+<article>
 	${sMember.memNm }
 	<div class="register-container container">
 		<div class="row">
@@ -76,5 +40,26 @@
 			</div>
 		</div>
 	</div>
+	</article>
+	
+	
+<!-- Javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
+<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/loginscripts.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#FBLogin").click(function() {
+			fnLoginFB();
+		});
+
+		$("#FBLogout").click(function() {
+			fnLogout();
+		});
+
+	});
+	
+</script>
 </body>
 </html>
