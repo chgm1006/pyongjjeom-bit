@@ -1,6 +1,10 @@
 (function($) {
+
 	
-	
+	/************** 회원CD 갖고오기 *************/
+
+	var memberMemCD = $(".memberMemCD").html();
+	var userMemCD = $(".userMemCD").html();
  
 	 /************** 알림창 위치설정 *************/
 	
@@ -9,7 +13,9 @@
 		$(window).scroll(
 				function() {
 					$(".overCompleted").css('top',	($(document).scrollTop() + 300 + "px"));
-					$(".overCompleted").css('left',	(($(window).width()/2 - 500) + "px"));
+					$(".overCompleted").css('width','100%');
+					$(".overCompleted").css('left',"-20px");
+					
 				});
 	});
 	
@@ -37,10 +43,10 @@
 /************** 클릭한 포스팅의 댓글 갖고 오기*************/
 			$(".listHead").click(function() {
 
-				var test=$("#postCD",(this)).html();
+				var postCD=$("#postCD",(this)).html();
 
 				var formData = {
-					name : test,
+					name : postCD,
 					data : "Hello"
 				};
 				
@@ -61,12 +67,9 @@
 					success : function(data) {
 
 						var replyList = data.replyList;
-						
-						var content = '<h3 class="overContTitle">댓글</h3>';
-						var deleteAddress = "document.location='deletePost.do?postCD=${post.postCD}' ";
-						var userMemNm = $(".userMemNm").html();
-						alert(userMemNm);
 
+						var content = '<h3 class="overContTitle">댓글</h3>';
+						
 						for (var i = 0; i < replyList.length; i++) {
 									content += '<div class="commentBoxLeft">';
 									content += '<div class="userPhoto">';
@@ -74,30 +77,131 @@
 									content += '<img src="' + replyList[i].imgPath + '">';
 									content += '</a></div>';
 									content += '<div class="commentName">' + replyList[i].memNm + '</div>';
-									alert(replyList[i].memNm);
 
 									content += '</div>';
 									content += '<div class="commentBoxRight">';
-									content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
 									content += '<div class="clear"></div>';
 									content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
 									content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
 									
-									content += '<c:choose>';
-									content += '<c:when test="${member.memNm} == ' + replyList[i].memNm + '">';
-									content += '<a class="replyDeleteBtn" Onclick ='+deleteAddress+'>삭제</a>';
-									content += '</c:when>';
-									content += '<c:otherwise>';
-									content += '</c:otherwise>';
-									content += '</c:choose>';
-									
 									content += '</div>';
+									
+									if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+										content += '<a class="replyDeleteBtn">삭제</a>';
+									};
+									content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+									content += '<strong class="replyPostCD">' + postCD + '</strong>';
 
 									content += '<div class="clear"></div>';
 						}
 						
 						$(".overCont3Reply").html(content);
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						/***********Ajax JSoN : 댓글 삭제 ************/
+						$(".replyDeleteBtn").click(function() {
+							
+						 alert("t111114");
+							
+							var replyCD=$("~p", this).html();
+
+							var replyPostCD=$("~strong", this).html();
+							
+
+
+							var formData = {
+								name : replyCD,
+								data : replyPostCD
+							};
+							
+							$.ajax({
+								type : "post",
+								url : "replyDeleteJson.do",
+								// 				data : formData,
+				 				async : false,
+								data : JSON.stringify(formData),
+								contentType : "application/json; charset=utf-8",
+								dataType : "json",
+								beforeSend : function() {
+									console.log(formData);
+								},
+								error : function(e) {
+									console.log(e.responseText);
+								},
+								success : function(data) {
+									
+									
+										$(".overCompletedP").text("댓글이 삭제되었습니다!!");
+										$(".overCompleted").show();
+										$(".overCompleted").fadeOut(3000);
+										
+										$('$("~p", this)').removeAttr("div");
+
+										var replyList = data.replyList;
+										
+										var content = '<h3 class="overContTitle">댓글</h3>';
+												
+										for (var i = 0; i < replyList.length; i++) {
+													content += '<div class="commentBoxLeft">';
+													content += '<div class="userPhoto">';
+													content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+													content += '<img src="' + replyList[i].imgPath + '">';
+													content += '</a></div>';
+													content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+													content += '</div>';
+													content += '<div class="commentBoxRight">';
+													content += '<div class="clear"></div>';
+													
+													content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+													content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+													content += '</div>';
+													if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+														content += '<a class="replyDeleteBtn">삭제</a>';
+													};
+													content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+													content += '<strong class="replyPostCD">' + postCD + '</strong>';
+
+													content += '<div class="clear"></div>';
+
+										}
+										
+										$(".overCont3Reply").html(content);
+										
+										
+								}
+							});
+						});
+							
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+
 						
 					}//success End
 				});
@@ -153,6 +257,7 @@
 					},
 					success : function(data) {
 						
+						    $("textarea").val("");
 
 							$(".overCompletedP").text("한줄평이 입력되었습니다!!");
 							$(".overCompleted").show();
@@ -171,12 +276,17 @@
 										content += '<div class="commentName">' + replyList[i].memNm + '</div>';
 										content += '</div>';
 										content += '<div class="commentBoxRight">';
-										content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
 										content += '<div class="clear"></div>';
 										
 										content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
 										content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
 										content += '</div>';
+										if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+											content += '<a class="replyDeleteBtn">삭제</a>';
+										};
+										content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+										content += '<strong class="replyPostCD">' + postCD + '</strong>';
+
 										content += '<div class="clear"></div>';
 
 							}
@@ -187,9 +297,8 @@
 					}
 				});
 			});
-	
-	
-	
+			
+		
 	
 /***********모달윈도우 내 로그인창**************/
 		$(".notLogin").click(function(){
