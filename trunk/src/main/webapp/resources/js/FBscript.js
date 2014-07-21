@@ -8,8 +8,10 @@ var FB_link_url;
 var FB_accessToken;
 
 window.fbAsyncInit = function() {
-	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624"			: "1449705105272003";
-	FB_link_url = "pyongjjeom.com" == location.host ? location.host			: "localhost:8080/pyongjjeom";
+	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624"
+			: "1449705105272003";
+	FB_link_url = "pyongjjeom.com" == location.host ? location.host
+			: "localhost:8080/pyongjjeom";
 
 	FB.init({
 		appId : FB_APPID,
@@ -21,16 +23,16 @@ window.fbAsyncInit = function() {
 		oauth : true
 	});
 
-	 FB.getLoginStatus(function(response) {
-	 if (response.status === "connected") {
-		 FB_accessToken = response.authResponse.accessToken;
-//	 console.log(response.authResponse.accessToken);
-	 } else if (response.status === "not_authorized") {
-	
-	 } else {
-	 fnLogout(response);
-	 }
-	 });
+//	FB.getLoginStatus(function(response) {
+//		if (response.status === "connected") {
+//			FB_accessToken = response.authResponse.accessToken;
+//			 console.log(response.authResponse.accessToken);
+//		} else if (response.status === "not_authorized") {
+//
+//		} else {
+//			fnLogout(response);
+//		}
+//	});
 
 	FB.Event.subscribe('auth.login', function(response) {
 		console.log(response);
@@ -54,23 +56,26 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 function fnLoginFB(response) {
-	FB.login(function(response) {
-		if (response) {
-			FB.api("/me", function(response) {
-				fbUid = response.id;
-				fbName = response.first_name + " " + response.last_name;
-				fbEmail = response.email;
-				fbBirthday = StringToDate(response.birthday);
-				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
+	FB
+			.login(
+					function(response) {
+						if (response) {
+							FB.api("/me", function(response) {
+								fbUid = response.id;
+								fbName = response.first_name + " " + response.last_name;
+								fbEmail = response.email;
+								fbBirthday = StringToDate(response.birthday);
+								fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
 
-				var url = "fbLogin.do";
-				ajaxFBRegisterMember(url);
+								var url = "fbLogin.do";
+								ajaxFBRegisterMember(url);
 
-			});
-		}
-	}, {
-		scope : "public_profile, email, user_friends, user_birthday, manage_friendlists"
-	});
+							});
+						}
+					},
+					{
+						scope : "public_profile, email, user_friends, user_birthday, manage_friendlists"
+					});
 }
 
 function ajaxFBRegisterMember(url) {
@@ -107,7 +112,7 @@ function ajaxFBRegisterMember(url) {
 
 				});
 				console.log("fbLogin 종료");
-				window.location.reload(true);
+				 window.location.reload(true);
 			}
 
 		}
@@ -125,40 +130,40 @@ function StringToDate(strDate) {
 }
 
 function fnInviteFriends(code, page) {
-//	FB
-//			.api(
-//					"/me/friends?access_token="+FB_accessToken,
-//					function(response) {
-//						console.log(response);
-//						if (response && !response.error) {
-//							console.log(response);
-//							var data = response.data;
-//							var friendsList = "<table border='1'>";
-//							friendsList += "<tr><td>이름</td><td>사진 URL</td><td>is_silhouette</td></tr>";
-//							for (var i = 0; i < data.length; i++) {
-//								friendsList += "<tr>";
-//								friendsList += "<td>" + data[i].name + "</td>";
-//								friendsList += "<td><img src='" + data[i].picture.data.url
-//										+ "'/></td>";
-//								friendsList += "<td>" + data[i].picture.data.is_silhouette
-//										+ "</td>";
-//								friendsList += "</tr>";
-//							}
-//							friendsList += "</table>";
-//							$("#status").html(friendsList);
-//						}
-//					});
-	
+	// FB
+	// .api(
+	// "/me/friends?access_token="+FB_accessToken,
+	// function(response) {
+	// console.log(response);
+	// if (response && !response.error) {
+	// console.log(response);
+	// var data = response.data;
+	// var friendsList = "<table border='1'>";
+	// friendsList += "<tr><td>이름</td><td>사진 URL</td><td>is_silhouette</td></tr>";
+	// for (var i = 0; i < data.length; i++) {
+	// friendsList += "<tr>";
+	// friendsList += "<td>" + data[i].name + "</td>";
+	// friendsList += "<td><img src='" + data[i].picture.data.url
+	// + "'/></td>";
+	// friendsList += "<td>" + data[i].picture.data.is_silhouette
+	// + "</td>";
+	// friendsList += "</tr>";
+	// }
+	// friendsList += "</table>";
+	// $("#status").html(friendsList);
+	// }
+	// });
+
 	console.log(FB_accessToken);
 	FB.ui({
-		method: 'apprequests',
-		message: '자네도 평쩜에 참여해보지 않겠나???'
-//		filters:["app_non_users"]
-	}, function(response){
-    console.log(response);
-    var data = $.parseJSON(response.e2e);
-    console.log(data.submit_0);
-  });
+		method : 'apprequests',
+		message : '자네도 평쩜에 참여해보지 않겠나???'
+	// filters:["app_non_users"]
+	}, function(response) {
+		console.log(response);
+		var data = $.parseJSON(response.e2e);
+		console.log(data.submit_0);
+	});
 }
 
 function fnLogout() {
@@ -179,5 +184,5 @@ function fnLogout() {
 			console.log("fbLogout 종료");
 		}
 	});
-	window.location.reload(true);
+	 window.location.reload(true);
 }
