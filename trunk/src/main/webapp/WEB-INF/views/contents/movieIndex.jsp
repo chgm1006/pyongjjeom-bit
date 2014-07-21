@@ -114,15 +114,13 @@
 
 	<!-- Histats.com  START (html only)-->
 	<div class="histats">
-		<a href="http://www.histats.com" alt="page hit counter"
-			target="_blank"> 
+		<a href="http://www.histats.com/viewstats/?act=2&sid=2732520" target="_blank">a</a>
 			<embed src="http://s10.histats.com/28.swf"
 				flashvars="jver=1&acsid=2732520&domi=4" quality="high" width="115"
 				height="60" name="28.swf" align="middle"
 				type="application/x-shockwave-flash"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				wmode="transparent" />
-				</a> 
 			
 	</div>
 	<!-- Histats.com  END  -->
