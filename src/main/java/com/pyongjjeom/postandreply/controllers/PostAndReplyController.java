@@ -195,7 +195,7 @@ public class PostAndReplyController {
 	@RequestMapping(value = "replyDeleteJson.do", method = RequestMethod.POST)
 	public Map replyDelete(@RequestBody Map paramMap, HttpServletRequest request) {
 		String replyCD = (String) paramMap.get("name");
-		String postCD = (String) paramMap.get("date");
+		String postCD = (String) paramMap.get("data");
 		parService.deleteReply(replyCD);
 		
 		List<Reply> replyList = parService.getReplyList(postCD);
