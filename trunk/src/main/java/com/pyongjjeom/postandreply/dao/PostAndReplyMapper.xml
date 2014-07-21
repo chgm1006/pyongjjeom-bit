@@ -50,7 +50,7 @@ member.imgPath,
 reply.replycd,
 reply.reply,
 reply.updatedate from reply,member where  reply.postcd=#{postCD} and reply.memcd=member.memcd
-order by  reply.updatedate desc;    </select>
+order by  reply.updatedate asc;    </select>
 
 		<insert id="insertReply" parameterType="Reply">
 	INSERT INTO reply
