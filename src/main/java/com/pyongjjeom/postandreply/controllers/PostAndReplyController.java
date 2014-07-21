@@ -152,7 +152,7 @@ public class PostAndReplyController {
 		List<Reply> replyList =parService.getReplyList(postCD);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyList", replyList);
-		return paramMap;
+		return map;
 	}
 
 	// reply Code ,reply 필요
