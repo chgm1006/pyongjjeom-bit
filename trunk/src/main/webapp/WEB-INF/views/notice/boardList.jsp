@@ -268,7 +268,6 @@
 
 		$('#ajaxList').click(function() {
 
-			alert(JSON.stringify(category));
 			$.ajax({
 
 				type : "post",
