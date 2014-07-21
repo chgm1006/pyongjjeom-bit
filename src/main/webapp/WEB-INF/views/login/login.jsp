@@ -15,7 +15,6 @@
 
 
 <article>
-	${sMember.memNm }
 	<div class="register-container container">
 		<div class="row">
 
