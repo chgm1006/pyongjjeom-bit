@@ -15,6 +15,10 @@
 
 
 <article>
+		<!---- 한줄평 확인 플로팅 창 ---->
+		<div class="overCompleted">
+			<p class="overCompletedP"></p>
+		</div>
 	<div class="myPageWrap">
 		<div class="title3">
 
@@ -22,18 +26,14 @@
 
 
 			<div class="myRoomMyFaceWrap">
-				<a href="userRoomLink.do?memCD=${member.memCD }" class="myRoomMyFaceLink">
-					<img class="myRoomMyFace" src="${member.imgPath}">
+				<a href="userRoomLink.do?memCD=${user.memCD }" class="myRoomMyFaceLink">
+					<img class="myRoomMyFace" src="${user.imgPath}">
 				</a>
 			</div>
-			<p class="myRoomMyFaceP"><strong>${member.memNm}</strong>님이 올린 평점</p>
-		</div>
+			<p class="myRoomMyFaceP"><string>${user.memNm}</string>님이 올린 평점</p>
 		</div>
 		<div class="clear"></div>
-		<!---- 한줄평 확인 플로팅 창 ---->
-		<div class="overCompleted">
-			<p class="overCompletedP"></p>
-		</div>
+
 
 
 		<div class="postingList">
