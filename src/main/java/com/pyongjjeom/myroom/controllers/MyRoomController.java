@@ -9,10 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.myroom.service.MyRoomService;
-import com.pyongjjeom.notice.dto.Notice;
-import com.pyongjjeom.notice.dto.NoticeCode;
-import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
 import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
-import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 import com.pyongjjeom.user.service.UserService;
 
