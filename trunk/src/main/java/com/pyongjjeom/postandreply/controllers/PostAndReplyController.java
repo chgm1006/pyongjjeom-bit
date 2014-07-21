@@ -4,6 +4,8 @@
 
 package com.pyongjjeom.postandreply.controllers;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -147,6 +149,9 @@ public class PostAndReplyController {
 		reply.setPostCD(postCD);
 		parService.insertReply(reply);
 
+		List<Reply> replyList =parService.getReplyList(postCD);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("replyList", replyList);
 		return paramMap;
 	}
 
