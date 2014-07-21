@@ -17,12 +17,12 @@
 	href="${pageContext.request.contextPath}/resources/css/subMenu.css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
- 
+
 
 <!-- jQuery files -->
 
 <script>
-	
+
 </script>
 
 
@@ -30,20 +30,20 @@
 
 <!-- <script>
 	$(document).ready(function() {
-		
+
 		$("#btn").click(function(){
 			alert("11111111111111");
  		$("#more" ).load( "more.jsp" );
  		alert("222222222222");
-		
+
 		});
-	/* 
+	/*
 		$('.more').jscroll({
 				lockDirection : false,
 		    fadScrollbar : true,
 				autoTrigger: false
-		
-		
+
+
 		}); */
 	});
 			</script>
@@ -116,14 +116,14 @@
 			<div class="testdiv"></div>
 
 		</div>
-		
-	
+
+
 
 		<div class="more">
 
-			<a class="listMore" id="ajaxList"  >지난 공지사항 더보기</a>
-			
-			
+			<a class="listMore" id="ajaxList">지난 공지사항 더보기</a>
+
+
 		</div>
 	</div>
 
@@ -185,7 +185,7 @@
 
 								</td>
 							</tr>
-							<%-- 
+							<%--
 						<form:select path="code" name="code" items="${code}" itemValue="code"
 							itemLabel="codenm" />
 
@@ -197,7 +197,7 @@
 								<%-- <tr>
 					<td width="96">공지사항코드</td>
 					<td width="172">
-					
+
 					<form:select path="code">
 							<c:forEach var="codenm" items="${code}">
 								<option value="${codenm.NO}">공지사항</option>
@@ -261,18 +261,19 @@
 <script>
 	$(document).ready(function() {
 
-		/* $("#NoticeList").click(function() {
-			Json();
-		});
-		
-		 */
+		alert('${category}');
+		var category = {
+			category : '${category}'
+		};
 
 		$('#ajaxList').click(function() {
-
+			alert("111111");
+			alert(JSON.stringify(category));
 			$.ajax({
 
 				type : "post",
 				url : "listJson.do",
+				data : category,
 				dataType : "json",
 
 				success : function(notice) {
