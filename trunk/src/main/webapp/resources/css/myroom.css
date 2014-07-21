@@ -5,8 +5,9 @@
 	max-width:950px;
 	margin:0 auto;
 }
-/*******제목 + 사진**********/
 
+
+/*******제목 + 사진**********/
 .myRoomMyFaceWrap {
 	margin:10px 0 0 0;
 	float:left;
@@ -313,15 +314,10 @@ a.commentMore:active{
 
 
 
-
-
-
 /****** 알림창 **********/
 .overCompleted{
 	position:absolute;
-	display:none;
 	padding:50px;
-	width:400px;
 	text-align:center;
 	border-radius:20px;
 	border:4px solid #999;
