@@ -23,17 +23,18 @@
 		<div class="title3">
 
 
-
-
 			<div class="myRoomMyFaceWrap">
 				<a href="userRoomLink.do?memCD=${user.memCD }" class="myRoomMyFaceLink">
 					<img class="myRoomMyFace" src="${user.imgPath}">
 				</a>
 			</div>
-			<p class="myRoomMyFaceP"><string class="userMemNm">${user.memNm}</string>님이 올린 평점</p>
+			<p class="myRoomMyFaceP">
+				<string>${user.memNm}</string>님이 올린 평점
+			</p>
+			<p class="memberMemCD">${member.memCD}</p>
+			<p class="userMemCD">${user.memCD}</p>
 		</div>
 		<div class="clear"></div>
-
 
 
 		<div class="postingList">
@@ -76,24 +77,7 @@
 						<div class="overCont3">
 
 							<div class="overCont3Reply">
-
-
 							</div>
-
-
-
-
-
-							
-
-									
-
-
-
-
-
-
-
 
 							<c:choose>
 								<c:when test="${member==null}">
@@ -156,10 +140,7 @@
 									<div class="clear"></div>
 								</c:otherwise>
 							</c:choose>
-
-
 						</div>
-
 					</dd>
 				</c:forEach>
 
