@@ -20,7 +20,7 @@
 
 
 
-${member }
+
 			<div class="myRoomMyFaceWrap">
 				<a href="userRoomLink.do?memCD=${member.memCD }" class="myRoomMyFaceLink">
 					<img class="myRoomMyFace" src="${member.imgPath}">
