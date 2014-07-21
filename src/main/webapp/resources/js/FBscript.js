@@ -154,7 +154,6 @@ function fnInviteFriends(code, page) {
 	// }
 	// });
 
-	console.log(FB_accessToken);
 	FB.ui({
 		method : 'apprequests',
 		message : '자네도 평쩜에 참여해보지 않겠나???'
@@ -184,5 +183,6 @@ function fnLogout() {
 			console.log("fbLogout 종료");
 		}
 	});
+	return false;
 	 window.location.reload(true);
 }
