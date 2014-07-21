@@ -206,7 +206,6 @@ a.pointSubmit:hover,a.pointModify:hover,a.pointDelete:hover {
 }
 
 p.myPostCD{
-	display:none;
 }
 
 
@@ -279,7 +278,6 @@ p.replyCD{
 
 
 .userComment{
-	
 }
 .userDate{
 	margin:5px 0 0 0;
@@ -316,6 +314,9 @@ a.commentMore:active{
 
 /****** 알림창 **********/
 .overCompleted{
+	top:500px;
+	left:500px;
+	display:none;
 	position:absolute;
 	padding:50px;
 	text-align:center;

@@ -128,10 +128,10 @@
 
 
 										<div class="myPoint">
+											<a class="replyUpload">올리기
+											</a>
 											<textarea class="pointText" placeholder="20자이내로 적어주세요."></textarea>
-											<a class="replyUpload">올리기</a>
-											<p class="starPoint"></p>
-											<p class="myPostCD"></p>
+											<p class="myPostCD">${post.postCD }</p>
 										</div>
 									</div>
 									<div class="clear"></div>
