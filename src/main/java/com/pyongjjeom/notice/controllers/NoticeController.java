@@ -56,24 +56,11 @@ public class NoticeController {
 	public String allList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
-		// DateFormat df = new SimpleDateFormat();
-		// SimpleDateFormat df1 = new
-		// SimpleDateFormat("EEE MMM DD hh:mm:ss 'KST' yyyy",Locale.ENGLISH);
-
-		// String inString = "Tue Jul 01 18:08:56 KST 2014";
-		// ParsePosition pos = new ParsePosition(0);
-		// Date frmTime = df1.parse(inString, pos);
-		// String outString = df2.format(frmTime);
-		// System.out.println(outString);
-
 		List<Notice> list = noticeService.getAllNoticeDatas();
 
 		for (Notice noti : list) {
 			noti.setFormatUpdatedate(df2.format(noti.getUpdatedate()));
 		}
-		// list.get(0).getRegidate();
-		// System.out.println(list.get(0).getRegidate());
-		// System.out.println(list.get(0).getRegidate());
 		model.addAttribute("add", list);
 
 		row = 0;
@@ -83,8 +70,6 @@ public class NoticeController {
 	@RequestMapping(value = "systemList.do")
 	public String systemList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-
-		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 
@@ -102,8 +87,6 @@ public class NoticeController {
 	public String eventList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
-		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
 		List<Notice> list = noticeService.getEventNoticeDatas();
 
 		for (Notice noti : list) {
@@ -119,8 +102,6 @@ public class NoticeController {
 	public String deleteList(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
 
-		// SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
 
 		for (Notice noti : list) {
@@ -131,29 +112,6 @@ public class NoticeController {
 		row = 0;
 		return "notice/boardList";
 	}
-
-	/*
-	 * @RequestMapping(value = "moreList.do") public String MoreList(@Valid Notice
-	 * notice, Model model) {
-	 *
-	 *
-	 * n=n+5;
-	 *
-	 * noticeService.getAllNoticeListMore(n, n+5);
-	 *
-	 * System.out.println(noticeService.getAllNoticeListMore(n, n+5));
-	 *
-	 * List<Notice> list = noticeService.getAllNoticeListMore(n, n+5);
-	 *
-	 * model.addAttribute("add", list);
-	 *
-	 *
-	 * return "notice/boardList";
-	 *
-	 *
-	 *
-	 * }
-	 */
 
 	@RequestMapping(value = "boardList.do")
 	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
@@ -190,14 +148,11 @@ public class NoticeController {
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
 	public String writeOKDo(@Valid Notice notice, Model model,
 			HttpServletRequest request) {
-String code = (String) request.getParameter("code");
+		String code = (String) request.getParameter("code");
 
 		IssueDbtoView(notice);
 		String notCD = dc.getNoticeCD(code); // 값이 Static이라 한번 호출할때마다 변함
 		notice.setNotCD(notCD);
-
-
-
 
 		System.out.println(request.getParameter("code"));
 
@@ -264,7 +219,8 @@ String code = (String) request.getParameter("code");
 
 	/*
 	 * 맨처음 글을쓸때 체크해주는것
-	 */public Notice issueViewToDb(Notice notice) {
+	 */
+	public Notice issueViewToDb(Notice notice) {
 
 		String dbIssue = notice.getIssue();
 		dbIssue = dbIssue.replaceAll("'", "`");
@@ -275,7 +231,8 @@ String code = (String) request.getParameter("code");
 
 	/*
 	 * view에서 DB로 넘어갈때 체크해주는 것
-	 */public Notice IssueDbtoView(Notice notice) {
+	 */
+	public Notice IssueDbtoView(Notice notice) {
 		String viewIssue = notice.getIssue();
 		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
 				.replaceAll("\u0020", "&nbsp;");
@@ -286,7 +243,8 @@ String code = (String) request.getParameter("code");
 
 	/*
 	 * 수정하기를 클릭햇을때 DB에서 view로 넘어올경우 br이 그대로넘어오므로 바꿔줘야함
-	 */public Notice issueUpdateDbtoView(Notice newnotice) {
+	 */
+	public Notice issueUpdateDbtoView(Notice newnotice) {
 
 		String viewIssue = newnotice.getIssue();
 		viewIssue = viewIssue.replaceAll("<br>", "\r\n");
@@ -303,9 +261,8 @@ String code = (String) request.getParameter("code");
 	@RequestMapping(value = "listJson.do", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> listJson(ModelMap model,
 			HttpServletRequest request) {
-		String category = (String) request.getParameter("category"); // requestbody를
-																																	// 못받는다. 그래서
-																																	// 이렇게사용
+		// requestbody를 못받는다. 그래서 이렇게사용
+		String category = (String) request.getParameter("category");
 
 		System.out.println("name = " + category);
 
