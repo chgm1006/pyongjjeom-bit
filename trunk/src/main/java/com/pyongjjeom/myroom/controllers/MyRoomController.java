@@ -89,7 +89,7 @@ public class MyRoomController {
 	@ResponseBody
 	@RequestMapping(value = "myRoomJson.do", method = RequestMethod.POST)
 	public Map getReplyList(@RequestBody Map paramMap, HttpServletRequest request) {
-		String postCD = (String) paramMap.get("postCD");
+		String postCD = (String) paramMap.get("name");
 
 		System.out.println("postCD = " + postCD);
 		List<Reply> replyList = parService.getReplyList(postCD);
