@@ -75,7 +75,7 @@
 		auto_logout_link="true"></fb:login-button>
 	<button type="button" id="FBLogin">페이스북 &nbsp; 로그인</button>
 	<button type="button" id="FBLogout">페이스북 &nbsp; 로그아웃</button>
-	<input type="button" value="페이스북 친구" onclick="javascript:facebookFriend();">
+	<input type="button" value="페이스북 친구" onclick="javascript:fnInviteFriends();">
 	<input type="button" value="ajaxTest" id="ajaxTest">
 	<br>
 	<div id="status"></div>
