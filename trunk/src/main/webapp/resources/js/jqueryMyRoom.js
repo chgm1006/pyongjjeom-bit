@@ -1,9 +1,19 @@
 (function($) {
 	
 	
-	
+ 
 	 /************** 알림창 위치설정 *************/
-	 
+	
+	$(document).ready(function(){
+		 
+		$(window).scroll(
+				function() {
+					$(".overCompleted").css('top',	($(document).scrollTop() + 300 + "px"));
+					$(".overCompleted").css('left',	(($(window).width()/2 - 500) + "px"));
+				});
+	});
+	
+	
 	 /************** 평점 포인트에 "점" 넣기 *************/
 
 	$(".myStarPointP").append(" 점");
@@ -17,6 +27,7 @@
 			if ($("+dd", this).css("display") == "none") {
 				$("dd").slideUp("fast");
 				$("+dd", this).slideDown("fast");
+				    
 			} else {
 				$("+dd", this).slideUp("fast");
 			}
@@ -52,7 +63,10 @@
 						var replyList = data.replyList;
 						
 						var content = '<h3 class="overContTitle">댓글</h3>';
-								
+						var deleteAddress = "document.location='deletePost.do?postCD=${post.postCD}' ";
+						var userMemNm = $(".userMemNm").html();
+						alert(userMemNm);
+
 						for (var i = 0; i < replyList.length; i++) {
 									content += '<div class="commentBoxLeft">';
 									content += '<div class="userPhoto">';
@@ -60,14 +74,25 @@
 									content += '<img src="' + replyList[i].imgPath + '">';
 									content += '</a></div>';
 									content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+									alert(replyList[i].memNm);
+
 									content += '</div>';
 									content += '<div class="commentBoxRight">';
 									content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
 									content += '<div class="clear"></div>';
-									
 									content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
 									content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+									
+									content += '<c:choose>';
+									content += '<c:when test="${member.memNm} == ' + replyList[i].memNm + '">';
+									content += '<a class="replyDeleteBtn" Onclick ='+deleteAddress+'>삭제</a>';
+									content += '</c:when>';
+									content += '<c:otherwise>';
+									content += '</c:otherwise>';
+									content += '</c:choose>';
+									
 									content += '</div>';
+
 									content += '<div class="clear"></div>';
 						}
 						
@@ -153,7 +178,6 @@
 										content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
 										content += '</div>';
 										content += '<div class="clear"></div>';
-										alert(replyList[i].formatUpdateDate);
 
 							}
 							
