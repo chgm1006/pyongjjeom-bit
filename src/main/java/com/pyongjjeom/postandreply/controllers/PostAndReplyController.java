@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -127,12 +128,21 @@ public class PostAndReplyController {
 		return paramMap;
 	}
 
+	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
+	public String deletePost ( Model model,
+			HttpServletRequest request) {
+		request.getParameter("postCD");
+		parService.deletePost(request.getParameter("postCD"));
+		return "postandreply/deletePost_ok";
+	}
+
 	// ////// reply insert / update / delete
 
 	// post CD,reply 받기 memCD - session 에서 추출
 	@ResponseBody
 	@RequestMapping(value = "replyInsertJson.do", method = RequestMethod.POST)
-	public Map replyInsert(@RequestBody Map paramMap, HttpServletRequest request, HttpSession session) {
+	public Map replyInsert(@RequestBody Map paramMap, HttpServletRequest request,
+			HttpSession session) {
 
 		String postCD = (String) paramMap.get("name");
 		String replyStr = (String) paramMap.get("data");
@@ -150,12 +160,12 @@ public class PostAndReplyController {
 		reply.setPostCD(postCD);
 		parService.insertReply(reply);
 
-		List<Reply> replyList =parService.getReplyList(postCD);
+		List<Reply> replyList = parService.getReplyList(postCD);
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply2 : replyList) {
 			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
 		}
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyList", replyList);
 		return map;
