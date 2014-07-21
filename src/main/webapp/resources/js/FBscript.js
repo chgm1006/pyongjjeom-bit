@@ -23,16 +23,16 @@ window.fbAsyncInit = function() {
 		oauth : true
 	});
 
-//	FB.getLoginStatus(function(response) {
-//		if (response.status === "connected") {
-//			FB_accessToken = response.authResponse.accessToken;
-//			 console.log(response.authResponse.accessToken);
-//		} else if (response.status === "not_authorized") {
-//
-//		} else {
-//			fnLogout(response);
-//		}
-//	});
+	// FB.getLoginStatus(function(response) {
+	// if (response.status === "connected") {
+	// FB_accessToken = response.authResponse.accessToken;
+	// console.log(response.authResponse.accessToken);
+	// } else if (response.status === "not_authorized") {
+	//
+	// } else {
+	// fnLogout(response);
+	// }
+	// });
 
 	FB.Event.subscribe('auth.login', function(response) {
 		console.log(response);
@@ -112,7 +112,7 @@ function ajaxFBRegisterMember(url) {
 
 				});
 				console.log("fbLogin 종료");
-				 window.location.reload(true);
+				window.location.reload(true);
 			}
 
 		}
@@ -130,30 +130,6 @@ function StringToDate(strDate) {
 }
 
 function fnInviteFriends(code, page) {
-	// FB
-	// .api(
-	// "/me/friends?access_token="+FB_accessToken,
-	// function(response) {
-	// console.log(response);
-	// if (response && !response.error) {
-	// console.log(response);
-	// var data = response.data;
-	// var friendsList = "<table border='1'>";
-	// friendsList += "<tr><td>이름</td><td>사진 URL</td><td>is_silhouette</td></tr>";
-	// for (var i = 0; i < data.length; i++) {
-	// friendsList += "<tr>";
-	// friendsList += "<td>" + data[i].name + "</td>";
-	// friendsList += "<td><img src='" + data[i].picture.data.url
-	// + "'/></td>";
-	// friendsList += "<td>" + data[i].picture.data.is_silhouette
-	// + "</td>";
-	// friendsList += "</tr>";
-	// }
-	// friendsList += "</table>";
-	// $("#status").html(friendsList);
-	// }
-	// });
-
 	FB.ui({
 		method : 'apprequests',
 		message : '자네도 평쩜에 참여해보지 않겠나???'
@@ -167,22 +143,5 @@ function fnInviteFriends(code, page) {
 
 function fnLogout() {
 	var url = "logout.do";
-	console.log("fnLogout");
-	$.ajax({
-		type : "post",
-		url : url,
-		async : false,
-		contentType : "application/json; charset=utf-8",
-		dataType : "json",
-		error : function(e) {
-			console.log(e.responseText);
-		},
-		success : function(data) {
-			console.log("fbLogout 시작");
-			console.log(data);
-			console.log("fbLogout 종료");
-		}
-	});
-	return false;
-	 window.location.reload(true);
+	$(location).attr("href", url);
 }
