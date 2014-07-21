@@ -77,13 +77,12 @@ td.tableCont{
 
 img.myStarPoint {
 	float: left;
-	margin:0 10px 0 0;
+	margin:-25px 10px 0 0;
 }
 
 p.myStarPointP {
 	float: left;
-		margin:5px 10px 0 0;
-	
+	font-weight: bold;
 }
 
 
@@ -322,8 +321,6 @@ a.commentMore:active{
 
 /****** 알림창 **********/
 .overCompleted{
-	top:500px;
-	left:500px;
 	display:none;
 	position:absolute;
 	padding:50px;

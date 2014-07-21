@@ -44,29 +44,28 @@
 				$("#overLayer").hide();
 				$(".overPreviewWrap").css("display","none");
 				$(".pointText").val("");
+
 			});
 
 			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
 				var scrollTest = $(document).scrollTop();
 				$("#overLayer").css('top',scrollTest + 400 + "px");
-
 				$("#glayLayer").show();
 				$("#overLayer").fadeIn("Fast");
+
 				return false;
 			});
 			$(".exit").click(function() {
-				$("#glayLayer").hide()
+				$("#glayLayer").hide();
 				$("#overLayer").hide();
+
 			});
 
 			if ($.browser.msie && $.browser.version < 7) {
 				$(window).scroll(
 						function() {
 							$("#glayLayer").css('top', $(document).scrollTop());
-							$("#overLayer").css(
-									'top',
-									($(document).scrollTop() + $("#overLayer").height() / 2)
-											+ "px");
+							$("#overLayer").css('top',	($(document).scrollTop() + $("#overLayer").height() / 2)+ "px");
 						});
 			}
 			
@@ -216,6 +215,8 @@
 					$(".myPostCD").text(myPostCD);
 
 					$('input[name=starGrade]').removeAttr('value');
+					
+
 					
 				}//success End
 			});

@@ -30,7 +30,7 @@
 					<img class="myRoomMyFace" src="${user.imgPath}">
 				</a>
 			</div>
-			<p class="myRoomMyFaceP"><string>${user.memNm}</string>님이 올린 평점</p>
+			<p class="myRoomMyFaceP"><string class="userMemNm">${user.memNm}</string>님이 올린 평점</p>
 		</div>
 		<div class="clear"></div>
 
@@ -49,10 +49,13 @@
 							<div class="listTable">
 								<table>
 									<tr>
-										<td class="tableTitle">${post.title }</td>
+										<td class="tableTitle">${post.title }	
+										<a class="deleteBtn" Onclick ="document.location='deletePost.do?postCD=${post.postCD}' "  style="display:absolute; top: 50px;left:200px;">이것은 삭제</a>
+
+										</td>
 									</tr>
 									<tr>
-										<td class="tableCont"><img class="myStarPoint"
+										<td class="tableCont" ><img class="myStarPoint"
 											src="/pyongjjeom/resources/img/p${post.memGradeChar }.png">
 											<p class="myStarPointP">${post.memGradeChar }</p></td>
 									</tr>
@@ -76,9 +79,25 @@
 
 
 							</div>
+
+
+
+
+
+							
+
+									
+
+
+
+
+
+
+
+
 							<c:choose>
 								<c:when test="${member==null}">
-									<div c lass="notLoginWrap">
+									<div class="notLoginWrap">
 										<a class="notLogin"> <strong>로그인</strong>하시면 댓글을 남길 수
 											있습니다.
 										</a>
