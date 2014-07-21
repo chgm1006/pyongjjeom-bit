@@ -15,6 +15,7 @@
 		$("dd").css("display", "none");
 		$("dl dt").click(function() {
 			if ($("+dd", this).css("display") == "none") {
+				$("dd").slideUp("fast");
 				$("+dd", this).slideDown("fast");
 			} else {
 				$("+dd", this).slideUp("fast");
@@ -104,7 +105,6 @@
 					 $(".overCompleted").fadeOut(3000);
 					 return false;
 			     }
-					alert("test");
 
 
 				var formData = {
@@ -127,11 +127,38 @@
 						console.log(e.responseText);
 					},
 					success : function(data) {
-
+						
 
 							$(".overCompletedP").text("한줄평이 입력되었습니다!!");
 							$(".overCompleted").show();
 							$(".overCompleted").fadeOut(3000);
+							
+							var replyList = data.replyList;
+							
+							var content = '<h3 class="overContTitle">댓글</h3>';
+									
+							for (var i = 0; i < replyList.length; i++) {
+										content += '<div class="commentBoxLeft">';
+										content += '<div class="userPhoto">';
+										content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+										content += '<img src="' + replyList[i].imgPath + '">';
+										content += '</a></div>';
+										content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+										content += '</div>';
+										content += '<div class="commentBoxRight">';
+										content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+										content += '<div class="clear"></div>';
+										
+										content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+										content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+										content += '</div>';
+										content += '<div class="clear"></div>';
+										alert(replyList[i].formatUpdateDate);
+
+							}
+							
+							$(".overCont3Reply").html(content);
+							
 							
 					}
 				});
