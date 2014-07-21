@@ -67,15 +67,10 @@ public class LoginController {
 			return "login/login_check1";
 		} else if (member.getMemKind().equals("D")) {
 			return "login/login_check2";
-		}
-
-		else {
+		} else {
 			System.out.println(member.getMemKind());
 
 			session.setAttribute("member", member);
-			System.out.println("sessiong = " + member);
-			System.out.println(session.getAttribute("member"));
-			System.out.println(request.getSession() + "로그인세션등록완료");
 			return "contents/movieIndex";
 		}
 
@@ -102,19 +97,34 @@ public class LoginController {
 
 	}
 
+//	@ResponseBody
 	@RequestMapping(value = "logout.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String logout(HttpSession session) {
+	public String logout(//Map<String, Object> map,
+			HttpSession session, HttpServletRequest request) {
 		log.info("logout.do");
+
 		Member member = (Member) session.getAttribute("member");
+		Member user = (Member) session.getAttribute("user");
+
+		request.removeAttribute("member");
+		request.removeAttribute("user");
+
+		System.out.print("map = ");
 		System.out.println("세션 삭제 전 member 데이터 : " + member.toString());
-		System.out.println("세션 데이터 : " + session.toString());
+		System.out.println("세션 데이터 : " + (session));
+
 		if (member != null)
 			session.removeAttribute("member");
+		if (user != null) {
+			session.removeAttribute("user");
+		}
 		member = null;
+		user = null;
 		System.out.println("세션 삭제 후 member 데이터 : " + member);
+		System.out.println("세션 삭제 후 user 데이터 : " + user);
 
-		return "contents/movieIndex";
+		return "redirect:movieIndex.do";
 	}
 
 	@RequestMapping(value = "register.do", method = RequestMethod.POST)
