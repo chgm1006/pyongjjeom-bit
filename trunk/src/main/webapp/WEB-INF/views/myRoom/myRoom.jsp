@@ -128,7 +128,7 @@
 
 
 										<div class="myPoint">
-											<a class="replyUpload">올리기
+											<a class="replyUpload">글 올리기
 											</a>
 											<textarea class="pointText" placeholder="20자이내로 적어주세요."></textarea>
 											<p class="myPostCD">${post.postCD }</p>
