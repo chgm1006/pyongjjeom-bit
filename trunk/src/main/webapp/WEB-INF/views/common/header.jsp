@@ -77,13 +77,10 @@
 
 		$("#FBLogout").click(function() {
 			fnLogout();
-
 		});
 
 		$("#inviteFriends").click(function() {
-			console.log("1111");
 			fnInviteFriends();
-			
 		});
 
 	});
@@ -168,8 +165,9 @@
 					<li class="menu6"><a href="#" class="menu6_1">친구들</a></li>
 					<li class="menu7"><a href="boardList.do" class="menu7_1">공지사항</a>
 						<div class="boardHidden">
-							<a class="boardSub" href="allList.do">전체보기</a><br> <a class="boardSub" href="eventList.do">행사보기</a><br>
-							<a class="boardSub" href="systemList.do">시스템공지</a><br>
+							<a class="boardSub" href="allList.do">전체보기</a><br> <a
+								class="boardSub" href="eventList.do">행사보기</a><br> <a
+								class="boardSub" href="systemList.do">시스템공지</a><br>
 						</div></li>
 
 				</ul>
