@@ -1,13 +1,29 @@
 (function($) {
 	
 	
+	
+	 /************** 알림창 위치설정 *************/
+	 
+	 /************** 평점 포인트에 "점" 넣기 *************/
+
 	$(".myStarPointP").append(" 점");
+	
+	
+	 /************** 아코디언 *************/
 
+	$(function() {
+		$("dd").css("display", "none");
+		$("dl dt").click(function() {
+			if ($("+dd", this).css("display") == "none") {
+				$("+dd", this).slideDown("fast");
+			} else {
+				$("+dd", this).slideUp("fast");
+			}
+		});
+	});
 
-
-/**************상세 슬라이드 다운*************/
-			$("dd").css("display", "none");
-			$("dl dt").click(function() {
+/************** 클릭한 포스팅의 댓글 갖고 오기*************/
+			$(".listHead").click(function() {
 
 				var test=$("#postCD",(this)).html();
 
@@ -56,39 +72,28 @@
 						
 						$(".overCont3Reply").html(content);
 						
-
-						
 						
 					}//success End
 				});
-				
-				
-				
-				$("dl dt").click(function(){
-					if($("+dd",this).css("display")=="none"){
-						$("dd").slideUp("fast");
-						$("+dd",this).slideDown("fast");
-						$("dt").removeClass("selected");
-						$(this).addClass("selected");
-					}
-				});
-
-				
 			});
 	
 /***********Ajax JSoN : 댓글 올리기 ************/
 			$(".replyUpload").click(function() {
 				
 				
-				var postCD=$("#postCD").html();
-				var pointText=$(".pointText").val();
+				var postCD=$("~p", this).html();
+				alert(postCD);
 
-		
+				var pointText=$("+textarea", this).val();
+
+				alert(pointText);
 				var pointTextLength = pointText.length;
 			    var maxLength = 20;
 			     
 			     if(pointTextLength <= 0 || pointText==" "){
 			    	 $(".overCompletedP").text("한글자이상 적어주세요.");
+			    	 
+			    	 
 					 $(".overCompleted").show();
 					 $(".overCompleted").fadeOut(3000);
 					 return false;
@@ -99,6 +104,7 @@
 					 $(".overCompleted").fadeOut(3000);
 					 return false;
 			     }
+					alert("test");
 
 
 				var formData = {
