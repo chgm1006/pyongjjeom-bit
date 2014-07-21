@@ -116,10 +116,13 @@
 			</div>
 
 			<div class="rightMenu">
-
-				<div class="myFaceWrap">
-					<img class="myFace" src="${member.imgPath}">
-				</div>
+				<c:choose>
+					<c:when test="${member != null }">
+						<div class="myFaceWrap">
+							<img class="myFace" src="${member.imgPath}">
+						</div>
+					</c:when>
+				</c:choose>
 				<ul>
 					<c:choose>
 						<c:when test="${member==null}">
