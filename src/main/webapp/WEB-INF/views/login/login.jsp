@@ -21,7 +21,7 @@
 			<div class="register span6">
 				<!--크기 -->
 				<form action="loginsuccess.do" method="post">
-					
+
 					<h2>
 						<span class="red"><strong>로그인</strong></span>
 					</h2>
@@ -31,8 +31,8 @@
 					<button type="submit">로그인</button>
 					<button type="button" id="FBLogin">페이스북 로그인</button>
 
-					<br> <br> <a href="emailAuth.do">비밀번호를 까먹으셧나영?</a>&nbsp; &nbsp; &nbsp;
-					&nbsp; &nbsp; &nbsp; &nbsp; <a href="registerMember.do">아직 회원이 아니신가영?</a>
+					<br> <br> <a href="emailAuth.do">비밀번호를 잊어버리셨나요?</a>&nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; <a href="registerMember.do">아직 회원이 아니신가요?</a>
 
 				</form>
 
@@ -40,8 +40,8 @@
 		</div>
 	</div>
 	</article>
-	
-	
+
+
 <!-- Javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
@@ -58,7 +58,7 @@
 		});
 
 	});
-	
+
 </script>
 </body>
 </html>
