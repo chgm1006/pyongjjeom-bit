@@ -129,10 +129,11 @@ public class PostAndReplyController {
 	}
 
 	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
-	public String deletePost(Model model, HttpServletRequest request) {
+	public String deletePost ( Model model,
+			HttpServletRequest request) {
 		request.getParameter("postCD");
 		parService.deletePost(request.getParameter("postCD"));
-		return "postandreply/deletePost_ok";
+		return "redirect:myRoom.do";
 	}
 
 	// ////// reply insert / update / delete
@@ -143,13 +144,13 @@ public class PostAndReplyController {
 	public Map replyInsert(@RequestBody Map paramMap, HttpServletRequest request,
 			HttpSession session) {
 
-		String postCD = (String) paramMap.get("postCD");
-		String replyStr = (String) paramMap.get("pointText");
+		String postCD = (String) paramMap.get("name");
+		String replyStr = (String) paramMap.get("data");
 
 		Reply reply = new Reply();
 		// 개행 적용
-		replyStr = returnToTag(replyStr);
-
+		replyStr = replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
+				.replaceAll("\u0020", "&nbsp;");
 		System.out.println(postCD + " ////" + replyStr);
 
 		Member member = (Member) session.getAttribute("member");
@@ -168,20 +169,6 @@ public class PostAndReplyController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("replyList", replyList);
 		return map;
-	}
-
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 :
-	 * </PRE>
-	 * 
-	 * @param replyStr
-	 * @return
-	 */
-	private String returnToTag(String replyStr) {
-		return replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
 	}
 
 	// reply Code ,reply 필요
@@ -208,9 +195,18 @@ public class PostAndReplyController {
 	@RequestMapping(value = "replyDeleteJson.do", method = RequestMethod.POST)
 	public Map replyDelete(@RequestBody Map paramMap, HttpServletRequest request) {
 		String replyCD = (String) paramMap.get("name");
-
+		String postCD = (String) paramMap.get("date");
 		parService.deleteReply(replyCD);
-		return paramMap;
+		
+		List<Reply> replyList = parService.getReplyList(postCD);
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		for (Reply reply2 : replyList) {
+			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
+		}
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("replyList", replyList);
+		return map;
 	}
 
 	/*
