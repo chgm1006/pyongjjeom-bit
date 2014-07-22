@@ -263,7 +263,13 @@ public class NoticeController {
 			HttpServletRequest request) {
 		// requestbody를 못받는다. 그래서 이렇게사용
 		String category = (String) request.getParameter("category");
-
+		if(category.equals("book") || category.equals("movie"))
+		{
+			System.out.println("aaaaa");
+		category="";
+		}
+		// 검색을햇을 때 book, movie 일때 는   category가 겹치므로, 
+		// 이와같은 방법을 사용함 . 임시방편이므로 나중에 고치길 요망함
 		System.out.println("name = " + category);
 
 		row = row + 5;
