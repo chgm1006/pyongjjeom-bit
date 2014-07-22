@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<insert id="insertMember" parameterType="Member">
 		insert into member(memcd, email,
 		memkind, memnm, birth, passwd, emailauthyn, memvalid, fbyn, regidate,
-		updatedate, commopenchk, commreplychk)
-		values(#{memCD},#{email},'G',#{memNm},#{birth},password('${passwd}'),'N','A','N',now(),now(), 'A', 'A');
+		updatedate, commopenchk)
+		values(#{memCD},#{email},'G',#{memNm},#{birth},password('${passwd}'),'N','A','N',now(),now(), 'A');
 	</insert>
 
 	<select id="getMemCD" parameterType="string" resultType="string">
