@@ -131,6 +131,12 @@ public class ContentController {
 					iterator2.remove();
 				}
 			}
+			Iterator<String> iterator3 = bookTitleList.iterator();
+			while (iterator3.hasNext()) {
+				if (iterator3.next().contains("세트")) {
+					iterator3.remove();
+				}
+			}
 			NaverParse parse = new NaverParse();
 			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 			String uri;
