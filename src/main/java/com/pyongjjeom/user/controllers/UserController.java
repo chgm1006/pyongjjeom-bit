@@ -99,11 +99,12 @@ public class UserController {
 
 		String originFile = "";
 		String callingFile = "";
-		urlPath = urlPath.equals(request.getServerName()) ? urlPath
-				+ "/resources/userImages/" : "http://localhost:8080/pyongjjeom"
-				+ "/resources/userImages/";
+		System.out.println("getServerName = " + request.getServerName());
+		urlPath = urlPath.equals(request.getServerName()) ? "/resources/userImages/"
+				: "http://localhost:8080/pyongjjeom" + "/resources/userImages/";
 
 		System.out.println("urlPath = " + urlPath);
+
 		try {
 			MultipartFile file = member.getFileData();
 			String filePath = null;
@@ -114,18 +115,16 @@ public class UserController {
 			int index = file.getOriginalFilename().lastIndexOf(".");
 			String fileExt = file.getOriginalFilename().substring(index + 1);
 
-			System.out.println("fileExt = " + fileExt);
-
 			if (file.getSize() > 0) {
 				inputStream = file.getInputStream();
 
-				if (file.getSize() > 200000) {
+				int fileSize = 10 * 1024 * 1024;
+				if (file.getSize() > fileSize) {
 					System.out.println("File Size:::" + file.getSize());
-					session.setAttribute("fileErrMsg", "파일 확장자가 맞지 않습니다.");
+					session.setAttribute("fileErrMsg", "파일용량이 10M를 초과하였습니다.");
 					return "myRoom/mySet";
 				}
 
-				System.out.println("size::" + file.getSize());
 				filePath = request.getSession().getServletContext()
 						.getRealPath("/resources/userImages/").replace("\\", "/");
 
@@ -139,10 +138,7 @@ public class UserController {
 				}
 
 				// "jpg", "jpeg", "png", "gif"만 업로드 가능
-				if (!(fileExt.equalsIgnoreCase("jpg")
-						|| fileExt.equalsIgnoreCase("jpeg")
-						|| fileExt.equalsIgnoreCase("png") || fileExt
-							.equalsIgnoreCase("gif"))) {
+				if (!isFileExtOK(fileExt)) {
 					session.setAttribute("fileErrMsg", "파일 확장자가 맞지 않습니다.");
 					return "myRoom/mySet";
 				}
@@ -214,10 +210,24 @@ public class UserController {
 		for (PostAndContents post : postList) {
 			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
 		}
-		
+
 		session.setAttribute("postList", postList);
 		session.setAttribute("member", member);
 
 		return "redirect:myRoom.do";
+	}
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 :
+	 * </PRE>
+	 * 
+	 * @param fileExt
+	 * @return
+	 */
+	private boolean isFileExtOK(String fileExt) {
+		return (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")
+				|| fileExt.equalsIgnoreCase("png") || fileExt.equalsIgnoreCase("gif"));
 	}
 }
