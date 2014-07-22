@@ -153,11 +153,11 @@
 							</div>
 							
 							<div id="myPoint">
-								<textarea class="pointText" placeholder="100자 이내로 작성해 주세요."></textarea>
-								<a class="pointSubmit">완료</a>
+								<textarea class="pointText2" placeholder="100자 이내로 작성해 주세요."></textarea>
+								<a class="pointSubmit2">완료</a>
 								<div class="pointModifyWrap">
-									<a class="pointModify">수정</a>
-									<a class="pointDelete">삭제</a>
+									<a class="pointModify2">수정</a>
+									<a class="pointDelete2">삭제</a>
 								</div>
 								<p class="myPostCD"></p>
 							</div>
