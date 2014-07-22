@@ -176,12 +176,10 @@
 						var totalComment = data.whole.myComment.comment;
 						
 						if((totalComment == null) || (totalComment=="")){
-							alert("totalComment");
 							$(".myStarPoint2").show("fast");
 							$(".myStarPoint1").hide("fast");
 							$(".pointModifyWrap").hide();
 							$(".pointText").removeAttr("disabled");
-							alert("totalCommenteeeeeee");
 
 						}else{
 							var myStarPoint = data.whole.myComment.memGrade;
