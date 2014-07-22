@@ -63,7 +63,7 @@ public class MyRoomController {
 		Member member = (Member) httpSession.getAttribute("member");
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
-			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
+			post.setMemGradeInt((int)post.getMemGrade());
 		}
 		model.addAttribute("user", member);
 		boolean myRoom = true;
@@ -77,7 +77,7 @@ public class MyRoomController {
 		List<PostAndContents> postList = parService.getPost(memCD);
 		Member user = userService.getMemberInfo(memCD);
 		for (PostAndContents post : postList) {
-			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
+			post.setMemGradeInt((int)post.getMemGrade());
 		}
 		model.addAttribute("user", user);
 		model.addAttribute("postList", postList);
