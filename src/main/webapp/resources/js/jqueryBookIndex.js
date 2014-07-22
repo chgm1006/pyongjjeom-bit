@@ -1,5 +1,30 @@
 (function($) {
 
+	
+	
+	
+	
+	
+	
+	
+
+	
+	 /************** 알림창 위치설정 *************/
+	
+	$(document).ready(function(){
+		 
+		$(window).scroll(
+				function() {
+					$(".overCompleted").css('top',	($(document).scrollTop() + 300 + "px"));
+					$(".overCompleted").css('width','100%');
+					$(".overCompleted").css('left',"-20px");
+					
+				});
+	});
+	
+	
+	
+	
 	/************별표*************/
 
 	$(document).ready(function(){
@@ -56,6 +81,8 @@
 			$("#glayLayerBook").click(function() {
 				$(this).hide()
 				$("#overLayerBook").hide();
+				$(".pointText").val("");
+
 			});
 
 			$(".imgLink,.imgWrap,#tableTitleLinkBook").click(function() {
