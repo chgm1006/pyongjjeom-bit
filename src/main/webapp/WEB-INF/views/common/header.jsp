@@ -1,3 +1,4 @@
+<%@page import="com.pyongjjeom.user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -87,6 +88,7 @@
 </script>
 
 </head>
+${member }
 <body>
 	<div id="fb-root"></div>
 	<header>
@@ -119,11 +121,12 @@
 				<c:choose>
 					<c:when test="${member != null }">
 						<div class="myFaceWrap">
-							<img class="myFace" src="${member.imgPath}">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+							<img class="myFace" src="${member.imgPath}">&nbsp; &nbsp; &nbsp;
+							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						</div>
 					</c:when>
 				</c:choose>
-					
+
 				<ul>
 					<c:choose>
 						<c:when test="${member==null}">
