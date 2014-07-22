@@ -39,7 +39,7 @@ p.memberMemCD,p.userMemCD{
 /*----------///---contentsList---////--------*/
 
 
-.listWrap{
+a.listWrap{
 	display:block;
 	margin:10px 0;
 	border-radius :20px;	
@@ -64,7 +64,7 @@ img.listImg{
 /*---table---*/
 .listTable{
 	float:left;
-	width:77%;
+	width:500px;
 	padding:10px 0 0 30px;
 }
 td.tableTitle{
@@ -75,20 +75,44 @@ td.tableTitle{
 }
 
 td.tableCont{
+	width:100%;
 	vertical-align:top;
 }
-
+td.tableCont2{
+	width:100%;
+	padding:10px;
+	vertical-align:top;
+}
 img.myStarPoint {
 	float: left;
-	margin:-25px 10px 0 0;
+	margin:0 10px 0 0;
+	padding:5px 0;
 }
 
 p.myStarPointP {
 	float: left;
+		margin:8px;
+	
 	font-weight: bold;
 }
 
-
+a.deleteBtn{
+	display:block;
+	width:100px;
+	height:40px;	
+	text-align:center;
+	line-height:40px;
+	font-size:16px;
+	background-color:#f5d540;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+deleteBtn{
+	border: 2px solid #ffa854;
+	transition: 0.7;
+	background-color: #f9be4d;
+	color:#fff;
+}
 
 
 
@@ -215,7 +239,8 @@ a.pointSubmit:hover,a.pointModify:hover,a.pointDelete:hover {
 	background-color: #f9be4d;
 }
 
-p.myPostCD{
+p.myPostCD,p#postCD{
+	display:none;
 }
 
 

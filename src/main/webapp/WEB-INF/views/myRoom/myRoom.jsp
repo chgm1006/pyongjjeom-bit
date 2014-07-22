@@ -43,16 +43,15 @@
 
 					<dt class="listHead">
 						<a class="listWrap">
+							
 							<div class="imgWrap" id="imgWrapBook">
 								<img class="listImg" src="${post.image}">
 							</div>
-
+								
 							<div class="listTable">
 								<table>
 									<tr>
 										<td class="tableTitle">${post.title }	
-										<a class="deleteBtn" Onclick ="document.location='deletePost.do?postCD=${post.postCD}' "  style="display:absolute; top: 50px;left:200px;">이것은 삭제</a>
-
 										</td>
 									</tr>
 									<tr>
@@ -61,11 +60,21 @@
 											<p class="myStarPointP">${post.memGradeChar }</p></td>
 									</tr>
 									<tr>
-										<td class="tableCont">${post.comment }</td>
+										<td class="tableCont2"><h4>${post.comment }</h4></td>
 									</tr>
 									<tr>
-										<td class="tableCont" id="postCD">${post.postCD }</td>
+										<td class="tableCont"><p id="postCD">${post.postCD }</p></td>
 									</tr>
+									<c:choose>
+										<c:when test="${myRoom==true}">
+											<tr>
+												<td class="tableCont">
+													<a class="deleteBtn" Onclick ="document.location='deletePost.do?postCD=${post.postCD}' "  >삭제</a>
+												</td>
+											</tr>
+										</c:when>
+										<c:otherwise></c:otherwise>
+									</c:choose>
 								</table>
 							</div>
 						</a>
