@@ -76,19 +76,6 @@ public class LoginController {
 
 	}
 
-	/*
-	 * @RequestMapping(value="gologin.do", method=RequestMethod.GET) public void
-	 * gologin(HttpServletRequest request, HttpServletResponse response)throws
-	 * ServletException, IOException{ String redirectPage =
-	 * request.getParameter("uri"); String redirectPage = (String)
-	 * request.getAttribute("redirectURI");
-	 * System.out.println(request.getAttribute("redirectURI")+"uri체크");
-	 * if(redirectPage ==null){ redirectPage = "movieIndex.do"; }else{
-	 * response.sendRedirect(redirectPage);
-	 * 
-	 * } }
-	 */
-
 	// 로그인폼으로 이동
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String loginForm(HttpServletRequest request) {
@@ -97,10 +84,10 @@ public class LoginController {
 
 	}
 
-//	@ResponseBody
+	// @ResponseBody
 	@RequestMapping(value = "logout.do", method = { RequestMethod.GET,
 			RequestMethod.POST })
-	public String logout(//Map<String, Object> map,
+	public String logout(// Map<String, Object> map,
 			HttpSession session, HttpServletRequest request) {
 		log.info("logout.do");
 
