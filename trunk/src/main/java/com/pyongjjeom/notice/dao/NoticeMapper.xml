@@ -97,9 +97,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getMoreNoticeList" parameterType="Map" resultType="Notice">
 
-		select * from notice
-		where	ifnull(deleteyn,'N')='N'
-		<if test="category != ''">
+		select * from notice where
+		ifnull(deleteyn,'N')='N'
+		<if test="category != null">
 			and category = #{category}
 		</if>
 		order by regidate desc limit ${row}, 5;
