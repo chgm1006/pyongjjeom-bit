@@ -1,4 +1,24 @@
 (function($) {
+	
+	
+	
+	
+	
+	 /************** 알림창 위치설정 *************/
+	
+	$(document).ready(function(){
+		 
+		$(window).scroll(
+				function() {
+					$(".overCompleted").css('top',	($(document).scrollTop() + 300 + "px"));
+					$(".overCompleted").css('width','100%');
+					$(".overCompleted").css('left',"-20px");
+					
+				});
+	});
+	
+	
+	
 /***********모달윈도우 내 로그인창**************/
 		$(".notLogin").click(function(){
 			$(".loginHidden2").attr("display","block");
