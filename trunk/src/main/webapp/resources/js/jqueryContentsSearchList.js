@@ -50,7 +50,7 @@
 					$(".overPointWrap").toggle("slow");
 			});
 
-			/*******************Ajax JSoN 영화 상세 페이지*********************/
+/*******************Ajax JSoN 영화 상세 페이지*********************/
 			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
 				var test=$(".statusIndex",(this)).html();
 
@@ -363,98 +363,6 @@
 			
 			
 
-/** Ajax JSoN 도서*/
-
-		$("#imgWrapBook,#tableTitleLinkBook").click(function() {
-			var test=$(".statusIndex",(this)).html();
-
-			var formData = {
-				name : test,
-				data : "Hello"
-			};
-
-			$
-			.ajax({
-				type : "post",
-				url : "bookContextJson.do",
-				// 				data : formData,
-				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-
-	},
-				
-	success : function(data) {
-
-															var title = data.book.title;
-
-															var link = data.book.link;
-															var image = data.book.image;
-															var author = data.book.author;
-															var price = data.book.price;
-															var discount = data.book.discount;
-															var publisher = data.book.publisher;
-															var pubdate = data.book.pubdate;
-															var isbn = data.book.isbn;
-															var description = data.book.description;
-
-															var naverBg = data.whole.grades.naverBg;
-															var yesBg = data.whole.grades.yesBg;
-															var aladinBg = data.whole.grades.aladinBg;
-															var bandiBg = data.whole.grades.bandiBg;
-															var kyoboBg = data.whole.grades.kyoboBg;
-
-															var avg = data.whole.avg;
-															$(".avgPoint").text(avg);
-
-															
-															var authorIntroContent = data.whole.contentBookDetail.authorIntroContent;
-															var bookIntroContent = data.whole.contentBookDetail.bookIntroContent;
-															var poster = data.whole.contentBookDetail.poster;
-
-
-															$(".bigPoster").attr("src",poster);
-															$(".smallPoster").attr("src",poster);
-
-															if(poster==null||poster==""){
-																$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-																$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-															}
-															
-
-															
-
-															$(".overTableBookTitle").text(title);
-															$(".overTableAuthor").text(author);
-															$(".overTablePublisher").text(publisher);
-															$(".overTablePubdate").text(pubdate);
-															$(".overTablePrice").text(price);
-
-
-															$(".overTableNaver").text(naverBg);
-															$(".overTableYes24").text(yesBg);
-															$(".overTableAladin").text(aladinBg);
-															$(".overTableBandi").text(bandiBg);
-															$(".overTableKyobo").text(kyoboBg);
-
-															$(".overAuthorInfo").text(authorIntroContent);
-															$(".overSynop").text(bookIntroContent);
-
-															$("#overButtonBookLink").attr("href",link);
-															
-															
-															
-														}
-													});
-										});
-
-
 /** 모달윈도우 : 영화 상세 */
 			$("#glayLayer").click(function() {
 				$(this).hide()
@@ -471,18 +379,11 @@
 				$("#overLayer").fadeIn("Fast");
 				return false;
 			});
-			$("#imgWrapBook,#tableTitleLinkBook").click(function() {
-				var scrollTest = $(document).scrollTop();
-				$("#overLayerBook").css('top',$(document).scrollTop() + 400 + "px");
-				
-				$("#glayLayer").show();
-				$("#overLayerBook").fadeIn("Fast");
-				return false;
-			});
+			
+			
 			$(".exit").click(function() {
 				$("#glayLayer").hide()
 				$("#overLayer").hide();
-				$("#overLayerBook").hide();
 			});
 			
 			
