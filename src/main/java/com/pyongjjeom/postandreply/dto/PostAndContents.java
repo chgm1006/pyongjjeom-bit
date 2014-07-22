@@ -19,29 +19,28 @@ import java.util.Date;
  */
 public class PostAndContents {
 
-	@Override
-	public String toString() {
-		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
-				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
-				+ memGrade + ", memGradeChar=" + memGradeChar + ", comment=" + comment
-				+ ", title=" + title + ", image=" + image + ", link=" + link
-				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
-				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
-				+ ", updateDate=" + updateDate + "]";
-	}
 
 	private String postCD = "";
 	private String conCD = "";
 	private String pmemCD = "";
 	private String review = "";
 	private Double memGrade = 0.0;
-	private char memGradeChar ;
-	public char getMemGradeStr() {
-		return memGradeChar;
+	private int memGradeInt ;
+
+	/**
+	 * Comment   : 
+	 * @return the memGradeInt
+	 */
+	public int getMemGradeInt() {
+		return memGradeInt;
 	}
 
-	public void setMemGradeChar(char memGradeStr) {
-		this.memGradeChar = memGradeStr;
+	/**
+	 * Comment   : 
+	 * @parameters memGradeInt the memGradeInt to set
+	 */
+	public void setMemGradeInt(int memGradeInt) {
+		this.memGradeInt = memGradeInt;
 	}
 
 	public void setMemGrade(Double memGrade) {
@@ -75,8 +74,23 @@ public class PostAndContents {
 		return link;
 	}
 
-	public char getMemGradeChar() {
-		return memGradeChar;
+
+	/**
+	 * <PRE>
+	 * 간략 : 
+	 * 상세 : 
+	 * </PRE>
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
+				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
+				+ memGrade + ", memGradeInt=" + memGradeInt + ", comment=" + comment
+				+ ", title=" + title + ", image=" + image + ", link=" + link
+				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
+				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
+				+ ", updateDate=" + updateDate + "]";
 	}
 
 	public void setLink(String link) {

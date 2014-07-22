@@ -208,7 +208,7 @@ public class UserController {
 
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
-			post.setMemGradeChar(String.valueOf(post.getMemGrade()).charAt(0));
+			post.setMemGradeInt((int)post.getMemGrade());
 		}
 
 		session.setAttribute("postList", postList);
