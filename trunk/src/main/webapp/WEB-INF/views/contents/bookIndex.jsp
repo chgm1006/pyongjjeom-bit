@@ -14,6 +14,7 @@
 	rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/resources/css/modalWindowBook.css"
 	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
 
 
 
@@ -151,6 +152,7 @@
 
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/jqueryBookIndex.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 		
 
 </body>

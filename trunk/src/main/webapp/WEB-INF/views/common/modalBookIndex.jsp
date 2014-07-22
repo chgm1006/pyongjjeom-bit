@@ -98,42 +98,82 @@
 					<h3 class="overContTitle">줄거리</h3>
 					<h4 class="overSynop"></h4>
 				</div>
+				
+				
+				<!---- My 평점 ---->
+				<div class="overPointWrap">
+					<h3 class="overContTitle">My 평점</h3>	
+					
+				<c:choose>
+					<c:when test="${member==null}">
+						<div c lass="notLoginWrap"> 
+							<a class="notLogin">
+								<strong>로그인</strong>하시면 평점을 남길 수 있습니다.
+							</a>
+							<div class="loginHidden2">
+									<form action="loginsuccess.do" method="post">
+										<h2>로그인</h2>
+										<table class="loginBox">
+											<tr>
+												<td class="loginBoxTd1"><label for="email">e-메일</label></td>
+												<td class="loginBoxTd2"><input type="text" id="email" name="email" placeholder="이메일을...."></td>
+											</tr>
+											<tr>
+												<td class="loginBoxTd1"><label for="password">비밀번호</label></td>
+												<td class="loginBoxTd2"><input type="password" id="passwd" name="passwd" placeholder="비밀번호..."></td>
+											</tr>
+										</table>
+										<div class="loginButtonWrap">
+											<button type="submit" class="loginButton" href="loginsuccess.do">로그인</button>
+											<button type="button" class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</button>
+										</div>
+										<div class="loginElseWrap">
+											<a class="loginElse" href="emailAuth.do">비밀번호를 잊어버리셨나요?</a><br>
+											<a class="loginElse" href="registerMember.do">아직 회원이 아니신가요?</a>
+										</div>
+									</form>
+							</div>
+						</div>
+						
+					</c:when>
+					<c:otherwise>
+						<div class="myPointWrap">
+						
+							<div class="myStarPoint">
+								<div class="myStarPoint1">
+									<img class="myStarPointCompleted" src="">
+								</div>
+								<div class="myStarPoint2">
+									<div class="basic" data-average="5" data-id="1">
+										<input id="starGrade" type="hidden" name="starGrade" />
+									</div>
+								</div>
+							</div>
+							
+							<div id="myPoint">
+								<textarea class="pointText" placeholder="100자 이내로 작성해 주세요."></textarea>
+								<a class="pointSubmit">완료</a>
+								<div class="pointModifyWrap">
+									<a class="pointModify">수정</a>
+									<a class="pointDelete">삭제</a>
+								</div>
+								<p class="myPostCD"></p>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				</div>
+			
 			</div>
+			
 			
 			<!---- 코멘트 목록 ---->
 			<div class="overCont3">
-				<h3 class="overContTitle">코멘트</h3>
-					
-				<div class="overCommentWrap">
-					<div class="commentBoxLeft">
-					
-						<div class="userPhoto">
-							<a href="#" class="userRoomLink">
-								<img src="${pageContext.request.contextPath}/resources/img/user1.jpg">
-							</a><br>
-						</div>
-						
-						<div class="commentName">박희본
-						</div>
-					</div>
-					
-					<div class="commentBoxRight">
-						<h3 class="userComment">이 영화 재밌게 봤습니다 여기는 북 모달 book.</h3>
-						<h5 class="userDate">2014.06.19</h5>
-					</div>
-					
-					<div class="clear"></div>
-
-					<!---- 더보기 ---->
-					<a href="#" class="commentMore">더보기</a>
-
-				</div>
-
+				
 			</div>
 
 			<!---- clear:both 지우지 말 것. ---->
 			<div class="clear"></div>
-
 
 		</div>
 		
