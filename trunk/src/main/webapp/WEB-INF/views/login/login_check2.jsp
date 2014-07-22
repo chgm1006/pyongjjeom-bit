@@ -5,6 +5,6 @@
 <script type="text/javascript">
 	self.window.alert("탈퇴한 회원입니다.");
 	
-	location.href = "login.do";
+	location.href = "movieIndex.do";
 	
 </script>
