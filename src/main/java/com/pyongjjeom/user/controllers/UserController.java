@@ -90,18 +90,21 @@ public class UserController {
 	public String updateMemberInfo(Member member, Model model,
 			HttpServletRequest request, HttpSession session) {
 		MultipartFile uploadFile = member.getFileData();
+		String imgPath = ((Member) session.getAttribute("member")).getImgPath();
 		System.out.println(uploadFile.getOriginalFilename());
 		System.out.println(member.getMemCD());
 		System.out.println(member.getEmail());
 		System.out.println(member.getMemNm());
 		System.out.println(member.getPasswd());
 		System.out.println(member.getBirth());
+		System.out.println(imgPath);
 
 		String originFile = "";
 		String callingFile = "";
 		System.out.println("getServerName = " + request.getServerName());
-		urlPath = urlPath.equals(request.getServerName()) ? "/resources/userImages/"
-				: "http://localhost:8080/pyongjjeom" + "/resources/userImages/";
+		urlPath = request.getServerName().equals("localhost") ? "http://localhost:8080/pyongjjeom"
+				+ "/resources/userImages/"
+				: "/resources/userImages/";
 
 		System.out.println("urlPath = " + urlPath);
 
@@ -112,8 +115,11 @@ public class UserController {
 			OutputStream outputStream = null;
 
 			// 파일 확장자 구하기
-			int index = file.getOriginalFilename().lastIndexOf(".");
-			String fileExt = file.getOriginalFilename().substring(index + 1);
+			int index = file.getOriginalFilename().equals("") ? imgPath
+					.lastIndexOf(".") : file.getOriginalFilename().lastIndexOf(".");
+			String fileExt = file.getOriginalFilename().equals("") ? imgPath
+					.substring(index + 1) : file.getOriginalFilename().substring(
+					index + 1);
 
 			if (file.getSize() > 0) {
 				inputStream = file.getInputStream();
@@ -208,7 +214,7 @@ public class UserController {
 
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
-			post.setMemGradeInt((int)post.getMemGrade());
+			post.setMemGradeInt((int) post.getMemGrade());
 		}
 
 		session.setAttribute("postList", postList);
