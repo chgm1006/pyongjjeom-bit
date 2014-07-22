@@ -218,6 +218,6 @@ public class UserController {
 		session.setAttribute("postList", postList);
 		session.setAttribute("member", member);
 
-		return "myRoom/myRoom";
+		return "redirect:myRoom.do";
 	}
 }
