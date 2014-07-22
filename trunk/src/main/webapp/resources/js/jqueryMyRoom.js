@@ -137,7 +137,7 @@
 										
 											$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 											$(".overCompleted").show();
-											$(".overCompleted").fadeOut(3000);
+											$(".overCompleted").fadeOut(2000);
 											
 											var replyList = data.replyList;
 											
@@ -205,7 +205,7 @@
 														
 															$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 															$(".overCompleted").show();
-															$(".overCompleted").fadeOut(3000);
+															$(".overCompleted").fadeOut(2000);
 															
 															var replyList = data.replyList;
 															
@@ -273,7 +273,7 @@
 																		
 																			$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 																			$(".overCompleted").show();
-																			$(".overCompleted").fadeOut(3000);
+																			$(".overCompleted").fadeOut(2000);
 																			
 																			var replyList = data.replyList;
 																			
@@ -344,13 +344,13 @@
 			    	 
 			    	 
 					 $(".overCompleted").show();
-					 $(".overCompleted").fadeOut(3000);
+					 $(".overCompleted").fadeOut(2000);
 					 return false;
 			     }
 			     if(pointTextLength > maxLength){
 			    	 $(".overCompletedP").text("20자이내로 작성해주세요.");
 					 $(".overCompleted").show();
-					 $(".overCompleted").fadeOut(3000);
+					 $(".overCompleted").fadeOut(2000);
 					 return false;
 			     }
 
@@ -380,7 +380,7 @@
 
 							$(".overCompletedP").text("댓글이 입력되었습니다!!");
 							$(".overCompleted").show();
-							$(".overCompleted").fadeOut(3000);
+							$(".overCompleted").fadeOut(2000);
 							
 							var replyList = data.replyList;
 							
@@ -447,7 +447,7 @@
 										
 											$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 											$(".overCompleted").show();
-											$(".overCompleted").fadeOut(3000);
+											$(".overCompleted").fadeOut(2000);
 											
 											var replyList = data.replyList;
 											
@@ -515,7 +515,7 @@
 														
 															$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 															$(".overCompleted").show();
-															$(".overCompleted").fadeOut(3000);
+															$(".overCompleted").fadeOut(2000);
 															
 															var replyList = data.replyList;
 															
@@ -583,7 +583,7 @@
 																		
 																			$(".overCompletedP").text("댓글이 삭제되었습니다!!");
 																			$(".overCompleted").show();
-																			$(".overCompleted").fadeOut(3000);
+																			$(".overCompleted").fadeOut(2000);
 																			
 																			var replyList = data.replyList;
 																			

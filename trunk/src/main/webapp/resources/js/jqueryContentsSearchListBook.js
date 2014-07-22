@@ -207,7 +207,7 @@
 					     if((starGrade == null) || (starGrade == "") || (starGrade == 0)){
 					    	 $(".overCompletedP").text("별점을 체크해주세요.");
 							 $(".overCompleted").show();
-							 $(".overCompleted").fadeOut(3000);
+							 $(".overCompleted").fadeOut(2000);
 							 return false;
 					     }
 					     if(pointTextLength <= 0 || pointText==" "){
@@ -215,13 +215,13 @@
 
 					    	 $(".overCompletedP").text("한글자이상 적어주세요.");
 							 $(".overCompleted").show();
-							 $(".overCompleted").fadeOut(3000);
+							 $(".overCompleted").fadeOut(2000);
 							 return false;
 					     }
 					     if(pointTextLength > maxLength){
 					    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
 							 $(".overCompleted").show();
-							 $(".overCompleted").fadeOut(3000);
+							 $(".overCompleted").fadeOut(2000);
 							 return false;
 					     }
 						
