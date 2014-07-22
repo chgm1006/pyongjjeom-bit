@@ -147,7 +147,7 @@ public class UploadController {
 					System.out.println("urlPath =" + urlPath); // 이미지 경로
 
 					urlPath = urlPath.equals(request.getServerName()) ? urlPath
-							: "http://localhost:8080/pyongjjeom/";
+							: "http://192.168.0.25:8080/pyongjjeom/";
 					String realImgPath = urlPath + "/resources/userImages/" + filename;
 					member.setImgPath(realImgPath.toString());
 
