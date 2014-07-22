@@ -96,6 +96,8 @@
 			$(".exit").click(function() {
 				$("#glayLayerBook").hide()
 				$("#overLayerBook").hide();
+				$(".pointText").val("");
+
 			});
 
 

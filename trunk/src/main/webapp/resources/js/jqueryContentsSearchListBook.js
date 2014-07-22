@@ -24,7 +24,7 @@
 			$("#glayLayerBook").click(function() {
 				$(this).hide()
 				$("#overLayerBook").hide();
-				$(".pointText").val("");
+				$(".pointText2").val("");
 
 			});
 
@@ -164,14 +164,14 @@
 																			$(".myStarPoint2").show("fast");
 																			$(".myStarPoint1").hide("fast");
 																			$(".pointModifyWrap").hide();
-																			$(".pointText").removeAttr("disabled");
+																			$(".pointText2").removeAttr("disabled");
 
 																		}else{
 																			var myStarPoint = data.whole.myComment.memGrade;
 																			var myComment = data.whole.myComment.comment;
-																			$(".pointText").attr("disabled","disabled");
+																			$(".pointText2").attr("disabled","disabled");
 																			$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
-																			$(".pointText").attr("value",myComment);
+																			$(".pointText2").attr("value",myComment);
 																			$(".myStarPoint1").show("fast");
 																			$(".myStarPoint2").hide("fast");
 																			$(".pointModifyWrap").show();
@@ -191,138 +191,144 @@
 																});
 													});
 
-
-		/***********Ajax JSoN : 내 평점 올리기 ************/
-		$(".pointSubmit").click(function() {
-			var pointText=$(".pointText").val();
-			var starGrade=$("#starGrade").val();
-
-			var pointTextLength = pointText.length;
-		    var maxLength = 100;
-		     
-		     if((starGrade == null) || (starGrade == "") || (starGrade == 0)){
-		    	 $(".overCompletedP").text("별점을 체크해주세요.");
-				 $(".overCompleted").show();
-				 $(".overCompleted").fadeOut(3000);
-				 return false;
-		     }
-		     if(pointTextLength <= 0 || pointText==" "){
-		    	 $(".overCompletedP").text("한글자이상 적어주세요.");
-				 $(".overCompleted").show();
-				 $(".overCompleted").fadeOut(3000);
-				 return false;
-		     }
-		     if(pointTextLength > maxLength){
-		    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
-				 $(".overCompleted").show();
-				 $(".overCompleted").fadeOut(3000);
-				 return false;
-		     }
-			
-			
+	
 
 
-			var formData = {
-				name : starGrade,
-				data : pointText
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "postingInsertJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
+					/***********Ajax JSoN : 내 평점 올리기 ************/
+					$(".pointSubmit2").click(function() {
+						
+						
+						var pointText=$(".pointText2").val();
+						var starGrade=$("#starGrade").val();
+
+						var pointTextLength = pointText.length;
+					    var maxLength = 100;
+					     
+					     if((starGrade == null) || (starGrade == "") || (starGrade == 0)){
+					    	 $(".overCompletedP").text("별점을 체크해주세요.");
+							 $(".overCompleted").show();
+							 $(".overCompleted").fadeOut(3000);
+							 return false;
+					     }
+					     if(pointTextLength <= 0 || pointText==" "){
+					    	 alert("testsdfsdsdf32423423432");
+
+					    	 $(".overCompletedP").text("한글자이상 적어주세요.");
+							 $(".overCompleted").show();
+							 $(".overCompleted").fadeOut(3000);
+							 return false;
+					     }
+					     if(pointTextLength > maxLength){
+					    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
+							 $(".overCompleted").show();
+							 $(".overCompleted").fadeOut(3000);
+							 return false;
+					     }
+						
 						
 
-						$(".pointText").attr("disabled","disabled");
-					
-						$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starGrade+".png");
-						$(".myStarPoint1").show("fast");
-						$(".myStarPoint2").hide("fast");
-						$(".pointModifyWrap").show();
-						$(".pointModifyWrap").animate( { left:'710px' }, 500 );
 
-						$(".overCompletedP").text("한줄평이 입력되었습니다!!");
-						$(".overCompleted").show();
-						$(".overCompleted").fadeOut(2000);
+						var formData = {
+							name : starGrade,
+							data : pointText
+						};
 						
+						$.ajax({
+							type : "post",
+							url : "postingInsertJson.do",
+							// 				data : formData,
+			 				async : false,
+							data : JSON.stringify(formData),
+							contentType : "application/json; charset=utf-8",
+							dataType : "json",
+							beforeSend : function() {
+								console.log(formData);
+							},
+							error : function(e) {
+								console.log(e.responseText);
+							},
+							success : function(data) {
+									
 
+									$(".pointText2").attr("disabled","disabled");
+								
+									$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starGrade+".png");
+									$(".myStarPoint1").show("fast");
+									$(".myStarPoint2").hide("fast");
+									$(".pointModifyWrap").show();
+									$(".pointModifyWrap").animate( { left:'710px' }, 500 );
+
+									$(".overCompletedP").text("한줄평이 입력되었습니다!!");
+									$(".overCompleted").show();
+									$(".overCompleted").fadeOut(2000);
+									
+
+									
+							}
+						});
+					});
+
+					/***********Ajax JSoN : 내 평점 삭제하기 ************/
+					$(".pointDelete2").click(function() {
+						var myPostCD=$(".myPostCD").html();
+
+						var formData = {
+							name : myPostCD,
+							data : "포스트 코드 전달"
+						};
 						
-				}
-			});
-		});
+						$.ajax({
+							type : "post",
+							url : "postingDeleteJson.do",
+							// 				data : formData,
+			 				async : false,
+							data : JSON.stringify(formData),
+							contentType : "application/json; charset=utf-8",
+							dataType : "json",
+							beforeSend : function() {
+								console.log(formData);
+							},
+							error : function(e) {
+								console.log(e.responseText);
+							},
+							success : function(data) {
+								
+								$(".pointText2").removeAttr("value").removeAttr("disabled");
+								$(".myStarPoint2").show("fast");
+								$(".myStarPoint1").hide("fast");
+								$(".pointModifyWrap").hide();
 
-		/***********Ajax JSoN : 내 평점 삭제하기 ************/
-		$(".pointDelete").click(function() {
-			var myPostCD=$(".myPostCD").html();
+								
+								$(".overCompletedP").text("한줄평이 삭제되었습니다.");
+								$(".overCompleted").show();
+								$(".overCompleted").fadeOut(2000);
+								
+								$('input[name=starGrade]').removeAttr('value');
 
-			var formData = {
-				name : myPostCD,
-				data : "포스트 코드 전달"
-			};
-			
-			$.ajax({
-				type : "post",
-				url : "postingDeleteJson.do",
-				// 				data : formData,
- 				async : false,
-				data : JSON.stringify(formData),
-				contentType : "application/json; charset=utf-8",
-				dataType : "json",
-				beforeSend : function() {
-					console.log(formData);
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				},
-				success : function(data) {
+							}
+						});
+					});
+							
 					
-					$(".pointText").removeAttr("value").removeAttr("disabled");
-					$(".myStarPoint2").show("fast");
-					$(".myStarPoint1").hide("fast");
-					$(".pointModifyWrap").hide();
-
+					/*******************모달 : 내 평점 수정 버튼 클릭시*********************/
+					$("a.pointModify2").click(function() {
+						$(".pointText2").removeAttr("disabled");
+						$(".myStarPoint2").show("fast");
+						$(".myStarPoint1").hide("fast");
+						$(".pointModifyWrap").animate( { left:'780px' }, 500 );
+						
+						
+					});
 					
-					$(".overCompletedP").text("한줄평이 삭제되었습니다.");
-					$(".overCompleted").show();
-					$(".overCompleted").fadeOut(2000);
+					/*******************모달 : 내 평점 확인 버튼 클릭시*********************/
+					$("a.pointSubmit2").click(function() {
+						 
+						
+					});
 					
-					$('input[name=starGrade]').removeAttr('value');
-
-				}
-			});
-		});
-				
-		
-		/*******************모달 : 내 평점 수정 버튼 클릭시*********************/
-		$("a.pointModify").click(function() {
-			$(".pointText").removeAttr("disabled");
-			$(".myStarPoint2").show("fast");
-			$(".myStarPoint1").hide("fast");
-			$(".pointModifyWrap").animate( { left:'780px' }, 500 );
-			
-			
-		});
-		
-		/*******************모달 : 내 평점 확인 버튼 클릭시*********************/
-		$("a.pointSubmit").click(function() {
-			 
-			
-		});
-	
-	
-	
-	
+					
+					
+					
 	
 	
 	

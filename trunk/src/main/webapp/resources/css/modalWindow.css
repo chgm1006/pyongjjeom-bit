@@ -243,10 +243,17 @@ a.overButton:hover{
 	float:left;
 }
 .myPoint{
-	float:left;
+	float:left;v
 	border:2px dotted #b2b;
 }
 textarea.pointText{
+	resize:none; 
+	float:left; 
+	width:500px; 
+	padding:10px;
+	font-size:20px;
+}
+textarea.pointText2{
 	resize:none; 
 	float:left; 
 	width:500px; 
@@ -254,6 +261,20 @@ textarea.pointText{
 	font-size:20px;
 }
 a.pointSubmit{
+	float:left;
+	display:block;
+	margin:3px 2px 3px 8px;
+	width:60px;
+	height:60px;	
+	text-align:center;
+	line-height:60px;
+	font-size:20px;
+	cursor:pointer;
+	background-color:#f5d540;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+a.pointSubmit2{
 	float:left;
 	display:block;
 	margin:3px 2px 3px 8px;
@@ -292,6 +313,27 @@ a.pointModify,a.pointDelete{
 }
 
 a.pointSubmit:hover,a.pointModify:hover,a.pointDelete:hover {
+	border: 2px solid #ffa854;
+	transition: 0.7;
+	background-color: #f9be4d;
+	color:#fff;
+}
+a.pointModify2,a.pointDelete2{
+	float:left;
+	display:block;
+	margin:3px;
+	width:60px;
+	height:23px;	
+	text-align:center;
+	line-height:22px;
+	font-size:14px;
+	cursor:pointer;
+	background-color:#f5d540;
+	border:2px solid #fff;
+	border-radius:5px;
+}
+
+a.pointSubmit2:hover,a.pointModify2:hover,a.pointDelete2:hover {
 	border: 2px solid #ffa854;
 	transition: 0.7;
 	background-color: #f9be4d;
