@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N'
-		<if test="category != null">
+		<if test="category != ''">
 			and category = #{category}
 		</if>
 		order by regidate desc limit ${row}, 5;
