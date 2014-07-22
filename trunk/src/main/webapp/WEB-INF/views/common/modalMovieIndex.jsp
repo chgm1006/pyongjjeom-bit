@@ -4,11 +4,17 @@
 	<!-- #################    모달윈도우 : 영화상세    ################# -->
 	<!-- ################################################# -->
 
+<!---- 한줄평 확인 플로팅 창 ---->
+					<div class="overCompleted"><p class="overCompletedP"></p>		
+					</div>
+
 	<!---- 검은 바탕 ---->
 	<div id='glayLayer'></div>
 	
 	<!---- above page 시작 ---->
 	<div id='overLayer'>
+		
+		
 	
 
 		<!---- 큰 포스터 JPG ---->
@@ -103,9 +109,7 @@
 				<!---- My 평점 ---->
 				<div class="overPointWrap">
 					<h3 class="overContTitle">My 평점</h3>	
-					<!---- 한줄평 확인 플로팅 창 ---->
-					<div class="overCompleted"><p class="overCompletedP"></p>		
-					</div>
+					
 				<c:choose>
 					<c:when test="${member==null}">
 						<div c lass="notLoginWrap"> 
