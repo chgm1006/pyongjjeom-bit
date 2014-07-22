@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>===== 평 쩜 =====</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/header.jsp"%>
+
 
 
 <!-- CSS -->
@@ -17,11 +12,13 @@
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+
+
+
+
 
 <!-- Javascript -->
 
@@ -199,17 +196,11 @@ function imgThumbnail(imgObj) {
 </script>
 
 
-</head>
-
-
-
-
-
-<body>
+<article>
 	<div class="register-container container">
-		<div class="row">
+		<div class="row" style="width:600px; margin:0 auto; ">
 
-			<div class="register span6">
+			<div class="register span6" >
 				<form id="register" name="register" action="upDateMySet.do" method="post"
 					enctype="multipart/form-data">
 					<h2>
@@ -244,26 +235,9 @@ function imgThumbnail(imgObj) {
 								<c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
 							</td>
 						</tr>
-						<tr>
-							<td class="item">내 포스팅 댓글 참여 범위</td>
-							<td class="cont">전체허용<input type="radio" name="commReplyChk"
-								checked="checked" value="A"
-								<c:if test="${commReplyChk eq 'A'}"> checked="checked"</c:if>>
-								친구만 허용<input type="radio" name="commReplyChk" value="F"
-								<c:if test="${commReplyChk eq 'F'}"> checked="checked"</c:if>>
-								허용안함<input type="radio" name="commReplyChk" value="N"
-								<c:if test="${commReplyChk eq 'N'}"> checked="checked"</c:if>></td>
-						</tr>
 
 					</table>
 
-					<!-- <label for="email">파일업로드</label> <input type = "hidden" path="name" id="name"></input>
-					<input path="fileData" id="fileData" type="file">File</input> <input
-						type="submit" />
-
-
-
- -->
 
 
 					<button type="submit">수정하기</button>
@@ -275,50 +249,6 @@ function imgThumbnail(imgObj) {
 
 
 
-
-	<%-- 	<form name=setupFirm method=POST action="upDateMySet.do">
-		
-			<table>
-			<input type="hidden" name="memCD" value="${member.memCD}">
-				<tr>
-					<td class="item">이름</td>
-					<td class="cont"><input type="text" id="memNm" name="memNm" value = "${member.memNm}"></td>
-				</tr>
-				<tr>
-					<td class="item">이메일</td>
-					<td class="cont"><input type="text" id="email" name="email" value = "${member.email}"></td>
-				</tr>
-				<tr>
-					<td class="item">생년월일</td>
-					<td class="cont"><input type="text" id="birth" name="birth" value = "${member.birth}"></td>
-				</tr>
-				<tr>
-					<td class="item">비밀번호</td>
-					<td class="cont"><input type="text" id="passwd" name="passwd" value=""></td>
-				</tr>
-				<tr>
-					<td class="item">비밀번호 확인</td>
-					<td class="cont"><input type="text"></td>
-				</tr>
-				<tr>
-					<td class="item">내 포스팅 공개여부</td>
-					<td class="cont">전체공개 <input type="radio" name="open" value="전체공개">
-						친구만 공개<input type="radio" name="open" value="친구만 공개"> 비공개<input
-						type="radio" name="open" value="비공개">
-					</td>
-				</tr>
-				<tr>
-					<td class="item">내 포스팅 댓글 참여 범위</td>
-					<td class="cont">전체허용<input type="radio" name="reply" value="전체허용">
-						친구만 허용<input type="radio" name="reply" value="친구만 허용"> 허용안함<input
-						type="radio" name="reply" value="허용안함">
-					</td>
-				</tr>
-				<tr>
-					<td class="item"><input type="submit" value="수정완료""OnClick="javascript:writeCheck();"></td>
-					<td class="cont"><input type="submit" value="탈퇴하기" OnClick="javascript:writeCheck();"></td>
-				</tr>
-			</table>
-</form> --%>
+</article>
 </body>
 </html>
