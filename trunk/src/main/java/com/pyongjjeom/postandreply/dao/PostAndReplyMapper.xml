@@ -68,6 +68,10 @@ order by  reply.updatedate asc;    </select>
 	<delete id="deleteReply" parameterType="String">
 		DELETE FROM reply WHERE 	replyCD= #{replyCD};
 	</delete>
+	<delete id="deleteReplyList" parameterType="String">
+		DELETE FROM reply WHERE 	postCD= #{postCD};
+	</delete>
+	
 	
 </mapper>
 
