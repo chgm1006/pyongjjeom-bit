@@ -134,8 +134,8 @@
 											<button type="button" class="loginButton"  id="FBLogin" href="loginsuccess.do">페이스북 로그인</button>
 										</div>
 										<div class="loginElseWrap">
-											<a class="loginElse" href="emailAuth.do">비밀번호를 까먹으셧나영?</a><br>
-											<a class="loginElse" href="registerMember.do">아직 회원이 아니신가영?</a>
+											<a class="loginElse" href="emailAuth.do">비밀번호를 잊어버리셨나요?</a><br>
+											<a class="loginElse" href="registerMember.do">아직 회원이 아니신가요?</a>
 										</div>
 									</form>
 							</div>

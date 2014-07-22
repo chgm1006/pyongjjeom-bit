@@ -209,8 +209,7 @@
 					$(".overCont3").html(content);
 
 
-					var totalComment = data.whole.myComment;
-					
+					var totalComment = data.whole.myComment.comment;
 
 					
 					if((totalComment == null) || (totalComment=="")){
