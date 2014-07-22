@@ -604,6 +604,11 @@ public class ContentController {
 			{
 				myComment= parService.getMyComent(book.getConCD(),member.getMemCD());
 			}
+			
+			if(myComment == null)
+			{
+				myComment=new Comment();
+			}
 			System.out.println(myComment+"!!!!");
 			
 			
