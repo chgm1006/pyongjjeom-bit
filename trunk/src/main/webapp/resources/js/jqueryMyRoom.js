@@ -17,8 +17,6 @@
     
 
 	
-	
-	
 	/************** 회원CD 갖고오기 *************/
 
 	var memberMemCD = $(".memberMemCD").html();
@@ -414,7 +412,222 @@
 							
 							$(".overCont3Reply").html(content);
 							
-							$.deleteInfinite();
+							/***********Ajax JSoN : 댓글 삭제 함수 ************/
+
+							
+							$(".replyDeleteBtn").click(function() {
+								
+								var replyCD=$("~p", this).html();
+
+								var replyPostCD=$("~strong", this).html();
+								
+
+
+								var formData = {
+									name : replyCD,
+									data : replyPostCD
+								};
+								
+								$.ajax({
+									type : "post",
+									url : "replyDeleteJson.do",
+									// 				data : formData,
+					 				async : false,
+									data : JSON.stringify(formData),
+									contentType : "application/json; charset=utf-8",
+									dataType : "json",
+									beforeSend : function() {
+										console.log(formData);
+									},
+									error : function(e) {
+										console.log(e.responseText);
+									},
+									success : function(data) {
+										
+										
+											$(".overCompletedP").text("댓글이 삭제되었습니다!!");
+											$(".overCompleted").show();
+											$(".overCompleted").fadeOut(3000);
+											
+											var replyList = data.replyList;
+											
+											var content = '<h3 class="overContTitle">댓글</h3>';
+													
+											for (var i = 0; i < replyList.length; i++) {
+														content += '<div class="commentBoxLeft">';
+														content += '<div class="userPhoto">';
+														content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+														content += '<img src="' + replyList[i].imgPath + '">';
+														content += '</a></div>';
+														content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+														content += '</div>';
+														content += '<div class="commentBoxRight">';
+														content += '<div class="clear"></div>';
+														
+														content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+														content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+														content += '</div>';
+														if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+															content += '<a class="replyDeleteBtn">삭제</a>';
+														};
+														content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+														content += '<strong class="replyPostCD">' + postCD + '</strong>';
+
+														content += '<div class="clear"></div>';
+
+											}
+											
+											$(".overCont3Reply").html(content);
+											
+											
+											/***********Ajax JSoN : 댓글 삭제 함수 ************/
+
+											
+											$(".replyDeleteBtn").click(function() {
+												
+												var replyCD=$("~p", this).html();
+
+												var replyPostCD=$("~strong", this).html();
+												
+
+
+												var formData = {
+													name : replyCD,
+													data : replyPostCD
+												};
+												
+												$.ajax({
+													type : "post",
+													url : "replyDeleteJson.do",
+													// 				data : formData,
+									 				async : false,
+													data : JSON.stringify(formData),
+													contentType : "application/json; charset=utf-8",
+													dataType : "json",
+													beforeSend : function() {
+														console.log(formData);
+													},
+													error : function(e) {
+														console.log(e.responseText);
+													},
+													success : function(data) {
+														
+														
+															$(".overCompletedP").text("댓글이 삭제되었습니다!!");
+															$(".overCompleted").show();
+															$(".overCompleted").fadeOut(3000);
+															
+															var replyList = data.replyList;
+															
+															var content = '<h3 class="overContTitle">댓글</h3>';
+																	
+															for (var i = 0; i < replyList.length; i++) {
+																		content += '<div class="commentBoxLeft">';
+																		content += '<div class="userPhoto">';
+																		content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+																		content += '<img src="' + replyList[i].imgPath + '">';
+																		content += '</a></div>';
+																		content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+																		content += '</div>';
+																		content += '<div class="commentBoxRight">';
+																		content += '<div class="clear"></div>';
+																		
+																		content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+																		content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+																		content += '</div>';
+																		if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+																			content += '<a class="replyDeleteBtn">삭제</a>';
+																		};
+																		content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+																		content += '<strong class="replyPostCD">' + postCD + '</strong>';
+
+																		content += '<div class="clear"></div>';
+
+															}
+															
+															$(".overCont3Reply").html(content);
+															
+															
+															/***********Ajax JSoN : 댓글 삭제 함수 ************/
+
+															
+															$(".replyDeleteBtn").click(function() {
+																
+																var replyCD=$("~p", this).html();
+
+																var replyPostCD=$("~strong", this).html();
+																
+
+
+																var formData = {
+																	name : replyCD,
+																	data : replyPostCD
+																};
+																
+																$.ajax({
+																	type : "post",
+																	url : "replyDeleteJson.do",
+																	// 				data : formData,
+													 				async : false,
+																	data : JSON.stringify(formData),
+																	contentType : "application/json; charset=utf-8",
+																	dataType : "json",
+																	beforeSend : function() {
+																		console.log(formData);
+																	},
+																	error : function(e) {
+																		console.log(e.responseText);
+																	},
+																	success : function(data) {
+																		
+																		
+																			$(".overCompletedP").text("댓글이 삭제되었습니다!!");
+																			$(".overCompleted").show();
+																			$(".overCompleted").fadeOut(3000);
+																			
+																			var replyList = data.replyList;
+																			
+																			var content = '<h3 class="overContTitle">댓글</h3>';
+																					
+																			for (var i = 0; i < replyList.length; i++) {
+																						content += '<div class="commentBoxLeft">';
+																						content += '<div class="userPhoto">';
+																						content += '<a href="userRoomLink.do?memCD=' + replyList[i].memCD + '" class="userRoomLink">';
+																						content += '<img src="' + replyList[i].imgPath + '">';
+																						content += '</a></div>';
+																						content += '<div class="commentName">' + replyList[i].memNm + '</div>';
+																						content += '</div>';
+																						content += '<div class="commentBoxRight">';
+																						content += '<div class="clear"></div>';
+																						
+																						content += '<h3 class="userComment">' + replyList[i].reply + '</h3>';
+																						content += '<h5 class="userDate">' + replyList[i].formatUpdateDate + '</h5>';
+																						content += '</div>';
+																						if(memberMemCD==userMemCD || memberMemCD==replyList[i].memCD){
+																							content += '<a class="replyDeleteBtn">삭제</a>';
+																						};
+																						content += '<p class="replyCD">' + replyList[i].replyCD + '</p>';
+																						content += '<strong class="replyPostCD">' + postCD + '</strong>';
+
+																						content += '<div class="clear"></div>';
+
+																			}
+																			
+																			$(".overCont3Reply").html(content);
+																			
+
+																	}
+																});
+															});
+															
+
+													}
+												});
+											});
+
+									}
+								});
+							});
 
 					}
 				});
