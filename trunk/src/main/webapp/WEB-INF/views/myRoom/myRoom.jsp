@@ -56,8 +56,8 @@
 									</tr>
 									<tr>
 										<td class="tableCont" ><img class="myStarPoint"
-											src="/pyongjjeom/resources/img/p${post.memGradeChar }.png">
-											<p class="myStarPointP">${post.memGradeChar }</p></td>
+											src="/pyongjjeom/resources/img/p${post.memGradeInt}.png">
+											<p class="myStarPointP">${post.memGradeInt }</p></td>
 									</tr>
 									<tr>
 										<td class="tableCont2"><h4>${post.comment }</h4></td>
