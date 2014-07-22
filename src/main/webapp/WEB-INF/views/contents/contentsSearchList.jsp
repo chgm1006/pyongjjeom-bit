@@ -150,14 +150,12 @@
 		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
 <script type="text/javascript" language="javascript"
 		src="${pageContext.request.contextPath}/resources/js/jqueryContentsSearchList.js"></script>
+
+<script type="text/javascript" language="javascript"
+		src="${pageContext.request.contextPath}/resources/js/jqueryContentsSearchListBook.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 		
-
-
-
-
-
 
 
 
