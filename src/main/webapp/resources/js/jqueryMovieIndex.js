@@ -78,6 +78,7 @@
 			$(".exit").click(function() {
 				$("#glayLayer").hide();
 				$("#overLayer").hide();
+				$(".pointText").val("");
 
 			});
 

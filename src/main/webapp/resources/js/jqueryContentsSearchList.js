@@ -225,6 +225,7 @@
 					 return false;
 			     }
 			     if(pointTextLength <= 0 || pointText==" "){
+
 			    	 $(".overCompletedP").text("한글자이상 적어주세요.");
 					 $(".overCompleted").show();
 					 $(".overCompleted").fadeOut(3000);
@@ -369,6 +370,8 @@
 				$("#overLayer").hide();
 				$("#overLayerBook").hide();
 				$(".overPreviewWrap").css("display","none");
+				$(".pointText").val("");
+
 			});
 
 			$("#imgWrapMovie,#tableTitleLinkMovie").click(function() {
@@ -384,6 +387,9 @@
 			$(".exit").click(function() {
 				$("#glayLayer").hide()
 				$("#overLayer").hide();
+				$("#overLayerBook").hide();
+				$(".pointText").val("");
+
 			});
 			
 			
