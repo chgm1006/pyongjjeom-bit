@@ -119,14 +119,15 @@
 				<c:choose>
 					<c:when test="${member != null }">
 						<div class="myFaceWrap">
-							<img class="myFace" src="${member.imgPath}">
+							<img class="myFace" src="${member.imgPath}">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						</div>
 					</c:when>
 				</c:choose>
+					
 				<ul>
 					<c:choose>
 						<c:when test="${member==null}">
-							<li class="menu5"><a href="login.do" class="menu5_1">로그인</a>
+							<li class="menu5"><a href="#" class="menu5_1">로그인</a>
 								<div class="loginHidden">
 									<form action="loginsuccess.do" method="post">
 										<h2>로그인</h2>
