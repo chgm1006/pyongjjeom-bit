@@ -161,7 +161,7 @@ public class NoticeController {
 		noticeService.insertData(notice);
 		System.out.println(notice.toString());
 
-		return "notice/write_ok";
+		return "redirect:boardList.do";
 	}
 
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
@@ -200,7 +200,7 @@ public class NoticeController {
 
 		System.out.println(notice.toString());
 
-		return "notice/edit_ok";
+		return "redirect:boardList.do";
 
 	}
 
@@ -214,7 +214,7 @@ public class NoticeController {
 
 		noticeService.deleteData(request.getParameter("notCD"));
 
-		return "notice/delete_ok";
+		return "redirect:boardList.do";
 	}
 
 	/*
