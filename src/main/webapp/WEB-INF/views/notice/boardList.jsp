@@ -70,6 +70,11 @@
 							OnClick="window.location='write.do'">글쓰기</a></li>
 						<li class="boardMenu"><a class="myPageMenu" href="#"
 							OnClick="window.location='deleteList.do'">삭제된글</a></li>
+
+							<li class = "boardMenu"><a class = "mypageMenu" href = "#"
+							OnClick="window.location='MovieDataUpdate.do'">영화 평점 DB_INSERT/UPDATE</a></li>
+							<li class = "boardMenu"><a class = "mypageMenu" href = "#"
+							OnClick="window.location='MovieDataUpdate.do'">책 평점 DB_INSERT/UPDATE</a></li>
 					</c:when>
 					<c:otherwise>
 					</c:otherwise>
