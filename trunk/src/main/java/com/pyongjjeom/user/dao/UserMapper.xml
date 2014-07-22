@@ -5,14 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<select id="getMemberInfo" parameterType="string" resultType="Member">
 
-	    select * from member where memCD=#{memCD};
-	    	</select>
+		select *
+		from member where memCD=#{memCD};
+	</select>
 
 	<select id="checkMemberID" parameterType="string" resultType="Member">
 
 	</select>
 
-	
+
 	<update id="upDateData" parameterType="Member">
 		update member
 		set
@@ -20,19 +21,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		memNm='${memNm}',
 		birth='${birth}',
 		passwd=password('${passwd}'),
-		imgPath='${imgPath}',
+		<if test="imgPath != ''">imgPath='${imgPath}',</if>
 		updatedate = now(),
 		commOpenChk = '${commOpenChk}',
-		commReplyChk = '${commReplyChk}'
+		commReplyChk =
+		'${commReplyChk}'
 		where memCD='${memCD}';
 
 
 	</update>
-	
+
 
 	<update id="deleteMember" parameterType="string">
 
-	    update member set memkind = 'D' where memCD = #{memCD};
+		update member set memkind = 'D'
+		where memCD = #{memCD};
 	</update>
 
 </mapper>
