@@ -79,6 +79,12 @@ public class ContentController {
 					iterator.remove();
 				}
 			}
+			Iterator<String> iterator2 = movieTitleList.iterator();
+			while (iterator2.hasNext()) {
+				if (iterator2.next().contains("님포매니악")) {
+					iterator2.remove();
+				}
+			}
 			NaverParse parse = new NaverParse();
 			String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
 			String uri, uri2;
@@ -613,7 +619,7 @@ public class ContentController {
 			
 			
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			int i = 0, index = 0;
+			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
 				if (member != null) {
