@@ -107,7 +107,7 @@ a.deleteBtn{
 	border:2px solid #fff;
 	border-radius:5px;
 }
-deleteBtn{
+a.deleteBtn:hover{
 	border: 2px solid #ffa854;
 	transition: 0.7;
 	background-color: #f9be4d;
