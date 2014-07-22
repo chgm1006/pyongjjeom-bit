@@ -59,4 +59,6 @@ public interface PostAndReplyMapper {
 
 	public void deleteReply(String replyCD);
 
+	public void deleteReplyList(String postCD);
+
 }

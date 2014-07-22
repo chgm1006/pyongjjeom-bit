@@ -132,6 +132,7 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	public void deletePost(String postCD) {
 		// TODO Auto-generated method stub
 		
+		parMapper.deleteReplyList(postCD);
 		parMapper.deletePost(postCD);
 	
 	}
