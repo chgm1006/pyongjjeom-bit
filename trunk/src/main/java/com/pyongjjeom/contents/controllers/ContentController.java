@@ -452,7 +452,12 @@ public class ContentController {
 			{
 				myComment= parService.getMyComent(movie.getConCD(),member.getMemCD());
 			}
+			if(myComment==null)
+			{
+				myComment= new Comment();
+			}
 			System.out.println(myComment+"!!!!");
+			
 			
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			int i = 0, index = -1;
