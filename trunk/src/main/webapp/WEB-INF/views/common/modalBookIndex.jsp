@@ -29,7 +29,7 @@
 				<!---- 하단 상세 설명 ---->
 				<div class="overContTableWrap">
 					<div class="averageWrap">
-						<div class="avg1">
+						<div  title="네이버/알라딘/반디앤루니스/YES24/교보문고의 평균평점입니다." class="avg1">
 							<h1 class="avgPoint">0.0</h1>
 						</div>
 						<div class="avg2">
