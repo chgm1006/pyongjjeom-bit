@@ -11,6 +11,8 @@
 	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
@@ -105,12 +107,10 @@
 					<tr>
 						<td>
 											<label for="email" >이메일</label> 
-							
 						</td>
 						<td>
 											<input type="text"  id="email" name="email"	placeholder="이메일..."> 
 											<input type="button" id="emailCheck" value="중복확인"><br>
-							
 						</td>
 					</tr>
 					<tr>
