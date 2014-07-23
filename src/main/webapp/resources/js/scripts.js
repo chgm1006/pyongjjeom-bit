@@ -34,7 +34,7 @@ jQuery(document)
 										$(this).find("label[for='birth']").html('생년월일');
 										$(this).find("label[for='password']").html('비밀번호');
 										$(this).find("label[for='password_check']").html('비밀번호확인');
-										
+
 										// //
 										var email = $(this).find('input#email').val();
 										var name = $(this).find('input#name').val();
@@ -43,7 +43,6 @@ jQuery(document)
 										var password_check = $(this).find('input#password_check')
 												.val();
 										$(":input:radio[name=commOpenChk]:checked").val();
-										$(":input:radio[name=commReplyChk]:checked").val();
 										// 이메일 유효성 검사
 										var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 										// 이름 유효성 검사
@@ -51,7 +50,7 @@ jQuery(document)
 										// 생일 유효성 검사
 										var regBirth = /^[0-9]+$/;
 										var checkemail = document.register.checkemail.value;
-										
+
 										if (email == '') {
 											$(this)
 													.find("label[for='email']")
@@ -67,7 +66,7 @@ jQuery(document)
 											$(this).find("label[for='email'] span").fadeIn('medium');
 											return false;
 										}
-										
+
 										if (name == '') {
 											$(this)
 													.find("label[for='name']")
@@ -108,14 +107,14 @@ jQuery(document)
 													'medium');
 											return false;
 										}
-										if(password.length < 6 || password.length > 20){
+										if (password.length < 6 || password.length > 20) {
 											$(this)
-											.find("label[for='password']")
-											.append(
-													"<span style='display:none' class='red'> - 영문/숫자 조합해서 6자에서 20자이내로 설정해주세요.</span>");
-									$(this).find("label[for='password'] span").fadeIn(
-											'medium');
-									return false;
+													.find("label[for='password']")
+													.append(
+															"<span style='display:none' class='red'> - 영문/숫자 조합해서 6자에서 20자이내로 설정해주세요.</span>");
+											$(this).find("label[for='password'] span").fadeIn(
+													'medium');
+											return false;
 										}
 										if (password_check == '') {
 											$(this)

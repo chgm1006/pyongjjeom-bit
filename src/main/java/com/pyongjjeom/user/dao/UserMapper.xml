@@ -24,8 +24,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		<if test="imgPath != ''">imgPath='${imgPath}',</if>
 		updatedate = now(),
 		commOpenChk = '${commOpenChk}',
-		commReplyChk =
-		'${commReplyChk}'
 		where memCD='${memCD}';
 
 
