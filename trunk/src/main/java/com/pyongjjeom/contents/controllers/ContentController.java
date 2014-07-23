@@ -90,7 +90,7 @@ public class ContentController {
 
 			List<NaverMovie> movieList = new ArrayList<NaverMovie>();
 			List<String> imageList = new ArrayList<String>();
-			for (int i = 0; i < 21; i++) {
+			for (int i = 0; i < 15; i++) {
 				try {
 					uri = "http://openapi.naver.com/search?key=" + apiKey
 							+ "&target=movie" + "&query="
@@ -99,8 +99,8 @@ public class ContentController {
 					movieList.add(parse.currentMovieParse(uri));
 					uri2 = "http://openapi.naver.com/search?key=" + apiKey
 							+ "&target=image" + "&query="
-							+ URLEncoder.encode(movieTitleList.get(i) + "포스터", "UTF-8")
-							+ "&display=1&filter=large";
+							+ URLEncoder.encode(movieTitleList.get(i) + " 포스터", "UTF-8")
+							+ "&display=1";
 					imageList.add(parse.movieImageParse(uri2));
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
@@ -456,6 +456,11 @@ public class ContentController {
 			if(member!=null)
 			{
 				myComment= parService.getMyComent(movie.getConCD(),member.getMemCD());
+				if(myComment!=null)
+				{
+					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
+							.replaceAll("&nbsp;", "\u0020"));
+				}
 			}
 			if(myComment==null)
 			{
@@ -477,8 +482,6 @@ public class ContentController {
 			}
 			if (member != null && !commentList.isEmpty() && index != -1) {
 				commentList.remove(index);
-				myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
-						.replaceAll("&nbsp;", "\u0020"));
 			}
 			System.out.println("일반 유저 " + commentList);
 			System.out.println("내 자신 " + myComment);
