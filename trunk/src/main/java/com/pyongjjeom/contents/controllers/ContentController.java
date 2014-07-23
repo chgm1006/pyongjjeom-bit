@@ -188,7 +188,7 @@ public class ContentController {
 		return "contents/insertResult";
 	}
 
-	@RequestMapping(value = "BookDateUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "BookDataUpdate.do", method = RequestMethod.GET)
 	public String bookDataUpdate(Model model, HttpServletRequest request) {
 
 		Yes24Parsing yes24Parsing = new Yes24Parsing();
