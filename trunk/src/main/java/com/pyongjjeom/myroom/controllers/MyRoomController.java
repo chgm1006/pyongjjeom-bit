@@ -65,6 +65,11 @@ public class MyRoomController {
 		for (PostAndContents post : postList) {
 			post.setMemGradeInt((int)post.getMemGrade());
 		}
+		if(member.getImgPath()==null||member.getImgPath().equals(""))
+		{
+			member.setImgPath("/resources/img/empty.jpg");
+		}
+		
 		model.addAttribute("user", member);
 		boolean myRoom = true;
 		model.addAttribute("myRoom", myRoom);
@@ -78,6 +83,11 @@ public class MyRoomController {
 		Member user = userService.getMemberInfo(memCD);
 		for (PostAndContents post : postList) {
 			post.setMemGradeInt((int)post.getMemGrade());
+		}
+		
+		if(user.getImgPath()==null||user.getImgPath().equals(""))
+		{
+			user.setImgPath("/resources/img/empty.jpg");
 		}
 		model.addAttribute("user", user);
 		model.addAttribute("postList", postList);
@@ -96,6 +106,10 @@ public class MyRoomController {
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply : replyList) {
 			reply.setFormatUpdateDate(df2.format(reply.getUpdateDate()));
+			if(reply.getImgPath()==null||reply.getImgPath().equals(""))
+			{
+				reply.setImgPath("/resources/img/empty.jpg");
+			}
 		}
 		System.out.println(replyList);
 		Map<String, Object> map = new HashMap<String, Object>();
