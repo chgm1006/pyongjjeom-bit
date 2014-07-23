@@ -16,7 +16,7 @@
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
 
-<%-------jQuery : 로고 등장!-------%>
+<!-- -----jQuery : 로고 등장!----- -->
 <script>
 	$(document).ready(function() {
 		$("#logoPPak").fadeOut(3000);	
@@ -29,7 +29,7 @@
 
 <article>
 
-<%-------로고 등장!-------%>
+<!-- -----로고 등장!----- -->
 <c:choose>
 	<c:when test="${bookList==null}">
 		<div id="logoPPak" style="width:100%; height:100%; position:absolute; background-color:white; z-index:100;">
@@ -38,7 +38,7 @@
 	</c:when>
 	<c:otherwise></c:otherwise>
 </c:choose>
-<%-------로고 빡!------여기까지-----%>
+<!-- -----로고 빡!------여기까지--- -->
 <!-- ########################################### -->
 <!-- #################  Top으로 이동  ################# -->
 <!-- ########################################### -->
