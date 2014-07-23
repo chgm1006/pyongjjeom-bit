@@ -107,9 +107,35 @@
 
 	});
 </script>
+<%-------jQuery : 로고 빡!-------%>
+<script>
+	$(document).ready(function() {
+		$("#logoPPak").fadeOut(3000);	
+		$("#logoPPak").click(function(){
+			$("#logoPPak").fadeOut("fast");	
+		});
+			
+	});
+	
 
+
+</script>
 </head>
 <body>
+
+
+<%-------로고 빡!-------%>
+<c:choose>
+	<c:when test="${movieList==null || bookList==null}">
+		<div id="logoPPak" style="width:100%; height:100%; position:absolute; background-color:white; z-index:100;">
+			<img src="/resources/img/logoBig.png" style=" margin:35% auto;">		
+		</div>
+	</c:when>
+	<c:otherwise></c:otherwise>
+</c:choose>
+<%-------로고 빡!------여기까지-----%>
+
+
 	<div id="fb-root"></div>
 	<header>
 		<div class="topMenu">
