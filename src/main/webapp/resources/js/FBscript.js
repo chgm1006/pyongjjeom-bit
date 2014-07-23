@@ -8,14 +8,11 @@ var FB_link_url;
 var FB_accessToken;
 
 window.fbAsyncInit = function() {
-	FB_APPID = "pyongjjeom.com" == location.host ? "682328688505624"
+	FB_APPID = "www.pyongjjeom.com" == location.host ? "682328688505624"
 			: "1449705105272003";
-	FB_link_url = "pyongjjeom.com" == location.host ? location.host
+	FB_link_url = "www.pyongjjeom.com" == location.host ? location.host
 			: "localhost:8080/pyongjjeom";
 
-	console.log("host = " + (location.host));
-	console.log("FB_APPID = " + (FB_APPID));
-	console.log("FB_link_url = " + (FB_link_url));
 	FB.init({
 		appId : FB_APPID,
 		status : true,
