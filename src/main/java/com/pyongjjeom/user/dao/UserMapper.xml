@@ -9,11 +9,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		from member where memCD=#{memCD};
 	</select>
 
-	<select id="checkMemberID" parameterType="string" resultType="Member">
-
-	</select>
-
-
 	<update id="upDateData" parameterType="Member">
 		update member
 		set
@@ -26,9 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		commOpenChk = '${commOpenChk}',
 		where memCD='${memCD}';
 
-
 	</update>
-
 
 	<update id="deleteMember" parameterType="string">
 
