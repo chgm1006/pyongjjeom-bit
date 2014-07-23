@@ -338,3 +338,285 @@ article{
 #quick:hover,#quick:active {
 	background-position:0px -55px;
 }
+
+
+
+/************************ 스마트폰 가로+세로 **********************/
+/************************ 스마트폰 가로+세로 **********************/
+/************************ 스마트폰 가로+세로 **********************/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+	
+	/*---HEADER---*/
+header{	
+	position:fixed;
+	width:100%;
+	background-color:#f4f4f4;
+	box-shadow:0 1px 1px #999;
+	z-index:20;
+	border:1px dotted #123;
+}
+.topMenu{
+	margin:0 auto;
+	width:100%;
+	height:60px;
+		border:1px dotted #b3b;
+	
+}
+.logo{
+	float:left;
+	padding:0 30px 0 0;
+	width:116px;
+	height:60px;
+	overflow:hidden;
+	background: url(../img/logo.png) no-repeat;
+}
+.logo:hover,.logo:active{
+	background-position: 0px -60px;
+}
+.leftMenu{
+	float:left;
+	margin:0 0 0 50px;
+	width:550px;	
+		border:1px dotted #123;
+	
+}
+.leftMenu li{
+	float:left;
+	width:45px;
+	margin:0 10px;
+	padding:25px 0 0 0;
+	list-style:none;	
+	text-align:center;	
+}
+.leftMenu li a{
+	display:block;
+	width:45px;	
+	height:25px;
+	line-height:20px;
+	padding:1px 0 0 0;
+	text-align:center;
+	font-size:18px;
+	border-top:4px solid #f4f4f4 ;	
+}
+
+.menu1 a:hover{
+	font-weight:bold;
+	border-top:4px solid #ffbe7f ;		
+}
+.menu2 a:hover{
+	font-weight:bold;
+	border-top:4px solid #f4e66b ;		
+}
+.menu3 a:hover{
+	font-weight:bold;
+	border-top:4px solid #8dc63f ;		
+}
+
+
+.performanceHidden{
+	position: absolute;
+	display:none;
+	margin:0 0 0 -35px;
+	padding:0 10px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
+}
+.search{
+	float:left;
+	width:300px;
+	margin:32px 0 0 30px;
+}
+
+/*----------///---오른쪽 메뉴 관련-------////--------*/
+
+.rightMenu{
+	width:300px;
+	height:auto;
+}
+
+.myFaceWrap {
+	margin:10px 0 0 0;
+	float:left;
+	overflow: hidden;
+	width: 40px;
+	height:40px;
+	border-radius: 10px;
+}
+img.myFace{
+	width:40px;
+	height: auto;
+}
+
+
+
+
+
+.rightMenu li{
+	display:block;
+	float:left;
+	width:75px;
+	padding:20px 0 0 0;
+	list-style:none;	
+	text-align:center;
+}
+
+a.menu5_1, a.menu6_1, a.menu7_1{
+	margin:0 auto;
+	display:block;
+	width:65px;	
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	font-size:14px;
+	border: 2px solid #f4f4f4;	
+	
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+a.menu5_1:hover, a.menu6_1:hover, a.menu7_1:hover{
+	border: 2px solid #fea915;
+	background-color:#ffe4b5;
+}
+a.menu5_1:active, a.menu6_1:active, a.menu7_1:active{
+	border: 2px solid #fea915;
+	background-color:#fcc86f;
+}
+
+a.menu5a_1{
+	position:absolute;
+	margin:0 auto;
+	display:block;
+	width:65px;	
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	font-size:14px;
+	cursor:pointer;
+	border: 2px solid #f4f4f4;	
+	
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+/*-----Login Box-------*/
+.loginHidden{
+	position: absolute;
+	display:none;
+	margin:0px 0 0 -95px;
+	padding:15px;
+	width:250px;
+	height:200px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;	
+}
+table.loginBox{
+	margin:0 auto;
+	padding:15px 0 5px 0;
+}
+
+td.loginBoxTd1 {
+	text-align: right;
+	padding:0 5px 0 0;
+}
+
+td.loginBoxTd2 {
+	text-align: left;
+}
+td.loginBoxTd2 input{
+		padding: 0 0 0 5px;
+}
+
+.loginButtonWrap{
+	margin:0 auto;
+	width:80%;
+}
+a.loginButton{
+	display:block;
+	margin:5px;
+	width:95%;
+	height:25px;
+	line-height:25px;
+	border-radius:2px;
+	border:1px dotted #999;
+	background:#fea915;
+}
+a.loginButton:hover,a.loginButton:active{
+	background:#ff860f;
+}
+.loginElseWrap{
+	margin:0 auto;
+}
+a.loginElse{
+	font-size:12px;
+}
+a.loginElse:hover,a.loginElse:active{
+	color: red;
+}
+/*-----Myroom Box-------*/
+.myRoomHidden{
+	position: absolute;
+	display:none;
+	margin:29px 0 0 -25px;
+	padding:10px;
+	width:100px;
+	height:60px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
+}
+.boardHidden{
+	position: absolute;
+	display:none;
+	margin:0px 0 0 -25px;
+	padding:10px;
+	width:100px;
+	height:50px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	background:white;
+}
+a.myRoomSub,a.boardSub{
+	cursor:pointer;
+}
+a.myRoomSub:hover,a.myRoomSub:active,a.boardSub:hover,a.boardSub:active{
+	color:#fea915;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+

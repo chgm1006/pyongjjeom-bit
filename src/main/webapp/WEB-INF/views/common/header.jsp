@@ -129,10 +129,8 @@
 							<option value="movie">영화
 							<option value="book">책
 						</select> <input type="text" id="Search" name="Search"> <input
-							type="hidden" name="stat" value="search"> <input type="submit"
-							value="검색"> <a href="#"> <img class="magnifier"
-							src="${pageContext.request.contextPath}/resources/img/magnifier.png">
-						</a>
+							type="hidden" name="stat" value="search"> 
+							<input type="submit" value="검색">
 					</form>
 				</div>
 			</div>
