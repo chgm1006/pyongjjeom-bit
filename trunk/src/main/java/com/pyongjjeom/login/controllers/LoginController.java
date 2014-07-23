@@ -161,8 +161,13 @@ public class LoginController {
 		System.out.println("memInfo.getEmail = " + memInfo.getEmail());
 		System.out.println("memInfo.getBirth = " + memInfo.getBirth());
 		System.out.println("memInfo.getFbId = " + memInfo.getFbId());
-		boolean isMemInfo = (memInfo.getEmail().equals(member.getEmail())
-				&& memInfo.getFbId().equals(member.getFbId()) && memInfo.getFbYn() == 'Y');
+		boolean isMemInfo = ((memInfo.getEmail().equals(member.getEmail()) || memInfo
+				.getFbId().equals(member.getFbId())) && memInfo.getFbYn() == 'Y');
+
+		int cnt = 0;
+		if (!(memInfo.getFbId().equals(member.getFbId()))) {
+			cnt = loginService.regiesterFBMember(member);
+		}
 
 		if (isMemInfo) {
 			session.setAttribute("member", memInfo);
