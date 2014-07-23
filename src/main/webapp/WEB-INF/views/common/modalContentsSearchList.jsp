@@ -34,7 +34,7 @@
 				<!---- 하단 상세 설명 ---->
 				<div class="overContTableWrap">
 					<div class="averageWrap">
-						<div class="avg1">
+						<div  title="네이버/다음/CGV/메가박스/롯데시네마의 평점 평균 입니다."  class="avg1">
 							<h1 class="avgPoint">0.0</h1>
 						</div>
 						<div class="avg2">
