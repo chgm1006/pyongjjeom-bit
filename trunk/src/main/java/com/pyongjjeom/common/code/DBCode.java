@@ -117,18 +117,17 @@ public class DBCode {
 	 * @param cd
 	 *          "NO"는 공지사항, "SM"은 시스템 관리, "EV"는 이벤트
 	 * @return 공지사항 코드를 반환.
-	 */ 
-	
+	 */
+
 	public String getNoticeCD(String cd) {
 		int cnt = StaticField.NOTICE_CNT++;
-		if (!(cd.toUpperCase().equals("SM") || cd
-				.toUpperCase().equals("EV"))) {
+		if (!(cd.toUpperCase().equals("SM") || cd.toUpperCase().equals("EV"))) {
 			System.err.println("등록되지 않은 코드입니다.");
 			return null;
 		}
 		String cntFormat = String.format("%03d", cnt);
 		String noticeStr = cd.toUpperCase() + nowDate + cntFormat;
-		 System.out.println(noticeStr);
+		System.out.println(noticeStr);
 		return noticeStr;
 	}
 
@@ -291,7 +290,6 @@ public class DBCode {
 		dc.getNoticeCD("");
 		dc.getNoticeCD("");
 		dc.getNoticeCD("");
-		
 
 	}
 }
