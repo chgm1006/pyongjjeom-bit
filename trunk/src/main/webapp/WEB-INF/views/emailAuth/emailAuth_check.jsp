@@ -1,23 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
 
-<head>
-
-<meta charset="utf-8">
-<title>===== 평 쩜 =====</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<!-- /// <head> INCLUDE /// -->
+<%@ include file="../common/header.jsp"%>
 
 <!-- CSS -->
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 
@@ -61,11 +52,10 @@
 		}
 	});
 </script>
-</head>
 
-<body>
+<article>
 	<div class="register-container container">
-		<div class="row">
+		<div class="row"  style="width:600px; margin:0 auto;">
 
 			<div class="register span6">
 				<form action="emailAuth_check.do" method="post">
@@ -82,7 +72,7 @@
 			</div>
 		</div>
 	</div>
-
+</article>
 </body>
 
 
