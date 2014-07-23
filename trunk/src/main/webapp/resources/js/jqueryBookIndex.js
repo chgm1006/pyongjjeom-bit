@@ -81,7 +81,7 @@
 			$("#glayLayerBook").click(function() {
 				$(this).hide()
 				$("#overLayerBook").hide();
-				$(".pointText").val("");
+				$(".pointText2").val("");
 
 			});
 
@@ -96,7 +96,7 @@
 			$(".exit").click(function() {
 				$("#glayLayerBook").hide()
 				$("#overLayerBook").hide();
-				$(".pointText").val("");
+				$(".pointText2").val("");
 
 			});
 
@@ -224,13 +224,13 @@
 																$(".myStarPoint2").show("fast");
 																$(".myStarPoint1").hide("fast");
 																$(".pointModifyWrap").hide();
-																$(".pointText").removeAttr("disabled");
+																$(".pointText2").removeAttr("disabled");
 															}else{
 																var myStarPoint = data.whole.myComment.memGrade;
 																var myComment = data.whole.myComment.comment;
-																$(".pointText").attr("disabled","disabled");
+																$(".pointText2").attr("disabled","disabled");
 																$(".myStarPointCompleted").attr("src","/resources/img/p"+myStarPoint+".png");
-																$(".pointText").attr("value",myComment);
+																$(".pointText2").attr("value",myComment);
 																$(".myStarPoint1").show("fast");
 																$(".myStarPoint2").hide("fast");
 																$(".pointModifyWrap").show();
@@ -253,8 +253,8 @@
 
 
 		/***********Ajax JSoN : 내 평점 올리기 ************/
-		$(".pointSubmit").click(function() {
-			var pointText=$(".pointText").val();
+		$(".pointSubmit2").click(function() {
+			var pointText=$(".pointText2").val();
 			var starGrade=$("#starGrade").val();
 
 			var pointTextLength = pointText.length;
@@ -304,7 +304,7 @@
 				success : function(data) {
 						
 
-						$(".pointText").attr("disabled","disabled");
+						$(".pointText2").attr("disabled","disabled");
 					
 						$(".myStarPointCompleted").attr("src","/resources/img/p"+starGrade+".png");
 						$(".myStarPoint1").show("fast");
@@ -323,7 +323,7 @@
 		});
 
 		/***********Ajax JSoN : 내 평점 삭제하기 ************/
-		$(".pointDelete").click(function() {
+		$("a.pointDelete2").click(function() {
 			var myPostCD=$(".myPostCD").html();
 
 			var formData = {
@@ -347,7 +347,7 @@
 				},
 				success : function(data) {
 					
-					$(".pointText").removeAttr("value").removeAttr("disabled");
+					$(".pointText2").removeAttr("value").removeAttr("disabled");
 					$(".myStarPoint2").show("fast");
 					$(".myStarPoint1").hide("fast");
 					$(".pointModifyWrap").hide();
@@ -365,8 +365,8 @@
 				
 		
 		/*******************모달 : 내 평점 수정 버튼 클릭시*********************/
-		$("a.pointModify").click(function() {
-			$(".pointText").removeAttr("disabled");
+		$("a.pointModify2").click(function() {
+			$(".pointText2").removeAttr("disabled");
 			$(".myStarPoint2").show("fast");
 			$(".myStarPoint1").hide("fast");
 			$(".pointModifyWrap").animate( { left:'780px' }, 500 );
