@@ -79,9 +79,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		member = (Member) session.getAttribute("member");
 		model.addAttribute("commOpenChk", member.getCommOpenChk());
-		model.addAttribute("commReplyChk", member.getCommReplyChk());
-		System.out.println("라디오버튼체크값" + member.getCommOpenChk()
-				+ member.getCommReplyChk());
+		System.out.println("라디오버튼체크값" + member.getCommOpenChk());
 
 		return "myRoom/mySet";
 	}
@@ -106,7 +104,8 @@ public class UserController {
 				+ "/resources/userImages/"
 				: "/resources/userImages/";
 
-		System.out.println("urlPath11111 = " + request.getServerName().equals("localhost"));
+		System.out.println("urlPath11111 = "
+				+ request.getServerName().equals("localhost"));
 		System.out.println("urlPath = " + urlPath);
 
 		try {
@@ -209,7 +208,6 @@ public class UserController {
 		System.out.println(member);
 
 		userService.upDateData(member);
-		System.out.println(member.getCommOpenChk() + member.getCommReplyChk());
 		System.out.println("22222222");
 		System.out.println(member.toString());
 

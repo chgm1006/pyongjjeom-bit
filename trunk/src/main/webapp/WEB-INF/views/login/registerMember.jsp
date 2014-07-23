@@ -20,22 +20,27 @@
         <![endif]-->
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+<%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script> --%>
+<!-- <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script> -->
 
 
 
 <script>
 	$(document).ready(function() {
 
+		$("#email").change(function(){
+			alert($(this).val());
+			console.log($(this).val());
+		});
 		$('#emailCheck').click(function() {
-			if ($('#email').val() == '') {
+			
+				var email = $("#register #email");
+			if ($(email).val() == '') {
 				alert("이메일 값을 넣어 주세요");
 				return false;
-			} else {
-				var email = $('#email').serialize();
+			} else { 
 
 				$.ajax({
 					cache : false, // cache가 남아 있지 않게 false
@@ -99,8 +104,9 @@
 				<input type="hidden" id="checkemail" name="checkemail" value='0' />
 				<label for="email">이메일</label> 
 				<input type="text" id="email" name="email"	placeholder="이메일..."> 
-				<input type="button" value="중복확인"	id="emailCheck"> 
-				<label for="name">이름</label> <input type="text"	id="name" name="memNm" placeholder="이름..."> 
+				<input type="button" id="emailCheck" value="중복확인"> 
+				<label for="name">이름</label>
+				<input type="text"	id="name" name="memNm" placeholder="이름..."> 
 				<label for="birth">생년월일</label>
 				<input type="text" id="birth" name="birth" placeholder="'-'빼고 숫자만...">
 				<label for="password">비밀번호</label> 

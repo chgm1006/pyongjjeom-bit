@@ -70,11 +70,10 @@ public class LoginController {
 		} else {
 			System.out.println(member.getMemKind());
 
-			if(member.getImgPath()==null||member.getImgPath().equals(""))
-			{
+			if (member.getImgPath() == null || member.getImgPath().equals("")) {
 				member.setImgPath("/resources/img/empty.jpg");
 			}
-			
+
 			session.setAttribute("member", member);
 			return "contents/movieIndex";
 		}
@@ -125,7 +124,7 @@ public class LoginController {
 		String logCD = dc.getMemberCD("G");
 		System.out.println("dd");
 		user.setMemCD(logCD);
-		System.out.println(user);
+		System.out.println("user = " + (user));
 		loginService.insertMember(user);
 
 		return "login/registersucess";
@@ -201,6 +200,7 @@ public class LoginController {
 	@RequestMapping(value = "ajaxLoginCheck.do", method = RequestMethod.POST)
 	public ModelAndView AjaxCheck(@Valid Member user, HttpServletRequest request) {
 		System.out.println("로그인 체크");
+		System.out.println("getEmail = " + user.getEmail());
 		ModelAndView view = new ModelAndView("ajax_views/userajax");
 		System.out.println("11111");
 		System.out.println(request.getParameter("email"));
