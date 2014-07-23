@@ -12,8 +12,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -108,30 +106,43 @@ console.log("1111");
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 
-					<table style="margin: 0 auto;">
+					<table style="width:300px; margin: 0 auto; ">
 						<tr>
-							<td><label for="email">이메일</label></td>
+							<td ><label for="email">이메일</label></td>
+							</tr>
+							<tr>
 							<td><input type="text" id="email" name="email" placeholder="이메일...">
-								<input type="button" id="emailCheck" value="중복확인"><br></td>
+						</tr>
+						
+						<tr>
+							<td><input type="button" id="emailCheck" value="중복확인"></td>
 						</tr>
 						<tr>
-							<td><label for="name">이름</label></td>
+							<td><label for="name">이름</label>
+							</td>
+							</tr>
+							<tr>
 							<td><input type="text" id="name" name="memNm" placeholder="이름...">
-
 							</td>
 						</tr>
 						<tr>
 							<td><label for="birth">생년월일</label></td>
+							</tr>
+							<tr>
 							<td><input type="text" id="birth" name="birth"
 								placeholder="'-'빼고 숫자만..."></td>
 						</tr>
 						<tr>
 							<td><label for="password">비밀번호</label></td>
+							</tr>
+							<tr>
 							<td><input type="password" id="password" name="passwd"
 								placeholder="6자~20자..."></td>
 						</tr>
 						<tr>
 							<td><label for="password_check">비밀번호확인</label></td>
+							</tr>
+							<tr>
 							<td><input type="password" id="password_check" name="password_check"
 								placeholder="비밀번호확인..."></td>
 						</tr>
