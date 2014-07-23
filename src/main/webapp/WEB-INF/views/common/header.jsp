@@ -1,10 +1,6 @@
-<%@page import="com.pyongjjeom.user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-request.removeAttribute("member");
-%>
 <!DOCTYPE HTML>
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
@@ -35,34 +31,56 @@ request.removeAttribute("member");
 			$(".performanceHidden").hide();
 			$(".performanceButton").css("border-top", "4px solid #f4f4f4");
 		});
+		
+		
 		$(".menu5_1,.loginHidden").mouseenter(function() {
-			$(".loginHidden").show();
 			$(".menu5_1").css("border", "2px solid #fea915");
 			$(".menu5_1").css("background-color", "#ffe4b5");
-
 		});
 		$(".menu5_1,.loginHidden").mouseleave(function() {
-			$(".loginHidden").hide();
 			$(".menu5_1").css("border", "2px solid #f4f4f4");
 			$(".menu5_1").css("background-color", "");
 		});
+		$(".menu5_1").click(function() {
+			if ($(".loginHidden").css("display") == "none") {
+				$(".loginHidden").show();
+			}else{
+				$(".loginHidden").hide();
+			}
+			$(".menu5_1").css("border", "2px solid #fea915");
+			$(".menu5_1").css("background-color", "#ffe4b5");
+		});
+		
+		
 		$(".notLogin,.loginHidden2").mouseenter(function() {
 			$(".loginHidden2").show();
 		});
 		$(".notLogin,.loginHidden2").mouseleave(function() {
 			$(".loginHidden2").hide();
 		});
+		
+		
+		
 		$(".menu5a_1,.myRoomHidden").mouseenter(function() {
-			$(".myRoomHidden").show();
 			$(".menu5a_1").css("border", "2px solid #fea915");
 			$(".menu5a_1").css("background-color", "#ffe4b5");
-
 		});
 		$(".menu5a_1,.myRoomHidden").mouseleave(function() {
-			$(".myRoomHidden").hide();
 			$(".menu5a_1").css("border", "2px solid #f4f4f4");
 			$(".menu5a_1").css("background-color", "");
 		});
+		$(".menu5a_1").click(function() {
+			if ($(".myRoomHidden").css("display") == "none") {
+				$(".myRoomHidden").show();
+			}else{
+				$(".myRoomHidden").hide();
+			}
+			$(".menu5a_1").css("border", "2px solid #fea915");
+			$(".menu5a_1").css("background-color", "#ffe4b5");
+		});
+		
+		
+		
 		$(".menu7_1,.boardHidden").mouseenter(function() {
 			$(".boardHidden").show();
 			$(".menu7_1").css("border", "2px solid #fea915");
@@ -91,7 +109,6 @@ request.removeAttribute("member");
 </script>
 
 </head>
-${member }
 <body>
 	<div id="fb-root"></div>
 	<header>
@@ -124,12 +141,11 @@ ${member }
 				<c:choose>
 					<c:when test="${member != null }">
 						<div class="myFaceWrap">
-							<img class="myFace" src="${member.imgPath}">&nbsp; &nbsp; &nbsp;
-							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+							<img class="myFace" src="${member.imgPath}">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						</div>
 					</c:when>
 				</c:choose>
-
+					
 				<ul>
 					<c:choose>
 						<c:when test="${member==null}">
@@ -163,10 +179,10 @@ ${member }
 
 						</c:when>
 						<c:otherwise>
-							<li class="menu5a"><a href="myRoom.do" class="menu5a_1">마이룸</a>
+							<li class="menu5a"><a  class="menu5a_1">마이룸</a>
 								<div class="myRoomHidden">
-									<a class="myRoomSub" href="myRoom.do">My 평점</a><br> <a
-										class="myRoomSub" id="inviteFriends">친구초대</a><br> <a
+									<a class="myRoomSub" href="myRoom.do">My 평점</a><br> 
+									<a class="myRoomSub" id="inviteFriends">친구초대</a><br> <a
 										class="myRoomSub" id="FBLogout" style="cursor: pointer;">로그아웃</a><br>
 									<a class="myRoomSub" href="mySet.do">설정</a><br>
 								</div></li>
