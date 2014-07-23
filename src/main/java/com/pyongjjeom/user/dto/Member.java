@@ -60,7 +60,6 @@ public class Member {
 	private Date updateDate = null;
 
 	private String commOpenChk = "";
-	private String commReplyChk = "";
 
 	private String fileName;
 	private CommonsMultipartFile fileData;
@@ -193,14 +192,6 @@ public class Member {
 		this.commOpenChk = commOpenChk;
 	}
 
-	public String getCommReplyChk() {
-		return commReplyChk;
-	}
-
-	public void setCommReplyChk(String commReplyChk) {
-		this.commReplyChk = commReplyChk;
-	}
-
 	public String getFileName() {
 		return fileName;
 	}
@@ -225,8 +216,8 @@ public class Member {
 				+ emailAuthCD + ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn="
 				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
 				+ regiDate + ", updateDate=" + updateDate + ", commOpenChk="
-				+ commOpenChk + ", commReplyChk=" + commReplyChk + ", fileName="
-				+ fileName + ", fileData=" + fileData + "]";
+				+ commOpenChk + ", fileName=" + fileName + ", fileData=" + fileData
+				+ "]";
 	}
 
 }
