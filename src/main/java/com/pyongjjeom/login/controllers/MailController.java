@@ -56,9 +56,9 @@ public class MailController {
 		}
 		System.out.println("urlPath = " + urlPath);
 		System.out.println("getServerName() = " + request.getServerName());
-		urlPath = urlPath.equals(request.getServerName()) ? urlPath : "http://localhost:8080/pyongjjeom/" ;
+		urlPath = urlPath.equals(request.getServerName()) ? urlPath
+				: "http://localhost:8080/pyongjjeom/";
 
-		
 		System.out.println("urlPath = " + urlPath);
 		String memCD = loginService.getMemCD(toUser);
 		String subject = "<평쩜> 요청하신 인증번호 입니다";
