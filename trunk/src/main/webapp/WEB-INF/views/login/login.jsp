@@ -43,7 +43,6 @@
 
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" /></script>
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/loginscripts.js"></script>
 <script type="text/javascript">
