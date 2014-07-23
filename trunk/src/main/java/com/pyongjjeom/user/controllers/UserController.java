@@ -106,6 +106,7 @@ public class UserController {
 				+ "/resources/userImages/"
 				: "/resources/userImages/";
 
+		System.out.println("urlPath11111 = " + request.getServerName().equals("localhost"));
 		System.out.println("urlPath = " + urlPath);
 
 		try {
