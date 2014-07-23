@@ -218,6 +218,7 @@ a.menu5a_1{
 	line-height:25px;
 	text-align:center;
 	font-size:14px;
+	cursor:pointer;
 	border: 2px solid #f4f4f4;	
 	
   -webkit-border-radius: 4px;
@@ -310,6 +311,7 @@ a.loginElse:hover,a.loginElse:active{
 	background:white;
 }
 a.myRoomSub,a.boardSub{
+	cursor:pointer;
 }
 a.myRoomSub:hover,a.myRoomSub:active,a.boardSub:hover,a.boardSub:active{
 	color:#fea915;
