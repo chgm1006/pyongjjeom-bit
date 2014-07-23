@@ -13,6 +13,9 @@ window.fbAsyncInit = function() {
 	FB_link_url = "pyongjjeom.com" == location.host ? location.host
 			: "localhost:8080/pyongjjeom";
 
+	console.log("host = " + (location.host));
+	console.log("FB_APPID = " + (FB_APPID));
+	console.log("FB_link_url = " + (FB_link_url));
 	FB.init({
 		appId : FB_APPID,
 		status : true,
