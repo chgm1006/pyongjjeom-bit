@@ -149,7 +149,7 @@
 </body>
 </html>
 
-<!-- 
+<%-- 
 <html>
 <head>
 <script type='text/javascript' src='script/jquery.js'></script>
@@ -224,4 +224,4 @@
 		<img src="images/viewLoading.gif" />
  
  
- -->
+ --%>
