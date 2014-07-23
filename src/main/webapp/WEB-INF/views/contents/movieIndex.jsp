@@ -14,10 +14,28 @@
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
 
-
+<%-------jQuery : 로고 등장!-------%>
+<script>
+	$(document).ready(function() {
+		$("#logoPPak").fadeOut(3000);	
+		$("#logoPPak").click(function(){
+			$("#logoPPak").fadeOut("fast");	
+		});
+	});
+</script>
 
 <article>
 
+<%-------로고 등장!-------%>
+<c:choose>
+	<c:when test="${movieList==null}">
+		<div id="logoPPak" style="width:100%; height:100%; position:absolute; background-color:white; z-index:100;">
+			<img src="/resources/img/logoBig.png" style="margin:35% auto;">		
+		</div>
+	</c:when>
+	<c:otherwise></c:otherwise>
+</c:choose>
+<%-------로고 빡!------여기까지-----%>
 	<!-- ########################################### -->
 	<!-- #################  Top으로 이동  ################# -->
 	<!-- ########################################### -->
