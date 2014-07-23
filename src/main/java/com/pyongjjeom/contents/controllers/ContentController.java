@@ -473,6 +473,10 @@ public class ContentController {
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
+				if(comment.getImgPath()==null||comment.getImgPath().equals(""))
+				{
+					comment.setImgPath("/resources/img/empty.jpg");
+				}
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
 						index = i;
@@ -629,6 +633,11 @@ public class ContentController {
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
+				if(comment.getImgPath()==null||comment.getImgPath().equals(""))
+				{
+					comment.setImgPath("/resources/img/empty.jpg");
+				}
+				
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
 						index = i;
