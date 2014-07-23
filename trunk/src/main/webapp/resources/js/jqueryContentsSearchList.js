@@ -160,7 +160,7 @@
 									content += '<div class="commentName">' + list[i].memNm + '</div>';
 									content += '</div>';
 									content += '<div class="commentBoxRight">';
-									content += '<img class="StarPointCompleted" src="/pyongjjeom/resources/img/p' + list[i].memGrade + '.png">';
+									content += '<img class="StarPointCompleted" src="/resources/img/p' + list[i].memGrade + '.png">';
 									content += '<p class="StarPointCompletedP">' + list[i].memGrade + '점</p>';
 									content += '<div class="clear"></div>';
 									
@@ -185,7 +185,7 @@
 							var myStarPoint = data.whole.myComment.memGrade;
 							var myComment = data.whole.myComment.comment;
 							$(".pointText").attr("disabled","disabled");
-							$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+myStarPoint+".png");
+							$(".myStarPointCompleted").attr("src","/resources/img/p"+myStarPoint+".png");
 							$(".pointText").attr("value",myComment);
 							$(".myStarPoint1").show("fast");
 							$(".myStarPoint2").hide("fast");
@@ -265,7 +265,7 @@
 
 							$(".pointText").attr("disabled","disabled");
 						
-							$(".myStarPointCompleted").attr("src","/pyongjjeom/resources/img/p"+starGrade+".png");
+							$(".myStarPointCompleted").attr("src","/resources/img/p"+starGrade+".png");
 							$(".myStarPoint1").show("fast");
 							$(".myStarPoint2").hide("fast");
 							$(".pointModifyWrap").show();

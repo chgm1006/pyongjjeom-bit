@@ -56,7 +56,7 @@
 									</tr>
 									<tr>
 										<td class="tableCont" ><img class="myStarPoint"
-											src="/pyongjjeom/resources/img/p${post.memGradeInt}.png">
+											src="/resources/img/p${post.memGradeInt}.png">
 											<p class="myStarPointP">${post.memGradeInt }</p></td>
 									</tr>
 									<tr>

@@ -10,8 +10,8 @@
 *************************************************************************/
 (function($) {
 	$.fn.jRating = function(op) {
-		var starsPath =  '/pyongjjeom/resources/img/stars.png';
-		var smallPath = '/pyongjjeom/resources/img/small.png';
+		var starsPath =  '/resources/img/stars.png';
+		var smallPath = '/resources/img/small.png';
 		var defaults = {
 			/** String vars **/
 			bigStarsPath :starsPath, // path of the icon stars.png
