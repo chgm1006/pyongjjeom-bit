@@ -206,6 +206,10 @@ public class PostAndReplyController {
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply2 : replyList) {
 			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
+			if(reply2.getImgPath()==null||reply2.getImgPath().equals(""))
+			{
+				reply2.setImgPath("/resources/img/empty.jpg");
+			}
 		}
 
 		Map<String, Object> map = new HashMap<String, Object>();
