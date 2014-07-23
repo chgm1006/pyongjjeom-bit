@@ -166,7 +166,7 @@ public class LoginController {
 
 		int cnt = 0;
 		if (!(memInfo.getFbId().equals(member.getFbId()))) {
-			cnt = loginService.regiesterFBMember(member);
+			cnt = loginService.updateFBMember(member);
 		}
 
 		if (isMemInfo) {
