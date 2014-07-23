@@ -611,6 +611,11 @@ public class ContentController {
 			if(member!=null)
 			{
 				myComment= parService.getMyComent(book.getConCD(),member.getMemCD());
+				if(myComment!=null)
+				{
+					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
+							.replaceAll("&nbsp;", "\u0020"));
+				}
 			}
 			
 			if(myComment == null)
@@ -633,8 +638,6 @@ public class ContentController {
 			}
 			if (member != null && !commentList.isEmpty() && index != -1) {
 				commentList.remove(index);
-				myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
-						.replaceAll("&nbsp;", "\u0020"));
 			}
 			
 			map.put("commentList", commentList);
