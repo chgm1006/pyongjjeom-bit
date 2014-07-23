@@ -74,7 +74,7 @@
 							<li class = "boardMenu"><a class = "mypageMenu" href = "#"
 							OnClick="window.location='MovieDataUpdate.do'">영화 평점 DB_INSERT/UPDATE</a></li>
 							<li class = "boardMenu"><a class = "mypageMenu" href = "#"
-							OnClick="window.location='MovieDataUpdate.do'">책 평점 DB_INSERT/UPDATE</a></li>
+							OnClick="window.location='BookDataUpdate.do'">책 평점 DB_INSERT/UPDATE</a></li>
 					</c:when>
 					<c:otherwise>
 					</c:otherwise>
