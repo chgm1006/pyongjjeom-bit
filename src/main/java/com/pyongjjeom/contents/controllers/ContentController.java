@@ -99,8 +99,8 @@ public class ContentController {
 					movieList.add(parse.currentMovieParse(uri));
 					uri2 = "http://openapi.naver.com/search?key=" + apiKey
 							+ "&target=image" + "&query="
-							+ URLEncoder.encode(movieTitleList.get(i) + " 포스터", "UTF-8")
-							+ "&display=1";
+							+ URLEncoder.encode(movieTitleList.get(i)+" 포스터", "UTF-8")
+							+ "&display=1&filter=large";
 					imageList.add(parse.movieImageParse(uri2));
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
