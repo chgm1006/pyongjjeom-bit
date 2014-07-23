@@ -152,6 +152,15 @@ public class LoginController {
 
 		Member memInfo = loginService.getMemberInfoByMember(member);
 
+		System.out.println("member.getMemCD = " + member.getMemCD());
+		System.out.println("member.getEmail = " + member.getEmail());
+		System.out.println("member.getBirth = " + member.getBirth());
+		System.out.println("member.getFbId = " + member.getFbId());
+		System.out.println();
+		System.out.println("memInfo.getMemCD = " + memInfo.getMemCD());
+		System.out.println("memInfo.getEmail = " + memInfo.getEmail());
+		System.out.println("memInfo.getBirth = " + memInfo.getBirth());
+		System.out.println("memInfo.getFbId = " + memInfo.getFbId());
 		boolean isMemInfo = (memInfo.getEmail().equals(member.getEmail())
 				&& memInfo.getFbId().equals(member.getFbId()) && memInfo.getFbYn() == 'Y');
 

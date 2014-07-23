@@ -4,15 +4,16 @@ var fbEmail;
 var fbBirthday;
 var fbIMGURL;
 var FB_APPID;
-var FB_link_url;
 var FB_accessToken;
 
 window.fbAsyncInit = function() {
 	FB_APPID = "www.pyongjjeom.com" == location.host ? "682328688505624"
 			: "1449705105272003";
-	FB_link_url = "www.pyongjjeom.com" == location.host ? location.host
-			: "localhost:8080/pyongjjeom";
 
+	var hostNM = location.host;
+	console.log("host = " + hostNM);
+	console.log("host = " + (hostNM==("localhost:8080")));
+	console.log("FB_APPID = " + (FB_APPID));
 	FB.init({
 		appId : FB_APPID,
 		status : true,
