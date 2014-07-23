@@ -100,18 +100,61 @@
 				<h2>
 					<span class="red"><strong>평쩜</strong></span>
 				</h2>
-				<input type="hidden" id="checkemail" name="checkemail" value='0' />
-				<label for="email">이메일</label> 
-				<input type="text" id="email" name="email"	placeholder="이메일..."> 
-				<input type="button" id="emailCheck" value="중복확인"> 
+				
+				<table style="margin:0 auto;">
+					<tr>
+						<td>
+											<label for="email" >이메일</label> 
+							
+						</td>
+						<td>
+											<input type="text"  id="email" name="email"	placeholder="이메일..."> 
+											<input type="button" id="emailCheck" value="중복확인"><br>
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
 				<label for="name">이름</label>
+							
+						</td>
+						<td>
 				<input type="text"	id="name" name="memNm" placeholder="이름..."> 
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
 				<label for="birth">생년월일</label>
+							
+						</td>
+						<td>
 				<input type="text" id="birth" name="birth" placeholder="'-'빼고 숫자만...">
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
 				<label for="password">비밀번호</label> 
+							
+						</td>
+						<td>
 				<input type="password" id="password" name="passwd" placeholder="6자~20자..."> 
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
 				<label for="password_check">비밀번호확인</label>
+							
+						</td>
+						<td>
 				<input type="password" id="password_check" name="password_check"	placeholder="비밀번호확인...">
+							
+						</td>
+					</tr>
+					
+				</table>
 	
 				<button type="submit" id="btn_submit">가입하기</button>
 				<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
