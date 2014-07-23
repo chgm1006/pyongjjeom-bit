@@ -109,7 +109,7 @@
 						</table>
 						<div class="listButtonWrap">
 							<a class="listButton" href="${book.link }" target="_blank">네이버 상세</a>
-							<a class="listButton" href="www.kyobobook.co.kr">사러가기</a>
+							<a class="listButton" href="http://www.kyobobook.co.kr">사러가기</a>
 						</div>
 					</div>
 				</div>

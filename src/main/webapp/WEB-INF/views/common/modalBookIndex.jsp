@@ -80,7 +80,7 @@
 					</table><br>
 					<div class="overButtonWrap">
 						<a class="overButton" id="overButtonBookLink" href="${movie.link }" target="_blank">네이버 상세</a>
-						<a class="overButton" id="overButtonBookBuy" href="www.kyobobook.co.kr" target="_blank">사러가기</a>
+						<a class="overButton" id="overButtonBookBuy" href="http://www.kyobobook.co.kr" target="_blank">사러가기</a>
 					</div>
 				</div>
 			</div>
