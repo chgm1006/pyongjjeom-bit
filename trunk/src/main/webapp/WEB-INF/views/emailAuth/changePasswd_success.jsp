@@ -28,8 +28,8 @@
 			
 			var passwd = $(this).find('input#passwd').val();
 			var passwdChk = $(this).find('input#passwdCheck').val();
-			console.log(passwd);
-			console.log(passwdChk);
+// 			console.log(passwd);
+// 			console.log(passwdChk);
 			
 			if(passwd == ""){
 				$(this).find("label[for='passwd']").append(
