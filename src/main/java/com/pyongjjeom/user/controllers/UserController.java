@@ -127,7 +127,7 @@ public class UserController {
 				int fileSize = 10 * 1024 * 1024;
 				if (file.getSize() > fileSize) {
 					System.out.println("File Size:::" + file.getSize());
-					session.setAttribute("fileErrMsg", "파일용량이 10M를 초과하였습니다.");
+					session.setAttribute("fileErrMsg", "파일용량이 3M를 초과하였습니다.");
 					return "myRoom/mySet";
 				}
 
