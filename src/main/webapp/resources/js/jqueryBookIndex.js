@@ -147,7 +147,7 @@
 															var aladinBg = data.whole.grades.aladinBg;
 															var bandiBg = data.whole.grades.bandiBg;
 															var kyoboBg = data.whole.grades.kyoboBg;
-															
+															var pjGrade = data.whole.pjGrade;
 															var avg = data.whole.avg;					
 															$(".avgPoint").text(avg);
 															
@@ -180,7 +180,7 @@
 															$(".overTableAladin").text(aladinBg);
 															$(".overTableBandi").text(bandiBg);
 															$(".overTableKyobo").text(kyoboBg);
-
+															$(".overTableWoori").text(pjGrade);
 															$(".overAuthorInfo").text(authorIntroContent);
 															$(".overSynop").text(bookIntroContent);
 
