@@ -54,14 +54,17 @@ public class MyRoomController {
 	@Autowired
 	private MyRoomService myRoomService;
 
+	SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	@RequestMapping(value = "myRoom.do")
 	public String listDo(Model model, HttpServletRequest request,
 			HttpSession httpSession) {
-
+		
 		Member member = (Member) httpSession.getAttribute("member");
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
 			post.setMemGradeInt((int) post.getMemGrade());
+			post.setFormatUpdateDate(df2.format(post.getUpdateDate()));
 		}
 		if (member.getImgPath() == null || member.getImgPath().equals("")) {
 			member.setImgPath("/resources/img/empty.jpg");
@@ -80,6 +83,7 @@ public class MyRoomController {
 		Member user = userService.getMemberInfo(memCD);
 		for (PostAndContents post : postList) {
 			post.setMemGradeInt((int) post.getMemGrade());
+			post.setFormatUpdateDate(df2.format(post.getUpdateDate()));
 		}
 
 		if (user.getImgPath() == null || user.getImgPath().equals("")) {
