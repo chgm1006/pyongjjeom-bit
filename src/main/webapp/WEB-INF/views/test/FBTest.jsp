@@ -41,18 +41,18 @@
 				contentType : "application/json; charset=utf-8",
 				dataType : "json",
 				beforeSend : function() {
-					console.log(formData);
+// 					console.log(formData);
 				},
 				error : function(e) {
-					console.log(e.responseText);
+// 					console.log(e.responseText);
 				},
 				success : function(data) {
 					$.each(data, function(key) {
 						var list = data[key];
 
-						console.log(list);
+// 						console.log(list);
 						for (var i = 0; i < list.length; i++) {
-							console.log("val: " + list[i].title);
+// 							console.log("val: " + list[i].title);
 						}
 					});
 				}

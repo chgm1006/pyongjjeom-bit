@@ -182,7 +182,7 @@ $(document).ready(function(){
 
 function imgThumbnail(imgObj) {
 	if (imgObj.files && imgObj.files[0]) {
-	console.log(imgObj.files);
+// 	console.log(imgObj.files);
 	var reader = new FileReader();
 	reader.onload = function(e) {
 	$("#userImg").attr("src", e.target.result).css({
@@ -198,9 +198,9 @@ function imgThumbnail(imgObj) {
 
 <article>
 	<div class="register-container container">
-		<div class="row" style="width:600px; margin:0 auto; ">
+		<div class="row" style="width: 600px; margin: 0 auto;">
 
-			<div class="register span6" >
+			<div class="register span6">
 				<form id="register" name="register" action="upDateMySet.do" method="post"
 					enctype="multipart/form-data">
 					<h2>

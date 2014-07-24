@@ -35,13 +35,13 @@
 			var email = {
 				email : $(emailStr).val()
 			};
-			console.log($(emailStr).val());
-			console.log(email);
+// 			console.log($(emailStr).val());
+// 			console.log(email);
 			if ($(emailStr).val() == '') {
 				alert("이메일 값을 넣어 주세요");
 				return false;
 			} else {
-console.log("1111");
+// 				console.log("1111");
 				$.ajax({
 					cache : false, // cache가 남아 있지 않게 false
 					async : false, // 순차적으로(동기방식) 동작한다.
@@ -101,48 +101,47 @@ console.log("1111");
 
 			<div class="register span6">
 				<form id="register" name="register" action="register.do" method="post">
-				<input type="hidden" id="checkemail" name="checkemail" value="0">
+					<input type="hidden" id="checkemail" name="checkemail" value="0">
 					<h2>
 						<span class="red"><strong>평쩜</strong></span>
 					</h2>
 
-					<table style="width:300px; margin: 0 auto; ">
+					<table style="width: 300px; margin: 0 auto;">
 						<tr>
-							<td ><label for="email">이메일</label></td>
-							</tr>
-							<tr>
+							<td><label for="email">이메일</label></td>
+						</tr>
+						<tr>
 							<td><input type="text" id="email" name="email" placeholder="이메일...">
 						</tr>
-						
+
 						<tr>
 							<td><input type="button" id="emailCheck" value="중복확인"></td>
 						</tr>
 						<tr>
-							<td><label for="name">이름</label>
-							</td>
-							</tr>
-							<tr>
+							<td><label for="name">이름</label></td>
+						</tr>
+						<tr>
 							<td><input type="text" id="name" name="memNm" placeholder="이름...">
 							</td>
 						</tr>
 						<tr>
 							<td><label for="birth">생년월일</label></td>
-							</tr>
-							<tr>
+						</tr>
+						<tr>
 							<td><input type="text" id="birth" name="birth"
 								placeholder="'-'빼고 숫자만..."></td>
 						</tr>
 						<tr>
 							<td><label for="password">비밀번호</label></td>
-							</tr>
-							<tr>
+						</tr>
+						<tr>
 							<td><input type="password" id="password" name="passwd"
 								placeholder="6자~20자..."></td>
 						</tr>
 						<tr>
 							<td><label for="password_check">비밀번호확인</label></td>
-							</tr>
-							<tr>
+						</tr>
+						<tr>
 							<td><input type="password" id="password_check" name="password_check"
 								placeholder="비밀번호확인..."></td>
 						</tr>

@@ -11,9 +11,9 @@ window.fbAsyncInit = function() {
 			: "1449705105272003";
 
 	var hostNM = location.host;
-	console.log("host = " + hostNM);
-	console.log("host = " + (hostNM==("localhost:8080")));
-	console.log("FB_APPID = " + (FB_APPID));
+	// console.log("host = " + hostNM);
+	// console.log("host = " + (hostNM==("localhost:8080")));
+	// console.log("FB_APPID = " + (FB_APPID));
 	FB.init({
 		appId : FB_APPID,
 		status : true,
@@ -36,7 +36,7 @@ window.fbAsyncInit = function() {
 	// });
 
 	FB.Event.subscribe('auth.login', function(response) {
-		console.log(response);
+		// console.log(response);
 	});
 
 	FB.Event.subscribe('auth.logout', function(response) {
@@ -96,23 +96,23 @@ function ajaxFBRegisterMember(url) {
 		dataType : "json",
 		async : false,
 		beforeSend : function() {
-			console.log(formData);
+			// console.log(formData);
 		},
 		error : function(e) {
-			console.log(e.responseText);
+			// console.log(e.responseText);
 		},
 		success : function(data) {
-			console.log("fbLogin 시작");
+			// console.log("fbLogin 시작");
 			if (data == null) {
 				alert("회원 정보가 잘못되었습니다.");
 
 			} else {
 				$.each(data, function(key) {
 					var list = data[key];
-					console.log(key + " = " + list);
+					// console.log(key + " = " + list);
 
 				});
-				console.log("fbLogin 종료");
+				// console.log("fbLogin 종료");
 				window.location.reload(true);
 			}
 
@@ -136,9 +136,9 @@ function fnInviteFriends(code, page) {
 		message : '자네도 평쩜에 참여해보지 않겠나???'
 	// filters:["app_non_users"]
 	}, function(response) {
-		console.log(response);
+		// console.log(response);
 		var data = $.parseJSON(response.e2e);
-		console.log(data.submit_0);
+		// console.log(data.submit_0);
 	});
 }
 
