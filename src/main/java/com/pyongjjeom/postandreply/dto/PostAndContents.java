@@ -22,7 +22,7 @@ public class PostAndContents {
 	private String conCD = "";
 	private String pmemCD = "";
 	private String review = "";
-	private Double memGrade = 0.0;
+	private double memGrade = 0.0;
 	private int memGradeInt;
 
 	private String comment = "";
@@ -70,11 +70,11 @@ public class PostAndContents {
 		this.review = review;
 	}
 
-	public Double getMemGrade() {
+	public double getMemGrade() {
 		return memGrade;
 	}
 
-	public void setMemGrade(Double memGrade) {
+	public void setMemGrade(double memGrade) {
 		this.memGrade = memGrade;
 	}
 
