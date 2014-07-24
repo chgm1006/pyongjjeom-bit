@@ -54,8 +54,6 @@ public class MyRoomController {
 	@Autowired
 	private MyRoomService myRoomService;
 
-	private HttpSession httpSession;
-
 	@RequestMapping(value = "myRoom.do")
 	public String listDo(Model model, HttpServletRequest request,
 			HttpSession httpSession) {
@@ -63,13 +61,12 @@ public class MyRoomController {
 		Member member = (Member) httpSession.getAttribute("member");
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {
-			post.setMemGradeInt((int)post.getMemGrade());
+			post.setMemGradeInt((int) post.getMemGrade());
 		}
-		if(member.getImgPath()==null||member.getImgPath().equals(""))
-		{
+		if (member.getImgPath() == null || member.getImgPath().equals("")) {
 			member.setImgPath("/resources/img/empty.jpg");
 		}
-		
+
 		model.addAttribute("user", member);
 		boolean myRoom = true;
 		model.addAttribute("myRoom", myRoom);
@@ -82,11 +79,10 @@ public class MyRoomController {
 		List<PostAndContents> postList = parService.getPost(memCD);
 		Member user = userService.getMemberInfo(memCD);
 		for (PostAndContents post : postList) {
-			post.setMemGradeInt((int)post.getMemGrade());
+			post.setMemGradeInt((int) post.getMemGrade());
 		}
-		
-		if(user.getImgPath()==null||user.getImgPath().equals(""))
-		{
+
+		if (user.getImgPath() == null || user.getImgPath().equals("")) {
 			user.setImgPath("/resources/img/empty.jpg");
 		}
 		model.addAttribute("user", user);
@@ -106,8 +102,7 @@ public class MyRoomController {
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply : replyList) {
 			reply.setFormatUpdateDate(df2.format(reply.getUpdateDate()));
-			if(reply.getImgPath()==null||reply.getImgPath().equals(""))
-			{
+			if (reply.getImgPath() == null || reply.getImgPath().equals("")) {
 				reply.setImgPath("/resources/img/empty.jpg");
 			}
 		}

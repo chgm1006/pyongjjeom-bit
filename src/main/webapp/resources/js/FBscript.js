@@ -68,7 +68,8 @@ function fnLoginFB(response) {
 								fbBirthday = StringToDate(response.birthday);
 								fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
 
-								var url = "fbLogin.do";
+//								var url = "fbLogin.do";
+								var url = "fbRegisterMember.do";
 								ajaxFBRegisterMember(url);
 
 							});
@@ -96,23 +97,23 @@ function ajaxFBRegisterMember(url) {
 		dataType : "json",
 		async : false,
 		beforeSend : function() {
-			// console.log(formData);
+			 console.log(formData);
 		},
 		error : function(e) {
-			// console.log(e.responseText);
+			 console.log(e.responseText);
 		},
 		success : function(data) {
-			// console.log("fbLogin 시작");
+			 console.log("fbLogin 시작");
 			if (data == null) {
 				alert("회원 정보가 잘못되었습니다.");
 
 			} else {
 				$.each(data, function(key) {
 					var list = data[key];
-					// console.log(key + " = " + list);
+					 console.log(key + " = " + list);
 
 				});
-				// console.log("fbLogin 종료");
+				 console.log("fbLogin 종료");
 				window.location.reload(true);
 			}
 

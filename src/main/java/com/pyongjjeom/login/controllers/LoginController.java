@@ -191,8 +191,10 @@ public class LoginController {
 
 		Member memInfo = loginService.getMemberInfoByMember(member);
 
+		System.out.println("memInfo = " + (memInfo));
 		int cnt = 0;
-		if (memInfo.getMemCD().equals("") && memInfo.getFbId().equals("")) {
+//		if (memInfo.getMemCD().equals("") && memInfo.getFbId().equals("")) {
+		if (memInfo == null) {
 			cnt = loginService.regiesterFBMember(member);
 		} else {
 			cnt = loginService.updateFBMember(member);

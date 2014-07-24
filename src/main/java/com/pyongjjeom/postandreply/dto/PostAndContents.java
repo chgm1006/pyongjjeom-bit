@@ -6,7 +6,6 @@ package com.pyongjjeom.postandreply.dto;
 
 import java.util.Date;
 
-
 /**
  * <pre>
  * com.pyongjjeom.postandreply.dto 
@@ -19,33 +18,12 @@ import java.util.Date;
  */
 public class PostAndContents {
 
-
 	private String postCD = "";
 	private String conCD = "";
 	private String pmemCD = "";
 	private String review = "";
 	private Double memGrade = 0.0;
-	private int memGradeInt ;
-
-	/**
-	 * Comment   : 
-	 * @return the memGradeInt
-	 */
-	public int getMemGradeInt() {
-		return memGradeInt;
-	}
-
-	/**
-	 * Comment   : 
-	 * @parameters memGradeInt the memGradeInt to set
-	 */
-	public void setMemGradeInt(int memGradeInt) {
-		this.memGradeInt = memGradeInt;
-	}
-
-	public void setMemGrade(Double memGrade) {
-		this.memGrade = memGrade;
-	}
+	private int memGradeInt;
 
 	private String comment = "";
 	private String title = "";
@@ -53,6 +31,68 @@ public class PostAndContents {
 	private String link = "";
 	private String director = "";
 	private String actor = "";
+
+	private char deleteYn = 'N';
+	private char spoilYn = 'N';
+	private Date regiDate;
+	private Date updateDate;
+	private String formatUpdateDate = "";
+
+	public String getPostCD() {
+		return postCD;
+	}
+
+	public void setPostCD(String postCD) {
+		this.postCD = postCD;
+	}
+
+	public String getConCD() {
+		return conCD;
+	}
+
+	public void setConCD(String conCD) {
+		this.conCD = conCD;
+	}
+
+	public String getPmemCD() {
+		return pmemCD;
+	}
+
+	public void setPmemCD(String pmemCD) {
+		this.pmemCD = pmemCD;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public Double getMemGrade() {
+		return memGrade;
+	}
+
+	public void setMemGrade(Double memGrade) {
+		this.memGrade = memGrade;
+	}
+
+	public int getMemGradeInt() {
+		return memGradeInt;
+	}
+
+	public void setMemGradeInt(int memGradeInt) {
+		this.memGradeInt = memGradeInt;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	public String getTitle() {
 		return title;
@@ -74,25 +114,6 @@ public class PostAndContents {
 		return link;
 	}
 
-
-	/**
-	 * <PRE>
-	 * 간략 : 
-	 * 상세 : 
-	 * </PRE>
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
-				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
-				+ memGrade + ", memGradeInt=" + memGradeInt + ", comment=" + comment
-				+ ", title=" + title + ", image=" + image + ", link=" + link
-				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
-				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
-				+ ", updateDate=" + updateDate + "]";
-	}
-
 	public void setLink(String link) {
 		this.link = link;
 	}
@@ -111,59 +132,6 @@ public class PostAndContents {
 
 	public void setActor(String actor) {
 		this.actor = actor;
-	}
-
-	public String getConCD() {
-		return conCD;
-	}
-
-	public void setConCD(String conCD) {
-		this.conCD = conCD;
-	}
-
-	private char deleteYn = 'N';
-	private char spoilYn = 'N';
-	private Date regiDate;
-	private Date updateDate;
-
-	public String getPostCD() {
-		return postCD;
-	}
-
-	public void setPostCD(String postCD) {
-		this.postCD = postCD;
-	}
-
-	public String getPmemCD() {
-		return pmemCD;
-	}
-
-	public void setPmemCD(String pmemCD) {
-		this.pmemCD = pmemCD;
-	}
-
-	public String getReview() {
-		return review;
-	}
-
-	public void setReview(String review) {
-		this.review = review;
-	}
-
-	public double getMemGrade() {
-		return memGrade;
-	}
-
-	public void setMemGrade(double memGrade) {
-		this.memGrade = memGrade;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 
 	public char getDeleteYn() {
@@ -197,4 +165,25 @@ public class PostAndContents {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	public String getFormatUpdateDate() {
+		return formatUpdateDate;
+	}
+
+	public void setFormatUpdateDate(String formatUpdateDate) {
+		this.formatUpdateDate = formatUpdateDate;
+	}
+
+	@Override
+	public String toString() {
+		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
+				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
+				+ memGrade + ", memGradeInt=" + memGradeInt + ", comment=" + comment
+				+ ", title=" + title + ", image=" + image + ", link=" + link
+				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
+				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
+				+ ", updateDate=" + updateDate + ", formatUpdateDate="
+				+ formatUpdateDate + "]";
+	}
+
 }
