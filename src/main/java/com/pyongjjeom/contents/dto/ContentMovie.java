@@ -6,7 +6,6 @@ package com.pyongjjeom.contents.dto;
 
 import java.util.Date;
 
-
 /**
  * <pre>
  * Content dto로 통합 하였습니다. <br>
@@ -18,7 +17,6 @@ import java.util.Date;
  * @author : Forrest
  */
 public class ContentMovie {
-
 
 	private String conCD = "";
 	private float naverMg = 0.0f;
@@ -32,7 +30,6 @@ public class ContentMovie {
 	private String releaseDate = "";
 	private Date regiDate = null;
 	private Date updateDate = null;
-
 
 	public String getConCD() {
 		return conCD;

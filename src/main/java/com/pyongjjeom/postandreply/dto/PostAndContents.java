@@ -176,14 +176,11 @@ public class PostAndContents {
 
 	@Override
 	public String toString() {
-		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD
-				+ ", pmemCD=" + pmemCD + ", review=" + review + ", memGrade="
-				+ memGrade + ", memGradeInt=" + memGradeInt + ", comment=" + comment
-				+ ", title=" + title + ", image=" + image + ", link=" + link
-				+ ", director=" + director + ", actor=" + actor + ", deleteYn="
-				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
-				+ ", updateDate=" + updateDate + ", formatUpdateDate="
-				+ formatUpdateDate + "]";
+		return "PostAndContents [postCD=" + postCD + ", conCD=" + conCD + ", pmemCD=" + pmemCD + ", review=" + review
+				+ ", memGrade=" + memGrade + ", memGradeInt=" + memGradeInt + ", comment=" + comment + ", title=" + title
+				+ ", image=" + image + ", link=" + link + ", director=" + director + ", actor=" + actor + ", deleteYn="
+				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate + ", updateDate=" + updateDate
+				+ ", formatUpdateDate=" + formatUpdateDate + "]";
 	}
 
 }

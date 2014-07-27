@@ -6,14 +6,12 @@ package com.pyongjjeom.contents.service;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
 import com.pyongjjeom.contents.dao.ContentsMapper;
-import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
 import com.pyongjjeom.contents.parsing.common.MovieGrades;
@@ -31,15 +29,13 @@ import com.pyongjjeom.contents.parsing.common.MovieGrades;
 @Service("contentService")
 public class ContentServiceImpl implements ContentService {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	@Autowired
 	private ContentsMapper contentsMapper;
 
 	@Override
 	public void movieTitleInsert(List<ContentsValue> Values) {
 		for (ContentsValue value : Values) {
-			value.setTitle(value.getTitle().replace(", "," "));
+			value.setTitle(value.getTitle().replace(", ", " "));
 			contentsMapper.contentsTitleInsert(value);
 			contentsMapper.conCDMInsert(value.getConcd());
 		}
@@ -48,10 +44,9 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void gradeUpdate(List<ContentsValue> values, String str) {
 		for (ContentsValue value : values) {
-			value.setTitle(value.getTitle().replace(" ","").replace(",","").trim());
+			value.setTitle(value.getTitle().replace(" ", "").replace(",", "").trim());
 			if (value.getTitle().contains("(")) {
-				value.setTitle(value.getTitle().substring(0,
-						value.getTitle().indexOf("(")));
+				value.setTitle(value.getTitle().substring(0, value.getTitle().indexOf("(")));
 			}
 			switch (str) {
 			case "n":
@@ -94,7 +89,7 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public void bookTitleInsert(List<ContentsValue> values) {
 		for (ContentsValue value : values) {
-			value.setTitle(value.getTitle().replace(", "," "));
+			value.setTitle(value.getTitle().replace(", ", " "));
 			contentsMapper.contentsTitleInsert(value);
 			contentsMapper.conCDBInsert(value.getConcd());
 		}

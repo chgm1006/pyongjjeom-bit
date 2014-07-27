@@ -46,6 +46,7 @@ import com.pyongjjeom.contents.service.ContentService;
 import com.pyongjjeom.postandreply.dto.Comment;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
 import com.pyongjjeom.user.dto.Member;
+
 /**
  * <pre>
  * com.pyongjjeom.contents.controllers 
@@ -92,15 +93,11 @@ public class ContentController {
 			List<String> imageList = new ArrayList<String>();
 			for (int i = 0; i < 15; i++) {
 				try {
-					uri = "http://openapi.naver.com/search?key=" + apiKey
-							+ "&target=movie" + "&query="
-							+ URLEncoder.encode(movieTitleList.get(i), "UTF-8")
-							+ "&display=1&yearfrom=2014&yearto&2014";
+					uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie" + "&query="
+							+ URLEncoder.encode(movieTitleList.get(i), "UTF-8") + "&display=1&yearfrom=2014&yearto&2014";
 					movieList.add(parse.currentMovieParse(uri));
-					uri2 = "http://openapi.naver.com/search?key=" + apiKey
-							+ "&target=image" + "&query="
-							+ URLEncoder.encode(movieTitleList.get(i)+" 포스터", "UTF-8")
-							+ "&display=1&filter=large";
+					uri2 = "http://openapi.naver.com/search?key=" + apiKey + "&target=image" + "&query="
+							+ URLEncoder.encode(movieTitleList.get(i) + " 포스터", "UTF-8") + "&display=1&filter=large";
 					imageList.add(parse.movieImageParse(uri2));
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
@@ -148,12 +145,8 @@ public class ContentController {
 			List<NaverBook> bookList = new ArrayList<NaverBook>();
 			for (int i = 0; i < bookTitleList.size(); i++) {
 				try {
-					uri = "http://openapi.naver.com/search?key="
-							+ apiKey
-							+ "&target=book"
-							+ "&query="
-							+ URLEncoder.encode(bookTitleList.get(i).replace(" ", ""),
-									"UTF-8") + "&display=1";
+					uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=book" + "&query="
+							+ URLEncoder.encode(bookTitleList.get(i).replace(" ", ""), "UTF-8") + "&display=1";
 					bookList.add(parse.currentBookParse(uri));
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
@@ -213,12 +206,10 @@ public class ContentController {
 	}
 
 	@RequestMapping(value = "ContentsSearch.do", method = RequestMethod.GET)
-	public String ContentsSearch(Model model, HttpServletRequest request)
-			throws UnsupportedEncodingException {
+	public String ContentsSearch(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
 		httpSession = request.getSession();
 		httpSession.setAttribute("stat", request.getParameter("stat"));
-		httpSession.setAttribute("category", request.getParameter("category")
-				.trim());
+		httpSession.setAttribute("category", request.getParameter("category").trim());
 		System.out.println(httpSession.getAttribute("category"));
 		List<?> resultList = null;
 		String apiKey = "49c7c77a6538e00d4e35ffbccefb3e45";
@@ -232,17 +223,15 @@ public class ContentController {
 		case "book":
 			resultList = new ArrayList<NaverBook>();
 
-			uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=book"
-					+ "&query=" + URLEncoder.encode(searchQuery, "UTF-8")
-					+ "&display=100";
+			uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=book" + "&query="
+					+ URLEncoder.encode(searchQuery, "UTF-8") + "&display=100";
 			resultList = naverParse.bookParse(uri);
 			System.out.println(uri);
 			break;
 		case "movie":
 			resultList = new ArrayList<NaverMovie>();
-			uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie"
-					+ "&query=" + URLEncoder.encode(searchQuery, "UTF-8")
-					+ "&display=100";
+			uri = "http://openapi.naver.com/search?key=" + apiKey + "&target=movie" + "&query="
+					+ URLEncoder.encode(searchQuery, "UTF-8") + "&display=100";
 			System.out.println(uri);
 			resultList = naverParse.movieParse(uri);
 			break;
@@ -256,16 +245,14 @@ public class ContentController {
 
 	@ResponseBody
 	@RequestMapping(value = "movieContextJson.do", method = RequestMethod.POST)
-	public Map<String, Object> movieContextJson(@RequestBody Map paramMap,
-			HttpServletRequest request) throws IOException {
+	public Map<String, Object> movieContextJson(@RequestBody Map paramMap, HttpServletRequest request) throws IOException {
 
 		System.out.println("name = " + paramMap.get("name"));
 		System.out.println("data = " + paramMap.get("data"));
 
 		int num = Integer.parseInt((String) paramMap.get("name"));
 		httpSession = request.getSession();
-		List<NaverMovie> list = (List<NaverMovie>) httpSession
-				.getAttribute("resultList");
+		List<NaverMovie> list = (List<NaverMovie>) httpSession.getAttribute("resultList");
 		NaverMovie movie = list.get(num);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -276,8 +263,8 @@ public class ContentController {
 
 	@ResponseBody
 	@RequestMapping(value = "currentBookContextJson.do", method = RequestMethod.POST)
-	public Map<String, Object> correntBookContextJson(@RequestBody Map paramMap,
-			HttpServletRequest request) throws IOException {
+	public Map<String, Object> correntBookContextJson(@RequestBody Map paramMap, HttpServletRequest request)
+			throws IOException {
 
 		System.out.println("name = " + paramMap.get("name"));
 		System.out.println("data = " + paramMap.get("data"));
@@ -287,8 +274,7 @@ public class ContentController {
 		httpSession.setAttribute("stat", "search");
 
 		httpSession = request.getSession();
-		List<NaverBook> list = (List<NaverBook>) httpSession
-				.getAttribute("bookList");
+		List<NaverBook> list = (List<NaverBook>) httpSession.getAttribute("bookList");
 		NaverBook book = list.get(num);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -302,8 +288,8 @@ public class ContentController {
 
 	@ResponseBody
 	@RequestMapping(value = "currentMovieContextJson.do", method = RequestMethod.POST)
-	public Map<String, Object> currentMovieContextJson(@RequestBody Map paramMap,
-			HttpServletRequest request) throws IOException {
+	public Map<String, Object> currentMovieContextJson(@RequestBody Map paramMap, HttpServletRequest request)
+			throws IOException {
 
 		System.out.println("까꾸우웅");
 
@@ -315,8 +301,7 @@ public class ContentController {
 
 		int num = Integer.parseInt((String) paramMap.get("name"));
 		httpSession = request.getSession();
-		List<NaverMovie> list = (List<NaverMovie>) httpSession
-				.getAttribute("movieList");
+		List<NaverMovie> list = (List<NaverMovie>) httpSession.getAttribute("movieList");
 		NaverMovie movie = list.get(num);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -325,8 +310,7 @@ public class ContentController {
 		return map;
 	}
 
-	private Map<String, Object> movieContextParsing2(NaverMovie movie,
-			HttpServletRequest request) throws IOException {
+	private Map<String, Object> movieContextParsing2(NaverMovie movie, HttpServletRequest request) throws IOException {
 
 		// 리턴값 담을 Map 객체생성
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -334,15 +318,13 @@ public class ContentController {
 		// movie 제목가져와서 정리하는 부분
 		movie.setTitle(movie.getTitle().replace("<b>", "").replace("</b>", ""));
 		if (movie.getTitle().contains("(")) {
-			movie.setTitle(movie.getTitle().substring(0,
-					movie.getTitle().indexOf("(")));
+			movie.setTitle(movie.getTitle().substring(0, movie.getTitle().indexOf("(")));
 		}
 		String code = null;
 		// 썸네일 주소 가져와서 영화코드 6자리 받아오는거
 		System.out.println(movie.getImage() + "??????????????");
 		if (!movie.getImage().isEmpty()) {
-			code = movie.getImage().replace("A", "1").replace("B", "2")
-					.replace("C", "3").replace("D", "4").replace("E", "5")
+			code = movie.getImage().replace("A", "1").replace("B", "2").replace("C", "3").replace("D", "4").replace("E", "5")
 					.replace("F", "6");
 			if (code.contains("_")) {
 				code = code.substring(code.lastIndexOf("/") + 1, code.indexOf("_"));
@@ -361,8 +343,8 @@ public class ContentController {
 			if (grades != null) {
 				int count = 0;
 				double avg = 0;
-				double arr[] = { grades.getCgvMg(), grades.getDaumMg(),
-						grades.getLotteMg(), grades.getMegaBoxMg(), grades.getNaverMg() };
+				double arr[] = { grades.getCgvMg(), grades.getDaumMg(), grades.getLotteMg(), grades.getMegaBoxMg(),
+						grades.getNaverMg() };
 				for (double grade : arr) {
 					if (grade != 0) {
 						avg += grade;
@@ -383,35 +365,25 @@ public class ContentController {
 
 			doc = Jsoup.connect(movie.getLink()).get();
 			ContentMovieDetail contentMovieDetail = new ContentMovieDetail();
-			contentMovieDetail.setGenre(doc
-					.select("p[class=info_spec] a[href*=genre").text());
+			contentMovieDetail.setGenre(doc.select("p[class=info_spec] a[href*=genre").text());
 			System.out.println("hjddjdkdkdk" + contentMovieDetail.getGenre() + "===="
 					+ doc.select("p[class=info_spec] a[href*=genre") + "/");
-			contentMovieDetail.setNation(doc.select(
-					"p[class=info_spec] a[href*=nation").text());
-			contentMovieDetail.setOpen(doc.select("p[class=info_spec] a[href*=open")
-					.text());
-			contentMovieDetail.setGrade(doc
-					.select("p[class=info_spec] a[href*=grade").text());
-			contentMovieDetail.setCount(doc.select(
-					"p[class=info_spec] span[class=count]").text());
+			contentMovieDetail.setNation(doc.select("p[class=info_spec] a[href*=nation").text());
+			contentMovieDetail.setOpen(doc.select("p[class=info_spec] a[href*=open").text());
+			contentMovieDetail.setGrade(doc.select("p[class=info_spec] a[href*=grade").text());
+			contentMovieDetail.setCount(doc.select("p[class=info_spec] span[class=count]").text());
 			contentMovieDetail.setContext(doc.select("p[class=con_tx]").text());
 
-			String video = doc.select("ul[class=photo_video] li a[href^=mediaView]")
-					.attr("href");
+			String video = doc.select("ul[class=photo_video] li a[href^=mediaView]").attr("href");
 			System.out.println(video);
 			if (!video.isEmpty()) {
-				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video)
-						.get();
-				contentMovieDetail.setVideo("http://movie.naver.com"
-						+ doc.select("iframe[class=_videoPlayer]").attr("src"));
+				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/" + video).get();
+				contentMovieDetail.setVideo("http://movie.naver.com" + doc.select("iframe[class=_videoPlayer]").attr("src"));
 				httpSession.setAttribute("video", contentMovieDetail.getVideo());
 			}
 
 			if (code != null) {
-				doc = Jsoup.connect(
-						"http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode="
-								+ code).get();
+				doc = Jsoup.connect("http://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=" + code).get();
 				contentMovieDetail.setPoster(doc.select("img[src]").attr("src"));
 			}
 
@@ -453,28 +425,22 @@ public class ContentController {
 			List<Comment> commentList = parService.getComent(movie.getConCD());
 			Comment myComment = new Comment();
 			Member member = (Member) httpSession.getAttribute("member");
-			if(member!=null)
-			{
-				myComment= parService.getMyComent(movie.getConCD(),member.getMemCD());
-				if(myComment!=null)
-				{
-					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
-							.replaceAll("&nbsp;", "\u0020"));
+			if (member != null) {
+				myComment = parService.getMyComent(movie.getConCD(), member.getMemCD());
+				if (myComment != null) {
+					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n").replaceAll("&nbsp;", "\u0020"));
 				}
 			}
-			if(myComment==null)
-			{
-				myComment= new Comment();
+			if (myComment == null) {
+				myComment = new Comment();
 			}
-			System.out.println(myComment+"!!!!");
-			
-			
+			System.out.println(myComment + "!!!!");
+
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
-				if(comment.getImgPath()==null||comment.getImgPath().equals(""))
-				{
+				if (comment.getImgPath() == null || comment.getImgPath().equals("")) {
 					comment.setImgPath("/resources/img/empty.jpg");
 				}
 				if (member != null) {
@@ -497,16 +463,14 @@ public class ContentController {
 
 	@ResponseBody
 	@RequestMapping(value = "bookContextJson.do", method = RequestMethod.POST)
-	public Map<String, Object> bookContextJson(@RequestBody Map paramMap,
-			HttpServletRequest request) throws IOException {
+	public Map<String, Object> bookContextJson(@RequestBody Map paramMap, HttpServletRequest request) throws IOException {
 
 		System.out.println("name = " + paramMap.get("name"));
 		System.out.println("data = " + paramMap.get("data"));
 
 		int num = Integer.parseInt((String) paramMap.get("name"));
 		httpSession = request.getSession();
-		List<NaverBook> list = (List<NaverBook>) httpSession
-				.getAttribute("resultList");
+		List<NaverBook> list = (List<NaverBook>) httpSession.getAttribute("resultList");
 		NaverBook book = list.get(num);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -518,8 +482,7 @@ public class ContentController {
 		return map;
 	}
 
-	private Map<String, Object> bookContextParsing2(NaverBook book,
-			HttpServletRequest request) throws IOException {
+	private Map<String, Object> bookContextParsing2(NaverBook book, HttpServletRequest request) throws IOException {
 
 		// 리턴값 담을 Map 객체생성
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -532,8 +495,7 @@ public class ContentController {
 		String code = null;
 		System.out.println(book.getImage() + "??????????????");
 		if (!book.getImage().isEmpty()) {
-			code = book.getImage().substring(book.getImage().lastIndexOf("/0") + 2,
-					book.getImage().indexOf(".jpg"));
+			code = book.getImage().substring(book.getImage().lastIndexOf("/0") + 2, book.getImage().indexOf(".jpg"));
 			if (code.startsWith("0")) {
 				code = code.substring(1, 7);
 			}
@@ -554,8 +516,8 @@ public class ContentController {
 			if (grades != null) {
 				int count = 0;
 				double avg = 0;
-				double arr[] = { grades.getNaverBg(), grades.getYesBg(),
-						grades.getAladinBg(), grades.getBandiBg(), grades.getKyoboBg() };
+				double arr[] = { grades.getNaverBg(), grades.getYesBg(), grades.getAladinBg(), grades.getBandiBg(),
+						grades.getKyoboBg() };
 				for (double grade : arr) {
 					if (grade != 0) {
 						avg += grade;
@@ -574,15 +536,12 @@ public class ContentController {
 
 			doc = Jsoup.connect(book.getLink()).get();
 			ContentBookDetail contentBookDetail = new ContentBookDetail();
-			contentBookDetail.setBookIntroContent(doc.select(
-					"div[id=bookIntroContent]").text());
-			contentBookDetail.setAuthorIntroContent(doc.select(
-					"div[id=authorIntroContent]").text());
+			contentBookDetail.setBookIntroContent(doc.select("div[id=bookIntroContent]").text());
+			contentBookDetail.setAuthorIntroContent(doc.select("div[id=authorIntroContent]").text());
 			String poster = "";
 			if (!book.getImage().isEmpty()) {
 				poster = "http://bookthumb.phinf.naver.net/"
-						+ book.getImage().substring(book.getImage().indexOf("cover/"),
-								book.getImage().indexOf(".jpg")) + ".jpg";
+						+ book.getImage().substring(book.getImage().indexOf("cover/"), book.getImage().indexOf(".jpg")) + ".jpg";
 				contentBookDetail.setPoster(poster);
 			}
 
@@ -612,32 +571,26 @@ public class ContentController {
 			List<Comment> commentList = parService.getComent(book.getConCD());
 			Comment myComment = new Comment();
 			Member member = (Member) httpSession.getAttribute("member");
-			if(member!=null)
-			{
-				myComment= parService.getMyComent(book.getConCD(),member.getMemCD());
-				if(myComment!=null)
-				{
-					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n")
-							.replaceAll("&nbsp;", "\u0020"));
+			if (member != null) {
+				myComment = parService.getMyComent(book.getConCD(), member.getMemCD());
+				if (myComment != null) {
+					myComment.setComment(myComment.getComment().replaceAll("<br>", "\r\n").replaceAll("&nbsp;", "\u0020"));
 				}
 			}
-			
-			if(myComment == null)
-			{
-				myComment=new Comment();
+
+			if (myComment == null) {
+				myComment = new Comment();
 			}
-			System.out.println(myComment+"!!!!");
-			
-			
+			System.out.println(myComment + "!!!!");
+
 			SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			int i = 0, index = -1;
 			for (Comment comment : commentList) {
 				comment.setFormatUpdateDate(df2.format(comment.getUpdateDate()));
-				if(comment.getImgPath()==null||comment.getImgPath().equals(""))
-				{
+				if (comment.getImgPath() == null || comment.getImgPath().equals("")) {
 					comment.setImgPath("/resources/img/empty.jpg");
 				}
-				
+
 				if (member != null) {
 					if (comment.getMemCD().equals(member.getMemCD())) {
 						index = i;
@@ -648,7 +601,7 @@ public class ContentController {
 			if (member != null && !commentList.isEmpty() && index != -1) {
 				commentList.remove(index);
 			}
-			
+
 			map.put("commentList", commentList);
 			map.put("myComment", myComment);
 		}
@@ -657,25 +610,23 @@ public class ContentController {
 
 	}
 
-	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> values,
-			String str) {
+	private void updateGrade(ContentsParsing Parsing, List<ContentsValue> values, String str) {
 		if (str.equals("n")) {
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
-				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), "M" + Parsing.getCodeList().get(i)));
+				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing.getGradeList().get(i), "M"
+						+ Parsing.getCodeList().get(i)));
 			}
 			contentService.movieTitleInsert(values);
 		}
 		if (str.equals("nb")) {
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
-				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i), "B" + Parsing.getCodeList().get(i)));
+				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing.getGradeList().get(i), "B"
+						+ Parsing.getCodeList().get(i)));
 			}
 			contentService.bookTitleInsert(values);
 		} else
 			for (int i = 0; i < Parsing.getGradeList().size(); i++) {
-				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing
-						.getGradeList().get(i)));
+				values.add(new ContentsValue(Parsing.getTitleList().get(i), Parsing.getGradeList().get(i)));
 			}
 		contentService.gradeUpdate(values, str);
 	}

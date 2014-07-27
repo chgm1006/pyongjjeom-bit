@@ -14,10 +14,9 @@ package com.pyongjjeom.common;
 public class NaverBook {
 	@Override
 	public String toString() {
-		return "NaverBook [title=" + title + ", link=" + link + ", image=" + image
-				+ ", author=" + author + ", price=" + price + ", discount=" + discount
-				+ ", publisher=" + publisher + ", pubdate=" + pubdate + ", isbn="
-				+ isbn + ", description=" + description + ", code=" + conCD + "]";
+		return "NaverBook [title=" + title + ", link=" + link + ", image=" + image + ", author=" + author + ", price="
+				+ price + ", discount=" + discount + ", publisher=" + publisher + ", pubdate=" + pubdate + ", isbn=" + isbn
+				+ ", description=" + description + ", code=" + conCD + "]";
 	}
 
 	/**
@@ -33,8 +32,7 @@ public class NaverBook {
 	private String pubdate = ""; // 출간일
 	private String isbn = ""; // ISBN
 	private String description = ""; // 내용
-	private String conCD = ""; 
-
+	private String conCD = "";
 
 	public String getConCD() {
 		return conCD;

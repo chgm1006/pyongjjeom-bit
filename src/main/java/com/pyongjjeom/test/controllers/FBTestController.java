@@ -50,8 +50,7 @@ public class FBTestController {
 
 	@ResponseBody
 	@RequestMapping(value = "ajaxTest.do", method = RequestMethod.POST)
-	public Map<String, Object> ajaxTest(@RequestBody Map paramMap,
-			HttpServletRequest request) {
+	public Map<String, Object> ajaxTest(@RequestBody Map paramMap, HttpServletRequest request) {
 
 		System.out.println("name = " + paramMap.get("name"));
 		System.out.println("data = " + paramMap.get("data"));

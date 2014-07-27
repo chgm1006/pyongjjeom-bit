@@ -28,7 +28,7 @@ import com.pyongjjeom.postandreply.dto.Reply;
 @Service("postAndReplyService")
 public class PostAndReplyServiceImpl implements PostAndReplyService {
 
-@Autowired
+	@Autowired
 	private PostAndReplyMapper parMapper;
 
 	/**
@@ -106,7 +106,6 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	 * @param postCD
 	 * @return
 	 */
-	
 
 	/**
 	 * <pre>
@@ -131,32 +130,33 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 	@Override
 	public void deletePost(String postCD) {
 		// TODO Auto-generated method stub
-		
+
 		parMapper.deleteReplyList(postCD);
 		parMapper.deletePost(postCD);
-	
+
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
-	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#insertBookPost(com.pyongjjeom.common.NaverBook, com.pyongjjeom.postandreply.dto.Post)
+	 * 
+	 * @see com.pyongjjeom.postandreply.service.PostAndReplyService#insertBookPost(com.pyongjjeom.common.NaverBook,
+	 *      com.pyongjjeom.postandreply.dto.Post)
 	 */
 	@Override
 	public void insertPost(Post post) {
-		
+
 		parMapper.insertPost(post);
 	}
-
 
 	@Override
 	public void updatePost(Post post) {
 		// TODO Auto-generated method stub
-		
+
 		parMapper.updatePost(post);
-		
+
 	}
 
 	@Override
@@ -174,7 +174,7 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 		Post post = new Post();
 		post.setConCD(conCD);
 		post.setPmemCD(memCD);
-		
+
 		return parMapper.getMyComent(post);
 	}
 
@@ -185,13 +185,13 @@ public class PostAndReplyServiceImpl implements PostAndReplyService {
 
 	@Override
 	public void insertReply(Reply reply) {
-parMapper.insertReply(reply);		
+		parMapper.insertReply(reply);
 	}
 
 	@Override
 	public void updateReply(Reply reply) {
 		parMapper.updateReply(reply);
-		
+
 	}
 
 	@Override

@@ -17,20 +17,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="getFriendsReply" parameterType="Reply" resultType="Reply">
 
 	</select>
-	
-		<select id="updateImage" parameterType="String" resultType="Notice">
+
+	<select id="updateImage" parameterType="String" resultType="Notice">
 
 		select * from
 		member where memcd= #{memCD};
 
 	</select>
-	
-	
+
+
 	<update id="insertImage" parameterType="Member">
-		
+
 		update member set imgPath = #{imgPath} where memcd = #{memCD};
-		
-		
+
+
 	</update>
 
 

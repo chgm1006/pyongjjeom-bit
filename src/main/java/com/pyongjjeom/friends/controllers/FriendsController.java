@@ -28,16 +28,11 @@ import com.pyongjjeom.user.service.UserService;
 @Controller
 public class FriendsController {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	@Autowired
 	private FriendsService friendsService;
 
 	@Autowired
 	private UserService userService;
-
-	private Friends frn;
-	private Member mem;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String getFriendList(String memCD) {

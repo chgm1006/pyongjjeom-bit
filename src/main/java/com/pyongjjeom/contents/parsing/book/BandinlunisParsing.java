@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-
 public class BandinlunisParsing extends ContentsParsing {
 
 	public BandinlunisParsing() {
@@ -42,8 +41,7 @@ public class BandinlunisParsing extends ContentsParsing {
 		String str;
 
 		for (Element gra : grade) {
-			str = gra.child(0).attr("alt") + "." + gra.child(2).attr("alt")
-					+ gra.child(3).attr("alt");
+			str = gra.child(0).attr("alt") + "." + gra.child(2).attr("alt") + gra.child(3).attr("alt");
 			if (str.equals("1.0"))
 				str = "10.0";
 			gradeList.add(Double.parseDouble(str));
@@ -52,8 +50,7 @@ public class BandinlunisParsing extends ContentsParsing {
 
 	public static void main(String[] args) {
 		BandinlunisParsing parsing = new BandinlunisParsing();
-		System.out.println(parsing.getTitleList().size() + "/"
-				+ parsing.getGradeList().size());
+		System.out.println(parsing.getTitleList().size() + "/" + parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 	}

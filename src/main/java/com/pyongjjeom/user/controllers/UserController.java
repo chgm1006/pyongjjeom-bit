@@ -85,8 +85,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "upDateMySet.do", method = RequestMethod.POST)
-	public String updateMemberInfo(Member member, Model model,
-			HttpServletRequest request, HttpSession session) {
+	public String updateMemberInfo(Member member, Model model, HttpServletRequest request, HttpSession session) {
 		MultipartFile uploadFile = member.getFileData();
 		String imgPath = ((Member) session.getAttribute("member")).getImgPath();
 		System.out.println(uploadFile.getOriginalFilename());
@@ -101,11 +100,9 @@ public class UserController {
 		String callingFile = "";
 		System.out.println("getServerName = " + request.getServerName());
 		urlPath = request.getServerName().equals("localhost") ? "http://localhost:8080/pyongjjeom"
-				+ "/resources/userImages/"
-				: "/resources/userImages/";
+				+ "/resources/userImages/" : "/resources/userImages/";
 
-		System.out.println("urlPath11111 = "
-				+ request.getServerName().equals("localhost"));
+		System.out.println("urlPath11111 = " + request.getServerName().equals("localhost"));
 		System.out.println("urlPath = " + urlPath);
 
 		try {
@@ -115,11 +112,10 @@ public class UserController {
 			OutputStream outputStream = null;
 
 			// 파일 확장자 구하기
-			int index = file.getOriginalFilename().equals("") ? imgPath
-					.lastIndexOf(".") : file.getOriginalFilename().lastIndexOf(".");
-			String fileExt = file.getOriginalFilename().equals("") ? imgPath
-					.substring(index + 1) : file.getOriginalFilename().substring(
-					index + 1);
+			int index = file.getOriginalFilename().equals("") ? imgPath.lastIndexOf(".") : file.getOriginalFilename()
+					.lastIndexOf(".");
+			String fileExt = file.getOriginalFilename().equals("") ? imgPath.substring(index + 1) : file
+					.getOriginalFilename().substring(index + 1);
 
 			if (file.getSize() > 0) {
 				inputStream = file.getInputStream();
@@ -131,8 +127,7 @@ public class UserController {
 					return "myRoom/mySet";
 				}
 
-				filePath = request.getSession().getServletContext()
-						.getRealPath("/resources/userImages/").replace("\\", "/");
+				filePath = request.getSession().getServletContext().getRealPath("/resources/userImages/").replace("\\", "/");
 
 				// "/resources/userImages/" 디렉토리가 없으면 디렉토리 생성
 				File f = new File(filePath);
@@ -149,8 +144,7 @@ public class UserController {
 					return "myRoom/mySet";
 				}
 
-				outputStream = new FileOutputStream(filePath + "/"
-						+ file.getOriginalFilename());
+				outputStream = new FileOutputStream(filePath + "/" + file.getOriginalFilename());
 
 				System.out.println("filePath:" + filePath);
 				System.out.println("fileName:" + file.getOriginalFilename());
@@ -232,7 +226,7 @@ public class UserController {
 	 * @return
 	 */
 	private boolean isFileExtOK(String fileExt) {
-		return (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")
-				|| fileExt.equalsIgnoreCase("png") || fileExt.equalsIgnoreCase("gif"));
+		return (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg") || fileExt.equalsIgnoreCase("png") || fileExt
+				.equalsIgnoreCase("gif"));
 	}
 }

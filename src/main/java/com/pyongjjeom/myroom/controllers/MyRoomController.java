@@ -21,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.pyongjjeom.friends.dto.Friends;
 import com.pyongjjeom.myroom.service.MyRoomService;
-import com.pyongjjeom.postandreply.dto.Post;
 import com.pyongjjeom.postandreply.dto.PostAndContents;
 import com.pyongjjeom.postandreply.dto.Reply;
 import com.pyongjjeom.postandreply.service.PostAndReplyService;
@@ -55,11 +53,10 @@ public class MyRoomController {
 	private MyRoomService myRoomService;
 
 	SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
+
 	@RequestMapping(value = "myRoom.do")
-	public String listDo(Model model, HttpServletRequest request,
-			HttpSession httpSession) {
-		
+	public String listDo(Model model, HttpServletRequest request, HttpSession httpSession) {
+
 		Member member = (Member) httpSession.getAttribute("member");
 		List<PostAndContents> postList = parService.getPost(member.getMemCD());
 		for (PostAndContents post : postList) {

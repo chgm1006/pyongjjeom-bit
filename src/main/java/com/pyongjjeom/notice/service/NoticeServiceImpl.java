@@ -23,32 +23,10 @@ package com.pyongjjeom.notice.service;
 
 import java.util.HashMap;
 import java.util.List;
-
-
-
-
-
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import org.springframework.web.servlet.ModelAndView;
 
 import com.pyongjjeom.notice.dao.NoticeMapper;
 import com.pyongjjeom.notice.dto.Notice;
@@ -71,7 +49,6 @@ public class NoticeServiceImpl implements NoticeService {
 	 */
 	@Override
 	public void insertData(Notice notice) {
-		// TODO Auto-generated method stub
 		noticeMapper.insertData(notice);
 
 	}
@@ -81,12 +58,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 입력하기
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getAllNoticeDatas()
 	 */
 	@Override
 	public List<Notice> getAllNoticeDatas() {
-		// TODO Auto-generated method stub
-
 		return noticeMapper.getAllNoticeDatas();
 	}
 
@@ -95,15 +71,13 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 이벤트데이터를 List 형식으로 불러오기
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#deleteData(com.pyongjjeom.notice.dto.Notice)
 	 */
 	@Override
 	public void deleteData(String notCD) {
-		// TODO Auto-generated method stub
 
 		noticeMapper.deleteData(notCD);
-
-
 
 	}
 
@@ -112,11 +86,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 삭제하기 (notCD에 해당하는 데이터 삭제)
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getCode()
 	 */
 	@Override
 	public List<NoticeCode> getCode() {
-		// TODO Auto-generated method stub
 		List<NoticeCode> code = noticeMapper.getCode();
 
 		return code;
@@ -127,11 +101,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 코드값을 가지고오기
 	 * 상세 : 셀렉트박스인 이벤트 / 행사를 구분하기위해서   공통코드인 code, codenm을 불러오기위해 사용
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#editData(com.pyongjjeom.notice.dto.Notice)
 	 */
 	@Override
 	public void editData(Notice notice) {
-		// TODO Auto-generated method stub
 
 		noticeMapper.editData(notice);
 
@@ -142,11 +116,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 수정하기
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#updateData(java.lang.String)
 	 */
 	@Override
 	public Notice updateData(String notCD) {
-		// TODO Auto-generated method stub
 		return noticeMapper.updateData(notCD);
 	}
 
@@ -156,11 +130,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 상세 : 수정하기를 클릭시 그에 해당하는 데이터를 불러오기 위해서는 notCD가 필요
 	 *       그래서 그값을 불러오기위해 사용
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getSystemNoticeDatas()
 	 */
 	@Override
 	public List<Notice> getSystemNoticeDatas() {
-		// TODO Auto-generated method stub
 		return noticeMapper.getSystemNoticeDatas();
 	}
 
@@ -169,11 +143,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 시스템데이터를 List 형식으로 불러오기
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getEventNoticeDatas()
 	 */
 	@Override
 	public List<Notice> getEventNoticeDatas() {
-		// TODO Auto-generated method stub
 		return noticeMapper.getEventNoticeDatas();
 	}
 
@@ -182,11 +156,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 : 이벤트데이터를 List 형식으로 불러오기
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getDeleteNoticeDatas()
 	 */
 	@Override
 	public List<Notice> getDeleteNoticeDatas() {
-		// TODO Auto-generated method stub
 		return noticeMapper.getDeleteNoticeDatas();
 	}
 
@@ -195,25 +169,24 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 :
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#listMore()
 	 */
 	@Override
 	public List<Notice> listMore() {
-		// TODO Auto-generated method stub
 		return noticeMapper.listMore();
 	}
-
 
 	/**
 	 * <PRE>
 	 * 간략 :
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreNoticeList(java.util.Map)
 	 */
 	@Override
 	public List<Notice> getMoreNoticeList(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
 		return noticeMapper.getMoreNoticeList(paramMap);
 	}
 
@@ -222,11 +195,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 :
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreMoreList(java.util.Map)
 	 */
 	@Override
 	public List<Notice> getMoreMoreList(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -235,36 +208,12 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 간략 :
 	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.notice.service.NoticeService#getMoreAllList(java.util.Map)
 	 */
 	@Override
 	public List<Notice> getMoreAllList(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
 		return noticeMapper.getMoreAllList(paramMap);
 	}
-
-
-
-
-
-	/*	int startrow = (page - 1) * 10;
-		System.out.println(startrow);
-
-		param.put("startrow", String.valueOf(startrow));
-		param.put("endrow", String.valueOf(startrow + limit));
-
-		System.out.println(param.put("startrow", String.valueOf(startrow)));
-		System.out.println(param.put("endrow", String.valueOf(startrow+ limit )));
-
-		List<Notice> ev=  noticeMapper.getAllNoticeListMore(param);
-
-		System.out.println("imp:e");
-		return ev;
-
-	}*/
-
-
-
-
 
 }

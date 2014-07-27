@@ -27,8 +27,6 @@ import com.pyongjjeom.user.dto.Member;
 @Service("myRoomService")
 public class MyRoomServiceImpl implements MyRoomService {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	@Autowired
 	private MyRoomMapper myRoomMapper;
 
@@ -54,7 +52,6 @@ public class MyRoomServiceImpl implements MyRoomService {
 	 */
 	@Override
 	public List<Post> getMyPost(String memCD) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -82,7 +79,6 @@ public class MyRoomServiceImpl implements MyRoomService {
 	 */
 	@Override
 	public List<Post> getFriendsComments(String memCD, String friendCD) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -110,33 +106,32 @@ public class MyRoomServiceImpl implements MyRoomService {
 	 */
 	@Override
 	public List<Post> getFriendsReply(String memCD, String friendCD) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.myroom.service.MyRoomService#insertImage(com.pyongjjeom.user.dto.Member)
 	 */
 	@Override
 	public void insertImage(Member member) {
-		// TODO Auto-generated method stub
 		myRoomMapper.insertImage(member);
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.myroom.service.MyRoomService#updateData(java.lang.String)
 	 */
 	@Override
 	public Member updateImage(String memcd) {
-		// TODO Auto-generated method stub
 		return myRoomMapper.updateImage(memcd);
 	}
 

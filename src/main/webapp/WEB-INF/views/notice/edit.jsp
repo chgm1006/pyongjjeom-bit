@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
@@ -46,52 +45,47 @@
 
 
 <body>
-	<form name=writeform method=POST action="editok.do">
-		<table>
+  <form name=writeform method=POST action="editok.do">
+    <table>
 
-			<tr>
-				<td>
-					<table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<tr
-							style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
-							<td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
-							<td>글쓰기</td>
-							<td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
-						</tr>
-					</table>
-					<table>
-						<input type="hidden" name="notCD" value="${nn.notCD}">
-						<tr>
-							<td>&nbsp;</td>
-							<td align="center">제목</td>
-							<td><input type=text name="title" size="50" maxlength="100"
-								value="${nn.title}"></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="4"></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td align="center">이름</td>
-							<td><input name="writer" size="50" maxlength="50"
-								value="${nn.writer}"></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="4"></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td align="center">비밀번호</td>
-							<td><input name="notPasswd" size="50" maxlength="50"
-								value="${nn.notPasswd}"></td>
-							<td>&nbsp;</td>
-						</tr>
+      <tr>
+        <td>
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
+              <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
+              <td>글쓰기</td>
+              <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+            </tr>
+          </table>
+          <table>
+            <input type="hidden" name="notCD" value="${nn.notCD}">
+            <tr>
+              <td>&nbsp;</td>
+              <td align="center">제목</td>
+              <td><input type=text name="title" size="50" maxlength="100" value="${nn.title}"></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd">
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="center">이름</td>
+              <td><input name="writer" size="50" maxlength="50" value="${nn.writer}"></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd">
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="center">비밀번호</td>
+              <td><input name="notPasswd" size="50" maxlength="50" value="${nn.notPasswd}"></td>
+              <td>&nbsp;</td>
+            </tr>
 
 
-						<form:select path="code" name="code" items="${code}" itemValue="code"
-							itemLabel="codenm" />
+            <form:select path="code" name="code" items="${code}" itemValue="code" itemLabel="codenm" />
 
 
 
@@ -99,7 +93,7 @@
 
 
 
-						<%-- <tr>
+            <%-- <tr>
 					<td width="96">공지사항코드</td>
 					<td width="172">
 					
@@ -115,35 +109,34 @@
 					<td width="172"></td>
 				</tr> --%>
 
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="4"></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td align="center">내용</td>
-							<td><textarea name="issue" cols="50" rows="13">${nn.issue}</textarea></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="4"></td>
-						</tr>
-						<tr height="1" bgcolor="#82B5DF">
-							<td colspan="4"></td>
-						</tr>
-						<tr align="center">
-							<td>&nbsp;</td>
-							
-					
-							<td colspan="2"><input type=button value="수정"
-								OnClick="javascript:writeCheck();"> <input type=button
-								value="취소" OnClick="javascript:history.back(-1)">
-							<td>&nbsp;</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+            <tr height="1" bgcolor="#dddddd">
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="center">내용</td>
+              <td><textarea name="issue" cols="50" rows="13">${nn.issue}</textarea></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd">
+              <td colspan="4"></td>
+            </tr>
+            <tr height="1" bgcolor="#82B5DF">
+              <td colspan="4"></td>
+            </tr>
+            <tr align="center">
+              <td>&nbsp;</td>
 
-		</table>
-	</form>
+
+              <td colspan="2"><input type=button value="수정" OnClick="javascript:writeCheck();"> <input
+                type=button value="취소" OnClick="javascript:history.back(-1)">
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+    </table>
+  </form>
 </body>
 </html>

@@ -22,7 +22,6 @@
 package com.pyongjjeom.user.dto;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  * <pre>

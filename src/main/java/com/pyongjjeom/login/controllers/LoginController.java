@@ -49,10 +49,9 @@ public class LoginController {
 
 	private DBCode dc = new DBCode();
 
-	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public String login(@Valid Model model, HttpServletRequest request,
-			HttpServletResponse response, HttpSession session) throws IOException {
+	@RequestMapping(value = "loginsuccess.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String login(@Valid Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws IOException {
 
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
@@ -89,8 +88,7 @@ public class LoginController {
 	}
 
 	// @ResponseBody
-	@RequestMapping(value = "logout.do", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "logout.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(// Map<String, Object> map,
 			HttpSession session, HttpServletRequest request) {
 		log.info("logout.do");
@@ -136,15 +134,6 @@ public class LoginController {
 		return "login/registerMember";
 	}
 
-	/*
-	 * @RequestMapping(value = "idCheck.do", method = RequestMethod.GET) public
-	 * String getEamil(String email, Model model){
-	 * 
-	 * Member member = loginService.getEmail(email); if(member == null){
-	 * model.addAttribute("result", "true"); }else{ model.addAttribute("result",
-	 * "false"); } return "login/idCheck"; }
-	 */
-
 	@ResponseBody
 	@RequestMapping(value = "fbLogin.do", method = RequestMethod.POST)
 	public Member fbLogin(@RequestBody Member member, HttpSession session) {
@@ -161,8 +150,8 @@ public class LoginController {
 		System.out.println("memInfo.getEmail = " + memInfo.getEmail());
 		System.out.println("memInfo.getBirth = " + memInfo.getBirth());
 		System.out.println("memInfo.getFbId = " + memInfo.getFbId());
-		boolean isMemInfo = ((memInfo.getEmail().equals(member.getEmail()) || memInfo
-				.getFbId().equals(member.getFbId())) && memInfo.getFbYn() == 'Y');
+		boolean isMemInfo = ((memInfo.getEmail().equals(member.getEmail()) || memInfo.getFbId().equals(member.getFbId())) && memInfo
+				.getFbYn() == 'Y');
 
 		int cnt = 0;
 		if (!(memInfo.getFbId().equals(member.getFbId()))) {
@@ -180,8 +169,7 @@ public class LoginController {
 
 	@ResponseBody
 	@RequestMapping(value = "fbRegisterMember.do", method = RequestMethod.POST)
-	public Member fbRegisterMember(@RequestBody Member member,
-			HttpServletRequest request) {
+	public Member fbRegisterMember(@RequestBody Member member, HttpServletRequest request) {
 		log.info("fbRegisterMember");
 
 		// System.out.println(paramMap.get("email"));
@@ -193,7 +181,7 @@ public class LoginController {
 
 		System.out.println("memInfo = " + (memInfo));
 		int cnt = 0;
-//		if (memInfo.getMemCD().equals("") && memInfo.getFbId().equals("")) {
+		// if (memInfo.getMemCD().equals("") && memInfo.getFbId().equals("")) {
 		if (memInfo == null) {
 			cnt = loginService.regiesterFBMember(member);
 		} else {

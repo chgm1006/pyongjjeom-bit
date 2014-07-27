@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc 
@@ -23,15 +22,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="url" value="#{db['jdbc.url']}" />
 		<property name="username" value="#{db['jdbc.username']}" />
 		<property name="password" value="#{db['jdbc.password']}" />
-		<!-- <property name="maximumActiveConnections" value="5" /> -->
-		<!-- <property name="maximumIdleConnections" value="3" /> -->
-		<!-- <property name="maximumWait" value="60000" /> -->
-		<!-- validationQuery:유효 검사용 쿼리( 1개 이상의 row를 반환하는 쿼리를 넣어주면 된다. ) -->
-		<!-- <property name="validationQuery" value="select 1" /> -->
-		<!-- testOnBorrow:컨넥션이 놀고 있을때 -_-; validationQuery 를 이용해서 유효성 검사를 할지 여부. -->
-		<!-- <property name="testOnBorrow" value="true" /> -->
-		<!-- timeBetweenEvictionRunsMillis:해당 밀리초마다 validationQuery 를 이용하여 유효성 검사 진행 -->
-		<!-- <property name="timeBetweenEvictionRunsMillis" value="7200000" /> -->
 	</bean>
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -49,15 +39,14 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		</property>
 	</bean>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static 
-		resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources 
+		directory -->
 
 	<!-- enable component scanning(beware that this does not enable mapper scanning!) -->
 	<context:component-scan base-package="com.pyongjjeom.test.service" />
@@ -99,14 +88,12 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<tx:annotation-driven />
 
 	<!-- standard transaction configuration -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- Configure the multipart resolver -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- one of the properties available; the maximum file size in bytes 2MB -->
 		<property name="maxUploadSize" value="4000000" />
 	</bean>
@@ -115,14 +102,12 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 
 	<!-- javascript/jquery -->
-	<!-- <mvc:resources mapping="/js/**" location="/resources/js/" /> img path <mvc:resources 
-		mapping="/img/**" location="/resources/img/" /> css path <mvc:resources mapping="/css/**" 
-		location="/resources/css/" /> -->
-		
-		
+	<!-- <mvc:resources mapping="/js/**" location="/resources/js/" /> img path <mvc:resources mapping="/img/**" location="/resources/img/" 
+		/> css path <mvc:resources mapping="/css/**" location="/resources/css/" /> -->
+
+
 	<!-- <bean id="cronQ1" class="org.springframework.scheduling.quartz.JobDetailBean"> -->
-	<!-- <property name="jobClass" value="com.pyongjjeom.test.scheduling.QuartzTest1" 
-		/> -->
+	<!-- <property name="jobClass" value="com.pyongjjeom.test.scheduling.QuartzTest1" /> -->
 	<!-- </bean> -->
 
 
@@ -150,13 +135,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<!-- </property> -->
 	<!-- </bean> -->
 
-	<bean id="jacksonMessageConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter ">
+	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter ">
 		<property name="supportedMediaTypes" value="application/json" />
 	</bean>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
 				<ref bean="jacksonMessageConverter" />

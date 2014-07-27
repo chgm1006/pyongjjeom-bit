@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,8 +9,7 @@
 		<tr>
 			<td>
 				<table width="100%" cellpadding="0" cellspacing="0" border="0">
-					<tr
-						style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
+					<tr style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
 						<td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
 						<td>내 용</td>
 						<td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
@@ -75,9 +73,8 @@
 					</tr>
 					<tr align="center">
 						<td width="0">&nbsp;</td>
-						<td colspan="2" width="399"><input type=button value="글쓰기"> <input
-							type=button value="답글"> <input type=button value="목록"> <input
-							type=button value="수정"> <input type=button value="삭제">
+						<td colspan="2" width="399"><input type=button value="글쓰기"> <input type=button value="답글"> <input
+							type=button value="목록"> <input type=button value="수정"> <input type=button value="삭제">
 						<td width="0">&nbsp;</td>
 					</tr>
 				</table>

@@ -20,19 +20,15 @@ import com.pyongjjeom.user.dto.Member;
  * @author : Forrest
  */
 public interface MyRoomService {
-	
-	
 
 	public List<Post> getMyPost(String memCD);
 
 	public List<Post> getFriendsComments(String memCD, String friendCD);
 
 	public List<Post> getFriendsReply(String memCD, String friendCD);
-	
+
 	Member updateImage(String memcd);
-	
+
 	void insertImage(Member member);
-	
-	
-	
+
 }

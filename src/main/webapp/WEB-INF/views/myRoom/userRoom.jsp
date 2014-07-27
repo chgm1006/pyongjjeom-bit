@@ -1,19 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp"%>
 
 <!-- CSS file -->
-<link href="${pageContext.request.contextPath}/resources/css/myroom.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/myroom.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css"
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css"
 	media="screen" />
 <!-- jQuery files -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jscripts.js"></script>
 
 <script>
@@ -100,14 +96,10 @@
 		});
 
 		if ($.browser.msie && $.browser.version < 7) {
-			$(window).scroll(
-					function() {
-						$("#glayLayer2").css('top', $(document).scrollTop());
-						$("#overLayer2").css(
-								'top',
-								($(document).scrollTop() + $("#overLayer2").height() / 2)
-										+ "px");
-					});
+			$(window).scroll(function() {
+				$("#glayLayer2").css('top', $(document).scrollTop());
+				$("#overLayer2").css('top', ($(document).scrollTop() + $("#overLayer2").height() / 2) + "px");
+			});
 		}
 	});
 	function button_event() {
@@ -143,106 +135,106 @@
 <article>
 
 
-			<div class="userPhoto">
-		<img alt="" src="${user.imgPath} "/>
-</div>	 <div class="title2">&nbsp;&nbsp; ${user.memNm}님의 코멘트</div>
+	<div class="userPhoto">
+		<img alt="" src="${user.imgPath} " />
+	</div>
+	<div class="title2">&nbsp;&nbsp; ${user.memNm}님의 코멘트</div>
 
-		<c:forEach items="${postList}" var="post">
-			<div class="postingList">
-				<dl>
-					<dt class="listHead">
+	<c:forEach items="${postList}" var="post">
+		<div class="postingList">
+			<dl>
+				<dt class="listHead">
 
-						<div class="list1">
-							<a href="#" class="listImgLink"><img src="${post.image} "
-								class="listImg"></a>
+					<div class="list1">
+						<a href="#" class="listImgLink"><img src="${post.image} " class="listImg"></a>
 
-							<div class="detail">
-								<table>
-									<tr>
-										<td class="listTitle1" colspan="2">${post.title}</td>
-									</tr>
-									<tr>
-										<td class="listTitle">평 점</td>
-										<td class="listDirectorValue"><c:choose>
-												<c:when test="${post.memGrade == 10}">
-													<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
+						<div class="detail">
+							<table>
+								<tr>
+									<td class="listTitle1" colspan="2">${post.title}</td>
+								</tr>
+								<tr>
+									<td class="listTitle">평 점</td>
+									<td class="listDirectorValue"><c:choose>
+											<c:when test="${post.memGrade == 10}">
+												<img src="/pyongjjeom/resources/img/p10.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 9 }">
-													<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 9 }">
+												<img src="/pyongjjeom/resources/img/p9.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 8 }">
-													<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 8 }">
+												<img src="/pyongjjeom/resources/img/p8.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 7 }">
-													<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 7 }">
+												<img src="/pyongjjeom/resources/img/p7.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 6 }">
-													<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 6 }">
+												<img src="/pyongjjeom/resources/img/p6.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 5 } ">
-													<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 5 } ">
+												<img src="/pyongjjeom/resources/img/p5.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 4 } ">
-													<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 4 } ">
+												<img src="/pyongjjeom/resources/img/p4.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 3 } ">
-													<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 3 } ">
+												<img src="/pyongjjeom/resources/img/p3.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 2 } ">
-													<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 2 } ">
+												<img src="/pyongjjeom/resources/img/p2.png"> ${post.memGrade}점
 					</c:when>
-												<c:when test="${post.memGrade == 1 } ">
-													<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
+											<c:when test="${post.memGrade == 1 } ">
+												<img src="/pyongjjeom/resources/img/p1.png"> ${post.memGrade}점
 					</c:when>
-												<c:otherwise>
-													<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
+											<c:otherwise>
+												<img src="/pyongjjeom/resources/img/p0.png"> ${post.memGrade}점
 					</c:otherwise>
 
-											</c:choose></td>
-									</tr>
-									<tr>
-										<td class="listTitle">후 기</td>
-										<td class="listActorValue">${post.comment }</td>
-									</tr>
-								</table>
-								<div class="PostingReply">댓글 2개</div>
-							</div>
+										</c:choose></td>
+								</tr>
+								<tr>
+									<td class="listTitle">후 기</td>
+									<td class="listActorValue">${post.comment }</td>
+								</tr>
+							</table>
+							<div class="PostingReply">댓글 2개</div>
 						</div>
-					</dt>
-					<dd class="listContent">
+					</div>
+				</dt>
+				<dd class="listContent">
 
-						<h3>코멘트</h3>
-						<br>
-						<div class="commentBox">
-							<div class="userPhoto">
-								<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>박희본
-							</div>
-							<div class="triangle"></div>
-							<div class="rectangle">
-								<h3>나도 이 영화 봤다.</h3>
-								<h5>2014.06.19</h5>
-							</div>
-							<a href="#" class="commentDel">삭제</a>
+					<h3>코멘트</h3>
+					<br>
+					<div class="commentBox">
+						<div class="userPhoto">
+							<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>박희본
 						</div>
-						<div class="clear"></div>
-						<div class="commentBox">
-							<div class="userPhoto">
-								<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>박희본
-							</div>
-							<div class="triangle"></div>
-							<div class="rectangle">
-								<h3>나도 이 영화 봤다.</h3>
-								<h5>2014.06.19</h5>
-							</div>
-							<a href="#" class="commentDel">삭제</a>
+						<div class="triangle"></div>
+						<div class="rectangle">
+							<h3>나도 이 영화 봤다.</h3>
+							<h5>2014.06.19</h5>
 						</div>
-						<div class="clear"></div>
-						<a href="#" class="commentMore">더보기</a>
-					</dd>
-					<dt class="listHead">
-		</c:forEach>
+						<a href="#" class="commentDel">삭제</a>
+					</div>
+					<div class="clear"></div>
+					<div class="commentBox">
+						<div class="userPhoto">
+							<a href="#" class="userRoom"><img src="img/user1.jpg"></a><br>박희본
+						</div>
+						<div class="triangle"></div>
+						<div class="rectangle">
+							<h3>나도 이 영화 봤다.</h3>
+							<h5>2014.06.19</h5>
+						</div>
+						<a href="#" class="commentDel">삭제</a>
+					</div>
+					<div class="clear"></div>
+					<a href="#" class="commentMore">더보기</a>
+				</dd>
+				<dt class="listHead">
+	</c:forEach>
 
-		<!-- 	<div class="list1">
+	<!-- 	<div class="list1">
 			<a href="#" class="listImgLink"><img src="img/07.jpg" class="listImg"></a>
 			<div class="detail">
 				<table>
@@ -299,7 +291,7 @@
 
 
 
-		<!-- <div id='glayLayer2'></div>
+	<!-- <div id='glayLayer2'></div>
 	<div id='overLayer2'>
 
 		<a href="#" class="exit"></a>
@@ -353,6 +345,6 @@
 
 
  -->
- </article>
+</article>
 </body>
 </html>

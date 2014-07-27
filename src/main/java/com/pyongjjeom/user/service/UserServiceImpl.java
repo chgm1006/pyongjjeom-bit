@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.pyongjjeom.user.dao.UserMapper;
 import com.pyongjjeom.user.dto.Member;
 
-
 /**
  * <pre>
  * com.pyongjjeom.user.service 
@@ -26,7 +25,7 @@ import com.pyongjjeom.user.dto.Member;
 public class UserServiceImpl implements UserService {
 
 	private Logger log = Logger.getLogger(this.getClass());
-	
+
 	@Autowired
 	private UserMapper userMapper;
 
@@ -125,26 +124,27 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 
-
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.user.service.UserService#upDateData(java.lang.String)
 	 */
 	@Override
 	public void upDateData(Member member) {
 		// TODO Auto-generated method stub
-		System.out.println("????"+member);
-		 userMapper.upDateData(member);
+		System.out.println("????" + member);
+		userMapper.upDateData(member);
 	}
 
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.user.service.UserService#deleteMember(java.lang.String)
 	 */
 	@Override
@@ -157,10 +157,10 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * <PRE>
 	 * 간략 : 
-	 * 상세 : 
+	 * 상세 :
 	 * </PRE>
+	 * 
 	 * @see com.pyongjjeom.user.service.UserService#updateData(java.lang.String)
 	 */
-
 
 }

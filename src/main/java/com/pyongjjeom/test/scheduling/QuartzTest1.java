@@ -31,14 +31,12 @@ public class QuartzTest1 extends QuartzJobBean {
 	private String daumBKey;
 
 	@Override
-	protected void executeInternal(JobExecutionContext context)
-			throws JobExecutionException {
+	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 
 		long time = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
-		System.out.println("Cron trigger 1 (5 second): current time = "
-				+ sdf.format(time));
+		System.out.println("Cron trigger 1 (5 second): current time = " + sdf.format(time));
 		System.err.println("daumBookKey = " + daumBKey);
 		System.err.println("daumMovieKey = " + daumMKey);
 	}

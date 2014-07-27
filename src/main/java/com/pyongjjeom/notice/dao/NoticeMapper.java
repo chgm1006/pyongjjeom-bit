@@ -21,21 +21,19 @@
  */
 package com.pyongjjeom.notice.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 
-
 public interface NoticeMapper {
 
 	void insertData(Notice notice);
 
-	List <NoticeCode> getCode();
+	List<NoticeCode> getCode();
 
-	List <Notice> getAllNoticeDatas();
+	List<Notice> getAllNoticeDatas();
 
 	List<Notice> getSystemNoticeDatas();
 
@@ -49,16 +47,10 @@ public interface NoticeMapper {
 
 	void editData(Notice notice);
 
+	List<Notice> listMore();
 
-  List <Notice> listMore();
+	public List<Notice> getMoreNoticeList(Map<String, Object> paramMap);
 
-
-  public List<Notice> getMoreNoticeList(Map<String, Object> paramMap);
-
-  public List<Notice> getMoreAllList(Map<String, Object> paramMap);
-
-
-
-
+	public List<Notice> getMoreAllList(Map<String, Object> paramMap);
 
 }

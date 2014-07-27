@@ -11,21 +11,18 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.pyongjjeom.contents.parsing.common.ContentsValue"
-			alias="ContentsValue" />
-		<typeAlias type="com.pyongjjeom.contents.parsing.common.MovieGrades"
-			alias="MovieGrades" />
-		<typeAlias type="com.pyongjjeom.contents.parsing.common.BookGrades"
-			alias="BookGrades" />
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.ContentsValue" alias="ContentsValue" />
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.MovieGrades" alias="MovieGrades" />
+		<typeAlias type="com.pyongjjeom.contents.parsing.common.BookGrades" alias="BookGrades" />
 		<typeAlias type="com.pyongjjeom.user.dto.Member" alias="Member" />
 		<typeAlias type="com.pyongjjeom.notice.dto.Notice" alias="Notice" />
 		<typeAlias type="com.pyongjjeom.notice.dto.NoticeCode" alias="NoticeCode" />
 		<typeAlias type="com.pyongjjeom.postandreply.dto.Post" alias="Post" />
-			<typeAlias type="com.pyongjjeom.postandreply.dto.PostAndContents" alias="PostAndContents" />
-				<typeAlias type="com.pyongjjeom.postandreply.dto.Comment" alias="Comment" />
-				<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
-		<typeAlias type="com.pyongjjeom.common.NaverMovie" 	alias="NaverMovie" />
-				<typeAlias type="com.pyongjjeom.common.NaverBook" 	alias="NaverBook" />
+		<typeAlias type="com.pyongjjeom.postandreply.dto.PostAndContents" alias="PostAndContents" />
+		<typeAlias type="com.pyongjjeom.postandreply.dto.Comment" alias="Comment" />
+		<typeAlias type="com.pyongjjeom.postandreply.dto.Reply" alias="Reply" />
+		<typeAlias type="com.pyongjjeom.common.NaverMovie" alias="NaverMovie" />
+		<typeAlias type="com.pyongjjeom.common.NaverBook" alias="NaverBook" />
 	</typeAliases>
 	<!-- SQL Mapper는 여기에 추가 -->
 	<mappers>

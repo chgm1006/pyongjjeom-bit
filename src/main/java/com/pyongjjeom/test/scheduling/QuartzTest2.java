@@ -26,14 +26,12 @@ public class QuartzTest2 extends QuartzJobBean {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Override
-	protected void executeInternal(JobExecutionContext context)
-			throws JobExecutionException {
+	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 
 		long time = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
-		System.out.println("Cron trigger 2 (1 second): current time = "
-				+ sdf.format(time));
+		System.out.println("Cron trigger 2 (1 second): current time = " + sdf.format(time));
 	}
 
 }

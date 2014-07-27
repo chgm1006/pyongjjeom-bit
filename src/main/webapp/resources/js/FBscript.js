@@ -7,8 +7,7 @@ var FB_APPID;
 var FB_accessToken;
 
 window.fbAsyncInit = function() {
-	FB_APPID = "www.pyongjjeom.com" == location.host ? "682328688505624"
-			: "1449705105272003";
+	FB_APPID = "www.pyongjjeom.com" == location.host ? "682328688505624" : "1449705105272003";
 
 	var hostNM = location.host;
 	// console.log("host = " + hostNM);
@@ -57,27 +56,24 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 function fnLoginFB(response) {
-	FB
-			.login(
-					function(response) {
-						if (response) {
-							FB.api("/me", function(response) {
-								fbUid = response.id;
-								fbName = response.first_name + " " + response.last_name;
-								fbEmail = response.email;
-								fbBirthday = StringToDate(response.birthday);
-								fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
+	FB.login(function(response) {
+		if (response) {
+			FB.api("/me", function(response) {
+				fbUid = response.id;
+				fbName = response.first_name + " " + response.last_name;
+				fbEmail = response.email;
+				fbBirthday = StringToDate(response.birthday);
+				fbIMGURL = 'http://graph.facebook.com/' + fbUid + '/picture';
 
-//								var url = "fbLogin.do";
-								var url = "fbRegisterMember.do";
-								ajaxFBRegisterMember(url);
+				// var url = "fbLogin.do";
+				var url = "fbRegisterMember.do";
+				ajaxFBRegisterMember(url);
 
-							});
-						}
-					},
-					{
-						scope : "public_profile, email, user_friends, user_birthday, manage_friendlists"
-					});
+			});
+		}
+	}, {
+		scope : "public_profile, email, user_friends, user_birthday, manage_friendlists"
+	});
 }
 
 function ajaxFBRegisterMember(url) {
@@ -97,23 +93,23 @@ function ajaxFBRegisterMember(url) {
 		dataType : "json",
 		async : false,
 		beforeSend : function() {
-			 console.log(formData);
+			console.log(formData);
 		},
 		error : function(e) {
-			 console.log(e.responseText);
+			console.log(e.responseText);
 		},
 		success : function(data) {
-			 console.log("fbLogin 시작");
+			console.log("fbLogin 시작");
 			if (data == null) {
 				alert("회원 정보가 잘못되었습니다.");
 
 			} else {
 				$.each(data, function(key) {
 					var list = data[key];
-					 console.log(key + " = " + list);
+					console.log(key + " = " + list);
 
 				});
-				 console.log("fbLogin 종료");
+				console.log("fbLogin 종료");
 				window.location.reload(true);
 			}
 

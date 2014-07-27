@@ -1,159 +1,149 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp"%>
 
 
 <!---- CSS  ---->
-<link href="${pageContext.request.contextPath}/resources/css/imageSliderBook.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/contentsList.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/modalWindowBook.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css" media="screen" />
+<link href="${pageContext.request.contextPath}/resources/css/imageSliderBook.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/contentsList.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindowBook.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jRating.jquery.css"
+  media="screen" />
 
 <!-- -----jQuery : 로고 등장!----- -->
 <script>
 	$(document).ready(function() {
-		$("#logoPPak").fadeOut(3000);	
-		$("#logoPPak").click(function(){
-			$("#logoPPak").fadeOut("fast");	
+		$("#logoPPak").fadeOut(3000);
+		$("#logoPPak").click(function() {
+			$("#logoPPak").fadeOut("fast");
 		});
-			
+
 	});
 </script>
 
 <article>
 
-<!-- -----로고 등장!----- -->
-<c:choose>
-	<c:when test="${bookList==null}">
-		<div id="logoPPak" style="width:100%; height:100%; position:absolute; background-color:white; z-index:100;">
-			<img src="/resources/img/logoBig.png" style="margin:35% auto;">		
-		</div>
-	</c:when>
-	<c:otherwise></c:otherwise>
-</c:choose>
-<!-- -----로고 빡!------여기까지--- -->
-<!-- ########################################### -->
-<!-- #################  Top으로 이동  ################# -->
-<!-- ########################################### -->
-		<a  id="quick" href="article" data-scroll>
-			<img class="quickImg" src="">
-		</a>
-	
-<!-- ########################################### -->
-<!-- #################  book 슬라이드 시작  ################# -->
-<!-- ########################################### -->
+  <!-- -----로고 등장!----- -->
+  <c:choose>
+    <c:when test="${bookList==null}">
+      <div id="logoPPak" style="width: 100%; height: 100%; position: absolute; background-color: white; z-index: 100;">
+        <img src="/resources/img/logoBig.png" style="margin: 35% auto;">
+      </div>
+    </c:when>
+    <c:otherwise></c:otherwise>
+  </c:choose>
+  <!-- -----로고 빡!------여기까지--- -->
+  <!-- ########################################### -->
+  <!-- #################  Top으로 이동  ################# -->
+  <!-- ########################################### -->
+  <a id="quick" href="article" data-scroll> <img class="quickImg" src="">
+  </a>
 
-	<div class="wrapper">
-        	<div class="title1">베스트 셀러
-        	
-                </div>
-        	<div class="arrow1"> 
-                	<a id="prev3" class="prev" href="#"></a> 
-                </div>
+  <!-- ########################################### -->
+  <!-- #################  book 슬라이드 시작  ################# -->
+  <!-- ########################################### -->
 
-		<div class="list_carousel">
-			<ul id="foo3">
-				<c:forEach varStatus="count" begin="0" end="${size }">
-					<li>
-						<div class="set01">
-							<c:forEach var="book" items="${bookList }" varStatus="status"
-								begin="${count.index*10}" end="${count.index*10+9}">
-								<a class="imgLink" href="#">
-									<div class="inner">
-										<img class="imgList" src="${book.image}" />
-										<div class="innerOver2"></div>
-										<div class="innerOver">
-											<p class="statusIndex">${status.index }</p>
-											<b>${book.title}</b><br> ${book.author}<br>
-										</div>
-									</div>
-								</a>
-							</c:forEach>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="arrow2"> 
-                	<a id="next3" class="next" href="#"></a> 
-                </div>
-	</div>
+  <div class="wrapper">
+    <div class="title1">베스트 셀러</div>
+    <div class="arrow1">
+      <a id="prev3" class="prev" href="#"></a>
+    </div>
 
-		<!-- ########################################### -->
-		<!-- #################  하단 리스트 시작  ################# -->
-		<!-- ########################################### -->
-		<div class="contentsList">
-			<div class="title2">최신 도서 리스트</div>
+    <div class="list_carousel">
+      <ul id="foo3">
+        <c:forEach varStatus="count" begin="0" end="${size }">
+          <li>
+            <div class="set01">
+              <c:forEach var="book" items="${bookList }" varStatus="status" begin="${count.index*10}"
+                end="${count.index*10+9}">
+                <a class="imgLink" href="#">
+                  <div class="inner">
+                    <img class="imgList" src="${book.image}" />
+                    <div class="innerOver2"></div>
+                    <div class="innerOver">
+                      <p class="statusIndex">${status.index }</p>
+                      <b>${book.title}</b><br> ${book.author}<br>
+                    </div>
+                  </div>
+                </a>
+              </c:forEach>
+            </div>
+          </li>
+        </c:forEach>
+      </ul>
+    </div>
+    <div class="arrow2">
+      <a id="next3" class="next" href="#"></a>
+    </div>
+  </div>
 
-				<c:forEach var="book" items="${bookList }" varStatus="status">
-				<div class="listWrap">
-					<div class="imgWrap" id="imgWrapBook">
-						<a class="btnDetail" href="#">
-							<img  class="listImg" src="${book.image}">
-							<p class="statusIndex">${status.index}</p>
-						</a>
-					</div>
-					
-					<div class="listTable">
-						<table>
-							<tr>
-								<td class="tableTitle" colspan="2">
-									<a class="tableTitleLink" id="tableTitleLinkBook" href="#">${book.title }
-										<p class="statusIndex">${status.index}</p>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">저자</td>
-								<td class="tableCont">${book.author }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">출판사</td>
-								<td class="tableCont">${book.publisher }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">출간일</td>
-								<td class="tableCont">${book.pubdate }</td>
-							</tr>
-							<tr>
-								<td class="tableTitle2">책내용</td>
-								<td class="tableCont">${book.description }	</td>
-							</tr>
-						</table>
-						<div class="listButtonWrap">
-							<a class="listButton" href="${book.link }" target="_blank">네이버 상세</a>
-							<a class="listButton" href="http://www.kyobobook.co.kr">사러가기</a>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+  <!-- ########################################### -->
+  <!-- #################  하단 리스트 시작  ################# -->
+  <!-- ########################################### -->
+  <div class="contentsList">
+    <div class="title2">최신 도서 리스트</div>
 
-		
-			
-			<!------------------- 더보기 버튼 -------------------->
-			<a href="#" class="listMore">더보기</a>
-			
-		</div>
-	
+    <c:forEach var="book" items="${bookList }" varStatus="status">
+      <div class="listWrap">
+        <div class="imgWrap" id="imgWrapBook">
+          <a class="btnDetail" href="#"> <img class="listImg" src="${book.image}">
+            <p class="statusIndex">${status.index}</p>
+          </a>
+        </div>
+
+        <div class="listTable">
+          <table>
+            <tr>
+              <td class="tableTitle" colspan="2"><a class="tableTitleLink" id="tableTitleLinkBook" href="#">${book.title }
+                  <p class="statusIndex">${status.index}</p>
+              </a></td>
+            </tr>
+            <tr>
+              <td class="tableTitle2">저자</td>
+              <td class="tableCont">${book.author }</td>
+            </tr>
+            <tr>
+              <td class="tableTitle2">출판사</td>
+              <td class="tableCont">${book.publisher }</td>
+            </tr>
+            <tr>
+              <td class="tableTitle2">출간일</td>
+              <td class="tableCont">${book.pubdate }</td>
+            </tr>
+            <tr>
+              <td class="tableTitle2">책내용</td>
+              <td class="tableCont">${book.description }</td>
+            </tr>
+          </table>
+          <div class="listButtonWrap">
+            <a class="listButton" href="${book.link }" target="_blank">네이버 상세</a> <a class="listButton"
+              href="http://www.kyobobook.co.kr">사러가기</a>
+          </div>
+        </div>
+      </div>
+    </c:forEach>
+
+
+
+    <!------------------- 더보기 버튼 -------------------->
+    <a href="#" class="listMore">더보기</a>
+
+  </div>
+
 </article>
 
-	<!-- ########################################### -->
-	<!-- #################    FOOTER    ################# -->
-	<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- #################    FOOTER    ################# -->
+<!-- ########################################### -->
 
 <!-- /// <footer> INCLUDE /// -->
 <%@ include file="../common/footer.jsp"%>
 
-	<!-- ################################################# -->
-	<!-- #################    모달윈도우 : 도서상세    ################# -->
-	<!-- ################################################# -->
+<!-- ################################################# -->
+<!-- #################    모달윈도우 : 도서상세    ################# -->
+<!-- ################################################# -->
 
 <!-- /// 모달윈도우 INCLUDE /// -->
 <%@ include file="../common/modalBookIndex.jsp"%>
@@ -163,15 +153,15 @@
 <script src="${pageContext.request.contextPath}/resources/js/FBscript.js"></script>
 
 <script type="text/javascript" language="javascript"
-		src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
+  src="${pageContext.request.contextPath}/resources/js/smooth-scroll.js"></script>
 <script type="text/javascript" language="javascript"
-		src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+  src="${pageContext.request.contextPath}/resources/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/scrollBanner2.js"></script>
 
 <script type="text/javascript" language="javascript"
-		src="${pageContext.request.contextPath}/resources/js/jqueryBookIndex.js"></script>
+  src="${pageContext.request.contextPath}/resources/js/jqueryBookIndex.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jRating.jquery.js"></script>
-		
+
 
 </body>
 </html>

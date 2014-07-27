@@ -20,14 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='N'
-		order by regidate desc limit 0,5;
+		order by regidate
+		desc limit 0,5;
 
 	</select>
 	<select id="getSystemNoticeDatas" resultType="Notice">
 
 
 		select * from notice where
-		ifnull(deleteyn,'N')='N' and category = 'SM'
+		ifnull(deleteyn,'N')='N' and category =
+		'SM'
 		order by regidate desc limit 0,5;;
 
 
@@ -40,7 +42,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getEventNoticeDatas" resultType="Notice">
 
 		select * from notice where
-		ifnull(deleteyn,'N')='N' and category = 'EV'
+		ifnull(deleteyn,'N')='N' and category =
+		'EV'
 		order by regidate desc limit 0,5;
 
 	</select>
@@ -50,7 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		select * from notice where
 		ifnull(deleteyn,'N')='Y'
-		order by regidate desc limit 0,5;
+		order by regidate
+		desc limit 0,5;
 
 	</select>
 
@@ -106,7 +110,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
-		<select id="getAllNoticeListMore" resultType="Notice">
+	<select id="getAllNoticeListMore" resultType="Notice">
 
 		select b.* from (
 		SELECT
@@ -116,7 +120,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select
 		@rnum:=0) r
 		) b
-		where b.rownum between ${startrow} and ${endrow};
+		where b.rownum between
+		${startrow} and ${endrow};
 		<!-- select * from notice where ifnull(deleteyn,'N')='N' limit ${startrow},${endrow}; -->
 
 

@@ -27,8 +27,7 @@ public interface PostAndReplyService {
 
 	public List<Post> getReply(String memCD, String conCD);
 
-	
-	public void updatePost (Post post);
+	public void updatePost(Post post);
 
 	public void deletePost(String postCD);
 
@@ -48,5 +47,4 @@ public interface PostAndReplyService {
 
 	public void deleteReply(String replyCD);
 
-	
 }

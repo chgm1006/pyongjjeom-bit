@@ -32,8 +32,6 @@ import com.pyongjjeom.user.dto.Member;
 @Controller
 public class MailController {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	@Autowired
 	private MailService mailService;
 
@@ -56,8 +54,7 @@ public class MailController {
 		}
 		System.out.println("urlPath = " + urlPath);
 		System.out.println("getServerName() = " + request.getServerName());
-		urlPath = urlPath.equals(request.getServerName()) ? urlPath
-				: "http://localhost:8080/pyongjjeom/";
+		urlPath = urlPath.equals(request.getServerName()) ? urlPath : "http://localhost:8080/pyongjjeom/";
 
 		System.out.println("urlPath = " + urlPath);
 		String memCD = loginService.getMemCD(toUser);
@@ -85,20 +82,13 @@ public class MailController {
 		CommonAES aes = new CommonAES();
 		text.append("<h2><b>이메일 인증 코드입니다</b></h2><br>");
 		text.append(authCD);
-		text.append("<br><a href='" + urlPath + "/emailAuth_forward.jsp?rootc="
-				+ aes.getEncryptor(authCD) + "&rootm=" + aes.getEncryptor(email)
-				+ "'>인증번호 입력</a>");
+		text.append("<br><a href='" + urlPath + "/emailAuth_forward.jsp?rootc=" + aes.getEncryptor(authCD) + "&rootm="
+				+ aes.getEncryptor(email) + "'>인증번호 입력</a>");
 
 		return text.toString();
 	}
 
-	// @RequestMapping(value = "emailAuth_check.do", method = RequestMethod.GET)
-	// public String checkEmailAuthGET(Member user, HttpServletRequest request) {
-	// return checkEmailAuth(user, request);
-	// }
-
-	@RequestMapping(value = "emailAuth_check.do", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "emailAuth_check.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String checkEmailAuth(Member member, HttpServletRequest request) {
 		String emailCD = (String) request.getParameter("emailAuthCD");
 		String email = (String) request.getParameter("email");

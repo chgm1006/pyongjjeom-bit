@@ -29,8 +29,7 @@ public class NaverMovieParsing extends ContentsParsing {
 	private void addTitle() {
 		for (Element tit : title) {
 			titleList.add(tit.text());
-			codeList.add(tit.attr("href").substring(
-					tit.attr("href").lastIndexOf("=") + 1));
+			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=") + 1));
 		}
 	}
 
@@ -46,8 +45,7 @@ public class NaverMovieParsing extends ContentsParsing {
 
 	public static void main(String[] args) {
 		NaverMovieParsing parsing = new NaverMovieParsing();
-		System.out.println(parsing.getTitleList().size() + "/"
-				+ parsing.getGradeList().size());
+		System.out.println(parsing.getTitleList().size() + "/" + parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 		System.out.println(parsing.codeList.toString());

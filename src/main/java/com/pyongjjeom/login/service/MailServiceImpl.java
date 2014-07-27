@@ -72,15 +72,12 @@ public class MailServiceImpl implements MailService {
 	 *          받는 사람 참조 배열
 	 */
 	@Override
-	public void sendMail(String subject, String text, String fromUser,
-			String toUser) {
-		// TODO Auto-generated method stub
+	public void sendMail(String subject, String text, String fromUser, String toUser) {
 
 		MimeMessage message = mailSender.createMimeMessage();
 
 		try {
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true,
-					"UTF-8");
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 			messageHelper.setSubject(subject);
 			messageHelper.setTo(toUser);
 			messageHelper.setFrom(fromUser);
@@ -89,7 +86,6 @@ public class MailServiceImpl implements MailService {
 			mailSender.send(message);
 
 		} catch (MessagingException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}

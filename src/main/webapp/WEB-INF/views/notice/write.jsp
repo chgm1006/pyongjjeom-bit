@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,8 +7,7 @@
 <title>게시판</title>
 </head>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -71,8 +69,7 @@
 			<tr>
 				<td>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<tr
-							style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
+						<tr style="background: url('img/table_mid.gif') repeat-x; text-align: center;">
 							<td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
 							<td>글쓰기</td>
 							<td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
@@ -108,8 +105,8 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">카테고리</td>
-							<td><form:select path="code" name="code" items="${code}"
-									itemValue="code" itemLabel="codenm" style="width:50; align:center;" /></td>
+							<td><form:select path="code" name="code" items="${code}" itemValue="code" itemLabel="codenm"
+									style="width:50; align:center;" /></td>
 						</tr>
 						<%-- 
 						<form:select path="code" name="code" items="${code}" itemValue="code"
@@ -154,8 +151,7 @@
 						<tr align="center">
 							<td>&nbsp;</td>
 
-							<td colspan="2"><input type=button value="등록"
-								OnClick="javascript:writeCheck();"> <input type=button
+							<td colspan="2"><input type=button value="등록" OnClick="javascript:writeCheck();"> <input type=button
 								value="취소" OnClick="javascript:history.back(-1)">
 							<td>&nbsp;</td>
 						</tr>

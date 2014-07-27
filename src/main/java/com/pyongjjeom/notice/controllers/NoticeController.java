@@ -53,8 +53,7 @@ public class NoticeController {
 	int row;
 
 	@RequestMapping(value = "allList.do")
-	public String allList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String allList(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		List<Notice> list = noticeService.getAllNoticeDatas();
 
@@ -68,8 +67,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "systemList.do")
-	public String systemList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String systemList(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		List<Notice> list = noticeService.getSystemNoticeDatas();
 
@@ -84,8 +82,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "eventList.do")
-	public String eventList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String eventList(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		List<Notice> list = noticeService.getEventNoticeDatas();
 
@@ -99,8 +96,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "deleteList.do")
-	public String deleteList(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String deleteList(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		List<Notice> list = noticeService.getDeleteNoticeDatas();
 
@@ -114,8 +110,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "boardList.do")
-	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice,
-			Model model, HttpServletRequest request) {
+	public String listDo(@Valid com.pyongjjeom.notice.dto.Notice notice, Model model, HttpServletRequest request) {
 		row = 0;
 		System.out.println("AAAA");
 		IssueDbtoView(notice);
@@ -133,8 +128,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
-	public String insertData(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String insertData(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		issueViewToDb(notice);
 
@@ -146,8 +140,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "write_ok.do", method = RequestMethod.POST)
-	public String writeOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String writeOKDo(@Valid Notice notice, Model model, HttpServletRequest request) {
 		String code = (String) request.getParameter("code");
 
 		IssueDbtoView(notice);
@@ -165,8 +158,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
-	public String editDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String editDo(@Valid Notice notice, Model model, HttpServletRequest request) {
 
 		System.out.println(request.getParameter("notCD"));
 
@@ -187,8 +179,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "editok.do", method = RequestMethod.POST)
-	public String editOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request) {
+	public String editOKDo(@Valid Notice notice, Model model, HttpServletRequest request) {
 		IssueDbtoView(notice);
 
 		notice.setCategory(request.getParameter("code"));
@@ -205,8 +196,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
-	public String deleteOKDo(@Valid Notice notice, Model model,
-			HttpServletRequest request)
+	public String deleteOKDo(@Valid Notice notice, Model model, HttpServletRequest request)
 
 	{
 
@@ -234,8 +224,7 @@ public class NoticeController {
 	 */
 	public Notice IssueDbtoView(Notice notice) {
 		String viewIssue = notice.getIssue();
-		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
+		viewIssue = viewIssue.replaceAll("`", "'").replaceAll("\r\n", "<br>").replaceAll("\u0020", "&nbsp;");
 		notice.setIssue(viewIssue);
 
 		return notice;
@@ -259,16 +248,14 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "listJson.do", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> listJson(ModelMap model,
-			HttpServletRequest request) {
+	public @ResponseBody Map<String, Object> listJson(ModelMap model, HttpServletRequest request) {
 		// requestbody를 못받는다. 그래서 이렇게사용
 		String category = (String) request.getParameter("category");
-		if(category.equals("book") || category.equals("movie"))
-		{
+		if (category.equals("book") || category.equals("movie")) {
 			System.out.println("aaaaa");
-		category="";
+			category = "";
 		}
-		// 검색을햇을 때 book, movie 일때 는   category가 겹치므로, 
+		// 검색을햇을 때 book, movie 일때 는 category가 겹치므로,
 		// 이와같은 방법을 사용함 . 임시방편이므로 나중에 고치길 요망함
 		System.out.println("name = " + category);
 
