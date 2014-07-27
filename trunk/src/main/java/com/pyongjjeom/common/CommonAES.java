@@ -19,7 +19,6 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.log4j.Logger;
-import org.junit.Test;
 
 /**
  * <pre>
@@ -78,8 +77,8 @@ public class CommonAES {
 			cipher = Cipher.getInstance("AES");
 			cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
 			encrypted = cipher.doFinal(encrStr.getBytes());
-		} catch (NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
+		} catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException
+				| BadPaddingException e) {
 			e.printStackTrace();
 		}
 
@@ -97,9 +96,8 @@ public class CommonAES {
 			cipher = Cipher.getInstance("AES");
 			cipher.init(Cipher.DECRYPT_MODE, skeySpec);
 			decrypted = cipher.doFinal(Hex.decodeHex(decrStr.toCharArray()));
-		} catch (NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidKeyException | IllegalBlockSizeException | BadPaddingException
-				| DecoderException e) {
+		} catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException
+				| BadPaddingException | DecoderException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -111,8 +109,8 @@ public class CommonAES {
 
 	public static void main(String[] args) {
 		CommonAES aes = new CommonAES();
-//		String str = aes.getEncryptor("chgm1006@gmail.com");
-//		System.out.println(str);
+		// String str = aes.getEncryptor("chgm1006@gmail.com");
+		// System.out.println(str);
 		String str2 = aes.getDecryptor("57d5b38a2ce5dbda69a0e7b9206ecdeaf371394aa94eb740911145f180c00f3b");
 		System.out.println(str2);
 	}

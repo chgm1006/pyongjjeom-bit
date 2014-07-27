@@ -47,9 +47,8 @@ public class MovieGrades {
 
 	@Override
 	public String toString() {
-		return "MovieGrades [title=" + title + ", movieCode=" + movieCode
-				+ ", naverMg=" + naverMg + ", daumMg=" + daumMg + ", cgvMg=" + cgvMg
-				+ ", lotteMg=" + lotteMg + ", megaBoxMg=" + megaBoxMg + "]";
+		return "MovieGrades [title=" + title + ", movieCode=" + movieCode + ", naverMg=" + naverMg + ", daumMg=" + daumMg
+				+ ", cgvMg=" + cgvMg + ", lotteMg=" + lotteMg + ", megaBoxMg=" + megaBoxMg + "]";
 	}
 
 	public String getMovieCode() {
@@ -62,13 +61,12 @@ public class MovieGrades {
 
 	private String title;
 	private String movieCode;
-	private double naverMg=0;
-	private double daumMg=0;
-	private double cgvMg=0;
-	private double lotteMg=0;
-	private double megaBoxMg=0;
+	private double naverMg = 0;
+	private double daumMg = 0;
+	private double cgvMg = 0;
+	private double lotteMg = 0;
+	private double megaBoxMg = 0;
 
-	
 	public String getTitle() {
 		return title;
 	}

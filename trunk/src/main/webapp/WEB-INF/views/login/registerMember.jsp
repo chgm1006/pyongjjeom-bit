@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp"%>
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css">
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -35,13 +30,13 @@
 			var email = {
 				email : $(emailStr).val()
 			};
-// 			console.log($(emailStr).val());
-// 			console.log(email);
+			// 			console.log($(emailStr).val());
+			// 			console.log(email);
 			if ($(emailStr).val() == '') {
 				alert("이메일 값을 넣어 주세요");
 				return false;
 			} else {
-// 				console.log("1111");
+				// 				console.log("1111");
 				$.ajax({
 					cache : false, // cache가 남아 있지 않게 false
 					async : false, // 순차적으로(동기방식) 동작한다.
@@ -96,68 +91,64 @@
 </style>
 <article>
 
-	<div class="register-container container">
-		<div class="row" style="width: 600px; margin: 0 auto;">
+  <div class="register-container container">
+    <div class="row" style="width: 600px; margin: 0 auto;">
 
-			<div class="register span6">
-				<form id="register" name="register" action="register.do" method="post">
-					<input type="hidden" id="checkemail" name="checkemail" value="0">
-					<h2>
-						<span class="red"><strong>평쩜</strong></span>
-					</h2>
+      <div class="register span6">
+        <form id="register" name="register" action="register.do" method="post">
+          <input type="hidden" id="checkemail" name="checkemail" value="0">
+          <h2>
+            <span class="red"><strong>평쩜</strong></span>
+          </h2>
 
-					<table style="width: 300px; margin: 0 auto;">
-						<tr>
-							<td><label for="email">이메일</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="email" name="email" placeholder="이메일...">
-						</tr>
+          <table style="width: 300px; margin: 0 auto;">
+            <tr>
+              <td><label for="email">이메일</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" id="email" name="email" placeholder="이메일...">
+            </tr>
 
-						<tr>
-							<td><input type="button" id="emailCheck" value="중복확인"></td>
-						</tr>
-						<tr>
-							<td><label for="name">이름</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="name" name="memNm" placeholder="이름...">
-							</td>
-						</tr>
-						<tr>
-							<td><label for="birth">생년월일</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="birth" name="birth"
-								placeholder="'-'빼고 숫자만..."></td>
-						</tr>
-						<tr>
-							<td><label for="password">비밀번호</label></td>
-						</tr>
-						<tr>
-							<td><input type="password" id="password" name="passwd"
-								placeholder="6자~20자..."></td>
-						</tr>
-						<tr>
-							<td><label for="password_check">비밀번호확인</label></td>
-						</tr>
-						<tr>
-							<td><input type="password" id="password_check" name="password_check"
-								placeholder="비밀번호확인..."></td>
-						</tr>
+            <tr>
+              <td><input type="button" id="emailCheck" value="중복확인"></td>
+            </tr>
+            <tr>
+              <td><label for="name">이름</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" id="name" name="memNm" placeholder="이름..."></td>
+            </tr>
+            <tr>
+              <td><label for="birth">생년월일</label></td>
+            </tr>
+            <tr>
+              <td><input type="text" id="birth" name="birth" placeholder="'-'빼고 숫자만..."></td>
+            </tr>
+            <tr>
+              <td><label for="password">비밀번호</label></td>
+            </tr>
+            <tr>
+              <td><input type="password" id="password" name="passwd" placeholder="6자~20자..."></td>
+            </tr>
+            <tr>
+              <td><label for="password_check">비밀번호확인</label></td>
+            </tr>
+            <tr>
+              <td><input type="password" id="password_check" name="password_check" placeholder="비밀번호확인..."></td>
+            </tr>
 
-					</table>
+          </table>
 
-					<button type="submit" id="btn_submit">가입하기</button>
-					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
+          <button type="submit" id="btn_submit">가입하기</button>
+          <button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
 
 
-				</form>
+        </form>
 
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
 
 

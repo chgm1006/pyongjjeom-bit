@@ -3,7 +3,6 @@ package com.pyongjjeom.common;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-
 public class API {
 	private static final String NAVER_KEY = "fa605843289b5518f6f08bc683a22cdf";
 	private static final String DAUM_MOVIE_KEY = "2a5f97d141e63ae9f33f9e6e7cf6c69433e0f050";
@@ -18,8 +17,7 @@ public class API {
 		String daumUri = "";
 
 		try {
-			daumUri = api.daumBookURI + "?apikey=" + API.DAUM_BOOK_KEY + "&q="
-					+ URLEncoder.encode(query, "UTF-8");
+			daumUri = api.daumBookURI + "?apikey=" + API.DAUM_BOOK_KEY + "&q=" + URLEncoder.encode(query, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("getDaumBookURI 에러 : ");
 			e.printStackTrace();
@@ -33,8 +31,7 @@ public class API {
 		String daumUri = "";
 
 		try {
-			daumUri = api.daumMovieURI + "?apikey=" + API.DAUM_MOVIE_KEY + "&q="
-					+ query;
+			daumUri = api.daumMovieURI + "?apikey=" + API.DAUM_MOVIE_KEY + "&q=" + query;
 			URLEncoder.encode(query, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("getDaumMovieURI 에러 : ");
@@ -49,8 +46,7 @@ public class API {
 		String daumUri = "";
 
 		try {
-			daumUri = api.daumMovieURI + "?apikey=" + API.DAUM_MOVIE_KEY + "&q="
-					+ query;
+			daumUri = api.daumMovieURI + "?apikey=" + API.DAUM_MOVIE_KEY + "&q=" + query;
 			URLEncoder.encode(query, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("getDaumMovieURI 에러 : ");
@@ -64,12 +60,12 @@ public class API {
 		API api = new API();
 		String uri = api.getDaumMovieURI("xman");
 
-	//	APIParse apiParse = new APIParse();
+		// APIParse apiParse = new APIParse();
 		// apiParse.parse(uri);
 
 		uri = api.getDaumBookURI("엑스맨");
 		System.out.println(uri);
-		//apiParse.parse(uri);
+		// apiParse.parse(uri);
 
 	}
 }

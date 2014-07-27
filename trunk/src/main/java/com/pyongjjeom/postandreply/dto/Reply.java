@@ -17,7 +17,7 @@ import java.util.Date;
  * @author : Forrest
  */
 public class Reply {
-	
+
 	private String replyCD = "";
 	private String memCD = "";
 	private String memNm = "";
@@ -120,9 +120,8 @@ public class Reply {
 	 */
 	@Override
 	public String toString() {
-		return "Reply [postCD=" + postCD + ", replyCD=" + replyCD + ", memCD="
-				+ memCD + ", memNm=" + memNm + ", imgPath=" + imgPath + ", reply="
-				+ reply + ", spoilYn=" + spoilYn + ", updateDate=" + updateDate
-				+ ", formatUpdateDate=" + formatUpdateDate + "]";
+		return "Reply [postCD=" + postCD + ", replyCD=" + replyCD + ", memCD=" + memCD + ", memNm=" + memNm + ", imgPath="
+				+ imgPath + ", reply=" + reply + ", spoilYn=" + spoilYn + ", updateDate=" + updateDate + ", formatUpdateDate="
+				+ formatUpdateDate + "]";
 	}
 }

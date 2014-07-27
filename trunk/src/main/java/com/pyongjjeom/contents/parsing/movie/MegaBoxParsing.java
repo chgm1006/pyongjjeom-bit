@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-
 public class MegaBoxParsing extends ContentsParsing {
 
 	public MegaBoxParsing() {

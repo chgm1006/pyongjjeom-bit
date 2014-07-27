@@ -99,8 +99,7 @@ public class NaverParse {
 		}
 		return test;
 	}
-	
-	
+
 	public NaverMovie currentMovieParse(String uri) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		NaverMovie movie = new NaverMovie();
@@ -110,16 +109,16 @@ public class NaverParse {
 			Element root = doc.getDocumentElement();
 			NodeList list = root.getElementsByTagName("item");
 
-				Element element = (Element) list.item(0);
-	
-				movie.setTitle(getContent(element, "title"));
-				movie.setSubtitle(getContent(element, "subtitle"));
-				movie.setLink(getContent(element, "link"));
-				movie.setImage(getContent(element, "image"));
-				movie.setDirector(getContent(element, "director").replace("|"," "));
-				movie.setActor(getContent(element, "actor").replace("|", " "));
-				movie.setPubDate(getContent(element, "pubDate"));
-				movie.setUserRating(getContent(element, "userRating"));
+			Element element = (Element) list.item(0);
+
+			movie.setTitle(getContent(element, "title"));
+			movie.setSubtitle(getContent(element, "subtitle"));
+			movie.setLink(getContent(element, "link"));
+			movie.setImage(getContent(element, "image"));
+			movie.setDirector(getContent(element, "director").replace("|", " "));
+			movie.setActor(getContent(element, "actor").replace("|", " "));
+			movie.setPubDate(getContent(element, "pubDate"));
+			movie.setUserRating(getContent(element, "userRating"));
 
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -130,7 +129,7 @@ public class NaverParse {
 		}
 		return movie;
 	}
-	
+
 	public NaverBook currentBookParse(String uri) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		NaverBook book = new NaverBook();
@@ -140,19 +139,18 @@ public class NaverParse {
 			Element root = doc.getDocumentElement();
 			NodeList list = root.getElementsByTagName("item");
 
-				Element element = (Element) list.item(0);
-	
-				book.setTitle(getContent(element, "title"));
-				book.setLink(getContent(element, "link"));
-				book.setImage(getContent(element, "image"));
-				book.setAuthor(getContent(element, "author"));
-				book.setPrice(getContent(element, "price"));
-				book.setDiscount(getContent(element, "discount"));
-				book.setPublisher(getContent(element, "publisher"));
-				book.setPubdate(getContent(element, "pubdate"));
-				book.setIsbn(getContent(element, "isbn"));
-				book.setDescription(getContent(element, "description"));
+			Element element = (Element) list.item(0);
 
+			book.setTitle(getContent(element, "title"));
+			book.setLink(getContent(element, "link"));
+			book.setImage(getContent(element, "image"));
+			book.setAuthor(getContent(element, "author"));
+			book.setPrice(getContent(element, "price"));
+			book.setDiscount(getContent(element, "discount"));
+			book.setPublisher(getContent(element, "publisher"));
+			book.setPubdate(getContent(element, "pubdate"));
+			book.setIsbn(getContent(element, "isbn"));
+			book.setDescription(getContent(element, "description"));
 
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -163,27 +161,26 @@ public class NaverParse {
 		}
 		return book;
 	}
-	
+
 	public String movieImageParse(String uri) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    String link = null;
+		String link = null;
 		try {
 			DocumentBuilder builder = dbf.newDocumentBuilder();
 			Document doc = builder.parse(uri);
 			Element root = doc.getDocumentElement();
 			NodeList list = root.getElementsByTagName("item");
 
-				Element element = (Element) list.item(0);
-				link=getContent(element, "link");
+			Element element = (Element) list.item(0);
+			link = getContent(element, "link");
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		catch (Exception e) {
-			link="";
+		} catch (Exception e) {
+			link = "";
 		}
 		return link;
 	}

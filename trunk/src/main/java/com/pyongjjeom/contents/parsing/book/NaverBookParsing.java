@@ -7,17 +7,16 @@ import org.jsoup.nodes.Element;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-
 public class NaverBookParsing extends ContentsParsing {
 
 	public NaverBookParsing() {
 
 		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=1");
-	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=2");
-	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=3");
-	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=4");
-	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=5");
-	parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=6");
+		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=2");
+		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=3");
+		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=4");
+		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=5");
+		parsing("http://book.naver.com/bestsell/bestseller_body.nhn?cp=kyobo&cate=total&indexCount=&type=list&page=6");
 
 	}
 
@@ -45,22 +44,20 @@ public class NaverBookParsing extends ContentsParsing {
 
 		for (Element tit : title) {
 			titleList.add(tit.text());
-			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=")+1));
+			codeList.add(tit.attr("href").substring(tit.attr("href").lastIndexOf("=") + 1));
 		}
 	}
 
 	private void addGrade() {
 
 		for (Element gra : grade) {
-			gradeList.add((Double.parseDouble(gra.childNode(2).toString()
-					.substring(0, 4))));
+			gradeList.add((Double.parseDouble(gra.childNode(2).toString().substring(0, 4))));
 		}
 	}
 
 	public static void main(String[] args) {
 		NaverBookParsing parsing = new NaverBookParsing();
-		System.out.println(parsing.getTitleList().size() + "/"
-				+ parsing.getGradeList().size());
+		System.out.println(parsing.getTitleList().size() + "/" + parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 	}

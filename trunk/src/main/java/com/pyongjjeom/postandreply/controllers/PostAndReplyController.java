@@ -50,18 +50,6 @@ public class PostAndReplyController {
 
 	private HttpSession httpSession;
 
-	/*
-	 * @Autowired private UserService userService;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @Autowired private FriendsService friendsService;
-	 */
-
-	private Reply reply;
-	private Member mem;
-
 	DBCode code = new DBCode();
 
 	@ResponseBody
@@ -129,8 +117,7 @@ public class PostAndReplyController {
 	}
 
 	@RequestMapping(value = "deletePost.do", method = RequestMethod.GET)
-	public String deletePost ( Model model,
-			HttpServletRequest request) {
+	public String deletePost(Model model, HttpServletRequest request) {
 		request.getParameter("postCD");
 		parService.deletePost(request.getParameter("postCD"));
 		return "redirect:myRoom.do";
@@ -141,16 +128,14 @@ public class PostAndReplyController {
 	// post CD,reply 받기 memCD - session 에서 추출
 	@ResponseBody
 	@RequestMapping(value = "replyInsertJson.do", method = RequestMethod.POST)
-	public Map replyInsert(@RequestBody Map paramMap, HttpServletRequest request,
-			HttpSession session) {
+	public Map replyInsert(@RequestBody Map paramMap, HttpServletRequest request, HttpSession session) {
 
 		String postCD = (String) paramMap.get("name");
 		String replyStr = (String) paramMap.get("data");
 
 		Reply reply = new Reply();
 		// 개행 적용
-		replyStr = replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
+		replyStr = replyStr.replaceAll("`", "'").replaceAll("\n", "<br>").replaceAll("\u0020", "&nbsp;");
 		System.out.println(postCD + " ////" + replyStr);
 
 		Member member = (Member) session.getAttribute("member");
@@ -164,8 +149,7 @@ public class PostAndReplyController {
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply2 : replyList) {
 			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
-			if(reply2.getImgPath()==null||reply2.getImgPath().equals(""))
-			{
+			if (reply2.getImgPath() == null || reply2.getImgPath().equals("")) {
 				reply2.setImgPath("/resources/img/empty.jpg");
 			}
 		}
@@ -184,8 +168,7 @@ public class PostAndReplyController {
 
 		Reply reply = new Reply();
 
-		replyStr = replyStr.replaceAll("`", "'").replaceAll("\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
+		replyStr = replyStr.replaceAll("`", "'").replaceAll("\n", "<br>").replaceAll("\u0020", "&nbsp;");
 
 		reply.setReplyCD(replyCD);
 		reply.setReply(replyStr);
@@ -201,13 +184,12 @@ public class PostAndReplyController {
 		String replyCD = (String) paramMap.get("name");
 		String postCD = (String) paramMap.get("data");
 		parService.deleteReply(replyCD);
-		
+
 		List<Reply> replyList = parService.getReplyList(postCD);
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (Reply reply2 : replyList) {
 			reply2.setFormatUpdateDate(df2.format(reply2.getUpdateDate()));
-			if(reply2.getImgPath()==null||reply2.getImgPath().equals(""))
-			{
+			if (reply2.getImgPath() == null || reply2.getImgPath().equals("")) {
 				reply2.setImgPath("/resources/img/empty.jpg");
 			}
 		}
@@ -218,31 +200,9 @@ public class PostAndReplyController {
 	}
 
 	/*
-	 * @RequestMapping(value = "updatePost.do", method = RequestMethod.GET) public
-	 * String updatePost(@Valid Post post, Model model, HttpServletRequest
-	 * request) { System.out.println(request.getParameter("postCD")); Post newPost
-	 * = parService.updatePost(request.getParameter("postCD"));
-	 * System.out.println(newPost); model.addAttribute("np", newPost);
-	 * reviewUpdateDbtoView(newPost); System.out.println(post.toString()); return
-	 * "postandreply/updatePost"; }
-	 * 
-	 * @RequestMapping(value = "updatePostOk.do", method = RequestMethod.POST)
-	 * public String updatePostOk(Post post, Model model, HttpServletRequest
-	 * request) { reviewDbToView(post);
-	 * System.out.println(request.getParameter("postCD"));
-	 * System.out.println(request.getParameter("memGrade"));
-	 * parService.editPost(post); request.getParameter("postCD");
-	 * System.out.println(post.toString()); return "postandreply/updatePost_ok"; }
-	 * 
-	 * @RequestMapping(value = "deletePost.do", method = RequestMethod.GET) public
-	 * String deletePost(@Valid Post post, Model model, HttpServletRequest
-	 * request) { request.getParameter("postCD");
-	 * parService.deletePost(request.getParameter("postCD")); return
-	 * "postandreply/deletePost_ok"; }
-	 */
-	/*
 	 * 맨처음 포스팅을 쓸때 체크해주는 것
-	 */public Post reviewViewToDb(Post post) { // DB에서 View로
+	 */
+	public Post reviewViewToDb(Post post) { // DB에서 View로
 		String viewReview = post.getComment();
 		viewReview = viewReview.replaceAll("'", "`");
 		post.setComment(viewReview);
@@ -253,8 +213,7 @@ public class PostAndReplyController {
 	 * view에서 DB로 넘어갈때 체크해주는 것
 	 */public Post reviewDbToView(Post post) {
 		String dbReview = post.getComment();
-		dbReview = dbReview.replaceAll("`", "'").replaceAll("\n", "<br>")
-				.replaceAll("\u0020", "&nbsp;");
+		dbReview = dbReview.replaceAll("`", "'").replaceAll("\n", "<br>").replaceAll("\u0020", "&nbsp;");
 		post.setComment(dbReview);
 		return post;
 	}

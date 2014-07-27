@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 
 import com.pyongjjeom.common.NaverBook;
 import com.pyongjjeom.common.NaverMovie;
-import com.pyongjjeom.contents.dto.Content;
 import com.pyongjjeom.contents.parsing.common.BookGrades;
 import com.pyongjjeom.contents.parsing.common.ContentsValue;
 import com.pyongjjeom.contents.parsing.common.MovieGrades;
@@ -28,7 +27,7 @@ import com.pyongjjeom.contents.parsing.common.MovieGrades;
  */
 public interface ContentService {
 	Logger logger = (Logger) Logger.getLogger(ContentService.class);
-	
+
 	void movieTitleInsert(List<ContentsValue> Values);
 
 	void bookTitleInsert(List<ContentsValue> values);

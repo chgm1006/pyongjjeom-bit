@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="../common/header.jsp"%>
@@ -7,14 +6,10 @@
 
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css">
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
 
 
@@ -197,55 +192,48 @@ function imgThumbnail(imgObj) {
 
 
 <article>
-	<div class="register-container container">
-		<div class="row" style="width: 600px; margin: 0 auto;">
+  <div class="register-container container">
+    <div class="row" style="width: 600px; margin: 0 auto;">
 
-			<div class="register span6">
-				<form id="register" name="register" action="upDateMySet.do" method="post"
-					enctype="multipart/form-data">
-					<h2>
-						<span class="red"><strong>평쩜</strong></span>
-					</h2>
+      <div class="register span6">
+        <form id="register" name="register" action="upDateMySet.do" method="post" enctype="multipart/form-data">
+          <h2>
+            <span class="red"><strong>평쩜</strong></span>
+          </h2>
 
-					<label for="fileData">File <span class='red'> ${fileErrMsg }</span></label>
-					<img id="userImg" src="${member.imgPath}" width="100" height="100"
-						align="left"> <input id="fileData" name="fileData" type="file" /> <input
-						type="hidden" name="memCD" value="${member.memCD}"> <input
-						type="hidden" name="email" value="${member.email}"> <label
-						for="email">이메일</label> <input type="text" id="email"
-						value="${member.email}" disabled="disabled"> <label for="name">이름</label>
-					<input type="text" id="name" name="memNm" value="${member.memNm}">
-					<label for="birth">생년월일</label> <input type="text" id="birth" name="birth"
-						value="${member.birth}"> <label for="password">비밀번호</label> <input
-						type="password" id="password" name="passwd" placeholder="비밀번호...">
-					<label for="password_check">비밀번호확인</label> <input type="password"
-						id="password_check" name="password_check" placeholder="비밀번호확인...">
+          <label for="fileData">File <span class='red'> ${fileErrMsg }</span></label> <img id="userImg"
+            src="${member.imgPath}" width="100" height="100" align="left"> <input id="fileData" name="fileData"
+            type="file" /> <input type="hidden" name="memCD" value="${member.memCD}"> <input type="hidden"
+            name="email" value="${member.email}"> <label for="email">이메일</label> <input type="text" id="email"
+            value="${member.email}" disabled="disabled"> <label for="name">이름</label> <input type="text"
+            id="name" name="memNm" value="${member.memNm}"> <label for="birth">생년월일</label> <input type="text"
+            id="birth" name="birth" value="${member.birth}"> <label for="password">비밀번호</label> <input
+            type="password" id="password" name="passwd" placeholder="비밀번호..."> <label for="password_check">비밀번호확인</label>
+          <input type="password" id="password_check" name="password_check" placeholder="비밀번호확인...">
 
 
 
 
-					<table>
-						<tr>
-							<td class="item">내 포스팅 공개여부</td>
-							<td class="cont">전체공개<input type="radio" name="commOpenChk"
-								value="A" <c:if test="${commOpenChk eq 'A'}"> checked="checked"</c:if>>
-								친구만 공개<input type="radio" name="commOpenChk" value="F"
-								<c:if test="${commOpenChk eq 'F'}"> checked="checked"</c:if>>
-								비공개<input type="radio" name="commOpenChk" value="N"
-								<c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
-							</td>
-						</tr>
+          <table>
+            <tr>
+              <td class="item">내 포스팅 공개여부</td>
+              <td class="cont">전체공개<input type="radio" name="commOpenChk" value="A"
+                <c:if test="${commOpenChk eq 'A'}"> checked="checked"</c:if>> 친구만 공개<input type="radio"
+                name="commOpenChk" value="F" <c:if test="${commOpenChk eq 'F'}"> checked="checked"</c:if>> 비공개<input
+                type="radio" name="commOpenChk" value="N" <c:if test="${commOpenChk eq 'N'}"> checked="checked"</c:if>>
+              </td>
+            </tr>
 
-					</table>
+          </table>
 
 
 
-					<button type="submit">수정하기</button>
-					<button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
-				</form>
-			</div>
-		</div>
-	</div>
+          <button type="submit">수정하기</button>
+          <button type="button" OnClick="javascript:history.back(-1)">돌아가기</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
 
 

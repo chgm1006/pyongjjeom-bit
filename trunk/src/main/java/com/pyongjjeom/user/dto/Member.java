@@ -39,7 +39,6 @@ public class Member {
 	public Member(String email, String passwd) {
 		this.email = email;
 		this.passwd = passwd;
-		// TODO Auto-generated constructor stub
 	}
 
 	private String memCD = "";
@@ -210,14 +209,11 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [memCD=" + memCD + ", email=" + email + ", memKind="
-				+ memKind + ", memNm=" + memNm + ", birth=" + birth + ", passwd="
-				+ passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD="
-				+ emailAuthCD + ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn="
-				+ fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", regiDate="
-				+ regiDate + ", updateDate=" + updateDate + ", commOpenChk="
-				+ commOpenChk + ", fileName=" + fileName + ", fileData=" + fileData
-				+ "]";
+		return "Member [memCD=" + memCD + ", email=" + email + ", memKind=" + memKind + ", memNm=" + memNm + ", birth="
+				+ birth + ", passwd=" + passwd + ", emailAuthYn=" + emailAuthYn + ", emailAuthCD=" + emailAuthCD
+				+ ", memValid=" + memValid + ", fbId=" + fbId + ", fbYn=" + fbYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm
+				+ ", regiDate=" + regiDate + ", updateDate=" + updateDate + ", commOpenChk=" + commOpenChk + ", fileName="
+				+ fileName + ", fileData=" + fileData + "]";
 	}
 
 }

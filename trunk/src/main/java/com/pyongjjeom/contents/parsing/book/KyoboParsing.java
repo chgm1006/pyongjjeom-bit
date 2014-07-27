@@ -43,8 +43,7 @@ public class KyoboParsing extends ContentsParsing {
 
 	public static void main(String[] args) {
 		KyoboParsing parsing = new KyoboParsing();
-		System.out.println(parsing.getTitleList().size() + "/"
-				+ parsing.getGradeList().size());
+		System.out.println(parsing.getTitleList().size() + "/" + parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 	}

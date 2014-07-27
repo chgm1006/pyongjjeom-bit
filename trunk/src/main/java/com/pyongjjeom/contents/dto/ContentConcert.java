@@ -6,7 +6,6 @@ package com.pyongjjeom.contents.dto;
 
 import java.util.Date;
 
-
 /**
  * <pre>
  * Content dto로 통합 하였습니다. <br>
@@ -19,7 +18,6 @@ import java.util.Date;
  */
 public class ContentConcert {
 
-
 	private String conCD = "";
 	private float yesCg = 0.0f;
 	private float interCg = 0.0f;
@@ -31,7 +29,6 @@ public class ContentConcert {
 	private String startDate = "";
 	private String endDate = "";
 	private Date updateDate = null;
-
 
 	public String getConCD() {
 		return conCD;

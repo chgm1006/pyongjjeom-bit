@@ -1,8 +1,8 @@
 (function($) {
 
-	/************별표*************/
+	/** **********별표************ */
 
-	$(document).ready(function(){
+	$(document).ready(function() {
 		// simple jRating call
 		$(".basic").jRating({
 			onClick : function(element, rate) {
@@ -11,388 +11,333 @@
 			}
 		});
 	});
-	
-	 /************** 알림창 위치설정 *************/
-	
-	$(document).ready(function(){
-		 
-		$(window).scroll(
-				function() {
-					$(".overCompleted").css('top',	($(document).scrollTop() + 300 + "px"));
-					$(".overCompleted").css('width','100%');
-					$(".overCompleted").css('left',"-20px");
-					
-				});
+
+	/** ************ 알림창 위치설정 ************ */
+
+	$(document).ready(function() {
+
+		$(window).scroll(function() {
+			$(".overCompleted").css('top', ($(document).scrollTop() + 300 + "px"));
+			$(".overCompleted").css('width', '100%');
+			$(".overCompleted").css('left', "-20px");
+
+		});
 	});
-	
 
-/** Quick TOP  롤오버  */
-			$(".quickImg").mouseenter(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop2.png");
-			});
-			$(".quickImg").mouseleave(function() {
-				$(this).attr("src","${pageContext.request.contextPath}/resources/img/forTop1.png");
-			});
+	/** Quick TOP 롤오버 */
+	$(".quickImg").mouseenter(function() {
+		$(this).attr("src", "${pageContext.request.contextPath}/resources/img/forTop2.png");
+	});
+	$(".quickImg").mouseleave(function() {
+		$(this).attr("src", "${pageContext.request.contextPath}/resources/img/forTop1.png");
+	});
 
+	/** ScrollTop button PLUG-IN */
 
-			
-			
-/**ScrollTop button PLUG-IN */
+	smoothScroll.init();
 
-    smoothScroll.init();
+	/** 모달 내부 : My 평점, 예고편 슬라이드 다운 */
+	$("#overButtonPreview").click(function() {
+		$(".overPreviewWrap").slideDown("slow");
+	});
+	$("#overButtonPoint").click(function() {
+		$(".overPointWrap").toggle("slow");
+	});
 
+	/** *****************Ajax JSoN 영화 상세 페이지******************** */
+	$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
+		var test = $(".statusIndex", (this)).html();
 
-/**모달 내부 : My 평점, 예고편 슬라이드 다운  */
-			$("#overButtonPreview").click(function() {
-				$(".overPreviewWrap").slideDown("slow");
-			});
-			$("#overButtonPoint").click(function() {
-					$(".overPointWrap").toggle("slow");
-			});
+		var formData = {
+			name : test,
+			data : "Hello"
+		};
 
-/*******************Ajax JSoN 영화 상세 페이지*********************/
-			$(".imgLink,#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-				var test=$(".statusIndex",(this)).html();
+		$.ajax({
+			type : "post",
+			url : "movieContextJson.do",
+			// data : formData,
+			async : false,
+			data : JSON.stringify(formData),
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			beforeSend : function() {
+				console.log(formData);
+			},
+			error : function(e) {
+				console.log(e.responseText);
+			},
+			success : function(data) {
 
-				var formData = {
-					name : test,
-					data : "Hello"
-				};
-				
-				$.ajax({
-					type : "post",
-					url : "movieContextJson.do",
-					// 				data : formData,
-	 				async : false,
-					data : JSON.stringify(formData),
-					contentType : "application/json; charset=utf-8",
-					dataType : "json",
-					beforeSend : function() {
-						console.log(formData);
-					},
-					error : function(e) {
-						console.log(e.responseText);
-					},
-					success : function(data) {
-						
+				var genre = data.whole.contentMovieDetail.genre;
+				var nation = data.whole.contentMovieDetail.nation;
+				var open = data.whole.contentMovieDetail.open;
+				var grade = data.whole.contentMovieDetail.grade;
+				var count = data.whole.contentMovieDetail.count;
+				var context = data.whole.contentMovieDetail.context;
+				var grades = data.whole.contentMovieDetail.grades;
+				var video = data.whole.contentMovieDetail.video;
 
-						
-						var genre = data.whole.contentMovieDetail.genre;
-						var nation = data.whole.contentMovieDetail.nation;
-						var open = data.whole.contentMovieDetail.open;
-						var grade = data.whole.contentMovieDetail.grade;
-						var count = data.whole.contentMovieDetail.count;
-						var context = data.whole.contentMovieDetail.context;
-						var grades = data.whole.contentMovieDetail.grades;
-						var video = data.whole.contentMovieDetail.video;
-						
-						
-						var poster = data.whole.contentMovieDetail.poster;
-						
-						var title = data.movie.title;
-						var code = data.movie.code;
+				var poster = data.whole.contentMovieDetail.poster;
 
-						var link = data.movie.link;
-						var subtitle = data.movie.subtitle;
-						var pubDate = data.movie.pubDate;
-						var director = data.movie.director;
-						var actor = data.movie.actor;
-						var userRating = data.movie.userRating;
-						
-						var naverMg = data.whole.grades.naverMg;
-						var daumMg = data.whole.grades.daumMg;
-						var cgvMg = data.whole.grades.cgvMg;
-						var lotteMg = data.whole.grades.lotteMg;
-						var megaBoxMg = data.whole.grades.megaBoxMg;
-						var pjGrade = data.whole.pjGrade;
-						
-						var avg = data.whole.avg;					
-						$(".avgPoint").text(avg);
+				var title = data.movie.title;
+				var code = data.movie.code;
 
+				var link = data.movie.link;
+				var subtitle = data.movie.subtitle;
+				var pubDate = data.movie.pubDate;
+				var director = data.movie.director;
+				var actor = data.movie.actor;
+				var userRating = data.movie.userRating;
 
-						$(".bigPoster").attr("src",poster);
-						$(".smallPoster").attr("src",poster);
-						
-						if(poster==null||poster==""){
-							$(".bigPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-							$(".smallPoster").attr("src","${pageContext.request.contextPath}/resources/img/ready.jpg");
-						}
-						
-						$(".overTableMovieTitle").text(title + " " +pubDate);
-						$(".overTableMovieTitle").append(code);
-						$(".overTableSubtitle").text(subtitle +"  "+ genre +" | "+ nation +" | "+ open);
-						$(".overTableDirector").text(director);
-						$(".overTableActor").text(actor);
-						
-						$(".overTableNaver").text(userRating);
-						$(".overTableDaum").text(daumMg);
-						$(".overTableCGV").text(cgvMg);
-						$(".overTableMega").text(megaBoxMg);
-						$(".overTableLotte").text(lotteMg);
-						$(".overTableWoori").text(pjGrade);
+				var naverMg = data.whole.grades.naverMg;
+				var daumMg = data.whole.grades.daumMg;
+				var cgvMg = data.whole.grades.cgvMg;
+				var lotteMg = data.whole.grades.lotteMg;
+				var megaBoxMg = data.whole.grades.megaBoxMg;
+				var pjGrade = data.whole.pjGrade;
 
-						$(".overSynop").text(context);
-						$("#overButtonLink").attr("href",link);
-						
-						
-						$("#overButtonPreview").click(function() {
-							$(".previewIframe").attr("src",video);
-								});
-						$("#glayLayer,.exit").click(function() {
-							$(".previewIframe").attr("src","");
-								});
+				var avg = data.whole.avg;
+				$(".avgPoint").text(avg);
 
-						
+				$(".bigPoster").attr("src", poster);
+				$(".smallPoster").attr("src", poster);
 
+				if (poster == null || poster == "") {
+					$(".bigPoster").attr("src", "${pageContext.request.contextPath}/resources/img/ready.jpg");
+					$(".smallPoster").attr("src", "${pageContext.request.contextPath}/resources/img/ready.jpg");
+				}
 
-						var commentList = data.whole.commentList;
-						var content = '<div class="clear"></div><h3 class="overContTitle">코멘트</h3>';
-						
+				$(".overTableMovieTitle").text(title + " " + pubDate);
+				$(".overTableMovieTitle").append(code);
+				$(".overTableSubtitle").text(subtitle + "  " + genre + " | " + nation + " | " + open);
+				$(".overTableDirector").text(director);
+				$(".overTableActor").text(actor);
 
-						var list = commentList;
-								
-						for (var i = 0; i < list.length; i++) {
-									content += '<div class="commentBoxLeft">';
-									content += '<div class="userPhoto">';
-									content += '<a href="userRoomLink.do?memCD=' + list[i].memCD + '" class="userRoomLink">';
-									content += '<img src="' + list[i].imgPath + '">';
-									content += '</a></div>';
-									content += '<div class="commentName">' + list[i].memNm + '</div>';
-									content += '</div>';
-									content += '<div class="commentBoxRight">';
-									content += '<img class="StarPointCompleted" src="/resources/img/p' + list[i].memGrade + '.png">';
-									content += '<p class="StarPointCompletedP">' + list[i].memGrade + '점</p>';
-									content += '<div class="clear"></div>';
-									
-									content += '<h3 class="userComment">' + list[i].comment + '</h3>';
-									content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
-									content += '</div>';
-									content += '<div class="clear"></div>';
-						}
-						content += '<a href="#" class="commentMore">더보기</a>';
-						$(".overCont3").html(content);
+				$(".overTableNaver").text(userRating);
+				$(".overTableDaum").text(daumMg);
+				$(".overTableCGV").text(cgvMg);
+				$(".overTableMega").text(megaBoxMg);
+				$(".overTableLotte").text(lotteMg);
+				$(".overTableWoori").text(pjGrade);
 
+				$(".overSynop").text(context);
+				$("#overButtonLink").attr("href", link);
 
-						var totalComment = data.whole.myComment.comment;
-						
-						if((totalComment == null) || (totalComment=="")){
-							$(".myStarPoint2").show("fast");
-							$(".myStarPoint1").hide("fast");
-							$(".pointModifyWrap").hide();
-							$(".pointText").removeAttr("disabled");
-
-						}else{
-							var myStarPoint = data.whole.myComment.memGrade;
-							var myComment = data.whole.myComment.comment;
-							$(".pointText").attr("disabled","disabled");
-							$(".myStarPointCompleted").attr("src","/resources/img/p"+myStarPoint+".png");
-							$(".pointText").attr("value",myComment);
-							$(".myStarPoint1").show("fast");
-							$(".myStarPoint2").hide("fast");
-							$(".pointModifyWrap").show();
-							$(".pointModifyWrap").animate( { left:'710px' }, 500 );
-						}
-
-						
-						var myPostCD = data.whole.myComment.postCD;
-
-						$(".myPostCD").text(myPostCD);
-
-						$('input[name=starGrade]').removeAttr('value');
-						
-
-						
-					}//success End
+				$("#overButtonPreview").click(function() {
+					$(".previewIframe").attr("src", video);
 				});
-			});
-
-			
-			
-			/***********Ajax JSoN : 내 평점 올리기 ************/
-			$(".pointSubmit").click(function() {
-				
-				
-				var pointText=$(".pointText").val();
-				var starGrade=$("#starGrade").val();
-
-				var pointTextLength = pointText.length;
-			    var maxLength = 100;
-			     
-			     if((starGrade == null) || (starGrade == "") || (starGrade == 0)){
-			    	 $(".overCompletedP").text("별점을 체크해주세요.");
-					 $(".overCompleted").show();
-					 $(".overCompleted").fadeOut(2000);
-					 return false;
-			     }
-			     if(pointTextLength <= 0 || pointText==" "){
-
-			    	 $(".overCompletedP").text("한글자이상 적어주세요.");
-					 $(".overCompleted").show();
-					 $(".overCompleted").fadeOut(2000);
-					 return false;
-			     }
-			     if(pointTextLength > maxLength){
-			    	 $(".overCompletedP").text("100자이내로 작성해주세요.");
-					 $(".overCompleted").show();
-					 $(".overCompleted").fadeOut(2000);
-					 return false;
-			     }
-				
-				
-
-
-				var formData = {
-					name : starGrade,
-					data : pointText
-				};
-				
-				$.ajax({
-					type : "post",
-					url : "postingInsertJson.do",
-					// 				data : formData,
-	 				async : false,
-					data : JSON.stringify(formData),
-					contentType : "application/json; charset=utf-8",
-					dataType : "json",
-					beforeSend : function() {
-						console.log(formData);
-					},
-					error : function(e) {
-						console.log(e.responseText);
-					},
-					success : function(data) {
-							
-
-							$(".pointText").attr("disabled","disabled");
-						
-							$(".myStarPointCompleted").attr("src","/resources/img/p"+starGrade+".png");
-							$(".myStarPoint1").show("fast");
-							$(".myStarPoint2").hide("fast");
-							$(".pointModifyWrap").show();
-							$(".pointModifyWrap").animate( { left:'710px' }, 500 );
-
-							$(".overCompletedP").text("한줄평이 입력되었습니다!!");
-							$(".overCompleted").show();
-							$(".overCompleted").fadeOut(2000);
-							
-
-							
-					}
+				$("#glayLayer,.exit").click(function() {
+					$(".previewIframe").attr("src", "");
 				});
-			});
 
-			/***********Ajax JSoN : 내 평점 삭제하기 ************/
-			$(".pointDelete").click(function() {
-				var myPostCD=$(".myPostCD").html();
+				var commentList = data.whole.commentList;
+				var content = '<div class="clear"></div><h3 class="overContTitle">코멘트</h3>';
 
-				var formData = {
-					name : myPostCD,
-					data : "포스트 코드 전달"
-				};
-				
-				$.ajax({
-					type : "post",
-					url : "postingDeleteJson.do",
-					// 				data : formData,
-	 				async : false,
-					data : JSON.stringify(formData),
-					contentType : "application/json; charset=utf-8",
-					dataType : "json",
-					beforeSend : function() {
-						console.log(formData);
-					},
-					error : function(e) {
-						console.log(e.responseText);
-					},
-					success : function(data) {
-						
-						$(".pointText").removeAttr("value").removeAttr("disabled");
-						$(".myStarPoint2").show("fast");
-						$(".myStarPoint1").hide("fast");
-						$(".pointModifyWrap").hide();
+				var list = commentList;
 
-						
-						$(".overCompletedP").text("한줄평이 삭제되었습니다.");
-						$(".overCompleted").show();
-						$(".overCompleted").fadeOut(2000);
-						
-						$('input[name=starGrade]').removeAttr('value');
+				for (var i = 0; i < list.length; i++) {
+					content += '<div class="commentBoxLeft">';
+					content += '<div class="userPhoto">';
+					content += '<a href="userRoomLink.do?memCD=' + list[i].memCD + '" class="userRoomLink">';
+					content += '<img src="' + list[i].imgPath + '">';
+					content += '</a></div>';
+					content += '<div class="commentName">' + list[i].memNm + '</div>';
+					content += '</div>';
+					content += '<div class="commentBoxRight">';
+					content += '<img class="StarPointCompleted" src="/resources/img/p' + list[i].memGrade + '.png">';
+					content += '<p class="StarPointCompletedP">' + list[i].memGrade + '점</p>';
+					content += '<div class="clear"></div>';
 
-					}
-				});
-			});
-					
-			
-			/*******************모달 : 내 평점 수정 버튼 클릭시*********************/
-			$("a.pointModify").click(function() {
-				$(".pointText").removeAttr("disabled");
+					content += '<h3 class="userComment">' + list[i].comment + '</h3>';
+					content += '<h5 class="userDate">' + list[i].formatUpdateDate + '</h5>';
+					content += '</div>';
+					content += '<div class="clear"></div>';
+				}
+				content += '<a href="#" class="commentMore">더보기</a>';
+				$(".overCont3").html(content);
+
+				var totalComment = data.whole.myComment.comment;
+
+				if ((totalComment == null) || (totalComment == "")) {
+					$(".myStarPoint2").show("fast");
+					$(".myStarPoint1").hide("fast");
+					$(".pointModifyWrap").hide();
+					$(".pointText").removeAttr("disabled");
+
+				} else {
+					var myStarPoint = data.whole.myComment.memGrade;
+					var myComment = data.whole.myComment.comment;
+					$(".pointText").attr("disabled", "disabled");
+					$(".myStarPointCompleted").attr("src", "/resources/img/p" + myStarPoint + ".png");
+					$(".pointText").attr("value", myComment);
+					$(".myStarPoint1").show("fast");
+					$(".myStarPoint2").hide("fast");
+					$(".pointModifyWrap").show();
+					$(".pointModifyWrap").animate({
+						left : '710px'
+					}, 500);
+				}
+
+				var myPostCD = data.whole.myComment.postCD;
+
+				$(".myPostCD").text(myPostCD);
+
+				$('input[name=starGrade]').removeAttr('value');
+
+			}// success End
+		});
+	});
+
+	/** *********Ajax JSoN : 내 평점 올리기 *********** */
+	$(".pointSubmit").click(function() {
+
+		var pointText = $(".pointText").val();
+		var starGrade = $("#starGrade").val();
+
+		var pointTextLength = pointText.length;
+		var maxLength = 100;
+
+		if ((starGrade == null) || (starGrade == "") || (starGrade == 0)) {
+			$(".overCompletedP").text("별점을 체크해주세요.");
+			$(".overCompleted").show();
+			$(".overCompleted").fadeOut(2000);
+			return false;
+		}
+		if (pointTextLength <= 0 || pointText == " ") {
+
+			$(".overCompletedP").text("한글자이상 적어주세요.");
+			$(".overCompleted").show();
+			$(".overCompleted").fadeOut(2000);
+			return false;
+		}
+		if (pointTextLength > maxLength) {
+			$(".overCompletedP").text("100자이내로 작성해주세요.");
+			$(".overCompleted").show();
+			$(".overCompleted").fadeOut(2000);
+			return false;
+		}
+
+		var formData = {
+			name : starGrade,
+			data : pointText
+		};
+
+		$.ajax({
+			type : "post",
+			url : "postingInsertJson.do",
+			// data : formData,
+			async : false,
+			data : JSON.stringify(formData),
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			beforeSend : function() {
+				console.log(formData);
+			},
+			error : function(e) {
+				console.log(e.responseText);
+			},
+			success : function(data) {
+
+				$(".pointText").attr("disabled", "disabled");
+
+				$(".myStarPointCompleted").attr("src", "/resources/img/p" + starGrade + ".png");
+				$(".myStarPoint1").show("fast");
+				$(".myStarPoint2").hide("fast");
+				$(".pointModifyWrap").show();
+				$(".pointModifyWrap").animate({
+					left : '710px'
+				}, 500);
+
+				$(".overCompletedP").text("한줄평이 입력되었습니다!!");
+				$(".overCompleted").show();
+				$(".overCompleted").fadeOut(2000);
+
+			}
+		});
+	});
+
+	/** *********Ajax JSoN : 내 평점 삭제하기 *********** */
+	$(".pointDelete").click(function() {
+		var myPostCD = $(".myPostCD").html();
+
+		var formData = {
+			name : myPostCD,
+			data : "포스트 코드 전달"
+		};
+
+		$.ajax({
+			type : "post",
+			url : "postingDeleteJson.do",
+			// data : formData,
+			async : false,
+			data : JSON.stringify(formData),
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			beforeSend : function() {
+				console.log(formData);
+			},
+			error : function(e) {
+				console.log(e.responseText);
+			},
+			success : function(data) {
+
+				$(".pointText").removeAttr("value").removeAttr("disabled");
 				$(".myStarPoint2").show("fast");
 				$(".myStarPoint1").hide("fast");
-				$(".pointModifyWrap").animate( { left:'780px' }, 500 );
-				
-				
-			});
-			
-			/*******************모달 : 내 평점 확인 버튼 클릭시*********************/
-			$("a.pointSubmit").click(function() {
-				 
-				
-			});
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+				$(".pointModifyWrap").hide();
 
-/** 모달윈도우 : 영화 상세 */
-			$("#glayLayer").click(function() {
-				$(this).hide()
-				$("#overLayer").hide();
-				$("#overLayerBook").hide();
-				$(".overPreviewWrap").css("display","none");
-				$(".pointText").val("");
+				$(".overCompletedP").text("한줄평이 삭제되었습니다.");
+				$(".overCompleted").show();
+				$(".overCompleted").fadeOut(2000);
 
-			});
+				$('input[name=starGrade]').removeAttr('value');
 
-			$("#imgWrapMovie,#tableTitleLinkMovie").click(function() {
-				var scrollTest = $(document).scrollTop();
-				$("#overLayer").css('top',$(document).scrollTop() + 400 + "px");
-				
-				$("#glayLayer").show();
-				$("#overLayer").fadeIn("Fast");
-				return false;
-			});
-			
-			
-			$(".exit").click(function() {
-				$("#glayLayer").hide()
-				$("#overLayer").hide();
-				$("#overLayerBook").hide();
-				$(".pointText").val("");
+			}
+		});
+	});
 
-			});
-			
-			
-	
-	
+	/** *****************모달 : 내 평점 수정 버튼 클릭시******************** */
+	$("a.pointModify").click(function() {
+		$(".pointText").removeAttr("disabled");
+		$(".myStarPoint2").show("fast");
+		$(".myStarPoint1").hide("fast");
+		$(".pointModifyWrap").animate({
+			left : '780px'
+		}, 500);
+
+	});
+
+	/** *****************모달 : 내 평점 확인 버튼 클릭시******************** */
+	$("a.pointSubmit").click(function() {
+
+	});
+
+	/** 모달윈도우 : 영화 상세 */
+	$("#glayLayer").click(function() {
+		$(this).hide()
+		$("#overLayer").hide();
+		$("#overLayerBook").hide();
+		$(".overPreviewWrap").css("display", "none");
+		$(".pointText").val("");
+
+	});
+
+	$("#imgWrapMovie,#tableTitleLinkMovie").click(function() {
+		var scrollTest = $(document).scrollTop();
+		$("#overLayer").css('top', $(document).scrollTop() + 400 + "px");
+
+		$("#glayLayer").show();
+		$("#overLayer").fadeIn("Fast");
+		return false;
+	});
+
+	$(".exit").click(function() {
+		$("#glayLayer").hide()
+		$("#overLayer").hide();
+		$("#overLayerBook").hide();
+		$(".pointText").val("");
+
+	});
+
 })(jQuery);

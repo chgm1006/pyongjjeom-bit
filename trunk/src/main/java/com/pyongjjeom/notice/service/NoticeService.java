@@ -21,7 +21,6 @@
  */
 package com.pyongjjeom.notice.service;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +28,6 @@ import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.notice.dto.NoticeCode;
 
 public interface NoticeService {
-
 
 	void insertData(Notice notice);
 
@@ -49,19 +47,12 @@ public interface NoticeService {
 
 	void deleteData(String notCD);
 
-  List <Notice> listMore();
+	List<Notice> listMore();
 
-  public List<Notice> getMoreMoreList(Map<String, Object> paramMap);
+	public List<Notice> getMoreMoreList(Map<String, Object> paramMap);
 
-  public List<Notice> getMoreNoticeList(Map<String, Object> paramMap);
+	public List<Notice> getMoreNoticeList(Map<String, Object> paramMap);
 
-  public List<Notice> getMoreAllList(Map<String, Object> paramMap);
-
-
-
-
-
-
-
+	public List<Notice> getMoreAllList(Map<String, Object> paramMap);
 
 }

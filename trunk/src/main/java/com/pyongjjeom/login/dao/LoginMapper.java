@@ -36,8 +36,7 @@ public interface LoginMapper {
 
 	public Member login(Member member);
 
-	public String login(@Param("email") String email,
-			@Param("passwd") String passwd);
+	public String login(@Param("email") String email, @Param("passwd") String passwd);
 
 	public int regiesterFBMember(Member member);
 

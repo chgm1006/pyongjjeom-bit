@@ -2,11 +2,9 @@
  * 
  */
 
-package com.pyongjjeom.user.dao; 
+package com.pyongjjeom.user.dao;
 
-import com.pyongjjeom.notice.dto.Notice;
 import com.pyongjjeom.user.dto.Member;
-
 
 /**
  * <pre>
@@ -24,16 +22,17 @@ import com.pyongjjeom.user.dto.Member;
  *    |_ UserMapper.java
  * 
  * </pre>
- * @version : 
+ * 
+ * @version :
  * @author : Forrest
  */
 public interface UserMapper {
 	public Member getMemberInfo(String memCD);
-	
+
 	public Member checkMemberID(String memCD);
-	
+
 	void upDateData(Member member);
-	
+
 	void deleteMember(String memCD);
 
 }

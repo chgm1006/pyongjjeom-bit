@@ -20,7 +20,6 @@ public class ContentsValue {
 		this.concd = concd;
 	}
 
-
 	public ContentsValue() {
 
 	}
@@ -49,8 +48,7 @@ public class ContentsValue {
 
 	@Override
 	public String toString() {
-		return "ContentsValue [title=" + title + ", grade=" + grade + ", concd="
-				+ concd ;
+		return "ContentsValue [title=" + title + ", grade=" + grade + ", concd=" + concd;
 	}
 
 }

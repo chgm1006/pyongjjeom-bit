@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- /// <head> INCLUDE /// -->
 <%@ include file="WEB-INF/views/common/header.jsp"%>
 
 <!---- CSS  ---->
-<link href="${pageContext.request.contextPath}/resources/css/imageSlider.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/contentsList.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/imageSlider.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/contentsList.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/modalWindow.css" rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 
@@ -18,9 +14,9 @@
 
 <body>
 
-현재 사용 X 입니다. 
+  현재 사용 X 입니다.
 
-<%-- 
+  <%-- 
 	<!-- ########################################### -->
 	<!-- #################    탑   메  뉴     ################# -->
 	<!-- ########################################### -->

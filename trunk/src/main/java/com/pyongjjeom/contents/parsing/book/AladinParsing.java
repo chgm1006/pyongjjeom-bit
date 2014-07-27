@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 
 import com.pyongjjeom.contents.parsing.common.ContentsParsing;
 
-
 public class AladinParsing extends ContentsParsing {
 
 	public AladinParsing() {
@@ -46,17 +45,14 @@ public class AladinParsing extends ContentsParsing {
 	private void addGrade() {
 		String str = "_s";
 		for (Element gra : grade) {
-			gradeList.add(Double
-					.parseDouble(gra.toString().substring(
-							gra.toString().lastIndexOf(str) + 2,
-							gra.toString().lastIndexOf("."))));
+			gradeList.add(Double.parseDouble(gra.toString().substring(gra.toString().lastIndexOf(str) + 2,
+					gra.toString().lastIndexOf("."))));
 		}
 	}
 
 	public static void main(String[] args) {
 		AladinParsing parsing = new AladinParsing();
-		System.out.println(parsing.getTitleList().size() + "/"
-				+ parsing.getGradeList().size());
+		System.out.println(parsing.getTitleList().size() + "/" + parsing.getGradeList().size());
 		System.out.println(parsing.titleList.toString());
 		System.out.println(parsing.gradeList.toString());
 	}

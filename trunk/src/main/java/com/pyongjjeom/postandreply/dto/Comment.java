@@ -19,10 +19,9 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.postandreply.dto; 
+package com.pyongjjeom.postandreply.dto;
 
 import java.util.Date;
-
 
 /**
  * <pre>
@@ -42,7 +41,7 @@ import java.util.Date;
  *   |_ Comment.java
  * </pre>
  * 
- * @author  : Administrator
+ * @author : Administrator
  * @version : 1.0
  */
 
@@ -51,65 +50,81 @@ public class Comment {
 	public String getMemCD() {
 		return memCD;
 	}
+
 	public void setMemCD(String memCD) {
 		this.memCD = memCD;
 	}
-	
+
 	private String postCD;
+
 	public String getPostCD() {
 		return postCD;
 	}
+
 	public void setPostCD(String postCD) {
 		this.postCD = postCD;
 	}
 
-	private String memCD=" ";
+	private String memCD = " ";
 	private String Comment;
 	private String memGrade;
 	private Date updateDate;
 	private String formatUpdateDate;
+
 	public String getFormatUpdateDate() {
 		return formatUpdateDate;
 	}
+
 	public void setFormatUpdateDate(String formatUpdateDate) {
 		this.formatUpdateDate = formatUpdateDate;
 	}
+
 	private String memNm;
 	private String imgPath;
+
 	@Override
 	public String toString() {
-		return "Comment [postCD=" + postCD + ", memCD=" + memCD + ", Comment="
-				+ Comment + ", memGrade=" + memGrade + ", updateDate=" + updateDate
-				+ ", formatUpdateDate=" + formatUpdateDate + ", memNm=" + memNm
-				+ ", imgPath=" + imgPath + "]";
+		return "Comment [postCD=" + postCD + ", memCD=" + memCD + ", Comment=" + Comment + ", memGrade=" + memGrade
+				+ ", updateDate=" + updateDate + ", formatUpdateDate=" + formatUpdateDate + ", memNm=" + memNm + ", imgPath="
+				+ imgPath + "]";
 	}
+
 	public String getComment() {
 		return Comment;
 	}
+
 	public void setComment(String comment) {
 		Comment = comment;
 	}
+
 	public String getMemGrade() {
 		return memGrade;
 	}
+
 	public void setMemGrade(String memGrade) {
 		this.memGrade = memGrade;
 	}
+
 	public Date getUpdateDate() {
 		return updateDate;
 	}
+
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
 	public String getMemNm() {
 		return memNm;
 	}
+
 	public void setMemNm(String memNm) {
 		this.memNm = memNm;
 	}
+
 	public String getImgPath() {
 		return imgPath;
 	}
+
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}

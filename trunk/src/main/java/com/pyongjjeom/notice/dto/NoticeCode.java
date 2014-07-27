@@ -21,17 +21,6 @@
  */
 package com.pyongjjeom.notice.dto;
 
-
-/**
- * <pre>
- * com.pyongjjeom.notice.dto 
- *    |_ NoticeCode.java
- * 
- * </pre>
- * @date : 2014. 6. 25. 오후 4:26:28
- * @version : 
- * @author : Kimyt
- */
 /**
  * <pre>
  * 간략 : 

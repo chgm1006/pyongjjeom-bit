@@ -6,7 +6,6 @@ package com.pyongjjeom.postandreply.dto;
 
 import java.util.Date;
 
-
 /**
  * <pre>
  * com.pyongjjeom.postandreply.dto 
@@ -21,9 +20,8 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [postCD=" + postCD + ", conCD=" + conCD + ", pmemCD=" + pmemCD
-				+ ", memGrade=" + memGrade + ", comment=" + comment + ", deleteYn="
-				+ deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
+		return "Post [postCD=" + postCD + ", conCD=" + conCD + ", pmemCD=" + pmemCD + ", memGrade=" + memGrade
+				+ ", comment=" + comment + ", deleteYn=" + deleteYn + ", spoilYn=" + spoilYn + ", regiDate=" + regiDate
 				+ ", updateDate=" + updateDate + "]";
 	}
 
@@ -36,6 +34,7 @@ public class Post {
 	private String pmemCD = "";
 	private Double memGrade = 0.0;
 	private String comment = "";
+
 	public String getConCD() {
 		return conCD;
 	}
@@ -64,7 +63,6 @@ public class Post {
 	public void setPmemCD(String pmemCD) {
 		this.pmemCD = pmemCD;
 	}
-
 
 	public double getMemGrade() {
 		return memGrade;

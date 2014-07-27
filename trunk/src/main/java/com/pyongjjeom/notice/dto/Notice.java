@@ -130,9 +130,8 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [notCD=" + notCD + ", writer=" + writer + ", title=" + title
-				+ ", issue=" + issue + ", category=" + category + ", permit=" + permit
-				+ ", notPasswd=" + notPasswd + ", deleteYN=" + deleteYN + ", regidate="
+		return "Notice [notCD=" + notCD + ", writer=" + writer + ", title=" + title + ", issue=" + issue + ", category="
+				+ category + ", permit=" + permit + ", notPasswd=" + notPasswd + ", deleteYN=" + deleteYN + ", regidate="
 				+ regidate + ", updatedate=" + updatedate + "]";
 	}
 

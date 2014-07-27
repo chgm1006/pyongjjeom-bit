@@ -22,8 +22,7 @@ DocumentBuilderFactory :
 
 <%=javax.xml.parsers.DocumentBuilderFactory.newInstance()%>
 
-/javax/xml.parsers/DocumentBuilderFactory.class :
-20.
+/javax/xml.parsers/DocumentBuilderFactory.class : 20.
 <%=this.getClass().getResource("/javax/xml.parsers/DocumentBuilderFactory.class")%>
 
 SAXParserFactory :
@@ -39,7 +38,7 @@ TransformerFactory :
 
 /javax/xml/transform/TransformerFactory.class :
 
-<%=this.getClass().getResource(  "/javax/xml/transform/TransformerFactory.class")%>
+<%=this.getClass().getResource("/javax/xml/transform/TransformerFactory.class")%>
 
 Servlet :
 

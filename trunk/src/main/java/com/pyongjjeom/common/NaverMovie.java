@@ -8,10 +8,9 @@ public class NaverMovie {
 	private String subtitle = ""; // 영문 제목
 	private String pubDate = ""; // 제작년도
 	private String director = ""; // 감독
-	private String conCD = ""; 
+	private String conCD = "";
 	private String actor = ""; // 출연 배우
 	private String userRating = ""; // 유저 평점
-
 
 	public String getConCD() {
 		return conCD;
@@ -28,8 +27,6 @@ public class NaverMovie {
 	public void setPoster(String poster) {
 		this.poster = poster;
 	}
-
-
 
 	public String getTitle() {
 		return title;
@@ -97,10 +94,9 @@ public class NaverMovie {
 
 	@Override
 	public String toString() {
-		return "NaverMovie [title=" + title + ", link=" + link + ", image=" + image
-				+ ", poster=" + poster + ", subtitle=" + subtitle + ", pubDate="
-				+ pubDate + ", director=" + director + ", code=" + conCD + ", actor="
-				+ actor + ", userRating=" + userRating + "]";
+		return "NaverMovie [title=" + title + ", link=" + link + ", image=" + image + ", poster=" + poster + ", subtitle="
+				+ subtitle + ", pubDate=" + pubDate + ", director=" + director + ", code=" + conCD + ", actor=" + actor
+				+ ", userRating=" + userRating + "]";
 	}
 
 }

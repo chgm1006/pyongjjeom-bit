@@ -36,12 +36,12 @@ public interface PostAndReplyMapper {
 	public List<PostAndContents> getPost(String memCD);
 
 	public List<Post> getReply(String memCD, String conCD);
-	
+
 	public Post updatePost(String postCD);
 
 	public void deletePost(String postCD);
-	
-	public void updatePost (Post post);
+
+	public void updatePost(Post post);
 
 	public void insertPost(Post post);
 

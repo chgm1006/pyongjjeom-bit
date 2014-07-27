@@ -24,14 +24,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -77,11 +74,10 @@ public class UploadController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(UploadItem uploadItem, BindingResult result,
-			HttpServletRequest request) {
+	public String create(UploadItem uploadItem, BindingResult result, HttpServletRequest request) {
 		System.out.println("create가 되냐??????????");
 
-		String path = request.getSession().getServletContext().getRealPath("userImg").replace("\\","/");
+		String path = request.getSession().getServletContext().getRealPath("userImg").replace("\\", "/");
 		// //어느서버에서든 getRealPath를 이용하면 그경로가 나타남
 		// String path =
 		// "C:\\Eclipse downLoad\\eclipse-jee-kepler-SR2-Java8-win32-x86_64\\eclipse\\workspace\\pyongjjeom\\src\\main\\webapp";
@@ -104,8 +100,7 @@ public class UploadController {
 		if (result.hasErrors()) // 에러체크
 		{
 			for (ObjectError error : result.getAllErrors()) {
-				System.err.println("Error: " + error.getCode() + " - "
-						+ error.getDefaultMessage());
+				System.err.println("Error: " + error.getCode() + " - " + error.getDefaultMessage());
 			}
 			return "myRoom/uploadCheck";
 		}
@@ -116,8 +111,7 @@ public class UploadController {
 																																				// 실제명을
 																																				// 가지고온다.
 
-			String imgExt = filename.substring(filename.lastIndexOf(".") + 1,
-					filename.length());
+			String imgExt = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
 
 			System.out.println(filename);
 			System.out.println(imgExt);
@@ -126,8 +120,8 @@ public class UploadController {
 			// imgExt = 파일명을 읽어들임
 
 			// upload 가능한 파일 타입 지정
-			if (imgExt.equalsIgnoreCase("JPG") || imgExt.equalsIgnoreCase("JPEG")
-					|| imgExt.equalsIgnoreCase("GIF") || imgExt.equalsIgnoreCase("PNG")) {
+			if (imgExt.equalsIgnoreCase("JPG") || imgExt.equalsIgnoreCase("JPEG") || imgExt.equalsIgnoreCase("GIF")
+					|| imgExt.equalsIgnoreCase("PNG")) {
 				byte[] bytes = null;
 
 				System.out.println(bytes); //
@@ -146,8 +140,7 @@ public class UploadController {
 					System.out.println(lFileOutputStream); // 이미지 경로
 					System.out.println("urlPath =" + urlPath); // 이미지 경로
 
-					urlPath = urlPath.equals(request.getServerName()) ? urlPath
-							: "http://192.168.0.25:8080/pyongjjeom/";
+					urlPath = urlPath.equals(request.getServerName()) ? urlPath : "http://192.168.0.25:8080/pyongjjeom/";
 					String realImgPath = urlPath + "/resources/userImages/" + filename;
 					member.setImgPath(realImgPath.toString());
 
@@ -174,8 +167,7 @@ public class UploadController {
 		// Some type of file processing...
 		System.err.println("-------------------------------------------");
 		System.err.println("Test upload: " + uploadItem.getFileName());
-		System.err.println("Test upload: "
-				+ uploadItem.getFileData().getOriginalFilename());
+		System.err.println("Test upload: " + uploadItem.getFileData().getOriginalFilename());
 		System.err.println("-------------------------------------------");
 
 		return "myRoom/uploadCheck";

@@ -27,8 +27,6 @@ import com.pyongjjeom.user.dto.Member;
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
 
-	private Logger log = Logger.getLogger(this.getClass());
-
 	@Autowired
 	private LoginMapper loginMapper;
 

@@ -3,9 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyongjjeom.postandreply.dao.PostAndReplyMapper">
 
-	<!-- <select id="getPost" parameterMap="postMap" resultType="Post"> </select> <select 
-		id="getReply" parameterMap="postMap" resultType="Post"></select> <update id="updatePost" 
-		parameterMap="postMap"> </update> <update id="deletePost" parameterMap="postMap"> 
+	<!-- <select id="getPost" parameterMap="postMap" resultType="Post"> </select> <select id="getReply" parameterMap="postMap" 
+		resultType="Post"></select> <update id="updatePost" parameterMap="postMap"> </update> <update id="deletePost" parameterMap="postMap"> 
 		</update> -->
 
 	<insert id="insertPost" parameterType="Post">
@@ -19,9 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	</insert>
 	<select id="getPost" parameterType="String" resultType="PostAndContents">
 		select
-		posting.postcd,posting.pmemCD,posting.concd,posting.memgrade,posting.comment,contents.title,contents.director,contents.image,contents.link,contents.actor, posting.updatedate
+		posting.postcd,posting.pmemCD,posting.concd,posting.memgrade,posting.comment,contents.title,contents.director,contents.image,contents.link,contents.actor,
+		posting.updatedate
 		from posting,contents where posting.pmemcd=#{memCD} and
-		ifnull(posting.deleteyn,'N')='N' and contents.concd=posting.concd 
+		ifnull(posting.deleteyn,'N')='N' and
+		contents.concd=posting.concd
 		order by updatedate desc;
 	</select>
 
@@ -42,13 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="getComent" parameterType="String" resultType="Comment">
 		select
 		member.memCD,member.memNm,member.imgPath,posting.memgrade,posting.postCD,posting.comment,posting.updatedate
-		from posting,member where posting.concd=#{conCD} and
+		from
+		posting,member where posting.concd=#{conCD} and
 		ifnull(posting.deleteyn,'N')='N' and posting.pmemcd=member.memCD and
 		member.commOpenChk='A' order by posting.updatedate desc;
 	</select>
 
 	<select id="getMyComent" parameterType="Post" resultType="Comment">
-		select memgrade,postCD,comment from posting where concd=#{conCD} and
+		select memgrade,postCD,comment from posting where
+		concd=#{conCD} and
 		pmemCD=#{pmemCD};
 	</select>
 

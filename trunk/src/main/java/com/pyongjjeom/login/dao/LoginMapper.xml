@@ -20,7 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 	<insert id="insertMember" parameterType="Member">
 		insert into member(memcd, email,
-		memkind, memnm, birth, passwd, emailauthyn, memvalid, fbyn, regidate,
+		memkind, memnm, birth, passwd,
+		emailauthyn, memvalid, fbyn, regidate,
 		updatedate, commopenchk)
 		values(#{memCD},#{email},'G',#{memNm},#{birth},password('${passwd}'),'N','A','N',now(),now(), 'A');
 	</insert>
@@ -35,7 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="getMemCDbyFBID" parameterType="string" resultType="string">
 		select
 		memcd
-		from member where fbid = #{fbId} and fbyn = 'Y';
+		from member where fbid = #{fbId} and
+		fbyn = 'Y';
 	</select>
 
 
@@ -55,7 +57,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		SET
 		emailauthyn = 'Y',
 		emailauthcd = '',
-		updatedate = now()
+		updatedate
+		= now()
 		WHERE memcd = '${memCD}'
 		AND email = '${email}';
 	</update>
@@ -63,7 +66,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 	<select id="getEmailAuthCD" parameterType="string" resultType="string">
 		SELECT
 		emailauthcd FROM member
-		where email = #{email};
+		where email =
+		#{email};
 	</select>
 
 	<insert id="regiesterFBMember" parameterType="Member">
@@ -115,7 +119,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		imgpath = #{imgPath} ,
 		updatedate = now()
 		WHERE email = #{email} or fbid =
-		#{fbId}  and fbyn = 'Y';
+		#{fbId} and fbyn =
+		'Y';
 	</update>
 
 	<select id="getMemberInfoByFBID" parameterType="String" resultType="Member">
@@ -132,21 +137,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 		email ,
 		memKind ,
 		memNm ,
-		birth ,
+		birth
+		,
 		memvalid ,
 		fbId ,
 		fbYn ,
 		imgPath ,
-		imgNm 
+		imgNm
 		FROM member
 		where
 		email = #{email} or fbid=#{fbId} and fbyn = 'Y';
 
 	</select>
-	
+
 	<update id="updateMemberPasswd" parameterType="Member">
-	    update member set
-	    passwd = password(#{passwd})
-	    where email = #{email};
+		update member set
+		passwd = password(#{passwd})
+		where email = #{email};
 	</update>
 </mapper>

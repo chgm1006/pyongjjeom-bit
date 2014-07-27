@@ -19,9 +19,7 @@
  * This software is the confidential and proprietary information
  * of yysvip.tistory.com.,LTD. ("Confidential Information").
  */
-package com.pyongjjeom.contents.parsing.common; 
-
-import org.apache.log4j.Logger;
+package com.pyongjjeom.contents.parsing.common;
 
 /**
  * <pre>
@@ -31,7 +29,7 @@ import org.apache.log4j.Logger;
  *   |_ ContentsGrades.java
  * </pre>
  * 
- * @author  : Administrator
+ * @author : Administrator
  * @version : 1.0
  */
 
@@ -39,20 +37,22 @@ public class BookGrades {
 
 	@Override
 	public String toString() {
-		return "BookGrades [title=" + title + ", naverBg=" + naverBg
-				+ ", aladinBg=" + aladinBg + ", bandiBg=" + bandiBg + ", kyoboBg="
-				+ kyoboBg + ", yesBg=" + yesBg + ", bookCode=" + bookCode + "]";
+		return "BookGrades [title=" + title + ", naverBg=" + naverBg + ", aladinBg=" + aladinBg + ", bandiBg=" + bandiBg
+				+ ", kyoboBg=" + kyoboBg + ", yesBg=" + yesBg + ", bookCode=" + bookCode + "]";
 	}
+
 	private String title;
-	private double naverBg=0;
-	private double aladinBg=0;
-	private double bandiBg=0;
-	private double kyoboBg=0;
-	private double yesBg=0;
+	private double naverBg = 0;
+	private double aladinBg = 0;
+	private double bandiBg = 0;
+	private double kyoboBg = 0;
+	private double yesBg = 0;
 	private String bookCode;
+
 	public String getBookCode() {
 		return bookCode;
 	}
+
 	public void setBookCode(String bookCode) {
 		this.bookCode = bookCode;
 	}
@@ -60,38 +60,49 @@ public class BookGrades {
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public double getNaverBg() {
 		return naverBg;
 	}
+
 	public void setNaverBg(double naverBg) {
 		this.naverBg = naverBg;
 	}
+
 	public double getAladinBg() {
 		return aladinBg;
 	}
+
 	public void setAladinBg(double aladinBg) {
 		this.aladinBg = aladinBg;
 	}
+
 	public double getBandiBg() {
 		return bandiBg;
 	}
+
 	public void setBandiBg(double bandiBg) {
 		this.bandiBg = bandiBg;
 	}
+
 	public double getKyoboBg() {
 		return kyoboBg;
 	}
+
 	public void setKyoboBg(double kyoboBg) {
 		this.kyoboBg = kyoboBg;
 	}
+
 	public double getYesBg() {
 		return yesBg;
 	}
+
 	public void setYesBg(double yesBg) {
 		this.yesBg = yesBg;
 	}
-	
+
 }
