@@ -1,5 +1,8 @@
 package com.pyongjjeom.contents.parsing.common;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias(value="ContentsValue")
 public class ContentsValue {
 
 	private String title;
