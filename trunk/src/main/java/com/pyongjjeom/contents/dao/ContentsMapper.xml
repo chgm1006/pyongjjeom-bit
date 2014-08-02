@@ -126,27 +126,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-m
 
 
 
-	<!-- <insert id="movieTitleInsert" parameterType="ContentsValue"> INSERT INTO contents_movie (concd,title,movieCode,regidate,updatedate) 
-		SELECT #{concd},#{title},#{code},now(),now() FROM DUAL WHERE NOT EXISTS( SELECT 1 FROM contents_movie WHERE title=#{title}) 
-		</insert> <update id="naverMovieGradeUpdate" parameterType="ContentsValue"> update contents_movie set navermg =#{grade},updatedate=now() 
-		where title =#{title} </update> <update id="cgvGradeUpdate" parameterType="ContentsValue"> update contents_movie set cgvmg 
-		=#{grade},updatedate=now() where title =#{title} </update> <update id="lotteGradeUpdate" parameterType="ContentsValue"> update 
-		contents_movie set lottemg =#{grade},updatedate=now() where title =#{title} </update> <update id="megaBoxGradeUpdate" parameterType="ContentsValue"> 
-		update contents_movie set megaBoxmg =#{grade},updatedate=now() where title =#{title} </update> <update id="daumGradeUpdate" 
-		parameterType="ContentsValue"> update contents_movie set daummg =#{grade},updatedate=now() where title =#{title} </update> 
-		<select id="movieGradeSelect" parameterType="String" resultType="MovieGrades"> select * from contents_movie where title = 
-		#{title} </select> <insert id="bookTitleInsert" parameterType="ContentsValue"> INSERT INTO contents_book (concd,title,bookCode,regidate,updatedate) 
-		SELECT #{concd},#{title},#{code},now(),now() FROM DUAL WHERE NOT EXISTS( SELECT 1 FROM contents_book WHERE title=#{title}) 
-		</insert> <update id="yes24GradeUpdate" parameterType="ContentsValue"> update contents_book set yesbg =#{grade},updatedate=now() 
-		where title =#{title} </update> <update id="aladinGradeUpdate" parameterType="ContentsValue"> update contents_book set aladinbg 
-		=#{grade},updatedate=now() where title =#{title} </update> <update id="kyoboGradeUpdate" parameterType="ContentsValue"> update 
-		contents_book set kyobobg =#{grade},updatedate=now() where title =#{title} </update> <update id="naverBookGradeUpdate" parameterType="ContentsValue"> 
-		update contents_book set naverbg =#{grade},updatedate=now() where title =#{title} </update> <update id="bandinlunisGradeUpdate" 
-		parameterType="ContentsValue"> update contents_book set bandibg =#{grade},updatedate=now() where title =#{title} </update> 
-		<select id="bookGradeSelect" parameterType="String" resultType="BookGrades"> select * from contents_book where title = #{title} 
-		</select> -->
-
-
-
-
 </mapper>
